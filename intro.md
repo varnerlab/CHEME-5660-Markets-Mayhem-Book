@@ -1,4 +1,4 @@
-# CHEME 5660: Financial Data, Markets, and Mayhem for Scientists and Engineers
+# Financial Data, Markets, and Mayhem for Scientists and Engineers
 
 This book to give you a feel for how book content is
 structured.
