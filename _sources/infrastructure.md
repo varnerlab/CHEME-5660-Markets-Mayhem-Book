@@ -1,4 +1,4 @@
-# Course Objectives, Polices and Resources
+# Objectives, Polices and Resources
 
 ## Course objectives 
 
