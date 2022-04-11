@@ -7,5 +7,10 @@ chapters:
 - file: infrastructure.md
 - file: chapter-1
 - file: chapter-2
-- file: chapter-3
+  title: Money, Markets and the Global Financial System
+- file: chapter-3-dir/chapter-3
+  title: Derivatives, Futures, and Leverage
+  sections: 
+  - file: chapter-3-dir/derivatives
+  - file: chapter-3-dir/contracts
 - file: chapter-4
