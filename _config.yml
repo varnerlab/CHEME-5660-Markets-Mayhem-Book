@@ -2,7 +2,7 @@
 # Learn more at https://jupyterbook.org/customize/config.html
 
 title: CHEME 5660
-author: The Jupyter Book Community
+author: Varner and Woltornist
 logo: logo.png
 
 # Force re-execution of notebooks on each build.
@@ -30,3 +30,8 @@ repository:
 html:
   use_issues_button: true
   use_repository_button: true
+
+# In _config.yml
+sphinx:
+  config:
+    bibtex_reference_style: author_year

@@ -6,10 +6,19 @@ root: intro
 chapters:
 - file: infrastructure.md
 - file: chapter-1-dir/chapter-1
-- file: chapter-2-dir/chapter-2
   title: Money, Markets and the Global Financial System
+
+- file: chapter-2-dir/chapter-2
+  title: The Dynamics of Assets and Markets
+  sections: 
+  - file: chapter-2-dir/probability-random-walks
+  - file: chapter-2-dir/markowitz
+
 - file: chapter-3-dir/chapter-3
   title: Derivatives, Futures, and Leverage
   sections: 
   - file: chapter-3-dir/contracts
+  - file: chapter-3-dir/binomial-pricing-model.ipynb
+
 - file: chapter-4-dir/chapter-4
+- file: References
