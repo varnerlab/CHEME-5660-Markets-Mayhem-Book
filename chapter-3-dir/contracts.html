@@ -55,7 +55,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Process Finance and Decision Making" href="../chapter-4-dir/chapter-4.html" />
+    <link rel="next" title="Example: Calculating the Price of an AMD put option" href="binomial-pricing-model.html" />
     <link rel="prev" title="The Fantastic but Dangerous World of Derivatives, Futures, and Leverage" href="chapter-3.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -108,20 +108,37 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../chapter-1-dir/chapter-1.html">
-   The Basics of Money, Markets and the Global Financial System
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../chapter-2-dir/chapter-2.html">
    Money, Markets and the Global Financial System
   </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../chapter-2-dir/chapter-2.html">
+   The Dynamics of Assets and Markets
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chapter-2-dir/probability-random-walks.html">
+     Probability, Random Variables and Random Walks
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chapter-2-dir/markowitz.html">
+     Modern Portfolio Theory (MPT)
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toctree-l1 current active has-children">
   <a class="reference internal" href="chapter-3.html">
    Derivatives, Futures, and Leverage
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -131,11 +148,21 @@ const thebe_selector_output = ".output, .cell_output"
      American and European style option contracts
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="binomial-pricing-model.html">
+     Example: Calculating the Price of an AMD put option
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../chapter-4-dir/chapter-4.html">
    Process Finance and Decision Making
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../References.html">
+   References
   </a>
  </li>
 </ul>
@@ -220,6 +247,19 @@ const thebe_selector_output = ".output, .cell_output"
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#cox-ross-rubinstein-crr-binomial-model">
+   Cox-Ross-Rubinstein (CRR) binomial model
+  </a>
+ </li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -232,6 +272,19 @@ const thebe_selector_output = ".output, .cell_output"
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#cox-ross-rubinstein-crr-binomial-model">
+   Cox-Ross-Rubinstein (CRR) binomial model
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -240,8 +293,13 @@ const thebe_selector_output = ".output, .cell_output"
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="american-and-european-style-option-contracts">
 <h1>American and European style option contracts<a class="headerlink" href="#american-and-european-style-option-contracts" title="Permalink to this headline">¶</a></h1>
-<p>There are two types of options contracts, a CALL contract and a PUT contract, and two different styles of contracts that we’ll consider American and European style contracts. A CALL contract gives the
-buyer the right but not the obligation to purchase 100 shares (per contract) of an underlying stock, <code class="docutils literal notranslate"><span class="pre">XYZ</span></code>, at a price per share called the strike price of <span class="math notranslate nohighlight">\(K\)</span>. On the other hand, a PUT contract gives the buyer the right but not the obligation to sell 100 shares (per contract) of an underlying stock, <code class="docutils literal notranslate"><span class="pre">XYZ</span></code>, at a strike price of <span class="math notranslate nohighlight">\(K\)</span> per share. For European-style contracts, the transaction codified in CALL or PUT contracts can only occur at some fixed date in the future called the expiration date, which is agreed upon when the contract is purchased. However, American contract styles have a different policy; American contracts can be exercised (the buyer can initiate the transaction) at any time between when the contract was purchased up to the expiration date.</p>
+<p>There are two types of options contracts, a <a class="reference external" href="https://www.investopedia.com/terms/c/calloption.asp">call contract</a> and a <a class="reference external" href="https://www.investopedia.com/terms/p/putoption.asp">put contract</a>, and two different styles of contracts that we’ll consider American and European style contracts. A CALL contract gives the
+buyer the right but not the obligation to purchase 100 shares (per contract) of an underlying stock, <code class="docutils literal notranslate"><span class="pre">XYZ</span></code>, at a price per share called the strike price of <span class="math notranslate nohighlight">\(K\)</span>. On the other hand, a PUT contract gives the buyer the right but not the obligation to sell 100 shares (per contract) of an underlying stock, <code class="docutils literal notranslate"><span class="pre">XYZ</span></code>, at a strike price of <span class="math notranslate nohighlight">\(K\)</span> per share.</p>
+<p>In European-style contracts, the transaction codified in CALL or PUT options can only occur at some fixed date in the future called the expiration date, which is agreed upon when the contract is purchased. However, American contract styles have a different policy; American contracts can be exercised (the buyer can initiate the transaction) at any time between when the contract was purchased and the expiration date.</p>
+<div class="section" id="cox-ross-rubinstein-crr-binomial-model">
+<h2>Cox-Ross-Rubinstein (CRR) binomial model<a class="headerlink" href="#cox-ross-rubinstein-crr-binomial-model" title="Permalink to this headline">¶</a></h2>
+<p>The binomial options pricing model provides a generalizable numerical method for the valuation of American style call and put options contacts. The model uses a discrete-time lattice model of the varying price over time of the underlying financial instrument. The binomial model was first proposed by William Sharpe in the 1978 edition of Investments and formalized by Cox, Ross and Rubinstein <span id="id1">[<a class="reference internal" href="../References.html#id3" title="John C. Cox, Stephen A. Ross, and Mark Rubinstein. Option pricing: a simplified approach. Journal of Financial Economics, 7(3):229-263, 1979. URL: https://www.sciencedirect.com/science/article/pii/0304405X79900151, doi:https://doi.org/10.1016/0304-405X(79)90015-1.">Cox <em>et al.</em>, 1979</a>]</span>.</p>
+</div>
 </div>
 
     <script type="text/x-thebe-config">
@@ -276,10 +334,10 @@ buyer the right but not the obligation to purchase 100 shares (per contract) of 
             <p class="prev-next-title">The Fantastic but Dangerous World of Derivatives, Futures, and Leverage</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="../chapter-4-dir/chapter-4.html" title="next page">
+    <a class='right-next' id="next-link" href="binomial-pricing-model.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Process Finance and Decision Making</p>
+        <p class="prev-next-title">Example: Calculating the Price of an AMD put option</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
@@ -290,7 +348,7 @@ buyer the right but not the obligation to purchase 100 shares (per contract) of 
     <footer class="footer">
   <p>
     
-      By The Jupyter Book Community<br/>
+      By Varner and Woltornist<br/>
     
         &copy; Copyright 2021.<br/>
   </p>

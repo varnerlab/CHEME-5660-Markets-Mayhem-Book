@@ -54,7 +54,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="American and European style option contracts" href="contracts.html" />
-    <link rel="prev" title="The Structure and Dynamics of Assets and Markets" href="../chapter-2-dir/chapter-2.html" />
+    <link rel="prev" title="Modern Portfolio Theory (MPT)" href="../chapter-2-dir/markowitz.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -106,20 +106,37 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../chapter-1-dir/chapter-1.html">
-   The Basics of Money, Markets and the Global Financial System
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../chapter-2-dir/chapter-2.html">
    Money, Markets and the Global Financial System
   </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../chapter-2-dir/chapter-2.html">
+   The Dynamics of Assets and Markets
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chapter-2-dir/probability-random-walks.html">
+     Probability, Random Variables and Random Walks
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chapter-2-dir/markowitz.html">
+     Modern Portfolio Theory (MPT)
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toctree-l1 current active has-children">
   <a class="current reference internal" href="#">
    Derivatives, Futures, and Leverage
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -129,11 +146,21 @@ const thebe_selector_output = ".output, .cell_output"
      American and European style option contracts
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="binomial-pricing-model.html">
+     Example: Calculating the Price of an AMD put option
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../chapter-4-dir/chapter-4.html">
    Process Finance and Decision Making
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../References.html">
+   References
   </a>
  </li>
 </ul>
@@ -280,7 +307,9 @@ const thebe_selector_output = ".output, .cell_output"
 <h1>The Fantastic but Dangerous World of Derivatives, Futures, and Leverage<a class="headerlink" href="#the-fantastic-but-dangerous-world-of-derivatives-futures-and-leverage" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="introduction-to-derivatives">
 <h2>Introduction to Derivatives<a class="headerlink" href="#introduction-to-derivatives" title="Permalink to this headline">¶</a></h2>
-<p>A Derivative is a financial contract that derives its value based (partially) upon the value of an underlying asset, e.g., shares of a stock, bonds, currency, commodities such as precious metals, agriculture products, etc. Derivatives are one of the three main categories of financial instruments, the other two being equity (i.e., shares of stock) and debt (i.e., bonds and mortgages). Equity derivatives (hereafter referred to as options), where the underlying asset is shares of a stock or exchange-traded fund, are a significant derivative class. Derivatives have a long history, dating back to ancient Greece; the oldest example of a derivative in history, attested to by Aristotle, was a contact transaction of olives by ancient Greek philosopher Thales [REFHERE].</p>
+<p>A Derivative is a financial contract that derives its value based (partially) upon the value of an underlying asset, e.g., shares of a stock, bonds, currency, commodities such as precious metals, agriculture products, etc. Derivatives have a long history, dating back to ancient Greece; the oldest example of a derivative, attested to by Aristotle, was a contract governing the transaction of olives by ancient Greek philosopher Thales [REFHERE]. Derivatives are one of the three main categories of financial instruments, the other two being equity (i.e., shares of stock) and debt (i.e., bonds and mortgages).</p>
+<p>Equity derivatives (hereafter referred to as options), which use shares of a stock or exchange-traded fund as the underlying asset, are a significant derivative class. Options can be used by investors to
+<a class="reference external" href="https://www.investopedia.com/terms/h/hedge.asp">hedge</a> against price movements, or then can also be used for speculation purposes. For example, a trader can buy options, instead of actual stock, to generate profits from the underlying asset’s price movements.</p>
 <div class="section" id="options-and-futures-contracts">
 <h3>Options and Futures contracts<a class="headerlink" href="#options-and-futures-contracts" title="Permalink to this headline">¶</a></h3>
 </div>
@@ -314,11 +343,11 @@ const thebe_selector_output = ".output, .cell_output"
             
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="../chapter-2-dir/chapter-2.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="../chapter-2-dir/markowitz.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">The Structure and Dynamics of Assets and Markets</p>
+            <p class="prev-next-title">Modern Portfolio Theory (MPT)</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="contracts.html" title="next page">
@@ -335,7 +364,7 @@ const thebe_selector_output = ".output, .cell_output"
     <footer class="footer">
   <p>
     
-      By The Jupyter Book Community<br/>
+      By Varner and Woltornist<br/>
     
         &copy; Copyright 2021.<br/>
   </p>
