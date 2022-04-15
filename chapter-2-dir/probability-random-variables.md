@@ -45,7 +45,7 @@ We now discuss basic set operations. By operations, we mean functions of two or 
 ````{prf:definition}
 :label: defn-union
 
-The finite union of two sets $A$ and $B$ contains all elements in $A$ or in $B$:
+The finite union of two sets $A$ and $B$ contains all elements in that are $A$ or in $B$:
 
 $$A\cup{B} = \left\{x\,\vert\,x\in{A} \text{ or } x\in{B}\right\}$$
 ````
@@ -59,7 +59,7 @@ logical _and_ operator. Thus, the [intersection](https://en.wikipedia.org/wiki/I
 ````{prf:definition}
 :label: defn-intersection
 
-The finite intersection of two sets $A$ and $B$ contains all elements in $A$ and in $B$:
+The finite intersection of two sets $A$ and $B$ contains all elements that are in both $A$ and in $B$:
 
 $$A\cap{B} = \left\{x\,\vert\,x\in{A} \text{ and } x\in{B}\right\}$$
 ````
