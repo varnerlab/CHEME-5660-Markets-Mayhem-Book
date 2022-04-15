@@ -3,7 +3,8 @@
 
 title: CHEME 5660
 author: Varner and Woltornist
-logo: logo.png
+logo: cornell_seal_simple_black.svg
+copyright: "2022" 
 
 # Force re-execution of notebooks on each build.
 # See https://jupyterbook.org/content/execute.html
@@ -35,3 +36,7 @@ html:
 sphinx:
   config:
     bibtex_reference_style: author_year
+
+sphinx:
+  extra_extensions:
+    - sphinx_proof

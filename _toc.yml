@@ -11,7 +11,8 @@ chapters:
 - file: chapter-2-dir/chapter-2
   title: The Dynamics of Assets and Markets
   sections: 
-  - file: chapter-2-dir/probability-random-walks
+  - file: chapter-2-dir/probability-random-variables
+  - file: chapter-2-dir/random-walks
   - file: chapter-2-dir/geometric-brownian-motion
   - file: chapter-2-dir/markowitz
 
