@@ -63,3 +63,11 @@ The finite intersection of two sets $A$ and $B$ contains all elements that are i
 
 $$A\cap{B} = \left\{x\,\vert\,x\in{A} \text{ and } x\in{B}\right\}$$
 ````
+
+## Probability
+
+Three elements constitute a probability space $(\Omega,\mathcal{F},P)$:
+
+* Sample space $\Omega$: The set of all possible outcomes from an experiment.
+* Event space $\mathcal{F}$: The collection of all possible events. An event E is a subset in Ω that defines an outcome or a combination of outcomes.
+* Probability law $P$: A mapping from an event $A$ to a number $P(A)$ which, measures the _size_ of the event.
