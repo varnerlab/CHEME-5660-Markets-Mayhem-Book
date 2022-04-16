@@ -110,20 +110,20 @@ the bitstring `1111`, which corresponds to $i=15$, corresponds to $\left\{\clubs
 ````
 
 ### Probability law $P$
-A probability law $P$ is a function $P$ : $\mathcal{F}\rightarrow\left[0, 1\right]$;
-the function $P$ maps an event $E\in\mathcal{F}$ to a real number in $\left[0, 1\right]$.
-The definition above does not specify how an event $E$ is being mapped to a number. 
-However, since probability is a measure of the size of a set, a meaningful probability law $P$ should be consistent for all $E\in\mathcal{F}$. This requires some rules, known as the axioms of probability, when we define the P. Any probability law P must satisfy these axioms.
+A probability law $P$ is a function $P$ : $\Omega\rightarrow\left[0, 1\right]$;
+the function $P$ maps an event $E\subseteq\Omega$ to a real number in $\left[0, 1\right]$.
+The definition above does not specify how an event $E\subseteq\Omega$ is being mapped to a number. 
+However, since probability is a measure of the size of a set, a meaningful probability law $P$ should be consistent for all $E\subseteq\Omega$. This requires rules, known as the axioms of probability, when we define the probability law $P$. 
 
 ```{prf:axiom} Axioms of Probability
 :label: axiom-probability 
 
-A probability law is a function $P:\mathcal{F}\rightarrow\left[0, 1\right]$ that maps an event $E\in\mathcal{F}$ 
-to a real number in $\left[0, 1\right]$. The function must satisfy the axioms of probability:
+A probability law is a function $P:\Omega\rightarrow\left[0, 1\right]$ that maps an event $E\subseteq\Omega$
+to a real number in $\left[0, 1\right]$. The function must satisfy the three axioms of probability:
 
-* Non-negativity: $P(E)\geq{0}$, for any $E\in\mathcal{F}$
+* Non-negativity: $P(E)\geq{0}$, for any $E\subseteq\Omega$
 * Normalization: $P(\Omega)=1$
-* Additivity: For any disjoint sets $\left\{E_{1}, E_{2}, \dots, E_{n}\right\}$ then $P\left(\bigcup_{i=1}^{n}E_{i}\right) = 
+* Additivity: For any disjoint event sets $\left\{E_{1}, E_{2}, \dots, E_{n}\right\}$ then $P\left(\bigcup_{i=1}^{n}E_{i}\right) = 
 \sum_{i=1}^{n}P(E_{i})$
 
 ```
@@ -149,7 +149,7 @@ know that $A\cap{B} = 0$ and:
 
 $$P\left(A\cap{B}\right) = 0$$
 
-But, this says nothing about whether $P[A\cap{B}]$ can be factorized into the product $P(A)P(B)$.
+But, this says nothing about whether $P(A\cap{B})$ can be factorized into the product $P(A)P(B)$.
 The only case when disjoint implies independence is if either $P(A) = 0$, or $P(B) = 0$.
 
 
