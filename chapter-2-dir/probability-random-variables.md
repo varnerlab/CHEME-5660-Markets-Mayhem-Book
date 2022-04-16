@@ -100,7 +100,8 @@ the bitstring `1111`, which corresponds to $i=15$, corresponds to $\left\{\clubs
 1 | `0001` | $\left\{\spadesuit\right\}$
 2 | `0010` | $\left\{\heartsuit\right\}$
 3 | `0011` | $\left\{\heartsuit, \spadesuit\right\}$
-4 | `0100` | $\left\{\diamondsuit\right\}$
+. | .... | ...
+9 | `1001` | $\left\{\clubsuit, \spadesuit\right\}$
 . | .... | ...
 14 | `1110` | $\left\{\clubsuit, \diamondsuit, \heartsuit\right\}$
 15 | `1111` | $\left\{\clubsuit, \diamondsuit, \heartsuit, \spadesuit\right\}$
