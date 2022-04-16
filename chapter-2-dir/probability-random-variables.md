@@ -135,7 +135,7 @@ Conditional probability deals with situations where two events $A$ and $B$ are r
 However, what if the two events are unrelated? In other words, information about one event says nothing 
 about the second event. In this case, the events $A$ and $B$ are said ot be independent:
 
-````{prf:definition}
+````{prf:definition} Statistical Independence
 :label: defn-independence
 
 Two events A and B are statistically independent if:
@@ -163,6 +163,25 @@ For any two events $A$ and $B$ where $P(A) > 0$ and $P(B) > 0$, the conditional 
 $$P(A\vert{B}) = \frac{P\left(A\cap{B}\right)}{P\left(B\right)}$$
 ````
 
+Bayes’ theorem provides two views of the intersection $P\left(A\cap{B}\right)$ using two different conditional probabilities. 
+To see this, we use the fact that the order of the events $A$ and $B$ is arbitrary:
+
+$$P(A\,\vert{B})P(B) = P(B\,\vert{A})P(A) = P(A \cap B)$$
+
+Thus, Bayes’ theorem offers a mechanism to interconvert $P(A\vert{B})$ and $P(B\vert{A})$.
+The law of Total Probability allows us to decompose an event into smaller events:
+
+````{prf:theorem} Law of Total Probability
+:label: defn-law-total-probability
+
+Let $\left\{A_{1},\dots,A_{n}\right\}$ be a partition of the sample space $\Omega$ where the 
+partitions $A_{\star}$ are disjoint and $\Omega=A_{1}\cup{A_{2}}\cup\dots\cup{A_{n}}$. 
+Then for $B\subseteq\Omega$:
+
+
+$$P(B) = \sum_{i=1}^{n}P\left(B\,\vert{A_{i}}\right)P\left(A_{i}\right)$$
+
+````
 
 ## Discrete Random Variables
 The first step is to recognize that the sample space and the event space are all based on statements, for example, “getting a head when flipping a coin” or “winning the game.” These statements are not numbers, but we (engineers) love numbers. Therefore, we should ask a very basic question: How do we convert a statement to a number? 
