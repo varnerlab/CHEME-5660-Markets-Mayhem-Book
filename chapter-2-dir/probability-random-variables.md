@@ -6,7 +6,7 @@ What exactly is “probability”? Frequentists argue that probability is the re
 In mathematics, we are often interested in describing a collection of numbers or other mathematical objects, for example, the numbers $\left[a, b\right]$ on the real line, or the ordered pairs of numbers that define a circle. These collections of numbers can be abstractly defined as sets. 
 A set is simply a collection of mathematical objets. Set theory is a mathematical tool that defines operations on sets. It provides the basic arithmetic for combining, separating, and decomposing sets.
 
-````{prf:definition}
+````{prf:definition} Sets
 :label: defn-sets
 
 A set is a collection of elements. We denote
@@ -22,7 +22,7 @@ we write $1\in\left\{1, 2, 3,\dots,10\right\}$. The elements of sets can be anyt
 
 Given a set, we often want to specify a portion of that set, which we call a subset.
 
-````{prf:definition}
+````{prf:definition} Subsets
 :label: defn-subsets
 
 $B$ is a subset of $A$ if for any $x\in{B}$, $x$ is also in $A$. We write
@@ -42,7 +42,7 @@ the empty set $\emptyset$ and the universal set $\Omega$. The empty set contains
 We now discuss basic set operations. By operations, we mean functions of two or more sets whose output value is a set. We use these operations to combine and separate sets. Let's first describe the 
 [union](https://en.wikipedia.org/wiki/Union_(set_theory)).
 
-````{prf:definition}
+````{prf:definition} Union
 :label: defn-union
 
 The finite union of two sets $A$ and $B$ contains all elements in that are $A$ or in $B$:
@@ -56,7 +56,7 @@ thus, the union of two sets is always larger than or equal to the individual set
 The [intersection](https://en.wikipedia.org/wiki/Intersection_(set_theory)) operation relys on the 
 logical _and_ operator. Thus, the [intersection](https://en.wikipedia.org/wiki/Intersection_(set_theory)) finds the common elements of the two sets:
 
-````{prf:definition}
+````{prf:definition} Intersection
 :label: defn-intersection
 
 The finite intersection of two sets $A$ and $B$ contains all elements that are in both $A$ and in $B$:
@@ -118,7 +118,7 @@ However, since probability is a measure of the size of a set, a meaningful proba
 ```{prf:axiom} Axioms of Probability
 :label: axiom-probability 
 
-A probability law is a function $P:\Omega\rightarrow\left[0, 1\right]$ that maps an event $E\subseteq\Omega$
+A probability law $P$ is a function $P:\Omega\rightarrow\left[0, 1\right]$ that maps an event $E\subseteq\Omega$
 to a real number in $\left[0, 1\right]$. The function must satisfy the three axioms of probability:
 
 * Non-negativity: $P(E)\geq{0}$, for any $E\subseteq\Omega$
