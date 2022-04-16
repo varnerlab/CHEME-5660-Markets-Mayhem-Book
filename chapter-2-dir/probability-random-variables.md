@@ -74,10 +74,23 @@ A probability space is completley described by the tuple $(\Omega,\mathcal{F},P)
 
 ### Sample space $\Omega$
 We start by defining the sample space $\Omega$. Given an experiment, the sample space $\Omega$ is the
-set containing all possible outcomes of that experiment. These experimental outcomes can be numbers, alphabets, vectors, or functions, as well as, images, videos, EEG signals, audio speeches, etc.
+set containing all possible outcomes of that experiment. These experimental outcomes can be numbers, alphabets, vectors, or functions, as well as, images, videos, EEG signals, audio speeches, etc. 
+
+````{prf:example} Sample space $\Omega$ 
+:label: ex-sample-space-dice
+
+Suppose we were intersted in the outcome of experiment where a six sided dice was rolled on time. 
+Then the sample space for this experiment $\Omega$ is given by:
+
+$$\Omega=\left\{1,2,3,4,5,6\right\}$$
+ 
+The cardinality of this sample space $\dim\left(\Omega\right) = 6$.
+````
 
 ### Event space $\mathcal{F}$
-The sample space $\Omega$ contains all the possible outcomes. However, we typically are not interested in each of the individual outcomes; instead we are interested in sets of the outcomes where elements of these sets share some common trait 
+The sample space $\Omega$ contains all the possible outcomes of an experiment. 
+However, we typically are not interested in individual outcomes; instead we are interested in sets of the outcomes 
+where the elements of these sets share some common trait 
 e.g., even integers, or the set of face cards, etc. These subsets are called events $E\subseteq\Omega$ and 
 the set of all possible events, denoted as $\mathcal{F}$, is called the event space. 
 Thus, the event space $\mathcal{F}$ is a special set of sets, it's the sets of all possible subsets.
