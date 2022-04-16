@@ -82,13 +82,29 @@ e.g., even integers, or the set of face cards, etc. These subsets are called eve
 the set of all possible events, denoted as $\mathcal{F}$, is called the event space. 
 Thus, the event space $\mathcal{F}$ is a special set of sets, it's the sets of all possible subsets.
 
-````{prf:example}
+````{prf:example} Enumerating the event space $\mathcal{F}$ 
 :label: ex-event-card-suits
 
 Let's construct the event space $\mathcal{F}$ for the sample space 
 $\Omega=\left\{\clubsuit, \diamondsuit, \heartsuit, \spadesuit\right\}$. 
 The cardinality of $\Omega$ is given by $\dim\left(\Omega\right) = 4$. 
 Thus, the $\dim(\mathcal{F}) = 2^n$ or $\dim(\mathcal{F}) = 16$. 
+
+The elements of the sample space $\mathcal{F}$ correspond to the binary representation of $i=0,\dots,\dim(\mathcal{F})-1$. 
+For example, the bitstring `0000`, which corresponds to $i=0$, represents the empty set $\emptyset$ while
+the bitstring `1111`, which corresponds to $i=15$, corresponds to $\left\{\clubsuit, \diamondsuit, \heartsuit, \spadesuit\right\}$.
+
+| index | bitstring | $x\in\mathcal{F}$ |
+| --- | --- | --- |
+0 | `0000` | $\emptyset$
+1 | `0001` | $\left\{\spadesuit\right\}$
+2 | `0010` | $\left\{\heartsuit\right\}$
+3 | `0011` | $\left\{\heartsuit, \spadesuit\right\}$
+4 | `0100` | $\left\{\diamondsuit\right\}$
+. | .... | ...
+14 | `1110` | $\left\{\clubsuit, \diamondsuit, \heartsuit\right\}$
+15 | `1111` | $\left\{\clubsuit, \diamondsuit, \heartsuit, \spadesuit\right\}$
+
 
 ````
 
