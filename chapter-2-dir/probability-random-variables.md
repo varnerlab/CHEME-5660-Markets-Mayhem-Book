@@ -123,7 +123,8 @@ to a real number in $\left[0, 1\right]$. The function must satisfy the axioms of
 
 * Non-negativity: $P(E)\geq{0}$, for any $E\in\mathcal{F}$
 * Normalization: $P(\Omega)=1$
-* Additivity: For any disjoint sets $\left\{E_{1}, E_{2}, \dots\right\}$ then $P\left(\bigcup_{i}E_{i}\right) = \sum_{i}P(E_{i})$
+* Additivity: For any disjoint sets $\left\{E_{1}, E_{2}, \dots, E_{n}\right\}$ then $P\left(\bigcup_{i=1}^{n}E_{i}\right) = 
+\sum_{i=1}^{n}P(E_{i})$
 
 ```
 
