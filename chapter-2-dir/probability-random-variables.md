@@ -124,7 +124,7 @@ the bitstring `1111`, which corresponds to $i=15$, corresponds to $\left\{\clubs
 
 ### Probability law $P$
 A probability law $P$ is a function $P$ : $\Omega\rightarrow\left[0, 1\right]$;
-the function $P$ maps an event $E\subseteq\Omega$ to a real number in $\left[0, 1\right]$.
+the function $P$ maps an event (set) $E\subseteq\Omega$ to a real number in $\left[0, 1\right]$.
 The definition above does not specify how an event $E\subseteq\Omega$ is being mapped to a number. 
 However, since probability is a measure of the size of a set, a meaningful probability law $P$ should be consistent for all $E\subseteq\Omega$. This requires rules, known as the axioms of probability, when we define the probability law $P$. 
 
@@ -198,14 +198,31 @@ $$P(B) = \sum_{i=1}^{n}P\left(B\,\vert{A_{i}}\right)P\left(A_{i}\right)$$
 ````
 
 ## Discrete Random Variables
-The first step is to recognize that the sample space and the event space are all based on statements, for example, “getting a head when flipping a coin” or “winning the game.” These statements are not numbers, but we (engineers) love numbers. Therefore, we should ask a very basic question: How do we convert a statement to a number? 
-The answer is a random variable; random variables are mappings from events to numbers.  
+The sample space and the event space are all based on statements, for example, getting a head when flipping a coin, winning the game, or drawing a card, etc. These statements are not numbers; how do we convert a statement to a number? 
+The answer is a random variable; random variables are mappings from events to numbers, these numbers are probabilities.
+In the case of discrete random variables, for example, dice roles, coin flips etc, this is done using a concept called a [probability mass function (PMF)](https://en.wikipedia.org/wiki/Probability_mass_function). 
 
-Suppose that we have constructed a random variable that translates statements to numbers. The next task is to endow the random variable with probabilities. More precisely, we need to assign probabilities to the random variable so that we can perform computations. This is done using the concept called [probability mass function (PMF)](https://en.wikipedia.org/wiki/Probability_mass_function).
+
+````{prf:definition} Probability Mass Function
+:label: defn-pmf
+
+The probability mass function (PMF) of a random variable X is a function which specifies the probability of 
+obtaining a number $x$
+
+$$p_{X}(x) = P\left(X=x\right)$$
+
+The set of all possible states of $X$ is denoted as $X\left(\Omega\right)$. A PMF should satisfy the condition:
+
+$$\sum_{x\in{X(\Omega)}}p_{X}(x)=1$$
+````
+
+The PMF is the weighing function for discrete random variables. To illustrate this idea, lets consider an example:
 
 ````{prf:example} PMF example
-:label: ex-pmf-cards
+:label: ex-pmf-double-coin-flip
 
-Let's consider an experiment that has four possible outcomes $\Omega=\left\{\clubsuit, \diamondsuit, \heartsuit, \spadesuit\right\}$
+Let's consider an experiment where we flip a coin 2 times. The sample space $\Omega$ is given by:
+
+$$\Omega = \left\{(HH),(HT),(TH),(TT)\right\}$$
 
 ````
