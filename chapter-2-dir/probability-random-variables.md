@@ -82,7 +82,7 @@ e.g., even integers, or the set of face cards, etc. These subsets are called eve
 the set of all possible events, denoted as $\mathcal{F}$, is called the event space. 
 Thus, the event space $\mathcal{F}$ is a special set of sets, it's the sets of all possible subsets.
 
-````{prf:example} Enumerating the event space $\mathcal{F}$ 
+````{prf:example} Enumerate the event space $\mathcal{F}$ 
 :label: ex-event-card-suits
 
 Let's construct the event space $\mathcal{F}$ for the sample space 
