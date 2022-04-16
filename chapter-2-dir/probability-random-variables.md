@@ -66,8 +66,68 @@ $$A\cap{B} = \left\{x\,\vert\,x\in{A} \text{ and } x\in{B}\right\}$$
 
 ## Probability
 
-Three elements constitute a probability space $(\Omega,\mathcal{F},P)$:
+A probability space is completley described by the tuple $(\Omega,\mathcal{F},P)$:
 
 * Sample space $\Omega$: The set of all possible outcomes from an experiment.
-* Event space $\mathcal{F}$: The collection of all possible events. An event E is a subset in Ω that defines an outcome or a combination of outcomes.
+* Event space $\mathcal{F}$: The collection of all possible events. An event E is a subset in $\Omega$ that defines an outcome or a combination of outcomes.
 * Probability law $P$: A mapping from an event $A$ to a number $P(A)$ which, measures the _size_ of the event.
+
+### Sample space $\Omega$
+We start by defining the sample space $\Omega$. Given an experiment, the sample space $\Omega$ is the
+set containing all possible outcomes of that experiment. These experimental outcomes can be numbers, alphabets, vectors, or functions, as well as, images, videos, EEG signals, audio speeches, etc.
+
+### Event space $\mathcal{F}$
+The sample space $\Omega$ contains all the possible outcomes. However, we typically are not interested in each of the individual outcomes; instead we are interested in sets of the outcomes where elements of these sets share some common trait 
+e.g., even integers, or the set of face cards, etc. These subsets are called events $E\subseteq\Omega$ and 
+the set of all possible events, denoted as $\mathcal{F}$, is called the event space. 
+Thus, the event space $\mathcal{F}$ is a special set of sets, it's the sets of all possible subsets.
+
+````{prf:example}
+:label: ex-event-card-suits
+
+Let's construct the event space $\mathcal{F}$ for the sample space 
+$\Omega=\left\{\clubsuit, \diamondsuit, \heartsuit, \spadesuit\right\}$. 
+The cardinality of $\Omega$ is given by $\dim\left(\Omega\right) = 4$. 
+Thus, the $\dim(\mathcal{F}) = 2^n$ or $\dim(\mathcal{F}) = 16$. 
+
+````
+
+### Probability law $P$
+A probability law $P$ is a function $P$ : $\mathcal{F}\rightarrow\left[0, 1\right]$;
+the function $P$ maps an event $E\in\mathcal{F}$ to a real number in $\left[0, 1\right]$.
+The definition above does not specify how an event $E$ is being mapped to a number. 
+However, since probability is a measure of the size of a set, a meaningful probability law $P$ should be consistent for all $E\in\mathcal{F}$. This requires some rules, known as the axioms of probability, when we define the P. Any probability law P must satisfy these axioms.
+
+```{prf:axiom} Axioms of Probability
+:label: axiom-probability 
+
+A probability law is a function $P:\mathcal{F}\rightarrow\left[0, 1\right]$ that maps an event $E\in\mathcal{F}$ 
+to a real number in $\left[0, 1\right]$. The function must satisfy the axioms of probability:
+
+* Non-negativity: $P(E)\geq{0}$, for any $E\in\mathcal{F}$
+* Normalization: $P(\Omega)=1$
+* Additivity: For any disjoint sets $\left\{E_{1}, E_{2}, \dots\right\}$ then $P\left(\bigcup_{i}E_{i}\right) = \sum_{i}P(E_{i})$
+
+```
+
+## Conditional Probability
+The motivation of conditional probability is to restrict the probability to a subevent happening in the sample space. If B has happened, the probability for A to also happen is P[A∩B]/P[B]. If two events are not influencing each other, then we say that A and B are independent.
+
+### Independence versus Disjoint
+Fill me in
+
+### Bayes’ theorem and the law of total probability
+Fill me in
+
+## Discrete Random Variables
+The first step is to recognize that the sample space and the event space are all based on statements, for example, “getting a head when flipping a coin” or “winning the game.” These statements are not numbers, but we (engineers) love numbers. Therefore, we should ask a very basic question: How do we convert a statement to a number? 
+The answer is a random variable; random variables are mappings from events to numbers.  
+
+Suppose that we have constructed a random variable that translates statements to numbers. The next task is to endow the random variable with probabilities. More precisely, we need to assign probabilities to the random variable so that we can perform computations. This is done using the concept called [probability mass function (PMF)](https://en.wikipedia.org/wiki/Probability_mass_function).
+
+````{prf:example} PMF example
+:label: ex-pmf-cards
+
+Let's consider an experiment that has four possible outcomes $\Omega=\left\{\clubsuit, \diamondsuit, \heartsuit, \spadesuit\right\}$
+
+````
