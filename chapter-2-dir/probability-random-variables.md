@@ -131,10 +131,38 @@ to a real number in $\left[0, 1\right]$. The function must satisfy the axioms of
 The motivation of conditional probability is to restrict the probability to a subevent happening in the sample space. If B has happened, the probability for A to also happen is P[A∩B]/P[B]. If two events are not influencing each other, then we say that A and B are independent.
 
 ### Independence versus Disjoint
-Fill me in
+Conditional probability deals with situations where two events $A$ and $B$ are related. 
+However, what if the two events are unrelated? In other words, information about one event says nothing 
+about the second event. In this case, the events $A$ and $B$ are said ot be independent:
+
+````{prf:definition}
+:label: defn-independence
+
+Two events A and B are statistically independent if:
+
+$$P\left(A\cap{B}\right) = P(A)P(B)$$
+````
+
+However, independence says nothing about whether two events are disjoint. Suppose events $A$ and $B$ were disjoint, then we
+know that $A\cap{B} = 0$ and:
+
+$$P\left(A\cap{B}\right) = 0$$
+
+But, this says nothing about whether $P[A\cap{B}]$ can be factorized into the product $P(A)P(B)$.
+The only case when disjoint implies independence is if either $P(A) = 0$, or $P(B) = 0$.
+
 
 ### Bayes’ theorem and the law of total probability
-Fill me in
+[Bayes' theorem](https://en.wikipedia.org/wiki/Bayes%27_theorem) named after [Thomas Bayes](https://en.wikipedia.org/wiki/Thomas_Bayes), describes the probability of an event, based on prior knowledge of conditions that might be related to the event.
+
+````{prf:theorem} Bayes' theorem
+:label: bayes-theorem
+
+For any two events $A$ and $B$ where $P(A) > 0$ and $P(B) > 0$, the conditional probability $P(A\vert{B})$ is given by:
+
+$$P(A\vert{B}) = \frac{P\left(A\cap{B}\right)}{P\left(B\right)}$$
+````
+
 
 ## Discrete Random Variables
 The first step is to recognize that the sample space and the event space are all based on statements, for example, “getting a head when flipping a coin” or “winning the game.” These statements are not numbers, but we (engineers) love numbers. Therefore, we should ask a very basic question: How do we convert a statement to a number? 
