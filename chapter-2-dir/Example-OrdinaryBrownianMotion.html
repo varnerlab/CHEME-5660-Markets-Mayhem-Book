@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>The Structure and Dynamics of Assets and Markets &#8212; CHEME 5660</title>
+    <title>Case: Ordinary Brownian Motion of Daily Price Retrun &#8212; CHEME 5660</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -54,8 +54,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Sets, Probability, and Random Variables" href="probability-random-variables.html" />
-    <link rel="prev" title="The Basics of Money, Markets and the Global Financial System" href="../chapter-1-dir/chapter-1.html" />
+    <link rel="next" title="Geometric Brownian Motion (GBM)" href="geometric-brownian-motion.html" />
+    <link rel="prev" title="Ordinary Brownian Motion (OBM)" href="random-walks.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -111,7 +111,7 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1 current active has-children">
-  <a class="current reference internal" href="#">
+  <a class="reference internal" href="chapter-2.html">
    The Dynamics of Assets and Markets
   </a>
   <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
@@ -119,7 +119,7 @@ const thebe_selector_output = ".output, .cell_output"
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul>
+  <ul class="current">
    <li class="toctree-l2">
     <a class="reference internal" href="probability-random-variables.html">
      Sets, Probability, and Random Variables
@@ -130,8 +130,8 @@ const thebe_selector_output = ".output, .cell_output"
      Ordinary Brownian Motion (OBM)
     </a>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="Example-OrdinaryBrownianMotion.html">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
      Case: Ordinary Brownian Motion of Daily Price Retrun
     </a>
    </li>
@@ -220,9 +220,9 @@ const thebe_selector_output = ".output, .cell_output"
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/chapter-2-dir/chapter-2.md"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/chapter-2-dir/Example-OrdinaryBrownianMotion.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.md</button></a>
+                data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
                 onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
@@ -240,7 +240,7 @@ const thebe_selector_output = ".output, .cell_output"
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fchapter-2-dir/chapter-2.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fchapter-2-dir/Example-OrdinaryBrownianMotion.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -256,24 +256,28 @@ const thebe_selector_output = ".output, .cell_output"
 
             <!-- Launch buttons -->
 
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/chapter-2-dir/Example-OrdinaryBrownianMotion.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
         </div>
 
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
-            </div>
-            <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#summary">
-   Summary
-  </a>
- </li>
-</ul>
-
-            </nav>
         </div>
     </div>
 </div>
@@ -281,43 +285,96 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>The Structure and Dynamics of Assets and Markets</h1>
+                <h1>Case: Ordinary Brownian Motion of Daily Price Retrun</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#summary">
-   Summary
-  </a>
- </li>
-</ul>
-
-                        </nav>
                     </div>
                 </div>
             </div>
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="the-structure-and-dynamics-of-assets-and-markets">
-<h1>The Structure and Dynamics of Assets and Markets<a class="headerlink" href="#the-structure-and-dynamics-of-assets-and-markets" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="summary">
-<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
-<p>This chapter develops methods for simulating various <a class="reference external" href="https://www.youtube.com/watch?v=JYI5xKlH_MU">stochastic processes</a> that are important to mathematical finance. We begin with a refresher on <a class="reference external" href="https://en.wikipedia.org/wiki/Random_variable">probability and random variables</a>. We then introduce <a class="reference external" href="https://en.wikipedia.org/wiki/Brownian_motion">Brownian Motion</a> and <a class="reference external" href="https://en.wikipedia.org/wiki/Random_walk">random walk</a> models, and the modern portfolio approach pioneered by Markowitz <span id="id1">[<a class="reference internal" href="../References.html#id3" title="Harry Markowitz. Portfolio selection. The Journal of Finance, 7(1):77–91, 1952. URL: http://www.jstor.org/stable/2975974 (visited on 2022-04-12).">Mar52</a>]</span>. Finally, we conclude by exploring different stochastic models of asset price dynamics, particularly <a class="reference external" href="https://en.wikipedia.org/wiki/Geometric_Brownian_motion">Geometric Brownian Motion</a> models.</p>
-<p>At the end of this chapter, students should be able to:</p>
-<ul class="simple">
-<li><p>Stuff goes here.</p></li>
-<li><p>Stuff goes here.</p></li>
-<li><p>Stuff goes here.</p></li>
-</ul>
+  <div class="tex2jax_ignore mathjax_ignore section" id="case-ordinary-brownian-motion-of-daily-price-retrun">
+<h1>Case: Ordinary Brownian Motion of Daily Price Retrun<a class="headerlink" href="#case-ordinary-brownian-motion-of-daily-price-retrun" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># import Pkg;</span>
+<span class="c"># Pkg.add(&quot;Distributions&quot;); # add the Distributions package (if not already installed)</span>
+<span class="c"># Pkg.add(&quot;Plots&quot;);         # add the Plots package (if not already installed)</span>
+
+<span class="c"># using statements -</span>
+<span class="k">using</span> <span class="n">Distributions</span><span class="p">;</span>
+<span class="k">using</span> <span class="n">Plots</span><span class="p">;</span>
+</pre></div>
 </div>
-<div class="toctree-wrapper compound">
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># setup conditions for the simulation -</span>
+
+<span class="c"># model parameters -</span>
+<span class="n">μ</span> <span class="o">=</span> <span class="mf">0.01</span><span class="p">;</span>   <span class="c"># drift term</span>
+<span class="n">σ</span> <span class="o">=</span> <span class="mf">0.10</span><span class="p">;</span>   <span class="c"># volatility </span>
+<span class="n">Xₒ</span> <span class="o">=</span> <span class="mf">0.64</span><span class="p">;</span>  <span class="c"># initial condition</span>
+
+<span class="c"># time -</span>
+<span class="n">tₒ</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">;</span>   <span class="c"># initial time units: days</span>
+<span class="n">t₁</span> <span class="o">=</span> <span class="mf">45.0</span><span class="p">;</span>  <span class="c"># final time units: days</span>
+<span class="n">h</span> <span class="o">=</span> <span class="mf">0.154</span><span class="p">;</span>  <span class="c"># step size units: days</span>
+
+<span class="c"># paths -</span>
+<span class="n">P</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span>    <span class="c"># number of sample paths</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">function</span> <span class="n">simulate</span><span class="p">(</span><span class="n">μ</span><span class="o">::</span><span class="kt">Float64</span><span class="p">,</span> <span class="n">σ</span><span class="o">::</span><span class="kt">Float64</span><span class="p">,</span> <span class="n">tₒ</span><span class="o">::</span><span class="kt">Float64</span><span class="p">,</span> <span class="n">t₁</span><span class="o">::</span><span class="kt">Float64</span><span class="p">,</span> <span class="n">h</span><span class="o">::</span><span class="kt">Float64</span><span class="p">,</span> <span class="n">Xₒ</span><span class="o">::</span><span class="kt">Float64</span><span class="p">,</span> <span class="n">P</span><span class="o">::</span><span class="kt">Int64</span><span class="p">)</span>
+    
+    <span class="c"># initialize -</span>
+    <span class="n">T</span> <span class="o">=</span> <span class="n">range</span><span class="p">(</span><span class="n">tₒ</span><span class="p">,</span> <span class="n">stop</span><span class="o">=</span><span class="n">t₁</span><span class="p">,</span> <span class="n">step</span> <span class="o">=</span> <span class="n">h</span><span class="p">)</span> <span class="o">|&gt;</span> <span class="n">collect</span>
+    <span class="n">S</span> <span class="o">=</span> <span class="n">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">stop</span> <span class="o">=</span> <span class="n">P</span><span class="p">,</span> <span class="n">step</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span> <span class="o">|&gt;</span> <span class="n">collect</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">zeros</span><span class="p">(</span><span class="n">length</span><span class="p">(</span><span class="n">T</span><span class="p">),</span> <span class="n">P</span><span class="p">)</span>
+    
+    <span class="c"># set the initial condition -</span>
+    <span class="n">X</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="o">:</span><span class="n">P</span><span class="p">]</span> <span class="o">.=</span> <span class="n">Xₒ</span>
+    
+    <span class="c"># make a 𝒩 model -</span>
+    <span class="n">𝒩</span> <span class="o">=</span> <span class="n">Normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+    
+    <span class="c"># main loop -</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">k</span><span class="p">,</span><span class="n">s</span><span class="p">)</span> <span class="o">∈</span> <span class="n">enumerate</span><span class="p">(</span><span class="n">S</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="o">∈</span> <span class="mi">1</span><span class="o">:</span><span class="p">(</span><span class="n">length</span><span class="p">(</span><span class="n">T</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+            <span class="n">Z</span> <span class="o">=</span> <span class="n">rand</span><span class="p">(</span><span class="n">𝒩</span><span class="p">)</span>
+            <span class="n">X</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">k</span><span class="p">]</span> <span class="o">+</span> <span class="n">μ</span><span class="o">*</span><span class="n">h</span> <span class="o">+</span> <span class="n">σ</span><span class="o">*</span><span class="p">(</span><span class="o">√</span><span class="n">h</span><span class="p">)</span><span class="o">*</span><span class="n">Z</span> 
+        <span class="k">end</span>
+    <span class="k">end</span>
+
+    <span class="c"># return -</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">T</span><span class="p">,</span><span class="n">X</span><span class="p">)</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>simulate (generic function with 1 method)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="p">(</span><span class="n">T</span><span class="p">,</span><span class="n">X</span><span class="p">)</span> <span class="o">=</span> <span class="n">simulate</span><span class="p">(</span><span class="n">μ</span><span class="p">,</span> <span class="n">σ</span><span class="p">,</span> <span class="n">tₒ</span><span class="p">,</span> <span class="n">t₁</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">Xₒ</span><span class="p">,</span> <span class="n">P</span><span class="p">);</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">T</span><span class="p">,</span><span class="n">X</span><span class="p">,</span> <span class="n">legend</span><span class="o">=</span><span class="nb">false</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="ss">:gray</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/Example-OrdinaryBrownianMotion_4_0.svg" src="../_images/Example-OrdinaryBrownianMotion_4_0.svg" /></div>
 </div>
 </div>
 
@@ -330,33 +387,33 @@ const thebe_selector_output = ".output, .cell_output"
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "python"
+            mode: "julia-1.7"
         },
         kernelOptions: {
-            kernelName: "python3",
+            kernelName: "julia-1.7",
             path: "./chapter-2-dir"
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'python3'</script>
+    <script>kernelName = 'julia-1.7'</script>
 
               </div>
               
             
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="../chapter-1-dir/chapter-1.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="random-walks.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">The Basics of Money, Markets and the Global Financial System</p>
+            <p class="prev-next-title">Ordinary Brownian Motion (OBM)</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="probability-random-variables.html" title="next page">
+    <a class='right-next' id="next-link" href="geometric-brownian-motion.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Sets, Probability, and Random Variables</p>
+        <p class="prev-next-title">Geometric Brownian Motion (GBM)</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

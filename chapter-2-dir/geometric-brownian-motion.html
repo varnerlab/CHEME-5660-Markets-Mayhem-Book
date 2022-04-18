@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Probability, Random Variables and Random Walks &#8212; CHEME 5660</title>
+    <title>Geometric Brownian Motion (GBM) &#8212; CHEME 5660</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -28,6 +28,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
@@ -51,10 +52,12 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Modern Portfolio Theory (MPT)" href="markowitz.html" />
-    <link rel="prev" title="The Structure and Dynamics of Assets and Markets" href="chapter-2.html" />
+    <link rel="prev" title="Ordinary Brownian Motion (OBM)" href="random-walks.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -80,7 +83,7 @@ const thebe_selector_output = ".output, .cell_output"
         
       
       
-      <img src="../_static/logo.png" class="logo" alt="logo">
+      <img src="../_static/cornell_seal_simple_black.svg" class="logo" alt="logo">
       
       
       <h1 class="site-logo" id="site-title">CHEME 5660</h1>
@@ -119,9 +122,19 @@ const thebe_selector_output = ".output, .cell_output"
    </i>
   </label>
   <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="probability-random-variables.html">
+     Sets, Probability, and Random Variables
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="random-walks.html">
+     Ordinary Brownian Motion (OBM)
+    </a>
+   </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     Probability, Random Variables and Random Walks
+     Geometric Brownian Motion (GBM)
     </a>
    </li>
    <li class="toctree-l2">
@@ -204,7 +217,7 @@ const thebe_selector_output = ".output, .cell_output"
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/chapter-2-dir/probability-random-walks.md"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/chapter-2-dir/geometric-brownian-motion.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
@@ -224,7 +237,7 @@ const thebe_selector_output = ".output, .cell_output"
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fchapter-2-dir/probability-random-walks.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fchapter-2-dir/geometric-brownian-motion.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -252,7 +265,7 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Probability, Random Variables and Random Walks</h1>
+                <h1>Geometric Brownian Motion (GBM)</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -263,8 +276,12 @@ const thebe_selector_output = ".output, .cell_output"
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="probability-random-variables-and-random-walks">
-<h1>Probability, Random Variables and Random Walks<a class="headerlink" href="#probability-random-variables-and-random-walks" title="Permalink to this headline">¶</a></h1>
+  <div class="tex2jax_ignore mathjax_ignore section" id="geometric-brownian-motion-gbm">
+<h1>Geometric Brownian Motion (GBM)<a class="headerlink" href="#geometric-brownian-motion-gbm" title="Permalink to this headline">¶</a></h1>
+<p>Unfortunately, Eqn. <a class="reference internal" href="random-walks.html#equation-eq-sde-bm">(1)</a> has a critical flaw, namely, it’s solution can admit negative values. Thus, as a model for stock price (or the price of another risky asset), it is not widely used. Instead, we often model asset price using a geometric brownian motion (gbm) model:</p>
+<div class="math notranslate nohighlight" id="equation-eq-sde-gbm">
+<span class="eqno">(3)<a class="headerlink" href="#equation-eq-sde-gbm" title="Permalink to this equation">¶</a></span>\[\frac{dS\left(t\right)}{S(t)} = \mu{dt}+\sigma{dW(t)}\]</div>
+<p>The use of geomtric Brownian motion as a model in mathematical finance is primary due to the work of Samuleson in the 1960s.</p>
 </div>
 
     <script type="text/x-thebe-config">
@@ -292,11 +309,11 @@ const thebe_selector_output = ".output, .cell_output"
             
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="chapter-2.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="random-walks.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">The Structure and Dynamics of Assets and Markets</p>
+            <p class="prev-next-title">Ordinary Brownian Motion (OBM)</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="markowitz.html" title="next page">
@@ -315,7 +332,7 @@ const thebe_selector_output = ".output, .cell_output"
     
       By Varner and Woltornist<br/>
     
-        &copy; Copyright 2021.<br/>
+        &copy; Copyright 2022.<br/>
   </p>
 </footer>
 </main>

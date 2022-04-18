@@ -28,6 +28,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
@@ -82,7 +83,7 @@ const thebe_selector_output = ".output, .cell_output"
         
       
       
-      <img src="../_static/logo.png" class="logo" alt="logo">
+      <img src="../_static/cornell_seal_simple_black.svg" class="logo" alt="logo">
       
       
       <h1 class="site-logo" id="site-title">CHEME 5660</h1>
@@ -122,8 +123,18 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../chapter-2-dir/probability-random-walks.html">
-     Probability, Random Variables and Random Walks
+    <a class="reference internal" href="../chapter-2-dir/probability-random-variables.html">
+     Sets, Probability, and Random Variables
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chapter-2-dir/random-walks.html">
+     Ordinary Brownian Motion (OBM)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chapter-2-dir/geometric-brownian-motion.html">
+     Geometric Brownian Motion (GBM)
     </a>
    </li>
    <li class="toctree-l2">
@@ -253,8 +264,8 @@ const thebe_selector_output = ".output, .cell_output"
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#cox-ross-rubinstein-crr-binomial-model">
-   Cox-Ross-Rubinstein (CRR) binomial model
+  <a class="reference internal nav-link" href="#cox-ross-rubinstein-crr-binomial-pricing-model">
+   Cox-Ross-Rubinstein (CRR) binomial pricing model
   </a>
  </li>
 </ul>
@@ -278,8 +289,8 @@ const thebe_selector_output = ".output, .cell_output"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#cox-ross-rubinstein-crr-binomial-model">
-   Cox-Ross-Rubinstein (CRR) binomial model
+  <a class="reference internal nav-link" href="#cox-ross-rubinstein-crr-binomial-pricing-model">
+   Cox-Ross-Rubinstein (CRR) binomial pricing model
   </a>
  </li>
 </ul>
@@ -296,9 +307,10 @@ const thebe_selector_output = ".output, .cell_output"
 <p>There are two types of options contracts, a <a class="reference external" href="https://www.investopedia.com/terms/c/calloption.asp">call contract</a> and a <a class="reference external" href="https://www.investopedia.com/terms/p/putoption.asp">put contract</a>, and two different styles of contracts that we’ll consider American and European style contracts. A CALL contract gives the
 buyer the right but not the obligation to purchase 100 shares (per contract) of an underlying stock, <code class="docutils literal notranslate"><span class="pre">XYZ</span></code>, at a price per share called the strike price of <span class="math notranslate nohighlight">\(K\)</span>. On the other hand, a PUT contract gives the buyer the right but not the obligation to sell 100 shares (per contract) of an underlying stock, <code class="docutils literal notranslate"><span class="pre">XYZ</span></code>, at a strike price of <span class="math notranslate nohighlight">\(K\)</span> per share.</p>
 <p>In European-style contracts, the transaction codified in CALL or PUT options can only occur at some fixed date in the future called the expiration date, which is agreed upon when the contract is purchased. However, American contract styles have a different policy; American contracts can be exercised (the buyer can initiate the transaction) at any time between when the contract was purchased and the expiration date.</p>
-<div class="section" id="cox-ross-rubinstein-crr-binomial-model">
-<h2>Cox-Ross-Rubinstein (CRR) binomial model<a class="headerlink" href="#cox-ross-rubinstein-crr-binomial-model" title="Permalink to this headline">¶</a></h2>
-<p>The binomial options pricing model provides a generalizable numerical method for the valuation of American style call and put options contacts. The model uses a discrete-time lattice model of the varying price over time of the underlying financial instrument. The binomial model was first proposed by William Sharpe in the 1978 edition of Investments and formalized by Cox, Ross and Rubinstein <span id="id1">[<a class="reference internal" href="../References.html#id3" title="John C. Cox, Stephen A. Ross, and Mark Rubinstein. Option pricing: a simplified approach. Journal of Financial Economics, 7(3):229-263, 1979. URL: https://www.sciencedirect.com/science/article/pii/0304405X79900151, doi:https://doi.org/10.1016/0304-405X(79)90015-1.">Cox <em>et al.</em>, 1979</a>]</span>.</p>
+<div class="section" id="cox-ross-rubinstein-crr-binomial-pricing-model">
+<h2>Cox-Ross-Rubinstein (CRR) binomial pricing model<a class="headerlink" href="#cox-ross-rubinstein-crr-binomial-pricing-model" title="Permalink to this headline">¶</a></h2>
+<p>The binomial options pricing model provides a generalizable numerical method for the valuation of American style call and put options contacts. The model uses a discrete-time lattice model of the varying price over time of the underlying financial instrument. The binomial model was first proposed by William Sharpe in the 1978 edition of Investments and formalized by Cox, Ross and Rubinstein <span id="id1">[<a class="reference internal" href="../References.html#id4" title="John C. Cox, Stephen A. Ross, and Mark Rubinstein. Option pricing: a simplified approach. Journal of Financial Economics, 7(3):229-263, 1979. URL: https://www.sciencedirect.com/science/article/pii/0304405X79900151, doi:https://doi.org/10.1016/0304-405X(79)90015-1.">CRR79</a>]</span>.</p>
+<a class="reference internal image-reference" href="../_images/CRR-BinomialModel.pdf"><img alt="CRR-Schematic" class="align-center" src="../_images/CRR-BinomialModel.pdf" style="width: 480px;" /></a>
 </div>
 </div>
 
@@ -350,7 +362,7 @@ buyer the right but not the obligation to purchase 100 shares (per contract) of 
     
       By Varner and Woltornist<br/>
     
-        &copy; Copyright 2021.<br/>
+        &copy; Copyright 2022.<br/>
   </p>
 </footer>
 </main>
