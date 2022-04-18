@@ -228,3 +228,27 @@ Let's consider an experiment where we flip a coin 2 times. The sample space $\Om
 $$\Omega = \left\{(HH),(HT),(TH),(TT)\right\}$$
 
 ````
+
+### Expectations, momemnts and variance for discrete random variable
+
+### Bernoulli random variables
+A Bernoulli random variable, the simplest random variable, models a coin-flip.
+Bernoulli random variable have two states: either 1 or 0. The probability of getting 1 is $p$, while the probability of getting a value of 0 is $1 − p$. Bernoulli random variables model many binary events: coin flips (H or T), 
+binary bits (1 or 0), true or false, yes or no, present or absent, etc.
+
+### Binomial random variable
+
+### Geometric random variable
+In some applications, we are interested in trying a binary experiment e.g., a coin flip until a specified outcome is obtained.
+The outcome of this type of experiment is governed by a geometric random variable; 
+a geometric random variable describes the number of failures obtained before a final success.
+
+````{prf:definition} Geometric Random Variable
+:label: defn-pmf-geometric
+
+Let $X$ be a geometric random variable. The probability mass function for a geometric random variable is given by:
+
+$$p_{X}(k) = (1-p)^{(k-1)}p\qquad{k=1,2,\dots}$$
+
+where $p$ denotes the geometric parameter $0<p<1$.
+````

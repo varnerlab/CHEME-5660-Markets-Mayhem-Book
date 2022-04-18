@@ -41,10 +41,11 @@ We can compute sample paths (solutions) for Eqn. {eq}`eq-SDE-BM-Euler` generated
 **Output** Time array T and the $\dim\left(T\right)\times{P}$ solution array $X$
 
 1. initialize $T~\leftarrow$ range($t_{o}$, stop = $t_{f}$, step = $h$) |> collect
-2. initialize $X~\leftarrow$ Array($\dim\left(T\right)$, P)
-3. initialize $X[1,1:N]~\leftarrow~X_{o}$ for all sample $P$ paths 
+2. initialize $\mathcal{P}~\leftarrow$ range(1, stop = $P$, step = 1) |> collect
+2. initialize $X~\leftarrow$ Array($\dim\left(T\right)$, $P$)
+3. initialize $X[1,\mathcal{P}]~\leftarrow~X_{o}$ for all sample paths $P$
 
-1. for each $(k,s) \in 1:P$
+1. for each $(k,s) \in \mathcal{P}$
     1. for each $(i,t) \in T$
         1. generate $Z~\leftarrow~\mathcal{N}\left(0,1\right)$
         2. set $X[i+1,k]~\leftarrow~X[i,k]+\mu{h}+\left(\sigma\sqrt{h}\right)Z$
