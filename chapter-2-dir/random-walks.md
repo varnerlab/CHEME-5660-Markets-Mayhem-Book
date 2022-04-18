@@ -31,3 +31,22 @@ where $X_{i+1}$ denotes the state random variable evaluated at time index $i+1$.
 
 $$W_{i+1} = W_{i} + \left(\sqrt{t_{i+1} - t_{i}}\right)Z_{i+1}\qquad{i=0,1,\dots,n-1}$$
 
+We can compute sample paths (solutions) for Eqn. {eq}`eq-SDE-BM-Euler` generated using the [Euler–Maruyama method](https://en.wikipedia.org/wiki/Euler–Maruyama_method) discretization using {prf:ref}`algo-ord-brownian-motion`.
+
+```{prf:algorithm} Ordinary Brownian Motion
+:label: algo-ord-brownian-motion
+
+**Inputs** Parameters $\left(\mu,\sigma\right)$, initial condition $X\left(t_{o}\right) = X_{o}$, initial time $t_{o}$, final time $t_{f}$, time step size $h$, and the number of sample paths $P$ 
+
+**Output** Time array T and the $\dim\left(T\right)\times{P}$ solution array $X$
+
+1. initialize $T~\leftarrow$ range($t_{o}$, stop = $t_{f}$, step = $h$) |> collect
+2. initialize $X~\leftarrow$ Array($\dim\left(T\right)$, P)
+3. initialize $X[1,1:N]~\leftarrow~X_{o}$ for all sample $P$ paths 
+
+1. for each $(k,s) \in 1:P$
+    1. for each $(i,t) \in T$
+        1. generate $Z~\leftarrow~\mathcal{N}\left(0,1\right)$
+        2. set $X[i+1,k]~\leftarrow~X[i,k]+\mu{h}+\left(\sigma\sqrt{h}\right)Z$
+```
+
