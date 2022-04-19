@@ -237,6 +237,18 @@ Bernoulli random variable have two states: either 1 or 0. The probability of get
 binary bits (1 or 0), true or false, yes or no, present or absent, etc.
 
 ### Binomial random variable
+The binomial distribution is the probability of getting exactly $k$ successes in $n$ independent Bernoulli trials. 
+For example, the probability of getting 4 heads in 6 coin tosses. 
+
+````{prf:definition} Bionomial Random Variable
+:label: defn-pmf-binomial
+
+Let $X$ be a binomial random variable. The probability mass function for a binomial random variable is given by:
+
+$$p_{X}(k) = \binom{n}{k}p^{k}\left(1-p\right)^{n-k}\qquad{k=0,1,\dots,n}$$
+
+where $p$ denotes the binomial parameter $0<p<1$, and $n$ is the number of states.
+````
 
 ### Geometric random variable
 In some applications, we are interested in trying a binary experiment e.g., a coin flip until a specified outcome is obtained.

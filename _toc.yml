@@ -13,6 +13,7 @@ chapters:
   sections: 
   - file: chapter-2-dir/probability-random-variables
   - file: chapter-2-dir/random-walks
+  - file: chapter-2-dir/Example-OrdinaryBrownianMotion
   - file: chapter-2-dir/geometric-brownian-motion
   - file: chapter-2-dir/markowitz
 

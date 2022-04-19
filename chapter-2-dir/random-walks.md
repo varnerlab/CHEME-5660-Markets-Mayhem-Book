@@ -51,3 +51,4 @@ We can compute sample paths (solutions) for Eqn. {eq}`eq-SDE-BM-Euler` generated
         2. set $X[i+1,k]~\leftarrow~X[i,k]+\mu{h}+\left(\sigma\sqrt{h}\right)Z$
 ```
 
+
