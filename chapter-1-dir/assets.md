@@ -44,15 +44,28 @@ that describes the relationship between the value of cash flow today (time perio
 CF_{i} = CF_{1}\left[\prod_{j=1}^{i-1}\left(1+r_{j+1,j}\right)\right]\qquad{i=2,3,\dots,T}
 ```
 
-The product term (the $\prod\star$ in the brackets) is called the discount factor and given the symbol $d_{i1}$.
+The product term (the $\prod\star$ in the brackets) is called the discount factor and given the symbol $\mathcal{D}_{i1}$.
 Eqn. {eq}`eq-cash-flow-multiple-period` can be written in a more compact form as:
 
 ```{math}
-	CF_{i} = d_{i1}CF_{1}\qquad{i=2,3,\dots,T}
+	CF_{i} = \mathcal{D}_{i1}CF_{1}\qquad{i=2,3,\dots,T}
 ```
 
 In the special case when the exchange factors $r_{ij}$ are equal in each period (let's call this $r$, or the overall discount rate), then the overall discount factor is given by:
 
 ```{math}
-	d_{i1} = (1+r)^{i-1}\qquad{i=2,3,\dots,T}
+\mathcal{D}_{i1} = (1+r)^{i-1}\qquad{i=2,3,\dots,T}
+```
+
+### Continuous compounding
+When we formulated Eqn. {eq}`eq-cash-flow-1-period` we used a finite discrete-time difference, e.g., days, weeks, or maybe even years. However, suppose the time difference between $t\rightarrow{t+1}$ were infetesimmaly small, i.e., the time difference was continuous. In this case, we have the [continuous compounding case](https://www.investopedia.com/terms/c/continuouscompounding.asp) where:
+
+```{math}
+\mathcal{D}(r,t) = \exp\left(rt\right)
+```
+
+which gives a future value expression of the form:
+
+```{math}
+CF(t) = \mathcal{D}(r,t)CF(t_{o})
 ```
