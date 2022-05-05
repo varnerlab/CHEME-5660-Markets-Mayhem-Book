@@ -57,7 +57,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Ordinary Brownian Motion (OBM)" href="random-walks.html" />
-    <link rel="prev" title="The Structure and Dynamics of Assets and Markets" href="chapter-2.html" />
+    <link rel="prev" title="Modeling and Analysis of Asset Price Dynamics and Market Mechanisms" href="chapter-2.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -107,17 +107,39 @@ const thebe_selector_output = ".output, .cell_output"
    Objectives, Polices and Resources
   </a>
  </li>
- <li class="toctree-l1">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="../chapter-1-dir/chapter-1.html">
    Money, Markets and the Global Financial System
   </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chapter-1-dir/assets.html">
+     Assets are Current and Future Cash Flows
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chapter-1-dir/markets.html">
+     Markets and Market Structures
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chapter-1-dir/global.html">
+     The Global Finanical System
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toctree-l1 current active has-children">
   <a class="reference internal" href="chapter-2.html">
    The Dynamics of Assets and Markets
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -148,8 +170,8 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="../chapter-3-dir/chapter-3.html">
    Derivatives, Futures, and Leverage
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-  <label for="toctree-checkbox-2">
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -545,7 +567,7 @@ logical <em>and</em> operator. Thus, the <a class="reference external" href="htt
 <p>We start by defining the sample space <span class="math notranslate nohighlight">\(\Omega\)</span>. Given an experiment, the sample space <span class="math notranslate nohighlight">\(\Omega\)</span> is the
 set containing all possible outcomes of that experiment. These experimental outcomes can be numbers, alphabets, vectors, or functions, as well as, images, videos, EEG signals, audio speeches, etc.</p>
 <div class="proof example admonition" id="ex-sample-space-dice">
-<p class="admonition-title"><span class="caption-number">Example 1 </span> (Sample space <span class="math notranslate nohighlight">\(\Omega\)</span> )</p>
+<p class="admonition-title"><span class="caption-number">Example 3 </span> (Sample space <span class="math notranslate nohighlight">\(\Omega\)</span> )</p>
 <div class="example-content section" id="proof-content">
 <p>Suppose we were intersted in the outcome of experiment where a six sided dice was rolled on time.
 Then the sample space for this experiment <span class="math notranslate nohighlight">\(\Omega\)</span> is given by:</p>
@@ -563,7 +585,7 @@ e.g., even integers, or the set of face cards, etc. These subsets are called eve
 the set of all possible events, denoted as <span class="math notranslate nohighlight">\(\mathcal{F}\)</span>, is called the event space.
 Thus, the event space <span class="math notranslate nohighlight">\(\mathcal{F}\)</span> is a special set of sets, it’s the sets of all possible subsets.</p>
 <div class="proof example admonition" id="ex-event-card-suits">
-<p class="admonition-title"><span class="caption-number">Example 2 </span> (Enumerate the event space <span class="math notranslate nohighlight">\(\mathcal{F}\)</span> )</p>
+<p class="admonition-title"><span class="caption-number">Example 4 </span> (Enumerate the event space <span class="math notranslate nohighlight">\(\mathcal{F}\)</span> )</p>
 <div class="example-content section" id="proof-content">
 <p>Let’s construct the event space <span class="math notranslate nohighlight">\(\mathcal{F}\)</span> for the sample space
 <span class="math notranslate nohighlight">\(\Omega=\left\{\clubsuit, \diamondsuit, \heartsuit, \spadesuit\right\}\)</span>.
@@ -709,7 +731,7 @@ obtaining a number <span class="math notranslate nohighlight">\(x\)</span></p>
 </div>
 </div><p>The PMF is the weighing function for discrete random variables. To illustrate this idea, lets consider an example:</p>
 <div class="proof example admonition" id="ex-pmf-double-coin-flip">
-<p class="admonition-title"><span class="caption-number">Example 3 </span> (PMF example)</p>
+<p class="admonition-title"><span class="caption-number">Example 5 </span> (PMF example)</p>
 <div class="example-content section" id="proof-content">
 <p>Let’s consider an experiment where we flip a coin 2 times. The sample space <span class="math notranslate nohighlight">\(\Omega\)</span> is given by:</p>
 <div class="math notranslate nohighlight">
@@ -784,7 +806,7 @@ a geometric random variable describes the number of failures obtained before a f
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">The Structure and Dynamics of Assets and Markets</p>
+            <p class="prev-next-title">Modeling and Analysis of Asset Price Dynamics and Market Mechanisms</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="random-walks.html" title="next page">

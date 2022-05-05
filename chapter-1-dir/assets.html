@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Modern Portfolio Theory &#8212; CHEME 5660</title>
+    <title>Assets are Current and Future Cash Flows &#8212; CHEME 5660</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -56,8 +56,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="The Fantastic but Dangerous World of Derivatives, Futures, Hedging and Leverage" href="../chapter-3-dir/chapter-3.html" />
-    <link rel="prev" title="Geometric Brownian Motion" href="geometric-brownian-motion.html" />
+    <link rel="next" title="Markets and Market Structures" href="markets.html" />
+    <link rel="prev" title="The Basics of Assets, Money, Markets and the Global Financial System" href="chapter-1.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -107,61 +107,61 @@ const thebe_selector_output = ".output, .cell_output"
    Objectives, Polices and Resources
   </a>
  </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../chapter-1-dir/chapter-1.html">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="chapter-1.html">
    Money, Markets and the Global Financial System
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
   <label for="toctree-checkbox-1">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../chapter-1-dir/assets.html">
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
      Assets are Current and Future Cash Flows
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../chapter-1-dir/markets.html">
+    <a class="reference internal" href="markets.html">
      Markets and Market Structures
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../chapter-1-dir/global.html">
+    <a class="reference internal" href="global.html">
      The Global Finanical System
     </a>
    </li>
   </ul>
  </li>
- <li class="toctree-l1 current active has-children">
-  <a class="reference internal" href="chapter-2.html">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../chapter-2-dir/chapter-2.html">
    The Dynamics of Assets and Markets
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
   <label for="toctree-checkbox-2">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul class="current">
+  <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="probability-random-variables.html">
+    <a class="reference internal" href="../chapter-2-dir/probability-random-variables.html">
      Sets, Probability, and Random Variables
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="random-walks.html">
-     Randon Processes and Brownian Motion
+    <a class="reference internal" href="../chapter-2-dir/random-walks.html">
+     Ordinary Brownian Motion (OBM)
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="geometric-brownian-motion.html">
-     Geometric Brownian Motion
+    <a class="reference internal" href="../chapter-2-dir/geometric-brownian-motion.html">
+     Geometric Brownian Motion (GBM)
     </a>
    </li>
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
-     Modern Portfolio Theory
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chapter-2-dir/markowitz.html">
+     Modern Portfolio Theory (MPT)
     </a>
    </li>
   </ul>
@@ -239,7 +239,7 @@ const thebe_selector_output = ".output, .cell_output"
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/chapter-2-dir/markowitz.md"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/chapter-1-dir/assets.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
@@ -259,7 +259,7 @@ const thebe_selector_output = ".output, .cell_output"
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fchapter-2-dir/markowitz.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fchapter-1-dir/assets.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -286,34 +286,21 @@ const thebe_selector_output = ".output, .cell_output"
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#returns">
-   Returns
+  <a class="reference internal nav-link" href="#assets">
+   Assets
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#time-value-of-money">
+   Time value of money
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#single-index-return-models">
-     Single Index Return Models
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#normalized-risk-intpretation-of-beta-i">
-     Normalized risk intpretation of
-     <span class="math notranslate nohighlight">
-      \(\beta_{i}\)
-     </span>
+    <a class="reference internal nav-link" href="#continuous-compounding">
+     Continuous compounding
     </a>
    </li>
   </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#volatility">
-   Volatility
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#the-markowitz-portfolio-allocation-problem">
-   The Markowitz Portfolio Allocation Problem
-  </a>
  </li>
 </ul>
 
@@ -325,7 +312,7 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Modern Portfolio Theory</h1>
+                <h1>Assets are Current and Future Cash Flows</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -336,34 +323,21 @@ const thebe_selector_output = ".output, .cell_output"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#returns">
-   Returns
+  <a class="reference internal nav-link" href="#assets">
+   Assets
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#time-value-of-money">
+   Time value of money
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#single-index-return-models">
-     Single Index Return Models
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#normalized-risk-intpretation-of-beta-i">
-     Normalized risk intpretation of
-     <span class="math notranslate nohighlight">
-      \(\beta_{i}\)
-     </span>
+    <a class="reference internal nav-link" href="#continuous-compounding">
+     Continuous compounding
     </a>
    </li>
   </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#volatility">
-   Volatility
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#the-markowitz-portfolio-allocation-problem">
-   The Markowitz Portfolio Allocation Problem
-  </a>
  </li>
 </ul>
 
@@ -374,44 +348,86 @@ const thebe_selector_output = ".output, .cell_output"
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="modern-portfolio-theory">
-<h1>Modern Portfolio Theory<a class="headerlink" href="#modern-portfolio-theory" title="Permalink to this headline">¶</a></h1>
-<p>Modern portfolio theory (MPT) is a practical method for selecting collection of assets e.g., stocks or bonds in order to maximize the overal reward of the investor within an acceptable level of risk to the investor. Harry Markowitz, who developed the mathematical foundation of MPT <span id="id1">[<a class="reference internal" href="../References.html#id4" title="Harry Markowitz. Portfolio selection. The Journal of Finance, 7(1):77–91, 1952. URL: http://www.jstor.org/stable/2975974 (visited on 2022-04-12).">Mar52</a>]</span>, was later awarded a <a class="reference external" href="https://www.nobelprize.org/prizes/economic-sciences/1990/markowitz/facts/">Nobel Prize for his work in 1990</a>. The central theme of Markowitz is to balance risk and reward, where reward is measured as the <a class="reference external" href="https://www.investopedia.com/terms/r/return.asp">return</a> of a basket of assets, while risk is measured as the standard deviation of the logrithmic return, otherwise known as <a class="reference external" href="https://en.wikipedia.org/wiki/Volatility_(finance)">volatility</a>.</p>
-<div class="section" id="returns">
-<h2>Returns<a class="headerlink" href="#returns" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="single-index-return-models">
-<h3>Single Index Return Models<a class="headerlink" href="#single-index-return-models" title="Permalink to this headline">¶</a></h3>
-<p>The single-index model (SIM), developed by William Sharpe, is an asset pricing model which measures both the risk and the return of a stock <span id="id2">[<a class="reference internal" href="../References.html#id2" title="William F. Sharpe. A simplified model for portfolio analysis. Management Science, 9(2):277-293, 1963. URL: https://doi.org/10.1287/mnsc.9.2.277, arXiv:https://doi.org/10.1287/mnsc.9.2.277, doi:10.1287/mnsc.9.2.277.">Sha63</a>]</span>. The single index model describes the return of the stock of firm <span class="math notranslate nohighlight">\(i\)</span> in terms of a firm-specific return, and the overall market return:</p>
-<div class="math notranslate nohighlight" id="equation-eq-single-index-model">
-<span class="eqno">(7)<a class="headerlink" href="#equation-eq-single-index-model" title="Permalink to this equation">¶</a></span>\[r_{i}\left(t\right) - r_{f} = \alpha_{i}+\beta_{i}\left(r_{m}\left(t\right)-r_{f}\right)+\epsilon_{i}
-\left(t\right)\qquad{t=1,2,\dots,T}\]</div>
-<p>The term <span class="math notranslate nohighlight">\(r_{i}\left(t\right)\)</span> denotes the return of firm <span class="math notranslate nohighlight">\(i\)</span>, during time period <span class="math notranslate nohighlight">\(t\)</span>,
-<span class="math notranslate nohighlight">\(r_{f}\)</span> denotes the risk-free rate i.e., the interest rate on a riskless investment such as treasury bills, while <span class="math notranslate nohighlight">\(r_{m}\left(t\right)\)</span> denotes the return on a market portfolio e.g., an index such as the <a class="reference external" href="https://en.wikipedia.org/wiki/S%26P_500">S&amp;P500</a> during time period <span class="math notranslate nohighlight">\(t\)</span>.  The term <span class="math notranslate nohighlight">\(\alpha_{i}\)</span> denotes the firm-specific return, while <span class="math notranslate nohighlight">\(\beta_{i}\)</span> denotes the proportion of the the firm’s return associated with the overall market. Finally, <span class="math notranslate nohighlight">\(\epsilon_{i}\left(t\right)\sim\mathcal{N}\left(0,\sigma_{i}^{2}\right)\)</span> is the unexplained (random) return of stock <span class="math notranslate nohighlight">\(i\)</span>, which is assumed to be normally distributed with mean zero and standard deviation <span class="math notranslate nohighlight">\(\sigma_{i}\)</span>. The term <span class="math notranslate nohighlight">\(R_{i}(t)\equiv\left(r_{i}\left(t\right) - r_{f}\right)\)</span> describes the excess return of specific firm <span class="math notranslate nohighlight">\(i\)</span>, while <span class="math notranslate nohighlight">\(R_{m}(t)\equiv\left(r_{m}\left(t\right)-r_{f}\right)\)</span> describes the excess return of the market portfolio. Replacing the excess returns gives the single index model in standard
-form:</p>
-<div class="math notranslate nohighlight" id="equation-eq-single-index-model-standard">
-<span class="eqno">(8)<a class="headerlink" href="#equation-eq-single-index-model-standard" title="Permalink to this equation">¶</a></span>\[R_{i}\left(t\right) = \alpha_{i}+\beta_{i}R_{m}\left(t\right)+\epsilon_{i}
-\left(t\right)\qquad{t=1,2,\dots,T}\]</div>
-<p>In Eqn <a class="reference internal" href="#equation-eq-single-index-model-standard">(8)</a>, the quantity <span class="math notranslate nohighlight">\(\beta_{i}\)</span> has several exciting interpretations.
-First, <span class="math notranslate nohighlight">\(\beta_{i}\)</span> measures how the excess return of firm <span class="math notranslate nohighlight">\(i\)</span> moves with the overall excess return of the market. Thus, <span class="math notranslate nohighlight">\(\beta_{i}\)</span> can be thought of as a multiplier of sorts, a large <span class="math notranslate nohighlight">\(\beta_{i}\)</span> suggets large swings
-in the return of firm <span class="math notranslate nohighlight">\(i\)</span> relative to the overall market return. On the other hand, <span class="math notranslate nohighlight">\(\beta_{i}\)</span> can also be interpreted as a ratio of risks, i.e., the risk of firm <span class="math notranslate nohighlight">\(i\)</span> normalized by the overall market risk. Thus, values of <span class="math notranslate nohighlight">\(\beta_{i}\)</span> fall into the ranges:</p>
-<ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(\beta_{i}&gt;1\)</span>: Firm <span class="math notranslate nohighlight">\(i\)</span> is riskier than the overall market</p></li>
-<li><p><span class="math notranslate nohighlight">\(\beta_{i}\sim{1}\)</span>: Firm <span class="math notranslate nohighlight">\(i\)</span> has approximately the same risk as the overall market</p></li>
-<li><p><span class="math notranslate nohighlight">\(\beta_{i}&lt;{1}\)</span>: Firm <span class="math notranslate nohighlight">\(i\)</span> has less risk than the overall market</p></li>
-<li><p><span class="math notranslate nohighlight">\(\beta_{i}\sim{0}\)</span>: Firm <span class="math notranslate nohighlight">\(i\)</span> is risk-free or firm <span class="math notranslate nohighlight">\(i\)</span> is completely uncorrelated with the overall market</p></li>
-<li><p><span class="math notranslate nohighlight">\(\beta_{i}&lt;{0}\)</span>: Firm <span class="math notranslate nohighlight">\(i\)</span> is anti-correlated with the overall market</p></li>
-</ul>
+  <div class="tex2jax_ignore mathjax_ignore section" id="assets-are-current-and-future-cash-flows">
+<h1>Assets are Current and Future Cash Flows<a class="headerlink" href="#assets-are-current-and-future-cash-flows" title="Permalink to this headline">¶</a></h1>
+<p>The development of processes or products does not occur inside a mythical universe that is free
+from market forces. Instead, processes and products must be, at a minimum, financially neutral to be viable.
+Processes and products that are not financially viable, while perhaps being technically
+innovative or otherwise advantageous, will not survive in the marketplace without external support.</p>
+<div class="section" id="assets">
+<h2>Assets<a class="headerlink" href="#assets" title="Permalink to this headline">¶</a></h2>
+<p>From a business perspective, an <em>asset</em> is a sequence of present and future cash flows
+demarcated in some currency, for example, Euros, Dollars, Yuan, or cryptocurrencies such as Bitcoin.
+The value of an asset can be determined using a valuation operator <span class="math notranslate nohighlight">\(\mathcal{V}\)</span> applied to these cash flows:</p>
+<div class="math notranslate nohighlight" id="equation-eq-asset-cash-flows">
+<span class="eqno">(1)<a class="headerlink" href="#equation-eq-asset-cash-flows" title="Permalink to this equation">¶</a></span>\[\mathcal{V}\left(Asset_{t}\right) = \mathcal{V}\left(CF_{t},CF_{t+1},\dots,CF_{t+T}\right)\]</div>
+<p>where <span class="math notranslate nohighlight">\(CF_{t}\)</span> denotes the cash flow in time period <span class="math notranslate nohighlight">\(t\)</span> up to <span class="math notranslate nohighlight">\(T\)</span> time periods in the future.
+The most common (and intuitive) valuation operator <span class="math notranslate nohighlight">\(\mathcal{V}\)</span> is the sum of net cash flows in each period, i.e., we compute the net cash in each period (cash inflow - cash outflow in period <span class="math notranslate nohighlight">\(i\)</span>) and then sum
+these net cash flows over all <span class="math notranslate nohighlight">\(T\)</span> periods.
+However, there is a critical and fundamental challenge to this intuition:
+the value of money is <em>not</em> conserved over time. A dollar today is not worth a dollar tomorrow.</p>
 </div>
-<div class="section" id="normalized-risk-intpretation-of-beta-i">
-<h3>Normalized risk intpretation of <span class="math notranslate nohighlight">\(\beta_{i}\)</span><a class="headerlink" href="#normalized-risk-intpretation-of-beta-i" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="time-value-of-money">
+<h2>Time value of money<a class="headerlink" href="#time-value-of-money" title="Permalink to this headline">¶</a></h2>
+<p>The value of money is not constant over time. One dollar in Year T is worth less than one dollar in Year 0 (today).
+The change in the value of money is called the time value of money.
+A useful mental model for the time value of money is to think of money from different time periods
+as being in different currencies (e.g., <span class="math notranslate nohighlight">\(\$\)</span> and <span class="math notranslate nohighlight">\(\def\euro{\unicode{x20AC}} \euro\)</span>) that must be exchanged.
+Thus, to compare money or cash flows from different time periods we formulate the equivalent of an exchange rate.
+For example, suppose we wanted to compute the value of a cash flow one time period in the future in today’s dollars.
+In this case we could write a relationship of the form:</p>
+<div class="math notranslate nohighlight" id="equation-eq-cash-flow-1-period">
+<span class="eqno">(2)<a class="headerlink" href="#equation-eq-cash-flow-1-period" title="Permalink to this equation">¶</a></span>\[CF_{2} = \left(1+r_{21}\right)CF_{1}\]</div>
+<p>where <span class="math notranslate nohighlight">\(CF_{1}\)</span> denotes the value of the cash flow today, and <span class="math notranslate nohighlight">\(CF_{2}\)</span> denotes the value of the cash flow one time period in the future.
+The term <span class="math notranslate nohighlight">\(r_{21}\)</span> denotes the hypothetical exchange rate between time period 1 and 2
+(where <span class="math notranslate nohighlight">\(r_{ii}=0\)</span>, and <span class="math notranslate nohighlight">\(r_{ij}&gt;0\)</span> for <span class="math notranslate nohighlight">\(i\neq{j}\)</span>).
+If we do this computation between time period 2 and 3, and then 3 and 4, etc we can develop an expression
+that describes the relationship between the value of cash flow today (time period 1) and <span class="math notranslate nohighlight">\(i\)</span> time periods into the future:</p>
+<div class="math notranslate nohighlight" id="equation-eq-cash-flow-multiple-period">
+<span class="eqno">(3)<a class="headerlink" href="#equation-eq-cash-flow-multiple-period" title="Permalink to this equation">¶</a></span>\[CF_{i} = CF_{1}\left[\prod_{j=1}^{i-1}\left(1+r_{j+1,j}\right)\right]\qquad{i=2,3,\dots,T}\]</div>
+<p>The product term (the <span class="math notranslate nohighlight">\(\prod\star\)</span> in the brackets) is called the discount factor and given the symbol <span class="math notranslate nohighlight">\(\mathcal{D}\)</span>.
+Eqn. <a class="reference internal" href="#equation-eq-cash-flow-multiple-period">(3)</a> can be written in a more compact form as:</p>
+<div class="math notranslate nohighlight">
+\[	CF_{i} = \mathcal{D}_{i1}CF_{1}\qquad{i=2,3,\dots,T}\]</div>
+<p>In the special case when the exchange factors <span class="math notranslate nohighlight">\(r_{\star}\)</span> are equal in each period (let’s call this <span class="math notranslate nohighlight">\(r\)</span>, or the overall discount rate), then the overall discount factor is given by:</p>
+<div class="math notranslate nohighlight">
+\[\mathcal{D}_{i1} = (1+r)^{i-1}\qquad{i=2,3,\dots,T}\]</div>
+<div class="proof example admonition" id="ex-future-value-discrete">
+<p class="admonition-title"><span class="caption-number">Example 1 </span> (What is $1 collected T time periods in the future worth today? )</p>
+<div class="example-content section" id="proof-content">
+<p>The value of money today is the present value, whereas the value of money in the <span class="math notranslate nohighlight">\(T\)</span> time units from now is the future  value.
+In terms of the asset model, <span class="math notranslate nohighlight">\(CF_{1}\)</span> denotes the present value (i = 1 denotes now),
+while <span class="math notranslate nohighlight">\(CF_{i},i=2,3,\dots,T\)</span> denotes future value. Thus, to compute the present value of $1 collected <span class="math notranslate nohighlight">\(T\)</span> time units into the future, we solve Eqn. <a class="reference internal" href="#equation-eq-cash-flow-multiple-period">(3)</a>
+for <span class="math notranslate nohighlight">\(CF_{1}\)</span> in terms of the future value <span class="math notranslate nohighlight">\(CF_{i},i=2,\dots,T\)</span> and the discount factor
+<span class="math notranslate nohighlight">\(\mathcal{D}\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[CF_{1} = \mathcal{D}_{i1}^{-1}CF_{i}\qquad{i=2,3,\dots,T}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\mathcal{D}_{i1}^{-1}\)</span> is given by:</p>
+<div class="math notranslate nohighlight">
+\[\mathcal{D}_{i1}^{-1} = \frac{1}{(1+r)^{i-1}}\qquad{i=2,3,\dots,T}\]</div>
+<p>We have assumed a constant discount rate <span class="math notranslate nohighlight">\(r\)</span> between now (i = 1) and <span class="math notranslate nohighlight">\(i = T\)</span> time units into the future.
+Given that we are looking at the present value of $1, we can set <span class="math notranslate nohighlight">\(CF_{i}\)</span> = 1, which gives:</p>
+<div class="math notranslate nohighlight">
+\[CF_{1} = \frac{1}{(1+r)^{i-1}}\qquad{i=2,3,\dots,T}\]</div>
 </div>
+</div><div class="section" id="continuous-compounding">
+<h3>Continuous compounding<a class="headerlink" href="#continuous-compounding" title="Permalink to this headline">¶</a></h3>
+<p>When we formulated Eqn. <a class="reference internal" href="#equation-eq-cash-flow-1-period">(2)</a> we used a finite discrete-time difference, e.g., days, weeks, or maybe even years. However, suppose the time difference between <span class="math notranslate nohighlight">\(t\rightarrow{t+1}\)</span> were infetesimmaly small, i.e., the time difference was continuous. In this case, we have <a class="reference external" href="https://www.investopedia.com/terms/c/continuouscompounding.asp">continuous compounding</a> where the discount factor
+<span class="math notranslate nohighlight">\(\mathcal{D}\)</span> is defined as:</p>
+<div class="math notranslate nohighlight">
+\[\mathcal{D}(r,t) = \exp\left(rt\right)\]</div>
+<p>A continuous discount factor gives a future value expression of the form:</p>
+<div class="math notranslate nohighlight">
+\[CF(t) = \exp\left(rt\right)CF(t_{o})\]</div>
+<p>where <span class="math notranslate nohighlight">\(r\)</span> denotes the <em>instantaneous</em> discount rate.  Of course there is a relationship between the discrete and continous cases because we know that:</p>
+<div class="math notranslate nohighlight">
+\[\exp\left(x\right) = \sum_{k=0}^{\infty} \frac{x^{k}}{k!} = 1+x+\frac{x^{2}}{2}+\frac{x^{3}}{6}+\dots\]</div>
+<div class="proof example admonition" id="ex-future-value-continuous">
+<p class="admonition-title"><span class="caption-number">Example 2 </span> (What is $1 collected today worth T years from now? )</p>
+<div class="example-content section" id="proof-content">
+<p>Let’s consider the opposite case as the previous example. Suppose we are given $1 dollar today. What is the future value of $1 in T years from now for a 2.0% instantaneous annualized discount factor.</p>
 </div>
-<div class="section" id="volatility">
-<h2>Volatility<a class="headerlink" href="#volatility" title="Permalink to this headline">¶</a></h2>
-</div>
-<div class="section" id="the-markowitz-portfolio-allocation-problem">
-<h2>The Markowitz Portfolio Allocation Problem<a class="headerlink" href="#the-markowitz-portfolio-allocation-problem" title="Permalink to this headline">¶</a></h2>
-<p>Fill me in.</p>
+</div></div>
 </div>
 </div>
 
@@ -428,7 +444,7 @@ in the return of firm <span class="math notranslate nohighlight">\(i\)</span> re
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./chapter-2-dir"
+            path: "./chapter-1-dir"
         },
         predefinedOutput: true
     }
@@ -440,17 +456,17 @@ in the return of firm <span class="math notranslate nohighlight">\(i\)</span> re
             
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="geometric-brownian-motion.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="chapter-1.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Geometric Brownian Motion</p>
+            <p class="prev-next-title">The Basics of Assets, Money, Markets and the Global Financial System</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="../chapter-3-dir/chapter-3.html" title="next page">
+    <a class='right-next' id="next-link" href="markets.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">The Fantastic but Dangerous World of Derivatives, Futures, Hedging and Leverage</p>
+        <p class="prev-next-title">Markets and Market Structures</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

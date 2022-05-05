@@ -1,4 +1,4 @@
-# Geometric Brownian Motion (GBM)
+# Geometric Brownian Motion
 Unfortunately, Eqn. {eq}`eq-SDE-BM` has a critical flaw, namely, it's solution can admit negative values. Thus, as a model for stock price (or the price of another risky asset), it is not widely used. Instead, we often model asset price using a geometric brownian motion (gbm) model:
 
 ```{math}

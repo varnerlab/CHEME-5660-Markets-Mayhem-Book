@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Ordinary Brownian Motion (OBM) &#8212; CHEME 5660</title>
+    <title>Randon Processes and Brownian Motion &#8212; CHEME 5660</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -56,7 +56,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Case: Ordinary Brownian Motion of Daily Price Retrun" href="Example-OrdinaryBrownianMotion.html" />
+    <link rel="next" title="Geometric Brownian Motion" href="geometric-brownian-motion.html" />
     <link rel="prev" title="Sets, Probability, and Random Variables" href="probability-random-variables.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -107,17 +107,39 @@ const thebe_selector_output = ".output, .cell_output"
    Objectives, Polices and Resources
   </a>
  </li>
- <li class="toctree-l1">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="../chapter-1-dir/chapter-1.html">
    Money, Markets and the Global Financial System
   </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chapter-1-dir/assets.html">
+     Assets are Current and Future Cash Flows
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chapter-1-dir/markets.html">
+     Markets and Market Structures
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chapter-1-dir/global.html">
+     The Global Finanical System
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toctree-l1 current active has-children">
   <a class="reference internal" href="chapter-2.html">
    The Dynamics of Assets and Markets
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -129,22 +151,17 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     Ordinary Brownian Motion (OBM)
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="Example-OrdinaryBrownianMotion.html">
-     Case: Ordinary Brownian Motion of Daily Price Retrun
+     Randon Processes and Brownian Motion
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="geometric-brownian-motion.html">
-     Geometric Brownian Motion (GBM)
+     Geometric Brownian Motion
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="markowitz.html">
-     Modern Portfolio Theory (MPT)
+     Modern Portfolio Theory
     </a>
    </li>
   </ul>
@@ -153,8 +170,8 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="../chapter-3-dir/chapter-3.html">
    Derivatives, Futures, and Leverage
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-  <label for="toctree-checkbox-2">
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -283,7 +300,7 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Ordinary Brownian Motion (OBM)</h1>
+                <h1>Randon Processes and Brownian Motion</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -307,8 +324,8 @@ const thebe_selector_output = ".output, .cell_output"
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="ordinary-brownian-motion-obm">
-<h1>Ordinary Brownian Motion (OBM)<a class="headerlink" href="#ordinary-brownian-motion-obm" title="Permalink to this headline">¶</a></h1>
+  <div class="tex2jax_ignore mathjax_ignore section" id="randon-processes-and-brownian-motion">
+<h1>Randon Processes and Brownian Motion<a class="headerlink" href="#randon-processes-and-brownian-motion" title="Permalink to this headline">¶</a></h1>
 <p>A one-dimensional Brownian Motion on the interval <span class="math notranslate nohighlight">\(\left[0,T\right]\)</span> is a stochastic process <span class="math notranslate nohighlight">\(\left\{W\left(t\right), 0\leq{t}\leq{T}\right\}\)</span> with the following properties:</p>
 <ul class="simple">
 <li><p>W<span class="math notranslate nohighlight">\(\left(0\right)\)</span> = <span class="math notranslate nohighlight">\(0\)</span></p></li>
@@ -318,21 +335,21 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p>For constants <span class="math notranslate nohighlight">\(\mu\)</span> and <span class="math notranslate nohighlight">\(\sigma&gt;0\)</span>, a random process <span class="math notranslate nohighlight">\(X(t)\)</span> is said to follow an oridinary Brownian motion process with drift <span class="math notranslate nohighlight">\(\mu\)</span> and diffusion coefficient <span class="math notranslate nohighlight">\(\sigma^{2}\)</span> if it is a solution to the Stochastic Differential Equation (SDE):</p>
 <div class="math notranslate nohighlight" id="equation-eq-sde-bm">
-<span class="eqno">(1)<a class="headerlink" href="#equation-eq-sde-bm" title="Permalink to this equation">¶</a></span>\[dX\left(t\right) = \mu{dt}+\sigma{dW(t)}\]</div>
-<p>Eqn. <a class="reference internal" href="#equation-eq-sde-bm">(1)</a> is one of the simplest models of a random Brownian motion process. For example, Louis Bachelier used an ordinary Brownian motion model to describe stock prices in his pioneering thesis work in 1900
-<span id="id1">[<a class="reference internal" href="../References.html#id2" title="Louis Bachelier, M. H. A Davis, Alison Etheridge, Louis Bachelier, and Louis Bachelier. Louis Bachelier's Theory of speculation: the origins of modern finance. Princeton University Press, Princeton, N.J., 2006. ISBN 9780691117522 (hbk. : alk. paper).">BDE+06</a>]</span>.</p>
+<span class="eqno">(4)<a class="headerlink" href="#equation-eq-sde-bm" title="Permalink to this equation">¶</a></span>\[dX\left(t\right) = \mu{dt}+\sigma{dW(t)}\]</div>
+<p>Eqn. <a class="reference internal" href="#equation-eq-sde-bm">(4)</a> is one of the simplest models of a random Brownian motion process. For example, Louis Bachelier used an ordinary Brownian motion model to describe stock prices in his pioneering thesis work in 1900
+<span id="id1">[<a class="reference internal" href="../References.html#id3" title="Louis Bachelier, M. H. A Davis, Alison Etheridge, Louis Bachelier, and Louis Bachelier. Louis Bachelier's Theory of speculation: the origins of modern finance. Princeton University Press, Princeton, N.J., 2006. ISBN 9780691117522 (hbk. : alk. paper).">BDE+06</a>]</span>.</p>
 <div class="section" id="simulating-an-ordinary-brownian-random-walk">
 <h2>Simulating an Ordinary Brownian Random Walk<a class="headerlink" href="#simulating-an-ordinary-brownian-random-walk" title="Permalink to this headline">¶</a></h2>
 <p>Brownian motion simulations e.g., stock price simulations, mostly focus on computing values of the noise <span class="math notranslate nohighlight">\(W(t_{1}),W(t_{2}),\dots,W(t_{n})\)</span> and
 the state <span class="math notranslate nohighlight">\(X(t_{1}), X(t_{2}), \dots, X(t_{n})\)</span> at a set of discrete time points <span class="math notranslate nohighlight">\(0 &lt; t_{1} &lt; t_{2} &lt; \dots &lt; 
-t_{n}\)</span>. Let <span class="math notranslate nohighlight">\(Z_{1},\dots,Z_{n}\)</span> denote independent standard normal random variables. For an oridinary Brownian motion, where <span class="math notranslate nohighlight">\(t_{o} = 0\)</span> and <span class="math notranslate nohighlight">\(W(0) = 0\)</span>, the solution to Eqn. <a class="reference internal" href="#equation-eq-sde-bm">(1)</a> can be approximatred using the
+t_{n}\)</span>. Let <span class="math notranslate nohighlight">\(Z_{1},\dots,Z_{n}\)</span> denote independent standard normal random variables. For an oridinary Brownian motion, where <span class="math notranslate nohighlight">\(t_{o} = 0\)</span> and <span class="math notranslate nohighlight">\(W(0) = 0\)</span>, the solution to Eqn. <a class="reference internal" href="#equation-eq-sde-bm">(4)</a> can be approximatred using the
 <a class="reference external" href="https://en.wikipedia.org/wiki/Euler%E2%80%93Maruyama_method">Euler–Maruyama method</a> which gives the recurrence relationship:</p>
 <div class="math notranslate nohighlight" id="equation-eq-sde-bm-euler">
-<span class="eqno">(2)<a class="headerlink" href="#equation-eq-sde-bm-euler" title="Permalink to this equation">¶</a></span>\[X_{i+1} = X_{i}+\mu\left(t_{i+1} - t_{i}\right)+\left(\sigma\sqrt{t_{i+1} - t_{i}}\right)Z_{i+1}\qquad{i=0,1,\dots,n-1}\]</div>
-<p>where <span class="math notranslate nohighlight">\(X_{i+1}\)</span> denotes the state random variable evaluated at time index <span class="math notranslate nohighlight">\(i+1\)</span>. In Eqn. <a class="reference internal" href="#equation-eq-sde-bm-euler">(2)</a>, both <span class="math notranslate nohighlight">\(\mu\)</span> and <span class="math notranslate nohighlight">\(\sigma\)</span> are assumed to be constants, and:</p>
+<span class="eqno">(5)<a class="headerlink" href="#equation-eq-sde-bm-euler" title="Permalink to this equation">¶</a></span>\[X_{i+1} = X_{i}+\mu\left(t_{i+1} - t_{i}\right)+\left(\sigma\sqrt{t_{i+1} - t_{i}}\right)Z_{i+1}\qquad{i=0,1,\dots,n-1}\]</div>
+<p>where <span class="math notranslate nohighlight">\(X_{i+1}\)</span> denotes the state random variable evaluated at time index <span class="math notranslate nohighlight">\(i+1\)</span>. In Eqn. <a class="reference internal" href="#equation-eq-sde-bm-euler">(5)</a>, both <span class="math notranslate nohighlight">\(\mu\)</span> and <span class="math notranslate nohighlight">\(\sigma\)</span> are assumed to be constants, and:</p>
 <div class="math notranslate nohighlight">
 \[W_{i+1} = W_{i} + \left(\sqrt{t_{i+1} - t_{i}}\right)Z_{i+1}\qquad{i=0,1,\dots,n-1}\]</div>
-<p>We can compute sample paths (solutions) for Eqn. <a class="reference internal" href="#equation-eq-sde-bm-euler">(2)</a> generated using the <a class="reference external" href="https://en.wikipedia.org/wiki/Euler%E2%80%93Maruyama_method">Euler–Maruyama method</a> discretization using <a class="reference internal" href="#algo-ord-brownian-motion">Algorithm 1</a>.</p>
+<p>We can compute sample paths (solutions) for Eqn. <a class="reference internal" href="#equation-eq-sde-bm-euler">(5)</a> generated using the <a class="reference external" href="https://en.wikipedia.org/wiki/Euler%E2%80%93Maruyama_method">Euler–Maruyama method</a> discretization using <a class="reference internal" href="#algo-ord-brownian-motion">Algorithm 1</a>.</p>
 <div class="proof algorithm admonition" id="algo-ord-brownian-motion">
 <p class="admonition-title"><span class="caption-number">Algorithm 1 </span> (Ordinary Brownian Motion)</p>
 <div class="algorithm-content section" id="proof-content">
@@ -390,10 +407,10 @@ t_{n}\)</span>. Let <span class="math notranslate nohighlight">\(Z_{1},\dots,Z_{
             <p class="prev-next-title">Sets, Probability, and Random Variables</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="Example-OrdinaryBrownianMotion.html" title="next page">
+    <a class='right-next' id="next-link" href="geometric-brownian-motion.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Case: Ordinary Brownian Motion of Daily Price Retrun</p>
+        <p class="prev-next-title">Geometric Brownian Motion</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
