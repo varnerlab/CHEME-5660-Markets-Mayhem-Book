@@ -111,6 +111,6 @@ where $r$ denotes the _instantaneous_ discount rate.  Of course there is a relat
 ````{prf:example} What is \$1 collected today worth T years from now? 
 :label: ex-future-value-continuous
 
-Let's consider the opposite case as the previous example. Suppose we are given \$1 dollar today. What is the future value of \$1 T years from now if there is a 1\% instantaneous annualized discount factor. 
+Let's consider the opposite case as the previous example. Suppose we are given \$1 dollar today. What is the future value of \$1 in T years from now for a 2.0\% instantaneous annualized discount factor. 
 
 ````
