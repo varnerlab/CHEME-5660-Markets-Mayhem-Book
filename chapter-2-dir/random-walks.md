@@ -1,4 +1,4 @@
-# Ordinary Brownian Motion (OBM)
+# Randon Processes and Brownian Motion
 A one-dimensional Brownian Motion on the interval $\left[0,T\right]$ is a stochastic process $\left\{W\left(t\right), 0\leq{t}\leq{T}\right\}$ with the following properties:
 * W$\left(0\right)$ = $0$
 * W(t) is continuous

@@ -1,10 +1,10 @@
-# Modern Portfolio Theory (MPT) 
-Modern portfolio theory (MPT) is a practical method for selecting investments in order to maximize their overall returns within an acceptable level of risk. Harry Markowitz, who developed the mathematical foundation of MPT {cite}`MPT1952`, was later awarded a Nobel Prize for his work. 
+# Modern Portfolio Theory
+Modern portfolio theory (MPT) is a practical method for selecting collection of assets e.g., stocks or bonds in order to maximize the overal reward of the investor within an acceptable level of risk to the investor. Harry Markowitz, who developed the mathematical foundation of MPT {cite}`MPT1952`, was later awarded a [Nobel Prize for his work in 1990](https://www.nobelprize.org/prizes/economic-sciences/1990/markowitz/facts/). The central theme of Markowitz is to balance risk and reward, where reward is measured as the [return](https://www.investopedia.com/terms/r/return.asp) of a basket of assets, while risk is measured as the standard deviation of the logrithmic return, otherwise known as [volatility](https://en.wikipedia.org/wiki/Volatility_(finance)). 
 
-## Estimating Returns
+## Returns
 
 ### Single Index Return Models
-The single-index model (SIM), developed by William Sharpe, is an asset pricing model which measures both the risk and the return of a stock {cite}`SHARPE1963`. The single index model describes the return of stock $i$ in terms of a firm-specific return, and an overall market return component:
+The single-index model (SIM), developed by William Sharpe, is an asset pricing model which measures both the risk and the return of a stock {cite}`SHARPE1963`. The single index model describes the return of the stock of firm $i$ in terms of a firm-specific return, and the overall market return:
 
 ```{math}
 :label: eq-single-index-model
@@ -12,14 +12,30 @@ r_{i}\left(t\right) - r_{f} = \alpha_{i}+\beta_{i}\left(r_{m}\left(t\right)-r_{f
 \left(t\right)\qquad{t=1,2,\dots,T}
 ```
 
-where $r_{i}\left(t\right)$ denotes the return of stock $i$, during time period $t$, 
-$r_{f}$ denote the risk-free rate i.e., typically the interest rate on treasury bills, while $r_{m}\left(t\right)$ is the return of the market portfolio e.g., an index such as the [S\&P500](https://en.wikipedia.org/wiki/S%26P_500) during time period $t$. 
-The term $\alpha_{i}$ denotes the firm-specific return, while $\beta_{i}$ denotes the proportion of the the stock's return associated with the overall market. Finally, $\epsilon_{i}\left(t\right)\sim\mathcal{N}\left(0,\sigma_{i}^{2}\right)$ is 
-the unexplained (random) return of stock $i$, which is assumed to be normally distributed with mean zero and standard deviation $\sigma_{i}$.
+The term $r_{i}\left(t\right)$ denotes the return of firm $i$, during time period $t$, 
+$r_{f}$ denotes the risk-free rate i.e., the interest rate on a riskless investment such as treasury bills, while $r_{m}\left(t\right)$ denotes the return on a market portfolio e.g., an index such as the [S\&P500](https://en.wikipedia.org/wiki/S%26P_500) during time period $t$.  The term $\alpha_{i}$ denotes the firm-specific return, while $\beta_{i}$ denotes the proportion of the the firm's return associated with the overall market. Finally, $\epsilon_{i}\left(t\right)\sim\mathcal{N}\left(0,\sigma_{i}^{2}\right)$ is the unexplained (random) return of stock $i$, which is assumed to be normally distributed with mean zero and standard deviation $\sigma_{i}$. The term $R_{i}(t)\equiv\left(r_{i}\left(t\right) - r_{f}\right)$ describes the excess return of specific firm $i$, while $R_{m}(t)\equiv\left(r_{m}\left(t\right)-r_{f}\right)$ describes the excess return of the market portfolio. Replacing the excess returns gives the single index model in standard
+form:
 
+```{math}
+:label: eq-single-index-model-standard
+R_{i}\left(t\right) = \alpha_{i}+\beta_{i}R_{m}\left(t\right)+\epsilon_{i}
+\left(t\right)\qquad{t=1,2,\dots,T}
+```
 
-## Estimating Volatility
-Fill me in. 
+In Eqn {eq}`eq-single-index-model-standard`, the quantity $\beta_{i}$ has several exciting interpretations. 
+First, $\beta_{i}$ measures how the excess return of firm $i$ moves with the overall excess return of the market. Thus, $\beta_{i}$ can be thought of as a multiplier of sorts, a large $\beta_{i}$ suggets large swings 
+in the return of firm $i$ relative to the overall market return. On the other hand, $\beta_{i}$ can also be interpreted as a ratio of risks, i.e., the risk of firm $i$ normalized by the overall market risk. Thus, values of $\beta_{i}$ fall into the ranges:
+
+* $\beta_{i}>1$: Firm $i$ is riskier than the overall market
+* $\beta_{i}\sim{1}$: Firm $i$ has approximately the same risk as the overall market
+* $\beta_{i}<{1}$: Firm $i$ has less risk than the overall market
+* $\beta_{i}\sim{0}$: Firm $i$ is risk-free or firm $i$ is completely uncorrelated with the overall market
+* $\beta_{i}<{0}$: Firm $i$ is anti-correlated with the overall market
+
+### Normalized risk intpretation of $\beta_{i}$ 
+
+## Volatility
+
 
 ## The Markowitz Portfolio Allocation Problem
 Fill me in.
