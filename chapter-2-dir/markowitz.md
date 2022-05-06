@@ -3,6 +3,27 @@ Modern portfolio theory (MPT) is a practical method for selecting collection of 
 
 ## Returns
 
+
+The return of an asset is a measure of the difference in the price of that asset between two time periods. 
+Return can be calculated in many ways; two common approaches are the percentage or fractional return and the
+logarithmic return. 
+
+````{prf:definition} Fractional Return
+:label: defn-percentage return
+
+Let the price of asset $i$ at time $j$ be denoted by $P_{ij}>0$. Then the fractional return 
+on asset $i$ over time horizon $j\rightarrow{k},i\neq{k}$ is defined as: 
+
+```{math}
+r_{i,j\rightarrow{k}} \equiv \frac{P_{ik} - P_{ij}}{P_{ij}}
+```
+
+where $r_{i,j\rightarrow{k}}$ denotes the fractional return of asset $i$ over time horizon $j\rightarrow{k},i\neq{k}$.
+
+````
+
+
+
 ### Single Index Return Models
 The single-index model (SIM), developed by William Sharpe, is an asset pricing model which measures both the risk and the return of a stock {cite}`SHARPE1963`. The single index model describes the return of the stock of firm $i$ in terms of a firm-specific return, and the overall market return:
 
@@ -29,7 +50,7 @@ First, $\beta_{i}$ measures how the excess return of firm $i$ is related to the 
 
 To understand the various interpretations of $\beta_{i}$, we first must understand that both the firm specific $R_{i}$ and overall market excess returns $R_{m}$ are random variables. Thus, we can compute the expectation and variance of these variables and look at how these quantities depend upon $\beta_{i}$:
 
-````{prf:observation} Risk intepretation of $\beta_{i}$
+````{prf:observation} Risk and Reward intepretations of $\beta_{i}$
 :label: obs-beta-risk-measure
 
 Taking the expectation of the firm excess return $R_{i}$ gives:
