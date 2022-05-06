@@ -200,25 +200,36 @@ defined as the standard deviation of the {ref}`content:references:log-return`:
 ````{prf:definition} Volatility
 :label: defn-volatility
 
-Let the price of asset $i$ at any time $j$ be denoted by $P_{ij}>0$. Then the _volatility_ of asset $i$ is
-the standard devivation $\sigma_{j}$ of the logarithmic returns calculated between time periods 
+Let the price of asset $i$ at time $j$ be denoted by $P_{ij}>0$. Then the _volatility_ of asset $i$ is
+the standard devivation $\sigma_{i}$ of the logarithmic returns calculated between time periods 
 $j\rightarrow{j+1}$.
 
 ````
 
 We can compute the volatility of the share price of `XYZ` from historic data; computing the volatility from data
 gives the _historic volatility_ which is a backward looking measure of price volatility.
+{prf:ref}`algo-volatility` describes how to calculate the unweighted volatility from a 
+historic price dataset $\bar{\mathcal{D}}$. 
 
-```{prf:algorithm} Weighted Historical Volatility for Firm $i$ 
+```{prf:algorithm} Unweighted Historic Volatility for Firm $i$ 
 :label: algo-volatility
 
-**Inputs** Time-resolved price dataset $\bar{\mathcal{D}}$ for ticker `XYZ`, 
-time-range $\mathcal{T}_{1}\rightarrow\mathcal{T}_{2}$.
+**Inputs** Ticker `XYZ` price dataset $\bar{\mathcal{D}}$ for 
+time-range $T$
 
-**Output** Estimate of historic volatility for ticker `XYZ`
+**Output** historic unweighted volatility for ticker `XYZ`
 
-1. initialize ordered price dataset $\mathcal{D}\leftarrow\bar{\mathcal{D}}$, 
-organzied from $\mathcal{T}_{2}\rightarrow\mathcal{T}_{1}$.
+1. sort dataset $\mathcal{D}\leftarrow\bar{\mathcal{D}}$ from newest to oldest prices.
+1. initialize $\bar{r}~\leftarrow$ Array($\dim\left(T\right)$ - 1)
+1. initialize $\sigma~\leftarrow$ Array($\dim\left(T\right)$ - 1)
+1. for j $\in$ 2:$\dim\left(T\right)$
+    
+    1. $P_{1},P_{0} \leftarrow \mathcal{D}\left[j-1\right],\mathcal{D}\left[j\right]$
+    2. $\bar{r}\left[j-1\right]\leftarrow\log\left(P_{1}/P_{0}\right)$
+
+1. compute mean return $\mu\leftarrow\left({\dim{T} - 1}\right)^{-1}\times\displaystyle{\sum_{k=1}^{\dim(T) - 1}\bar{r}\left[k\right]}$
+1. compute $\sigma^{2} \leftarrow \left({\dim{T} - 2}\right)^{-1}\times\displaystyle{\sum_{k=1}^{\dim(T) - 1}\left(\bar{r}\left[k\right]-\mu\right)^2}$
+1. return $\sigma\leftarrow\sqrt{\sigma^{2}}$
 
 
 ```
