@@ -8,6 +8,7 @@ The return of an asset is a measure of the difference in the price of that asset
 Return can be calculated in many ways; two common approaches are the percentage or fractional return and the
 logarithmic return. 
 
+(content:references:fractional-return)=
 ### Fractional return
 
 ````{prf:definition} Fractional return
@@ -43,6 +44,7 @@ P_{ij} = \left(1+r_{i,j-1\rightarrow{j}}\right)P_{i,j-1}
 
 Thus, the fractional daily return (or a fractional return computed between any two different dates) is a type of discount rate that quantifies how the value of an asset changes, in the case of the share price of ticker `XYZ`, because of market forces. 
 
+(content:references:log-return)=
 ### Logarithmic return
 
 ````{prf:definition} Logarithmic return
@@ -79,7 +81,13 @@ P_{ij} = \exp\left(\bar{r}_{i,j-1\rightarrow{j}}\right)P_{i,j-1}
 Thus, the logarithmic daily return (or a logarithmic return computed between any two different dates) is a continuous discount rate that quantifies how the value of an asset, e.g., the share price of ticker `XYZ`, changes because of market forces. 
 
 ### Single Index Return Models
-The single-index model (SIM), developed by William Sharpe, is an asset pricing model which measures both the risk and the return of a stock {cite}`SHARPE1963`. The single index model describes the return of the stock of firm $i$ in terms of a firm-specific return, and the overall market return:
+The {ref}`content:references:fractional-return` or {ref}`content:references:log-return` can be computed
+from historical data. However, what if we do not have access to price data for `XYZ` or we want to
+_predict_ the return of `XYZ`, for example, in an automated trading system? 
+In these cases, we need a model. One of the simplest (yet still widely used) models is the single index
+model (SIM) developed by Sharpe {cite}`SHARPE1963`. 
+
+The single-index model (SIM) is an asset pricing model which measures both the risk and the return of a stock, relative to a risk free alternative investment e.g., government treasury bounds. The single index model describes the return of the stock of firm $i$ in terms of a firm-specific return, and the overall market return:
 
 ```{math}
 :label: eq-single-index-model
@@ -88,10 +96,15 @@ r_{i}\left(t\right) - r_{f} = \alpha_{i}+\beta_{i}\left(r_{m}\left(t\right)-r_{f
 ```
 
 The term $r_{i}\left(t\right)$ denotes the return of firm $i$, during time period $t$, 
-$r_{f}$ denotes the risk-free rate i.e., the [interest rate of a riskless investment such as treasury bills](https://fred.stlouisfed.org/series/DTB3), while $r_{m}\left(t\right)$ denotes the return on a market portfolio e.g., an index such as the [S\&P500](https://en.wikipedia.org/wiki/S%26P_500) during time period $t$.  The term $\alpha_{i}$ denotes the firm-specific return, while $\beta_{i}$ denotes the proportion of the the firm's return associated with the overall market. Finally, $\epsilon_{i}\left(t\right)\sim\mathcal{N}\left(0,\sigma_{i}^{2}\right)$ is the unexplained (random) return of firm $i$, which is normally distributed with mean zero and standard deviation $\sigma_{i}$. 
+$r_{f}$ denotes the risk-free rate i.e., the [interest rate of a riskless investment such as treasury bills](https://fred.stlouisfed.org/series/DTB3), while $r_{m}\left(t\right)$ denotes the return on a market portfolio e.g., an index such as the [S\&P500](https://en.wikipedia.org/wiki/S%26P_500) during time period $t$.  The term $\alpha_{i}$ denotes the firm-specific return, while $\beta_{i}$ denotes the proportion of the the firm's return associated with the overall market. 
 
-The term $R_{i}(t)\equiv\left(r_{i}\left(t\right) - r_{f}\right)$ describes the excess return of specific firm $i$, while $R_{m}(t)\equiv\left(r_{m}\left(t\right)-r_{f}\right)$ describes the excess return of the market portfolio. Replacing the excess returns gives the single index model in standard
-form:
+The term $R_{i}(t)\equiv\left(r_{i}\left(t\right) - r_{f}\right)$ describes the excess return of specific firm $i$, while $R_{m}(t)\equiv\left(r_{m}\left(t\right)-r_{f}\right)$ describes the excess return of the market portfolio. Replacing the excess returns in Eqn. {eq}`eq-single-index-model` gives the single index model in standard form:
+
+````{prf:definition} Single index model
+:label: defn-single-index-model-standard
+
+Let $R_{i}(t)$ and $R_{m}(t)$ denote the firm specific and market excess returns (random) for time period $t$.
+Further, let $\epsilon_{i}\left(t\right)$ denote a stationary Normally distributed noise process with mean zero and standard deviation $\sigma_{i}$. Then, the standard single index model of Sharpe is given by {cite}`SHARPE1963`:
 
 ```{math}
 :label: eq-single-index-model-standard
@@ -99,7 +112,14 @@ R_{i}\left(t\right) = \alpha_{i}+\beta_{i}R_{m}\left(t\right)+\epsilon_{i}
 \left(t\right)\qquad{t=1,2,\dots,T}
 ```
 
-The quantity $\beta_{i}$ in Eqn {eq}`eq-single-index-model-standard` has several interpretations. 
+where $\alpha_{i}$ and $\beta_{i}$ are constant model paramaters. 
+````
+
+The $\alpha_{i}$ parameter in Eqn {eq}`eq-single-index-model-standard` describes the firm specific 
+return that is not explained by the market; thus, $\alpha_{i}$ is the 
+idiosyncratic return of firm $i$.
+
+The $\beta_{i}$ parameter in Eqn {eq}`eq-single-index-model-standard` has several interpretations. 
 First, $\beta_{i}$ measures how the excess return of firm $i$ is related to the overall excess return of the market; a large $\beta_{i}$ suggests large swings in the return of firm $i$ relative to the overall market return. On the other hand, $\beta_{i}$ can also be interpreted as a measure of the relative risk of investing in firm $i$. 
 
 To understand the various interpretations of $\beta_{i}$, we first must understand that both the firm specific $R_{i}$ and overall market excess returns $R_{m}$ are random variables. Thus, we can compute the expectation and variance of these variables and look at how these quantities depend upon $\beta_{i}$:
