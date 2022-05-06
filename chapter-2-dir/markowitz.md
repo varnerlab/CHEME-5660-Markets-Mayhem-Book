@@ -1,17 +1,19 @@
 # Modern Portfolio Theory
-Modern portfolio theory (MPT) is a practical method for selecting collection of assets e.g., stocks or bonds in order to maximize the overal reward of the investor within an acceptable level of risk to the investor. Harry Markowitz, who developed the mathematical foundation of MPT {cite}`MPT1952`, was later awarded a [Nobel Prize for his work in 1990](https://www.nobelprize.org/prizes/economic-sciences/1990/markowitz/facts/). The central theme of Markowitz is to balance risk and reward, where reward is measured as the [return](https://www.investopedia.com/terms/r/return.asp) of a basket of assets, while risk is measured as the standard deviation of the logrithmic return, otherwise known as [volatility](https://en.wikipedia.org/wiki/Volatility_(finance)). 
+Modern portfolio theory (MPT) is a practical method for selecting collection of assets e.g., stocks or bonds in order to maximize the overal reward of the investor within an acceptable level of risk to the investor. Harry Markowitz, who developed the mathematical foundation of MPT {cite}`MPT1952`, was later awarded a [Nobel Prize for his work in 1990](https://www.nobelprize.org/prizes/economic-sciences/1990/markowitz/facts/). 
+
+The central theme of Markowitz is the balance risk and reward, where reward is measured as the [return](https://www.investopedia.com/terms/r/return.asp) of a basket of assets, while risk is measured as the standard deviation (or sometimes the variance) of the logrithmic return, otherwise known as [volatility](https://en.wikipedia.org/wiki/Volatility_(finance)). 
 
 ## Returns
-
-
 The return of an asset is a measure of the difference in the price of that asset between two time periods. 
 Return can be calculated in many ways; two common approaches are the percentage or fractional return and the
 logarithmic return. 
 
-````{prf:definition} Fractional Return
-:label: defn-percentage return
+### Fractional return
 
-Let the price of asset $i$ at time $j$ be denoted by $P_{ij}>0$. Then the fractional return 
+````{prf:definition} Fractional return
+:label: defn-percentage-return
+
+Let the price of asset $i$ at any time $j$ be denoted by $P_{ij}>0$. Then the fractional return 
 on asset $i$ over time horizon $j\rightarrow{k},i\neq{k}$ is defined as: 
 
 ```{math}
@@ -22,7 +24,59 @@ where $r_{i,j\rightarrow{k}}$ denotes the fractional return of asset $i$ over ti
 
 ````
 
+Consider the daily return on stock `XYZ` computed using the close price and the fractional return measure.
+Let $P_{ij}$ denote the close price today, and $P_{ij-1}$ denote the close price for the previous trading day.
+Then, the fractional daily return is given by:
 
+```{math}
+:label: eq-example-daily-close-price
+
+r_{i,j-1\rightarrow{j}} = \frac{P_{ij} - P_{i,j-1}}{P_{i,j-1}}
+```
+
+However, Eqn. {eq}`eq-example-daily-close-price` can be rearranged to give an expression similar to 
+Eqn. {eq}`eq-cash-flow-1-period`:
+
+```{math}
+P_{ij} = \left(1+r_{i,j-1\rightarrow{j}}\right)P_{i,j-1}
+```
+
+Thus, the fractional daily return (or a fractional return computed between any two different dates) is a type of discount rate that quantifies how the value of an asset changes, in the case of the share price of ticker `XYZ`, because of market forces. 
+
+### Logarithmic return
+
+````{prf:definition} Logarithmic return
+:label: defn-log-return
+
+Let the price of asset $i$ at any time $j$ be denoted by $P_{ij}>0$. Then the logarithmic return 
+on asset $i$ over time horizon $j\rightarrow{k},i\neq{k}$ is defined as: 
+
+```{math}
+\bar{r}_{i,j\rightarrow{k}} \equiv \log\left(\frac{P_{ij}}{P_{ik}}\right)
+```
+
+where $\bar{r}_{i,j\rightarrow{k}}$ denotes the logarithmic return of asset $i$ over time horizon $j\rightarrow{k},i\neq{k}$. The $\log\left(\star\right)$ term denotes the [natural log](https://en.wikipedia.org/wiki/Natural_logarithm). 
+
+````
+
+Consider the daily return on stock `XYZ` computed using the close price and the fractional return measure.
+Let $P_{ij}$ denote the close price today, and $P_{ij-1}$ denote the close price for the previous trading day.
+Then, the fractional daily return is given by:
+
+```{math}
+:label: eq-example-daily-close-price-log
+
+\bar{r}_{i,j-1\rightarrow{j}} = \log\left(\frac{P_{ij}}{P_{i,j-1}}\right)
+```
+
+However, Eqn. {eq}`eq-example-daily-close-price-log` can be rearranged to give an expression similar to 
+Eqn. {eq}`eq-cont-exchange-tvm`:
+
+```{math}
+P_{ij} = \exp\left(\bar{r}_{i,j-1\rightarrow{j}}\right)P_{i,j-1}
+```
+
+Thus, the logarithmic daily return (or a logarithmic return computed between any two different dates) is a continuous discount rate that quantifies how the value of an asset, e.g., the share price of ticker `XYZ`, changes because of market forces. 
 
 ### Single Index Return Models
 The single-index model (SIM), developed by William Sharpe, is an asset pricing model which measures both the risk and the return of a stock {cite}`SHARPE1963`. The single index model describes the return of the stock of firm $i$ in terms of a firm-specific return, and the overall market return:
