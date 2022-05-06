@@ -448,7 +448,8 @@ model (SIM) developed by Sharpe <span id="id2">[<a class="reference internal" hr
 <div class="proof definition admonition" id="defn-single-index-model-standard">
 <p class="admonition-title"><span class="caption-number">Definition 11 </span> (Single index model)</p>
 <div class="definition-content section" id="proof-content">
-<p>Let <span class="math notranslate nohighlight">\(R_{i}(t)\)</span> and <span class="math notranslate nohighlight">\(R_{m}(t)\)</span> denote the firm specific and market excess returns (random) for time period <span class="math notranslate nohighlight">\(t\)</span>.
+<p>Let <span class="math notranslate nohighlight">\(R_{i}(t)\)</span> and <span class="math notranslate nohighlight">\(R_{m}(t)\)</span> denote the firm specific and market excess returns (random variables)
+for time period <span class="math notranslate nohighlight">\(t\)</span>.
 Further, let <span class="math notranslate nohighlight">\(\epsilon_{i}\left(t\right)\)</span> denote a <a class="reference external" href="https://en.wikipedia.org/wiki/Normal_distribution">stationary normally distributed random noise process</a> with mean zero and standard deviation <span class="math notranslate nohighlight">\(\sigma_{i}\)</span>. Then, the standard single index model of Sharpe is given by <span id="id3">[<a class="reference internal" href="../References.html#id2" title="William F. Sharpe. A simplified model for portfolio analysis. Management Science, 9(2):277-293, 1963. URL: https://doi.org/10.1287/mnsc.9.2.277, arXiv:https://doi.org/10.1287/mnsc.9.2.277, doi:10.1287/mnsc.9.2.277.">Sha63</a>]</span>:</p>
 <div class="math notranslate nohighlight" id="equation-eq-single-index-model-standard">
 <span class="eqno">(11)<a class="headerlink" href="#equation-eq-single-index-model-standard" title="Permalink to this equation">¶</a></span>\[R_{i}\left(t\right) = \alpha_{i}+\beta_{i}R_{m}\left(t\right)+\epsilon_{i}
@@ -510,7 +511,41 @@ Rearranging Eqn. <a class="reference internal" href="#equation-eq-var-beta">(13)
 </div>
 <div class="section" id="volatility">
 <h2>Volatility<a class="headerlink" href="#volatility" title="Permalink to this headline">¶</a></h2>
+<p>The volatility of an asset price e.g., the share price of firm <span class="math notranslate nohighlight">\(i\)</span> with ticker symbol <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> is
+defined as the standard deviation of the <a class="reference internal" href="#content-references-log-return"><span class="std std-ref">Logarithmic return</span></a>:</p>
+<div class="proof definition admonition" id="defn-volatility">
+<p class="admonition-title"><span class="caption-number">Definition 12 </span> (Volatility)</p>
+<div class="definition-content section" id="proof-content">
+<p>Let the price of asset <span class="math notranslate nohighlight">\(i\)</span> at time <span class="math notranslate nohighlight">\(j\)</span> be denoted by <span class="math notranslate nohighlight">\(P_{ij}&gt;0\)</span>. Then the <em>volatility</em> of asset <span class="math notranslate nohighlight">\(i\)</span> is
+the standard devivation <span class="math notranslate nohighlight">\(\sigma_{i}\)</span> of the logarithmic returns calculated between time periods
+<span class="math notranslate nohighlight">\(j\rightarrow{j+1}\)</span>.</p>
 </div>
+</div><p>We can compute the volatility of the share price of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> from historic data; computing the volatility from data
+gives the <em>historic volatility</em> which is a backward looking measure of price volatility.
+<a class="reference internal" href="#algo-volatility">Algorithm 2</a> describes how to calculate the unweighted volatility from a
+historic price dataset <span class="math notranslate nohighlight">\(\bar{\mathcal{D}}\)</span>.</p>
+<div class="proof algorithm admonition" id="algo-volatility">
+<p class="admonition-title"><span class="caption-number">Algorithm 2 </span> (Unweighted Historic Volatility for Firm <span class="math notranslate nohighlight">\(i\)</span> )</p>
+<div class="algorithm-content section" id="proof-content">
+<p><strong>Inputs</strong> Ticker <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> price dataset <span class="math notranslate nohighlight">\(\bar{\mathcal{D}}\)</span> for
+time-range <span class="math notranslate nohighlight">\(T\)</span></p>
+<p><strong>Output</strong> historic unweighted volatility for ticker <code class="docutils literal notranslate"><span class="pre">XYZ</span></code></p>
+<ol class="simple">
+<li><p>sort dataset <span class="math notranslate nohighlight">\(\mathcal{D}\leftarrow\bar{\mathcal{D}}\)</span> from newest to oldest prices.</p></li>
+<li><p>initialize <span class="math notranslate nohighlight">\(\bar{r}~\leftarrow\)</span> Array(<span class="math notranslate nohighlight">\(\dim\left(T\right)\)</span> - 1)</p></li>
+<li><p>initialize <span class="math notranslate nohighlight">\(\sigma~\leftarrow\)</span> Array(<span class="math notranslate nohighlight">\(\dim\left(T\right)\)</span> - 1)</p></li>
+<li><p>for j <span class="math notranslate nohighlight">\(\in\)</span> 2:<span class="math notranslate nohighlight">\(\dim\left(T\right)\)</span></p>
+<ol class="simple">
+<li><p><span class="math notranslate nohighlight">\(P_{1},P_{0} \leftarrow \mathcal{D}\left[j-1\right],\mathcal{D}\left[j\right]\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\bar{r}\left[j-1\right]\leftarrow\log\left(P_{1}/P_{0}\right)\)</span></p></li>
+</ol>
+</li>
+<li><p>compute mean return <span class="math notranslate nohighlight">\(\mu\leftarrow\left({\dim{T} - 1}\right)^{-1}\times\displaystyle{\sum_{k=1}^{\dim(T) - 1}\bar{r}\left[k\right]}\)</span></p></li>
+<li><p>compute <span class="math notranslate nohighlight">\(\sigma^{2} \leftarrow \left({\dim{T} - 2}\right)^{-1}\times\displaystyle{\sum_{k=1}^{\dim(T) - 1}\left(\bar{r}\left[k\right]-\mu\right)^2}\)</span></p></li>
+<li><p>return <span class="math notranslate nohighlight">\(\sigma\leftarrow\sqrt{\sigma^{2}}\)</span></p></li>
+</ol>
+</div>
+</div></div>
 <div class="section" id="the-markowitz-portfolio-allocation-problem">
 <h2>The Markowitz Portfolio Allocation Problem<a class="headerlink" href="#the-markowitz-portfolio-allocation-problem" title="Permalink to this headline">¶</a></h2>
 <p>Fill me in.</p>

@@ -103,7 +103,8 @@ The term $R_{i}(t)\equiv\left(r_{i}\left(t\right) - r_{f}\right)$ describes the 
 ````{prf:definition} Single index model
 :label: defn-single-index-model-standard
 
-Let $R_{i}(t)$ and $R_{m}(t)$ denote the firm specific and market excess returns (random) for time period $t$.
+Let $R_{i}(t)$ and $R_{m}(t)$ denote the firm specific and market excess returns (random variables) 
+for time period $t$.
 Further, let $\epsilon_{i}\left(t\right)$ denote a [stationary normally distributed random noise process](https://en.wikipedia.org/wiki/Normal_distribution) with mean zero and standard deviation $\sigma_{i}$. Then, the standard single index model of Sharpe is given by {cite}`SHARPE1963`:
 
 ```{math}
@@ -193,7 +194,45 @@ Putting these two regimes together gives fundamental insight into the behavior o
 
 
 ## Volatility
+The volatility of an asset price e.g., the share price of firm $i$ with ticker symbol `XYZ` is 
+defined as the standard deviation of the {ref}`content:references:log-return`:
 
+````{prf:definition} Volatility
+:label: defn-volatility
+
+Let the price of asset $i$ at time $j$ be denoted by $P_{ij}>0$. Then the _volatility_ of asset $i$ is
+the standard devivation $\sigma_{i}$ of the logarithmic returns calculated between time periods 
+$j\rightarrow{j+1}$.
+
+````
+
+We can compute the volatility of the share price of `XYZ` from historic data; computing the volatility from data
+gives the _historic volatility_ which is a backward looking measure of price volatility.
+{prf:ref}`algo-volatility` describes how to calculate the unweighted volatility from a 
+historic price dataset $\bar{\mathcal{D}}$. 
+
+```{prf:algorithm} Unweighted Historic Volatility for Firm $i$ 
+:label: algo-volatility
+
+**Inputs** Ticker `XYZ` price dataset $\bar{\mathcal{D}}$ for 
+time-range $T$
+
+**Output** historic unweighted volatility for ticker `XYZ`
+
+1. sort dataset $\mathcal{D}\leftarrow\bar{\mathcal{D}}$ from newest to oldest prices.
+1. initialize $\bar{r}~\leftarrow$ Array($\dim\left(T\right)$ - 1)
+1. initialize $\sigma~\leftarrow$ Array($\dim\left(T\right)$ - 1)
+1. for j $\in$ 2:$\dim\left(T\right)$
+    
+    1. $P_{1},P_{0} \leftarrow \mathcal{D}\left[j-1\right],\mathcal{D}\left[j\right]$
+    2. $\bar{r}\left[j-1\right]\leftarrow\log\left(P_{1}/P_{0}\right)$
+
+1. compute mean return $\mu\leftarrow\left({\dim{T} - 1}\right)^{-1}\times\displaystyle{\sum_{k=1}^{\dim(T) - 1}\bar{r}\left[k\right]}$
+1. compute $\sigma^{2} \leftarrow \left({\dim{T} - 2}\right)^{-1}\times\displaystyle{\sum_{k=1}^{\dim(T) - 1}\left(\bar{r}\left[k\right]-\mu\right)^2}$
+1. return $\sigma\leftarrow\sqrt{\sigma^{2}}$
+
+
+```
 
 ## The Markowitz Portfolio Allocation Problem
 Fill me in.
