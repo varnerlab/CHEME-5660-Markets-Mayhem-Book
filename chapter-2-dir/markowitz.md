@@ -22,17 +22,62 @@ R_{i}\left(t\right) = \alpha_{i}+\beta_{i}R_{m}\left(t\right)+\epsilon_{i}
 \left(t\right)\qquad{t=1,2,\dots,T}
 ```
 
-In Eqn {eq}`eq-single-index-model-standard`, the quantity $\beta_{i}$ has several exciting interpretations. 
-First, $\beta_{i}$ measures how the excess return of firm $i$ moves with the overall excess return of the market. Thus, $\beta_{i}$ can be thought of as a multiplier of sorts, a large $\beta_{i}$ suggets large swings 
-in the return of firm $i$ relative to the overall market return. On the other hand, $\beta_{i}$ can also be interpreted as a ratio of risks, i.e., the risk of firm $i$ normalized by the overall market risk. Thus, values of $\beta_{i}$ fall into the ranges:
+In Eqn {eq}`eq-single-index-model-standard`, the quantity $\beta_{i}$ has several interpretations. 
+First, $\beta_{i}$ measures how the excess return of firm $i$ moves with the overall excess return of the market. Thus, $\beta_{i}$ can be thought of as a proportionality constant, a large $\beta_{i}$ suggests large swings in the return of firm $i$ relative to the overall market return. 
+
+On the other hand, $\beta_{i}$ can also be interpreted as a measure of risk. To understand the risk interpretation of $\beta_{i}$, we first must understand that both the firm specific $R_{i}$ and overall market excess returns $R_{m}$ are random variables. Thus, we can compute the expectation and variance of these variables and look at how these quantities depend upon $\beta_{i}$:
+
+````{prf:observation} Risk intepretation of $\beta_{i}$
+:label: obs-beta-risk-measure
+
+Taking the expectation of the firm excess return $R_{i}$ gives:
+
+```{math}
+:label: eq-expected-R-sim
+\mathbb{E}\left(R_{i}\right) = \alpha_{i}+\beta_{i}\mathbb{E}\left(R_{m}\right)
+```
+
+where $\mathbb{E}\left(\epsilon_{i}\left(t\right)\right) = 0$. 
+Solving Eqn. {eq}`eq-expected-R-sim` for $\beta_{i}$ gives:
+
+```{math}
+\beta_{i} = \frac{\mathbb{E}\left(R_{i}\right) - \alpha_{i}}{\mathbb{E}\left(R_{m}\right)}
+```
+Thus, $\beta_{i}$ is a corrected ratio of expected (average) returns:
+
+* $\beta_{i}>1$ suggests the expected excess return of firm $i$ is _greater_ than the expected excess market return
+* $\beta_{i}\sim{1}$ suggests that firm $i$ performs _similar_ to the overall market on average
+* $\beta_{i}<1$ suggests the expected excess return of firm $i$ is _less_ than the expected excess market return
+
+On the other hand, the variance of $R_{i}$:
+
+```{math}
+\text{Var}\left(R_{i}\right) = \mathbb{E}\left(R_{i}^{2}\right) - \mathbb{E}\left(R_{i}\right)^{2}
+```
+is given by:
+
+```{math}
+\sigma_{i}^2 = \beta_{i}\sigma_{m}^{2}+\sigma_{\epsilon}^{2}
+```
+
+where $\text{Var}\left(\star\right) = \sigma_{\star}^{2}$. 
+
+````
+
+
+
+<!-- as a ratio of risks, i.e., the risk of firm $i$ normalized by the overall market risk. Thus, values of $\beta_{i}$ fall into the ranges:
+
+
 
 * $\beta_{i}>1$: Firm $i$ is riskier than the overall market
 * $\beta_{i}\sim{1}$: Firm $i$ has approximately the same risk as the overall market
 * $\beta_{i}<{1}$: Firm $i$ has less risk than the overall market
 * $\beta_{i}\sim{0}$: Firm $i$ is risk-free or firm $i$ is completely uncorrelated with the overall market
-* $\beta_{i}<{0}$: Firm $i$ is anti-correlated with the overall market
+* $\beta_{i}<{0}$: Firm $i$ is anti-correlated with the overall market -->
 
-### Normalized risk intpretation of $\beta_{i}$ 
+
+
 
 ## Volatility
 
