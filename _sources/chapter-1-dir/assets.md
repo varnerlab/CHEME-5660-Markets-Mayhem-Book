@@ -99,6 +99,7 @@ $\mathcal{D}$ is defined as:
 A continuous discount factor gives a future value expression of the form:
 
 ```{math}
+:label: eq-cont-exchange-tvm
 CF(t) = \exp\left(rt\right)CF(t_{o})
 ```
 

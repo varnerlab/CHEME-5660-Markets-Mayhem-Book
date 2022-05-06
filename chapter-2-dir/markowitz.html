@@ -291,16 +291,18 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#single-index-return-models">
-     Single Index Return Models
+    <a class="reference internal nav-link" href="#fractional-return">
+     Fractional return
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#normalized-risk-intpretation-of-beta-i">
-     Normalized risk intpretation of
-     <span class="math notranslate nohighlight">
-      \(\beta_{i}\)
-     </span>
+    <a class="reference internal nav-link" href="#logarithmic-return">
+     Logarithmic return
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#single-index-return-models">
+     Single Index Return Models
     </a>
    </li>
   </ul>
@@ -341,16 +343,18 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#single-index-return-models">
-     Single Index Return Models
+    <a class="reference internal nav-link" href="#fractional-return">
+     Fractional return
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#normalized-risk-intpretation-of-beta-i">
-     Normalized risk intpretation of
-     <span class="math notranslate nohighlight">
-      \(\beta_{i}\)
-     </span>
+    <a class="reference internal nav-link" href="#logarithmic-return">
+     Logarithmic return
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#single-index-return-models">
+     Single Index Return Models
     </a>
    </li>
   </ul>
@@ -376,34 +380,130 @@ const thebe_selector_output = ".output, .cell_output"
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="modern-portfolio-theory">
 <h1>Modern Portfolio Theory<a class="headerlink" href="#modern-portfolio-theory" title="Permalink to this headline">¶</a></h1>
-<p>Modern portfolio theory (MPT) is a practical method for selecting collection of assets e.g., stocks or bonds in order to maximize the overal reward of the investor within an acceptable level of risk to the investor. Harry Markowitz, who developed the mathematical foundation of MPT <span id="id1">[<a class="reference internal" href="../References.html#id4" title="Harry Markowitz. Portfolio selection. The Journal of Finance, 7(1):77–91, 1952. URL: http://www.jstor.org/stable/2975974 (visited on 2022-04-12).">Mar52</a>]</span>, was later awarded a <a class="reference external" href="https://www.nobelprize.org/prizes/economic-sciences/1990/markowitz/facts/">Nobel Prize for his work in 1990</a>. The central theme of Markowitz is to balance risk and reward, where reward is measured as the <a class="reference external" href="https://www.investopedia.com/terms/r/return.asp">return</a> of a basket of assets, while risk is measured as the standard deviation of the logrithmic return, otherwise known as <a class="reference external" href="https://en.wikipedia.org/wiki/Volatility_(finance)">volatility</a>.</p>
+<p>Modern portfolio theory (MPT) is a practical method for selecting collection of assets e.g., stocks or bonds in order to maximize the overal reward of the investor within an acceptable level of risk to the investor. Harry Markowitz, who developed the mathematical foundation of MPT <span id="id1">[<a class="reference internal" href="../References.html#id4" title="Harry Markowitz. Portfolio selection. The Journal of Finance, 7(1):77–91, 1952. URL: http://www.jstor.org/stable/2975974 (visited on 2022-04-12).">Mar52</a>]</span>, was later awarded a <a class="reference external" href="https://www.nobelprize.org/prizes/economic-sciences/1990/markowitz/facts/">Nobel Prize for his work in 1990</a>.</p>
+<p>The central theme of Markowitz is the balance risk and reward, where reward is measured as the <a class="reference external" href="https://www.investopedia.com/terms/r/return.asp">return</a> of a basket of assets, while risk is measured as the standard deviation (or sometimes the variance) of the logrithmic return, otherwise known as <a class="reference external" href="https://en.wikipedia.org/wiki/Volatility_(finance)">volatility</a>.</p>
 <div class="section" id="returns">
 <h2>Returns<a class="headerlink" href="#returns" title="Permalink to this headline">¶</a></h2>
+<p>The return of an asset is a measure of the difference in the price of that asset between two time periods.
+Return can be calculated in many ways; two common approaches are the percentage or fractional return and the
+logarithmic return.</p>
+<div class="section" id="fractional-return">
+<span id="content-references-fractional-return"></span><h3>Fractional return<a class="headerlink" href="#fractional-return" title="Permalink to this headline">¶</a></h3>
+<div class="proof definition admonition" id="defn-percentage-return">
+<p class="admonition-title"><span class="caption-number">Definition 9 </span> (Fractional return)</p>
+<div class="definition-content section" id="proof-content">
+<p>Let the price of asset <span class="math notranslate nohighlight">\(i\)</span> at any time <span class="math notranslate nohighlight">\(j\)</span> be denoted by <span class="math notranslate nohighlight">\(P_{ij}&gt;0\)</span>. Then the fractional return
+on asset <span class="math notranslate nohighlight">\(i\)</span> over time horizon <span class="math notranslate nohighlight">\(j\rightarrow{k},i\neq{k}\)</span> is defined as:</p>
+<div class="math notranslate nohighlight">
+\[r_{i,j\rightarrow{k}} \equiv \frac{P_{ik} - P_{ij}}{P_{ij}}\]</div>
+<p>where <span class="math notranslate nohighlight">\(r_{i,j\rightarrow{k}}\)</span> denotes the fractional return of asset <span class="math notranslate nohighlight">\(i\)</span> over time horizon <span class="math notranslate nohighlight">\(j\rightarrow{k},i\neq{k}\)</span>.</p>
+</div>
+</div><p>Consider the daily return on stock <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> computed using the close price and the fractional return measure.
+Let <span class="math notranslate nohighlight">\(P_{ij}\)</span> denote the close price today, and <span class="math notranslate nohighlight">\(P_{ij-1}\)</span> denote the close price for the previous trading day.
+Then, the fractional daily return is given by:</p>
+<div class="math notranslate nohighlight" id="equation-eq-example-daily-close-price">
+<span class="eqno">(8)<a class="headerlink" href="#equation-eq-example-daily-close-price" title="Permalink to this equation">¶</a></span>\[r_{i,j-1\rightarrow{j}} = \frac{P_{ij} - P_{i,j-1}}{P_{i,j-1}}\]</div>
+<p>However, Eqn. <a class="reference internal" href="#equation-eq-example-daily-close-price">(8)</a> can be rearranged to give an expression similar to
+Eqn. <a class="reference internal" href="../chapter-1-dir/assets.html#equation-eq-cash-flow-1-period">(2)</a>:</p>
+<div class="math notranslate nohighlight">
+\[P_{ij} = \left(1+r_{i,j-1\rightarrow{j}}\right)P_{i,j-1}\]</div>
+<p>Thus, the fractional daily return (or a fractional return computed between any two different dates) is a type of discount rate that quantifies how the value of an asset changes, in the case of the share price of ticker <code class="docutils literal notranslate"><span class="pre">XYZ</span></code>, because of market forces.</p>
+</div>
+<div class="section" id="logarithmic-return">
+<span id="content-references-log-return"></span><h3>Logarithmic return<a class="headerlink" href="#logarithmic-return" title="Permalink to this headline">¶</a></h3>
+<div class="proof definition admonition" id="defn-log-return">
+<p class="admonition-title"><span class="caption-number">Definition 10 </span> (Logarithmic return)</p>
+<div class="definition-content section" id="proof-content">
+<p>Let the price of asset <span class="math notranslate nohighlight">\(i\)</span> at any time <span class="math notranslate nohighlight">\(j\)</span> be denoted by <span class="math notranslate nohighlight">\(P_{ij}&gt;0\)</span>. Then the logarithmic return
+on asset <span class="math notranslate nohighlight">\(i\)</span> over time horizon <span class="math notranslate nohighlight">\(j\rightarrow{k},i\neq{k}\)</span> is defined as:</p>
+<div class="math notranslate nohighlight">
+\[\bar{r}_{i,j\rightarrow{k}} \equiv \log\left(\frac{P_{ij}}{P_{ik}}\right)\]</div>
+<p>where <span class="math notranslate nohighlight">\(\bar{r}_{i,j\rightarrow{k}}\)</span> denotes the logarithmic return of asset <span class="math notranslate nohighlight">\(i\)</span> over time horizon <span class="math notranslate nohighlight">\(j\rightarrow{k},i\neq{k}\)</span>. The <span class="math notranslate nohighlight">\(\log\left(\star\right)\)</span> term denotes the <a class="reference external" href="https://en.wikipedia.org/wiki/Natural_logarithm">natural log</a>.</p>
+</div>
+</div><p>Consider the daily return on stock <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> computed using the close price and the fractional return measure.
+Let <span class="math notranslate nohighlight">\(P_{ij}\)</span> denote the close price today, and <span class="math notranslate nohighlight">\(P_{ij-1}\)</span> denote the close price for the previous trading day.
+Then, the fractional daily return is given by:</p>
+<div class="math notranslate nohighlight" id="equation-eq-example-daily-close-price-log">
+<span class="eqno">(9)<a class="headerlink" href="#equation-eq-example-daily-close-price-log" title="Permalink to this equation">¶</a></span>\[\bar{r}_{i,j-1\rightarrow{j}} = \log\left(\frac{P_{ij}}{P_{i,j-1}}\right)\]</div>
+<p>However, Eqn. <a class="reference internal" href="#equation-eq-example-daily-close-price-log">(9)</a> can be rearranged to give an expression similar to
+Eqn. <a class="reference internal" href="../chapter-1-dir/assets.html#equation-eq-cont-exchange-tvm">(4)</a>:</p>
+<div class="math notranslate nohighlight">
+\[P_{ij} = \exp\left(\bar{r}_{i,j-1\rightarrow{j}}\right)P_{i,j-1}\]</div>
+<p>Thus, the logarithmic daily return (or a logarithmic return computed between any two different dates) is a continuous discount rate that quantifies how the value of an asset, e.g., the share price of ticker <code class="docutils literal notranslate"><span class="pre">XYZ</span></code>, changes because of market forces.</p>
+</div>
 <div class="section" id="single-index-return-models">
 <h3>Single Index Return Models<a class="headerlink" href="#single-index-return-models" title="Permalink to this headline">¶</a></h3>
-<p>The single-index model (SIM), developed by William Sharpe, is an asset pricing model which measures both the risk and the return of a stock <span id="id2">[<a class="reference internal" href="../References.html#id2" title="William F. Sharpe. A simplified model for portfolio analysis. Management Science, 9(2):277-293, 1963. URL: https://doi.org/10.1287/mnsc.9.2.277, arXiv:https://doi.org/10.1287/mnsc.9.2.277, doi:10.1287/mnsc.9.2.277.">Sha63</a>]</span>. The single index model describes the return of the stock of firm <span class="math notranslate nohighlight">\(i\)</span> in terms of a firm-specific return, and the overall market return:</p>
+<p>The <a class="reference internal" href="#content-references-fractional-return"><span class="std std-ref">Fractional return</span></a> or <a class="reference internal" href="#content-references-log-return"><span class="std std-ref">Logarithmic return</span></a> can be computed
+from historical data. However, what if we do not have access to price data for <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> or we want to
+<em>predict</em> the return of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code>, for example, in an automated trading system?
+In these cases, we need a model. One of the simplest (yet still widely used) models is the single index
+model (SIM) developed by Sharpe <span id="id2">[<a class="reference internal" href="../References.html#id2" title="William F. Sharpe. A simplified model for portfolio analysis. Management Science, 9(2):277-293, 1963. URL: https://doi.org/10.1287/mnsc.9.2.277, arXiv:https://doi.org/10.1287/mnsc.9.2.277, doi:10.1287/mnsc.9.2.277.">Sha63</a>]</span>.</p>
+<p>The single-index model (SIM) is an asset pricing model which measures both the risk and the return of a stock, relative to a risk free alternative investment e.g., government treasury bounds. The single index model describes the return of the stock of firm <span class="math notranslate nohighlight">\(i\)</span> in terms of a firm-specific return, and the overall market return:</p>
 <div class="math notranslate nohighlight" id="equation-eq-single-index-model">
-<span class="eqno">(7)<a class="headerlink" href="#equation-eq-single-index-model" title="Permalink to this equation">¶</a></span>\[r_{i}\left(t\right) - r_{f} = \alpha_{i}+\beta_{i}\left(r_{m}\left(t\right)-r_{f}\right)+\epsilon_{i}
+<span class="eqno">(10)<a class="headerlink" href="#equation-eq-single-index-model" title="Permalink to this equation">¶</a></span>\[r_{i}\left(t\right) - r_{f} = \alpha_{i}+\beta_{i}\left(r_{m}\left(t\right)-r_{f}\right)+\epsilon_{i}
 \left(t\right)\qquad{t=1,2,\dots,T}\]</div>
 <p>The term <span class="math notranslate nohighlight">\(r_{i}\left(t\right)\)</span> denotes the return of firm <span class="math notranslate nohighlight">\(i\)</span>, during time period <span class="math notranslate nohighlight">\(t\)</span>,
-<span class="math notranslate nohighlight">\(r_{f}\)</span> denotes the risk-free rate i.e., the interest rate on a riskless investment such as treasury bills, while <span class="math notranslate nohighlight">\(r_{m}\left(t\right)\)</span> denotes the return on a market portfolio e.g., an index such as the <a class="reference external" href="https://en.wikipedia.org/wiki/S%26P_500">S&amp;P500</a> during time period <span class="math notranslate nohighlight">\(t\)</span>.  The term <span class="math notranslate nohighlight">\(\alpha_{i}\)</span> denotes the firm-specific return, while <span class="math notranslate nohighlight">\(\beta_{i}\)</span> denotes the proportion of the the firm’s return associated with the overall market. Finally, <span class="math notranslate nohighlight">\(\epsilon_{i}\left(t\right)\sim\mathcal{N}\left(0,\sigma_{i}^{2}\right)\)</span> is the unexplained (random) return of stock <span class="math notranslate nohighlight">\(i\)</span>, which is assumed to be normally distributed with mean zero and standard deviation <span class="math notranslate nohighlight">\(\sigma_{i}\)</span>. The term <span class="math notranslate nohighlight">\(R_{i}(t)\equiv\left(r_{i}\left(t\right) - r_{f}\right)\)</span> describes the excess return of specific firm <span class="math notranslate nohighlight">\(i\)</span>, while <span class="math notranslate nohighlight">\(R_{m}(t)\equiv\left(r_{m}\left(t\right)-r_{f}\right)\)</span> describes the excess return of the market portfolio. Replacing the excess returns gives the single index model in standard
-form:</p>
+<span class="math notranslate nohighlight">\(r_{f}\)</span> denotes the risk-free rate i.e., the <a class="reference external" href="https://fred.stlouisfed.org/series/DTB3">interest rate of a riskless investment such as treasury bills</a>, while <span class="math notranslate nohighlight">\(r_{m}\left(t\right)\)</span> denotes the return on a market portfolio e.g., an index such as the <a class="reference external" href="https://en.wikipedia.org/wiki/S%26P_500">S&amp;P500</a> during time period <span class="math notranslate nohighlight">\(t\)</span>.  The term <span class="math notranslate nohighlight">\(\alpha_{i}\)</span> denotes the firm-specific return, while <span class="math notranslate nohighlight">\(\beta_{i}\)</span> denotes the proportion of the the firm’s return associated with the overall market.</p>
+<p>The term <span class="math notranslate nohighlight">\(R_{i}(t)\equiv\left(r_{i}\left(t\right) - r_{f}\right)\)</span> describes the excess return of specific firm <span class="math notranslate nohighlight">\(i\)</span>, while <span class="math notranslate nohighlight">\(R_{m}(t)\equiv\left(r_{m}\left(t\right)-r_{f}\right)\)</span> describes the excess return of the market portfolio. Replacing the excess returns in Eqn. <a class="reference internal" href="#equation-eq-single-index-model">(10)</a> gives the single index model in standard form:</p>
+<div class="proof definition admonition" id="defn-single-index-model-standard">
+<p class="admonition-title"><span class="caption-number">Definition 11 </span> (Single index model)</p>
+<div class="definition-content section" id="proof-content">
+<p>Let <span class="math notranslate nohighlight">\(R_{i}(t)\)</span> and <span class="math notranslate nohighlight">\(R_{m}(t)\)</span> denote the firm specific and market excess returns (random) for time period <span class="math notranslate nohighlight">\(t\)</span>.
+Further, let <span class="math notranslate nohighlight">\(\epsilon_{i}\left(t\right)\)</span> denote a stationary Normally distributed noise process with mean zero and standard deviation <span class="math notranslate nohighlight">\(\sigma_{i}\)</span>. Then, the standard single index model of Sharpe is given by <span id="id3">[<a class="reference internal" href="../References.html#id2" title="William F. Sharpe. A simplified model for portfolio analysis. Management Science, 9(2):277-293, 1963. URL: https://doi.org/10.1287/mnsc.9.2.277, arXiv:https://doi.org/10.1287/mnsc.9.2.277, doi:10.1287/mnsc.9.2.277.">Sha63</a>]</span>:</p>
 <div class="math notranslate nohighlight" id="equation-eq-single-index-model-standard">
-<span class="eqno">(8)<a class="headerlink" href="#equation-eq-single-index-model-standard" title="Permalink to this equation">¶</a></span>\[R_{i}\left(t\right) = \alpha_{i}+\beta_{i}R_{m}\left(t\right)+\epsilon_{i}
+<span class="eqno">(11)<a class="headerlink" href="#equation-eq-single-index-model-standard" title="Permalink to this equation">¶</a></span>\[R_{i}\left(t\right) = \alpha_{i}+\beta_{i}R_{m}\left(t\right)+\epsilon_{i}
 \left(t\right)\qquad{t=1,2,\dots,T}\]</div>
-<p>In Eqn <a class="reference internal" href="#equation-eq-single-index-model-standard">(8)</a>, the quantity <span class="math notranslate nohighlight">\(\beta_{i}\)</span> has several exciting interpretations.
-First, <span class="math notranslate nohighlight">\(\beta_{i}\)</span> measures how the excess return of firm <span class="math notranslate nohighlight">\(i\)</span> moves with the overall excess return of the market. Thus, <span class="math notranslate nohighlight">\(\beta_{i}\)</span> can be thought of as a multiplier of sorts, a large <span class="math notranslate nohighlight">\(\beta_{i}\)</span> suggets large swings
-in the return of firm <span class="math notranslate nohighlight">\(i\)</span> relative to the overall market return. On the other hand, <span class="math notranslate nohighlight">\(\beta_{i}\)</span> can also be interpreted as a ratio of risks, i.e., the risk of firm <span class="math notranslate nohighlight">\(i\)</span> normalized by the overall market risk. Thus, values of <span class="math notranslate nohighlight">\(\beta_{i}\)</span> fall into the ranges:</p>
-<ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(\beta_{i}&gt;1\)</span>: Firm <span class="math notranslate nohighlight">\(i\)</span> is riskier than the overall market</p></li>
-<li><p><span class="math notranslate nohighlight">\(\beta_{i}\sim{1}\)</span>: Firm <span class="math notranslate nohighlight">\(i\)</span> has approximately the same risk as the overall market</p></li>
-<li><p><span class="math notranslate nohighlight">\(\beta_{i}&lt;{1}\)</span>: Firm <span class="math notranslate nohighlight">\(i\)</span> has less risk than the overall market</p></li>
-<li><p><span class="math notranslate nohighlight">\(\beta_{i}\sim{0}\)</span>: Firm <span class="math notranslate nohighlight">\(i\)</span> is risk-free or firm <span class="math notranslate nohighlight">\(i\)</span> is completely uncorrelated with the overall market</p></li>
-<li><p><span class="math notranslate nohighlight">\(\beta_{i}&lt;{0}\)</span>: Firm <span class="math notranslate nohighlight">\(i\)</span> is anti-correlated with the overall market</p></li>
-</ul>
+<p>where <span class="math notranslate nohighlight">\(\alpha_{i}\)</span> and <span class="math notranslate nohighlight">\(\beta_{i}\)</span> are constant model paramaters.</p>
 </div>
-<div class="section" id="normalized-risk-intpretation-of-beta-i">
-<h3>Normalized risk intpretation of <span class="math notranslate nohighlight">\(\beta_{i}\)</span><a class="headerlink" href="#normalized-risk-intpretation-of-beta-i" title="Permalink to this headline">¶</a></h3>
+</div><p>The <span class="math notranslate nohighlight">\(\alpha_{i}\)</span> parameter in Eqn <a class="reference internal" href="#equation-eq-single-index-model-standard">(11)</a> describes the firm specific
+return that is not explained by the market; thus, <span class="math notranslate nohighlight">\(\alpha_{i}\)</span> is the
+idiosyncratic return of firm <span class="math notranslate nohighlight">\(i\)</span>.</p>
+<p>The <span class="math notranslate nohighlight">\(\beta_{i}\)</span> parameter in Eqn <a class="reference internal" href="#equation-eq-single-index-model-standard">(11)</a> has several interpretations.
+First, <span class="math notranslate nohighlight">\(\beta_{i}\)</span> measures how the excess return of firm <span class="math notranslate nohighlight">\(i\)</span> is related to the overall excess return of the market; a large <span class="math notranslate nohighlight">\(\beta_{i}\)</span> suggests large swings in the return of firm <span class="math notranslate nohighlight">\(i\)</span> relative to the overall market return. On the other hand, <span class="math notranslate nohighlight">\(\beta_{i}\)</span> can also be interpreted as a measure of the relative risk of investing in firm <span class="math notranslate nohighlight">\(i\)</span>.</p>
+<p>To understand the various interpretations of <span class="math notranslate nohighlight">\(\beta_{i}\)</span>, we first must understand that both the firm specific <span class="math notranslate nohighlight">\(R_{i}\)</span> and overall market excess returns <span class="math notranslate nohighlight">\(R_{m}\)</span> are random variables. Thus, we can compute the expectation and variance of these variables and look at how these quantities depend upon <span class="math notranslate nohighlight">\(\beta_{i}\)</span>:</p>
+<div class="proof observation admonition" id="obs-beta-risk-measure">
+<p class="admonition-title"><span class="caption-number">Observation 1 </span> (Risk and Reward intepretations of <span class="math notranslate nohighlight">\(\beta_{i}\)</span>)</p>
+<div class="observation-content section" id="proof-content">
+<p>Taking the expectation of the firm excess return <span class="math notranslate nohighlight">\(R_{i}\)</span> gives:</p>
+<div class="math notranslate nohighlight" id="equation-eq-expected-r-sim">
+<span class="eqno">(12)<a class="headerlink" href="#equation-eq-expected-r-sim" title="Permalink to this equation">¶</a></span>\[\mathbb{E}\left(R_{i}\right) = \alpha_{i}+\beta_{i}\mathbb{E}\left(R_{m}\right)\]</div>
+<p>where <span class="math notranslate nohighlight">\(\mathbb{E}\left(\epsilon_{i}\left(t\right)\right) = 0\)</span>.
+Solving Eqn. <a class="reference internal" href="#equation-eq-expected-r-sim">(12)</a> for <span class="math notranslate nohighlight">\(\beta_{i}\)</span> gives:</p>
+<div class="math notranslate nohighlight">
+\[\beta_{i} = \frac{\mathbb{E}\left(R_{i}\right) - \alpha_{i}}{\mathbb{E}\left(R_{m}\right)}\]</div>
+<p>Thus, <span class="math notranslate nohighlight">\(\beta_{i}\)</span> is a corrected ratio of expected (average) returns:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\beta_{i}&gt;1\)</span> expected excess return of firm <span class="math notranslate nohighlight">\(i\)</span> is <em>greater</em> than the expected excess market return</p></li>
+<li><p><span class="math notranslate nohighlight">\(\beta_{i}\sim{1}\)</span> firm <span class="math notranslate nohighlight">\(i\)</span> performs <em>similar</em> to the overall market on average</p></li>
+<li><p><span class="math notranslate nohighlight">\(\beta_{i}&lt;1\)</span> expected excess return of firm <span class="math notranslate nohighlight">\(i\)</span> is <em>less</em> than the expected excess market return</p></li>
+</ul>
+<p>On the other hand, the variance of <span class="math notranslate nohighlight">\(R_{i}\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\text{Var}\left(R_{i}\right) = \mathbb{E}\left(R_{i}^{2}\right) - \mathbb{E}\left(R_{i}\right)^{2}\]</div>
+<p>is given by:</p>
+<div class="math notranslate nohighlight" id="equation-eq-var-beta">
+<span class="eqno">(13)<a class="headerlink" href="#equation-eq-var-beta" title="Permalink to this equation">¶</a></span>\[\sigma_{i}^2 = \beta_{i}^{2}\sigma_{m}^{2}+\sigma_{\epsilon}^{2}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\text{Var}\left(\star\right) = \sigma_{\star}^{2}\)</span>.
+Rearranging Eqn. <a class="reference internal" href="#equation-eq-var-beta">(13)</a> gives another expression for <span class="math notranslate nohighlight">\(\beta_{i}\)</span> in terms of the corrected variance (risk) of firm <span class="math notranslate nohighlight">\(i\)</span></p>
+<div class="math notranslate nohighlight">
+\[\beta_{i}^{2} = \frac{\sigma_{i}^2 - \sigma_{\epsilon}^{2}}{\sigma_{m}^{2}}\]</div>
+<p>In the context of risk, <span class="math notranslate nohighlight">\(\beta_{i}\)</span> has the interpretation:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\beta_{i}&gt;1\)</span> suggests firm <span class="math notranslate nohighlight">\(i\)</span> has <em>greater risk</em> than the overall market</p></li>
+<li><p><span class="math notranslate nohighlight">\(\beta_{i}\sim{1}\)</span> suggests that firm <span class="math notranslate nohighlight">\(i\)</span> has the <em>same risk</em> as the overall market on average</p></li>
+<li><p><span class="math notranslate nohighlight">\(\beta_{i}&lt;1\)</span> suggests firm <span class="math notranslate nohighlight">\(i\)</span> has <em>less risk</em> compared to overall market</p></li>
+</ul>
+<p>Putting these two regimes together gives fundamental insight into the behavior of markets: <strong>high returns come with high-risk</strong>.</p>
+</div>
+</div><!-- as a ratio of risks, i.e., the risk of firm $i$ normalized by the overall market risk. Thus, values of $\beta_{i}$ fall into the ranges:
+
+
+
+* $\beta_{i}>1$: Firm $i$ is riskier than the overall market
+* $\beta_{i}\sim{1}$: Firm $i$ has approximately the same risk as the overall market
+* $\beta_{i}<{1}$: Firm $i$ has less risk than the overall market
+* $\beta_{i}\sim{0}$: Firm $i$ is risk-free or firm $i$ is completely uncorrelated with the overall market
+* $\beta_{i}<{0}$: Firm $i$ is anti-correlated with the overall market -->
 </div>
 </div>
 <div class="section" id="volatility">
