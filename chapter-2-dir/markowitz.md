@@ -13,7 +13,7 @@ r_{i}\left(t\right) - r_{f} = \alpha_{i}+\beta_{i}\left(r_{m}\left(t\right)-r_{f
 ```
 
 The term $r_{i}\left(t\right)$ denotes the return of firm $i$, during time period $t$, 
-$r_{f}$ denotes the risk-free rate i.e., the interest rate on a riskless investment such as treasury bills, while $r_{m}\left(t\right)$ denotes the return on a market portfolio e.g., an index such as the [S\&P500](https://en.wikipedia.org/wiki/S%26P_500) during time period $t$.  The term $\alpha_{i}$ denotes the firm-specific return, while $\beta_{i}$ denotes the proportion of the the firm's return associated with the overall market. Finally, $\epsilon_{i}\left(t\right)\sim\mathcal{N}\left(0,\sigma_{i}^{2}\right)$ is the unexplained (random) return of firm $i$, which is normally distributed with mean zero and standard deviation $\sigma_{i}$. 
+$r_{f}$ denotes the risk-free rate i.e., the [interest rate of a riskless investment such as treasury bills](https://fred.stlouisfed.org/series/DTB3), while $r_{m}\left(t\right)$ denotes the return on a market portfolio e.g., an index such as the [S\&P500](https://en.wikipedia.org/wiki/S%26P_500) during time period $t$.  The term $\alpha_{i}$ denotes the firm-specific return, while $\beta_{i}$ denotes the proportion of the the firm's return associated with the overall market. Finally, $\epsilon_{i}\left(t\right)\sim\mathcal{N}\left(0,\sigma_{i}^{2}\right)$ is the unexplained (random) return of firm $i$, which is normally distributed with mean zero and standard deviation $\sigma_{i}$. 
 
 The term $R_{i}(t)\equiv\left(r_{i}\left(t\right) - r_{f}\right)$ describes the excess return of specific firm $i$, while $R_{m}(t)\equiv\left(r_{m}\left(t\right)-r_{f}\right)$ describes the excess return of the market portfolio. Replacing the excess returns gives the single index model in standard
 form:
@@ -27,7 +27,7 @@ R_{i}\left(t\right) = \alpha_{i}+\beta_{i}R_{m}\left(t\right)+\epsilon_{i}
 The quantity $\beta_{i}$ in Eqn {eq}`eq-single-index-model-standard` has several interpretations. 
 First, $\beta_{i}$ measures how the excess return of firm $i$ is related to the overall excess return of the market; a large $\beta_{i}$ suggests large swings in the return of firm $i$ relative to the overall market return. On the other hand, $\beta_{i}$ can also be interpreted as a measure of the relative risk of investing in firm $i$. 
 
-To understand the interpretations of $\beta_{i}$, we first must understand that both the firm specific $R_{i}$ and overall market excess returns $R_{m}$ are random variables. Thus, we can compute the expectation and variance of these variables and look at how these quantities depend upon $\beta_{i}$:
+To understand the various interpretations of $\beta_{i}$, we first must understand that both the firm specific $R_{i}$ and overall market excess returns $R_{m}$ are random variables. Thus, we can compute the expectation and variance of these variables and look at how these quantities depend upon $\beta_{i}$:
 
 ````{prf:observation} Risk intepretation of $\beta_{i}$
 :label: obs-beta-risk-measure
@@ -47,9 +47,9 @@ Solving Eqn. {eq}`eq-expected-R-sim` for $\beta_{i}$ gives:
 ```
 Thus, $\beta_{i}$ is a corrected ratio of expected (average) returns:
 
-* $\beta_{i}>1$ suggests the expected excess return of firm $i$ is _greater_ than the expected excess market return
-* $\beta_{i}\sim{1}$ suggests that firm $i$ performs _similar_ to the overall market on average
-* $\beta_{i}<1$ suggests the expected excess return of firm $i$ is _less_ than the expected excess market return
+* $\beta_{i}>1$ expected excess return of firm $i$ is _greater_ than the expected excess market return
+* $\beta_{i}\sim{1}$ firm $i$ performs _similar_ to the overall market on average
+* $\beta_{i}<1$ expected excess return of firm $i$ is _less_ than the expected excess market return
 
 On the other hand, the variance of $R_{i}$:
 
