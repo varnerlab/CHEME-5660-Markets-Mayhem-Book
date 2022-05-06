@@ -104,7 +104,7 @@ The term $R_{i}(t)\equiv\left(r_{i}\left(t\right) - r_{f}\right)$ describes the 
 :label: defn-single-index-model-standard
 
 Let $R_{i}(t)$ and $R_{m}(t)$ denote the firm specific and market excess returns (random) for time period $t$.
-Further, let $\epsilon_{i}\left(t\right)$ denote a stationary Normally distributed noise process with mean zero and standard deviation $\sigma_{i}$. Then, the standard single index model of Sharpe is given by {cite}`SHARPE1963`:
+Further, let $\epsilon_{i}\left(t\right)$ denote a [stationary normally distributed random noise process](https://en.wikipedia.org/wiki/Normal_distribution) with mean zero and standard deviation $\sigma_{i}$. Then, the standard single index model of Sharpe is given by {cite}`SHARPE1963`:
 
 ```{math}
 :label: eq-single-index-model-standard
@@ -120,7 +120,9 @@ return that is not explained by the market; thus, $\alpha_{i}$ is the
 idiosyncratic return of firm $i$.
 
 The $\beta_{i}$ parameter in Eqn {eq}`eq-single-index-model-standard` has several interpretations. 
-First, $\beta_{i}$ measures how the excess return of firm $i$ is related to the overall excess return of the market; a large $\beta_{i}$ suggests large swings in the return of firm $i$ relative to the overall market return. On the other hand, $\beta_{i}$ can also be interpreted as a measure of the relative risk of investing in firm $i$. 
+First, $\beta_{i}$ measures how the excess return of firm $i$ is related to the overall excess return of the market; a large $\beta_{i}$ suggests the market returns (or losses) are _amplified_ for firm $i$, while
+a small $\beta_{i}$ suggests the market returns (or losses) are _damped_ for firm $i$.
+On the other hand, $\beta_{i}$ can also be interpreted as a measure of the relative risk of investing in firm $i$. 
 
 To understand the various interpretations of $\beta_{i}$, we first must understand that both the firm specific $R_{i}$ and overall market excess returns $R_{m}$ are random variables. Thus, we can compute the expectation and variance of these variables and look at how these quantities depend upon $\beta_{i}$:
 
