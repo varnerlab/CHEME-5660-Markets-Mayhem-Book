@@ -207,7 +207,7 @@ $j\rightarrow{j+1}$.
 ````
 
 We can compute the volatility of the share price of `XYZ` from historic data; computing the volatility from data
-gives the _historic volatility_ which is a backward looking measure of price volatility.
+gives the _historic volatility_ which is a backward looking measure of the price volatility.
 {prf:ref}`algo-volatility` describes how to calculate the unweighted volatility from a 
 historic price dataset $\bar{\mathcal{D}}$. 
 
