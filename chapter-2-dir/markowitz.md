@@ -208,16 +208,16 @@ $j\rightarrow{j+1}$.
 
 We can compute the volatility of the share price of `XYZ` from historic data; computing the volatility from data
 gives the _historic volatility_ which is a backward looking measure of the price volatility.
-{prf:ref}`algo-volatility` describes how to calculate the unweighted volatility from a 
-historic price dataset $\bar{\mathcal{D}}$. 
+{prf:ref}`algo-volatility-unweighted` describes an approach to calculate the _unweighted_ volatility (along with the return) from a 
+historic price dataset $\bar{\mathcal{D}}$; an _unweighted_ volatility (return) assumes all price values in dataset $\bar{\mathcal{D}}$
+are equally important.  
 
-```{prf:algorithm} Unweighted Historic Volatility for Firm $i$ 
-:label: algo-volatility
+```{prf:algorithm} Unweighted Historic Return and Volatility for Firm $i$ 
+:label: algo-volatility-unweighted 
 
-**Inputs** Ticker `XYZ` price dataset $\bar{\mathcal{D}}$ for 
-time-range $T$
+**Inputs** Ticker `XYZ` price dataset $\bar{\mathcal{D}}$ for time period $1\rightarrow T$
 
-**Output** historic unweighted volatility for ticker `XYZ`
+**Output** unweighted rerturn and volatility for ticker `XYZ`
 
 1. sort dataset $\mathcal{D}\leftarrow\bar{\mathcal{D}}$ from newest to oldest prices.
 1. initialize $\bar{r}~\leftarrow$ Array($\dim\left(T\right)$ - 1)
@@ -229,8 +229,48 @@ time-range $T$
 
 1. compute mean return $\mu\leftarrow\left({\dim{T} - 1}\right)^{-1}\times\displaystyle{\sum_{k=1}^{\dim(T) - 1}\bar{r}\left[k\right]}$
 1. compute $\sigma^{2} \leftarrow \left({\dim{T} - 2}\right)^{-1}\times\displaystyle{\sum_{k=1}^{\dim(T) - 1}\left(\bar{r}\left[k\right]-\mu\right)^2}$
-1. return $\sigma\leftarrow\sqrt{\sigma^{2}}$
+1. $\sigma\leftarrow\sqrt{\sigma^{2}}$
+1. rerurn ($\bar{r},\sigma$)
+```
 
+### Weighted Volatility
+Suppose the recent trend in `XYZ` prices is significantly different from long-term historical price trends, e.g., `XYZ` has recently experienced a sustained period of decline. You might want to weigh the more recent data more highly than the past data to make your estimated volatility (return) more representative of current trends. Of course, the opposite could also be true; you could also empathize older versus newer data. In these cases, you would compute a weighted volatility (return). 
+
+The weighted volatility for time point $n$ is computed over a window of length $m$, using data from the previous $n-1\rightarrow{n-m}$ time points:  
+
+```{math}
+:label: eqn-wghted-vol
+\sigma^{2}_{n} = \sum_{i=1}^{m}\alpha_{i}\left(\bar{r}_{n-i} - \mu\right)^2
+```
+
+where $\alpha_{i}>0~\forall{i}$ denotes the weight of the ith element in the window of length $m$ such that:
+
+```{math}
+\sum_{i=1}^{m}\alpha_{i} = 1
+```
+
+Thus, while Eqn. {eq}`eqn-wghted-vol` is still a backward-looking calculation (over the previous $m$ time points), the relative  importance of each time point is controlled by the selection of the weights $\alpha_{i}$. One common approach is the [exponentially weighted moving average](https://en.wikipedia.org/wiki/Moving_average), where the weight of 
+each older data value decreases exponentially but never reaches zero. An easy implementation of the 
+[exponentially weighted moving average](https://en.wikipedia.org/wiki/Moving_average) is to assume 
+$\alpha_{i+1} = \lambda\alpha_{i}$ where $0<\lambda\leq{1}$, which gives a recursion of the form:
+
+```{math}
+:label: eqn-wghted-vol-exma
+\sigma^{2}_{n} = \lambda\sigma_{n-1}^{2} + (1-\lambda)\left(\bar{r}_{n-1} - \mu\right)^2
+```
+
+{prf:ref}`algo-volatility-exp-weighted` implements the [exponentially weighted moving average](https://en.wikipedia.org/wiki/Moving_average) approach, emphasizing recent over past data. {prf:ref}`algo-volatility-exp-weighted` was inspired by the [exponentially weighted moving average](https://en.wikipedia.org/wiki/Moving_average) discussion in Hull {cite}`HULL2009`
+
+```{prf:algorithm} Exponentially Weighted Moving Average Return and Volatility for Firm $i$ 
+:label: algo-volatility-exp-weighted
+
+**Inputs** Ticker `XYZ` dataset $\bar{\mathcal{D}}$ for time period $1\rightarrow T$, starting index $n$, 
+window length $m$, and weight parameter $\lambda$.
+
+**Output** exponentially weighted return and volatility for ticker `XYZ`
+
+1. sort dataset $\mathcal{D}\leftarrow\bar{\mathcal{D}}$ from newest to oldest prices.
+1. initialize $\bar{r}~\leftarrow$ Array(m)
 
 ```
 
