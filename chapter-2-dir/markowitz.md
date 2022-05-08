@@ -180,31 +180,60 @@ Putting these two regimes together gives fundamental insight into the behavior o
 
 ````
 
-
-
-<!-- as a ratio of risks, i.e., the risk of firm $i$ normalized by the overall market risk. Thus, values of $\beta_{i}$ fall into the ranges:
-
-
-
-* $\beta_{i}>1$: Firm $i$ is riskier than the overall market
-* $\beta_{i}\sim{1}$: Firm $i$ has approximately the same risk as the overall market
-* $\beta_{i}<{1}$: Firm $i$ has less risk than the overall market
-* $\beta_{i}\sim{0}$: Firm $i$ is risk-free or firm $i$ is completely uncorrelated with the overall market
-* $\beta_{i}<{0}$: Firm $i$ is anti-correlated with the overall market -->
-
 ### Expected Excess Returns from Data
-Suppose we had price data $\mathcal{P}$ of asset $i$ from time $1\rightarrow{T}$, e.g., the daily closing share
-price for firm $i$ with ticker symbol `XYZ` for the past $T$ days. Then, using the definition of expectation we know:
+Suppose we had a data set $\mathcal{P}$ that contained the daily close
+price for a share of stock of firm $i$ for the last $T$ days, e.g., $1\rightarrow{T}$. 
+Let the ticker symbol for firm $i$ be given by `XYZ`.
+Then, from the definition of expectation, we know the expected excess return for `XYZ` is given by:
 
 ```{math}
-\mathbb{E}\left(R_{i}\right) = \sum_{t=1}^{T}p_{i}(t)R_{i,t}
+:label: eq-defn-expected-return
+\mathbb{E}\left(R_{i}\right) = \sum_{t}p(t)R_{i,t}
 ```
 
-where the probability of $R_{i,t}$, denoted by $p_{i}(t)$, is subject to:
+where the probability terms are subject to $\sum_{t}p(t) = 1$.
+
+The probability terms in Eqn. {eq}`eq-defn-expected-return` have several interpretations. First, they could represent the output
+of some (unknown) market process governing the returns. Another actionable interpretation is to think of them as weighting
+factors. Suppose the recent trend in `XYZ` prices is significantly different from long-term historical price trends, e.g., `XYZ` has recently experienced a sustained period of decline. You could weigh the recent data more highly
+to calculate an expected return (or volatility) that is more representative of current trends. Of course, the opposite could also be true; you could also empathize older versus newer data. 
+
+Many weighting schemes could be used; any approach that obeys the axioms of probability will work! However, let's borrow a strategy from chemical physics, namely, we'll assume $p(t)$ follows the [Boltzmann distribution](https://en.wikipedia.org/wiki/Boltzmann_distribution).
+
+````{prf:definition} Boltzmann weighted excess returns
+
+The expected excess return for firm $i$ is given by:
 
 ```{math}
-\sum_{t=1}^{T}p_{i}(t) = 1\qquad\forall{T}
+\mathbb{E}\left(R_{i}\right) = \sum_{t}p(t)R_{i,t}
 ```
+
+where $R_{i,t}$ denotes the excess return in time period $t$ for firm $i$. 
+Further, let the probability factors $p(t)$ follow a [Boltzmann distribution](https://en.wikipedia.org/wiki/Boltzmann_distribution):
+
+```{math}
+p(t) = \frac{1}{Z}\exp(-\lambda\epsilon_{t})
+```
+
+where the partition function $Z$ is given by $Z = \sum_{t}\exp(-\lambda\epsilon_{t})$, $\lambda\geq{0}$ is an adjustable parameter, 
+and $\epsilon_{t}>0$ is the pseudo energy of the market at time $t$.  Then, the Boltzmann weighted expected excess return is given by: 
+
+```{math}
+:label: eq-boltzmann-wght-excess-return
+\mathbb{E}\left(R_{i}\right) = \frac{1}{Z}\sum_{t}\exp\left(-\lambda\epsilon_{t}\right){R}_{i,t}
+```
+
+````
+
+
+
+
+
+
+
+
+
+
 
 ## Volatility
 The volatility of an asset price e.g., the share price of firm $i$ with ticker symbol `XYZ` is 
@@ -247,8 +276,6 @@ are equally important.
 ```
 
 ### Weighted Volatility
-Suppose the recent trend in `XYZ` prices is significantly different from long-term historical price trends, e.g., `XYZ` has recently experienced a sustained period of decline. You might want to weigh the more recent data more highly than the past data to make your estimated volatility (return) more representative of current trends. Of course, the opposite could also be true; you could also empathize older versus newer data. In these cases, you would compute a weighted volatility (return). 
-
 The weighted volatility for time point $n$ is computed over a window of length $m$, using data from the previous $n-1\rightarrow{n-m}$ time points:  
 
 ```{math}
