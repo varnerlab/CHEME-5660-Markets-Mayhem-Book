@@ -1,7 +1,21 @@
+---
+jupytext:
+  formats: md:myst
+  text_representation:
+    extension: .md
+    format_name: myst
+kernelspec:
+  display_name: Julia
+  language: julia
+  name: julia-1.7
+---
+
 # Modern Portfolio Theory
 Modern portfolio theory (MPT) is a practical method for selecting collection of assets e.g., stocks or bonds in order to maximize the overal reward of the investor within an acceptable level of risk to the investor. Harry Markowitz, who developed the mathematical foundation of MPT {cite}`MPT1952`, was later awarded a [Nobel Prize for his work in 1990](https://www.nobelprize.org/prizes/economic-sciences/1990/markowitz/facts/). 
 
 The central theme of Markowitz is the balance between risk and reward, where reward is measured as the [return](https://www.investopedia.com/terms/r/return.asp) of a basket of assets, while risk is measured as the standard deviation (or sometimes the variance) of the logrithmic return, otherwise known as [volatility](https://en.wikipedia.org/wiki/Volatility_(finance)). 
+
+---
 
 ## Returns
 The return of an asset is a measure of the difference in the price of that asset between two time periods. 
@@ -201,6 +215,7 @@ to calculate an expected return (or volatility) that is more representative of c
 Many weighting schemes could be used; any approach that obeys the axioms of probability will work! However, let's borrow a strategy from chemical physics, namely, we'll assume $p(t)$ follows the [Boltzmann distribution](https://en.wikipedia.org/wiki/Boltzmann_distribution).
 
 ````{prf:definition} Boltzmann weighted excess returns
+:label: defn-bwer
 
 The expected excess return for firm $i$ is given by:
 
@@ -219,20 +234,19 @@ where the partition function $Z$ is given by $Z = \sum_{t}\exp(-\lambda\epsilon_
 and $\epsilon_{t}>0$ is the pseudo energy of the market at time $t$.  Then, the Boltzmann weighted expected excess return is given by: 
 
 ```{math}
-:label: eq-boltzmann-wght-excess-return
 \mathbb{E}\left(R_{i}\right) = \frac{1}{Z}\sum_{t}\exp\left(-\lambda\epsilon_{t}\right){R}_{i,t}
 ```
-
 ````
 
+Depending upon how we choose $\lambda$ and the pseudo energies in {prf:ref}`defn-bwer`, we can recover 
+equally weigted, past or present weighted expectations.
 
-
-
-
-
-
-
-
+```{code-cell} julia
+using LinearAlgebra
+x = [1,2,3]
+y = [-1,-2,-3]
+dot(x,y)
+```
 
 
 ## Volatility
@@ -313,6 +327,8 @@ window length $m$, and weight parameter $\lambda$.
 1. initialize $\bar{r}~\leftarrow$ Array(m)
 
 ```
+
+---
 
 ## The Markowitz Portfolio Allocation Problem
 Fill me in.
