@@ -14,8 +14,8 @@ logarithmic return.
 ````{prf:definition} Fractional return
 :label: defn-percentage-return
 
-Let the price of asset $i$ at any time $j$ be denoted by $P_{ij}>0$. Then the fractional return 
-on asset $i$ over time horizon $j\rightarrow{k},i\neq{k}$ is defined as: 
+Let the price of asset $i$ at any time $j$ be given by $P_{ij}>0$. Then the fractional return 
+on asset $i$ over time horizon $j\rightarrow{k},j\neq{k}$ is defined as: 
 
 ```{math}
 r_{i,j\rightarrow{k}} \equiv \frac{P_{ik} - P_{ij}}{P_{ij}}
@@ -43,6 +43,7 @@ P_{ij} = \left(1+r_{i,j-1\rightarrow{j}}\right)P_{i,j-1}
 ```
 
 Thus, the fractional daily return (or a fractional return computed between any two different dates) is a type of discount rate that quantifies how the value of an asset changes, in the case of the share price of ticker `XYZ`, because of market forces. 
+Becuase $P_{i,\star}$ is a random variable, the return is also a random variable. 
 
 (content:references:log-return)=
 ### Logarithmic return
@@ -50,8 +51,8 @@ Thus, the fractional daily return (or a fractional return computed between any t
 ````{prf:definition} Logarithmic return
 :label: defn-log-return
 
-Let the price of asset $i$ at any time $j$ be denoted by $P_{ij}>0$. Then the logarithmic return 
-on asset $i$ over time horizon $j\rightarrow{k},i\neq{k}$ is defined as: 
+Let the price of asset $i$ at any time $j$ be gievm by $P_{ij}>0$. Then the logarithmic return 
+on asset $i$ over time horizon $j\rightarrow{k},j\neq{k}$ is defined as: 
 
 ```{math}
 \bar{r}_{i,j\rightarrow{k}} \equiv \log\left(\frac{P_{ij}}{P_{ik}}\right)
@@ -79,6 +80,7 @@ P_{ij} = \exp\left(\bar{r}_{i,j-1\rightarrow{j}}\right)P_{i,j-1}
 ```
 
 Thus, the logarithmic daily return (or a logarithmic return computed between any two different dates) is a continuous discount rate that quantifies how the value of an asset, e.g., the share price of ticker `XYZ`, changes because of market forces. 
+Becuase $P_{i,\star}$ is a random variable, the return is also a random variable. 
 
 ### Single Index Return Models
 The {ref}`content:references:fractional-return` or {ref}`content:references:log-return` can be computed
@@ -190,8 +192,19 @@ Putting these two regimes together gives fundamental insight into the behavior o
 * $\beta_{i}\sim{0}$: Firm $i$ is risk-free or firm $i$ is completely uncorrelated with the overall market
 * $\beta_{i}<{0}$: Firm $i$ is anti-correlated with the overall market -->
 
+### Expected Excess Returns from Data
+Suppose we had price data $\mathcal{P}$ of asset $i$ from time $1\rightarrow{T}$, e.g., the daily closing share
+price for firm $i$ with ticker symbol `XYZ` for the past $T$ days. Then, using the definition of expectation we know:
 
+```{math}
+\mathbb{E}\left(R_{i}\right) = \sum_{t=1}^{T}p_{i}(t)R_{i,t}
+```
 
+where the probability of $R_{i,t}$, denoted by $p_{i}(t)$, is subject to:
+
+```{math}
+\sum_{t=1}^{T}p_{i}(t) = 1\qquad\forall{T}
+```
 
 ## Volatility
 The volatility of an asset price e.g., the share price of firm $i$ with ticker symbol `XYZ` is 
@@ -209,22 +222,22 @@ $j\rightarrow{j+1}$.
 We can compute the volatility of the share price of `XYZ` from historic data; computing the volatility from data
 gives the _historic volatility_ which is a backward looking measure of the price volatility.
 {prf:ref}`algo-volatility-unweighted` describes an approach to calculate the _unweighted_ volatility (along with the return) from a 
-historic price dataset $\bar{\mathcal{D}}$; an _unweighted_ volatility (return) assumes all price values in dataset $\bar{\mathcal{D}}$
+historic price dataset $\bar{\mathcal{P}}$; an _unweighted_ volatility (return) assumes all price values in dataset $\bar{\mathcal{P}}$
 are equally important.  
 
 ```{prf:algorithm} Unweighted Historic Return and Volatility for Firm $i$ 
 :label: algo-volatility-unweighted 
 
-**Inputs** Ticker `XYZ` price dataset $\bar{\mathcal{D}}$ for time period $1\rightarrow T$
+**Inputs** Ticker `XYZ` price dataset $\bar{\mathcal{P}}$ for time period $1\rightarrow T$
 
 **Output** unweighted rerturn and volatility for ticker `XYZ`
 
-1. sort dataset $\mathcal{D}\leftarrow\bar{\mathcal{D}}$ from newest to oldest prices.
+1. sort dataset $\mathcal{P}\leftarrow\bar{\mathcal{P}}$ from newest to oldest prices.
 1. initialize $\bar{r}~\leftarrow$ Array($\dim\left(T\right)$ - 1)
 1. initialize $\sigma~\leftarrow$ Array($\dim\left(T\right)$ - 1)
 1. for j $\in$ 2:$\dim\left(T\right)$
     
-    1. $P_{1},P_{0} \leftarrow \mathcal{D}\left[j-1\right],\mathcal{D}\left[j\right]$
+    1. $P_{1},P_{0} \leftarrow \mathcal{P}\left[j-1\right],\mathcal{P}\left[j\right]$
     2. $\bar{r}\left[j-1\right]\leftarrow\log\left(P_{1}/P_{0}\right)$
 
 1. compute mean return $\mu\leftarrow\left({\dim{T} - 1}\right)^{-1}\times\displaystyle{\sum_{k=1}^{\dim(T) - 1}\bar{r}\left[k\right]}$
@@ -264,12 +277,12 @@ $\alpha_{i+1} = \lambda\alpha_{i}$ where $0<\lambda\leq{1}$, which gives a recur
 ```{prf:algorithm} Exponentially Weighted Moving Average Return and Volatility for Firm $i$ 
 :label: algo-volatility-exp-weighted
 
-**Inputs** Ticker `XYZ` dataset $\bar{\mathcal{D}}$ for time period $1\rightarrow T$, starting index $n$, 
+**Inputs** Ticker `XYZ` dataset $\bar{\mathcal{P}}$ for time period $1\rightarrow T$, starting index $n$, 
 window length $m$, and weight parameter $\lambda$.
 
 **Output** exponentially weighted return and volatility for ticker `XYZ`
 
-1. sort dataset $\mathcal{D}\leftarrow\bar{\mathcal{D}}$ from newest to oldest prices.
+1. sort dataset $\mathcal{P}\leftarrow\bar{\mathcal{P}}$ from newest to oldest prices.
 1. initialize $\bar{r}~\leftarrow$ Array(m)
 
 ```
