@@ -239,10 +239,13 @@ and $\epsilon_{t}>0$ is the pseudo energy of the market at time $t$.  Then, the 
 ````
 
 Depending upon how we choose $\lambda$ and the pseudo energies in {prf:ref}`defn-bwer`, we can recover 
-equally weigted, past or present weighted expectations.
+equally weighted, past or present weighted expectations.
 
 ```{code-cell} julia
+# Julia comment
 using LinearAlgebra
+
+# Problen
 x = [1,2,3]
 y = [-1,-2,-3]
 dot(x,y)
