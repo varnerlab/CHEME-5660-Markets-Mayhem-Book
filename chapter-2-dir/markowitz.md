@@ -11,13 +11,19 @@ kernelspec:
 ---
 
 # Modern Portfolio Theory
-Modern portfolio theory (MPT) is a practical method for selecting collection of assets e.g., stocks or bonds in order to maximize the overal reward of the investor within an acceptable level of risk to the investor. Harry Markowitz, who developed the mathematical foundation of MPT {cite}`MPT1952`, was later awarded a [Nobel Prize for his work in 1990](https://www.nobelprize.org/prizes/economic-sciences/1990/markowitz/facts/). 
+Modern portfolio theory (MPT) is a practical method for selecting a collection of assets, e.g., stocks or bonds, to maximize the overall reward of the investor within an acceptable level of risk to the investor. Harry Markowitz, who developed the mathematical foundation of MPT {cite}`MPT1952`, was later awarded a [Nobel Prize for his work in 1990](https://www.nobelprize.org/prizes/economic-sciences/1990/markowitz/facts/). 
 
-The central theme of Markowitz is the balance between risk and reward, where reward is measured as the [return](https://www.investopedia.com/terms/r/return.asp) of a basket of assets, while risk is measured as the standard deviation (or sometimes the variance) of the logrithmic return, otherwise known as [volatility](https://en.wikipedia.org/wiki/Volatility_(finance)). 
+The central theme of Markowitz is the balance between risk and reward, where the reward is measured as the [return](https://www.investopedia.com/terms/r/return.asp) of a basket of assets. In contrast, the risk is calculated as the standard deviation (or sometimes the variance) of the logarithmic return, otherwise known as [volatility](https://en.wikipedia.org/wiki/Volatility_(finance)). 
+
+In this chapter:
+* We introduce the idea of reward as a {ref}`content:references:return` on the price of an asset
+* We introduce the idea of risk as the {ref}`content:references:risk-volatility` of the return
+* We introduce the {ref}`content:references:markowitz`
 
 ---
 
-## Returns
+(content:references:return)=
+## Return
 The return of an asset is a measure of the difference in the price of that asset between two time periods. 
 Return can be calculated in many ways; two common approaches are the percentage or fractional return and the
 logarithmic return. 
@@ -251,8 +257,10 @@ y = [-1,-2,-3]
 dot(x,y)
 ```
 
-
+(content:references:risk-volatility)=
 ## Volatility
+Now that we have defined different types of returns, and the rewards of a portfolio, let's define
+risk. This risk of an asset or a collection of assets can be quantified by asset price volatility.
 The volatility of an asset price e.g., the share price of firm $i$ with ticker symbol `XYZ` is 
 defined as the standard deviation of the {ref}`content:references:log-return`:
 
@@ -333,6 +341,7 @@ window length $m$, and weight parameter $\lambda$.
 
 ---
 
+(content:references:markowitz)=
 ## The Markowitz Portfolio Allocation Problem
 Fill me in.
 

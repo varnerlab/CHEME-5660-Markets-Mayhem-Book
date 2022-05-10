@@ -1,7 +1,20 @@
-# Sets, Probability, and Random Variables
+# Probability and Random Variables
 
-What exactly is “probability”? Frequentists argue that probability is the relative frequency of an outcome. For example, if you flip a fair coin infinitely times, you expect to get heads half the time. On the other hand, Bayesians argue that probability is a subjective belief. For example, the probability of getting an A in a class is subjective because no one can take a class infinitely many times to obtain the relative frequency. Differentiation between the frequentists and Bayesian points of view is often not required; the context of your problem will typically suggest which perspective to use. For example, when you have a shortage of data, a Bayesian approach allows you to use prior knowledge. In contrast, frequentists tell us how to compute the confidence interval of an estimate, if we have a latge data set. Whether you prefer the frequentist’s or the Bayesian view, there is a more fundamental notion of probability thanks to [Andrey Kolmogorov](https://en.wikipedia.org/wiki/Andrey_Kolmogorov), namely, probability is a measure of the size of a set.
+Frequentists argue that probability is the relative frequency of an outcome. For example, if you flip a fair coin infinitely times, you expect to get heads half the time. On the other hand, Bayesians argue that probability is a subjective belief. For example, the probability of getting an A in a class is subjective because no one can take a class infinitely many times to obtain the relative frequency. 
+The context of your problem will typically suggest which perspective to use.
+For example, when you have a shortage of data, a Bayesian approach allows you to use prior knowledge. In contrast, frequentists tell us how to compute the confidence interval of an estimate, if we have a latge data set. 
 
+Whether you prefer the frequentist’s or the Bayesian view, there is a more fundamental notion of probability thanks to [Andrey Kolmogorov](https://en.wikipedia.org/wiki/Andrey_Kolmogorov), namely, probability is a measure of the size of a set.
+
+In this chapter:
+
+* We introduce {ref}`content:references:set-theory` and the {ref}`content:references:union-intersection` of items in sets
+* We introduce {ref}`content:references:probability` the Axioms of Probablity ({prf:ref}`axiom-probability`)
+* We introduce {ref}`content:references:random-variables`
+
+---
+
+(content:references:set-theory)=
 ## Set theory
 In mathematics, we are often interested in describing a collection of numbers or other mathematical objects, for example, the numbers $\left[a, b\right]$ on the real line, or the ordered pairs of numbers that define a circle. These collections of numbers can be abstractly defined as sets. 
 A set is simply a collection of mathematical objets. Set theory is a mathematical tool that defines operations on sets. It provides the basic arithmetic for combining, separating, and decomposing sets.
@@ -38,6 +51,7 @@ Two sets $A$ and $B$ are equal if and only if $A \subseteq B$ and $B \subseteq A
 Finally, there are two special types of sets, 
 the empty set $\emptyset$ and the universal set $\Omega$. The empty set contains no elements. For example, if the set $A$ is empty we say $A=\emptyset$. On the other hand, the universal set is the set containing all elements. Thus, if set $A$ contains all possible elements, we say $A=\Omega$.
 
+(content:references:union-intersection)=
 ### Union and Intersection
 We now discuss basic set operations. By operations, we mean functions of two or more sets whose output value is a set. We use these operations to combine and separate sets. Let's first describe the 
 [union](https://en.wikipedia.org/wiki/Union_(set_theory)).
@@ -63,7 +77,7 @@ The finite intersection of two sets $A$ and $B$ contains all elements that are i
 
 $$A\cap{B} = \left\{x\,\vert\,x\in{A} \text{ and } x\in{B}\right\}$$
 ````
-
+(content:references:probability)=
 ## Probability
 
 A probability space is completley described by the tuple $(\Omega,\mathcal{F},P)$:
@@ -141,10 +155,10 @@ to a real number in $\left[0, 1\right]$. The function must satisfy the three axi
 
 ```
 
-## Conditional Probability
+### Conditional Probability
 The motivation of conditional probability is to restrict the probability to a subevent happening in the sample space. If B has happened, the probability for A to also happen is P[A∩B]/P[B]. If two events are not influencing each other, then we say that A and B are independent.
 
-### Independence versus Disjoint
+#### Independence versus Disjoint
 Conditional probability deals with situations where two events $A$ and $B$ are related. 
 However, what if the two events are unrelated? In other words, information about one event says nothing 
 about the second event. In this case, the events $A$ and $B$ are said ot be independent:
@@ -197,7 +211,8 @@ $$P(B) = \sum_{i=1}^{n}P\left(B\,\vert{A_{i}}\right)P\left(A_{i}\right)$$
 
 ````
 
-## Discrete Random Variables
+(content:references:random-variables)=
+## Random Variables and Stochastic Processes
 The sample space and the event space are all based on statements, for example, getting a head when flipping a coin, winning the game, or drawing a card, etc. These statements are not numbers; how do we convert a statement to a number? 
 The answer is a random variable; random variables are mappings from events to numbers, these numbers are probabilities.
 
@@ -229,7 +244,7 @@ $$\Omega = \left\{(HH),(HT),(TH),(TT)\right\}$$
 
 ````
 
-### Expectations, momemnts and variance for discrete random variable
+### Expectations and variance for discrete random variables
 
 ### Bernoulli random variables
 A Bernoulli random variable, the simplest random variable, models a coin-flip.
