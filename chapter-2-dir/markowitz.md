@@ -200,6 +200,9 @@ Putting these two regimes together gives fundamental insight into the behavior o
 
 ````
 
+
+
+
 ### Expected Excess Returns from Data
 Suppose we had a data set $\mathcal{P}$ that contained the daily close
 price for a share of stock of firm $i$ for the last $T$ days, e.g., $1\rightarrow{T}$. 
@@ -236,8 +239,7 @@ Further, let the probability factors $p(t)$ follow a [Boltzmann distribution](ht
 p(t) = \frac{1}{Z}\exp(-\lambda\epsilon_{t})
 ```
 
-where the partition function $Z$ is given by $Z = \sum_{t}\exp(-\lambda\epsilon_{t})$, $\lambda\geq{0}$ is an adjustable parameter, 
-and $\epsilon_{t}>0$ is the pseudo energy of the market at time $t$.  Then, the Boltzmann weighted expected excess return is given by: 
+where the partition function $Z$ is given by $Z = \sum_{t}\exp(-\lambda\epsilon_{t})$, $\lambda\geq{0}$ is an adjustable parameter, and $\epsilon_{t}>0$ is the pseudo energy of the market at time $t$.  Then, the Boltzmann weighted expected excess return is given by: 
 
 ```{math}
 \mathbb{E}\left(R_{i}\right) = \frac{1}{Z}\sum_{t}\exp\left(-\lambda\epsilon_{t}\right){R}_{i,t}
@@ -245,17 +247,36 @@ and $\epsilon_{t}>0$ is the pseudo energy of the market at time $t$.  Then, the 
 ````
 
 Depending upon how we choose $\lambda$ and the pseudo energies in {prf:ref}`defn-bwer`, we can recover 
-equally weighted, past or present weighted expectations.
+equally weighted, past or present exponentially weighted expectations.
 
-```{code-cell} julia
-# Julia comment
-using LinearAlgebra
+```{prf:algorithm} Boltzmann Weighted Expected Return 
+:label: algo-expected-boltzmann-return
 
-# Problen
-x = [1,2,3]
-y = [-1,-2,-3]
-dot(x,y)
+**Inputs** Ticker `XYZ` price dataset $\bar{\mathcal{P}}$ for time period $1\rightarrow T$, 
+annualized risk free rate $r_{f}$, time-window $\mathcal{L}$, $\lambda$, and $\epsilon_{t}>0$ values
+
+**Outputs** Boltzmann weighted expected return, and the unweighted excess return vector for ticker `XYZ`   
+
+**Initialize**
+1. sort dataset $\mathcal{P}\leftarrow\bar{\mathcal{P}}$ from newest to oldest prices.
+1. initialize $R~\leftarrow$ Array($\mathcal{L}$,1)
+1. initialize $W~\leftarrow$ Array($\mathcal{L}$,1)
+1. initialize $\mathcal{N}~\leftarrow$ Array($\mathcal{L}$,1)
+1. for t $\in$ 1:$\mathcal{L}$
+
+    1. compute excess return $R[t]\leftarrow \log\left(P[t]/P[t+1]\right) - r_{f}$
+    1. compute weight factor $W[t]\leftarrow \exp\left(-\lambda\times\epsilon[t]\right)$
+    1. compute weighted return factor $\mathcal{N}[t] \leftarrow R[t]\times~W[t]$
+
+**Process**
+1. compute normalization constant $Z\leftarrow \sum~W$
+1. compute expectation $\mathbb{E}\left(R\right)\leftarrow(1/Z)\times\sum\mathcal{N}$
+1. compute probability $p\leftarrow(1/Z)\times~W$  
+
+**Return**
+1. return expected return $\mathbb{E}\left(R\right)$, excess return $R$, and probability p
 ```
+
 
 (content:references:risk-volatility)=
 ## Volatility
@@ -294,6 +315,7 @@ are equally important.
     1. $P_{1},P_{0} \leftarrow \mathcal{P}\left[j-1\right],\mathcal{P}\left[j\right]$
     2. $\bar{r}\left[j-1\right]\leftarrow\log\left(P_{1}/P_{0}\right)$
 
+1.
 1. compute mean return $\mu\leftarrow\left({\dim{T} - 1}\right)^{-1}\times\displaystyle{\sum_{k=1}^{\dim(T) - 1}\bar{r}\left[k\right]}$
 1. compute $\sigma^{2} \leftarrow \left({\dim{T} - 2}\right)^{-1}\times\displaystyle{\sum_{k=1}^{\dim(T) - 1}\left(\bar{r}\left[k\right]-\mu\right)^2}$
 1. $\sigma\leftarrow\sqrt{\sigma^{2}}$
@@ -342,6 +364,6 @@ window length $m$, and weight parameter $\lambda$.
 ---
 
 (content:references:markowitz)=
-## The Markowitz Portfolio Allocation Problem
+## Markowitz Portfolio Allocation Problem
 Fill me in.
 
