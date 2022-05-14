@@ -214,9 +214,7 @@ Then, from the definition of expectation, we know the expected excess return for
 \mathbb{E}\left(R_{i}\right) = \sum_{t}p(t)R_{i,t}
 ```
 
-where the probability terms are subject to $\sum_{t}p(t) = 1$.
-
-The probability terms in Eqn. {eq}`eq-defn-expected-return` have several interpretations. First, they could represent the output
+where the probability terms are subject to $\sum_{t}p(t) = 1$. The probability terms in Eqn. {eq}`eq-defn-expected-return` have several interpretations. First, they could represent the output
 of some (unknown) market process governing the returns. Another actionable interpretation is to think of them as weighting
 factors. Suppose the recent trend in `XYZ` prices is significantly different from long-term historical price trends, e.g., `XYZ` has recently experienced a sustained period of decline. You could weigh the recent data more highly
 to calculate an expected return (or volatility) that is more representative of current trends. Of course, the opposite could also be true; you could also empathize older versus newer data. 
@@ -239,10 +237,10 @@ Further, let the probability factors $p(t)$ follow a [Boltzmann distribution](ht
 p(t) = \frac{1}{Z}\exp(-\lambda\epsilon_{t})
 ```
 
-where the partition function $Z$ is given by $Z = \sum_{t}\exp(-\lambda\epsilon_{t})$, $\lambda\geq{0}$ is an adjustable parameter, and $\epsilon_{t}>0$ is the pseudo energy of the market at time $t$.  Then, the Boltzmann weighted expected excess return is given by: 
+where the partition function $Z$ is given by $Z = \sum_{t}\exp(-\lambda\epsilon_{t})$, $\lambda\geq{0}$ is an adjustable parameter, and $\epsilon_{t}>0$ is the pseudo energy of the market at time $t$.  Then, the Boltzmann weighted expected excess return $\mathbb{E}_{B}\left(R_{i}\right)$ is given by: 
 
 ```{math}
-\mathbb{E}\left(R_{i}\right) = \frac{1}{Z}\sum_{t}\exp\left(-\lambda\epsilon_{t}\right){R}_{i,t}
+\mathbb{E}_{B}\left(R_{i}\right) = \frac{1}{Z}\sum_{t}\exp\left(-\lambda\epsilon_{t}\right){R}_{i,t}
 ```
 ````
 
@@ -255,26 +253,29 @@ equally weighted, past or present exponentially weighted expectations.
 **Inputs** Ticker `XYZ` price dataset $\bar{\mathcal{P}}$ for time period $1\rightarrow T$, 
 annualized risk free rate $r_{f}$, time-window $\mathcal{L}$, $\lambda$, and $\epsilon_{t}>0$ values
 
-**Outputs** Boltzmann weighted expected return, and the unweighted excess return vector for ticker `XYZ`   
+**Outputs** Boltzmann weighted expected return $\mathbb{E}_{B}\left(R\right)$, 
+the unweighted excess return vector $R$, and the probability array $p$
 
 **Initialize**
 1. sort dataset $\mathcal{P}\leftarrow\bar{\mathcal{P}}$ from newest to oldest prices.
 1. initialize $R~\leftarrow$ Array($\mathcal{L}$,1)
 1. initialize $W~\leftarrow$ Array($\mathcal{L}$,1)
-1. initialize $\mathcal{N}~\leftarrow$ Array($\mathcal{L}$,1)
+1. initialize $\mathcal{R}~\leftarrow$ Array($\mathcal{L}$,1)
+
+**Main**
 1. for t $\in$ 1:$\mathcal{L}$
 
     1. compute excess return $R[t]\leftarrow \log\left(P[t]/P[t+1]\right) - r_{f}$
     1. compute weight factor $W[t]\leftarrow \exp\left(-\lambda\times\epsilon[t]\right)$
-    1. compute weighted return factor $\mathcal{N}[t] \leftarrow R[t]\times~W[t]$
+    1. compute weighted return factor $\mathcal{R}[t] \leftarrow R[t]\times~W[t]$
 
 **Process**
 1. compute normalization constant $Z\leftarrow \sum~W$
-1. compute expectation $\mathbb{E}\left(R\right)\leftarrow(1/Z)\times\sum\mathcal{N}$
+1. compute expectation $\mathbb{E}_{B}\left(R\right)\leftarrow(1/Z)\times\sum\mathcal{R}$
 1. compute probability $p\leftarrow(1/Z)\times~W$  
 
 **Return**
-1. return expected return $\mathbb{E}\left(R\right)$, excess return $R$, and probability p
+1. expected return $\mathbb{E}_{B}\left(R\right)$, excess return vector $R$, and probability array $p$
 ```
 
 

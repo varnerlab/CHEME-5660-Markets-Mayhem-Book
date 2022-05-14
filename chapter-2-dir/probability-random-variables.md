@@ -1,4 +1,4 @@
-# Probability and Random Variables
+# Probability, Random Variables and Stochastic Processes
 
 Frequentists argue that probability is the relative frequency of an outcome. For example, if you flip a fair coin infinitely times, you expect to get heads half the time. On the other hand, Bayesians argue that probability is a subjective belief. For example, the probability of getting an A in a class is subjective because no one can take a class infinitely many times to obtain the relative frequency. 
 The context of your problem will typically suggest which perspective to use.
@@ -8,7 +8,7 @@ Whether you prefer the frequentist’s or the Bayesian view, there is a more fun
 
 In this chapter:
 
-* We introduce {ref}`content:references:set-theory` and the {ref}`content:references:union-intersection` of items in sets
+* We introduce {ref}`content:references:set-theory` and the {ref}`content:references:union-intersection` of sets
 * We introduce {ref}`content:references:probability` the Axioms of Probablity ({prf:ref}`axiom-probability`)
 * We introduce {ref}`content:references:random-variables`
 
