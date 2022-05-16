@@ -106,3 +106,10 @@ where $dW(t)$ is a one-dimensional Wiener Process.
 ````
 
 The use of geometric Brownian motion as a financial mathematical model is primarily due to the work of Samuelson in the 1950s and 1960s {cite}`Merton2006`. However, today Geometric Brownian Motion is more often associated with the Black–Scholes options pricing model (which we'll describe later) {cite}`BlackScholes1973`.
+
+Eqn. {eq}`eq-SDE-GBM` has several excellent properties. 
+For example, Eqn. {eq}`eq-SDE-GBM` has an _analytical_ solution. Thus, we can estimate the price value $X(t)$ precisely as a function of time (no need to develop an approximate solution)!
+However, to develop the analytical solution, we need to introduce some theoretical machinery to do normal calculus operations on stochastic systems, namely [Ito calculus](https://en.wikipedia.org/wiki/Itô_calculus).
+
+### Ito calculus 
+ 
