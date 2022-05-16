@@ -18,7 +18,6 @@ chapters:
   - file: chapter-2-dir/probability-random-variables
   - file: chapter-2-dir/markowitz
   - file: chapter-2-dir/random-walks
-  - file: chapter-2-dir/geometric-brownian-motion
  
 - file: chapter-3-dir/chapter-3
   title: Derivatives, Futures, and Leverage
