@@ -1,5 +1,24 @@
-# Brownian Motion
-A one-dimensional Brownian Motion on the interval $\left[0,T\right]$ is a stochastic process $\left\{W\left(t\right), 0\leq{t}\leq{T}\right\}$ with the following properties:
+# Random Walks and Brownian Motion
+A random walk is a stochastic process that consists of a succession of random steps.
+Random walks can model a huge variety of physical, biological and financial systems.
+For example, the path traced by a molecule as it travels in a liquid or a gas can be modeled as a 
+random walk. In the context of finanical systems, the [random walk hypothesis](https://en.wikipedia.org/wiki/Random_walk_hypothesis) postulates the stock market prices evolve according to a random walk (so price changes are random) and thus cannot be predicted. 
+
+In the finance and economics community there are 
+dueling perpectives on the randomness of stock pricese. 
+[Malkiel](https://en.wikipedia.org/wiki/Burton_Malkiel), in his book [A Random Walk Down Wall Street](https://en.wikipedia.org/wiki/A_Random_Walk_Down_Wall_Street) argues that asset prices typically exhibit signs of a random walk and that one cannot consistently outperform market averages. On the other hand, Lo and MacKinlay present, in thier book [A Non-Random Walk Down Wall Street](https://www.jstor.org/stable/j.ctt7tccx), several
+studies that suggest there are stock market pricing ternds are somewhat predictable. 
+
+In this chapter we'll introduce random walks, and a paricular type of stochastic process called a
+[Wiener Process](https://en.wikipedia.org/wiki/Wiener_process), that underlies [Finanical Brownian Motion](https://en.wikipedia.org/wiki/Brownian_model_of_financial_markets). In particular, we'll introduce:
+
+* The one dimensional {ref}`content:references:wiener-process`
+
+---
+
+(content:references:wiener-process)=
+## Wiener Process
+A one-dimensional  on the interval $\left[0,T\right]$ is a stochastic process $\left\{W\left(t\right), 0\leq{t}\leq{T}\right\}$ with the following properties:
 * W$\left(0\right)$ = $0$
 * W(t) is continuous
 * The increments $\left\{W(t_{1}) - W(t_{o}),\dots, W(t_{k}) - W(t_{k-1})\right\}$ are independent for any $k$ and any $0\leq{t_{o}}< t_{1} < \dots < t_{k} \leq{T}$.
