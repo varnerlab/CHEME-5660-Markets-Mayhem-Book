@@ -111,5 +111,111 @@ Eqn. {eq}`eq-SDE-GBM` has several excellent properties.
 For example, Eqn. {eq}`eq-SDE-GBM` has an _analytical_ solution. Thus, we can estimate the price value $X(t)$ precisely as a function of time (no need to develop an approximate solution)!
 However, to develop the analytical solution, we need to introduce some theoretical machinery to do normal calculus operations on stochastic systems, namely [Ito calculus](https://en.wikipedia.org/wiki/Itô_calculus).
 
-### Ito calculus 
+### Ito's Lemma
+To solve stochastic differential equations analytically (just like ordinary differential equations), we must use tools from calculus. However, for stochastic systems, such as Eqn. {eq}`eq-SDE-GBM` we need a
+different types of calculus, namely [Ito’s calculus](https://en.wikipedia.org/wiki/Itô_calculus), which extends ordinary calculus methods to stochastic systems.  
+
+A significant result from [Ito’s calculus](https://en.wikipedia.org/wiki/Itô_calculus), 
+that allows us to develop analytical solutions to some stochastic differential equations is 
+[Ito's Lemma](https://en.wikipedia.org/wiki/Itô%27s_lemma), discovered by K. Ito in 1951 [REFHERE].
+
+````{prf:lemma} Ito's Lemma
+:label: ito-lemma
+
+Suppose the behavior of $X(t)$ is governed by the stochastic differential equation (Ito Process):
+
+```{math}
+:label: eq-ito-process
+dX = a\left(X(t),t\right)dt + b\left(X(t),t\right)dW(t)
+```
+
+where $dW(t)$ is a Wiener process and $a$ and $b$ are functions of $X(t)$ and $t$. 
+Let $Y(t) = \phi\left(t,X(t)\right)$ be another process that is a function of $X(t)$ and time $t$. 
+Let $\phi\left(t,X(t)\right)$ be twice differentiable with respect to $X(t)$, 
+and singly differentiable with respect to $t$. 
+
+Then, the process $Y(t)$ is governed by the equation:
+
+```{math}
+:label: eq-ito-lemma
+dY = \left(\frac{\partial{Y}}{\partial{t}}+a\frac{\partial{Y}}{\partial{X}}+\frac{b^{2}}{2}\frac{\partial^{2}{Y}}{\partial{X}^{2}}\right)dt+b\left(\frac{\partial{Y}}{\partial{X}}\right)dW(t)
+```
+````
+
+The process of finding a solution to a stochastic differential equation using [Ito's Lemma](https://en.wikipedia.org/wiki/Itô%27s_lemma) works backwards; we propose a function $Y=\phi\left(t,X(t)\right)$ and then construct the stochastic differential equation that governs $Y(t)$. 
+If that stochastic differential equation is the same as the original equation, then we have constructed a solution. 
+
+Let's work through this idea by developing a solution to Eqn. {eq}`eq-SDE-BM`.
+
+````{prf:example} Ito's Lemma Ordinary Brownian Motion 
+:label: ex-ordinary-brownian-motion-soln
+
+Suppose we want to construct a solution to the stochastic differential equation (SDE):
+
+```{math}
+dX\left(t\right) = \mu{dt}+\sigma{dW(t)}
+```
+
+where $\mu$ and $\sigma$ are constants, and $dW(t)$ is a one-dimensional Wiener Process. 
+Let $Y\left(t\right) = X\left(t\right)$. Then, from Ito's Lemma we know that:
+
+* The terms $a=\mu$ and $b=\sigma$ which are both constants
+* The time derivative term $\partial{Y}/\partial{t} = 0$
+* The state derivative term $\partial{Y}/\partial{X} = 1$
+* The state derivative term $\partial^{2}{Y}/\partial{X}^{2} = 0$
+
+which gives from Eqn. {eq}`eq-ito-lemma`:
+
+```{math}
+dY\left(t\right) = \mu{dt}+\sigma{dW(t)}
+```
+
+Integrating both sides from $t_{1}\rightarrow{t_{2}}$ gives:
+
+```{math}
+Y\left(t_{2}\right) - Y\left(t_{1}\right) = \int_{t_{1}}^{t_{2}}\mu{dt}+\int_{t_{1}}^{t_{2}}\sigma{dW(t)}
+```
+
+The first term on the right-hand side is easy to deal with:
+
+```{math}
+\int_{t_{1}}^{t_{2}}\mu{dt} = \mu\left(t_{2} - t_{1}\right)
+```
+
+However, the second term is the integral of a random process (which we don't know how to do!)
+Thus, the best we can do now (substituting $X$ for $Y$ and pulling out constants) is:
+
+```{math}
+:label: ex-ordinary-brownian-motion-soln-almost
+X\left(t_{2}\right) = X\left(t_{1}\right) + \mu\left(t_{2} - t_{1}\right) +\sigma\int_{t_{1}}^{t_{2}}{dW(t)}
+```
+
+````
+
+{prf:ref}`ex-ordinary-brownian-motion-soln` brings up an important question, how do we integrate 
+a random process? The answer is an [Ito Integral](https://en.wikipedia.org/wiki/Itô_calculus#Integration_with_respect_to_Brownian_motion).
+
+### Ito's Integral
+The final integral on the right-hand side of Eqn. {eq}`ex-ordinary-brownian-motion-soln-almost` involves
+integrating over a random process. This is an example of a stochastic integral, which fortunately 
+can be solved as a [Riemann–Stieltjes Integral](https://en.wikipedia.org/wiki/Riemann–Stieltjes_integral):
+
+````{prf:definition} Ordinary Brownian Motion
+:label: riemann–stieltjes-integral
+
+Let the random variable $S(\omega)$ be defined as:
+
+```{math}
+S(\omega) = \int_{t_{0}}^{t_{1}}g\left(t,\omega\right)dW\left(t\right)
+```
+Then we can compute values for $S\left(\omega\right)$ as the Riemann sum:
+
+```{math}
+S_{N}\left(\omega\right) = \sum_{i=1}^{N}g\left(t_{i-1},\omega\right)\Bigl(W(t_{i}) - W(t_{i-1})\Bigr)
+```
+as $N\rightarrow\infty$
+
+````
+
+
  
