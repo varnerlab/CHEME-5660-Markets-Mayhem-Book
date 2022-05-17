@@ -192,8 +192,7 @@ X\left(t_{2}\right) = X\left(t_{1}\right) + \mu\left(t_{2} - t_{1}\right) +\sigm
 
 ````
 
-{prf:ref}`ex-ordinary-brownian-motion-soln` brings up an important question, how do we integrate 
-a random process? The answer is an [Ito Integral](https://en.wikipedia.org/wiki/Itô_calculus#Integration_with_respect_to_Brownian_motion).
+{prf:ref}`ex-ordinary-brownian-motion-soln` brings up an important question, how do we integrate a random process? The answer is an [Ito Integral](https://en.wikipedia.org/wiki/Itô_calculus#Integration_with_respect_to_Brownian_motion).
 
 ### Ito's Integral
 The final integral on the right-hand side of Eqn. {eq}`ex-ordinary-brownian-motion-soln-almost` involves
