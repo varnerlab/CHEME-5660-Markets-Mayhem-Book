@@ -118,7 +118,7 @@ The complement has a number of interesting properties, known collectively as the
 
 (content:references:set-disjoint)=
 ### Disjoint Sets and Partitions
-The last set concept that we explore before turning our attention to probability (and its relationship to sets)
+The last set-theoretic concept that we explore before turning our attention to probability (and its relationship to sets)
 is the [disjoint](https://en.wikipedia.org/wiki/Disjoint_sets) relationship. 
 Suppose we had two sets $A$ and $B$. Then the sets $A$ and $B$ are disjoint if they have no elements in common. 
 
