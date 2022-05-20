@@ -1,3 +1,15 @@
+---
+jupytext:
+  formats: md:myst
+  text_representation:
+    extension: .md
+    format_name: myst
+kernelspec:
+  display_name: Julia
+  language: julia
+  name: julia-1.7
+---
+
 # Probability, Random Variables and Stochastic Processes
 
 Frequentists argue that probability is the relative frequency of an outcome. For example, if you flip a fair coin infinitely times, you expect to get heads half the time. On the other hand, Bayesians argue that probability is a subjective belief. For example, the probability of getting an A in a class is subjective because no one can take a class infinitely many times to obtain the relative frequency. 
@@ -77,6 +89,60 @@ The finite intersection of two sets $A$ and $B$ contains all elements that are i
 
 $$A\cap{B} = \left\{x\,\vert\,x\in{A} \text{ and } x\in{B}\right\}$$
 ````
+
+(content:references:set-complement)=
+### Complement
+In addition to the union and intersection of sets, 
+there is a third basic operation called the [set complement](https://en.wikipedia.org/wiki/Complement_(set_theory)). 
+Suppose you had a set $A\subset\Omega$. Then the complement of $A$, denoted by $\bar{A}$, is 
+everything that is in $\Omega$, but __not__ in $A$.
+
+````{prf:definition} Complement
+:label: defn-complement
+
+The abosulte complement of a set $A$, denoted by $\bar{A}$, is the set containing all elements that are in $\Omega$ but not in $A$:
+
+```{math}
+\bar{A} = \left\{x\  \vert\ x\in\Omega \text{ and } x\notin{A} \right\}
+```
+
+The complement has a number of interesting properties, known collectively as the Complement laws. 
+
+* P1: $A\cup{\bar{A}} = \Omega$. The set $A$ and it's complement $\bar{A}$ make up the sample space $\Omega$.
+* P2: $A\cup{\bar{A}} = \emptyset$. There are no elements outside of $A$ and it's complement $\bar{A}$.
+* P3: $\bar{\emptyset} = \Omega$. The complement of the emptyset $\emptyset$ is the sample space $\Omega$.
+* P4: $\bar{\Omega} = \emptyset$. There is nothing outside of the sample space $\Omega$.
+* P5: $\bar{\bar{A}} = A$. The complement of the complement returns the original set $A$.
+
+````
+
+(content:references:set-disjoint)=
+### Disjoint Sets and Partitions
+The last set concept that we explore before turning our attention to probability (and its relationship to sets)
+is the [disjoint](https://en.wikipedia.org/wiki/Disjoint_sets) relationship. 
+Suppose we had two sets $A$ and $B$. Then the sets $A$ and $B$ are disjoint if they have no elements in common. 
+
+````{prf:definition} Disjoint
+:label: defn-disjoint
+
+Two sets $A$ and $B$ are said to be disjoint if thier intersection is the emptyset $\emptyset$ (they have no common elements):
+
+```{math}
+A\cap{B} = \emptyset
+```
+
+For a collection of sets $\left\{A_{1},A_{2},\dots, A_{n}\right\}$, then the collection is disjoint if:
+
+
+```{math}
+A_{i}\cap{A_{j}} = \emptyset
+```
+
+for all pairs of sets $A_{i}$ and $A_{j}$ where $i\neq{j}$.
+
+````
+
+
 (content:references:probability)=
 ## Probability
 
