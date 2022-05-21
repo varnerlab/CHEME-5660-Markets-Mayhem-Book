@@ -165,8 +165,18 @@ __Condition 2__: The union of the sets $\left\{A_{1},A_{2},\dots, A_{n}\right\}$
 ````
 
 The partition ({prf:ref}`defn-partition`) of the universal set $\Omega$ is a collection of smaller non-overlapping subsets whose union gives back the universal set $\Omega$. 
-Partitions are important because they allow us to decompose the universal set $\Omega$ into a collection of smaller subsets. Since these smaller subsets are disjoint, i.e., they do not overlap, we can analyze them separately from each other. In the context of probability, partitions are essential tools because they allow us to decouple complex events
-into many smaller disconnected events.
+Partitions are important because they allow us to decompose the universal set $\Omega$ into a collection of smaller subsets. Since these smaller subsets are disjoint, i.e., they do not overlap, we can analyze them separately from each other. 
+
+In the context of probability, partitions are essential tools because they allow us to decouple complex events
+into many smaller disconnected events. 
+For example, suppose the collection of sets $\left\{A_{1},A_{2},\dots, A_{n}\right\}$ is a partition of $\Omega$.
+Then, for any set $B\subseteq\Omega$ we can decompose $B$ into smaller disjoint components $B\cap{A_{i}}$ 
+(the elements of $B$ that are in $A_{i}$):
+
+```{math}
+:label: eqn-decomp-partition
+\bigcup_{i=1}^{n}B\cap{A_{i}} = B
+```
 
 (content:references:probability)=
 ## Probability
