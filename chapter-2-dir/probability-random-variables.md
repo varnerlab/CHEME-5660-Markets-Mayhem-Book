@@ -108,19 +108,19 @@ The abosulte complement of a set $A$, denoted by $\bar{A}$, is the set containin
 
 The complement has a number of interesting properties, known collectively as the Complement laws. 
 
-* P1: $A\cup{\bar{A}} = \Omega$. The set $A$ and it's complement $\bar{A}$ make up the sample space $\Omega$.
+* P1: $A\cup{\bar{A}} = \Omega$. The set $A$ and it's complement $\bar{A}$ make up the universal set $\Omega$.
 * P2: $A\cup{\bar{A}} = \emptyset$. There are no elements outside of $A$ and it's complement $\bar{A}$.
-* P3: $\bar{\emptyset} = \Omega$. The complement of the emptyset $\emptyset$ is the sample space $\Omega$.
-* P4: $\bar{\Omega} = \emptyset$. There is nothing outside of the sample space $\Omega$.
+* P3: $\bar{\emptyset} = \Omega$. The complement of the emptyset $\emptyset$ is the universal set $\Omega$.
+* P4: $\bar{\Omega} = \emptyset$. There is nothing outside of the universal set $\Omega$.
 * P5: $\bar{\bar{A}} = A$. The complement of the complement returns the original set $A$.
 
 ````
 
 (content:references:set-disjoint)=
 ### Disjoint Sets and Partitions
-The last set-theoretic concept that we explore before turning our attention to probability (and its relationship to sets)
-is the [disjoint](https://en.wikipedia.org/wiki/Disjoint_sets) relationship. 
-Suppose we had two sets $A$ and $B$. Then the sets $A$ and $B$ are disjoint if they have no elements in common. 
+The last set-theoretic concepts that we explore before turning our attention to probability (and its relationship to sets)
+is the [disjoint](https://en.wikipedia.org/wiki/Disjoint_sets) relationship, and the idea of a partition.
+Suppose we had two sets $A$ and $B$; the sets $A$ and $B$ are disjoint if they have no elements in common. 
 
 ````{prf:definition} Disjoint
 :label: defn-disjoint
@@ -142,6 +142,31 @@ for all pairs of sets $A_{i}$ and $A_{j}$ where $i\neq{j}$.
 
 ````
 
+Now that we understand disjoint sets ({prf:ref}`defn-disjoint`), we can define a partition of the universal set $\Omega$.
+````{prf:definition} Partition
+:label: defn-partition
+
+A collection of sets $\left\{A_{1},A_{2},\dots, A_{n}\right\}$ is a partition of $\Omega$ if the following 
+two conditions are true:
+
+__Condition 1__: the collection of sets $\left\{A_{1},A_{2},\dots, A_{n}\right\}$ is disjoint
+
+```{math}
+A_{i}\cap{A_{j}} = \emptyset
+```
+
+for all pairs of sets $A_{i}$ and $A_{j}$ where $i\neq{j}$.
+
+__Condition 2__: The union of the sets $\left\{A_{1},A_{2},\dots, A_{n}\right\}$ gives the universal set $\Omega$:
+
+```{math}
+\bigcup_{i=1}^{n}A_{i} = \Omega
+```
+````
+
+The partition ({prf:ref}`defn-partition`) of the universal set $\Omega$ is a collection of smaller non-overlapping subsets whose union gives back the universal set $\Omega$. 
+Partitions are important because they allow us to decompose the universal set $\Omega$ into a collection of smaller subsets. Since these smaller subsets are disjoint, i.e., they do not overlap, we can analyze them separately from each other. In the context of probability, partitions are essential tools because they allow us to decouple complex events
+into many smaller disconnected events.
 
 (content:references:probability)=
 ## Probability
