@@ -317,34 +317,6 @@ $$P(B) = \sum_{i=1}^{n}P\left(B\,\vert{A_{i}}\right)P\left(A_{i}\right)$$
 The sample space and the event space are all based on statements, for example, getting a head when flipping a coin, winning the game, or drawing a card, etc. These statements are not numbers; how do we convert a statement to a number? 
 The answer is a random variable; random variables are mappings from events to numbers, these numbers are probabilities.
 
-### Probability mass function
-In the case of discrete random variables, for example, dice roles, coin flips etc, this is done using a concept called a [probability mass function (PMF)](https://en.wikipedia.org/wiki/Probability_mass_function). 
-
-
-````{prf:definition} Probability Mass Function
-:label: defn-pmf
-
-The probability mass function (PMF) of a random variable X is a function which specifies the probability of 
-obtaining a number $x$
-
-$$p_{X}(x) = P\left(X=x\right)$$
-
-The set of all possible states of $X$ is denoted as $X\left(\Omega\right)$. A PMF should satisfy the condition:
-
-$$\sum_{x\in{X(\Omega)}}p_{X}(x)=1$$
-````
-
-The PMF is the weighing function for discrete random variables. To illustrate this idea, lets consider an example:
-
-````{prf:example} PMF example
-:label: ex-pmf-double-coin-flip
-
-Let's consider an experiment where we flip a coin 2 times. The sample space $\Omega$ is given by:
-
-$$\Omega = \left\{(HH),(HT),(TH),(TT)\right\}$$
-
-````
-
 ### Expectation of discrete random variables
 It is often helpful to extract essential parameters such as the mean
 or standard deviation of the return when analyzing financial data. If we hypothesize that markets are random, 
@@ -374,12 +346,40 @@ The expectation of a random variable has several useful properties.
 ### Moments and variance of discrete random variables
 
 
-### Bernoulli random variables
+### Probability mass function
+In the case of discrete random variables, for example, dice roles, coin flips etc, this is done using a concept called a [probability mass function (PMF)](https://en.wikipedia.org/wiki/Probability_mass_function). 
+
+
+````{prf:definition} Probability Mass Function
+:label: defn-pmf
+
+The probability mass function (PMF) of a random variable X is a function which specifies the probability of 
+obtaining a number $x$
+
+$$p_{X}(x) = P\left(X=x\right)$$
+
+The set of all possible states of $X$ is denoted as $X\left(\Omega\right)$. A PMF should satisfy the condition:
+
+$$\sum_{x\in{X(\Omega)}}p_{X}(x)=1$$
+````
+
+The PMF is the weighing function for discrete random variables. To illustrate this idea, lets consider an example:
+
+````{prf:example} PMF example
+:label: ex-pmf-double-coin-flip
+
+Let's consider an experiment where we flip a coin 2 times. The sample space $\Omega$ is given by:
+
+$$\Omega = \left\{(HH),(HT),(TH),(TT)\right\}$$
+
+````
+
+#### Bernoulli random variables
 A Bernoulli random variable, the simplest random variable, models a coin-flip.
 Bernoulli random variable have two states: either 1 or 0. The probability of getting 1 is $p$, while the probability of getting a value of 0 is $1 − p$. Bernoulli random variables model many binary events: coin flips (H or T), 
 binary bits (1 or 0), true or false, yes or no, present or absent, etc.
 
-### Binomial random variable
+#### Binomial random variable
 The binomial distribution is the probability of getting exactly $k$ successes in $n$ independent Bernoulli trials. 
 For example, the probability of getting 4 heads in 6 coin tosses. 
 
@@ -393,7 +393,7 @@ $$p_{X}(k) = \binom{n}{k}p^{k}\left(1-p\right)^{n-k}\qquad{k=0,1,\dots,n}$$
 where $p$ denotes the binomial parameter $0<p<1$, and $n$ is the number of states.
 ````
 
-### Geometric random variable
+#### Geometric random variable
 In some applications, we are interested in trying a binary experiment e.g., a coin flip until a specified outcome is obtained.
 The outcome of this type of experiment is governed by a geometric random variable; 
 a geometric random variable describes the number of failures obtained before a final success.
