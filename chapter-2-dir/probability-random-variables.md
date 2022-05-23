@@ -345,7 +345,34 @@ $$\Omega = \left\{(HH),(HT),(TH),(TT)\right\}$$
 
 ````
 
-### Expectations and variance for discrete random variables
+### Expectation of discrete random variables
+It is often helpful to extract essential parameters such as the mean
+or standard deviation of the return when analyzing financial data. If we hypothesize that markets are random, 
+then the values for these parameters can be estimated from the random prices observed in the market.
+
+Let the price of some asset, e.g., `XYZ,` stock price, be a discrete random variable denoted by $X$. 
+Then expectation is the mean of the random variable $X$.
+
+````{prf:definition} Expectation
+:label: defn-expectation
+
+Let $X$ denote a discrete random variable. Then, the expectation of the random variable $X$ is given by:
+
+```{math}
+:label: eq-defn-expectation
+\mathbb{E}\left(X\right) = \sum_{x\in{X(\Omega)}}xp_{X}(x)
+```
+
+where $p_{X}(x)$ denotes the probability that random variable $X=x$, and 
+$X(\Omega)$ denotes sample space for $X$ (the set of all possible values that the random variable $X$ can take.)
+
+
+````
+
+The expectation of a random variable has several useful properties. 
+
+### Moments and variance of discrete random variables
+
 
 ### Bernoulli random variables
 A Bernoulli random variable, the simplest random variable, models a coin-flip.
