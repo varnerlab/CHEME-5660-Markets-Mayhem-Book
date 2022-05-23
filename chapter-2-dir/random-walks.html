@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Randon Processes and Brownian Motion &#8212; CHEME 5660</title>
+    <title>Random Walks and Brownian Motion &#8212; CHEME 5660</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -56,8 +56,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Geometric Brownian Motion" href="geometric-brownian-motion.html" />
-    <link rel="prev" title="Sets, Probability, and Random Variables" href="probability-random-variables.html" />
+    <link rel="next" title="The Fantastic but Dangerous World of Derivatives, Futures, Hedging and Leverage" href="../chapter-3-dir/chapter-3.html" />
+    <link rel="prev" title="Modern Portfolio Theory" href="markowitz.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -109,7 +109,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../chapter-1-dir/chapter-1.html">
-   Money, Markets and the Global Financial System
+   Assets, Money, Markets and the Global Financial System
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
   <label for="toctree-checkbox-1">
@@ -146,22 +146,17 @@ const thebe_selector_output = ".output, .cell_output"
   <ul class="current">
    <li class="toctree-l2">
     <a class="reference internal" href="probability-random-variables.html">
-     Sets, Probability, and Random Variables
-    </a>
-   </li>
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
-     Randon Processes and Brownian Motion
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="geometric-brownian-motion.html">
-     Geometric Brownian Motion
+     Probability, Random Variables and Stochastic Processes
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="markowitz.html">
      Modern Portfolio Theory
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Random Walks and Brownian Motion
     </a>
    </li>
   </ul>
@@ -286,8 +281,42 @@ const thebe_selector_output = ".output, .cell_output"
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#simulating-an-ordinary-brownian-random-walk">
-   Simulating an Ordinary Brownian Random Walk
+  <a class="reference internal nav-link" href="#wiener-processes">
+   Wiener Processes
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ordinary-brownian-motion">
+   Ordinary Brownian Motion
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#discrete-approximation-of-a-continuous-process">
+     Discrete approximation of a continuous process
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ito-s-calculus">
+   Ito’s Calculus
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ito-s-lemma">
+     Ito’s Lemma
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ito-stochastic-integral">
+     Ito Stochastic Integral
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#geometric-brownian-motion">
+   Geometric Brownian Motion
   </a>
  </li>
 </ul>
@@ -300,7 +329,7 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Randon Processes and Brownian Motion</h1>
+                <h1>Random Walks and Brownian Motion</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -311,8 +340,42 @@ const thebe_selector_output = ".output, .cell_output"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#simulating-an-ordinary-brownian-random-walk">
-   Simulating an Ordinary Brownian Random Walk
+  <a class="reference internal nav-link" href="#wiener-processes">
+   Wiener Processes
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ordinary-brownian-motion">
+   Ordinary Brownian Motion
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#discrete-approximation-of-a-continuous-process">
+     Discrete approximation of a continuous process
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ito-s-calculus">
+   Ito’s Calculus
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ito-s-lemma">
+     Ito’s Lemma
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ito-stochastic-integral">
+     Ito Stochastic Integral
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#geometric-brownian-motion">
+   Geometric Brownian Motion
   </a>
  </li>
 </ul>
@@ -324,34 +387,70 @@ const thebe_selector_output = ".output, .cell_output"
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="randon-processes-and-brownian-motion">
-<h1>Randon Processes and Brownian Motion<a class="headerlink" href="#randon-processes-and-brownian-motion" title="Permalink to this headline">¶</a></h1>
-<p>A one-dimensional Brownian Motion on the interval <span class="math notranslate nohighlight">\(\left[0,T\right]\)</span> is a stochastic process <span class="math notranslate nohighlight">\(\left\{W\left(t\right), 0\leq{t}\leq{T}\right\}\)</span> with the following properties:</p>
+  <div class="tex2jax_ignore mathjax_ignore section" id="random-walks-and-brownian-motion">
+<h1>Random Walks and Brownian Motion<a class="headerlink" href="#random-walks-and-brownian-motion" title="Permalink to this headline">¶</a></h1>
+<p>A random walk is a stochastic process that consists of a succession of random steps.
+Random walks can model a wide variety of physical, biological, and financial systems.
+For example, the path traced by a molecule as it travels in a liquid or a gas can be modeled as a
+random walk. In the context of financial systems, the <a class="reference external" href="https://en.wikipedia.org/wiki/Random_walk_hypothesis">random walk hypothesis</a> postulates that the stock market prices evolve according to a random walk (so price changes are random) and thus cannot be predicted.</p>
+<p>There are
+dueling perspectives on the randomness of stock prices in the finance and economics community.
+<a class="reference external" href="https://en.wikipedia.org/wiki/Burton_Malkiel">Malkiel</a>, in his book <a class="reference external" href="https://en.wikipedia.org/wiki/A_Random_Walk_Down_Wall_Street">A Random Walk Down Wall Street</a>, argues that asset prices typically exhibit signs of a random walk and that one cannot consistently outperform market averages. On the other hand, in their book [A Non-Random Walk Down Wall Street], Lo and MacKinlay present [<a class="reference external" href="https://www.jstor.org/stable/j.ctt7tccx">https://www.jstor.org/stable/j.ctt7tccx</a>) several
+studies that suggest there are stock market pricing trends are somewhat predictable.</p>
+<p>In this chapter, we’ll introduce random walks and a particular type of stochastic process called a
+<a class="reference external" href="https://en.wikipedia.org/wiki/Wiener_process">Wiener Process</a> that underlies <a class="reference external" href="https://en.wikipedia.org/wiki/Brownian_model_of_financial_markets">Finanical Brownian Motion</a>. In particular, we’ll introduce:</p>
+<ul class="simple">
+<li><p>The one dimensional <a class="reference internal" href="#content-references-wiener-process"><span class="std std-ref">Wiener Processes</span></a> that can be used to construct a random walk</p></li>
+<li><p>The <a class="reference internal" href="#content-references-ordinary-brownian-motion"><span class="std std-ref">Ordinary Brownian Motion</span></a> model for asset prices</p></li>
+<li><p>The basics of <a class="reference internal" href="#content-references-itos-calculus"><span class="std std-ref">Ito’s Calculus</span></a></p></li>
+<li><p>The <a class="reference internal" href="#content-references-geometric-brownian-motion"><span class="std std-ref">Geometric Brownian Motion</span></a> model for asset prices</p></li>
+</ul>
+<hr class="docutils" />
+<div class="section" id="wiener-processes">
+<span id="content-references-wiener-process"></span><h2>Wiener Processes<a class="headerlink" href="#wiener-processes" title="Permalink to this headline">¶</a></h2>
+<p>A <a class="reference external" href="https://en.wikipedia.org/wiki/Wiener_process">Wiener Process</a> is a real valued continuous-time stochastic process named in honor of American mathematician <a class="reference external" href="https://en.wikipedia.org/wiki/Norbert_Wiener">Norbert Wiener</a> for his investigations of the mathematical properties of one-dimensional Brownian motion:</p>
+<div class="proof definition admonition" id="defn-wiener-process">
+<p class="admonition-title"><span class="caption-number">Definition 18 </span> (Wiener Process)</p>
+<div class="definition-content section" id="proof-content">
+<p>A one-dimension Wiener Process is a stochastic process <span class="math notranslate nohighlight">\(\left\{W\left(t\right), 0\leq{t}\leq{T}\right\}\)</span> with the following properties:</p>
 <ul class="simple">
 <li><p>W<span class="math notranslate nohighlight">\(\left(0\right)\)</span> = <span class="math notranslate nohighlight">\(0\)</span></p></li>
 <li><p>W(t) is continuous</p></li>
-<li><p>The increments <span class="math notranslate nohighlight">\(\left\{W(t_{1}) - W(t_{o}),\dots, W(t_{k}) - W(t_{k-1})\right\}\)</span> are independent for any <span class="math notranslate nohighlight">\(k\)</span> and any <span class="math notranslate nohighlight">\(0\leq{t_{o}}&lt; t_{1} &lt; \dots &lt; t_{k} \leq{T}\)</span>.</p></li>
+<li><p>The increments <span class="math notranslate nohighlight">\(\left\{W(t_{1}) - W(t_{o}),\dots, W(t_{k}) - W(t_{k-1})\right\}\)</span> are independent for any <span class="math notranslate nohighlight">\(k\)</span> and <span class="math notranslate nohighlight">\(0\leq{t_{o}}&lt; t_{1} &lt; \dots &lt; t_{k} \leq{T}\)</span>.</p></li>
 <li><p>The increment W(t) - W(s) <span class="math notranslate nohighlight">\(\sim~N\left(0,t-s\right)\)</span> for any <span class="math notranslate nohighlight">\(0\leq{s}&lt; t \leq{T}\)</span>, where <span class="math notranslate nohighlight">\(N\left(0,t-s\right)\)</span> denotes a normally distributiom with mean <span class="math notranslate nohighlight">\(0\)</span> and variance <span class="math notranslate nohighlight">\(t - s\)</span>.</p></li>
 </ul>
-<p>For constants <span class="math notranslate nohighlight">\(\mu\)</span> and <span class="math notranslate nohighlight">\(\sigma&gt;0\)</span>, a random process <span class="math notranslate nohighlight">\(X(t)\)</span> is said to follow an oridinary Brownian motion process with drift <span class="math notranslate nohighlight">\(\mu\)</span> and diffusion coefficient <span class="math notranslate nohighlight">\(\sigma^{2}\)</span> if it is a solution to the Stochastic Differential Equation (SDE):</p>
+</div>
+</div></div>
+<div class="section" id="ordinary-brownian-motion">
+<span id="content-references-ordinary-brownian-motion"></span><h2>Ordinary Brownian Motion<a class="headerlink" href="#ordinary-brownian-motion" title="Permalink to this headline">¶</a></h2>
+<p>Ordinary Brownian Motion is a general class of problems that can be described by random fluctuations around
+a constant deterministic drift term.</p>
+<div class="proof definition admonition" id="definition-1">
+<p class="admonition-title"><span class="caption-number">Definition 19 </span> (Ordinary Brownian Motion)</p>
+<div class="definition-content section" id="proof-content">
+<p>Suppose there exists constants <span class="math notranslate nohighlight">\(\mu\)</span> and <span class="math notranslate nohighlight">\(\sigma&gt;0\)</span>.
+Then a random process <span class="math notranslate nohighlight">\(X(t)\)</span> is said to follow an Oridinary Brownian Motion (Wiener) process with drift <span class="math notranslate nohighlight">\(\mu\)</span> and diffusion coefficient <span class="math notranslate nohighlight">\(\sigma^{2}\)</span> if it is a solution to the Stochastic Differential Equation (SDE):</p>
 <div class="math notranslate nohighlight" id="equation-eq-sde-bm">
-<span class="eqno">(5)<a class="headerlink" href="#equation-eq-sde-bm" title="Permalink to this equation">¶</a></span>\[dX\left(t\right) = \mu{dt}+\sigma{dW(t)}\]</div>
-<p>Eqn. <a class="reference internal" href="#equation-eq-sde-bm">(5)</a> is one of the simplest models of a random Brownian motion process. For example, Louis Bachelier used an ordinary Brownian motion model to describe stock prices in his pioneering thesis work in 1900
-<span id="id1">[<a class="reference internal" href="../References.html#id3" title="Louis Bachelier, M. H. A Davis, Alison Etheridge, Louis Bachelier, and Louis Bachelier. Louis Bachelier's Theory of speculation: the origins of modern finance. Princeton University Press, Princeton, N.J., 2006. ISBN 9780691117522 (hbk. : alk. paper).">BDE+06</a>]</span>.</p>
-<div class="section" id="simulating-an-ordinary-brownian-random-walk">
-<h2>Simulating an Ordinary Brownian Random Walk<a class="headerlink" href="#simulating-an-ordinary-brownian-random-walk" title="Permalink to this headline">¶</a></h2>
-<p>Brownian motion simulations e.g., stock price simulations, mostly focus on computing values of the noise <span class="math notranslate nohighlight">\(W(t_{1}),W(t_{2}),\dots,W(t_{n})\)</span> and
-the state <span class="math notranslate nohighlight">\(X(t_{1}), X(t_{2}), \dots, X(t_{n})\)</span> at a set of discrete time points <span class="math notranslate nohighlight">\(0 &lt; t_{1} &lt; t_{2} &lt; \dots &lt; 
-t_{n}\)</span>. Let <span class="math notranslate nohighlight">\(Z_{1},\dots,Z_{n}\)</span> denote independent standard normal random variables. For an oridinary Brownian motion, where <span class="math notranslate nohighlight">\(t_{o} = 0\)</span> and <span class="math notranslate nohighlight">\(W(0) = 0\)</span>, the solution to Eqn. <a class="reference internal" href="#equation-eq-sde-bm">(5)</a> can be approximatred using the
-<a class="reference external" href="https://en.wikipedia.org/wiki/Euler%E2%80%93Maruyama_method">Euler–Maruyama method</a> which gives the recurrence relationship:</p>
+<span class="eqno">(16)<a class="headerlink" href="#equation-eq-sde-bm" title="Permalink to this equation">¶</a></span>\[dX\left(t\right) = \mu{dt}+\sigma{dW(t)}\]</div>
+<p>where <span class="math notranslate nohighlight">\(dW(t)\)</span> is a one-dimensional Wiener Process.</p>
+</div>
+</div><p>Eqn. <a class="reference internal" href="#equation-eq-sde-bm">(16)</a> is one of the simplest models of a Brownian motion process. For example, Louis Bachelier used a similar model to describe stock prices in his pioneering thesis work in 1900 <span id="id1">[<a class="reference internal" href="../References.html#id6" title="Louis Bachelier, M. H. A Davis, Alison Etheridge, Louis Bachelier, and Louis Bachelier. Louis Bachelier's Theory of speculation: the origins of modern finance. Princeton University Press, Princeton, N.J., 2006. ISBN 9780691117522 (hbk. : alk. paper).">BDE+06</a>]</span>. However, there are a few technical issues with Eqn. <a class="reference internal" href="#equation-eq-sde-bm">(16)</a>.</p>
+<div class="section" id="discrete-approximation-of-a-continuous-process">
+<h3>Discrete approximation of a continuous process<a class="headerlink" href="#discrete-approximation-of-a-continuous-process" title="Permalink to this headline">¶</a></h3>
+<p>Brownian motion simulations of stock prices often focus on computing values of the noise terms <span class="math notranslate nohighlight">\(W(t_{1}),W(t_{2}),\dots,W(t_{n})\)</span> and
+the state terms (e.g., the <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> share price) <span class="math notranslate nohighlight">\(X(t_{1}), X(t_{2}), \dots, X(t_{n})\)</span> at discrete times <span class="math notranslate nohighlight">\(0 &lt; t_{1} &lt; t_{2} &lt; \dots &lt; t_{n}\)</span>. However, Eqn. <a class="reference internal" href="#equation-eq-sde-bm">(16)</a> and the underlying
+Wiener process are continuous in time.
+To bridge this gap, we need to develop a discretization procedure that approximates the solution of
+Eqn. <a class="reference internal" href="#equation-eq-sde-bm">(16)</a> at the discrete-time points that are interested in. The easiest of these procedures is the <a class="reference external" href="https://en.wikipedia.org/wiki/Euler%E2%80%93Maruyama_method">Euler–Maruyama method</a>.</p>
+<p>Let <span class="math notranslate nohighlight">\(Z_{1},\dots,Z_{n}\)</span> denote independent standard normal random variables. For an ordinary Brownian motion, where <span class="math notranslate nohighlight">\(t_{o} = 0\)</span> and <span class="math notranslate nohighlight">\(W(0) = 0\)</span>, the solution to Eqn. <a class="reference internal" href="#equation-eq-sde-bm">(16)</a> can be approximated using the <a class="reference external" href="https://en.wikipedia.org/wiki/Euler%E2%80%93Maruyama_method">Euler–Maruyama method</a>, which gives the recurrence relationship:</p>
 <div class="math notranslate nohighlight" id="equation-eq-sde-bm-euler">
-<span class="eqno">(6)<a class="headerlink" href="#equation-eq-sde-bm-euler" title="Permalink to this equation">¶</a></span>\[X_{i+1} = X_{i}+\mu\left(t_{i+1} - t_{i}\right)+\left(\sigma\sqrt{t_{i+1} - t_{i}}\right)Z_{i+1}\qquad{i=0,1,\dots,n-1}\]</div>
-<p>where <span class="math notranslate nohighlight">\(X_{i+1}\)</span> denotes the state random variable evaluated at time index <span class="math notranslate nohighlight">\(i+1\)</span>. In Eqn. <a class="reference internal" href="#equation-eq-sde-bm-euler">(6)</a>, both <span class="math notranslate nohighlight">\(\mu\)</span> and <span class="math notranslate nohighlight">\(\sigma\)</span> are assumed to be constants, and:</p>
+<span class="eqno">(17)<a class="headerlink" href="#equation-eq-sde-bm-euler" title="Permalink to this equation">¶</a></span>\[X_{i+1} = X_{i}+\mu\left(t_{i+1} - t_{i}\right)+\left(\sigma\sqrt{t_{i+1} - t_{i}}\right)Z_{i+1}\qquad{i=0,1,\dots,n-1}\]</div>
+<p>where <span class="math notranslate nohighlight">\(X_{i+1}\)</span> denotes the state variable evaluated at time index <span class="math notranslate nohighlight">\(i+1\)</span>. In Eqn. <a class="reference internal" href="#equation-eq-sde-bm-euler">(17)</a>, both <span class="math notranslate nohighlight">\(\mu\)</span> and <span class="math notranslate nohighlight">\(\sigma\)</span> are assumed to be constants, and:</p>
 <div class="math notranslate nohighlight">
 \[W_{i+1} = W_{i} + \left(\sqrt{t_{i+1} - t_{i}}\right)Z_{i+1}\qquad{i=0,1,\dots,n-1}\]</div>
-<p>We can compute sample paths (solutions) for Eqn. <a class="reference internal" href="#equation-eq-sde-bm-euler">(6)</a> generated using the <a class="reference external" href="https://en.wikipedia.org/wiki/Euler%E2%80%93Maruyama_method">Euler–Maruyama method</a> discretization using <a class="reference internal" href="#algo-ord-brownian-motion">Algorithm 1</a>.</p>
+<p>We can compute sample paths (solutions) for Eqn. <a class="reference internal" href="#equation-eq-sde-bm-euler">(17)</a> generated using the <a class="reference external" href="https://en.wikipedia.org/wiki/Euler%E2%80%93Maruyama_method">Euler–Maruyama discretization method</a> using <a class="reference internal" href="#algo-ord-brownian-motion">Algorithm 4</a>.</p>
 <div class="proof algorithm admonition" id="algo-ord-brownian-motion">
-<p class="admonition-title"><span class="caption-number">Algorithm 1 </span> (Ordinary Brownian Motion)</p>
+<p class="admonition-title"><span class="caption-number">Algorithm 4 </span> (Ordinary Brownian Motion)</p>
 <div class="algorithm-content section" id="proof-content">
 <p><strong>Inputs</strong> Parameters <span class="math notranslate nohighlight">\(\left(\mu,\sigma\right)\)</span>, initial condition <span class="math notranslate nohighlight">\(X\left(t_{o}\right) = X_{o}\)</span>, initial time <span class="math notranslate nohighlight">\(t_{o}\)</span>, final time <span class="math notranslate nohighlight">\(t_{f}\)</span>, time step size <span class="math notranslate nohighlight">\(h\)</span>, and the number of sample paths <span class="math notranslate nohighlight">\(P\)</span></p>
 <p><strong>Output</strong> Time array T and the <span class="math notranslate nohighlight">\(\dim\left(T\right)\times{P}\)</span> solution array <span class="math notranslate nohighlight">\(X\)</span></p>
@@ -373,6 +472,109 @@ t_{n}\)</span>. Let <span class="math notranslate nohighlight">\(Z_{1},\dots,Z_{
 </ol>
 </div>
 </div></div>
+</div>
+<div class="section" id="ito-s-calculus">
+<span id="content-references-itos-calculus"></span><h2>Ito’s Calculus<a class="headerlink" href="#ito-s-calculus" title="Permalink to this headline">¶</a></h2>
+<p>We can compute a numerical approximation to the actual solution of most stochastic differential equations.
+However, as we have seen, techniques such as the <a class="reference external" href="https://en.wikipedia.org/wiki/Euler%E2%80%93Maruyama_method">Euler–Maruyama discretization method</a> come at the cost of accuracy.</p>
+<p>To solve stochastic differential equations analytically (just like ordinary differential equations), we must use tools from calculus. However, for stochastic differential equations, such as Eqn. <a class="reference internal" href="#equation-eq-sde-bm">(16)</a> we need a
+different types of calculus, namely <a class="reference external" href="https://en.wikipedia.org/wiki/It%C3%B4_calculus">Ito’s calculus</a>, which extends ordinary calculus methods to stochastic systems.</p>
+<div class="section" id="ito-s-lemma">
+<h3>Ito’s Lemma<a class="headerlink" href="#ito-s-lemma" title="Permalink to this headline">¶</a></h3>
+<p>A significant result from <a class="reference external" href="https://en.wikipedia.org/wiki/It%C3%B4_calculus">Ito’s calculus</a>,
+that allows us to develop analytical solutions to some stochastic differential equations is
+<a class="reference external" href="https://en.wikipedia.org/wiki/It%C3%B4%27s_lemma">Ito’s Lemma</a>, discovered by K. Ito in 1951 [REFHERE].</p>
+<div class="proof lemma admonition" id="ito-lemma">
+<p class="admonition-title"><span class="caption-number">Lemma 1 </span> (Ito’s Lemma)</p>
+<div class="lemma-content section" id="proof-content">
+<p>Suppose the behavior of <span class="math notranslate nohighlight">\(X(t)\)</span> is governed by the stochastic differential equation (Ito Process):</p>
+<div class="math notranslate nohighlight" id="equation-eq-ito-process">
+<span class="eqno">(18)<a class="headerlink" href="#equation-eq-ito-process" title="Permalink to this equation">¶</a></span>\[dX = a\left(X(t),t\right)dt + b\left(X(t),t\right)dW(t)\]</div>
+<p>where <span class="math notranslate nohighlight">\(dW(t)\)</span> is a Wiener process and <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> are functions of <span class="math notranslate nohighlight">\(X(t)\)</span> and <span class="math notranslate nohighlight">\(t\)</span>.
+Let <span class="math notranslate nohighlight">\(Y(t) = \phi\left(t,X(t)\right)\)</span> be another process that is a function of <span class="math notranslate nohighlight">\(X(t)\)</span> and time <span class="math notranslate nohighlight">\(t\)</span>.
+Let <span class="math notranslate nohighlight">\(\phi\left(t,X(t)\right)\)</span> be twice differentiable with respect to <span class="math notranslate nohighlight">\(X(t)\)</span>,
+and singly differentiable with respect to <span class="math notranslate nohighlight">\(t\)</span>.</p>
+<p>Then, the process <span class="math notranslate nohighlight">\(Y(t)\)</span> is governed by the equation:</p>
+<div class="math notranslate nohighlight" id="equation-eq-ito-lemma">
+<span class="eqno">(19)<a class="headerlink" href="#equation-eq-ito-lemma" title="Permalink to this equation">¶</a></span>\[dY = \left(\frac{\partial{Y}}{\partial{t}}+a\frac{\partial{Y}}{\partial{X}}+\frac{b^{2}}{2}\frac{\partial^{2}{Y}}{\partial{X}^{2}}\right)dt+b\left(\frac{\partial{Y}}{\partial{X}}\right)dW(t)\]</div>
+</div>
+</div><p>The process of finding a solution to a stochastic differential equation using <a class="reference external" href="https://en.wikipedia.org/wiki/It%C3%B4%27s_lemma">Ito’s Lemma</a> works backwards; we propose a function <span class="math notranslate nohighlight">\(Y=\phi\left(t,X(t)\right)\)</span> and then construct the stochastic differential equation that governs <span class="math notranslate nohighlight">\(Y(t)\)</span>.
+If that stochastic differential equation is the same as the original equation, then we have constructed a solution.</p>
+<p>Suppose we want to construct a solution to the stochastic differential equation (SDE):</p>
+<div class="math notranslate nohighlight">
+\[dX\left(t\right) = \mu{dt}+\sigma{dW(t)}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\mu\)</span> and <span class="math notranslate nohighlight">\(\sigma\)</span> are constants, and <span class="math notranslate nohighlight">\(dW(t)\)</span> is a one-dimensional Wiener Process.
+Let <span class="math notranslate nohighlight">\(Y\left(t\right) = X\left(t\right)\)</span>. Then, from Ito’s Lemma we know that:</p>
+<ul class="simple">
+<li><p>The terms <span class="math notranslate nohighlight">\(a=\mu\)</span> and <span class="math notranslate nohighlight">\(b=\sigma\)</span> which are both constants</p></li>
+<li><p>The time derivative term <span class="math notranslate nohighlight">\(\partial{Y}/\partial{t} = 0\)</span></p></li>
+<li><p>The state derivative term <span class="math notranslate nohighlight">\(\partial{Y}/\partial{X} = 1\)</span></p></li>
+<li><p>The state derivative term <span class="math notranslate nohighlight">\(\partial^{2}{Y}/\partial{X}^{2} = 0\)</span></p></li>
+</ul>
+<p>which gives from Eqn. <a class="reference internal" href="#equation-eq-ito-lemma">(19)</a>:</p>
+<div class="math notranslate nohighlight">
+\[dY\left(t\right) = \mu{dt}+\sigma{dW(t)}\]</div>
+<p>Integrating both sides from <span class="math notranslate nohighlight">\(t_{1}\rightarrow{t_{2}}\)</span> gives:</p>
+<div class="math notranslate nohighlight">
+\[Y\left(t_{2}\right) - Y\left(t_{1}\right) = \int_{t_{1}}^{t_{2}}\mu{dt}+\int_{t_{1}}^{t_{2}}\sigma{dW(t)}\]</div>
+<p>The first term on the right-hand side is easy to deal with:</p>
+<div class="math notranslate nohighlight">
+\[\int_{t_{1}}^{t_{2}}\mu{dt} = \mu\left(t_{2} - t_{1}\right)\]</div>
+<p>However, the second term is the integral of a random process (which we don’t know how to do!)
+Thus, the best we can do now (substituting <span class="math notranslate nohighlight">\(X\)</span> for <span class="math notranslate nohighlight">\(Y\)</span> and pulling out constants) is:</p>
+<div class="math notranslate nohighlight" id="equation-ex-ordinary-brownian-motion-soln-almost">
+<span class="eqno">(20)<a class="headerlink" href="#equation-ex-ordinary-brownian-motion-soln-almost" title="Permalink to this equation">¶</a></span>\[X\left(t_{2}\right) = X\left(t_{1}\right) + \mu\left(t_{2} - t_{1}\right) +\sigma\int_{t_{1}}^{t_{2}}{dW(t)}\]</div>
+<p>Eqn. <a class="reference internal" href="#equation-ex-ordinary-brownian-motion-soln-almost">(20)</a> brings up an important question, how do we integrate a random process?</p>
+</div>
+<div class="section" id="ito-stochastic-integral">
+<h3>Ito Stochastic Integral<a class="headerlink" href="#ito-stochastic-integral" title="Permalink to this headline">¶</a></h3>
+<p>The integral on the right-hand side of Eqn. <a class="reference internal" href="#equation-ex-ordinary-brownian-motion-soln-almost">(20)</a> involves
+integrating over a random process. This is an example of a stochastic integral, which fortunately
+can be evaluated as the limit of a <a class="reference external" href="https://en.wikipedia.org/wiki/Riemann%E2%80%93Stieltjes_integral">Riemann–Stieltjes sum</a>:</p>
+<div class="proof definition admonition" id="riemann–stieltjes-integral">
+<p class="admonition-title"><span class="caption-number">Definition 20 </span> (Ito Stochastic Integral)</p>
+<div class="definition-content section" id="proof-content">
+<p>Let the random variable <span class="math notranslate nohighlight">\(S(\omega)\)</span> be defined as:</p>
+<div class="math notranslate nohighlight">
+\[S(\omega) = \int_{t_{0}}^{t_{1}}g\left(t,\omega\right)dW\left(t\right)\]</div>
+<p>where <span class="math notranslate nohighlight">\(dW(t)\)</span> is a Wiener process. Futher, let <span class="math notranslate nohighlight">\(\left\{\pi_{n}\right\}\)</span> denote a sequence of partitions of the interval <span class="math notranslate nohighlight">\(\left[t_{1},t_{2}\right]\)</span>.
+Then the value for <span class="math notranslate nohighlight">\(S\left(\omega\right)\)</span> can be computed as the limit of a Riemann–Stieltjes sum:</p>
+<div class="math notranslate nohighlight">
+\[S_{n}\left(\omega\right) = \lim_{n\rightarrow\infty}
+\sum_{\left[t_{i-1},t_{i}\right]\in\pi_{n}}g\left(t_{i-1},\omega\right)\Bigl(W(t_{i}) - W(t_{i-1})\Bigr)\]</div>
+<p>The parameter <span class="math notranslate nohighlight">\(n\)</span> controls the width of the partitions on which the sum is evaluated; as <span class="math notranslate nohighlight">\(n\)</span> becomes
+large the width of each partition decreases.</p>
+</div>
+</div><p>Now that we can evalue stochastic integrals (<a class="reference internal" href="#riemann–stieltjes-integral">Definition 20</a>),
+we can compute a value for the integral in Eqn. <a class="reference internal" href="#equation-ex-ordinary-brownian-motion-soln-almost">(20)</a>.
+Assume we have discretized time with some fixed step size <span class="math notranslate nohighlight">\(h\)</span>.  Finish me. Then:</p>
+<div class="math notranslate nohighlight" id="equation-ex-ordinary-brownian-motion-analytical-soln">
+<span class="eqno">(21)<a class="headerlink" href="#equation-ex-ordinary-brownian-motion-analytical-soln" title="Permalink to this equation">¶</a></span>\[\sigma\int_{t_{1}}^{t_{2}}{dW(t)} = \sigma\left[W\left(t_{2}\right) - W\left(t_{1}\right)\right]\]</div>
+<p>which (using <a class="reference internal" href="#defn-wiener-process">Definition 18</a>) gives the solution:</p>
+<div class="math notranslate nohighlight">
+\[X\left(t_{2}\right) = X\left(t_{1}\right) + \mu\Delta{T} + \sigma{N\left(0,\Delta{T}\right)}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\Delta{T} = t_{2} - t_{1}\)</span>.</p>
+</div>
+</div>
+<div class="section" id="geometric-brownian-motion">
+<span id="content-references-geometric-brownian-motion"></span><h2>Geometric Brownian Motion<a class="headerlink" href="#geometric-brownian-motion" title="Permalink to this headline">¶</a></h2>
+<p>Unfortunately, Eqn. <a class="reference internal" href="#equation-eq-sde-bm">(16)</a> has a critical flaw; namely, its solution can admit negative values.
+Thus, it is not widely used as a model for a stock price (or the price of other risky assets) because asset prices are non-negative. Instead, we often model asset price using a <a class="reference external" href="https://en.wikipedia.org/wiki/Geometric_Brownian_motion">Geometric Brownian Motion (gbm) model</a>:</p>
+<div class="proof definition admonition" id="definition-5">
+<p class="admonition-title"><span class="caption-number">Definition 21 </span> (Geometric Brownian Motion)</p>
+<div class="definition-content section" id="proof-content">
+<p>Suppose there exists constants <span class="math notranslate nohighlight">\(\mu\)</span> and <span class="math notranslate nohighlight">\(\sigma&gt;0\)</span>.
+Then a random process <span class="math notranslate nohighlight">\(X(t)\)</span> is said to follow a Geometric Brownian Motion (Wiener) process with drift <span class="math notranslate nohighlight">\(\mu\)</span> and diffusion coefficient <span class="math notranslate nohighlight">\(\sigma^{2}\)</span> if it is a solution to the Stochastic Differential Equation (SDE):</p>
+<div class="math notranslate nohighlight" id="equation-eq-sde-gbm">
+<span class="eqno">(22)<a class="headerlink" href="#equation-eq-sde-gbm" title="Permalink to this equation">¶</a></span>\[\frac{dX\left(t\right)}{X(t)} = \mu{dt}+\sigma{dW(t)}\]</div>
+<p>where <span class="math notranslate nohighlight">\(dW(t)\)</span> is a one-dimensional Wiener Process.</p>
+</div>
+</div><p>The use of geometric Brownian motion as a financial model is primarily due to the work of Samuelson in the 1950s and 1960s <span id="id2">[<a class="reference internal" href="../References.html#id3" title="Robert C. Merton. Paul samuelson and financial economics. The American Economist, 50(2):9–31, 2006. URL: http://www.jstor.org/stable/40657651 (visited on 2022-05-16).">Mer06</a>]</span>. However, today Geometric Brownian Motion is more often associated with the Black–Scholes options pricing model (which we’ll describe later) <span id="id3">[<a class="reference internal" href="../References.html#id2" title="Fischer Black and Myron Scholes. The pricing of options and corporate liabilities. Journal of Political Economy, 81(3):637–654, 1973. URL: http://www.jstor.org/stable/1831029 (visited on 2022-05-16).">BS73</a>]</span>.</p>
+<p>Eqn. <a class="reference internal" href="#equation-eq-sde-gbm">(22)</a> has several excellent properties.
+Central among these properties is that it has an <em>analytical</em> solution.
+Thus, we can estimate the price value <span class="math notranslate nohighlight">\(X(t)\)</span> precisely as a function of time (no need to develop an approximate solution)!
+However, to develop the analytical solution, we need to use <a class="reference internal" href="#content-references-itos-calculus"><span class="std std-ref">Ito’s Calculus</span></a>.</p>
+</div>
 </div>
 
     <script type="text/x-thebe-config">
@@ -400,17 +602,17 @@ t_{n}\)</span>. Let <span class="math notranslate nohighlight">\(Z_{1},\dots,Z_{
             
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="probability-random-variables.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="markowitz.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Sets, Probability, and Random Variables</p>
+            <p class="prev-next-title">Modern Portfolio Theory</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="geometric-brownian-motion.html" title="next page">
+    <a class='right-next' id="next-link" href="../chapter-3-dir/chapter-3.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Geometric Brownian Motion</p>
+        <p class="prev-next-title">The Fantastic but Dangerous World of Derivatives, Futures, Hedging and Leverage</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

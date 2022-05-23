@@ -107,17 +107,39 @@ const thebe_selector_output = ".output, .cell_output"
    Objectives, Polices and Resources
   </a>
  </li>
- <li class="toctree-l1">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="../chapter-1-dir/chapter-1.html">
-   Money, Markets and the Global Financial System
+   Assets, Money, Markets and the Global Financial System
   </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chapter-1-dir/assets.html">
+     Assets are Current and Future Cash Flows
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chapter-1-dir/markets.html">
+     Markets and Market Structures
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chapter-1-dir/global.html">
+     The Global Finanical System
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../chapter-2-dir/chapter-2.html">
    The Dynamics of Assets and Markets
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -128,23 +150,18 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../chapter-2-dir/random-walks.html">
-     Ordinary Brownian Motion (OBM)
+    <a class="reference internal" href="../chapter-2-dir/markowitz.html">
+     Modern Portfolio Theory
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../chapter-2-dir/Example-OrdinaryBrownianMotion.html">
-     Case study: Ordinary Brownian Motion Simulation of Daily Price Return
+    <a class="reference internal" href="../chapter-2-dir/random-walks.html">
+     Brownian Motion
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../chapter-2-dir/geometric-brownian-motion.html">
-     Geometric Brownian Motion (GBM)
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../chapter-2-dir/markowitz.html">
-     Modern Portfolio Theory (MPT)
+     Geometric Brownian Motion
     </a>
    </li>
   </ul>
@@ -153,8 +170,8 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="chapter-3.html">
    Derivatives, Futures, and Leverage
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-  <label for="toctree-checkbox-2">
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -314,7 +331,7 @@ buyer the right but not the obligation to purchase 100 shares (per contract) of 
 <p>In European-style contracts, the transaction codified in CALL or PUT options can only occur at some fixed date in the future called the expiration date, which is agreed upon when the contract is purchased. However, American contract styles have a different policy; American contracts can be exercised (the buyer can initiate the transaction) at any time between when the contract was purchased and the expiration date.</p>
 <div class="section" id="cox-ross-rubinstein-crr-binomial-pricing-model">
 <h2>Cox-Ross-Rubinstein (CRR) binomial pricing model<a class="headerlink" href="#cox-ross-rubinstein-crr-binomial-pricing-model" title="Permalink to this headline">¶</a></h2>
-<p>The binomial options pricing model provides a generalizable numerical method for the valuation of American style call and put options contacts. The model uses a discrete-time lattice model of the varying price over time of the underlying financial instrument. The binomial model was first proposed by William Sharpe in the 1978 edition of Investments and formalized by Cox, Ross and Rubinstein <span id="id1">[<a class="reference internal" href="../References.html#id4" title="John C. Cox, Stephen A. Ross, and Mark Rubinstein. Option pricing: a simplified approach. Journal of Financial Economics, 7(3):229-263, 1979. URL: https://www.sciencedirect.com/science/article/pii/0304405X79900151, doi:https://doi.org/10.1016/0304-405X(79)90015-1.">CRR79</a>]</span>.</p>
+<p>The binomial options pricing model provides a generalizable numerical method for the valuation of American style call and put options contacts. The model uses a discrete-time lattice model of the varying price over time of the underlying financial instrument. The binomial model was first proposed by William Sharpe in the 1978 edition of Investments and formalized by Cox, Ross and Rubinstein <span id="id1">[<a class="reference internal" href="../References.html#id6" title="John C. Cox, Stephen A. Ross, and Mark Rubinstein. Option pricing: a simplified approach. Journal of Financial Economics, 7(3):229-263, 1979. URL: https://www.sciencedirect.com/science/article/pii/0304405X79900151, doi:https://doi.org/10.1016/0304-405X(79)90015-1.">CRR79</a>]</span>.</p>
 <a class="reference internal image-reference" href="../_images/CRR-BinomialModel.pdf"><img alt="CRR-Schematic" class="align-center" src="../_images/CRR-BinomialModel.pdf" style="width: 480px;" /></a>
 </div>
 </div>

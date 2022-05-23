@@ -1,7 +1,32 @@
-# Sets, Probability, and Random Variables
+---
+jupytext:
+  formats: md:myst
+  text_representation:
+    extension: .md
+    format_name: myst
+kernelspec:
+  display_name: Julia
+  language: julia
+  name: julia-1.7
+---
 
-What exactly is “probability”? Frequentists argue that probability is the relative frequency of an outcome. For example, if you flip a fair coin infinitely times, you expect to get heads half the time. On the other hand, Bayesians argue that probability is a subjective belief. For example, the probability of getting an A in a class is subjective because no one can take a class infinitely many times to obtain the relative frequency. Differentiation between the frequentists and Bayesian points of view is often not required; the context of your problem will typically suggest which perspective to use. For example, when you have a shortage of data, a Bayesian approach allows you to use prior knowledge. In contrast, frequentists tell us how to compute the confidence interval of an estimate, if we have a latge data set. Whether you prefer the frequentist’s or the Bayesian view, there is a more fundamental notion of probability thanks to [Andrey Kolmogorov](https://en.wikipedia.org/wiki/Andrey_Kolmogorov), namely, probability is a measure of the size of a set.
+# Probability, Random Variables and Stochastic Processes
 
+Frequentists argue that probability is the relative frequency of an outcome. For example, if you flip a fair coin infinitely times, you expect to get heads half the time. On the other hand, Bayesians argue that probability is a subjective belief. For example, the probability of getting an A in a class is subjective because no one can take a class infinitely many times to obtain the relative frequency. 
+The context of your problem will typically suggest which perspective to use.
+For example, when you have a shortage of data, a Bayesian approach allows you to use prior knowledge. In contrast, frequentists tell us how to compute the confidence interval of an estimate, if we have a latge data set. 
+
+Whether you prefer the frequentist’s or the Bayesian view, there is a more fundamental notion of probability thanks to [Andrey Kolmogorov](https://en.wikipedia.org/wiki/Andrey_Kolmogorov), namely, probability is a measure of the size of a set.
+
+In this chapter:
+
+* We introduce {ref}`content:references:set-theory` and the {ref}`content:references:union-intersection` of sets
+* We introduce {ref}`content:references:probability` the Axioms of Probablity ({prf:ref}`axiom-probability`)
+* We introduce {ref}`content:references:random-variables`
+
+---
+
+(content:references:set-theory)=
 ## Set theory
 In mathematics, we are often interested in describing a collection of numbers or other mathematical objects, for example, the numbers $\left[a, b\right]$ on the real line, or the ordered pairs of numbers that define a circle. These collections of numbers can be abstractly defined as sets. 
 A set is simply a collection of mathematical objets. Set theory is a mathematical tool that defines operations on sets. It provides the basic arithmetic for combining, separating, and decomposing sets.
@@ -38,6 +63,7 @@ Two sets $A$ and $B$ are equal if and only if $A \subseteq B$ and $B \subseteq A
 Finally, there are two special types of sets, 
 the empty set $\emptyset$ and the universal set $\Omega$. The empty set contains no elements. For example, if the set $A$ is empty we say $A=\emptyset$. On the other hand, the universal set is the set containing all elements. Thus, if set $A$ contains all possible elements, we say $A=\Omega$.
 
+(content:references:union-intersection)=
 ### Union and Intersection
 We now discuss basic set operations. By operations, we mean functions of two or more sets whose output value is a set. We use these operations to combine and separate sets. Let's first describe the 
 [union](https://en.wikipedia.org/wiki/Union_(set_theory)).
@@ -64,6 +90,95 @@ The finite intersection of two sets $A$ and $B$ contains all elements that are i
 $$A\cap{B} = \left\{x\,\vert\,x\in{A} \text{ and } x\in{B}\right\}$$
 ````
 
+(content:references:set-complement)=
+### Complement
+In addition to the union and intersection of sets, 
+there is a third basic operation called the [set complement](https://en.wikipedia.org/wiki/Complement_(set_theory)). 
+Suppose you had a set $A\subset\Omega$. Then the complement of $A$, denoted by $\bar{A}$, is 
+everything that is in $\Omega$, but __not__ in $A$.
+
+````{prf:definition} Complement
+:label: defn-complement
+
+The abosulte complement of a set $A$, denoted by $\bar{A}$, is the set containing all elements that are in $\Omega$ but not in $A$:
+
+```{math}
+\bar{A} = \left\{x\  \vert\ x\in\Omega \text{ and } x\notin{A} \right\}
+```
+
+The complement has a number of interesting properties, known collectively as the Complement laws. 
+
+* P1: $A\cup{\bar{A}} = \Omega$. The set $A$ and it's complement $\bar{A}$ make up the universal set $\Omega$.
+* P2: $A\cup{\bar{A}} = \emptyset$. There are no elements outside of $A$ and it's complement $\bar{A}$.
+* P3: $\bar{\emptyset} = \Omega$. The complement of the emptyset $\emptyset$ is the universal set $\Omega$.
+* P4: $\bar{\Omega} = \emptyset$. There is nothing outside of the universal set $\Omega$.
+* P5: $\bar{\bar{A}} = A$. The complement of the complement returns the original set $A$.
+
+````
+
+(content:references:set-disjoint)=
+### Disjoint Sets and Partitions
+The last set-theoretic concepts that we explore before turning our attention to probability (and its relationship to sets)
+is the [disjoint](https://en.wikipedia.org/wiki/Disjoint_sets) relationship, and the idea of a partition.
+Suppose we had two sets $A$ and $B$; the sets $A$ and $B$ are disjoint if they have no elements in common. 
+
+````{prf:definition} Disjoint
+:label: defn-disjoint
+
+Two sets $A$ and $B$ are said to be disjoint if thier intersection is the emptyset $\emptyset$ (they have no common elements):
+
+```{math}
+A\cap{B} = \emptyset
+```
+
+For a collection of sets $\left\{A_{1},A_{2},\dots, A_{n}\right\}$, then the collection is disjoint if:
+
+
+```{math}
+A_{i}\cap{A_{j}} = \emptyset
+```
+
+for all pairs of sets $A_{i}$ and $A_{j}$ where $i\neq{j}$.
+
+````
+
+Now that we understand disjoint sets ({prf:ref}`defn-disjoint`), we can define a partition of the universal set $\Omega$.
+````{prf:definition} Partition
+:label: defn-partition
+
+A collection of sets $\left\{A_{1},A_{2},\dots, A_{n}\right\}$ is a partition of $\Omega$ if the following 
+two conditions are true:
+
+__Condition 1__: the collection of sets $\left\{A_{1},A_{2},\dots, A_{n}\right\}$ is disjoint
+
+```{math}
+A_{i}\cap{A_{j}} = \emptyset
+```
+
+for all pairs of sets $A_{i}$ and $A_{j}$ where $i\neq{j}$.
+
+__Condition 2__: The union of the sets $\left\{A_{1},A_{2},\dots, A_{n}\right\}$ gives the universal set $\Omega$:
+
+```{math}
+\bigcup_{i=1}^{n}A_{i} = \Omega
+```
+````
+
+The partition ({prf:ref}`defn-partition`) of the universal set $\Omega$ is a collection of smaller non-overlapping subsets whose union gives back the universal set $\Omega$. 
+Partitions are important because they allow us to decompose the universal set $\Omega$ into a collection of smaller subsets. Since these smaller subsets are disjoint, i.e., they do not overlap, we can analyze them separately from each other. 
+
+In the context of probability, partitions are essential tools because they allow us to decouple complex events
+into many smaller disconnected events. 
+For example, suppose the collection of sets $\left\{A_{1},A_{2},\dots, A_{n}\right\}$ is a partition of $\Omega$.
+Then, for any set $B\subseteq\Omega$ we can decompose $B$ into smaller disjoint components $B\cap{A_{i}}$ 
+(the elements of $B$ that are in $A_{i}$):
+
+```{math}
+:label: eqn-decomp-partition
+\bigcup_{i=1}^{n}B\cap{A_{i}} = B
+```
+
+(content:references:probability)=
 ## Probability
 
 A probability space is completley described by the tuple $(\Omega,\mathcal{F},P)$:
@@ -141,10 +256,10 @@ to a real number in $\left[0, 1\right]$. The function must satisfy the three axi
 
 ```
 
-## Conditional Probability
+### Conditional Probability
 The motivation of conditional probability is to restrict the probability to a subevent happening in the sample space. If B has happened, the probability for A to also happen is P[A∩B]/P[B]. If two events are not influencing each other, then we say that A and B are independent.
 
-### Independence versus Disjoint
+#### Independence versus Disjoint
 Conditional probability deals with situations where two events $A$ and $B$ are related. 
 However, what if the two events are unrelated? In other words, information about one event says nothing 
 about the second event. In this case, the events $A$ and $B$ are said ot be independent:
@@ -197,9 +312,39 @@ $$P(B) = \sum_{i=1}^{n}P\left(B\,\vert{A_{i}}\right)P\left(A_{i}\right)$$
 
 ````
 
-## Discrete Random Variables
+(content:references:random-variables)=
+## Random Variables and Stochastic Processes
 The sample space and the event space are all based on statements, for example, getting a head when flipping a coin, winning the game, or drawing a card, etc. These statements are not numbers; how do we convert a statement to a number? 
 The answer is a random variable; random variables are mappings from events to numbers, these numbers are probabilities.
+
+### Expectation of discrete random variables
+It is often helpful to extract essential parameters such as the mean
+or standard deviation of the return when analyzing financial data. If we hypothesize that markets are random, 
+then the values for these parameters can be estimated from the random prices observed in the market.
+
+Let the price of some asset, e.g., `XYZ,` stock price, be a discrete random variable denoted by $X$. 
+Then expectation is the mean of the random variable $X$.
+
+````{prf:definition} Expectation
+:label: defn-expectation
+
+Let $X$ denote a discrete random variable. Then, the expectation of the random variable $X$ is given by:
+
+```{math}
+:label: eq-defn-expectation
+\mathbb{E}\left(X\right) = \sum_{x\in{X(\Omega)}}xp_{X}(x)
+```
+
+where $p_{X}(x)$ denotes the probability that random variable $X=x$, and 
+$X(\Omega)$ denotes sample space for $X$ (the set of all possible values that the random variable $X$ can take.)
+
+
+````
+
+The expectation of a random variable has several useful properties. 
+
+### Moments and variance of discrete random variables
+
 
 ### Probability mass function
 In the case of discrete random variables, for example, dice roles, coin flips etc, this is done using a concept called a [probability mass function (PMF)](https://en.wikipedia.org/wiki/Probability_mass_function). 
@@ -229,14 +374,12 @@ $$\Omega = \left\{(HH),(HT),(TH),(TT)\right\}$$
 
 ````
 
-### Expectations, momemnts and variance for discrete random variable
-
-### Bernoulli random variables
+#### Bernoulli random variables
 A Bernoulli random variable, the simplest random variable, models a coin-flip.
 Bernoulli random variable have two states: either 1 or 0. The probability of getting 1 is $p$, while the probability of getting a value of 0 is $1 − p$. Bernoulli random variables model many binary events: coin flips (H or T), 
 binary bits (1 or 0), true or false, yes or no, present or absent, etc.
 
-### Binomial random variable
+#### Binomial random variable
 The binomial distribution is the probability of getting exactly $k$ successes in $n$ independent Bernoulli trials. 
 For example, the probability of getting 4 heads in 6 coin tosses. 
 
@@ -250,7 +393,7 @@ $$p_{X}(k) = \binom{n}{k}p^{k}\left(1-p\right)^{n-k}\qquad{k=0,1,\dots,n}$$
 where $p$ denotes the binomial parameter $0<p<1$, and $n$ is the number of states.
 ````
 
-### Geometric random variable
+#### Geometric random variable
 In some applications, we are interested in trying a binary experiment e.g., a coin flip until a specified outcome is obtained.
 The outcome of this type of experiment is governed by a geometric random variable; 
 a geometric random variable describes the number of failures obtained before a final success.

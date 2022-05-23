@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sets, Probability, and Random Variables &#8212; CHEME 5660</title>
+    <title>Probability, Random Variables and Stochastic Processes &#8212; CHEME 5660</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -56,7 +56,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Ordinary Brownian Motion (OBM)" href="random-walks.html" />
+    <link rel="next" title="Modern Portfolio Theory" href="markowitz.html" />
     <link rel="prev" title="Modeling and Analysis of Asset Price Dynamics and Market Mechanisms" href="chapter-2.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -109,7 +109,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../chapter-1-dir/chapter-1.html">
-   Money, Markets and the Global Financial System
+   Assets, Money, Markets and the Global Financial System
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
   <label for="toctree-checkbox-1">
@@ -146,22 +146,17 @@ const thebe_selector_output = ".output, .cell_output"
   <ul class="current">
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     Sets, Probability, and Random Variables
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="random-walks.html">
-     Ordinary Brownian Motion (OBM)
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="geometric-brownian-motion.html">
-     Geometric Brownian Motion (GBM)
+     Probability, Random Variables and Stochastic Processes
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="markowitz.html">
-     Modern Portfolio Theory (MPT)
+     Modern Portfolio Theory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="random-walks.html">
+     Random Walks and Brownian Motion
     </a>
    </li>
   </ul>
@@ -237,7 +232,10 @@ const thebe_selector_output = ".output, .cell_output"
 
     <div class="dropdown-buttons">
         <!-- ipynb file if we had a myst markdown file -->
-        
+        <a class="dropdown-buttons"
+            href="../_sources/chapter-2-dir/probability-random-variables.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download notebook file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
         <!-- Download raw file -->
         <a class="dropdown-buttons" href="../_sources/chapter-2-dir/probability-random-variables.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
@@ -275,6 +273,23 @@ const thebe_selector_output = ".output, .cell_output"
 
             <!-- Launch buttons -->
 
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/chapter-2-dir/probability-random-variables.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
         </div>
 
         <!-- Table of contents -->
@@ -295,6 +310,16 @@ const thebe_selector_output = ".output, .cell_output"
      Union and Intersection
     </a>
    </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#complement">
+     Complement
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#disjoint-sets-and-partitions">
+     Disjoint Sets and Partitions
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -326,17 +351,17 @@ const thebe_selector_output = ".output, .cell_output"
      </span>
     </a>
    </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#conditional-probability">
-   Conditional Probability
-  </a>
-  <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#independence-versus-disjoint">
-     Independence versus Disjoint
+    <a class="reference internal nav-link" href="#conditional-probability">
+     Conditional Probability
     </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#independence-versus-disjoint">
+       Independence versus Disjoint
+      </a>
+     </li>
+    </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#bayes-theorem-and-the-law-of-total-probability">
@@ -346,34 +371,41 @@ const thebe_selector_output = ".output, .cell_output"
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#discrete-random-variables">
-   Discrete Random Variables
+  <a class="reference internal nav-link" href="#random-variables-and-stochastic-processes">
+   Random Variables and Stochastic Processes
   </a>
   <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#expectation-of-discrete-random-variables">
+     Expectation of discrete random variables
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#moments-and-variance-of-discrete-random-variables">
+     Moments and variance of discrete random variables
+    </a>
+   </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#probability-mass-function">
      Probability mass function
     </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#expectations-momemnts-and-variance-for-discrete-random-variable">
-     Expectations, momemnts and variance for discrete random variable
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#bernoulli-random-variables">
-     Bernoulli random variables
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#binomial-random-variable">
-     Binomial random variable
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#geometric-random-variable">
-     Geometric random variable
-    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#bernoulli-random-variables">
+       Bernoulli random variables
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#binomial-random-variable">
+       Binomial random variable
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#geometric-random-variable">
+       Geometric random variable
+      </a>
+     </li>
+    </ul>
    </li>
   </ul>
  </li>
@@ -387,7 +419,7 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Sets, Probability, and Random Variables</h1>
+                <h1>Probability, Random Variables and Stochastic Processes</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -407,6 +439,16 @@ const thebe_selector_output = ".output, .cell_output"
      Union and Intersection
     </a>
    </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#complement">
+     Complement
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#disjoint-sets-and-partitions">
+     Disjoint Sets and Partitions
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -438,17 +480,17 @@ const thebe_selector_output = ".output, .cell_output"
      </span>
     </a>
    </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#conditional-probability">
-   Conditional Probability
-  </a>
-  <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#independence-versus-disjoint">
-     Independence versus Disjoint
+    <a class="reference internal nav-link" href="#conditional-probability">
+     Conditional Probability
     </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#independence-versus-disjoint">
+       Independence versus Disjoint
+      </a>
+     </li>
+    </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#bayes-theorem-and-the-law-of-total-probability">
@@ -458,34 +500,41 @@ const thebe_selector_output = ".output, .cell_output"
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#discrete-random-variables">
-   Discrete Random Variables
+  <a class="reference internal nav-link" href="#random-variables-and-stochastic-processes">
+   Random Variables and Stochastic Processes
   </a>
   <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#expectation-of-discrete-random-variables">
+     Expectation of discrete random variables
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#moments-and-variance-of-discrete-random-variables">
+     Moments and variance of discrete random variables
+    </a>
+   </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#probability-mass-function">
      Probability mass function
     </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#expectations-momemnts-and-variance-for-discrete-random-variable">
-     Expectations, momemnts and variance for discrete random variable
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#bernoulli-random-variables">
-     Bernoulli random variables
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#binomial-random-variable">
-     Binomial random variable
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#geometric-random-variable">
-     Geometric random variable
-    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#bernoulli-random-variables">
+       Bernoulli random variables
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#binomial-random-variable">
+       Binomial random variable
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#geometric-random-variable">
+       Geometric random variable
+      </a>
+     </li>
+    </ul>
    </li>
   </ul>
  </li>
@@ -498,11 +547,21 @@ const thebe_selector_output = ".output, .cell_output"
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="sets-probability-and-random-variables">
-<h1>Sets, Probability, and Random Variables<a class="headerlink" href="#sets-probability-and-random-variables" title="Permalink to this headline">¶</a></h1>
-<p>What exactly is “probability”? Frequentists argue that probability is the relative frequency of an outcome. For example, if you flip a fair coin infinitely times, you expect to get heads half the time. On the other hand, Bayesians argue that probability is a subjective belief. For example, the probability of getting an A in a class is subjective because no one can take a class infinitely many times to obtain the relative frequency. Differentiation between the frequentists and Bayesian points of view is often not required; the context of your problem will typically suggest which perspective to use. For example, when you have a shortage of data, a Bayesian approach allows you to use prior knowledge. In contrast, frequentists tell us how to compute the confidence interval of an estimate, if we have a latge data set. Whether you prefer the frequentist’s or the Bayesian view, there is a more fundamental notion of probability thanks to <a class="reference external" href="https://en.wikipedia.org/wiki/Andrey_Kolmogorov">Andrey Kolmogorov</a>, namely, probability is a measure of the size of a set.</p>
+  <div class="tex2jax_ignore mathjax_ignore section" id="probability-random-variables-and-stochastic-processes">
+<h1>Probability, Random Variables and Stochastic Processes<a class="headerlink" href="#probability-random-variables-and-stochastic-processes" title="Permalink to this headline">¶</a></h1>
+<p>Frequentists argue that probability is the relative frequency of an outcome. For example, if you flip a fair coin infinitely times, you expect to get heads half the time. On the other hand, Bayesians argue that probability is a subjective belief. For example, the probability of getting an A in a class is subjective because no one can take a class infinitely many times to obtain the relative frequency.
+The context of your problem will typically suggest which perspective to use.
+For example, when you have a shortage of data, a Bayesian approach allows you to use prior knowledge. In contrast, frequentists tell us how to compute the confidence interval of an estimate, if we have a latge data set.</p>
+<p>Whether you prefer the frequentist’s or the Bayesian view, there is a more fundamental notion of probability thanks to <a class="reference external" href="https://en.wikipedia.org/wiki/Andrey_Kolmogorov">Andrey Kolmogorov</a>, namely, probability is a measure of the size of a set.</p>
+<p>In this chapter:</p>
+<ul class="simple">
+<li><p>We introduce <a class="reference internal" href="#content-references-set-theory"><span class="std std-ref">Set theory</span></a> and the <a class="reference internal" href="#content-references-union-intersection"><span class="std std-ref">Union and Intersection</span></a> of sets</p></li>
+<li><p>We introduce <a class="reference internal" href="#content-references-probability"><span class="std std-ref">Probability</span></a> the Axioms of Probablity (<a class="reference internal" href="#axiom-probability">Axiom 1</a>)</p></li>
+<li><p>We introduce <a class="reference internal" href="#content-references-random-variables"><span class="std std-ref">Random Variables and Stochastic Processes</span></a></p></li>
+</ul>
+<hr class="docutils" />
 <div class="section" id="set-theory">
-<h2>Set theory<a class="headerlink" href="#set-theory" title="Permalink to this headline">¶</a></h2>
+<span id="content-references-set-theory"></span><h2>Set theory<a class="headerlink" href="#set-theory" title="Permalink to this headline">¶</a></h2>
 <p>In mathematics, we are often interested in describing a collection of numbers or other mathematical objects, for example, the numbers <span class="math notranslate nohighlight">\(\left[a, b\right]\)</span> on the real line, or the ordered pairs of numbers that define a circle. These collections of numbers can be abstractly defined as sets.
 A set is simply a collection of mathematical objets. Set theory is a mathematical tool that defines operations on sets. It provides the basic arithmetic for combining, separating, and decomposing sets.</p>
 <div class="proof definition admonition" id="defn-sets">
@@ -531,7 +590,7 @@ Two sets <span class="math notranslate nohighlight">\(A\)</span> and <span class
 </div><p>Finally, there are two special types of sets,
 the empty set <span class="math notranslate nohighlight">\(\emptyset\)</span> and the universal set <span class="math notranslate nohighlight">\(\Omega\)</span>. The empty set contains no elements. For example, if the set <span class="math notranslate nohighlight">\(A\)</span> is empty we say <span class="math notranslate nohighlight">\(A=\emptyset\)</span>. On the other hand, the universal set is the set containing all elements. Thus, if set <span class="math notranslate nohighlight">\(A\)</span> contains all possible elements, we say <span class="math notranslate nohighlight">\(A=\Omega\)</span>.</p>
 <div class="section" id="union-and-intersection">
-<h3>Union and Intersection<a class="headerlink" href="#union-and-intersection" title="Permalink to this headline">¶</a></h3>
+<span id="content-references-union-intersection"></span><h3>Union and Intersection<a class="headerlink" href="#union-and-intersection" title="Permalink to this headline">¶</a></h3>
 <p>We now discuss basic set operations. By operations, we mean functions of two or more sets whose output value is a set. We use these operations to combine and separate sets. Let’s first describe the
 <a class="reference external" href="https://en.wikipedia.org/wiki/Union_(set_theory)">union</a>.</p>
 <div class="proof definition admonition" id="defn-union">
@@ -553,9 +612,71 @@ logical <em>and</em> operator. Thus, the <a class="reference external" href="htt
 \[A\cap{B} = \left\{x\,\vert\,x\in{A} \text{ and } x\in{B}\right\}\]</div>
 </div>
 </div></div>
+<div class="section" id="complement">
+<span id="content-references-set-complement"></span><h3>Complement<a class="headerlink" href="#complement" title="Permalink to this headline">¶</a></h3>
+<p>In addition to the union and intersection of sets,
+there is a third basic operation called the <a class="reference external" href="https://en.wikipedia.org/wiki/Complement_(set_theory)">set complement</a>.
+Suppose you had a set <span class="math notranslate nohighlight">\(A\subset\Omega\)</span>. Then the complement of <span class="math notranslate nohighlight">\(A\)</span>, denoted by <span class="math notranslate nohighlight">\(\bar{A}\)</span>, is
+everything that is in <span class="math notranslate nohighlight">\(\Omega\)</span>, but <strong>not</strong> in <span class="math notranslate nohighlight">\(A\)</span>.</p>
+<div class="proof definition admonition" id="defn-complement">
+<p class="admonition-title"><span class="caption-number">Definition 5 </span> (Complement)</p>
+<div class="definition-content section" id="proof-content">
+<p>The abosulte complement of a set <span class="math notranslate nohighlight">\(A\)</span>, denoted by <span class="math notranslate nohighlight">\(\bar{A}\)</span>, is the set containing all elements that are in <span class="math notranslate nohighlight">\(\Omega\)</span> but not in <span class="math notranslate nohighlight">\(A\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\bar{A} = \left\{x\  \vert\ x\in\Omega \text{ and } x\notin{A} \right\}\]</div>
+<p>The complement has a number of interesting properties, known collectively as the Complement laws.</p>
+<ul class="simple">
+<li><p>P1: <span class="math notranslate nohighlight">\(A\cup{\bar{A}} = \Omega\)</span>. The set <span class="math notranslate nohighlight">\(A\)</span> and it’s complement <span class="math notranslate nohighlight">\(\bar{A}\)</span> make up the universal set <span class="math notranslate nohighlight">\(\Omega\)</span>.</p></li>
+<li><p>P2: <span class="math notranslate nohighlight">\(A\cup{\bar{A}} = \emptyset\)</span>. There are no elements outside of <span class="math notranslate nohighlight">\(A\)</span> and it’s complement <span class="math notranslate nohighlight">\(\bar{A}\)</span>.</p></li>
+<li><p>P3: <span class="math notranslate nohighlight">\(\bar{\emptyset} = \Omega\)</span>. The complement of the emptyset <span class="math notranslate nohighlight">\(\emptyset\)</span> is the universal set <span class="math notranslate nohighlight">\(\Omega\)</span>.</p></li>
+<li><p>P4: <span class="math notranslate nohighlight">\(\bar{\Omega} = \emptyset\)</span>. There is nothing outside of the universal set <span class="math notranslate nohighlight">\(\Omega\)</span>.</p></li>
+<li><p>P5: <span class="math notranslate nohighlight">\(\bar{\bar{A}} = A\)</span>. The complement of the complement returns the original set <span class="math notranslate nohighlight">\(A\)</span>.</p></li>
+</ul>
+</div>
+</div></div>
+<div class="section" id="disjoint-sets-and-partitions">
+<span id="content-references-set-disjoint"></span><h3>Disjoint Sets and Partitions<a class="headerlink" href="#disjoint-sets-and-partitions" title="Permalink to this headline">¶</a></h3>
+<p>The last set-theoretic concepts that we explore before turning our attention to probability (and its relationship to sets)
+is the <a class="reference external" href="https://en.wikipedia.org/wiki/Disjoint_sets">disjoint</a> relationship, and the idea of a partition.
+Suppose we had two sets <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span>; the sets <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span> are disjoint if they have no elements in common.</p>
+<div class="proof definition admonition" id="defn-disjoint">
+<p class="admonition-title"><span class="caption-number">Definition 6 </span> (Disjoint)</p>
+<div class="definition-content section" id="proof-content">
+<p>Two sets <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span> are said to be disjoint if thier intersection is the emptyset <span class="math notranslate nohighlight">\(\emptyset\)</span> (they have no common elements):</p>
+<div class="math notranslate nohighlight">
+\[A\cap{B} = \emptyset\]</div>
+<p>For a collection of sets <span class="math notranslate nohighlight">\(\left\{A_{1},A_{2},\dots, A_{n}\right\}\)</span>, then the collection is disjoint if:</p>
+<div class="math notranslate nohighlight">
+\[A_{i}\cap{A_{j}} = \emptyset\]</div>
+<p>for all pairs of sets <span class="math notranslate nohighlight">\(A_{i}\)</span> and <span class="math notranslate nohighlight">\(A_{j}\)</span> where <span class="math notranslate nohighlight">\(i\neq{j}\)</span>.</p>
+</div>
+</div><p>Now that we understand disjoint sets (<a class="reference internal" href="#defn-disjoint">Definition 6</a>), we can define a partition of the universal set <span class="math notranslate nohighlight">\(\Omega\)</span>.</p>
+<div class="proof definition admonition" id="defn-partition">
+<p class="admonition-title"><span class="caption-number">Definition 7 </span> (Partition)</p>
+<div class="definition-content section" id="proof-content">
+<p>A collection of sets <span class="math notranslate nohighlight">\(\left\{A_{1},A_{2},\dots, A_{n}\right\}\)</span> is a partition of <span class="math notranslate nohighlight">\(\Omega\)</span> if the following
+two conditions are true:</p>
+<p><strong>Condition 1</strong>: the collection of sets <span class="math notranslate nohighlight">\(\left\{A_{1},A_{2},\dots, A_{n}\right\}\)</span> is disjoint</p>
+<div class="math notranslate nohighlight">
+\[A_{i}\cap{A_{j}} = \emptyset\]</div>
+<p>for all pairs of sets <span class="math notranslate nohighlight">\(A_{i}\)</span> and <span class="math notranslate nohighlight">\(A_{j}\)</span> where <span class="math notranslate nohighlight">\(i\neq{j}\)</span>.</p>
+<p><strong>Condition 2</strong>: The union of the sets <span class="math notranslate nohighlight">\(\left\{A_{1},A_{2},\dots, A_{n}\right\}\)</span> gives the universal set <span class="math notranslate nohighlight">\(\Omega\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\bigcup_{i=1}^{n}A_{i} = \Omega\]</div>
+</div>
+</div><p>The partition (<a class="reference internal" href="#defn-partition">Definition 7</a>) of the universal set <span class="math notranslate nohighlight">\(\Omega\)</span> is a collection of smaller non-overlapping subsets whose union gives back the universal set <span class="math notranslate nohighlight">\(\Omega\)</span>.
+Partitions are important because they allow us to decompose the universal set <span class="math notranslate nohighlight">\(\Omega\)</span> into a collection of smaller subsets. Since these smaller subsets are disjoint, i.e., they do not overlap, we can analyze them separately from each other.</p>
+<p>In the context of probability, partitions are essential tools because they allow us to decouple complex events
+into many smaller disconnected events.
+For example, suppose the collection of sets <span class="math notranslate nohighlight">\(\left\{A_{1},A_{2},\dots, A_{n}\right\}\)</span> is a partition of <span class="math notranslate nohighlight">\(\Omega\)</span>.
+Then, for any set <span class="math notranslate nohighlight">\(B\subseteq\Omega\)</span> we can decompose <span class="math notranslate nohighlight">\(B\)</span> into smaller disjoint components <span class="math notranslate nohighlight">\(B\cap{A_{i}}\)</span>
+(the elements of <span class="math notranslate nohighlight">\(B\)</span> that are in <span class="math notranslate nohighlight">\(A_{i}\)</span>):</p>
+<div class="math notranslate nohighlight" id="equation-eqn-decomp-partition">
+<span class="eqno">(5)<a class="headerlink" href="#equation-eqn-decomp-partition" title="Permalink to this equation">¶</a></span>\[\bigcup_{i=1}^{n}B\cap{A_{i}} = B\]</div>
+</div>
 </div>
 <div class="section" id="probability">
-<h2>Probability<a class="headerlink" href="#probability" title="Permalink to this headline">¶</a></h2>
+<span id="content-references-probability"></span><h2>Probability<a class="headerlink" href="#probability" title="Permalink to this headline">¶</a></h2>
 <p>A probability space is completley described by the tuple <span class="math notranslate nohighlight">\((\Omega,\mathcal{F},P)\)</span>:</p>
 <ul class="simple">
 <li><p>Sample space <span class="math notranslate nohighlight">\(\Omega\)</span>: The set of all possible outcomes from an experiment.</p></li>
@@ -661,17 +782,16 @@ to a real number in <span class="math notranslate nohighlight">\(\left[0, 1\righ
 </ul>
 </div>
 </div></div>
-</div>
 <div class="section" id="conditional-probability">
-<h2>Conditional Probability<a class="headerlink" href="#conditional-probability" title="Permalink to this headline">¶</a></h2>
+<h3>Conditional Probability<a class="headerlink" href="#conditional-probability" title="Permalink to this headline">¶</a></h3>
 <p>The motivation of conditional probability is to restrict the probability to a subevent happening in the sample space. If B has happened, the probability for A to also happen is P[A∩B]/P[B]. If two events are not influencing each other, then we say that A and B are independent.</p>
 <div class="section" id="independence-versus-disjoint">
-<h3>Independence versus Disjoint<a class="headerlink" href="#independence-versus-disjoint" title="Permalink to this headline">¶</a></h3>
+<h4>Independence versus Disjoint<a class="headerlink" href="#independence-versus-disjoint" title="Permalink to this headline">¶</a></h4>
 <p>Conditional probability deals with situations where two events <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span> are related.
 However, what if the two events are unrelated? In other words, information about one event says nothing
 about the second event. In this case, the events <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span> are said ot be independent:</p>
 <div class="proof definition admonition" id="defn-independence">
-<p class="admonition-title"><span class="caption-number">Definition 5 </span> (Statistical Independence)</p>
+<p class="admonition-title"><span class="caption-number">Definition 8 </span> (Statistical Independence)</p>
 <div class="definition-content section" id="proof-content">
 <p>Two events A and B are statistically independent if:</p>
 <div class="math notranslate nohighlight">
@@ -683,6 +803,7 @@ know that <span class="math notranslate nohighlight">\(A\cap{B} = 0\)</span> and
 \[P\left(A\cap{B}\right) = 0\]</div>
 <p>But, this says nothing about whether <span class="math notranslate nohighlight">\(P(A\cap{B})\)</span> can be factorized into the product <span class="math notranslate nohighlight">\(P(A)P(B)\)</span>.
 The only case when disjoint implies independence is if either <span class="math notranslate nohighlight">\(P(A) = 0\)</span>, or <span class="math notranslate nohighlight">\(P(B) = 0\)</span>.</p>
+</div>
 </div>
 <div class="section" id="bayes-theorem-and-the-law-of-total-probability">
 <h3>Bayes’ theorem and the law of total probability<a class="headerlink" href="#bayes-theorem-and-the-law-of-total-probability" title="Permalink to this headline">¶</a></h3>
@@ -711,15 +832,36 @@ Then for <span class="math notranslate nohighlight">\(B\subseteq\Omega\)</span>:
 </div>
 </div></div>
 </div>
-<div class="section" id="discrete-random-variables">
-<h2>Discrete Random Variables<a class="headerlink" href="#discrete-random-variables" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="random-variables-and-stochastic-processes">
+<span id="content-references-random-variables"></span><h2>Random Variables and Stochastic Processes<a class="headerlink" href="#random-variables-and-stochastic-processes" title="Permalink to this headline">¶</a></h2>
 <p>The sample space and the event space are all based on statements, for example, getting a head when flipping a coin, winning the game, or drawing a card, etc. These statements are not numbers; how do we convert a statement to a number?
 The answer is a random variable; random variables are mappings from events to numbers, these numbers are probabilities.</p>
+<div class="section" id="expectation-of-discrete-random-variables">
+<h3>Expectation of discrete random variables<a class="headerlink" href="#expectation-of-discrete-random-variables" title="Permalink to this headline">¶</a></h3>
+<p>It is often helpful to extract essential parameters such as the mean
+or standard deviation of the return when analyzing financial data. If we hypothesize that markets are random,
+then the values for these parameters can be estimated from the random prices observed in the market.</p>
+<p>Let the price of some asset, e.g., <code class="docutils literal notranslate"><span class="pre">XYZ,</span></code> stock price, be a discrete random variable denoted by <span class="math notranslate nohighlight">\(X\)</span>.
+Then expectation is the mean of the random variable <span class="math notranslate nohighlight">\(X\)</span>.</p>
+<div class="proof definition admonition" id="defn-expectation">
+<p class="admonition-title"><span class="caption-number">Definition 9 </span> (Expectation)</p>
+<div class="definition-content section" id="proof-content">
+<p>Let <span class="math notranslate nohighlight">\(X\)</span> denote a discrete random variable. Then, the expectation of the random variable <span class="math notranslate nohighlight">\(X\)</span> is given by:</p>
+<div class="math notranslate nohighlight" id="equation-eq-defn-expectation">
+<span class="eqno">(6)<a class="headerlink" href="#equation-eq-defn-expectation" title="Permalink to this equation">¶</a></span>\[\mathbb{E}\left(X\right) = \sum_{x\in{X(\Omega)}}xp_{X}(x)\]</div>
+<p>where <span class="math notranslate nohighlight">\(p_{X}(x)\)</span> denotes the probability that random variable <span class="math notranslate nohighlight">\(X=x\)</span>, and
+<span class="math notranslate nohighlight">\(X(\Omega)\)</span> denotes sample space for <span class="math notranslate nohighlight">\(X\)</span> (the set of all possible values that the random variable <span class="math notranslate nohighlight">\(X\)</span> can take.)</p>
+</div>
+</div><p>The expectation of a random variable has several useful properties.</p>
+</div>
+<div class="section" id="moments-and-variance-of-discrete-random-variables">
+<h3>Moments and variance of discrete random variables<a class="headerlink" href="#moments-and-variance-of-discrete-random-variables" title="Permalink to this headline">¶</a></h3>
+</div>
 <div class="section" id="probability-mass-function">
 <h3>Probability mass function<a class="headerlink" href="#probability-mass-function" title="Permalink to this headline">¶</a></h3>
 <p>In the case of discrete random variables, for example, dice roles, coin flips etc, this is done using a concept called a <a class="reference external" href="https://en.wikipedia.org/wiki/Probability_mass_function">probability mass function (PMF)</a>.</p>
 <div class="proof definition admonition" id="defn-pmf">
-<p class="admonition-title"><span class="caption-number">Definition 6 </span> (Probability Mass Function)</p>
+<p class="admonition-title"><span class="caption-number">Definition 10 </span> (Probability Mass Function)</p>
 <div class="definition-content section" id="proof-content">
 <p>The probability mass function (PMF) of a random variable X is a function which specifies the probability of
 obtaining a number <span class="math notranslate nohighlight">\(x\)</span></p>
@@ -737,22 +879,18 @@ obtaining a number <span class="math notranslate nohighlight">\(x\)</span></p>
 <div class="math notranslate nohighlight">
 \[\Omega = \left\{(HH),(HT),(TH),(TT)\right\}\]</div>
 </div>
-</div></div>
-<div class="section" id="expectations-momemnts-and-variance-for-discrete-random-variable">
-<h3>Expectations, momemnts and variance for discrete random variable<a class="headerlink" href="#expectations-momemnts-and-variance-for-discrete-random-variable" title="Permalink to this headline">¶</a></h3>
-</div>
-<div class="section" id="bernoulli-random-variables">
-<h3>Bernoulli random variables<a class="headerlink" href="#bernoulli-random-variables" title="Permalink to this headline">¶</a></h3>
+</div><div class="section" id="bernoulli-random-variables">
+<h4>Bernoulli random variables<a class="headerlink" href="#bernoulli-random-variables" title="Permalink to this headline">¶</a></h4>
 <p>A Bernoulli random variable, the simplest random variable, models a coin-flip.
 Bernoulli random variable have two states: either 1 or 0. The probability of getting 1 is <span class="math notranslate nohighlight">\(p\)</span>, while the probability of getting a value of 0 is <span class="math notranslate nohighlight">\(1 − p\)</span>. Bernoulli random variables model many binary events: coin flips (H or T),
 binary bits (1 or 0), true or false, yes or no, present or absent, etc.</p>
 </div>
 <div class="section" id="binomial-random-variable">
-<h3>Binomial random variable<a class="headerlink" href="#binomial-random-variable" title="Permalink to this headline">¶</a></h3>
+<h4>Binomial random variable<a class="headerlink" href="#binomial-random-variable" title="Permalink to this headline">¶</a></h4>
 <p>The binomial distribution is the probability of getting exactly <span class="math notranslate nohighlight">\(k\)</span> successes in <span class="math notranslate nohighlight">\(n\)</span> independent Bernoulli trials.
 For example, the probability of getting 4 heads in 6 coin tosses.</p>
 <div class="proof definition admonition" id="defn-pmf-binomial">
-<p class="admonition-title"><span class="caption-number">Definition 7 </span> (Bionomial Random Variable)</p>
+<p class="admonition-title"><span class="caption-number">Definition 11 </span> (Bionomial Random Variable)</p>
 <div class="definition-content section" id="proof-content">
 <p>Let <span class="math notranslate nohighlight">\(X\)</span> be a binomial random variable. The probability mass function for a binomial random variable is given by:</p>
 <div class="math notranslate nohighlight">
@@ -761,12 +899,12 @@ For example, the probability of getting 4 heads in 6 coin tosses.</p>
 </div>
 </div></div>
 <div class="section" id="geometric-random-variable">
-<h3>Geometric random variable<a class="headerlink" href="#geometric-random-variable" title="Permalink to this headline">¶</a></h3>
+<h4>Geometric random variable<a class="headerlink" href="#geometric-random-variable" title="Permalink to this headline">¶</a></h4>
 <p>In some applications, we are interested in trying a binary experiment e.g., a coin flip until a specified outcome is obtained.
 The outcome of this type of experiment is governed by a geometric random variable;
 a geometric random variable describes the number of failures obtained before a final success.</p>
 <div class="proof definition admonition" id="defn-pmf-geometric">
-<p class="admonition-title"><span class="caption-number">Definition 8 </span> (Geometric Random Variable)</p>
+<p class="admonition-title"><span class="caption-number">Definition 12 </span> (Geometric Random Variable)</p>
 <div class="definition-content section" id="proof-content">
 <p>Let <span class="math notranslate nohighlight">\(X\)</span> be a geometric random variable. The probability mass function for a geometric random variable is given by:</p>
 <div class="math notranslate nohighlight">
@@ -774,6 +912,7 @@ a geometric random variable describes the number of failures obtained before a f
 <p>where <span class="math notranslate nohighlight">\(p\)</span> denotes the geometric parameter <span class="math notranslate nohighlight">\(0&lt;p&lt;1\)</span>.</p>
 </div>
 </div></div>
+</div>
 </div>
 </div>
 
@@ -786,16 +925,16 @@ a geometric random variable describes the number of failures obtained before a f
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "python"
+            mode: "julia-1.7"
         },
         kernelOptions: {
-            kernelName: "python3",
+            kernelName: "julia-1.7",
             path: "./chapter-2-dir"
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'python3'</script>
+    <script>kernelName = 'julia-1.7'</script>
 
               </div>
               
@@ -809,10 +948,10 @@ a geometric random variable describes the number of failures obtained before a f
             <p class="prev-next-title">Modeling and Analysis of Asset Price Dynamics and Market Mechanisms</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="random-walks.html" title="next page">
+    <a class='right-next' id="next-link" href="markowitz.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Ordinary Brownian Motion (OBM)</p>
+        <p class="prev-next-title">Modern Portfolio Theory</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

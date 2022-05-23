@@ -56,8 +56,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="The Fantastic but Dangerous World of Derivatives, Futures, Hedging and Leverage" href="../chapter-3-dir/chapter-3.html" />
-    <link rel="prev" title="Geometric Brownian Motion" href="geometric-brownian-motion.html" />
+    <link rel="next" title="Random Walks and Brownian Motion" href="random-walks.html" />
+    <link rel="prev" title="Probability, Random Variables and Stochastic Processes" href="probability-random-variables.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -109,7 +109,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../chapter-1-dir/chapter-1.html">
-   Money, Markets and the Global Financial System
+   Assets, Money, Markets and the Global Financial System
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
   <label for="toctree-checkbox-1">
@@ -146,22 +146,17 @@ const thebe_selector_output = ".output, .cell_output"
   <ul class="current">
    <li class="toctree-l2">
     <a class="reference internal" href="probability-random-variables.html">
-     Sets, Probability, and Random Variables
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="random-walks.html">
-     Randon Processes and Brownian Motion
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="geometric-brownian-motion.html">
-     Geometric Brownian Motion
+     Probability, Random Variables and Stochastic Processes
     </a>
    </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
      Modern Portfolio Theory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="random-walks.html">
+     Random Walks and Brownian Motion
     </a>
    </li>
   </ul>
@@ -237,7 +232,10 @@ const thebe_selector_output = ".output, .cell_output"
 
     <div class="dropdown-buttons">
         <!-- ipynb file if we had a myst markdown file -->
-        
+        <a class="dropdown-buttons"
+            href="../_sources/chapter-2-dir/markowitz.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download notebook file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
         <!-- Download raw file -->
         <a class="dropdown-buttons" href="../_sources/chapter-2-dir/markowitz.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
@@ -275,6 +273,23 @@ const thebe_selector_output = ".output, .cell_output"
 
             <!-- Launch buttons -->
 
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/chapter-2-dir/markowitz.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
         </div>
 
         <!-- Table of contents -->
@@ -286,8 +301,8 @@ const thebe_selector_output = ".output, .cell_output"
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#returns">
-   Returns
+  <a class="reference internal nav-link" href="#return">
+   Return
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
@@ -305,16 +320,28 @@ const thebe_selector_output = ".output, .cell_output"
      Single Index Return Models
     </a>
    </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#expected-excess-returns-from-data">
+     Expected Excess Returns from Data
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#volatility">
    Volatility
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#weighted-volatility">
+     Weighted Volatility
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#the-markowitz-portfolio-allocation-problem">
-   The Markowitz Portfolio Allocation Problem
+  <a class="reference internal nav-link" href="#markowitz-portfolio-allocation-problem">
+   Markowitz Portfolio Allocation Problem
   </a>
  </li>
 </ul>
@@ -338,8 +365,8 @@ const thebe_selector_output = ".output, .cell_output"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#returns">
-   Returns
+  <a class="reference internal nav-link" href="#return">
+   Return
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
@@ -357,16 +384,28 @@ const thebe_selector_output = ".output, .cell_output"
      Single Index Return Models
     </a>
    </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#expected-excess-returns-from-data">
+     Expected Excess Returns from Data
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#volatility">
    Volatility
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#weighted-volatility">
+     Weighted Volatility
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#the-markowitz-portfolio-allocation-problem">
-   The Markowitz Portfolio Allocation Problem
+  <a class="reference internal nav-link" href="#markowitz-portfolio-allocation-problem">
+   Markowitz Portfolio Allocation Problem
   </a>
  </li>
 </ul>
@@ -380,20 +419,27 @@ const thebe_selector_output = ".output, .cell_output"
                 
   <div class="tex2jax_ignore mathjax_ignore section" id="modern-portfolio-theory">
 <h1>Modern Portfolio Theory<a class="headerlink" href="#modern-portfolio-theory" title="Permalink to this headline">¶</a></h1>
-<p>Modern portfolio theory (MPT) is a practical method for selecting collection of assets e.g., stocks or bonds in order to maximize the overal reward of the investor within an acceptable level of risk to the investor. Harry Markowitz, who developed the mathematical foundation of MPT <span id="id1">[<a class="reference internal" href="../References.html#id4" title="Harry Markowitz. Portfolio selection. The Journal of Finance, 7(1):77–91, 1952. URL: http://www.jstor.org/stable/2975974 (visited on 2022-04-12).">Mar52</a>]</span>, was later awarded a <a class="reference external" href="https://www.nobelprize.org/prizes/economic-sciences/1990/markowitz/facts/">Nobel Prize for his work in 1990</a>.</p>
-<p>The central theme of Markowitz is the balance risk and reward, where reward is measured as the <a class="reference external" href="https://www.investopedia.com/terms/r/return.asp">return</a> of a basket of assets, while risk is measured as the standard deviation (or sometimes the variance) of the logrithmic return, otherwise known as <a class="reference external" href="https://en.wikipedia.org/wiki/Volatility_(finance)">volatility</a>.</p>
-<div class="section" id="returns">
-<h2>Returns<a class="headerlink" href="#returns" title="Permalink to this headline">¶</a></h2>
+<p>Modern portfolio theory (MPT) is a practical method for selecting a collection of assets, e.g., stocks or bonds, to maximize the overall reward of the investor within an acceptable level of risk to the investor. Harry Markowitz, who developed the mathematical foundation of MPT <span id="id1">[<a class="reference internal" href="../References.html#id7" title="Harry Markowitz. Portfolio selection. The Journal of Finance, 7(1):77–91, 1952. URL: http://www.jstor.org/stable/2975974 (visited on 2022-04-12).">Mar52</a>]</span>, was later awarded a <a class="reference external" href="https://www.nobelprize.org/prizes/economic-sciences/1990/markowitz/facts/">Nobel Prize for his work in 1990</a>.</p>
+<p>The central theme of Markowitz is the balance between risk and reward, where the reward is measured as the <a class="reference external" href="https://www.investopedia.com/terms/r/return.asp">return</a> of a basket of assets. In contrast, the risk is calculated as the standard deviation (or sometimes the variance) of the logarithmic return, otherwise known as <a class="reference external" href="https://en.wikipedia.org/wiki/Volatility_(finance)">volatility</a>.</p>
+<p>In this chapter:</p>
+<ul class="simple">
+<li><p>We introduce the idea of reward as a <a class="reference internal" href="#content-references-return"><span class="std std-ref">Return</span></a> on the price of an asset</p></li>
+<li><p>We introduce the idea of risk as the <a class="reference internal" href="#content-references-risk-volatility"><span class="std std-ref">Volatility</span></a> of the return</p></li>
+<li><p>We introduce the <a class="reference internal" href="#content-references-markowitz"><span class="std std-ref">Markowitz Portfolio Allocation Problem</span></a></p></li>
+</ul>
+<hr class="docutils" />
+<div class="section" id="return">
+<span id="content-references-return"></span><h2>Return<a class="headerlink" href="#return" title="Permalink to this headline">¶</a></h2>
 <p>The return of an asset is a measure of the difference in the price of that asset between two time periods.
 Return can be calculated in many ways; two common approaches are the percentage or fractional return and the
 logarithmic return.</p>
 <div class="section" id="fractional-return">
 <span id="content-references-fractional-return"></span><h3>Fractional return<a class="headerlink" href="#fractional-return" title="Permalink to this headline">¶</a></h3>
 <div class="proof definition admonition" id="defn-percentage-return">
-<p class="admonition-title"><span class="caption-number">Definition 9 </span> (Fractional return)</p>
+<p class="admonition-title"><span class="caption-number">Definition 13 </span> (Fractional return)</p>
 <div class="definition-content section" id="proof-content">
-<p>Let the price of asset <span class="math notranslate nohighlight">\(i\)</span> at any time <span class="math notranslate nohighlight">\(j\)</span> be denoted by <span class="math notranslate nohighlight">\(P_{ij}&gt;0\)</span>. Then the fractional return
-on asset <span class="math notranslate nohighlight">\(i\)</span> over time horizon <span class="math notranslate nohighlight">\(j\rightarrow{k},i\neq{k}\)</span> is defined as:</p>
+<p>Let the price of asset <span class="math notranslate nohighlight">\(i\)</span> at any time <span class="math notranslate nohighlight">\(j\)</span> be given by <span class="math notranslate nohighlight">\(P_{ij}&gt;0\)</span>. Then the fractional return
+on asset <span class="math notranslate nohighlight">\(i\)</span> over time horizon <span class="math notranslate nohighlight">\(j\rightarrow{k},j\neq{k}\)</span> is defined as:</p>
 <div class="math notranslate nohighlight">
 \[r_{i,j\rightarrow{k}} \equiv \frac{P_{ik} - P_{ij}}{P_{ij}}\]</div>
 <p>where <span class="math notranslate nohighlight">\(r_{i,j\rightarrow{k}}\)</span> denotes the fractional return of asset <span class="math notranslate nohighlight">\(i\)</span> over time horizon <span class="math notranslate nohighlight">\(j\rightarrow{k},i\neq{k}\)</span>.</p>
@@ -402,20 +448,21 @@ on asset <span class="math notranslate nohighlight">\(i\)</span> over time horiz
 Let <span class="math notranslate nohighlight">\(P_{ij}\)</span> denote the close price today, and <span class="math notranslate nohighlight">\(P_{ij-1}\)</span> denote the close price for the previous trading day.
 Then, the fractional daily return is given by:</p>
 <div class="math notranslate nohighlight" id="equation-eq-example-daily-close-price">
-<span class="eqno">(8)<a class="headerlink" href="#equation-eq-example-daily-close-price" title="Permalink to this equation">¶</a></span>\[r_{i,j-1\rightarrow{j}} = \frac{P_{ij} - P_{i,j-1}}{P_{i,j-1}}\]</div>
-<p>However, Eqn. <a class="reference internal" href="#equation-eq-example-daily-close-price">(8)</a> can be rearranged to give an expression similar to
+<span class="eqno">(7)<a class="headerlink" href="#equation-eq-example-daily-close-price" title="Permalink to this equation">¶</a></span>\[r_{i,j-1\rightarrow{j}} = \frac{P_{ij} - P_{i,j-1}}{P_{i,j-1}}\]</div>
+<p>However, Eqn. <a class="reference internal" href="#equation-eq-example-daily-close-price">(7)</a> can be rearranged to give an expression similar to
 Eqn. <a class="reference internal" href="../chapter-1-dir/assets.html#equation-eq-cash-flow-1-period">(2)</a>:</p>
 <div class="math notranslate nohighlight">
 \[P_{ij} = \left(1+r_{i,j-1\rightarrow{j}}\right)P_{i,j-1}\]</div>
-<p>Thus, the fractional daily return (or a fractional return computed between any two different dates) is a type of discount rate that quantifies how the value of an asset changes, in the case of the share price of ticker <code class="docutils literal notranslate"><span class="pre">XYZ</span></code>, because of market forces.</p>
+<p>Thus, the fractional daily return (or a fractional return computed between any two different dates) is a type of discount rate that quantifies how the value of an asset changes, in the case of the share price of ticker <code class="docutils literal notranslate"><span class="pre">XYZ</span></code>, because of market forces.
+Becuase <span class="math notranslate nohighlight">\(P_{i,\star}\)</span> is a random variable, the return is also a random variable.</p>
 </div>
 <div class="section" id="logarithmic-return">
 <span id="content-references-log-return"></span><h3>Logarithmic return<a class="headerlink" href="#logarithmic-return" title="Permalink to this headline">¶</a></h3>
 <div class="proof definition admonition" id="defn-log-return">
-<p class="admonition-title"><span class="caption-number">Definition 10 </span> (Logarithmic return)</p>
+<p class="admonition-title"><span class="caption-number">Definition 14 </span> (Logarithmic return)</p>
 <div class="definition-content section" id="proof-content">
-<p>Let the price of asset <span class="math notranslate nohighlight">\(i\)</span> at any time <span class="math notranslate nohighlight">\(j\)</span> be denoted by <span class="math notranslate nohighlight">\(P_{ij}&gt;0\)</span>. Then the logarithmic return
-on asset <span class="math notranslate nohighlight">\(i\)</span> over time horizon <span class="math notranslate nohighlight">\(j\rightarrow{k},i\neq{k}\)</span> is defined as:</p>
+<p>Let the price of asset <span class="math notranslate nohighlight">\(i\)</span> at any time <span class="math notranslate nohighlight">\(j\)</span> be gievm by <span class="math notranslate nohighlight">\(P_{ij}&gt;0\)</span>. Then the logarithmic return
+on asset <span class="math notranslate nohighlight">\(i\)</span> over time horizon <span class="math notranslate nohighlight">\(j\rightarrow{k},j\neq{k}\)</span> is defined as:</p>
 <div class="math notranslate nohighlight">
 \[\bar{r}_{i,j\rightarrow{k}} \equiv \log\left(\frac{P_{ij}}{P_{ik}}\right)\]</div>
 <p>where <span class="math notranslate nohighlight">\(\bar{r}_{i,j\rightarrow{k}}\)</span> denotes the logarithmic return of asset <span class="math notranslate nohighlight">\(i\)</span> over time horizon <span class="math notranslate nohighlight">\(j\rightarrow{k},i\neq{k}\)</span>. The <span class="math notranslate nohighlight">\(\log\left(\star\right)\)</span> term denotes the <a class="reference external" href="https://en.wikipedia.org/wiki/Natural_logarithm">natural log</a>.</p>
@@ -424,12 +471,13 @@ on asset <span class="math notranslate nohighlight">\(i\)</span> over time horiz
 Let <span class="math notranslate nohighlight">\(P_{ij}\)</span> denote the close price today, and <span class="math notranslate nohighlight">\(P_{ij-1}\)</span> denote the close price for the previous trading day.
 Then, the fractional daily return is given by:</p>
 <div class="math notranslate nohighlight" id="equation-eq-example-daily-close-price-log">
-<span class="eqno">(9)<a class="headerlink" href="#equation-eq-example-daily-close-price-log" title="Permalink to this equation">¶</a></span>\[\bar{r}_{i,j-1\rightarrow{j}} = \log\left(\frac{P_{ij}}{P_{i,j-1}}\right)\]</div>
-<p>However, Eqn. <a class="reference internal" href="#equation-eq-example-daily-close-price-log">(9)</a> can be rearranged to give an expression similar to
+<span class="eqno">(8)<a class="headerlink" href="#equation-eq-example-daily-close-price-log" title="Permalink to this equation">¶</a></span>\[\bar{r}_{i,j-1\rightarrow{j}} = \log\left(\frac{P_{ij}}{P_{i,j-1}}\right)\]</div>
+<p>However, Eqn. <a class="reference internal" href="#equation-eq-example-daily-close-price-log">(8)</a> can be rearranged to give an expression similar to
 Eqn. <a class="reference internal" href="../chapter-1-dir/assets.html#equation-eq-cont-exchange-tvm">(4)</a>:</p>
 <div class="math notranslate nohighlight">
 \[P_{ij} = \exp\left(\bar{r}_{i,j-1\rightarrow{j}}\right)P_{i,j-1}\]</div>
-<p>Thus, the logarithmic daily return (or a logarithmic return computed between any two different dates) is a continuous discount rate that quantifies how the value of an asset, e.g., the share price of ticker <code class="docutils literal notranslate"><span class="pre">XYZ</span></code>, changes because of market forces.</p>
+<p>Thus, the logarithmic daily return (or a logarithmic return computed between any two different dates) is a continuous discount rate that quantifies how the value of an asset, e.g., the share price of ticker <code class="docutils literal notranslate"><span class="pre">XYZ</span></code>, changes because of market forces.
+Becuase <span class="math notranslate nohighlight">\(P_{i,\star}\)</span> is a random variable, the return is also a random variable.</p>
 </div>
 <div class="section" id="single-index-return-models">
 <h3>Single Index Return Models<a class="headerlink" href="#single-index-return-models" title="Permalink to this headline">¶</a></h3>
@@ -437,29 +485,29 @@ Eqn. <a class="reference internal" href="../chapter-1-dir/assets.html#equation-e
 from historical data. However, what if we do not have access to price data for <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> or we want to
 <em>predict</em> the return of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code>, for example, in an automated trading system?
 In these cases, we need a model. One of the simplest (yet still widely used) models is the single index
-model (SIM) developed by Sharpe <span id="id2">[<a class="reference internal" href="../References.html#id2" title="William F. Sharpe. A simplified model for portfolio analysis. Management Science, 9(2):277-293, 1963. URL: https://doi.org/10.1287/mnsc.9.2.277, arXiv:https://doi.org/10.1287/mnsc.9.2.277, doi:10.1287/mnsc.9.2.277.">Sha63</a>]</span>.</p>
+model (SIM) developed by Sharpe <span id="id2">[<a class="reference internal" href="../References.html#id5" title="William F. Sharpe. A simplified model for portfolio analysis. Management Science, 9(2):277-293, 1963. URL: https://doi.org/10.1287/mnsc.9.2.277, arXiv:https://doi.org/10.1287/mnsc.9.2.277, doi:10.1287/mnsc.9.2.277.">Sha63</a>]</span>.</p>
 <p>The single-index model (SIM) is an asset pricing model which measures both the risk and the return of a stock, relative to a risk free alternative investment e.g., government treasury bounds. The single index model describes the return of the stock of firm <span class="math notranslate nohighlight">\(i\)</span> in terms of a firm-specific return, and the overall market return:</p>
 <div class="math notranslate nohighlight" id="equation-eq-single-index-model">
-<span class="eqno">(10)<a class="headerlink" href="#equation-eq-single-index-model" title="Permalink to this equation">¶</a></span>\[r_{i}\left(t\right) - r_{f} = \alpha_{i}+\beta_{i}\left(r_{m}\left(t\right)-r_{f}\right)+\epsilon_{i}
+<span class="eqno">(9)<a class="headerlink" href="#equation-eq-single-index-model" title="Permalink to this equation">¶</a></span>\[r_{i}\left(t\right) - r_{f} = \alpha_{i}+\beta_{i}\left(r_{m}\left(t\right)-r_{f}\right)+\epsilon_{i}
 \left(t\right)\qquad{t=1,2,\dots,T}\]</div>
 <p>The term <span class="math notranslate nohighlight">\(r_{i}\left(t\right)\)</span> denotes the return of firm <span class="math notranslate nohighlight">\(i\)</span>, during time period <span class="math notranslate nohighlight">\(t\)</span>,
 <span class="math notranslate nohighlight">\(r_{f}\)</span> denotes the risk-free rate i.e., the <a class="reference external" href="https://fred.stlouisfed.org/series/DTB3">interest rate of a riskless investment such as treasury bills</a>, while <span class="math notranslate nohighlight">\(r_{m}\left(t\right)\)</span> denotes the return on a market portfolio e.g., an index such as the <a class="reference external" href="https://en.wikipedia.org/wiki/S%26P_500">S&amp;P500</a> during time period <span class="math notranslate nohighlight">\(t\)</span>.  The term <span class="math notranslate nohighlight">\(\alpha_{i}\)</span> denotes the firm-specific return, while <span class="math notranslate nohighlight">\(\beta_{i}\)</span> denotes the proportion of the the firm’s return associated with the overall market.</p>
-<p>The term <span class="math notranslate nohighlight">\(R_{i}(t)\equiv\left(r_{i}\left(t\right) - r_{f}\right)\)</span> describes the excess return of specific firm <span class="math notranslate nohighlight">\(i\)</span>, while <span class="math notranslate nohighlight">\(R_{m}(t)\equiv\left(r_{m}\left(t\right)-r_{f}\right)\)</span> describes the excess return of the market portfolio. Replacing the excess returns in Eqn. <a class="reference internal" href="#equation-eq-single-index-model">(10)</a> gives the single index model in standard form:</p>
+<p>The term <span class="math notranslate nohighlight">\(R_{i}(t)\equiv\left(r_{i}\left(t\right) - r_{f}\right)\)</span> describes the excess return of specific firm <span class="math notranslate nohighlight">\(i\)</span>, while <span class="math notranslate nohighlight">\(R_{m}(t)\equiv\left(r_{m}\left(t\right)-r_{f}\right)\)</span> describes the excess return of the market portfolio. Replacing the excess returns in Eqn. <a class="reference internal" href="#equation-eq-single-index-model">(9)</a> gives the single index model in standard form:</p>
 <div class="proof definition admonition" id="defn-single-index-model-standard">
-<p class="admonition-title"><span class="caption-number">Definition 11 </span> (Single index model)</p>
+<p class="admonition-title"><span class="caption-number">Definition 15 </span> (Single index model)</p>
 <div class="definition-content section" id="proof-content">
 <p>Let <span class="math notranslate nohighlight">\(R_{i}(t)\)</span> and <span class="math notranslate nohighlight">\(R_{m}(t)\)</span> denote the firm specific and market excess returns (random variables)
 for time period <span class="math notranslate nohighlight">\(t\)</span>.
-Further, let <span class="math notranslate nohighlight">\(\epsilon_{i}\left(t\right)\)</span> denote a <a class="reference external" href="https://en.wikipedia.org/wiki/Normal_distribution">stationary normally distributed random noise process</a> with mean zero and standard deviation <span class="math notranslate nohighlight">\(\sigma_{i}\)</span>. Then, the standard single index model of Sharpe is given by <span id="id3">[<a class="reference internal" href="../References.html#id2" title="William F. Sharpe. A simplified model for portfolio analysis. Management Science, 9(2):277-293, 1963. URL: https://doi.org/10.1287/mnsc.9.2.277, arXiv:https://doi.org/10.1287/mnsc.9.2.277, doi:10.1287/mnsc.9.2.277.">Sha63</a>]</span>:</p>
+Further, let <span class="math notranslate nohighlight">\(\epsilon_{i}\left(t\right)\)</span> denote a <a class="reference external" href="https://en.wikipedia.org/wiki/Normal_distribution">stationary normally distributed random noise process</a> with mean zero and standard deviation <span class="math notranslate nohighlight">\(\sigma_{i}\)</span>. Then, the standard single index model of Sharpe is given by <span id="id3">[<a class="reference internal" href="../References.html#id5" title="William F. Sharpe. A simplified model for portfolio analysis. Management Science, 9(2):277-293, 1963. URL: https://doi.org/10.1287/mnsc.9.2.277, arXiv:https://doi.org/10.1287/mnsc.9.2.277, doi:10.1287/mnsc.9.2.277.">Sha63</a>]</span>:</p>
 <div class="math notranslate nohighlight" id="equation-eq-single-index-model-standard">
-<span class="eqno">(11)<a class="headerlink" href="#equation-eq-single-index-model-standard" title="Permalink to this equation">¶</a></span>\[R_{i}\left(t\right) = \alpha_{i}+\beta_{i}R_{m}\left(t\right)+\epsilon_{i}
+<span class="eqno">(10)<a class="headerlink" href="#equation-eq-single-index-model-standard" title="Permalink to this equation">¶</a></span>\[R_{i}\left(t\right) = \alpha_{i}+\beta_{i}R_{m}\left(t\right)+\epsilon_{i}
 \left(t\right)\qquad{t=1,2,\dots,T}\]</div>
 <p>where <span class="math notranslate nohighlight">\(\alpha_{i}\)</span> and <span class="math notranslate nohighlight">\(\beta_{i}\)</span> are constant model paramaters.</p>
 </div>
-</div><p>The <span class="math notranslate nohighlight">\(\alpha_{i}\)</span> parameter in Eqn <a class="reference internal" href="#equation-eq-single-index-model-standard">(11)</a> describes the firm specific
+</div><p>The <span class="math notranslate nohighlight">\(\alpha_{i}\)</span> parameter in Eqn <a class="reference internal" href="#equation-eq-single-index-model-standard">(10)</a> describes the firm specific
 return that is not explained by the market; thus, <span class="math notranslate nohighlight">\(\alpha_{i}\)</span> is the
 idiosyncratic return of firm <span class="math notranslate nohighlight">\(i\)</span>.</p>
-<p>The <span class="math notranslate nohighlight">\(\beta_{i}\)</span> parameter in Eqn <a class="reference internal" href="#equation-eq-single-index-model-standard">(11)</a> has several interpretations.
+<p>The <span class="math notranslate nohighlight">\(\beta_{i}\)</span> parameter in Eqn <a class="reference internal" href="#equation-eq-single-index-model-standard">(10)</a> has several interpretations.
 First, <span class="math notranslate nohighlight">\(\beta_{i}\)</span> measures how the excess return of firm <span class="math notranslate nohighlight">\(i\)</span> is related to the overall excess return of the market; a large <span class="math notranslate nohighlight">\(\beta_{i}\)</span> suggests the market returns (or losses) are <em>amplified</em> for firm <span class="math notranslate nohighlight">\(i\)</span>, while
 a small <span class="math notranslate nohighlight">\(\beta_{i}\)</span> suggests the market returns (or losses) are <em>damped</em> for firm <span class="math notranslate nohighlight">\(i\)</span>.
 On the other hand, <span class="math notranslate nohighlight">\(\beta_{i}\)</span> can also be interpreted as a measure of the relative risk of investing in firm <span class="math notranslate nohighlight">\(i\)</span>.</p>
@@ -469,9 +517,9 @@ On the other hand, <span class="math notranslate nohighlight">\(\beta_{i}\)</spa
 <div class="observation-content section" id="proof-content">
 <p>Taking the expectation of the firm excess return <span class="math notranslate nohighlight">\(R_{i}\)</span> gives:</p>
 <div class="math notranslate nohighlight" id="equation-eq-expected-r-sim">
-<span class="eqno">(12)<a class="headerlink" href="#equation-eq-expected-r-sim" title="Permalink to this equation">¶</a></span>\[\mathbb{E}\left(R_{i}\right) = \alpha_{i}+\beta_{i}\mathbb{E}\left(R_{m}\right)\]</div>
+<span class="eqno">(11)<a class="headerlink" href="#equation-eq-expected-r-sim" title="Permalink to this equation">¶</a></span>\[\mathbb{E}\left(R_{i}\right) = \alpha_{i}+\beta_{i}\mathbb{E}\left(R_{m}\right)\]</div>
 <p>where <span class="math notranslate nohighlight">\(\mathbb{E}\left(\epsilon_{i}\left(t\right)\right) = 0\)</span>.
-Solving Eqn. <a class="reference internal" href="#equation-eq-expected-r-sim">(12)</a> for <span class="math notranslate nohighlight">\(\beta_{i}\)</span> gives:</p>
+Solving Eqn. <a class="reference internal" href="#equation-eq-expected-r-sim">(11)</a> for <span class="math notranslate nohighlight">\(\beta_{i}\)</span> gives:</p>
 <div class="math notranslate nohighlight">
 \[\beta_{i} = \frac{\mathbb{E}\left(R_{i}\right) - \alpha_{i}}{\mathbb{E}\left(R_{m}\right)}\]</div>
 <p>Thus, <span class="math notranslate nohighlight">\(\beta_{i}\)</span> is a corrected ratio of expected (average) returns:</p>
@@ -485,9 +533,9 @@ Solving Eqn. <a class="reference internal" href="#equation-eq-expected-r-sim">(1
 \[\text{Var}\left(R_{i}\right) = \mathbb{E}\left(R_{i}^{2}\right) - \mathbb{E}\left(R_{i}\right)^{2}\]</div>
 <p>is given by:</p>
 <div class="math notranslate nohighlight" id="equation-eq-var-beta">
-<span class="eqno">(13)<a class="headerlink" href="#equation-eq-var-beta" title="Permalink to this equation">¶</a></span>\[\sigma_{i}^2 = \beta_{i}^{2}\sigma_{m}^{2}+\sigma_{\epsilon}^{2}\]</div>
+<span class="eqno">(12)<a class="headerlink" href="#equation-eq-var-beta" title="Permalink to this equation">¶</a></span>\[\sigma_{i}^2 = \beta_{i}^{2}\sigma_{m}^{2}+\sigma_{\epsilon}^{2}\]</div>
 <p>where <span class="math notranslate nohighlight">\(\text{Var}\left(\star\right) = \sigma_{\star}^{2}\)</span>.
-Rearranging Eqn. <a class="reference internal" href="#equation-eq-var-beta">(13)</a> gives another expression for <span class="math notranslate nohighlight">\(\beta_{i}\)</span> in terms of the corrected variance (risk) of firm <span class="math notranslate nohighlight">\(i\)</span></p>
+Rearranging Eqn. <a class="reference internal" href="#equation-eq-var-beta">(12)</a> gives another expression for <span class="math notranslate nohighlight">\(\beta_{i}\)</span> in terms of the corrected variance (risk) of firm <span class="math notranslate nohighlight">\(i\)</span></p>
 <div class="math notranslate nohighlight">
 \[\beta_{i}^{2} = \frac{\sigma_{i}^2 - \sigma_{\epsilon}^{2}}{\sigma_{m}^{2}}\]</div>
 <p>In the context of risk, <span class="math notranslate nohighlight">\(\beta_{i}\)</span> has the interpretation:</p>
@@ -498,56 +546,144 @@ Rearranging Eqn. <a class="reference internal" href="#equation-eq-var-beta">(13)
 </ul>
 <p>Putting these two regimes together gives fundamental insight into the behavior of markets: <strong>high returns come with high-risk</strong>.</p>
 </div>
-</div><!-- as a ratio of risks, i.e., the risk of firm $i$ normalized by the overall market risk. Thus, values of $\beta_{i}$ fall into the ranges:
-
-
-
-* $\beta_{i}>1$: Firm $i$ is riskier than the overall market
-* $\beta_{i}\sim{1}$: Firm $i$ has approximately the same risk as the overall market
-* $\beta_{i}<{1}$: Firm $i$ has less risk than the overall market
-* $\beta_{i}\sim{0}$: Firm $i$ is risk-free or firm $i$ is completely uncorrelated with the overall market
-* $\beta_{i}<{0}$: Firm $i$ is anti-correlated with the overall market -->
+</div></div>
+<div class="section" id="expected-excess-returns-from-data">
+<h3>Expected Excess Returns from Data<a class="headerlink" href="#expected-excess-returns-from-data" title="Permalink to this headline">¶</a></h3>
+<p>Suppose we had a data set <span class="math notranslate nohighlight">\(\mathcal{P}\)</span> that contained the daily close
+price for a share of stock of firm <span class="math notranslate nohighlight">\(i\)</span> for the last <span class="math notranslate nohighlight">\(T\)</span> days, e.g., <span class="math notranslate nohighlight">\(1\rightarrow{T}\)</span>.
+Let the ticker symbol for firm <span class="math notranslate nohighlight">\(i\)</span> be given by <code class="docutils literal notranslate"><span class="pre">XYZ</span></code>.
+Then, from the definition of expectation, we know the expected excess return for <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> is given by:</p>
+<div class="math notranslate nohighlight" id="equation-eq-defn-expected-return">
+<span class="eqno">(13)<a class="headerlink" href="#equation-eq-defn-expected-return" title="Permalink to this equation">¶</a></span>\[\mathbb{E}\left(R_{i}\right) = \sum_{t}p(t)R_{i,t}\]</div>
+<p>where the probability terms are subject to <span class="math notranslate nohighlight">\(\sum_{t}p(t) = 1\)</span>. The probability terms in Eqn. <a class="reference internal" href="#equation-eq-defn-expected-return">(13)</a> have several interpretations. First, they could represent the output
+of some (unknown) market process governing the returns. Another actionable interpretation is to think of them as weighting
+factors. Suppose the recent trend in <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> prices is significantly different from long-term historical price trends, e.g., <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> has recently experienced a sustained period of decline. You could weigh the recent data more highly
+to calculate an expected return (or volatility) that is more representative of current trends. Of course, the opposite could also be true; you could also empathize older versus newer data.</p>
+<p>Many weighting schemes could be used; any approach that obeys the axioms of probability will work! However, let’s borrow a strategy from chemical physics, namely, we’ll assume <span class="math notranslate nohighlight">\(p(t)\)</span> follows the <a class="reference external" href="https://en.wikipedia.org/wiki/Boltzmann_distribution">Boltzmann distribution</a>.</p>
+<div class="proof definition admonition" id="defn-bwer">
+<p class="admonition-title"><span class="caption-number">Definition 16 </span> (Boltzmann weighted excess returns)</p>
+<div class="definition-content section" id="proof-content">
+<p>The expected excess return for firm <span class="math notranslate nohighlight">\(i\)</span> is given by:</p>
+<div class="math notranslate nohighlight">
+\[\mathbb{E}\left(R_{i}\right) = \sum_{t}p(t)R_{i,t}\]</div>
+<p>where <span class="math notranslate nohighlight">\(R_{i,t}\)</span> denotes the excess return in time period <span class="math notranslate nohighlight">\(t\)</span> for firm <span class="math notranslate nohighlight">\(i\)</span>.
+Further, let the probability factors <span class="math notranslate nohighlight">\(p(t)\)</span> follow a <a class="reference external" href="https://en.wikipedia.org/wiki/Boltzmann_distribution">Boltzmann distribution</a>:</p>
+<div class="math notranslate nohighlight">
+\[p(t) = \frac{1}{Z}\exp(-\lambda\epsilon_{t})\]</div>
+<p>where the partition function <span class="math notranslate nohighlight">\(Z\)</span> is given by <span class="math notranslate nohighlight">\(Z = \sum_{t}\exp(-\lambda\epsilon_{t})\)</span>, <span class="math notranslate nohighlight">\(\lambda\geq{0}\)</span> is an adjustable parameter, and <span class="math notranslate nohighlight">\(\epsilon_{t}&gt;0\)</span> is the pseudo energy of the market at time <span class="math notranslate nohighlight">\(t\)</span>.  Then, the Boltzmann weighted expected excess return <span class="math notranslate nohighlight">\(\mathbb{E}_{B}\left(R_{i}\right)\)</span> is given by:</p>
+<div class="math notranslate nohighlight">
+\[\mathbb{E}_{B}\left(R_{i}\right) = \frac{1}{Z}\sum_{t}\exp\left(-\lambda\epsilon_{t}\right){R}_{i,t}\]</div>
 </div>
+</div><p>Depending upon how we choose <span class="math notranslate nohighlight">\(\lambda\)</span> and the pseudo energies in <a class="reference internal" href="#defn-bwer">Definition 16</a>, we can recover
+equally weighted, past or present exponentially weighted expectations.</p>
+<div class="proof algorithm admonition" id="algo-expected-boltzmann-return">
+<p class="admonition-title"><span class="caption-number">Algorithm 1 </span> (Boltzmann Weighted Expected Return )</p>
+<div class="algorithm-content section" id="proof-content">
+<p><strong>Inputs</strong> Ticker <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> price dataset <span class="math notranslate nohighlight">\(\bar{\mathcal{P}}\)</span> for time period <span class="math notranslate nohighlight">\(1\rightarrow T\)</span>,
+annualized risk free rate <span class="math notranslate nohighlight">\(r_{f}\)</span>, time-window <span class="math notranslate nohighlight">\(\mathcal{L}\)</span>, <span class="math notranslate nohighlight">\(\lambda\)</span>, and <span class="math notranslate nohighlight">\(\epsilon_{t}&gt;0\)</span> values</p>
+<p><strong>Outputs</strong> Boltzmann weighted expected return <span class="math notranslate nohighlight">\(\mathbb{E}_{B}\left(R\right)\)</span>,
+the unweighted excess return vector <span class="math notranslate nohighlight">\(R\)</span>, and the probability array <span class="math notranslate nohighlight">\(p\)</span></p>
+<p><strong>Initialize</strong></p>
+<ol class="simple">
+<li><p>sort dataset <span class="math notranslate nohighlight">\(\mathcal{P}\leftarrow\bar{\mathcal{P}}\)</span> from newest to oldest prices.</p></li>
+<li><p>initialize <span class="math notranslate nohighlight">\(R~\leftarrow\)</span> Array(<span class="math notranslate nohighlight">\(\mathcal{L}\)</span>,1)</p></li>
+<li><p>initialize <span class="math notranslate nohighlight">\(W~\leftarrow\)</span> Array(<span class="math notranslate nohighlight">\(\mathcal{L}\)</span>,1)</p></li>
+<li><p>initialize <span class="math notranslate nohighlight">\(\mathcal{R}~\leftarrow\)</span> Array(<span class="math notranslate nohighlight">\(\mathcal{L}\)</span>,1)</p></li>
+</ol>
+<p><strong>Main</strong></p>
+<ol class="simple">
+<li><p>for t <span class="math notranslate nohighlight">\(\in\)</span> 1:<span class="math notranslate nohighlight">\(\mathcal{L}\)</span></p>
+<ol class="simple">
+<li><p>compute excess return <span class="math notranslate nohighlight">\(R[t]\leftarrow \log\left(P[t]/P[t+1]\right) - r_{f}\)</span></p></li>
+<li><p>compute weight factor <span class="math notranslate nohighlight">\(W[t]\leftarrow \exp\left(-\lambda\times\epsilon[t]\right)\)</span></p></li>
+<li><p>compute weighted return factor <span class="math notranslate nohighlight">\(\mathcal{R}[t] \leftarrow R[t]\times~W[t]\)</span></p></li>
+</ol>
+</li>
+</ol>
+<p><strong>Process</strong></p>
+<ol class="simple">
+<li><p>compute normalization constant <span class="math notranslate nohighlight">\(Z\leftarrow \sum~W\)</span></p></li>
+<li><p>compute expectation <span class="math notranslate nohighlight">\(\mathbb{E}_{B}\left(R\right)\leftarrow(1/Z)\times\sum\mathcal{R}\)</span></p></li>
+<li><p>compute probability <span class="math notranslate nohighlight">\(p\leftarrow(1/Z)\times~W\)</span></p></li>
+</ol>
+<p><strong>Return</strong></p>
+<ol class="simple">
+<li><p>expected return <span class="math notranslate nohighlight">\(\mathbb{E}_{B}\left(R\right)\)</span>, excess return vector <span class="math notranslate nohighlight">\(R\)</span>, and probability array <span class="math notranslate nohighlight">\(p\)</span></p></li>
+</ol>
+</div>
+</div></div>
 </div>
 <div class="section" id="volatility">
-<h2>Volatility<a class="headerlink" href="#volatility" title="Permalink to this headline">¶</a></h2>
-<p>The volatility of an asset price e.g., the share price of firm <span class="math notranslate nohighlight">\(i\)</span> with ticker symbol <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> is
+<span id="content-references-risk-volatility"></span><h2>Volatility<a class="headerlink" href="#volatility" title="Permalink to this headline">¶</a></h2>
+<p>Now that we have defined different types of returns, and the rewards of a portfolio, let’s define
+risk. This risk of an asset or a collection of assets can be quantified by asset price volatility.
+The volatility of an asset price e.g., the share price of firm <span class="math notranslate nohighlight">\(i\)</span> with ticker symbol <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> is
 defined as the standard deviation of the <a class="reference internal" href="#content-references-log-return"><span class="std std-ref">Logarithmic return</span></a>:</p>
 <div class="proof definition admonition" id="defn-volatility">
-<p class="admonition-title"><span class="caption-number">Definition 12 </span> (Volatility)</p>
+<p class="admonition-title"><span class="caption-number">Definition 17 </span> (Volatility)</p>
 <div class="definition-content section" id="proof-content">
 <p>Let the price of asset <span class="math notranslate nohighlight">\(i\)</span> at time <span class="math notranslate nohighlight">\(j\)</span> be denoted by <span class="math notranslate nohighlight">\(P_{ij}&gt;0\)</span>. Then the <em>volatility</em> of asset <span class="math notranslate nohighlight">\(i\)</span> is
 the standard devivation <span class="math notranslate nohighlight">\(\sigma_{i}\)</span> of the logarithmic returns calculated between time periods
 <span class="math notranslate nohighlight">\(j\rightarrow{j+1}\)</span>.</p>
 </div>
 </div><p>We can compute the volatility of the share price of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> from historic data; computing the volatility from data
-gives the <em>historic volatility</em> which is a backward looking measure of price volatility.
-<a class="reference internal" href="#algo-volatility">Algorithm 2</a> describes how to calculate the unweighted volatility from a
-historic price dataset <span class="math notranslate nohighlight">\(\bar{\mathcal{D}}\)</span>.</p>
-<div class="proof algorithm admonition" id="algo-volatility">
-<p class="admonition-title"><span class="caption-number">Algorithm 2 </span> (Unweighted Historic Volatility for Firm <span class="math notranslate nohighlight">\(i\)</span> )</p>
+gives the <em>historic volatility</em> which is a backward looking measure of the price volatility.
+<a class="reference internal" href="#algo-volatility-unweighted">Algorithm 2</a> describes an approach to calculate the <em>unweighted</em> volatility (along with the return) from a
+historic price dataset <span class="math notranslate nohighlight">\(\bar{\mathcal{P}}\)</span>; an <em>unweighted</em> volatility (return) assumes all price values in dataset <span class="math notranslate nohighlight">\(\bar{\mathcal{P}}\)</span>
+are equally important.</p>
+<div class="proof algorithm admonition" id="algo-volatility-unweighted">
+<p class="admonition-title"><span class="caption-number">Algorithm 2 </span> (Unweighted Historic Return and Volatility for Firm <span class="math notranslate nohighlight">\(i\)</span> )</p>
 <div class="algorithm-content section" id="proof-content">
-<p><strong>Inputs</strong> Ticker <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> price dataset <span class="math notranslate nohighlight">\(\bar{\mathcal{D}}\)</span> for
-time-range <span class="math notranslate nohighlight">\(T\)</span></p>
-<p><strong>Output</strong> historic unweighted volatility for ticker <code class="docutils literal notranslate"><span class="pre">XYZ</span></code></p>
+<p><strong>Inputs</strong> Ticker <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> price dataset <span class="math notranslate nohighlight">\(\bar{\mathcal{P}}\)</span> for time period <span class="math notranslate nohighlight">\(1\rightarrow T\)</span></p>
+<p><strong>Output</strong> unweighted rerturn and volatility for ticker <code class="docutils literal notranslate"><span class="pre">XYZ</span></code></p>
 <ol class="simple">
-<li><p>sort dataset <span class="math notranslate nohighlight">\(\mathcal{D}\leftarrow\bar{\mathcal{D}}\)</span> from newest to oldest prices.</p></li>
+<li><p>sort dataset <span class="math notranslate nohighlight">\(\mathcal{P}\leftarrow\bar{\mathcal{P}}\)</span> from newest to oldest prices.</p></li>
 <li><p>initialize <span class="math notranslate nohighlight">\(\bar{r}~\leftarrow\)</span> Array(<span class="math notranslate nohighlight">\(\dim\left(T\right)\)</span> - 1)</p></li>
 <li><p>initialize <span class="math notranslate nohighlight">\(\sigma~\leftarrow\)</span> Array(<span class="math notranslate nohighlight">\(\dim\left(T\right)\)</span> - 1)</p></li>
 <li><p>for j <span class="math notranslate nohighlight">\(\in\)</span> 2:<span class="math notranslate nohighlight">\(\dim\left(T\right)\)</span></p>
 <ol class="simple">
-<li><p><span class="math notranslate nohighlight">\(P_{1},P_{0} \leftarrow \mathcal{D}\left[j-1\right],\mathcal{D}\left[j\right]\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(P_{1},P_{0} \leftarrow \mathcal{P}\left[j-1\right],\mathcal{P}\left[j\right]\)</span></p></li>
 <li><p><span class="math notranslate nohighlight">\(\bar{r}\left[j-1\right]\leftarrow\log\left(P_{1}/P_{0}\right)\)</span></p></li>
 </ol>
 </li>
+<li></li>
 <li><p>compute mean return <span class="math notranslate nohighlight">\(\mu\leftarrow\left({\dim{T} - 1}\right)^{-1}\times\displaystyle{\sum_{k=1}^{\dim(T) - 1}\bar{r}\left[k\right]}\)</span></p></li>
 <li><p>compute <span class="math notranslate nohighlight">\(\sigma^{2} \leftarrow \left({\dim{T} - 2}\right)^{-1}\times\displaystyle{\sum_{k=1}^{\dim(T) - 1}\left(\bar{r}\left[k\right]-\mu\right)^2}\)</span></p></li>
-<li><p>return <span class="math notranslate nohighlight">\(\sigma\leftarrow\sqrt{\sigma^{2}}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\sigma\leftarrow\sqrt{\sigma^{2}}\)</span></p></li>
+<li><p>rerurn (<span class="math notranslate nohighlight">\(\bar{r},\sigma\)</span>)</p></li>
 </ol>
 </div>
-</div></div>
-<div class="section" id="the-markowitz-portfolio-allocation-problem">
-<h2>The Markowitz Portfolio Allocation Problem<a class="headerlink" href="#the-markowitz-portfolio-allocation-problem" title="Permalink to this headline">¶</a></h2>
+</div><div class="section" id="weighted-volatility">
+<h3>Weighted Volatility<a class="headerlink" href="#weighted-volatility" title="Permalink to this headline">¶</a></h3>
+<p>The weighted volatility for time point <span class="math notranslate nohighlight">\(n\)</span> is computed over a window of length <span class="math notranslate nohighlight">\(m\)</span>, using data from the previous <span class="math notranslate nohighlight">\(n-1\rightarrow{n-m}\)</span> time points:</p>
+<div class="math notranslate nohighlight" id="equation-eqn-wghted-vol">
+<span class="eqno">(14)<a class="headerlink" href="#equation-eqn-wghted-vol" title="Permalink to this equation">¶</a></span>\[\sigma^{2}_{n} = \sum_{i=1}^{m}\alpha_{i}\left(\bar{r}_{n-i} - \mu\right)^2\]</div>
+<p>where <span class="math notranslate nohighlight">\(\alpha_{i}&gt;0~\forall{i}\)</span> denotes the weight of the ith element in the window of length <span class="math notranslate nohighlight">\(m\)</span> such that:</p>
+<div class="math notranslate nohighlight">
+\[\sum_{i=1}^{m}\alpha_{i} = 1\]</div>
+<p>Thus, while Eqn. <a class="reference internal" href="#equation-eqn-wghted-vol">(14)</a> is still a backward-looking calculation (over the previous <span class="math notranslate nohighlight">\(m\)</span> time points), the relative  importance of each time point is controlled by the selection of the weights <span class="math notranslate nohighlight">\(\alpha_{i}\)</span>. One common approach is the <a class="reference external" href="https://en.wikipedia.org/wiki/Moving_average">exponentially weighted moving average</a>, where the weight of
+each older data value decreases exponentially but never reaches zero. An easy implementation of the
+<a class="reference external" href="https://en.wikipedia.org/wiki/Moving_average">exponentially weighted moving average</a> is to assume
+<span class="math notranslate nohighlight">\(\alpha_{i+1} = \lambda\alpha_{i}\)</span> where <span class="math notranslate nohighlight">\(0&lt;\lambda\leq{1}\)</span>, which gives a recursion of the form:</p>
+<div class="math notranslate nohighlight" id="equation-eqn-wghted-vol-exma">
+<span class="eqno">(15)<a class="headerlink" href="#equation-eqn-wghted-vol-exma" title="Permalink to this equation">¶</a></span>\[\sigma^{2}_{n} = \lambda\sigma_{n-1}^{2} + (1-\lambda)\left(\bar{r}_{n-1} - \mu\right)^2\]</div>
+<p><a class="reference internal" href="#algo-volatility-exp-weighted">Algorithm 3</a> implements the <a class="reference external" href="https://en.wikipedia.org/wiki/Moving_average">exponentially weighted moving average</a> approach, emphasizing recent over past data. <a class="reference internal" href="#algo-volatility-exp-weighted">Algorithm 3</a> was inspired by the <a class="reference external" href="https://en.wikipedia.org/wiki/Moving_average">exponentially weighted moving average</a> discussion in Hull <span id="id4">[<a class="reference internal" href="../References.html#id4" title="John C. Hull. Options, futures, and other derivatives. Pearson Prentice Hall, Upper Saddle River, NJ [u.a.], 7. ed., pearson internat. ed edition, 2009. ISBN 978-0-13-197705-1. URL: http://gso.gbv.de/DB=2.1/CMD?ACT=SRCHA&amp;SRT=YOP&amp;IKT=1016&amp;TRM=ppn+563580607&amp;sourceid=fbw_bibsonomy.">Hul09</a>]</span></p>
+<div class="proof algorithm admonition" id="algo-volatility-exp-weighted">
+<p class="admonition-title"><span class="caption-number">Algorithm 3 </span> (Exponentially Weighted Moving Average Return and Volatility for Firm <span class="math notranslate nohighlight">\(i\)</span> )</p>
+<div class="algorithm-content section" id="proof-content">
+<p><strong>Inputs</strong> Ticker <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> dataset <span class="math notranslate nohighlight">\(\bar{\mathcal{P}}\)</span> for time period <span class="math notranslate nohighlight">\(1\rightarrow T\)</span>, starting index <span class="math notranslate nohighlight">\(n\)</span>,
+window length <span class="math notranslate nohighlight">\(m\)</span>, and weight parameter <span class="math notranslate nohighlight">\(\lambda\)</span>.</p>
+<p><strong>Output</strong> exponentially weighted return and volatility for ticker <code class="docutils literal notranslate"><span class="pre">XYZ</span></code></p>
+<ol class="simple">
+<li><p>sort dataset <span class="math notranslate nohighlight">\(\mathcal{P}\leftarrow\bar{\mathcal{P}}\)</span> from newest to oldest prices.</p></li>
+<li><p>initialize <span class="math notranslate nohighlight">\(\bar{r}~\leftarrow\)</span> Array(m)</p></li>
+</ol>
+</div>
+</div><hr class="docutils" />
+</div>
+</div>
+<div class="section" id="markowitz-portfolio-allocation-problem">
+<span id="content-references-markowitz"></span><h2>Markowitz Portfolio Allocation Problem<a class="headerlink" href="#markowitz-portfolio-allocation-problem" title="Permalink to this headline">¶</a></h2>
 <p>Fill me in.</p>
 </div>
 </div>
@@ -561,33 +697,33 @@ time-range <span class="math notranslate nohighlight">\(T\)</span></p>
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "python"
+            mode: "julia-1.7"
         },
         kernelOptions: {
-            kernelName: "python3",
+            kernelName: "julia-1.7",
             path: "./chapter-2-dir"
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'python3'</script>
+    <script>kernelName = 'julia-1.7'</script>
 
               </div>
               
             
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="geometric-brownian-motion.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="probability-random-variables.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Geometric Brownian Motion</p>
+            <p class="prev-next-title">Probability, Random Variables and Stochastic Processes</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="../chapter-3-dir/chapter-3.html" title="next page">
+    <a class='right-next' id="next-link" href="random-walks.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">The Fantastic but Dangerous World of Derivatives, Futures, Hedging and Leverage</p>
+        <p class="prev-next-title">Random Walks and Brownian Motion</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
