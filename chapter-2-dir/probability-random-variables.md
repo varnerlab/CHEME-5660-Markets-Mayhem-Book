@@ -318,12 +318,10 @@ The sample space and the event space are all based on statements, for example, g
 The answer is a random variable; random variables are mappings from events to numbers, these numbers are probabilities.
 
 ### Expectation of discrete random variables
-It is often helpful to extract essential parameters such as the mean
-or standard deviation of the return when analyzing financial data. If we hypothesize that markets are random, 
-then the values for these parameters can be estimated from the random prices observed in the market.
+It is often helpful to extract essential parameters such as the mean, standard deviation, or other quantities of interest from financial data sets.  However, we have hypothesized that markets are random; thus, its not clear how we can compute parameters of interest from data. 
 
-Let the price of some asset, e.g., `XYZ,` stock price, be a discrete random variable denoted by $X$. 
-Then expectation is the mean of the random variable $X$.
+Let’s focus on the simplest quantity, the mean (more generally called the expectation). Let the price of some asset, e.g., `XYZ,` stock price, be a discrete random variable denoted by $X$. 
+Then expectation (mean) of the price of `XYZ` is:
 
 ````{prf:definition} Expectation
 :label: defn-expectation
@@ -346,8 +344,23 @@ The expectation of a random variable $X$ has several useful (and important) prop
 * $\mathbb{E}\left(X+c\right) = \mathbb{E}(X) + c$ for any constant $c$
 ````
 
-### Moments and variance of discrete random variables
+### Moments of discrete random variables
+The moment of a random variable $X$ is the expected value of powers of that random variable.
 
+````{prf:definition} Moments
+:label: defn-moments
+
+Let $X$ denote a discrete random variable. Then, the kth moment of $X$ is given by:
+
+```{math}
+\mathbb{E}(X^{k}) = \sum_{x\in{X(\Omega)}}x^{k}p_{X}(x)
+```
+````
+
+#### Why do we care about the moments of $X$?
+Moments of the ramdom variable $X$ contain information about that random variable. 
+For example, the first moment ($k=1$) is the expectation (mean) of the random variable, while
+the second moment gives the variance of $X$. 
 
 
 ### Probability mass function
