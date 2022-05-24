@@ -338,12 +338,16 @@ Let $X$ denote a discrete random variable. Then, the expectation of the random v
 where $p_{X}(x)$ denotes the probability that random variable $X=x$, and 
 $X(\Omega)$ denotes sample space for $X$ (the set of all possible values that the random variable $X$ can take.)
 
-
+The expectation of a random variable $X$ has several useful (and important) properties: 
+* $\mathbb{E}\left(c\right) = c$ for any constant $c$
+* $\mathbb{E}\left(cX\right) = c\times\mathbb{E}\left(X\right)$ for any constant $c$
+* $\mathbb{E}\left(g(X)\right) = \sum_{x\in{X(\Omega)}}g(x)p_{X}(x)$
+* $\mathbb{E}\left(g(X)+h(X)\right) = \mathbb{E}(g(X)) + \mathbb{E}(h(X))$
+* $\mathbb{E}\left(X+c\right) = \mathbb{E}(X) + c$ for any constant $c$
 ````
 
-The expectation of a random variable has several useful properties. 
-
 ### Moments and variance of discrete random variables
+
 
 
 ### Probability mass function
