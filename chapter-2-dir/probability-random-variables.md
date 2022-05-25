@@ -312,21 +312,24 @@ $$P(B) = \sum_{i=1}^{n}P\left(B\,\vert{A_{i}}\right)P\left(A_{i}\right)$$
 
 ````
 
+---
+
 (content:references:random-variables)=
 ## Random Variables and Stochastic Processes
 The sample space and the event space are all based on statements, for example, getting a head when flipping a coin, winning the game, or drawing a card, etc. These statements are not numbers; how do we convert a statement to a number? 
 The answer is a random variable; random variables are mappings from events to numbers, these numbers are probabilities.
 
-### Expectation of discrete random variables
-It is often helpful to extract essential parameters such as the mean, standard deviation, or other quantities of interest from financial data sets.  However, we have hypothesized that markets are random; thus, its not clear how we can compute parameters of interest from data. 
+### Expectation
+It is often helpful to extract essential parameters such as the mean, standard deviation, or other quantities of interest from financial data sets.  However, we have hypothesized that markets (and hence asset prices) are random; thus, how can we compute parameters of interest from random market data? 
 
-Let’s focus on the simplest quantity, the mean (more generally called the expectation). Let the price of some asset, e.g., `XYZ,` stock price, be a discrete random variable denoted by $X$. 
-Then expectation (mean) of the price of `XYZ` is:
+Let’s focus on the simplest of these properties, the mean. Mean is a shorthand name for 
+an operation called the [expectation](https://en.wikipedia.org/wiki/Expected_value).
+Let the price of some asset, e.g., `XYZ,` stock price, be a discrete random variable denoted by $X$. Then expectation (mean) of the price of `XYZ` is defined as:
 
 ````{prf:definition} Expectation
 :label: defn-expectation
 
-Let $X$ denote a discrete random variable. Then, the expectation of the random variable $X$ is given by:
+Let $X$ be a discrete random variable. Then, the expectation of the discrete random variable $X$ is given by:
 
 ```{math}
 :label: eq-defn-expectation
@@ -334,9 +337,9 @@ Let $X$ denote a discrete random variable. Then, the expectation of the random v
 ```
 
 where $p_{X}(x)$ denotes the probability that random variable $X=x$, and 
-$X(\Omega)$ denotes sample space for $X$ (the set of all possible values that the random variable $X$ can take.)
+$X(\Omega)$ denotes sample space for $X$.
 
-The expectation of a random variable $X$ has several useful (and important) properties: 
+The expectation of a random variable $X$ (discrete or continuous) has several useful (and important) properties: 
 * $\mathbb{E}\left(c\right) = c$ for any constant $c$
 * $\mathbb{E}\left(cX\right) = c\times\mathbb{E}\left(X\right)$ for any constant $c$
 * $\mathbb{E}\left(g(X)\right) = \sum_{x\in{X(\Omega)}}g(x)p_{X}(x)$
@@ -345,23 +348,40 @@ The expectation of a random variable $X$ has several useful (and important) prop
 ````
 
 ### Moments of discrete random variables
-The moment of a random variable $X$ is the expected value of powers of that random variable.
+The expectation (mean) may not be the only parameter we are interested in computing. 
+For example, we may be interested in how the share price of `XYZ` is spread out around the mean, i.e., the [variance](https://en.wikipedia.org/wiki/Variance). 
+However, beyond variance, there may be other quantities such as the [skewness](https://en.wikipedia.org/wiki/Skewness) or the [kurtosis](https://en.wikipedia.org/wiki/Kurtosis) of the 
+share price that could give us insight into the performance of `XYZ.`  
+
+The mean, variance, skew and kurtosis are all examples of the [moments of a random variable](https://en.wikipedia.org/wiki/Moment_(mathematics)). Let's define what we mean by a moment, and then compute the  mean, variance, skewness and kurtosis of a discrete random variable $X$. 
 
 ````{prf:definition} Moments
 :label: defn-moments
 
-Let $X$ denote a discrete random variable. Then, the kth moment of $X$ is given by:
+Let $X$ denote a discrete random variable which takes on values in the finite sample space $X(\Omega)$. Then, the kth moment of $X$ is given by:
 
 ```{math}
-\mathbb{E}(X^{k}) = \sum_{x\in{X(\Omega)}}x^{k}p_{X}(x)
+\mathbb{E}\Bigl[(X-c)^{k}\Bigr] = \sum_{x\in{X(\Omega)}}(x-c)^{k}p_{X}(x)
 ```
+
+where $p_{X}(x)$ denotes the probability that random variable $X=x$, 
+$X(\Omega)$ denotes sample space for $X$, and $c\geq{0}$ denotes a non-negative constant.
+
+Important moments:
+
+* $k=1,~c=0$: The first (raw) moment is the expectation (mean) of the random variable. The expectation measures the central tendency in the data.
+
+* $k=2,~c=\mathbb{E}(X)$: The second (central) moment is the variance of a random variable. 
+The variance measures dispersion in the data, i.e., how far data points are spread out from their expected value. 
+
+* $k=3,~c=\mathbb{E}(X)$: The third (central) moment is the skewness of a random variable.
+The skewness measures the asymmetry of a random variable about its expectation. Skewness can be positive, zero, negative, or undefined.
+
+* $k=4,~c=\mathbb{E}(X)$: The fourth (central) moment is the kurtosis of a random variable.
+The kurtosis measures the heaviness of the tail of the distribution relative to a normal distribution of the same variance.
+
 ````
-
-#### Why do we care about the moments of $X$?
-Moments of the ramdom variable $X$ contain information about that random variable. 
-For example, the first moment ($k=1$) is the expectation (mean) of the random variable, while
-the second moment gives the variance of $X$. 
-
+ 
 
 ### Probability mass function
 In the case of discrete random variables, for example, dice roles, coin flips etc, this is done using a concept called a [probability mass function (PMF)](https://en.wikipedia.org/wiki/Probability_mass_function). 
