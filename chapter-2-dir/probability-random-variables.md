@@ -319,41 +319,15 @@ $$P(B) = \sum_{i=1}^{n}P\left(B\,\vert{A_{i}}\right)P\left(A_{i}\right)$$
 The sample space and the event space are all based on statements, for example, getting a head when flipping a coin, winning the game, or drawing a card, etc. These statements are not numbers; how do we convert a statement to a number? 
 The answer is a random variable; random variables are mappings from events to numbers, these numbers are probabilities.
 
-### Expectation
-It is often helpful to extract essential parameters such as the mean, standard deviation, or other quantities of interest from financial data sets.  However, we have hypothesized that markets (and hence asset prices) are random; thus, how can we compute parameters of interest from random market data? 
-
-Let’s focus on the simplest of these properties, the mean. Mean is a shorthand name for 
-an operation called the [expectation](https://en.wikipedia.org/wiki/Expected_value).
-Let the price of some asset, e.g., `XYZ,` stock price, be a discrete random variable denoted by $X$. Then expectation (mean) of the price of `XYZ` is defined as:
-
-````{prf:definition} Expectation
-:label: defn-expectation
-
-Let $X$ be a discrete random variable. Then, the expectation of the discrete random variable $X$ is given by:
-
-```{math}
-:label: eq-defn-expectation
-\mathbb{E}\left(X\right) = \sum_{x\in{X(\Omega)}}xp_{X}(x)
-```
-
-where $p_{X}(x)$ denotes the probability that random variable $X=x$, and 
-$X(\Omega)$ denotes sample space for $X$.
-
-The expectation of a random variable $X$ (discrete or continuous) has several useful (and important) properties: 
-* $\mathbb{E}\left(c\right) = c$ for any constant $c$
-* $\mathbb{E}\left(cX\right) = c\times\mathbb{E}\left(X\right)$ for any constant $c$
-* $\mathbb{E}\left(g(X)\right) = \sum_{x\in{X(\Omega)}}g(x)p_{X}(x)$
-* $\mathbb{E}\left(g(X)+h(X)\right) = \mathbb{E}(g(X)) + \mathbb{E}(h(X))$
-* $\mathbb{E}\left(X+c\right) = \mathbb{E}(X) + c$ for any constant $c$
-````
-
 ### Moments of discrete random variables
-The expectation (mean) may not be the only parameter we are interested in computing. 
-For example, we may be interested in how the share price of `XYZ` is spread out around the mean, i.e., the [variance](https://en.wikipedia.org/wiki/Variance). 
-However, beyond variance, there may be other quantities such as the [skewness](https://en.wikipedia.org/wiki/Skewness) or the [kurtosis](https://en.wikipedia.org/wiki/Kurtosis) of the 
-share price that could give us insight into the performance of `XYZ.`  
 
-The mean, variance, skew and kurtosis are all examples of the [moments of a random variable](https://en.wikipedia.org/wiki/Moment_(mathematics)). Let's define what we mean by a moment, and then compute the  mean, variance, skewness and kurtosis of a discrete random variable $X$. 
+It is often helpful to extract characteristics such as the mean, standard deviation, or other quantities of interest from financial data sets.  However, markets (and hence asset prices) are random; thus, we compute these parameters of interest from random market data using 
+a concept called the [moments of a random variable](https://en.wikipedia.org/wiki/Moment_(mathematics)). 
+
+ The mean, variance, skew, kurtosis, etc are all examples of the [moments of a random variable](https://en.wikipedia.org/wiki/Moment_(mathematics)). 
+Let the daily close price of `XYZ` be a discrete random variable denoted by $X$. 
+Then the moments of `XYZ` are defined as:
+
 
 ````{prf:definition} Moments
 :label: defn-moments
@@ -361,29 +335,95 @@ The mean, variance, skew and kurtosis are all examples of the [moments of a rand
 Let $X$ denote a discrete random variable which takes on values in the finite sample space $X(\Omega)$. Then, the kth moment of $X$ is given by:
 
 ```{math}
-\mathbb{E}\Bigl[(X-c)^{k}\Bigr] = \sum_{x\in{X(\Omega)}}(x-c)^{k}p_{X}(x)
+\mathbb{E}\Biggl[\left(\frac{X - a}{b}\right)^k\Biggr] = \sum_{x\in{X(\Omega)}}\left(\frac{X - a}{b}\right)^{k}p_{X}(x)
 ```
 
 where $p_{X}(x)$ denotes the probability that random variable $X=x$, 
-$X(\Omega)$ denotes sample space for $X$, and $c\geq{0}$ denotes a non-negative constant.
+$X(\Omega)$ denotes sample space for $X$, and $a\geq{0}$ 
+and $b\geq{1}$ are constants.
 
 Important moments:
 
-* $k=1,~c=0$: The first (raw) moment is the expectation (mean) of the random variable. The expectation measures the central tendency in the data.
+* $k=1$ and $(a,b) = (0,1)$: The first (raw) moment is the [expectation](https://en.wikipedia.org/wiki/Expected_value) (mean) of $X$. The [expectation](https://en.wikipedia.org/wiki/Expected_value) measures the central tendency in the data.
 
-* $k=2,~c=\mathbb{E}(X)$: The second (central) moment is the variance of a random variable. 
-The variance measures dispersion in the data, i.e., how far data points are spread out from their expected value. 
+* $k=2$ and $(a,b)=(\mu,1)$: The second (central) moment is the [variance](https://en.wikipedia.org/wiki/Variance) of $X$. The [variance](https://en.wikipedia.org/wiki/Variance) measures dispersion in the data, i.e., how far data points are spread out from their expected value. 
 
-* $k=3,~c=\mathbb{E}(X)$: The third (central) moment is the skewness of a random variable.
-The skewness measures the asymmetry of a random variable about its expectation. Skewness can be positive, zero, negative, or undefined.
+* $k=3$ and $(a,b)=(\mu,~\sigma)$: The third (normalized central) moment is the [skewness](https://en.wikipedia.org/wiki/Skewness) of $X$. The [skewness](https://en.wikipedia.org/wiki/Skewness) measures the asymmetry of a random variable about its expectation. Skewness can be positive, zero, negative, or undefined.
 
-* $k=4,~c=\mathbb{E}(X)$: The fourth (central) moment is the kurtosis of a random variable.
-The kurtosis measures the heaviness of the tail of the distribution relative to a normal distribution of the same variance.
+* $k=4$ and $(a,b)=(\mu,~\sigma)$: The fourth (normalized central) moment is the [kurtosis](https://en.wikipedia.org/wiki/Kurtosis) of $X$. The [kurtosis](https://en.wikipedia.org/wiki/Kurtosis) measures the heaviness of the tail of the distribution relative to a normal distribution of the same variance.
+
+where $\mu = \mathbb{E}(X)$ denotes the mean, and $\sigma$ denotes the standard deviation.
 
 ````
- 
 
-### Probability mass function
+#### Expectation
+The [expectation](https://en.wikipedia.org/wiki/Expected_value) (or mean), which measures the central tendency of a random variable $X$, is given by (discrete $X$):
+
+```{math}
+:label: eqn-expectation
+
+\mathbb{E}\left(X\right) = \sum_{x\in{X}(\Omega)}xp_{X}(x)
+
+```
+
+The expectation of a random variable $X$ (discrete or continuous) has several useful (and important) properties: 
+* $\mathbb{E}\left(c\right) = c$ for any constant $c$
+* $\mathbb{E}\left(cX\right) = c\times\mathbb{E}\left(X\right)$ for any constant $c$
+* $\mathbb{E}\left(g(X)\right) = \sum_{x\in{X(\Omega)}}g(x)p_{X}(x)$
+* $\mathbb{E}\left(g(X)+h(X)\right) = \mathbb{E}(g(X)) + \mathbb{E}(h(X))$
+* $\mathbb{E}\left(X+c\right) = \mathbb{E}(X) + c$ for any constant $c$
+
+#### Variance
+
+The [variance](https://en.wikipedia.org/wiki/Variance) measures the expected dispersion for
+individual values of $X$, i.e., the average distance that values of $X$ are spread out from their expected value (mean). The [variance](https://en.wikipedia.org/wiki/Variance) is given by:
+
+```{math}
+:label: eqn-variance
+\text{Var}(X) = \mathbb{E}\Bigl[(X-\mu)^{2}\Bigr]
+```
+
+where $\mu = \mathbb{E}(X)$ denotes the expected value (mean) of the random variable $X$.
+Like the mean, the variance $\text{Var}(X)$ has a few interesting (and important) properties:
+
+* $\text{Var}(X) = \mathbb{E}\left(X^{2}\right) - \left(\mu\right)^2$
+* $\text{Var}(cX) = {c^2}\text{Var}(X)$ for any constant $c$
+* $\text{Var}(X+c) = \text{Var}(X)$ for any constant $c$
+
+The more common quantity that is used to measure dispersion, the standard deviation $\sigma$, 
+is related to the variance: $\sigma = \sqrt{\text{Var}(X)}$.
+
+#### Skewness
+The [skewness](https://en.wikipedia.org/wiki/Skewness) measures the expected asymmetry of a random variable about its mean (expected value): 
+
+```{math}
+:label: eqn-skewness
+\gamma(X) = \mathbb{E}\Biggl[\left(\frac{X - \mu}{\sigma}\right)^3\Biggr]
+```
+
+where $\mu$ denotes the mean (expected value), and $\sigma$ denotes the standard deviation.
+The skewness parameter $\gamma(X)$ can be positive, zero, negative, or undefined. 
+
+#### Kurtosis
+
+The [kurtosis](https://en.wikipedia.org/wiki/Kurtosis) measures the heaviness of the tail of the distribution relative to a normal distribution of the same variance. 
+The [kurtosis](https://en.wikipedia.org/wiki/Kurtosis) of a random variable $X$, denoted as
+$\text{Kurt}(X)$, is defined as:
+
+```{math}
+:label: eqn-kurtosis
+
+\kappa(X) = \mathbb{E}\Biggl[\left(\frac{X - \mu}{\sigma}\right)^4\Biggr]
+```
+
+Large $\kappa(X)$ values arise when most $X$ values are near the mean, but a few values are very far away from the mean. Additionally, $\kappa(X)$ can arise from the majority of $X$ being near the tail of the distribution.
+
+
+<!-- High values of  arise when $X$ is concentrated around the mean and the data-generating process produces occasional values very far away from the mean, or
+when $X$ is concentrated in the tails of the distribution. -->
+---
+
+## Probability mass function
 In the case of discrete random variables, for example, dice roles, coin flips etc, this is done using a concept called a [probability mass function (PMF)](https://en.wikipedia.org/wiki/Probability_mass_function). 
 
 
@@ -411,12 +451,12 @@ $$\Omega = \left\{(HH),(HT),(TH),(TT)\right\}$$
 
 ````
 
-#### Bernoulli random variables
+### Bernoulli random variables
 A Bernoulli random variable, the simplest random variable, models a coin-flip.
 Bernoulli random variable have two states: either 1 or 0. The probability of getting 1 is $p$, while the probability of getting a value of 0 is $1 − p$. Bernoulli random variables model many binary events: coin flips (H or T), 
 binary bits (1 or 0), true or false, yes or no, present or absent, etc.
 
-#### Binomial random variable
+### Binomial random variable
 The binomial distribution is the probability of getting exactly $k$ successes in $n$ independent Bernoulli trials. 
 For example, the probability of getting 4 heads in 6 coin tosses. 
 
@@ -430,7 +470,7 @@ $$p_{X}(k) = \binom{n}{k}p^{k}\left(1-p\right)^{n-k}\qquad{k=0,1,\dots,n}$$
 where $p$ denotes the binomial parameter $0<p<1$, and $n$ is the number of states.
 ````
 
-#### Geometric random variable
+### Geometric random variable
 In some applications, we are interested in trying a binary experiment e.g., a coin flip until a specified outcome is obtained.
 The outcome of this type of experiment is governed by a geometric random variable; 
 a geometric random variable describes the number of failures obtained before a final success.
