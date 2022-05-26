@@ -391,7 +391,7 @@ Like the mean, the variance $\text{Var}(X)$ has a few interesting (and important
 * $\text{Var}(X+c) = \text{Var}(X)$ for any constant $c$
 
 The more common quantity that is used to measure dispersion, the standard deviation $\sigma$, 
-is related to the variance: $\sigma = \sqrt{\text{Var}(X)}$.
+is related to the variance: $\sigma_{X} = \sqrt{\text{Var}(X)}$.
 
 #### Skewness
 The [skewness](https://en.wikipedia.org/wiki/Skewness) measures the expected asymmetry of a random variable about its mean (expected value): 
@@ -423,7 +423,7 @@ Large $\kappa(X)$ values arise when most $X$ values are near the mean, but a few
 when $X$ is concentrated in the tails of the distribution. -->
 ---
 
-## Probability mass function
+## Probability mass functions
 In the case of discrete random variables, for example, dice roles, coin flips etc, this is done using a concept called a [probability mass function (PMF)](https://en.wikipedia.org/wiki/Probability_mass_function). 
 
 
@@ -451,14 +451,40 @@ $$\Omega = \left\{(HH),(HT),(TH),(TT)\right\}$$
 
 ````
 
-### Bernoulli random variables
-A Bernoulli random variable, the simplest random variable, models a coin-flip.
-Bernoulli random variable have two states: either 1 or 0. The probability of getting 1 is $p$, while the probability of getting a value of 0 is $1 − p$. Bernoulli random variables model many binary events: coin flips (H or T), 
-binary bits (1 or 0), true or false, yes or no, present or absent, etc.
+### Bernoulli random variable
+A Bernoulli random variable, the simplest random variable, models a coin-flip or some other type of binary
+outcome. Bernoulli random variable have two states: either 1 or 0. The probability of getting 1 is $p$, while the probability of getting a value of 0 is $1 − p$. Bernoulli random variables model many binary events: coin flips (H or T), binary bits (1 or 0), true or false, yes or no, present or absent, etc.
+
+````{prf:definition} Bionomial Random Variable
+:label: defn-pmf-bernouli
+
+Let $X$ be a Bernoulli random variable. Then, the probability mass function of $X$ is:
+
+```{math}
+p_{X}(x) =
+\begin{cases}
+  p & \text{if } x = 1 \\
+  1 - p & \text{if } x = 0
+\end{cases}
+```
+
+where $0<p<1$ is called the Bernoulli parameter. For a Bernoulli random variable $X(\Omega) \in [0,1]$.
+The expectation of a Bernoulli random variable $X$ is given by:
+
+```{math}
+\mathbb{E}\left[X\right] = p
+```
+
+while the variance $\text{Var}(X)$ is given by:
+
+```{math}
+\text{Var}\left[X\right] = p(1-p)
+```
+
+````
 
 ### Binomial random variable
-The binomial distribution is the probability of getting exactly $k$ successes in $n$ independent Bernoulli trials. 
-For example, the probability of getting 4 heads in 6 coin tosses. 
+The binomial distribution is the probability of getting exactly $k$ successes in $n$ independent Bernoulli trials. For example, the probability of getting 4 heads in 6 coin tosses. 
 
 ````{prf:definition} Bionomial Random Variable
 :label: defn-pmf-binomial
@@ -467,7 +493,22 @@ Let $X$ be a binomial random variable. The probability mass function for a binom
 
 $$p_{X}(k) = \binom{n}{k}p^{k}\left(1-p\right)^{n-k}\qquad{k=0,1,\dots,n}$$
 
-where $p$ denotes the binomial parameter $0<p<1$, and $n$ is the number of states.
+where $n$ denotes the number of experiments, and the binomial parameter $0<p<1$ is the probability 
+that each experiment yeilds a successful result. 
+
+For a Bernoulli random variable $X(\Omega) \in [0,1]^n$, i.e., $n$ Bernoulli trials.
+The expectation of a binomial random variable $X$ is given by:
+
+```{math}
+\mathbb{E}\left[X\right] = np
+```
+
+while the variance $\text{Var}(X)$ is given by:
+
+```{math}
+\text{Var}\left[X\right] = np(1-p)
+```
+
 ````
 
 ### Geometric random variable
