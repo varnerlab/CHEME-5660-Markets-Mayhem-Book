@@ -362,7 +362,7 @@ The [expectation](https://en.wikipedia.org/wiki/Expected_value) (or mean), which
 ```{math}
 :label: eqn-expectation
 
-\mathbb{E}\left(X\right) = \sum_{x\in{X}(\Omega)}xp_{X}(x)
+\mathbb{E}\left[X\right] = \sum_{x\in{X}(\Omega)}xp_{X}(x)
 
 ```
 
@@ -430,12 +430,12 @@ In the case of discrete random variables, for example, dice roles, coin flips et
 ````{prf:definition} Probability Mass Function
 :label: defn-pmf
 
-The probability mass function (PMF) of a random variable X is a function which specifies the probability of 
-obtaining a number $x$
+The probability mass function (PMF) of a random variable $X$ is a function which specifies the probability of 
+obtaining $X = x$, where $x$ is a particular event outcome:
 
 $$p_{X}(x) = P\left(X=x\right)$$
 
-The set of all possible states of $X$ is denoted as $X\left(\Omega\right)$. A PMF should satisfy the condition:
+The set of all possible outcomes of for a random variable $X$ is denoted as $X\left(\Omega\right)$. A PMF should satisfy the condition:
 
 $$\sum_{x\in{X(\Omega)}}p_{X}(x)=1$$
 ````
