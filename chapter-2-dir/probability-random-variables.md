@@ -514,6 +514,7 @@ while the variance $\text{Var}(X)$ is given by:
 ### Geometric random variable
 In some applications, we are interested in trying a binary experiment e.g., a coin flip until a specified outcome is obtained.
 The outcome of this type of experiment is governed by a geometric random variable; 
+a geometric random variable gives the probability that the first occurrence of success requires $k$ independent trials, each with success probability $p$. In other words, 
 a geometric random variable describes the number of failures obtained before a final success.
 
 ````{prf:definition} Geometric Random Variable
@@ -523,5 +524,15 @@ Let $X$ be a geometric random variable. The probability mass function for a geom
 
 $$p_{X}(k) = (1-p)^{(k-1)}p\qquad{k=1,2,\dots}$$
 
-where $p$ denotes the geometric parameter $0<p<1$.
+where $p$ denotes the geometric parameter $0<p<1$. The expectation of a geometric random variable $X$ is given by:
+
+```{math}
+\mathbb{E}\left[X\right] = \frac{1}{p}
+```
+
+while the variance $\text{Var}(X)$ is given by:
+
+```{math}
+\text{Var}\left[X\right] = \frac{1-p}{p^2}
+```
 ````
