@@ -549,7 +549,7 @@ Let $X$ be a Poisson random variable. The probability mass function for a Poisso
 p_{X}(x) = \frac{\lambda^{x}}{x!}\exp\left(-\lambda\right)
 ```
 
-where $\lambda>0$ denotes the Poisson parameter. The expectation of a Poisson random variable $X$ is given by:
+where $\lambda>0$ denotes the Poisson parameter, and $!$ denotes the factorial function. The expectation of a Poisson random variable $X$ is given by:
 
 ```{math}
 \mathbb{E}\left[X\right] = \lambda
