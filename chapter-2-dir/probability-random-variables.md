@@ -179,7 +179,7 @@ Then, for any set $B\subseteq\Omega$ we can decompose $B$ into smaller disjoint 
 ```
 
 (content:references:probability)=
-## Probability
+## Probability Space
 
 A probability space is completley described by the tuple $(\Omega,\mathcal{F},P)$:
 

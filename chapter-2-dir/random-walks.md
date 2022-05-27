@@ -239,3 +239,17 @@ Central among these properties is that it has an _analytical_ solution.
 Thus, we can estimate the price value $X(t)$ precisely as a function of time (no need to develop an approximate solution)!
 However, to develop the analytical solution, we need to use {ref}`content:references:itos-calculus`.
 
+````{prf:observation} Analytical and Numerical Solution Geometric Brownian Moition
+:label: soln-gbm-anal-numerical-soln
+The [Euler–Maruyama](https://en.wikipedia.org/wiki/Euler–Maruyama_method) solution of the
+constant drift and variance geometric brownian motion equation is given by:
+
+```{math}
+X_{k+1} = X_{k}\left(1+\mu{h}+\sigma\sqrt{h}\times{Z\left(0,1\right)}\right)\qquad{k=1,2,\dots,N-1}
+```
+
+where $X_{\star}$ denotes the approximate solution at time step $\star$, 
+$h$ denotes the time step size, $Z\left(0,1\right)$ denotes a standard normal random variable and
+$\mu$ and $\sigma>0$ are constants.
+
+````
