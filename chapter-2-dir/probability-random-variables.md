@@ -512,10 +512,10 @@ while the variance $\text{Var}(X)$ is given by:
 ````
 
 ### Geometric random variable
-In some applications, we are interested in trying a binary experiment e.g., a coin flip until a specified outcome is obtained.
-The outcome of this type of experiment is governed by a geometric random variable; 
+We may be interested in doing a binary experiment, e.g., a coin flip until a specified outcome is obtained.
+A geometric random variable governs the outcome of this type of experiment; 
 a geometric random variable gives the probability that the first occurrence of success requires $k$ independent trials, each with success probability $p$. In other words, 
-a geometric random variable describes the number of failures obtained before a final success.
+a geometric random variable describes the number of failures obtained before final success.
 
 ````{prf:definition} Geometric Random Variable
 :label: defn-pmf-geometric
@@ -536,3 +536,29 @@ while the variance $\text{Var}(X)$ is given by:
 \text{Var}\left[X\right] = \frac{1-p}{p^2}
 ```
 ````
+
+### Poisson random variable
+The Poisson distribution is a discrete probability distribution that expresses the probability of a given number of events occurring during a fixed interval if these events occur with a known constant mean rate and independently of the time since the last event. In other words, a Poisson distribution can be used to estimate how likely it is that something will happen `X` number of times. For example, the number of car crashes in a city of a given size or the number of cheeseburgers sold at a fast-food chain on a Friday night.
+
+````{prf:definition} Poisson Random Variable
+:label: defn-pmf-poisson
+
+Let $X$ be a Poisson random variable. The probability mass function for a Poisson random variable is given by:
+
+```{math}
+p_{X}(x) = \frac{\lambda^{x}}{x!}\exp\left(-\lambda\right)
+```
+
+where $\lambda>0$ denotes the Poisson parameter. The expectation of a Poisson random variable $X$ is given by:
+
+```{math}
+\mathbb{E}\left[X\right] = \lambda
+```
+
+while the variance $\text{Var}(X)$ is given by:
+
+```{math}
+\text{Var}\left[X\right] = \lambda
+```
+````
+
