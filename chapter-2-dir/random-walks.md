@@ -43,21 +43,21 @@ We are going to develop tools to solve stochastic differential equations of the 
 dX = a\left(X(t),t\right)dt + b\left(X(t),t\right)dW(t)
 ```
 where $dW(t)$ is a Wiener process and $a$ and $b$ are functions of $X(t)$, $t$ and potentially 
-other model parameters. There are two different strategies we will explore; first, let's consider
-how we might develop an analytical solution to Eqn. {eq}`eq-SDE-BM-G`, and then we'll explore developing
-approximate numerical solutions.
-
+other model parameters. Unfortunately, Eqn. {eq}`eq-SDE-BM-G` cannot be solved exactly in general.
+However, we will explore two different solution strategies; first, let's consider
+how we might develop an analytical solution to Eqn. {eq}`eq-SDE-BM-G` in the exceptional cases
+where an analytical solution is possible, then we'll consider
+approximate numerical solutions to Eqn. {eq}`eq-SDE-BM-G` which are always possible.
 
 ### Ito's Lemma
-To solve stochastic differential equations analytically (just like ordinary differential equations), we must use tools from calculus. However, for stochastic differential equations, such as Eqn. {eq}`eq-SDE-BM-G` we need a different types of calculus, namely [Ito’s calculus](https://en.wikipedia.org/wiki/Itô_calculus), which extends ordinary calculus methods to stochastic systems.  
-A significant result from [Ito’s calculus](https://en.wikipedia.org/wiki/Itô_calculus), 
+To solve stochastic differential equations analytically we need a different type of calculus, namely [Ito’s calculus](https://en.wikipedia.org/wiki/Itô_calculus), which extends ordinary calculus methods to stochastic systems. A significant result from [Ito’s calculus](https://en.wikipedia.org/wiki/Itô_calculus), 
 that allows us to develop analytical solutions to some stochastic differential equations is 
-[Ito's Lemma](https://en.wikipedia.org/wiki/Itô%27s_lemma), discovered by K. Ito in 1951 [REFHERE].
+[Ito's Lemma](https://en.wikipedia.org/wiki/Itô%27s_lemma), developed by K. Ito in 1951 [REFHERE].
 
 ````{prf:lemma} Ito's Lemma
 :label: ito-lemma
 
-Suppose the behavior of $X(t)$ is governed by the stochastic differential equation (Ito Process):
+Suppose the behavior of $X(t)$ is governed by the stochastic differential equation:
 
 ```{math}
 dX = a\left(X(t),t\right)dt + b\left(X(t),t\right)dW(t)
@@ -76,103 +76,44 @@ dY = \left(\frac{\partial{Y}}{\partial{t}}+a\frac{\partial{Y}}{\partial{X}}+\fra
 ```
 ````
 
-The process of finding a solution to a stochastic differential equation using [Ito's Lemma](https://en.wikipedia.org/wiki/Itô%27s_lemma) works backwards; we propose a function $Y=\phi\left(t,X(t)\right)$ and then construct the stochastic differential equation that governs $Y(t)$. 
-If that stochastic differential equation is the same as the original equation, then we have constructed a solution. 
-
-Suppose we want to construct a solution to the stochastic differential equation (SDE):
-
-```{math}
-dX\left(t\right) = \mu{dt}+\sigma{dW(t)}
-```
-
-where $\mu$ and $\sigma$ are constants, and $dW(t)$ is a one-dimensional Wiener Process. 
-Let $Y\left(t\right) = X\left(t\right)$. Then, from Ito's Lemma we know that:
-
-* The terms $a=\mu$ and $b=\sigma$ which are both constants
-* The time derivative term $\partial{Y}/\partial{t} = 0$
-* The state derivative term $\partial{Y}/\partial{X} = 1$
-* The state derivative term $\partial^{2}{Y}/\partial{X}^{2} = 0$
-
-which gives from Eqn. {eq}`eq-ito-lemma`:
-
-```{math}
-dY\left(t\right) = \mu{dt}+\sigma{dW(t)}
-```
-
-Integrating both sides from $t_{1}\rightarrow{t_{2}}$ gives:
-
-```{math}
-Y\left(t_{2}\right) - Y\left(t_{1}\right) = \int_{t_{1}}^{t_{2}}\mu{dt}+\int_{t_{1}}^{t_{2}}\sigma{dW(t)}
-```
-
-The first term on the right-hand side is easy to deal with:
-
-```{math}
-\int_{t_{1}}^{t_{2}}\mu{dt} = \mu\left(t_{2} - t_{1}\right)
-```
-
-However, the second term is the integral of a random process (which we don't know how to do!)
-Thus, the best we can do now (substituting $X$ for $Y$ and pulling out constants) is:
-
-```{math}
-:label: ex-ordinary-brownian-motion-soln-almost
-X\left(t_{2}\right) = X\left(t_{1}\right) + \mu\left(t_{2} - t_{1}\right) +\sigma\int_{t_{1}}^{t_{2}}{dW(t)}
-```
-
-Eqn. {eq}`ex-ordinary-brownian-motion-soln-almost` brings up an important question, how do we integrate a random process? 
 
 ### Ito Stochastic Integral
-The integral on the right-hand side of Eqn. {eq}`ex-ordinary-brownian-motion-soln-almost` involves
+The integral on the right-hand side of Eqn. XX involves
 integrating over a random process. This is an example of a stochastic integral, which fortunately 
 can be evaluated as the limit of a [Riemann–Stieltjes sum](https://en.wikipedia.org/wiki/Riemann–Stieltjes_integral):
 
 ````{prf:definition} Ito Stochastic Integral
 :label: riemann–stieltjes-integral
 
-Let the random variable $S(\omega)$ be defined as:
+Let $S(X)$ be defined as:
 
 ```{math}
-S(\omega) = \int_{t_{0}}^{t_{1}}g\left(t,\omega\right)dW\left(t\right)
+S(X) = \int_{0}^{T}g\left(X(t),t\right)dW\left(t\right)
 ```
 
-where $dW(t)$ is a Wiener process. Futher, let $\left\{\pi_{n}\right\}$ denote a sequence of partitions of the interval $\left[t_{1},t_{2}\right]$.
-Then the value for $S\left(\omega\right)$ can be computed as the limit of a Riemann–Stieltjes sum:
+where $dW(t)$ is a Wiener process and $g$ is a function of the random variable $X(t)$ and $t$.
+
+Then, if time $[0,T]$ is partitioned into $N$ equal length subintervals 
+$0 = t_{0} < t_{1} < \dots <t_{N-1} < t_{N} = T$, $S\left(X\right)$ can be approximated as the limit of a Riemann–Stieltjes like sum:
 
 ```{math}
-S_{n}\left(\omega\right) = \lim_{n\rightarrow\infty}
-\sum_{\left[t_{i-1},t_{i}\right]\in\pi_{n}}g\left(t_{i-1},\omega\right)\Bigl(W(t_{i}) - W(t_{i-1})\Bigr)
+S_{N}\left(X\right) = 
+\sum_{i=1}^{N}g\left(t_{i},X(t_{i})\right)\Bigl(W(t_{i+1}) - W(t_{i})\Bigr)
 ```
 
-The parameter $n$ controls the width of the partitions on which the sum is evaluated; as $n$ becomes
-large the width of each partition decreases. 
+as $N\rightarrow\infty$. The parameter $N$ controls the width of each the subintervals on which the sum is evaluated; thus, as $N$ becomes large the width of each subinterval decreases, and $S_{N}\rightarrow{S}$, if
+some condition is true.
 ````
-
-Now that we can evalue stochastic integrals ({prf:ref}`riemann–stieltjes-integral`), 
-we can compute a value for the integral in Eqn. {eq}`ex-ordinary-brownian-motion-soln-almost`. 
-Assume we have discretized time with some fixed step size $h$.  Finish me. Then:
-
-```{math}
-:label: ex-ordinary-brownian-motion-analytical-soln
-\sigma\int_{t_{1}}^{t_{2}}{dW(t)} = \sigma\left[W\left(t_{2}\right) - W\left(t_{1}\right)\right]
-```
-
-which (using {prf:ref}`defn-wiener-process`) gives the solution:
-
-```{math}
-X\left(t_{2}\right) = X\left(t_{1}\right) + \mu\Delta{T} + \sigma{N\left(0,\Delta{T}\right)}
-```
-
-where $\Delta{T} = t_{2} - t_{1}$.
 
 (content:references:ordinary-brownian-motion)=
 ## Ordinary Brownian Motion
-Ordinary Brownian Motion is a general class of problems that can be described by random fluctuations around
+Ordinary Brownian Motion (OBM) is a general class of problems involving random fluctuations around
 a constant deterministic drift term.
 
 ````{prf:definition} Ordinary Brownian Motion
 
 Suppose there exists constants $\mu$ and $\sigma>0$.
-Then a random process $X(t)$ is said to follow an Oridinary Brownian Motion (Wiener) process with drift $\mu$ and diffusion coefficient $\sigma^{2}$ if it is a solution to the Stochastic Differential Equation (SDE):
+Then a random process $X(t)$ is said to follow an Oridinary Brownian Motion (Wiener) process with drift $\mu$ and diffusion coefficient $\sigma$ if $X(t)$ is a solution to the Stochastic Differential Equation (SDE):
 
 ```{math}
 :label: eq-SDE-BM
@@ -181,14 +122,17 @@ dX\left(t\right) = \mu{dt}+\sigma{dW(t)}
 where $dW(t)$ is a one-dimensional Wiener Process.
 ````
 
-Eqn. {eq}`eq-SDE-BM` is one of the simplest models of a Brownian motion process. For example, Louis Bachelier used a similar model to describe stock prices in his pioneering thesis work in 1900 {cite:p}`Bachelier:2006vl`. However, there are a few technical issues with Eqn. {eq}`eq-SDE-BM`.
+Eqn. {eq}`eq-SDE-BM` is one of the simplest models of a Brownian motion process. For example, Louis Bachelier used a similar model to describe stock prices in his pioneering thesis work in 1900 {cite:p}`Bachelier:2006vl`. 
+Let's develop a numerical solution for {eq}`eq-SDE-BM` and then compare that with the analytical solution. 
 
-### Discrete approximation of a continuous process
+### Numerical solution ordinary brownian motion
 Brownian motion simulations of stock prices often focus on computing values of the noise terms $W(t_{1}),W(t_{2}),\dots,W(t_{n})$ and
 the state terms (e.g., the `XYZ` share price) $X(t_{1}), X(t_{2}), \dots, X(t_{n})$ at discrete times $0 < t_{1} < t_{2} < \dots < t_{n}$. However, Eqn. {eq}`eq-SDE-BM` and the underlying
 Wiener process are continuous in time. 
 To bridge this gap, we need to develop a discretization procedure that approximates the solution of 
-Eqn. {eq}`eq-SDE-BM` at the discrete-time points that are interested in. The easiest of these procedures is the [Euler–Maruyama method](https://en.wikipedia.org/wiki/Euler–Maruyama_method).
+Eqn. {eq}`eq-SDE-BM` at discrete-time points. 
+The easiest of these procedures is the [Euler–Maruyama method](https://en.wikipedia.org/wiki/Euler–Maruyama_method).
+
 
 Let $Z_{1},\dots,Z_{n}$ denote independent standard normal random variables. For an ordinary Brownian motion, where $t_{o} = 0$ and $W(0) = 0$, the solution to Eqn. {eq}`eq-SDE-BM` can be approximated using the [Euler–Maruyama method](https://en.wikipedia.org/wiki/Euler–Maruyama_method), which gives the recurrence relationship:
 
@@ -220,6 +164,42 @@ We can compute sample paths (solutions) for Eqn. {eq}`eq-SDE-BM-Euler` generated
         1. generate $Z~\leftarrow~\mathcal{N}\left(0,1\right)$
         2. set $X[i+1,k]~\leftarrow~X[i,k]+\mu{h}+\left(\sigma\sqrt{h}\right)Z$
 ```
+
+### Analytical solution of ordinary brownian motion
+Let $Y\left(t\right) = X\left(t\right)$. Then, Ito's Lemma tells us:
+
+```{math}
+dY\left(t\right) = \mu{dt}+\sigma{dW(t)}
+```
+
+Integrating both sides from $t_{1}\rightarrow{t_{2}}$ gives:
+
+```{math}
+Y\left(t_{2}\right) - Y\left(t_{1}\right) = \int_{t_{1}}^{t_{2}}\mu{dt}+\int_{t_{1}}^{t_{2}}\sigma{dW(t)}
+```
+
+The first term on the right-hand side does not involve randomness, thus, it is a standard integral:
+
+```{math}
+\int_{t_{1}}^{t_{2}}\mu{dt} = \mu\left(t_{2} - t_{1}\right)
+```
+
+However, the second term is the integral of a random process, which requires us to use {prf:ref}`riemann–stieltjes-integral`. Assume we have discretized time with some fixed step size $h$.  Finish me. Then:
+
+```{math}
+:label: ex-ordinary-brownian-motion-analytical-soln
+\sigma\int_{t_{1}}^{t_{2}}{dW(t)} = \sigma\left[W\left(t_{2}\right) - W\left(t_{1}\right)\right]
+```
+
+which (using {prf:ref}`defn-wiener-process`) gives the solution:
+
+```{math}
+X\left(t_{2}\right) = X\left(t_{1}\right) + \mu\Delta{T} + \sigma\sqrt{\Delta{T}}Z\left(0,1\right)
+```
+
+where $\Delta{T} = t_{2} - t_{1}$.
+
+
  
 (content:references:geometric-brownian-motion)=
 ## Geometric Brownian Motion
