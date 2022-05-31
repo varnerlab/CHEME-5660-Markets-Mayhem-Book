@@ -13,11 +13,11 @@ chapters:
   - file: chapter-1-dir/global
 
 - file: chapter-2-dir/chapter-2
-  title: The Dynamics of Assets and Markets
+  title: Asset and Market Dynamics
   sections: 
   - file: chapter-2-dir/probability-random-variables
   - file: chapter-2-dir/markowitz
-  - file: chapter-2-dir/random-walks
+  - file: chapter-2-dir/stochastic-differential-equations.md
  
 - file: chapter-3-dir/chapter-3
   title: Derivatives, Futures, and Leverage
