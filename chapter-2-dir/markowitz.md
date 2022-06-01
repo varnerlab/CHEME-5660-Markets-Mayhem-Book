@@ -347,7 +347,7 @@ $\alpha_{i+1} = \lambda\alpha_{i}$ where $0<\lambda\leq{1}$, which gives a recur
 \sigma^{2}_{n} = \lambda\sigma_{n-1}^{2} + (1-\lambda)\left(\bar{r}_{n-1} - \mu\right)^2
 ```
 
-{prf:ref}`algo-volatility-exp-weighted` implements the [exponentially weighted moving average](https://en.wikipedia.org/wiki/Moving_average) approach, emphasizing recent over past data. {prf:ref}`algo-volatility-exp-weighted` was inspired by the [exponentially weighted moving average](https://en.wikipedia.org/wiki/Moving_average) discussion in Hull {cite}`HULL2009`
+{prf:ref}`algo-volatility-exp-weighted` implements the [exponentially weighted moving average](https://en.wikipedia.org/wiki/Moving_average) approach, emphasizing recent over past data. {prf:ref}`algo-volatility-exp-weighted` was inspired by the [exponentially weighted moving average](https://en.wikipedia.org/wiki/Moving_average) discussion in Hull {cite}`Hull:2009vj`
 
 ```{prf:algorithm} Exponentially Weighted Moving Average Return and Volatility for Firm $i$ 
 :label: algo-volatility-exp-weighted
