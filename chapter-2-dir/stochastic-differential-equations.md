@@ -171,7 +171,7 @@ Integrating both sides of Eqn {eq}`eq-gdm-soln-anal-almost-1` from $t_{1}\righta
 Y_{2} - Y_{1} = \left(\mu-\frac{\sigma^{2}}{2}\right)\left(t_{2} - t_{1}\right)+\sigma\left(W_{2} - W_{1}\right)
 ```
 
-However, $Y(t) = \ln{X(t)}$ and the noise is a Wiener process; $W_{2}-W_{1}\sim{N\left(0,t_{2}-t_{1}\right)}$:
+However, $Y(t) = \ln{X(t)}$ and the noise is a Wiener process $W_{2}-W_{1}\sim{N\left(0,t_{2}-t_{1}\right)}$:
 
 ```{math}
 \ln\left(\frac{X_{2}}{X_{1}}\right) = \left(\mu-\frac{\sigma^{2}}{2}\right)\left(t_{2} - t_{1}\right) + \sigma\sqrt{t_2-t_1}\cdot{Z(0,1)}
