@@ -99,8 +99,7 @@ Eqn. {eq}`eq-cont-exchange-tvm`:
 P_{ij} = \exp\left(\bar{r}_{i,j-1\rightarrow{j}}\right)P_{i,j-1}
 ```
 
-Thus, the logarithmic daily return (or a logarithmic return computed between any two different dates) is a continuous discount rate that quantifies how the value of an asset, e.g., the share price of ticker `XYZ`, changes because of market forces. 
-Becuase $P_{i,\star}$ is a random variable, the return is also a random variable. 
+Thus, the logarithmic daily return (or a logarithmic return computed between any two different dates) is a continuous discount rate that quantifies how the value of an asset, e.g., the share price of ticker `XYZ`, changes because of market forces. Becuase $P_{i,\star}$ is a random variable, the return is also a random variable. 
 
 ### Single Index Return Models
 The {ref}`content:references:fractional-return` or {ref}`content:references:log-return` can be computed
