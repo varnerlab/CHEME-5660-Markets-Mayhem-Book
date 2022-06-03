@@ -22,7 +22,7 @@ __Topics:__
 ## Brownian Motion
 A [Wiener Process](https://en.wikipedia.org/wiki/Wiener_process) (also often referred to as a [standard Brownian motion](https://en.wikipedia.org/wiki/Brownian_motion)) is a real-valued continuous-time stochastic process named after the [Norbert Wiener](https://en.wikipedia.org/wiki/Norbert_Wiener) for the study of one-dimensional Brownian motion:
 
-````{prf:definition} Wiener Process
+````{prf:definition} One-dimensional Wiener Process
 :label: defn-wiener-process
 
 A Wiener process is a continuous one-dimensional stochastic process $\left\{W\left(t\right), 0\leq{t}\leq{T}\right\}$ with the following properties:
@@ -50,7 +50,7 @@ $a$ and $b$ that we will talk about later.
 
 Depending upon the form of $a$ and $b$, Eqn {eq}`eq-ito-process` can sometimes be solved 
 analytically. However, in the general case, we'll need to solve Eqn {eq}`eq-ito-process` 
-numerically; numerical approximations to the solution of Eqn {eq}`eq-ito-process` can be 
+numerically. Numerical approximations to the solution of Eqn {eq}`eq-ito-process` can be 
 developed quickly; however, they have different levels of error depending upon the solution approach.
 
 ### Ito's Lemma
@@ -94,10 +94,8 @@ where $dW(t)$ is a one-dimensional Wiener Process.
 #### Analytical solution: Ordinary Brownian Motion
 The ordinary Brownian motion described by Eqn. {eq}`eq-SDE-StandardBM` 
 has an analytical solution. To develop this solution, let's use [Ito's Lemma](https://en.wikipedia.org/wiki/Itô%27s_lemma).
- 
-````{prf:observation} Analytical Solution Scalar Ordinary Brownian Motion
-:label: obs-sbm-anal-soln
 
+````{admonition} Derivation: Analytical Solution Scalar Ordinary Brownian Motion
 For Eqn {eq}`eq-SDE-StandardBM`, $a=\mu$ and $b=\sigma>0$. 
 If we assume $Y(t) = X(t)$, then [Ito's Lemma](https://en.wikipedia.org/wiki/Itô%27s_lemma) gives:
 
@@ -131,6 +129,9 @@ X_{k+1} = X_{k} + \mu\left(t_{k+1}-t_{k}\right)+\sigma\sqrt{t_{k+1}-t_{k}}\cdot{
 ```
 ````
 
+#### Examples
+* [Simulation of Oridinary Brownian Motion](https://mybinder.org/v2/gh/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks/8a774d84e0338ad7ac5cbd7917f520db3ce532e8?urlpath=lab%2Ftree%2Fnotebooks%2FCHEME-5660-GMB-Analytical-Numerical-Solution.ipynb)
+
 ### Geometric Brownian Motion
 Unfortunately, ordinary Brownian motion has a critical flaw; its solution can be negative. 
 Thus, it is not widely used to model the price of a risky asset because asset prices are non-negative. Instead, we often model asset prices using a [Geometric Brownian Motion (GBM) model](https://en.wikipedia.org/wiki/Geometric_Brownian_motion):
@@ -153,9 +154,7 @@ The use of geometric Brownian motion as a financial model is primarily due to th
 The geometric Brownian motion described by Eqn. {eq}`eq-SDE-GBM` also has an analytical solution. 
 To develop this solution, let's use [Ito's Lemma](https://en.wikipedia.org/wiki/Itô%27s_lemma).
 
-````{prf:observation} Analytical Solution Scalar Geometric Brownian Motion
-:label: obs-gbm-anal-soln
-
+````{admonition} Derivation: Analytical Solution Scalar Geometric Brownian Motion
 There exists constants $\mu$ and $\sigma>0$. Let $Y(t) = \ln{X(t)}$. 
 Then [Ito's Lemma](https://en.wikipedia.org/wiki/Itô%27s_lemma) gives:
 
