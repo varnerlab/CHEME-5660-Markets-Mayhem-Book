@@ -199,9 +199,6 @@ Putting these two regimes together gives fundamental insight into the behavior o
 
 ````
 
-
-
-
 ### Expected Excess Returns from Data
 Suppose we had a data set $\mathcal{P}$ that contained the daily close
 price for a share of stock of firm $i$ for the last $T$ days, e.g., $1\rightarrow{T}$. 
@@ -280,10 +277,8 @@ the unweighted excess return vector $R$, and the probability array $p$
 
 (content:references:risk-volatility)=
 ## Volatility
-Now that we have defined different types of returns, and the rewards of a portfolio, let's define
-risk. This risk of an asset or a collection of assets can be quantified by asset price volatility.
-The volatility of an asset price e.g., the share price of firm $i$ with ticker symbol `XYZ` is 
-defined as the standard deviation of the {ref}`content:references:log-return`:
+Now that we have defined different types of returns (the rewards of a portfolio), let's define
+risk. One measure of risk is the volatility e.g., the standard deviation of the return of the asset {ref}`content:references:log-return`:
 
 ````{prf:definition} Volatility
 :label: defn-volatility
@@ -293,73 +288,16 @@ the standard devivation $\sigma_{i}$ of the logarithmic returns calculated betwe
 $j\rightarrow{j+1}$.
 
 ````
-
-We can compute the volatility of the share price of `XYZ` from historic data; computing the volatility from data
-gives the _historic volatility_ which is a backward looking measure of the price volatility.
-{prf:ref}`algo-volatility-unweighted` describes an approach to calculate the _unweighted_ volatility (along with the return) from a 
-historic price dataset $\bar{\mathcal{P}}$; an _unweighted_ volatility (return) assumes all price values in dataset $\bar{\mathcal{P}}$
-are equally important.  
-
-```{prf:algorithm} Unweighted Historic Return and Volatility for Firm $i$ 
-:label: algo-volatility-unweighted 
-
-**Inputs** Ticker `XYZ` price dataset $\bar{\mathcal{P}}$ for time period $1\rightarrow T$
-
-**Output** unweighted rerturn and volatility for ticker `XYZ`
-
-1. sort dataset $\mathcal{P}\leftarrow\bar{\mathcal{P}}$ from newest to oldest prices.
-1. initialize $\bar{r}~\leftarrow$ Array($\dim\left(T\right)$ - 1)
-1. initialize $\sigma~\leftarrow$ Array($\dim\left(T\right)$ - 1)
-1. for j $\in$ 2:$\dim\left(T\right)$
-    
-    1. $P_{1},P_{0} \leftarrow \mathcal{P}\left[j-1\right],\mathcal{P}\left[j\right]$
-    2. $\bar{r}\left[j-1\right]\leftarrow\log\left(P_{1}/P_{0}\right)$
-
-1.
-1. compute mean return $\mu\leftarrow\left({\dim{T} - 1}\right)^{-1}\times\displaystyle{\sum_{k=1}^{\dim(T) - 1}\bar{r}\left[k\right]}$
-1. compute $\sigma^{2} \leftarrow \left({\dim{T} - 2}\right)^{-1}\times\displaystyle{\sum_{k=1}^{\dim(T) - 1}\left(\bar{r}\left[k\right]-\mu\right)^2}$
-1. $\sigma\leftarrow\sqrt{\sigma^{2}}$
-1. rerurn ($\bar{r},\sigma$)
-```
-
-### Weighted Volatility
-The weighted volatility for time point $n$ is computed over a window of length $m$, using data from the previous $n-1\rightarrow{n-m}$ time points:  
+We can compute the volatility of `XYZ` from historical price data; calculating the volatility from data
+gives the _historic volatility_, a backward-looking measure of the risk. An unbiased 
+estimate of the variance (the square of the volatility) is given by:
 
 ```{math}
-:label: eqn-wghted-vol
-\sigma^{2}_{n} = \sum_{i=1}^{m}\alpha_{i}\left(\bar{r}_{n-i} - \mu\right)^2
+\sigma_{n}^2 = \frac{1}{m-1}\sum_{i=1}^{m}\left(\bar{r}_{n-i}-\hat{\mu}_{r}\right)^2\qquad{n\geq{m+1}}
 ```
+where $\hat{\mu}_{r}$ denotes the average logorithmic return, computed from the $m$ most recent values of
+the return, and $\bar{r}_{n-i}$ denotes logorithmic return computed for time $n-i-1\rightarrow{n-i}$.
 
-where $\alpha_{i}>0~\forall{i}$ denotes the weight of the ith element in the window of length $m$ such that:
-
-```{math}
-\sum_{i=1}^{m}\alpha_{i} = 1
-```
-
-Thus, while Eqn. {eq}`eqn-wghted-vol` is still a backward-looking calculation (over the previous $m$ time points), the relative  importance of each time point is controlled by the selection of the weights $\alpha_{i}$. One common approach is the [exponentially weighted moving average](https://en.wikipedia.org/wiki/Moving_average), where the weight of 
-each older data value decreases exponentially but never reaches zero. An easy implementation of the 
-[exponentially weighted moving average](https://en.wikipedia.org/wiki/Moving_average) is to assume 
-$\alpha_{i+1} = \lambda\alpha_{i}$ where $0<\lambda\leq{1}$, which gives a recursion of the form:
-
-```{math}
-:label: eqn-wghted-vol-exma
-\sigma^{2}_{n} = \lambda\sigma_{n-1}^{2} + (1-\lambda)\left(\bar{r}_{n-1} - \mu\right)^2
-```
-
-{prf:ref}`algo-volatility-exp-weighted` implements the [exponentially weighted moving average](https://en.wikipedia.org/wiki/Moving_average) approach, emphasizing recent over past data. {prf:ref}`algo-volatility-exp-weighted` was inspired by the [exponentially weighted moving average](https://en.wikipedia.org/wiki/Moving_average) discussion in Hull {cite}`Hull:2009vj`
-
-```{prf:algorithm} Exponentially Weighted Moving Average Return and Volatility for Firm $i$ 
-:label: algo-volatility-exp-weighted
-
-**Inputs** Ticker `XYZ` dataset $\bar{\mathcal{P}}$ for time period $1\rightarrow T$, starting index $n$, 
-window length $m$, and weight parameter $\lambda$.
-
-**Output** exponentially weighted return and volatility for ticker `XYZ`
-
-1. sort dataset $\mathcal{P}\leftarrow\bar{\mathcal{P}}$ from newest to oldest prices.
-1. initialize $\bar{r}~\leftarrow$ Array(m)
-
-```
 
 ---
 

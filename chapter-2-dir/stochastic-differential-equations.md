@@ -119,7 +119,7 @@ X_{2} - X_{1} = \mu\left(t_{2}-t_{1}\right)+\sigma\sqrt{t_2-t_1}\cdot{Z(0,1)}
 
 where $Z(0,1)$ is a standard normal random variable with mean $0$ and a variance of $1$. 
 
-Finally, imgaine that we are simulating an ordinary Brownian motion from $t = 0\rightarrow{T}$. 
+Finally, imagine that we are simulating an ordinary Brownian motion from $t = 0\rightarrow{T}$. 
 Let's break this interval into $n$ time steps of fixed length $t_{k+1} - t_{k}, k = 1,2,\dots, n$ where $t_1 = 0$. 
 Then, we can re-write Eqn. {eq}`eq-sbm-soln` as:
 
@@ -129,11 +129,11 @@ X_{k+1} = X_{k} + \mu\left(t_{k+1}-t_{k}\right)+\sigma\sqrt{t_{k+1}-t_{k}}\cdot{
 ```
 ````
 
-#### Examples
-* [Simulation of Oridinary Brownian Motion](https://mybinder.org/v2/gh/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks/8a774d84e0338ad7ac5cbd7917f520db3ce532e8?urlpath=lab%2Ftree%2Fnotebooks%2FCHEME-5660-GMB-Analytical-Numerical-Solution.ipynb)
+#### Example
+* [Simulation of ordinary Brownian motion analytical solution](https://htmlview.glitch.me/?https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks/blob/main/pluto-notebooks/html/Example-OrdinaryBrownianMotion-Simulation.jl.html)
 
 ### Geometric Brownian Motion
-Unfortunately, ordinary Brownian motion has a critical flaw; its solution can be negative. 
+Unfortunately, ordinary Brownian motion has a critical flaw; its solutions can be negative. 
 Thus, it is not widely used to model the price of a risky asset because asset prices are non-negative. Instead, we often model asset prices using a [Geometric Brownian Motion (GBM) model](https://en.wikipedia.org/wiki/Geometric_Brownian_motion):
 
 ````{prf:definition} Scalar Geometric Brownian Motion
@@ -182,10 +182,9 @@ or:
 :label: eq-gdm-soln-anal-almost-3
 X_{2} = X_{1}\exp\Biggl[\left(\mu-\frac{\sigma^{2}}{2}\right)\left(t_{2} - t_{1}\right) + \sigma\sqrt{t_2-t_1}\cdot{Z(0,1)}\Biggr]
 ```
-
-Finally, imgaine that we are simulating a geometric Brownian motion from $t = 0\rightarrow{T}$. 
+Finally, imagine that we are simulating a geometric Brownian motion from $t = 0\rightarrow{T}$. 
 Let's break this interval into $n$ time steps of fixed length $t_{k+1} - t_{k}, k = 1,2, \dots, n$ where $t_1 = 0$. 
-Then, we can re-write Eqn. {eq}`eq-gdm-soln-anal-almost-3` as:
+Then, we can re-write Eqn {eq}`eq-gdm-soln-anal-almost-3` as:
 
 ```{math}
 :label: eq-gdm-soln-anal-4
@@ -195,6 +194,8 @@ X_{k+1} = X_{k}\exp\Biggl[\left(\mu-\frac{\sigma^{2}}{2}\right)\left(t_{k+1} - t
 where $k=1,2,\dots,n$.
 
 ````
+
+
 
 ### Stochastic Volatility Models
 For both the standard Brownian motion and the geometric Brownian motion equations, we have assumed that both the 
