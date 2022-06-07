@@ -278,13 +278,13 @@ the unweighted excess return vector $R$, and the probability array $p$
 (content:references:risk-volatility)=
 ## Volatility
 Now that we have defined different types of returns (the rewards of a portfolio), let's define
-risk. One measure of risk is the volatility e.g., the standard deviation of the return of the asset {ref}`content:references:log-return`:
+risk. One measure of risk is the volatility e.g., the standard deviation of the {ref}`content:references:log-return`:
 
 ````{prf:definition} Volatility
 :label: defn-volatility
 
 Let the price of asset $i$ at time $j$ be denoted by $P_{ij}>0$. Then the _volatility_ of asset $i$ is
-the standard devivation $\sigma_{i}$ of the logarithmic returns calculated between time periods 
+the standard devivation of the logarithmic returns calculated between time periods 
 $j\rightarrow{j+1}$.
 
 ````
