@@ -277,8 +277,7 @@ the unweighted excess return vector $R$, and the probability array $p$
 
 (content:references:risk-volatility)=
 ## Volatility
-Now that we have defined different types of returns (the rewards of a portfolio), let's define
-risk. One measure of risk is the volatility e.g., the standard deviation of the {ref}`content:references:log-return`:
+Now that we have defined different types of returns, and the rewards of a portfolio, let's define the risk. One measure of risk is volatility, e.g., the standard deviation of the {ref}`content:references:log-return`:
 
 ````{prf:definition} Volatility
 :label: defn-volatility
@@ -288,9 +287,9 @@ the standard devivation of the logarithmic returns calculated between time perio
 $j\rightarrow{j+1}$.
 
 ````
-We can estimate the volatility of `XYZ` directly from historical price data; calculating the volatility from data
+We can estimate the volatility of `XYZ` directly from historical price data; calculating volatility from data
 gives the _historic volatility_, a backward-looking measure of the risk. An unbiased 
-estimate of the variance (which is the square of the volatility) is given by:
+estimate of the variance (which is the square of the _historic volatility_) is given by:
 
 ```{math}
 \sigma_{n}^2 = \frac{1}{m-1}\sum_{i=1}^{m}\left(\bar{r}_{n-i}-\hat{\mu}_{r}\right)^2\qquad{n>{m+1}}
@@ -302,6 +301,44 @@ the return:
 ```{math}
 \hat{\mu}_{r} = \frac{1}{m}\sum_{i=1}^{m}\bar{r}_{n-i}
 ```
+
+The choice of $(n,m)$ is up to you and the application you are interested in. A sketch of an algorithm that can be used to calculate the _historic volatility_ is given in {prf:ref}`algo-unbiased-historic-volatility`:
+
+```{prf:algorithm} Unbiased estimate of the return variance
+:label: algo-unbiased-historic-volatility
+
+**Inputs** Ticker `XYZ` price dataset $\bar{\mathcal{P}}$ for time period $1\rightarrow T$, parameters $(n,m)$ where $n>m+1$ and $\texttt{avg}$ a function that computes the average of a vector.
+
+**Outputs** An unbiased estimate of the return variance $\sigma_{n}^{2}$
+
+**Initialize**
+1. sort dataset $\mathcal{P}\leftarrow\bar{\mathcal{P}}$ from newest to oldest prices.
+1. initialize $\bar{R}~\leftarrow$ Array($m$,1)
+1. initialize $\mu_{r}$ = 0
+1. initialize $\text{tmp}$ = 0
+
+**Compute $\bar{R}$**
+1. for i $\in~1:m$
+  
+    1. compute $\bar{r}_{n-i}\leftarrow\log\left(\frac{P_{n-i}}{P_{n-i-1}}\right)$
+    1. store $\bar{R}[i]\leftarrow{\bar{r}_{n-i}}$
+
+**Compute $\mu_{r}$**
+1. compute $\mu_{r}\leftarrow\texttt{avg}\left(\bar{R}\right)$
+
+**Compute $\sigma_{n}^{2}$**
+1. for i $\in~1:m$
+
+    1. compute $\text{tmp}~\leftarrow~\text{tmp}~+ \left( \bar{R}[i] - \mu_{r} \right)^2$
+
+1. compute $\sigma_{n}^{2}\leftarrow\frac{1}{m-1}\cdot\text{tmp}$
+
+**Return**
+1. return $\sigma_{n}^{2}$
+```
+
+### Example
+* [Computation of the unbiased historical volatility using {prf:ref}`algo-unbiased-historic-volatility`](https://htmlview.glitch.me/?https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks/blob/main/pluto-notebooks/html/Example-OrdinaryBrownianMotion-Simulation.jl.html)
 
 ---
 
