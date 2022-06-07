@@ -288,16 +288,20 @@ the standard devivation $\sigma_{i}$ of the logarithmic returns calculated betwe
 $j\rightarrow{j+1}$.
 
 ````
-We can compute the volatility of `XYZ` from historical price data; calculating the volatility from data
+We can estimate the volatility of `XYZ` directly from historical price data; calculating the volatility from data
 gives the _historic volatility_, a backward-looking measure of the risk. An unbiased 
-estimate of the variance (the square of the volatility) is given by:
+estimate of the variance (which is the square of the volatility) is given by:
 
 ```{math}
-\sigma_{n}^2 = \frac{1}{m-1}\sum_{i=1}^{m}\left(\bar{r}_{n-i}-\hat{\mu}_{r}\right)^2\qquad{n\geq{m+1}}
+\sigma_{n}^2 = \frac{1}{m-1}\sum_{i=1}^{m}\left(\bar{r}_{n-i}-\hat{\mu}_{r}\right)^2\qquad{n>{m+1}}
 ```
-where $\hat{\mu}_{r}$ denotes the average logorithmic return, computed from the $m$ most recent values of
-the return, and $\bar{r}_{n-i}$ denotes logorithmic return computed for time $n-i-1\rightarrow{n-i}$.
+where $\bar{r}_{n-i}$ denotes logarithmic return computed for time $n-i-1\rightarrow{n-i}$ and
+$\hat{\mu}_{r}$ denotes the average logarithmic return, computed using the $m$ most recent values of
+the return:
 
+```{math}
+\hat{\mu}_{r} = \frac{1}{m}\sum_{i=1}^{m}\bar{r}_{n-i}
+```
 
 ---
 
