@@ -1,4 +1,6 @@
 # Stochastic Differential Equations
+
+## Introduction
 Stochastic differential equations can model various physical, biological, and chemical systems.
 For example, the path traced by a molecule as it travels through a liquid or a gas can be modeled as a 
 random walk, a type of stochastic differential equation. 

@@ -1,4 +1,4 @@
-# Assets are Current and Future Cash Flows
+# Assets are Cash Flows
 
 The development of processes or products does not occur inside a mythical universe that is free 
 from market forces. Instead, processes and products must be, at a minimum, financially neutral to be viable.
