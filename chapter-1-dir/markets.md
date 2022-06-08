@@ -32,7 +32,12 @@ An [order matching system](https://en.wikipedia.org/wiki/Order_matching_system) 
 The matching algorithms used on electronic exchanges are important components that have a great impact on the efficiency, [liquidity](https://en.wikipedia.org/wiki/Market_liquidity) and prices of the instruments being traded on the market. Thus, there are a variety of algorithms for order matching. The most common matching algorithms are the Pro-Rata and Price/Time matching algorithms. Underlying each of these algorithms is a data structure called an [order book](https://en.wikipedia.org/wiki/Order_book), which collates the different types of orders that an excahnge can accept and allows matching to occur. 
 
 ### Orders and the Order Book
-An order book holds list of orders on electronic exchange stock. Thus, it is a record of the the interest that buyers and sellers have in a particular financial instrument. A matching engine uses the order book to determine which orders can be fully or partially executed.
+An order book holds list of orders on electronic exchange stock. Thus, it is a record of the the interest that buyers and sellers have in a particular financial instrument. A matching engine uses the order book to determine which orders can be fully or partially executed. 
+
+There are several types of orders than can be placed in the order book. However, we are going to consider the three main types of orders, a market order, a limit order and stop orders.
+
+* __Market orders__: A market order is a buy or sell order to be executed immediately at the current market prices. As long as there are willing sellers and buyers, market orders are filled. Market orders are used when certainty of execution is a priority over the price of execution. Thus, a market order is the simplest of the order types as it does not allow any control over the price received. The order is filled at the best price available at the relevant time. In fast-moving markets, the price paid or received may be quite different from the last price quoted before the order was entered. A market order may be split across multiple participants on the other side of the transaction, resulting in different prices for some of the shares. 
+
 
 ### Pro-Rata matching algorithm
 
