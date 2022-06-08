@@ -16,12 +16,13 @@ chapters:
   title: Modeling Price Dynamics
   sections: 
   - file: chapter-2-dir/probability-random-variables
-  - file: chapter-2-dir/markowitz
   - file: chapter-2-dir/stochastic-differential-equations.md
+  - file: chapter-2-dir/agent-based-market-models.md
 
-- file: chapter-3-dir/chapter-3
-  title: Derivatives, Futures, and Leverage
+- file: chapter-3-dir/chapter-3-landing
+  title: Portfolios, Derivatives, and Leverage
   sections: 
+  - file: chapter-3-dir/markowitz
   - file: chapter-3-dir/contracts
   - file: chapter-3-dir/binomial-pricing-model.ipynb
 

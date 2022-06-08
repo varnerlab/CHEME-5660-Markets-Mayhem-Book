@@ -1,16 +1,6 @@
----
-jupytext:
-  formats: md:myst
-  text_representation:
-    extension: .md
-    format_name: myst
-kernelspec:
-  display_name: Julia
-  language: julia
-  name: julia-1.7
----
-
 # Modern Portfolio Theory
+
+## Introduction
 Modern portfolio theory (MPT) is a practical method for selecting a collection of assets, e.g., stocks or bonds, to maximize the overall reward of the investor within an acceptable level of risk to the investor. Harry Markowitz, who developed the mathematical foundation of MPT {cite}`MPT1952`, was later awarded a [Nobel Prize for his work in 1990](https://www.nobelprize.org/prizes/economic-sciences/1990/markowitz/facts/). 
 
 The central theme of Markowitz is the balance between risk and reward, where the reward is measured as the [return](https://www.investopedia.com/terms/r/return.asp) of a basket of assets. In contrast, the risk is calculated as the standard deviation (or sometimes the variance) of the logarithmic return, otherwise known as [volatility](https://en.wikipedia.org/wiki/Volatility_(finance)). 
@@ -345,4 +335,6 @@ The choice of $(n,m)$ is up to you and the application you are interested in. A 
 (content:references:markowitz)=
 ## Markowitz Portfolio Allocation Problem
 Fill me in.
+
+## Summary
 

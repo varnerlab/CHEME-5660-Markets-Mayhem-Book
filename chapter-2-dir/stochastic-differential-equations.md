@@ -1,4 +1,4 @@
-# Stochastic Differential Equations
+# Macroscopic Stochastic Differential Equations Market Models
 
 ## Introduction
 Stochastic differential equations can model various physical, biological, and chemical systems.
@@ -209,4 +209,8 @@ both $\mu$ and $\sigma$ can reasonably be assumed to be constants, but in many p
 In general, we cannot develop an analytical solution to Eqn. {eq}`eq-ito-process`; however, we can create an
 approximate numerical solution by discretization.
 
+## Extension to multiple simultaneous assets
+Fill me in.
 
+## Summary
+Fill me in.
