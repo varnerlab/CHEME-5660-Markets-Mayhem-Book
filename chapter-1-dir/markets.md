@@ -1,7 +1,7 @@
 # Markets and Exchanges
 
 ## Introduction
-Markets are _places_ (perhaps physical locations such as a retail outlet or virtual sites on the internet) where parties exchange (trade) goods and services. In a physical market, buyers and sellers meet face-to-face, while there is no physical contact between buyers and sellers in a virtual market. Thus, a market is any _place_ where two or more parties engage in an economic transaction, i.e., the exchange of goods, services, information, currency, or any combination that passes from one party to another. While only two parties are needed to make a trade, an efficient market is characterized by many active buyers and sellers. 
+Markets are _places_ (perhaps physical locations such as a retail store or virtual sites on the internet) where parties exchange (trade) goods and services. In a physical market, buyers and sellers meet face-to-face, while there is no physical contact between buyers and sellers in a virtual market. Thus, a market is any _place_ where two or more parties engage in an economic transaction, i.e., the exchange of goods, services, information, currency, or any combination that passes from one party to another. While only two parties are needed to make a trade, an efficient market is characterized by many active buyers and sellers. 
 
 An exchange is a market where financial instruments such as [securities](https://www.investopedia.com/terms/s/security.asp), [commodities](https://www.investopedia.com/terms/c/commodity.asp), or [derivatives](https://www.investopedia.com/ask/answers/12/derivative.asp) are traded. An exchange ensures fair and orderly trading and the efficient dissemination of price information for securities traded on that exchange. Thus, exchanges give companies, governments, and other groups a platform to sell securities to the investing public (you!). Different products can be traded on different exchanges.
 For example, for [securities](https://www.investopedia.com/terms/s/security.asp), there are [sixteen exchanges in the world](https://en.wikipedia.org/wiki/List_of_stock_exchanges) that have a market capitalization of over US $1 trillion each. These exchanges account for approximately 87\% of global market capitalization. On the other hand, [derivatives](https://www.investopedia.com/ask/answers/12/derivative.asp) are traded on option exchanges such as the [Chicago Board Options Exchange (CBOE)](https://www.cboe.com).
@@ -21,11 +21,25 @@ __Topics__
 
 (content:references:double-auctions)=
 ## Continuous Double Auctions
-A [double auction](https://en.wikipedia.org/wiki/Double_auction) is a process of buying and selling goods that involves multiple sellers and buyers simultaneously. In a double auction, potential buyers submit _bids_ which specify the quantity and price the buyer wishes to buy the good or service at, while potential sellers submit _asks_ which describe the amount and price of the good or service they want to sell. Then a _market institution_ chooses some price $p>0$ that clears the market, i.e., all the sellers who asked less than or equal to $p$ sell while all buyers who bid greater than or equal to $p$ buy at a price $p$. 
+A [continuous double auction](https://en.wikipedia.org/wiki/Double_auction) is a process where potential buyers submit _bids_ which specify the quantity and price the buyer wishes to buy the good or service at, while potential sellers submit _asks_ which describe the amount and price of the good or service they want to sell. Then a _market institution_ chooses some price $p>0$ that clears the market, i.e., all the sellers who asked less than or equal to $p$ sell while all buyers who bid greater than or equal to $p$ buy at a price $p$. 
 
 The interesting question of a [double auction](https://en.wikipedia.org/wiki/Double_auction) is how the _market institution_ chooses the clearing price $p$. First, what is a _market institution_? A _market institution_ is a set of rules specifying the structure of messages on the exchange. 
 
 (content:references:order-matching)=
 ## Order Matching Systems
+An [order matching system](https://en.wikipedia.org/wiki/Order_matching_system) matches buy and sell orders for an electronic exchange. Thus, the order matching system is at the core of an electronic exchange as it executes orders from the traders in the exchange. 
+
+The matching algorithms used on electronic exchanges are important components that have a great impact on the efficiency, [liquidity](https://en.wikipedia.org/wiki/Market_liquidity) and prices of the instruments being traded on the market. Thus, there are a variety of algorithms for order matching. The most common matching algorithms are the Pro-Rata and Price/Time matching algorithms. Underlying each of these algorithms is a data structure called an [order book](https://en.wikipedia.org/wiki/Order_book), which collates the different types of orders that an excahnge can accept and allows matching to occur. 
+
+### Orders and the Order Book
+An order book holds list of orders on electronic exchange stock. Thus, it is a record of the the interest that buyers and sellers have in a particular financial instrument. A matching engine uses the order book to determine which orders can be fully or partially executed.
+
+### Pro-Rata matching algorithm
+
+### Price/Time matching algorithm
+
+## Summary
+
+
 
 
