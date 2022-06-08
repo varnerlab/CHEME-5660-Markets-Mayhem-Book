@@ -4,7 +4,8 @@
 Stochastic differential equations can model various physical, biological, and chemical systems.
 For example, the path traced by a molecule as it travels through a liquid or a gas can be modeled as a 
 random walk, a type of stochastic differential equation. 
-Stochastic Differential Equations (SDEs) are also essential tools to simulate asset price dynamics.
+Stochastic Differential Equations (SDEs) are essential tools to simulate asset price dynamics.
+They are a top-down approach to simulating market behavior, where markers are treated as a macroscopic system.
 
 In the context of financial systems, the [random walk hypothesis](https://en.wikipedia.org/wiki/Random_walk_hypothesis) postulates that the stock market prices evolve according to a random walk (so price changes are random) and thus cannot be predicted. However, there are 
 dueling perspectives on the randomness of stock prices in the finance and economics community. 
