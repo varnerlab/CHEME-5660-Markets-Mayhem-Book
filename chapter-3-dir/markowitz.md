@@ -273,7 +273,7 @@ Now that we have defined different types of returns, and the rewards of a portfo
 :label: defn-volatility
 
 Let the price of asset $i$ at time $j$ be denoted by $P_{ij}>0$. Then the _volatility_ of asset $i$ is
-the standard devivation of the logarithmic returns calculated between time periods 
+the standard deviation of the logarithmic returns calculated between time periods 
 $j\rightarrow{j+1}$.
 
 ````
@@ -328,7 +328,7 @@ The choice of $(n,m)$ is up to you and the application you are interested in. A 
 ```
 
 ### Example
-* [Computation of the unbiased historical volatility using {prf:ref}`algo-unbiased-historic-volatility`](https://htmlview.glitch.me/?https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks/blob/main/pluto-notebooks/html/Example-OrdinaryBrownianMotion-Simulation.jl.html)
+* [Computation of the unbiased historical volatility using {prf:ref}`algo-unbiased-historic-volatility`](https://htmlview.glitch.me/?https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks/blob/main/pluto-notebooks/html/Example-UnbiasedVolatility-Estimation.jl.html)
 
 ---
 
