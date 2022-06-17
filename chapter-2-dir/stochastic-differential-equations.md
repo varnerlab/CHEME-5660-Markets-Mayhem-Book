@@ -1,4 +1,4 @@
-# Macroscopic Stochastic Differential Equations Market Models
+# Macroscopic Market Models
 
 ## Introduction
 Stochastic differential equations can model various physical, biological, and chemical systems.

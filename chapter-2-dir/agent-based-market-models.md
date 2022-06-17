@@ -1,6 +1,4 @@
-# Microscopic Agent Based Market Models
-
-
+# Microscopic Market Models
 
 ## Introduction
 ## Summary
