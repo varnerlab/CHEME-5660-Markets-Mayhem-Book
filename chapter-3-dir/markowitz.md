@@ -75,10 +75,10 @@ Then, the variance of the portfolio return $\sigma_{\mathcal{P}}^{2}$ is given b
 where $w_{\star}$ the fraction of asset $\star$ in the portfolio, and 
 $\sigma_{\star}$ denote the standard deviation of the return of asset $\star$. 
 
-* __Positive correlation__: For two assets that are positively correlated $p_{12}>0$, 
+* __Positive correlation__: For two assets that are positively correlated $p_{12}\gg{1}$, 
 the variance of the return of the portfolio $\sigma_{\mathcal{P}}^{2}$ is _greater_ than to the variance of the assets alone (assuming $w_{\star}\geq{0}$).
-* __Zero correlation__: For two assets that are uncorrelated $p_{12} = 0$, 
-the variance of the return of the portfolio $\sigma_{\mathcal{P}}^{2}$ is _equal to_ the variance of the assets alone (assuming $w_{\star}\geq{0}$).
+* __Zero (or small) correlation__: For two assets that are either perfectly uncorrelated $p_{12} = 0$ (or have small correlation $p_{12}\ll{1}$), 
+the variance of the return of the portfolio $\sigma_{\mathcal{P}}^{2}$ is _similar to_ the variance of the assets alone (assuming $w_{\star}\geq{0}$).
 * __Negative correlation__: For two assets that are negatively correlated $p_{12}<0$, 
 the variance of the return of the portfolio $\sigma_{\mathcal{P}}^{2}$ is _less_ than to the variance of the assets alone (assuming $w_{\star}\geq{0}$).
 
