@@ -72,8 +72,9 @@ Then, the variance of the portfolio return $\sigma_{\mathcal{P}}^{2}$ is given b
 \sigma_{\mathcal{P}}^2 = w_{1}^{2}\sigma_{1}^{2}+w_{2}^{2}\sigma_{2}^{2}+2w_{1}w_{2}\sigma_{1}
 \sigma_{2}\rho_{12}
 ```
-where $w_{\star}$ the fraction of asset $\star$ in the portfolio, and 
-$\sigma_{\star}$ denote the standard deviation of the return of asset $\star$. 
+where $w_{\star}$ is the fraction of asset $\star$ in the portfolio, and 
+$\sigma_{\star}$ denotes the standard deviation of the return of asset $\star$. 
+Thus, by choosing the two assets that make up the portfolio in a particular way, to control the correlation, we can influence the overall portfolio variance:
 
 * __Positive correlation__: For two assets that are positively correlated $p_{12}\gg{1}$, 
 the variance of the return of the portfolio $\sigma_{\mathcal{P}}^{2}$ is _greater_ than to the variance of the assets alone (assuming $w_{\star}\geq{0}$).
