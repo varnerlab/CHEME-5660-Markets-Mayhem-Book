@@ -7,7 +7,7 @@ The central theme of Markowitz is the balance between risk and reward, where the
 
 The ideas of this chapter closely follow Part II (chapters 5 - 8) of Bodie, Kane, and Marcus {cite}`Bodie:2011ug`. In particular, in this chapter:
 
-* We introduce {ref}`content:references:markowitz` for a general portfolio of risk-free and risky assets
+* We introduce {ref}`content:references:markowitz` for a portfolio of risky and risk-free assets
 * We introduce {ref}`content:references:markowitz-solution` and 
 * We we explore the question  {ref}`content:references:markowitz-solution-test`
 ---
@@ -18,8 +18,8 @@ Markowitz portfolio allocation assumes that investors are risk-averse and ration
 Thus, if an investor chooses between two portfolios that offer _the same expected return_, a rational risk-averse investor will choose the less risky portfolio. Further, a rational risk-averse investor will incur increased risk only if compensated for this risk by a higher expected return, the so-called high-risk, high-reward paradigm. On the other hand, an investor who wants higher expected returns must accept more risk. However, the acceptable trade-off between risk and reward will differ for each investor; what you may find as an acceptable risk versus reward is not the same for everyone. Thus, a rational risk-averse investor will not invest in a portfolio if a second portfolio exists with a more favorable risk-expected return profile. 
 
 ### Portfolio risk and reward
-To make these ideas more concrete, let's develop expressions for computing the risk and reward of a 
-portfolio. Denote the set of assets in a portfolio as $\mathcal{P}$; where $\vert\mathcal{P}\vert$ denotes the size (the number of assets) of the portfolio set. Then, the expected return (reward) of the portfolio is defined as ({prf:ref}`defn-portfolio-return`):
+To make these ideas more concrete, let's develop expressions for the risk and reward of a 
+portfolio. Denote the set of assets in a portfolio as $\mathcal{P}$; where $\vert\mathcal{P}\vert$ denotes the number of assets in the portfolio set. Then, the expected return (reward) of the portfolio $\mathcal{P}$ is defined as ({prf:ref}`defn-portfolio-return`):
 
 ````{prf:definition} Expected Portfolio Return
 :label: defn-portfolio-return
@@ -63,7 +63,7 @@ $\rho_{ij}$ denotes the correlation between assets $i$ and $j$.
 
 ````
 
-
+Now that we know how to compute a portfolio’s risk and expected reward let’s think about what we can control. Of course, we cannot control the return or volatility of asset $i$; the market drives this. However, we can control which assets we include in the portfolio and the relative amount of each of these assets. Thus, how we choose which assets to include and their associated weights give insight into the type of investor we are. If we are a Markowitz investor, we minimize the risk required to obtain a specified reward.
 
 (content:references:markowitz-solution)=
 ## Solution approaches for Markowitz Portfolio Allocation
