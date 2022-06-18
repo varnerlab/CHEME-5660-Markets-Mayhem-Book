@@ -17,7 +17,7 @@ The ideas of this chapter closely follow Part II (chapters 5 - 8) of Bodie, Kane
 Markowitz portfolio allocation assumes that investors are risk-averse and rational. 
 Thus, if an investor chooses between two portfolios that offer _the same expected return_, a rational risk-averse investor will choose the less risky portfolio. Further, a rational risk-averse investor will incur increased risk only if compensated for this risk by a higher expected return, the so-called high-risk, high-reward paradigm. On the other hand, an investor who wants higher expected returns must accept more risk. However, the acceptable trade-off between risk and reward will differ for each investor; what you may find as an acceptable risk versus reward is not the same for everyone. Thus, a rational risk-averse investor will not invest in a portfolio if a second portfolio exists with a more favorable risk-expected return profile. 
 
-### Portfolio risk and reward
+### Portfolio Risk and Reward
 To make these ideas more concrete, let's develop expressions for the risk and reward of a 
 portfolio. Denote the set of assets in a portfolio as $\mathcal{P}$; where $\vert\mathcal{P}\vert$ denotes the number of assets in the portfolio set. Then, the expected return (reward) of the portfolio $\mathcal{P}$ is defined as ({prf:ref}`defn-portfolio-return`):
 
@@ -65,8 +65,22 @@ $\rho_{ij}$ denotes the correlation between assets $i$ and $j$.
 
 Now that we know how to compute a portfolio’s risk and expected reward let’s think about what we can control as a financial engineer. Of course, we cannot control the return or volatility of asset $i$; the market drives those. However, we can control which assets we include in the portfolio and the relative amount of each of these assets. Thus, how we choose which assets to include and their associated weights give insight into the type of investor we are. If we are a Markowitz investor, we minimize the risk required to obtain a specified reward. 
 
-An exciting feature of the portfolio variance ({prf:ref}`defn-portfolio-variance`) is the 
-dependence of the risk on the correlation between assets $i$ and $j$, denoted by the symbol $\rho_{ij}$.
+An exciting feature of the variance of the portfolio return ({prf:ref}`defn-portfolio-variance`) is the dependence on the correlation between assets $i$ and $j$, denoted by the symbol $\rho_{ij}$. To see why this is exciting, let's consider the case of two risky assets; $\vert\mathcal{P}\vert$ = 2. 
+Then, the variance of the portfolio return $\sigma_{\mathcal{P}}^{2}$ is given by:
+
+```{math}
+\sigma_{\mathcal{P}}^2 = w_{1}^{2}\sigma_{1}^{2}+w_{2}^{2}\sigma_{2}^{2}+2w_{1}w_{2}\sigma_{1}
+\sigma_{2}\rho_{12}
+```
+where $w_{\star}$ the fraction of asset $\star$ in the portfolio, and 
+$\sigma_{\star}$ denote the standard deviation of the return of asset $\star$. 
+
+* __Positive correlation__: For two assets that are positively correlated $p_{12}>0$, 
+the variance of the return of the portfolio $\sigma_{\mathcal{P}}^{2}$ is _greater_ than to the variance of the assets alone (assuming $w_{\star}\geq{0}$).
+* __Zero correlation__: For two assets that are uncorrelated $p_{12} = 0$, 
+the variance of the return of the portfolio $\sigma_{\mathcal{P}}^{2}$ is _equal to_ the variance of the assets alone (assuming $w_{\star}\geq{0}$).
+* __Negative correlation__: For two assets that are negatively correlated $p_{12}<0$, 
+the variance of the return of the portfolio $\sigma_{\mathcal{P}}^{2}$ is _less_ than to the variance of the assets alone (assuming $w_{\star}\geq{0}$).
 
 (content:references:markowitz-solution)=
 ## Solution approaches for Markowitz Portfolio Allocation
