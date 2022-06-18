@@ -63,10 +63,14 @@ $\rho_{ij}$ denotes the correlation between assets $i$ and $j$.
 
 ````
 
-Now that we know how to compute a portfolio’s risk and expected reward let’s think about what we can control. Of course, we cannot control the return or volatility of asset $i$; the market drives this. However, we can control which assets we include in the portfolio and the relative amount of each of these assets. Thus, how we choose which assets to include and their associated weights give insight into the type of investor we are. If we are a Markowitz investor, we minimize the risk required to obtain a specified reward.
+Now that we know how to compute a portfolio’s risk and expected reward let’s think about what we can control as a financial engineer. Of course, we cannot control the return or volatility of asset $i$; the market drives those. However, we can control which assets we include in the portfolio and the relative amount of each of these assets. Thus, how we choose which assets to include and their associated weights give insight into the type of investor we are. If we are a Markowitz investor, we minimize the risk required to obtain a specified reward. 
+
+An exciting feature of the portfolio variance ({prf:ref}`defn-portfolio-variance`) is the 
+dependence of the risk on the correlation between assets $i$ and $j$, denoted by the symbol $\rho_{ij}$.
 
 (content:references:markowitz-solution)=
 ## Solution approaches for Markowitz Portfolio Allocation
+
 
 
 ### Single-index model portfolios
