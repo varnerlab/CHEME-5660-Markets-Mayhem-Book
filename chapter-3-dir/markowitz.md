@@ -65,7 +65,9 @@ $\rho_{ij}$ denotes the correlation between assets $i$ and $j$.
 
 Now that we know how to compute a portfolio’s risk and expected reward let’s think about what we can control as a financial engineer. Of course, we cannot control the return or volatility of asset $i$; the market drives those. However, we can control which assets we include in the portfolio and the relative amount of each of these assets. Thus, how we choose which assets to include and their associated weights give insight into the type of investor we are. If we are a Markowitz investor, we minimize the risk required to obtain a specified reward. 
 
-An exciting feature of the variance of the portfolio return ({prf:ref}`defn-portfolio-variance`) is the dependence on the correlation between assets $i$ and $j$, denoted by the symbol $\rho_{ij}$. To see why this is exciting, let's consider the case of two risky assets; $\vert\mathcal{P}\vert$ = 2. 
+#### Asset correlation in a portfolio  
+An exciting feature of the variance of the portfolio return ({prf:ref}`defn-portfolio-variance`) is the dependence on the [correlation](https://en.wikipedia.org/wiki/Correlation) between assets $i$ and $j$, denoted by $\rho_{ij}$. To see why this is exciting, let's consider the case in which portfolio $\mathcal{P}$ consists of two two risky assets; 
+$\vert\mathcal{P}\vert$ = 2. 
 Then, the variance of the portfolio return $\sigma_{\mathcal{P}}^{2}$ is given by:
 
 ```{math}
@@ -74,14 +76,18 @@ Then, the variance of the portfolio return $\sigma_{\mathcal{P}}^{2}$ is given b
 ```
 where $w_{\star}$ is the fraction of asset $\star$ in the portfolio, and 
 $\sigma_{\star}$ denotes the standard deviation of the return of asset $\star$. 
-Thus, by choosing the two assets that make up the portfolio in a particular way, to control the correlation, we can influence the overall portfolio variance:
+Thus, we can influence the overall portfolio variance by choosing the assets 
+based upon their correlation.
 
+````{prf:observation} The role of correlation in $\mathcal{P}$
 * __Positive correlation__: For two assets that are positively correlated $p_{12}\gg{1}$, 
 the variance of the return of the portfolio $\sigma_{\mathcal{P}}^{2}$ is _greater_ than to the variance of the assets alone (assuming $w_{\star}\geq{0}$).
 * __Zero (or small) correlation__: For two assets that are either perfectly uncorrelated $p_{12} = 0$ (or have small correlation $p_{12}\ll{1}$), 
 the variance of the return of the portfolio $\sigma_{\mathcal{P}}^{2}$ is _similar to_ the variance of the assets alone (assuming $w_{\star}\geq{0}$).
-* __Negative correlation__: For two assets that are negatively correlated $p_{12}<0$, 
-the variance of the return of the portfolio $\sigma_{\mathcal{P}}^{2}$ is _less_ than to the variance of the assets alone (assuming $w_{\star}\geq{0}$).
+* __Negative correlation__: For two assets that are negatively correlated $p_{12}<0$, the variance of the return of the portfolio $\sigma_{\mathcal{P}}^{2}$ is _less_ than to the variance of the assets alone (assuming $w_{\star}\geq{0}$).
+````
+
+Further, the correlation does not appear in the expected portfolio return ({prf:ref}`defn-portfolio-return`); thus, by carefully selecting assets, the overall risk of a portfolio can be reduced without impacting the return.
 
 (content:references:markowitz-solution)=
 ## Solution approaches for Markowitz Portfolio Allocation
