@@ -80,7 +80,7 @@ Thus, we can influence the overall portfolio variance by choosing the assets
 based upon their correlation.
 
 ````{prf:observation} The role of correlation in $\mathcal{P}$
-* __Positive correlation__: For two assets that are positively correlated $p_{12}\gg{1}$, 
+* __Positive correlation__: For two assets that are positively correlated $p_{12}>{0}$, 
 the variance of the return of the portfolio $\sigma_{\mathcal{P}}^{2}$ is _greater_ than to the variance of the assets alone (assuming $w_{\star}\geq{0}$).
 * __Zero (or small) correlation__: For two assets that are either perfectly uncorrelated $p_{12} = 0$ (or have small correlation $p_{12}\ll{1}$), 
 the variance of the return of the portfolio $\sigma_{\mathcal{P}}^{2}$ is _similar to_ the variance of the assets alone (assuming $w_{\star}\geq{0}$).
