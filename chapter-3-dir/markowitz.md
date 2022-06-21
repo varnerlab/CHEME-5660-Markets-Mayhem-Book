@@ -87,7 +87,10 @@ the variance of the return of the portfolio $\sigma_{\mathcal{P}}^{2}$ is _simil
 * __Negative correlation__: For two assets that are negatively correlated $p_{12}<0$, the variance of the return of the portfolio $\sigma_{\mathcal{P}}^{2}$ is _less_ than to the variance of the assets alone (assuming $w_{\star}\geq{0}$).
 ````
 
-Further, the correlation does not appear in the expected portfolio return ({prf:ref}`defn-portfolio-return`); thus, by carefully selecting assets, the overall risk of a portfolio can be reduced without impacting the return.
+Further, the correlation does not appear in the expected portfolio return ({prf:ref}`defn-portfolio-return`); thus, by carefully selecting assets with low correlation, the overall risk of a portfolio can be reduced without impacting the return (all else being equal). 
+
+#### Examples
+* Example: Computation of the variance of a portofilio for different asset combinations
 
 (content:references:markowitz-solution)=
 ## Solution approaches for Markowitz Portfolio Allocation
