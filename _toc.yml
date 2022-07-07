@@ -13,15 +13,16 @@ chapters:
   - file: chapter-1-dir/markets
  
 - file: chapter-2-dir/chapter-2
-  title: Modeling Price Dynamics
+  title: Modeling Asset Price Dynamics
   sections: 
   - file: chapter-2-dir/probability-random-variables
   - file: chapter-2-dir/stochastic-differential-equations.md
   - file: chapter-2-dir/agent-based-market-models.md
 
 - file: chapter-3-dir/chapter-3-landing
-  title: Portfolios, Derivatives, and Leverage
+  title: Risk, Portfolios, Derivatives, and Leverage
   sections: 
+  - file: chapter-3-dir/bonds
   - file: chapter-3-dir/Single-Index-Models
   - file: chapter-3-dir/markowitz
   - file: chapter-3-dir/contracts
