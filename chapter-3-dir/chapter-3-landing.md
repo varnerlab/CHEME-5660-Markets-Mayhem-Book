@@ -1,4 +1,4 @@
-# The Fantastic but Dangerous World of Derivatives, Futures, Hedging and Leverage
+# Unit 3: The Fantastic but Dangerous World of Derivatives, Futures, Hedging and Leverage
 
 ## Summary
 Derivatives are one of the three primary financial instrument categories: derivatives, equity (i.e., shares of stock), and debt (i.e., bonds and mortgages). The value of a derivative contract 

@@ -5,24 +5,25 @@ Fixed-income securities are financial instruments with predefined cashflows of a
 
 Treasury securities, e.g., [Treasury bills, notes, and bonds](https://www.treasurydirect.gov/indiv/products/prod_tbonds_glance.htm), are debt obligations issued by the United States Department of the Treasury. Treasury securities are one of the safest investments, e.g., defacto risk-free, because they are backed by the full faith and credit of the United States government. Thus, treasury securities are a mechanism used by the United States government to borrow money, from bond holders, with a fixed set of repayment terms. 
 
-In this lecture, we will introduce three types of treasury securities:
+In this lecture, we will discuss three types of treasury securities:
 
-* {ref}`content:references:treasury-bonds`
-* {ref}`content:references:treasury-bills`
-* {ref}`content:references:treasury-notes`
+* The definition and valuation of {ref}`content:references:treasury-bonds`
+* The definition and valuation of {ref}`content:references:treasury-bills`
+* The definition and valuation of {ref}`content:references:treasury-notes`
 
 ---
 
+## Types of Fixed Income Treasury Securities
+
 (content:references:treasury-bonds)=
-## Treasury Bonds
+### Treasury Bonds
 Treasury bonds pay a fixed rate of interest every six months until matururation. Bonds are issued in a term of 20 years or 30 years. When a bond matures, the owner is paid the face value of the bond.
 Bonds can be held until maturity or sold before maturity. Interest income from Treasury bonds is exempt from state and local income taxes, but subject to federal income taxes.
 
 You can buy Treasury bonds directly from the [United States Treasury via TreasuryDirect](https://www.treasurydirect.gov/indiv/products/prod_tbonds_glance.htm), or through a bank or broker.
 
-
 (content:references:treasury-bills)=
-## Treasury Bills
+### Treasury Bills
 Treasury bills (also called T-bills) are sold in terms ranging from a few days to 52 weeks. Bills are typically sold at a discount from the par amount (par amount is also called face value); rarely they have sold at a price equal to the par amount. When a bill matures, you are paid its par amount. 
 
 Treasury bills are issued for terms of 4, 8, 13, 26, and 52 weeks; 4-week, 8-week, 13-week, 26-week, and 52-week bills are auctioned on a regular schedule.  Interest income from T-bills is exempt from state and local income taxes but subject to federal income taxes.
@@ -30,7 +31,15 @@ Treasury bills are issued for terms of 4, 8, 13, 26, and 52 weeks; 4-week, 8-wee
 Like bonds, you can buy T-bills directly from the [United States Treasury via TreasuryDirect](https://www.treasurydirect.gov/indiv/products/prod_tbonds_glance.htm) or through a bank or broker.
 
 (content:references:treasury-notes)=
-## Treasury Notes
+### Treasury Notes
+
+Treasury notes, sometimes called T-notes, earn a fixed rate of interest every six months until maturity. T-notes are issued in terms of 2, 3, 5, 7, and 10 years. The price of a note can be greater than, less than, or equal to the note's face value. T-Notes pay interest every six months until maturity. At maturity, the face value of the note is paid to the owner. 
+
+Interest income from T-notes is exempt from state and local income taxes but subject to federal income taxes.
+
+Like the other types of fixed income securities, you can buy T-Notes directly from the [United States Treasury via TreasuryDirect](https://www.treasurydirect.gov/indiv/products/prod_tbonds_glance.htm) or through a bank or broker.
+
+## Fixed Income Treasury Security Calculations
 Fill me in.
 
 ---

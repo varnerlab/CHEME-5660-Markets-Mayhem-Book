@@ -2,25 +2,24 @@
 # Learn more at https://jupyterbook.org/customize/toc.html
 
 format: jb-book
-root: intro
+root: infrastructure
 chapters:
-- file: infrastructure.md
 - file: chapter-1-dir/chapter-1
-  title: The Financial System
+  title: Unit 1. The Financial System
   sections:
   - file: chapter-1-dir/global
   - file: chapter-1-dir/assets
   - file: chapter-1-dir/markets
  
 - file: chapter-2-dir/chapter-2
-  title: Modeling Asset Price Dynamics
+  title: Unit 2. Modeling and Simulation of Asset Price Dynamics
   sections: 
   - file: chapter-2-dir/probability-random-variables
   - file: chapter-2-dir/stochastic-differential-equations.md
   - file: chapter-2-dir/agent-based-market-models.md
 
 - file: chapter-3-dir/chapter-3-landing
-  title: Risk, Portfolios, Derivatives, and Leverage
+  title: Unit 3. Risk, Portfolios, Derivatives, and Leverage
   sections: 
   - file: chapter-3-dir/bonds
   - file: chapter-3-dir/Single-Index-Models
@@ -30,4 +29,5 @@ chapters:
   - file: chapter-3-dir/binomial-pricing-model.ipynb
 
 - file: chapter-4-dir/chapter-4
+  title: Unit 4. Process Finance and Decision Making
 - file: References
