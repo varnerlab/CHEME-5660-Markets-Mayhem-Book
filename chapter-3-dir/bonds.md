@@ -40,14 +40,10 @@ Treasury notes, sometimes called T-notes, are a medium-term debt instrument that
 T-notes are an example of a non-zero coupon debt instrument; thus, the lender receives periodic interest payments over the term of the T-note.
 
 ### Treasury Bonds
-Treasury Bonds are long-term U.S Treasury debt instruments. Treasury bonds pay a fixed rate of interest every six months (called coupon payments) until maturity of the bond. Bonds are issued in a term of 20 years or 30 years. When a bond matures, the owner is paid the face value of the bond. Bonds can be held until maturity or sold before maturity. 
+Treasury Bonds are long-term U.S Treasury debt instruments. Treasury bonds pay a fixed rate of interest every six months until maturity of the bond. Bonds are issued in terms of 20 years or 30 years. When a bond matures, the owner is paid the face value of the bond. Bonds can be held until maturity or sold before maturity. 
 
-When a U.S. Treasury bond matures, the U.S government repays the debt by paying the bond’s par value (also called the face value of the bond). The coupon rate of the bond determines the interest payment: The annual payment is the coupon rate times the bond’s par value. The coupon rate, maturity date, and par value of the bond are part of the contract between the issuer, in this case the U.S. government and the bondholder (you).
+When a U.S. Treasury bond matures, the U.S government repays the debt by paying the bond’s par value. The coupon rate of the bond determines the interest payment: the annual payment is the coupon rate times the bond’s par value. The coupon rate, maturity date, and par value of the bond are part of the contract between the issuer, in this case the U.S. government and the bondholder (you).
 
-
-
-
-You can buy Treasury bonds directly from the [United States Treasury via TreasuryDirect](https://www.treasurydirect.gov/indiv/products/prod_tbonds_glance.htm), or through a bank or broker.
 
 ````{prf:example} U.S. Treasury Bond Maturity Calculation
 :label: example-30-year-bond
