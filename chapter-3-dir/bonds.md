@@ -40,9 +40,9 @@ Treasury notes, sometimes called T-notes, are a medium-term debt instrument that
 T-notes are an example of a non-zero coupon debt instrument; thus, the lender receives periodic interest payments over the term of the T-note.
 
 ### Treasury Bonds
-Treasury Bonds are long-term U.S Treasury debt instruments. Treasury bonds pay a fixed rate of interest (the coupon rate) every six months until maturity of the bond. Bonds are issued in terms of 20 years or 30 years. When a bond matures, the owner is paid the face value of the bond. Bonds can be held until maturity or sold before maturity. 
+Treasury Bonds are long-term U.S Treasury debt instruments. Treasury bonds pay a fixed rate of interest (the coupon rate) every six months until the bond's maturity. The U.S. Treasury issues bonds with terms of 20 or 30 years. When a bond matures, the bondholder receives the face value of the bond. Bonds can be held until maturity or sold before maturity. 
 
-When a U.S. Treasury bond matures, the U.S government repays the debt by paying the bond’s par value. The coupon rate of the bond determines the interest payment: the annual payment is the coupon rate times the bond’s par value. The coupon rate, maturity date, and par value of the bond are part of the contract between the issuer, in this case the U.S. government and the bondholder (you).
+When a U.S. Treasury bond matures, the U.S government repays the debt by paying the bond's par value. The bond's coupon rate determines the interest payment: the annual payment is the coupon rate times the bond's par value. The coupon rate, maturity date, and par value of the bond are part of the contract between the issuer, the U.S. government, and the bondholder (you).
 
 #### Pricing of U.S. Treasury Bounds
 A bond’s coupon payments, and the eventual repayment of the face value, occurs at least 20 years in the future. Thus, the price an investor is willing to pay for a claim to those payments depends on the future value of the dollars that will be received versus the present value of the face value of the bond. 
@@ -50,13 +50,15 @@ A bond’s coupon payments, and the eventual repayment of the face value, occurs
 ````{prf:definition} Fixed Coupon Rate Bond Pricing
 :label: defn-fixed-r-bond-pricing
 
-Let the term of a bond be $T$-years, with an annual coupon rate of $i$. Then, a _fair price_ for the bond, denoted by $V_{B}$, is the present value of coupon payments $C$ plus the discounted par value $V_{P}$ of the bond:
+Let the term of a bond be T-years with semi-annual coupon payments (2T coupon payments over the term of the bond), with an annual coupon rate of $\bar{c}$, and an annual market interest rate of $\bar{r}$. 
+
+Then, the _fair price_ for the bond, denoted by $V_{B}$, is the present value of coupon payments $C$ plus the discounted par value $V_{P}$ of the bond:
 
 ```{math}
-V_{B} = \frac{V_{P}}{\left(1+\bar{r}\right)^{T}}+\sum_{t=1}^{T}\frac{C}{\left(1+\bar{r}\right)^{t}}
+V_{B} = \frac{V_{P}}{\left(1+\bar{r}\right)^{2T}}+\sum_{t=1}^{2T}\frac{C}{\left(1+\bar{r}\right)^{t}}
 ```
 
-where $\bar{r}=i/2$ and $C=\bar{r}\cdot{V_{P}}$.
+where $\bar{r}$ is set by the market at time of purchase of the bond, and $C=\left(\bar{c}/2\right)\cdot{V_{P}}$. If $\bar{c}=\bar{r}$, the fair price equals the par value $V_{P}$.
 ````
 
 ##### Example
