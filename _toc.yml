@@ -25,8 +25,6 @@ chapters:
   - file: chapter-3-dir/Single-Index-Models
   - file: chapter-3-dir/contracts
   - file: chapter-3-dir/markowitz
-  - file: chapter-3-dir/Black-Scholes-Merton
-  - file: chapter-3-dir/binomial-pricing-model.ipynb
 
 - file: chapter-4-dir/chapter-4
   title: Unit 4. Process Finance and Decision Making
