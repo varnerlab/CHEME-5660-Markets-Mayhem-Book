@@ -23,8 +23,8 @@ chapters:
   sections: 
   - file: chapter-3-dir/bonds
   - file: chapter-3-dir/Single-Index-Models
-  - file: chapter-3-dir/markowitz
   - file: chapter-3-dir/contracts
+  - file: chapter-3-dir/markowitz
   - file: chapter-3-dir/Black-Scholes-Merton
   - file: chapter-3-dir/binomial-pricing-model.ipynb
 

@@ -83,7 +83,7 @@ The yield to maturity (YTM) value is the interest rate $\bar{r}$ that makes $V_{
 \hat{V}_{B} - \frac{V_{P}}{\left(1+i\right)^{2T}}-\sum_{t=1}^{2T}\frac{C}{\left(1+i\right)^{t}} = 0
 ```
 
-where $i=\bar{r}/2$ is set by the market at time of purchase of the bond, and $C=\left(\bar{c}/2\right)\cdot{V_{P}}$
+where $i=\bar{r}/2$ is set by the market at the time of purchase of the bond, and $C=\left(\bar{c}/2\right)\cdot{V_{P}}$
 
 ````
 

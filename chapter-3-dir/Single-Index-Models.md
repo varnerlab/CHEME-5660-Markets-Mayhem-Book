@@ -1,6 +1,18 @@
-# Index Models
+# Equity Securities
 
 ## Introduction
+Common stocks, also known as equity securities or equities, represent ownership shares in a corporation. Each share of common stock entitles its owner to one vote on any matters of corporate governance that are put to a vote at the corporation’s annual meeting and to a share in the financial benefits of ownership. The corporation is controlled by a board of directors elected by the shareholders. The board, which meets only a few times each year, selects managers who actually run the corporation on a day-to-day basis. Managers have the authority to make most business decisions without the board’s specific approval. The board’s mandate is to oversee the management to ensure that it acts in the best interests of shareholders.
+
+The two most important characteristics of common stock as an investment are its residual claim and limited liability features:
+
+ * Residual claim means that stockholders are the last in line of all those who have a claim on the assets and income of the corporation. In a liquidation of the firm’s assets the shareholders have a claim to what is left after all other claimants such as the tax authorities, employees, suppliers, bondholders, and other creditors have been paid. For a firm not in liquidation, shareholders have claim to the part of operating income left over after interest and taxes have been paid. Management can either pay this residual as cash dividends to shareholders or reinvest it in the business to increase the value of the shares. 
+
+ * Limited liability means that the most shareholders can lose in the event of failure of the corporation is their original investment. Unlike owners of unincorporated businesses, whose creditors can lay claim to the personal assets of the owner (house, car, furniture), corporate shareholders may at worst have worthless stock. They are not personally liable for the firm’s obligations.
+
+In this lecture, we will:
+Fill me in.
+
+---
 
 (content:references:return)=
 ## Return
@@ -320,4 +332,7 @@ The choice of $(n,m)$ is up to you and the application you are interested in. A 
 ### Example
 * [Computation of the unbiased historical volatility using {prf:ref}`algo-unbiased-historic-volatility`](https://htmlview.glitch.me/?https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks/blob/main/pluto-notebooks/html/Example-UnbiasedVolatility-Estimation.jl.html)
 
+---
+
 ## Summary
+Fill me in
