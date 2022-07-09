@@ -11,7 +11,7 @@ Options are attractive because they offer [leverage](https://www.merrilledge.com
 
 
 
-<!-- However, unlike bonds which is a codified lending agreement, the contract that underlies an option decribes the purchase or sale of shares of stock. There are two types of options contracts, a [call contract](https://www.investopedia.com/terms/c/calloption.asp) and a [put contract](https://www.investopedia.com/terms/p/putoption.asp), and two different styles of contracts that we'll consider American and European style contracts. -->
+<!-- However, unlike bonds which is a codified lending agreement, the contract that underlies an option decribes the purchase or sale of shares of stock.  -->
 
 <!-- There are two types of options contracts, a [call contract](https://www.investopedia.com/terms/c/calloption.asp) and a [put contract](https://www.investopedia.com/terms/p/putoption.asp), and two different styles of contracts that we'll consider American and European style contracts. A CALL contract gives the 
 buyer the right but not the obligation to purchase 100 shares (per contract) of an underlying stock, `XYZ`, at a price per share called the strike price of $K$. On the other hand, a PUT contract gives the buyer the right but not the obligation to sell 100 shares (per contract) of an underlying stock, `XYZ`, at a strike price of $K$ per share. 
@@ -26,7 +26,10 @@ In this lecture, we will:
 
 (content:references:option-contracts)=
 ## Option Contracts
-Fill me in.
+There are two types of options contracts, a [call contract](https://www.investopedia.com/terms/c/calloption.asp) and a [put contract](https://www.investopedia.com/terms/p/putoption.asp), and many different styles of options contracts, however, we'll consider only two, [American](https://www.investopedia.com/terms/a/americanoption.asp) and [European](https://www.investopedia.com/terms/e/europeanoption.asp) contracts.
+
+
+
 
 (content:references:option-pricing-algorithms)=
 ## Options Pricing Algorithms
