@@ -45,7 +45,7 @@ Treasury Bonds are long-term U.S Treasury debt instruments. Treasury bonds pay a
 When a U.S. Treasury bond matures, the U.S government repays the debt by paying the bond's par value. The bond's coupon rate determines the interest payment: the annual payment is the coupon rate times the bond's par value. The coupon rate, maturity date, and par value of the bond are part of the contract between the issuer, the U.S. government, and the bondholder (you).
 
 #### Pricing of U.S. Treasury Bounds
-A bond’s coupon payments, and the eventual repayment of the face value, occurs at least 20 years in the future. Thus, the price an investor is willing to pay for a claim to those payments depends on the future value of the dollars that will be received versus the present value of the face value of the bond. 
+A bond’s coupon payments, and the eventual repayment of the face value, occurs many years in the future. Thus, the price an investor is willing to pay for a claim to those payments depends on the future value of the dollars that will be received versus the present value of the face value of the bond. 
 
 ````{prf:definition} Fixed Coupon Rate Bond Pricing
 :label: defn-fixed-r-bond-pricing
@@ -55,10 +55,10 @@ Let the term of a bond be T-years with semi-annual coupon payments (2T coupon pa
 Then, the _fair price_ for the bond, denoted by $V_{B}$, is the present value of coupon payments $C$ plus the discounted par value $V_{P}$ of the bond:
 
 ```{math}
-V_{B} = \frac{V_{P}}{\left(1+\bar{r}\right)^{2T}}+\sum_{t=1}^{2T}\frac{C}{\left(1+\bar{r}\right)^{t}}
+V_{B} = \frac{V_{P}}{\left(1+i\right)^{2T}}+\sum_{t=1}^{2T}\frac{C}{\left(1+i\right)^{t}}
 ```
 
-where $\bar{r}$ is set by the market at time of purchase of the bond, and $C=\left(\bar{c}/2\right)\cdot{V_{P}}$. If $\bar{c}=\bar{r}$, the fair price equals the par value $V_{P}$.
+where $i=\bar{r}/2$ is set by the market at the time when the bond is purchased, and $C=\left(\bar{c}/2\right)\cdot{V_{P}}$. If $\bar{c}=\bar{r}$, the fair price equals the par value i.e., $V_{B} = V_{P}$.
 ````
 
 ##### Example
@@ -80,10 +80,10 @@ Let the term of a bond be T-years with semi-annual coupon payments (2T coupon pa
 The yield to maturity (YTM) value is the interest rate $\bar{r}$ that makes $V_{B}=\hat{V}_{B}$:
 
 ```{math}
-\hat{V}_{B} - \frac{V_{P}}{\left(1+\bar{r}\right)^{2T}}-\sum_{t=1}^{2T}\frac{C}{\left(1+\bar{r}\right)^{t}} = 0
+\hat{V}_{B} - \frac{V_{P}}{\left(1+i\right)^{2T}}-\sum_{t=1}^{2T}\frac{C}{\left(1+i\right)^{t}} = 0
 ```
 
-where $\bar{r}$ is set by the market at time of purchase of the bond, and $C=\left(\bar{c}/2\right)\cdot{V_{P}}$
+where $i=\bar{r}/2$ is set by the market at time of purchase of the bond, and $C=\left(\bar{c}/2\right)\cdot{V_{P}}$
 
 ````
 
@@ -94,10 +94,6 @@ where $\bar{r}$ is set by the market at time of purchase of the bond, and $C=\le
 Bond investors have two actions open to them: hold the bond until maturity (and collect the coupon payments along the way), or resell the bond (and potentially benefit from a change in the bond price). The latter is possible because after the bonds are issued, bondholders may buy or sell bonds in secondary bond markets. In these markets, bond prices fluctuate inversely with the market interest rate (the coupon rate). 
 
 Interest rate fluctuations are the main source of risk in the secondary fixed-income bond market. 
-
-
-
-
 
 
 <!-- 
