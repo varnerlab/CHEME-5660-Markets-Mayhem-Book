@@ -40,8 +40,37 @@ There are two types of options contracts, a [call contract](https://www.investop
 ### Call contracts
 A [call contract](https://www.investopedia.com/terms/c/calloption.asp) gives the option contract buyer the right, but not the obligation, to purchase 100 shares of `XYZ` (per contract) from the seller at a particular price per share (called the strike price $K$) at some point in the future (called the expiration date). In the case of [American](https://www.investopedia.com/terms/a/americanoption.asp) style [call contracts](https://www.investopedia.com/terms/c/calloption.asp), the option buyer can exercise their right at any point between when the contract was purchased and the expiration date. On the other hand, buyers of [European](https://www.investopedia.com/terms/e/europeanoption.asp) style contracts can only exercise their right on the expiration date. The right to purchase shares of `XYZ` at $K$ USD/share is not free; the option buyer pays a premium per contract to the option seller for this right. 
 
+The profit that a call contract buyer experiences, denoted by $V$, depends upon the difference between the share price of `XYZ` and the strike price $K$ of the contract:
+
+````{prf:definition} Proft and Loss Call Contract
+:label: defn-PL-call-contract
+
+An investor purchases $N$ call contracts for the underlying stock `XYZ` for $\mathcal{P}$ USD/contract, where each contract controls 100 shares of `XYZ`. 
+
+Let the strike price of each contract be $K$ USD/share, and the share price of `XYZ` be $S$ USD/share. Then, at expiration, the call contracts have value $V_{c}$ USD:
+
+```{math}
+V_{c} = 100N\cdot\max\left(S-K,0\right) - N\mathcal{P}
+```
+
+````
+
 ### Put contracts
 A [put contract](https://www.investopedia.com/terms/p/putoption.asp) gives the option contract buyer the right, but not the obligation, to sell 100 shares of `XYZ` (per contract) to the option seller at the strike price $K$, either by or on the expiration date. In the case of [American](https://www.investopedia.com/terms/a/americanoption.asp) style [put contracts](https://www.investopedia.com/terms/p/putoption.asp), the option buyer can exercise their right at any point between when the contract is purchased and the expiration date. On the other hand, buyers of [European](https://www.investopedia.com/terms/e/europeanoption.asp) style contracts can only exercise their right on the expiration date. The right to sell shares of `XYZ` at $K$ USD/share is not free; the option buyer pays a premium per contract to the option seller for this right. 
+
+The profit that a put contract buyer experiences, denoted by $V_{p}$, depends upon the difference between the share price of `XYZ` and the strike price $K$ of the contract:
+
+````{prf:definition} Fractional return
+:label: defn-PL-put-contract
+
+One put contract was purchased for the underlying stock `XYZ` for $\mathcal{P}$ USD/contract. Let the strike price of the put contract be $K$ USD/share, and the share price of `XYZ` be $S$ USD/share. Then, at expiration, the put contract has
+value $V_{p}$:
+
+```{math}
+V_{p} = \max\left(K - S,0\right) - \mathcal{P}
+```
+
+````
 
 
 (content:references:option-pricing-algorithms)=
