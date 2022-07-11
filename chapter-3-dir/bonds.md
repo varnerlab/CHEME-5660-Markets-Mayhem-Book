@@ -30,9 +30,23 @@ There are several types of U.S. government debt securities. However, they share 
 ### Treasury Bills
 Treasury bills (also called T-bills) are short-term debt instruments sold in terms ranging from a few days to 52 weeks. T-bills are typically sold at a discount from the par amount; rarely they are sold at a price equal to the par amount. When a T-bill matures, you are paid its par amount. 
 
-Treasury bills are issued for terms of 4, 8, 13, 26, and 52 weeks; 4-week, 8-week, 13-week, 26-week, and 52-week bills are auctioned on a regular schedule.  
+Treasury bills are issued for terms of 4, 8, 13, 26, and 52 weeks; 4-week, 8-week, 13-week, 26-week, and 52-week T-bills are auctioned on a regular schedule.  
 
-T-bills are an example of a zero-coupon instrument (no interest payments); thus, T-bills are usually sold at a discount and the difference between the purchase price and the par amount is the interest accrued over the term of the T-bill.
+#### Pricing of U.S. Treasury Bills
+T-bills are an example of a zero-coupon fixed-income instrument; thus, T-bills do not make coupon payments during the bond term. Instead, U.S. Treasury bills are priced such that the bondholder receives the par value at the term of the bond:
+
+````{prf:definition} Zero Coupon Rate Bond Pricing
+:label: defn-zero-coupon-bond-pricing
+
+Let a zero-coupon T-bill have a term of $T$-years with an annual market interest rate of $\bar{r}$. Then, the _fair price_ for a zero-coupon T-bill, denoted by $V_{B}$, is the future par value $V_{P}$ of the bond discounted to the time of the purchase:
+
+```{math}
+V_{B} = \frac{V_{P}}{\left(1+\bar{r}\right)^{T}}
+```
+````
+
+##### Example
+
 
 ### Treasury Notes
 Treasury notes, sometimes called T-notes, are a medium-term debt instrument that earns a fixed rate of interest every six months until maturity. T-notes are issued in terms of 2, 3, 5, 7, and 10 years. The price of a T-note can be greater than, less than, or equal to the T-note's par value. However, at maturity, the par value of the T-note is paid to the owner of the T-note (lender). 
