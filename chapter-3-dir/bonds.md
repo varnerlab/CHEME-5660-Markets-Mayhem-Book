@@ -116,8 +116,9 @@ name: fig-bond-price-sensitivity
 ---
 Sensitivity of bond price to changes in the market interest rate.   
 ```
+
 (content:references:bond-pricing-relationships)=
-#### Malkiel’s bond-pricing relationships
+#### Malkiel’s bond-pricing rules
 The relationship between the price of a bond, and the yeild (i.e., the market interest rate $\bar{r}$) was previously
 studied by Malkiel {cite}`Malkiel1962`. The so-called Malkiel’s bond-pricing rules are demonstrated by the simulations shown in ({numref}`fig-bond-price-sensitivity`):
 
@@ -140,4 +141,8 @@ a) Coupon payments: The coupon rate is quoted as an _annual_ percentage. Thus, t
 ---
  
 ## Summary
-Fill me in.
+In this lecture, we introduced fixed-income debt securities. Fixed-income debt securities are contracts between a borrower and a lender that regulate the repayment of a debt. Here we focused on an archetypal category of fixed-income debt security: [United States Treasury Securities](https://www.investor.gov/introduction-investing/investing-basics/glossary/treasury-securities). In particular, we:
+
+* Introduced the definition of {ref}`content:references:treasury-bonds`
+* Developed tools to compute the fair price of an N-coupon Treasury Bills/Notes/Bonds as a function of the par-value, market interest rate, coupon rate and instrument term.
+* Introduced {ref}`content:references:bond-pricing-relationships`; Malkiel’s rules describe the sensitivity of bond price to changes in market interest rates as a function of other bond parameters such as coupon rate and term. 
