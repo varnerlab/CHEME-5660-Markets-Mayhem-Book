@@ -5,9 +5,10 @@ Fixed-income securities are financial instruments with predefined cashflows at s
 
 Treasury securities are viewed as one of the safest possible investments, e.g., defacto risk-free, because Treasury securities are backed by the full faith and credit of the United States government. [The U.S. government has never defaulted on its debt obligations (at least in recent memory)](https://thehill.com/opinion/finance/575722-the-us-has-never-defaulted-on-its-debt-except-the-four-times-it-did/).  
 
-In this lecture, we will discuss three types of treasury securities:
+In this lecture, we will discuss:
 
 * The definition and valuation of {ref}`content:references:treasury-bonds`
+* Introduce {ref}`content:references:bond-pricing-relationships`
 
 
 ---
@@ -104,7 +105,8 @@ where $i=\bar{r}/2$ is set by the market at the time of purchase of the bond, an
 ##### Example
 * Let's do an example illustrating the Yield to Maturity (YTM) calculation ({prf:ref}`defn-yield-to-maturity`). Sources: [Live Pluto notebook](https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks) or [static HTML](https://htmlview.glitch.me/?https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks/blob/main/pluto-notebooks/html/Example-YieldToMaturity-TreasuryBond.jl.html).
 
-#### Sensitivity of Bond Prices to Interest Rate Changes
+
+### Sensitivity of Bond Prices to Interest Rate Changes
 Bond investors have two actions open to them: hold the bond until maturity (and collect the coupon payments along the way), or resell the bond (and potentially benefit from a change in the bond price). The latter is possible because after the bonds are issued, bondholders may buy or resell bonds in secondary bond markets. In these markets, bond prices fluctuate inversely with the market interest rate $\bar{r}$. Thus, interest rate fluctuations are the main source of risk to the bondholder if they are not holding the bound to maturity.
 
 ```{figure} ./figs/Fig-Sensitivity-Bond-Price-Interest-Rate.pdf
@@ -114,8 +116,8 @@ name: fig-bond-price-sensitivity
 ---
 Sensitivity of bond price to changes in the market interest rate.   
 ```
-
-##### Malkiel’s bond-pricing relationships
+(content:references:bond-pricing-relationships)=
+#### Malkiel’s bond-pricing relationships
 The relationship between the price of a bond, and the yeild (i.e., the market interest rate $\bar{r}$) was previously
 studied by Malkiel {cite}`Malkiel1962`. The so-called Malkiel’s bond-pricing rules are demonstrated by the simulations shown in ({numref}`fig-bond-price-sensitivity`):
 
