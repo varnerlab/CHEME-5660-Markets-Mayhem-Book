@@ -1,9 +1,9 @@
 # Fixed Income Securities
 
 ## Introduction
-Fixed-income securities are financial instruments with predefined cashflows at selected dates over the lifetime of the instrument. While there are several types of fixed-income securities, in this lecture, we focus on a single archetypal category: [United States Treasury Securities](https://www.investor.gov/introduction-investing/investing-basics/glossary/treasury-securities). 
+Fixed-income securities are financial instruments with predefined cashflows at selected dates over the lifetime of the instrument. While there are several types of fixed-income securities, we'll focus on an archetypal category: [United States Treasury Securities](https://www.investor.gov/introduction-investing/investing-basics/glossary/treasury-securities). Treasury securities, e.g., [Treasury bills, notes, and bonds](https://www.treasurydirect.gov/indiv/products/prod_tbonds_glance.htm), are debt obligations issued by the United States Department of the Treasury.  U.S. Treasury securities are a mechanism used by the United States government to borrow money, from bondholders, with a fixed set of repayment terms. 
 
-Treasury securities, e.g., [Treasury bills, notes, and bonds](https://www.treasurydirect.gov/indiv/products/prod_tbonds_glance.htm), are debt obligations issued by the United States Department of the Treasury.  Thus, treasury securities are a mechanism used by the United States government to borrow money, from bond holders, with a fixed set of repayment terms. Treasury securities are one of the safest investments, e.g., defacto risk-free, because they are backed by the full faith and credit of the United States government. [The U.S. government has never defaulted on it's debt obligations (at least in recent memory)](https://thehill.com/opinion/finance/575722-the-us-has-never-defaulted-on-its-debt-except-the-four-times-it-did/).
+Treasury securities are viewed as one of the safest possible investments, e.g., defacto risk-free, because Treasury securities are backed by the full faith and credit of the United States government. [The U.S. government has never defaulted on its debt obligations (at least in recent memory)](https://thehill.com/opinion/finance/575722-the-us-has-never-defaulted-on-its-debt-except-the-four-times-it-did/).  
 
 In this lecture, we will discuss three types of treasury securities:
 
@@ -28,12 +28,12 @@ There are several types of U.S. government debt securities. However, they share 
 
 
 ### Treasury Bills
-Treasury bills (also called T-bills) are short-term debt instruments sold in terms ranging from a few days to 52 weeks. T-bills are typically sold at a discount from the par amount; rarely they are sold at a price equal to the par amount. When a T-bill matures, you are paid its par amount. 
+Treasury bills (also called T-bills) are short-term debt instruments sold in terms ranging from a few days to 52 weeks. T-bills are typically sold at a discount from the par amount; rarely are they sold at a price equal to the par amount. When a T-bill matures, you the bill holder is paid the par amount. 
 
 Treasury bills are issued for terms of 4, 8, 13, 26, and 52 weeks; 4-week, 8-week, 13-week, 26-week, and 52-week T-bills are auctioned on a regular schedule.  
 
 #### Pricing of U.S. Treasury Bills
-T-bills are an example of a zero-coupon fixed-income instrument; thus, T-bills do not make coupon payments during the bond term. Instead, U.S. Treasury bills are priced such that the bondholder receives the par value at the term of the bond:
+T-bills are an example of a zero-coupon fixed-income instrument; thus, T-bills do not make coupon payments during the bond term. Instead, T-bills are priced such that the bondholder receives the par value at the term of the bond:
 
 ````{prf:definition} Zero Coupon Rate Bond Pricing
 :label: defn-zero-coupon-bond-pricing
@@ -46,7 +46,7 @@ V_{B} = \frac{V_{P}}{\left(1+\bar{r}\right)^{T}}
 ````
 
 ##### Example
-
+* Let's do an example illustrating the pricing of a zero-coupon T-bill ({prf:ref}`defn-zero-coupon-bond-pricing`). Sources: [Live Pluto notebook](https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks) or [static HTML](https://htmlview.glitch.me/?https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks/blob/main/pluto-notebooks/html/Example-Price-ZeroCoupon-TreasuryBill.jl.html).
 
 ### Treasury Notes
 Treasury notes, sometimes called T-notes, are a medium-term debt instrument that earns a fixed rate of interest every six months until maturity. T-notes are issued in terms of 2, 3, 5, 7, and 10 years. The price of a T-note can be greater than, less than, or equal to the T-note's par value. However, at maturity, the par value of the T-note is paid to the owner of the T-note (lender). 
@@ -58,7 +58,7 @@ Treasury Bonds are long-term U.S Treasury debt instruments. Treasury bonds pay a
 
 When a U.S. Treasury bond matures, the U.S government repays the debt by paying the bond's par value. The bond's coupon rate determines the interest payment: the annual payment is the coupon rate times the bond's par value. The coupon rate, maturity date, and par value of the bond are part of the contract between the issuer, the U.S. government, and the bondholder (you).
 
-#### Pricing of U.S. Treasury Bounds
+#### Pricing of U.S. Treasury Bonds
 A bond’s coupon payments, and the eventual repayment of the face value, occurs many years in the future. Thus, the price an investor is willing to pay for a claim to those payments depends on the future value of the dollars that will be received versus the present value of the face value of the bond. 
 
 ````{prf:definition} Fixed Coupon Rate Bond Pricing
@@ -78,7 +78,7 @@ where $i=\bar{r}/2$ is set by the market at the time when the bond is purchased,
 ##### Example
 * Let's do an example illustrating bond pricing ({prf:ref}`defn-fixed-r-bond-pricing`). Sources: [Live Pluto notebook](https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks) or [static HTML](https://htmlview.glitch.me/?https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks/blob/main/pluto-notebooks/html/Example-Price-TreasuryBond.jl.html).
 
-#### Yield to Maturity of U.S. Treasury Bounds
+#### Yield to Maturity of U.S. Treasury Bonds
 U.S. Treasury bonds often do not sell for their par value i.e., the market interest rate $\bar{r}\neq\bar{c}$. However, assuming the U.S. government does not default on its debt obligations, U.S Treasury bonds will eventually mature to the par value over the bond term. 
 
 Let’s develop a metric called yield to maturity (YTM) which measures the rate of return of a bond; the YTM accounts for both the current income generated by the coupon payments and the price increase or decrease over the bond term. The YTM is the standard measure of the total rate of return of the fixed-income security. 
@@ -104,11 +104,25 @@ where $i=\bar{r}/2$ is set by the market at the time of purchase of the bond, an
 ##### Example
 * Let's do an example illustrating the Yield to Maturity (YTM) calculation ({prf:ref}`defn-yield-to-maturity`). Sources: [Live Pluto notebook](https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks) or [static HTML](https://htmlview.glitch.me/?https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks/blob/main/pluto-notebooks/html/Example-YieldToMaturity-TreasuryBond.jl.html).
 
-#### Sensitivity of Bond Prices
-Bond investors have two actions open to them: hold the bond until maturity (and collect the coupon payments along the way), or resell the bond (and potentially benefit from a change in the bond price). The latter is possible because after the bonds are issued, bondholders may buy or sell bonds in secondary bond markets. In these markets, bond prices fluctuate inversely with the market interest rate (the coupon rate). 
+#### Sensitivity of Bond Prices to Interest Rate Changes
+Bond investors have two actions open to them: hold the bond until maturity (and collect the coupon payments along the way), or resell the bond (and potentially benefit from a change in the bond price). The latter is possible because after the bonds are issued, bondholders may buy or resell bonds in secondary bond markets. In these markets, bond prices fluctuate inversely with the market interest rate $\bar{r}$. Thus, interest rate fluctuations are the main source of risk to the bondholder if they are not holding the bound to maturity.
 
-Interest rate fluctuations are the main source of risk in the secondary fixed-income bond market. 
+```{figure} ./figs/Fig-Sensitivity-Bond-Price-Interest-Rate.pdf
+---
+height: 420px
+name: fig-bond-price-sensitivity
+---
+Sensitivity of bond price to changes in the market interest rate.   
+```
 
+##### Malkiel’s bond-pricing relationships
+The relationship between the price of a bond, and the yeild (i.e., the market interest rate $\bar{r}$) was previously
+studied by Malkiel {cite}`Malkiel1962`. The so-called Malkiel’s bond-pricing rules (we consider the first three) are visible in ({numref}`fig-bond-price-sensitivity`):
+
+1. The price of a U.S. Treasury Bond _increases_ as the market interest rate $\bar{r}$ _decreases_ ; thus, there is an _inverse_ relationship between the bound yeild to maturity (i.e., the market rate $\bar{r}$) and the price of the bond $V_{B}$. 
+1. Changes in price as a function of changes in the interest rate is not symmetric;
+an increase in a bond’s interest rate $\bar{r}$ results in a _smaller price change_ than a decrease in $\bar{r}$ of equal magnitude. 
+1. Prices of long-term bonds are more sensitive to interest rate changes than short-term bonds.
 
 <!-- 
 ````{prf:example} U.S. Treasury Bond Maturity Calculation
