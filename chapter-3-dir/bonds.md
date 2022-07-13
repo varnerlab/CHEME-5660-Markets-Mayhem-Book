@@ -29,6 +29,16 @@ There are several types of U.S. government debt securities. However, they share 
 
 
 ### Treasury Bills
+
+
+```{figure} ./figs/Fig-Bill-Asset-Timeline-Schematic.pdf
+---
+height: 260px
+name: fig-bill-payout-schematic
+---
+Sensitivity of bond price to changes in the market interest rate.   
+```
+
 Treasury bills (also called T-bills) are short-term debt instruments sold in terms ranging from a few days to 52 weeks. T-bills are typically sold at a discount from the par amount; rarely are they sold at a price equal to the par amount. When a T-bill matures, you the bill holder is paid the par amount. 
 
 Treasury bills are issued for terms of 4, 8, 13, 26, and 52 weeks; 4-week, 8-week, 13-week, 26-week, and 52-week T-bills are auctioned on a regular schedule.  
