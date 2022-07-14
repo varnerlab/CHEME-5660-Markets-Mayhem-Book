@@ -32,7 +32,7 @@ In this lecture, we will:
 height: 280px
 name: fig-options-contract-grid
 ---
-The rights and responsibilities of the buyer and seller in put and call option contracts.  
+The rights and responsibilities of the buyer and seller of put and call option contracts.  
 ```
 
 There are two types of options contracts, a [call contract](https://www.investopedia.com/terms/c/calloption.asp) and a [put contract](https://www.investopedia.com/terms/p/putoption.asp), and many different styles of options contracts. However, we'll consider only two styles, [American](https://www.investopedia.com/terms/a/americanoption.asp) and [European](https://www.investopedia.com/terms/e/europeanoption.asp) style options contracts. The roles and responsibilities of each contract type, and the respectrive role of the buyer and seller, are shown in ({numref}`fig-options-contract-grid`).
@@ -42,16 +42,24 @@ A [call contract](https://www.investopedia.com/terms/c/calloption.asp) gives the
 
 The profit that a call contract buyer experiences, denoted by $V$, depends upon the difference between the share price of `XYZ` and the strike price $K$ of the contract:
 
-````{prf:definition} Proft and Loss Call Contract
+````{prf:definition} Call Contract Payoff for Contract Holder
 :label: defn-PL-call-contract
 
-An investor purchases $N$ call contracts for the underlying stock `XYZ` for $\mathcal{P}$ USD/contract, where each contract controls 100 shares of `XYZ`. 
+An investor purchases a call contract for the underlying stock `XYZ` for $\mathcal{P}$ USD/contract, where the contract controls 100 shares of `XYZ`. 
 
-Let the strike price of each contract be $K$ USD/share, and the share price of `XYZ` be $S$ USD/share. Then, at expiration, the call contracts have value $V_{c}$ USD:
+Let the strike price of the call contract be $K$ USD/share, and the share price of `XYZ` be $S$ USD/share. Then, at expiration, the call contract has the payoff:
 
 ```{math}
-V_{c} = 100N\cdot\max\left(S-K,0\right) - N\mathcal{P}
+V_{c} = \max\left(S-K,0\right)
 ```
+
+and a profit (loss) of:
+
+```{math}
+P_{c} = V_{c} -  \mathcal{P}
+```
+
+where $P_{c}$ denotes the profit (or loss) per contract per share of `XYZ`.
 
 ````
 
