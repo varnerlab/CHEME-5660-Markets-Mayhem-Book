@@ -1,4 +1,4 @@
-# The Basics of Assets, Money, Markets and the Global Financial System
+# Unit 1: The Basics of Assets, Money, Markets and the Global Financial System
 
 ## Summary
 This chapter introduces assets, markets, the notion of money, and the global financial system. 

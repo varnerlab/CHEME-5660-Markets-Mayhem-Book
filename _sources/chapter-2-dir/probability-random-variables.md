@@ -179,7 +179,7 @@ Then, for any set $B\subseteq\Omega$ we can decompose $B$ into smaller disjoint 
 ```
 
 (content:references:probability)=
-## Probability
+## Probability Space
 
 A probability space is completley described by the tuple $(\Omega,\mathcal{F},P)$:
 
@@ -312,53 +312,130 @@ $$P(B) = \sum_{i=1}^{n}P\left(B\,\vert{A_{i}}\right)P\left(A_{i}\right)$$
 
 ````
 
+---
+
 (content:references:random-variables)=
 ## Random Variables and Stochastic Processes
 The sample space and the event space are all based on statements, for example, getting a head when flipping a coin, winning the game, or drawing a card, etc. These statements are not numbers; how do we convert a statement to a number? 
 The answer is a random variable; random variables are mappings from events to numbers, these numbers are probabilities.
 
-### Expectation of discrete random variables
-It is often helpful to extract essential parameters such as the mean
-or standard deviation of the return when analyzing financial data. If we hypothesize that markets are random, 
-then the values for these parameters can be estimated from the random prices observed in the market.
+### Moments of discrete random variables
 
-Let the price of some asset, e.g., `XYZ,` stock price, be a discrete random variable denoted by $X$. 
-Then expectation is the mean of the random variable $X$.
+It is often helpful to extract characteristics such as the mean, standard deviation, or other quantities of interest from financial data sets.  However, markets (and hence asset prices) are random; thus, we compute these parameters of interest from random market data using 
+a concept called the [moments of a random variable](https://en.wikipedia.org/wiki/Moment_(mathematics)). 
 
-````{prf:definition} Expectation
-:label: defn-expectation
+ The mean, variance, skew, kurtosis, etc are all examples of the [moments of a random variable](https://en.wikipedia.org/wiki/Moment_(mathematics)). 
+Let the daily close price of `XYZ` be a discrete random variable denoted by $X$. 
+Then the moments of `XYZ` are defined as:
 
-Let $X$ denote a discrete random variable. Then, the expectation of the random variable $X$ is given by:
+
+````{prf:definition} Moments
+:label: defn-moments
+
+Let $X$ denote a discrete random variable which takes on values in the finite sample space $X(\Omega)$. Then, the kth moment of $X$ is given by:
 
 ```{math}
-:label: eq-defn-expectation
-\mathbb{E}\left(X\right) = \sum_{x\in{X(\Omega)}}xp_{X}(x)
+\mathbb{E}\Biggl[\left(\frac{X - a}{b}\right)^k\Biggr] = \sum_{x\in{X(\Omega)}}\left(\frac{X - a}{b}\right)^{k}p_{X}(x)
 ```
 
-where $p_{X}(x)$ denotes the probability that random variable $X=x$, and 
-$X(\Omega)$ denotes sample space for $X$ (the set of all possible values that the random variable $X$ can take.)
+where $p_{X}(x)$ denotes the probability that random variable $X=x$, 
+$X(\Omega)$ denotes sample space for $X$, and $a\geq{0}$ 
+and $b\geq{1}$ are constants.
 
+Important moments:
+
+* $k=1$ and $(a,b) = (0,1)$: The first (raw) moment is the [expectation](https://en.wikipedia.org/wiki/Expected_value) (mean) of $X$. The [expectation](https://en.wikipedia.org/wiki/Expected_value) measures the central tendency in the data.
+
+* $k=2$ and $(a,b)=(\mu,1)$: The second (central) moment is the [variance](https://en.wikipedia.org/wiki/Variance) of $X$. The [variance](https://en.wikipedia.org/wiki/Variance) measures dispersion in the data, i.e., how far data points are spread out from their expected value. 
+
+* $k=3$ and $(a,b)=(\mu,~\sigma)$: The third (normalized central) moment is the [skewness](https://en.wikipedia.org/wiki/Skewness) of $X$. The [skewness](https://en.wikipedia.org/wiki/Skewness) measures the asymmetry of a random variable about its expectation. Skewness can be positive, zero, negative, or undefined.
+
+* $k=4$ and $(a,b)=(\mu,~\sigma)$: The fourth (normalized central) moment is the [kurtosis](https://en.wikipedia.org/wiki/Kurtosis) of $X$. The [kurtosis](https://en.wikipedia.org/wiki/Kurtosis) measures the heaviness of the tail of the distribution relative to a normal distribution of the same variance.
+
+where $\mu = \mathbb{E}(X)$ denotes the mean, and $\sigma$ denotes the standard deviation.
 
 ````
 
-The expectation of a random variable has several useful properties. 
+#### Expectation
+The [expectation](https://en.wikipedia.org/wiki/Expected_value) (or mean), which measures the central tendency of a random variable $X$, is given by (discrete $X$):
 
-### Moments and variance of discrete random variables
+```{math}
+:label: eqn-expectation
+
+\mathbb{E}\left[X\right] = \sum_{x\in{X}(\Omega)}xp_{X}(x)
+
+```
+
+The expectation of a random variable $X$ (discrete or continuous) has several useful (and important) properties: 
+* $\mathbb{E}\left(c\right) = c$ for any constant $c$
+* $\mathbb{E}\left(cX\right) = c\times\mathbb{E}\left(X\right)$ for any constant $c$
+* $\mathbb{E}\left(g(X)\right) = \sum_{x\in{X(\Omega)}}g(x)p_{X}(x)$
+* $\mathbb{E}\left(g(X)+h(X)\right) = \mathbb{E}(g(X)) + \mathbb{E}(h(X))$
+* $\mathbb{E}\left(X+c\right) = \mathbb{E}(X) + c$ for any constant $c$
+
+#### Variance
+
+The [variance](https://en.wikipedia.org/wiki/Variance) measures the expected dispersion for
+individual values of $X$, i.e., the average distance that values of $X$ are spread out from their expected value (mean). The [variance](https://en.wikipedia.org/wiki/Variance) is given by:
+
+```{math}
+:label: eqn-variance
+\text{Var}(X) = \mathbb{E}\Bigl[(X-\mu)^{2}\Bigr]
+```
+
+where $\mu = \mathbb{E}(X)$ denotes the expected value (mean) of the random variable $X$.
+Like the mean, the variance $\text{Var}(X)$ has a few interesting (and important) properties:
+
+* $\text{Var}(X) = \mathbb{E}\left(X^{2}\right) - \left(\mu\right)^2$
+* $\text{Var}(cX) = {c^2}\text{Var}(X)$ for any constant $c$
+* $\text{Var}(X+c) = \text{Var}(X)$ for any constant $c$
+
+The more common quantity that is used to measure dispersion, the standard deviation $\sigma$, 
+is related to the variance: $\sigma_{X} = \sqrt{\text{Var}(X)}$.
+
+#### Skewness
+The [skewness](https://en.wikipedia.org/wiki/Skewness) measures the expected asymmetry of a random variable about its mean (expected value): 
+
+```{math}
+:label: eqn-skewness
+\gamma(X) = \mathbb{E}\Biggl[\left(\frac{X - \mu}{\sigma}\right)^3\Biggr]
+```
+
+where $\mu$ denotes the mean (expected value), and $\sigma$ denotes the standard deviation.
+The skewness parameter $\gamma(X)$ can be positive, zero, negative, or undefined. 
+
+#### Kurtosis
+
+The [kurtosis](https://en.wikipedia.org/wiki/Kurtosis) measures the heaviness of the tail of the distribution relative to a normal distribution of the same variance. 
+The [kurtosis](https://en.wikipedia.org/wiki/Kurtosis) of a random variable $X$, denoted as
+$\text{Kurt}(X)$, is defined as:
+
+```{math}
+:label: eqn-kurtosis
+
+\kappa(X) = \mathbb{E}\Biggl[\left(\frac{X - \mu}{\sigma}\right)^4\Biggr]
+```
+
+Large $\kappa(X)$ values arise when most $X$ values are near the mean, but a few values are very far away from the mean. Additionally, $\kappa(X)$ can arise from the majority of $X$ being near the tail of the distribution.
 
 
-### Probability mass function
+<!-- High values of  arise when $X$ is concentrated around the mean and the data-generating process produces occasional values very far away from the mean, or
+when $X$ is concentrated in the tails of the distribution. -->
+---
+
+## Probability mass functions
 In the case of discrete random variables, for example, dice roles, coin flips etc, this is done using a concept called a [probability mass function (PMF)](https://en.wikipedia.org/wiki/Probability_mass_function). 
 
 
 ````{prf:definition} Probability Mass Function
 :label: defn-pmf
 
-The probability mass function (PMF) of a random variable X is a function which specifies the probability of 
-obtaining a number $x$
+The probability mass function (PMF) of a random variable $X$ is a function which specifies the probability of 
+obtaining $X = x$, where $x$ is a particular event outcome:
 
 $$p_{X}(x) = P\left(X=x\right)$$
 
-The set of all possible states of $X$ is denoted as $X\left(\Omega\right)$. A PMF should satisfy the condition:
+The set of all possible outcomes of for a random variable $X$ is denoted as $X\left(\Omega\right)$. A PMF should satisfy the condition:
 
 $$\sum_{x\in{X(\Omega)}}p_{X}(x)=1$$
 ````
@@ -374,14 +451,40 @@ $$\Omega = \left\{(HH),(HT),(TH),(TT)\right\}$$
 
 ````
 
-#### Bernoulli random variables
-A Bernoulli random variable, the simplest random variable, models a coin-flip.
-Bernoulli random variable have two states: either 1 or 0. The probability of getting 1 is $p$, while the probability of getting a value of 0 is $1 − p$. Bernoulli random variables model many binary events: coin flips (H or T), 
-binary bits (1 or 0), true or false, yes or no, present or absent, etc.
+### Bernoulli random variable
+A Bernoulli random variable, the simplest random variable, models a coin-flip or some other type of binary
+outcome. Bernoulli random variable have two states: either 1 or 0. The probability of getting 1 is $p$, while the probability of getting a value of 0 is $1 − p$. Bernoulli random variables model many binary events: coin flips (H or T), binary bits (1 or 0), true or false, yes or no, present or absent, etc.
 
-#### Binomial random variable
-The binomial distribution is the probability of getting exactly $k$ successes in $n$ independent Bernoulli trials. 
-For example, the probability of getting 4 heads in 6 coin tosses. 
+````{prf:definition} Bionomial Random Variable
+:label: defn-pmf-bernouli
+
+Let $X$ be a Bernoulli random variable. Then, the probability mass function of $X$ is:
+
+```{math}
+p_{X}(x) =
+\begin{cases}
+  p & \text{if } x = 1 \\
+  1 - p & \text{if } x = 0
+\end{cases}
+```
+
+where $0<p<1$ is called the Bernoulli parameter. For a Bernoulli random variable $X(\Omega) \in [0,1]$.
+The expectation of a Bernoulli random variable $X$ is given by:
+
+```{math}
+\mathbb{E}\left[X\right] = p
+```
+
+while the variance $\text{Var}(X)$ is given by:
+
+```{math}
+\text{Var}\left[X\right] = p(1-p)
+```
+
+````
+
+### Binomial random variable
+The binomial distribution is the probability of getting exactly $k$ successes in $n$ independent Bernoulli trials. For example, the probability of getting 4 heads in 6 coin tosses. 
 
 ````{prf:definition} Bionomial Random Variable
 :label: defn-pmf-binomial
@@ -390,13 +493,29 @@ Let $X$ be a binomial random variable. The probability mass function for a binom
 
 $$p_{X}(k) = \binom{n}{k}p^{k}\left(1-p\right)^{n-k}\qquad{k=0,1,\dots,n}$$
 
-where $p$ denotes the binomial parameter $0<p<1$, and $n$ is the number of states.
+where $n$ denotes the number of experiments, and the binomial parameter $0<p<1$ is the probability 
+that each experiment yeilds a successful result. 
+
+For a Bernoulli random variable $X(\Omega) \in [0,1]^n$, i.e., $n$ Bernoulli trials.
+The expectation of a binomial random variable $X$ is given by:
+
+```{math}
+\mathbb{E}\left[X\right] = np
+```
+
+while the variance $\text{Var}(X)$ is given by:
+
+```{math}
+\text{Var}\left[X\right] = np(1-p)
+```
+
 ````
 
-#### Geometric random variable
-In some applications, we are interested in trying a binary experiment e.g., a coin flip until a specified outcome is obtained.
-The outcome of this type of experiment is governed by a geometric random variable; 
-a geometric random variable describes the number of failures obtained before a final success.
+### Geometric random variable
+We may be interested in doing a binary experiment, e.g., a coin flip until a specified outcome is obtained.
+A geometric random variable governs the outcome of this type of experiment; 
+a geometric random variable gives the probability that the first occurrence of success requires $k$ independent trials, each with success probability $p$. In other words, 
+a geometric random variable describes the number of failures obtained before final success.
 
 ````{prf:definition} Geometric Random Variable
 :label: defn-pmf-geometric
@@ -405,5 +524,41 @@ Let $X$ be a geometric random variable. The probability mass function for a geom
 
 $$p_{X}(k) = (1-p)^{(k-1)}p\qquad{k=1,2,\dots}$$
 
-where $p$ denotes the geometric parameter $0<p<1$.
+where $p$ denotes the geometric parameter $0<p<1$. The expectation of a geometric random variable $X$ is given by:
+
+```{math}
+\mathbb{E}\left[X\right] = \frac{1}{p}
+```
+
+while the variance $\text{Var}(X)$ is given by:
+
+```{math}
+\text{Var}\left[X\right] = \frac{1-p}{p^2}
+```
 ````
+
+### Poisson random variable
+The Poisson distribution is a discrete probability distribution that expresses the probability of a given number of events occurring during a fixed interval if these events occur with a known constant mean rate and independently of the time since the last event. In other words, a Poisson distribution can be used to estimate how likely it is that something will happen `X` number of times. For example, the number of car crashes in a city of a given size or the number of cheeseburgers sold at a fast-food chain on a Friday night.
+
+````{prf:definition} Poisson Random Variable
+:label: defn-pmf-poisson
+
+Let $X$ be a Poisson random variable. The probability mass function for a Poisson random variable is given by:
+
+```{math}
+p_{X}(x) = \frac{\lambda^{x}}{x!}\exp\left(-\lambda\right)
+```
+
+where $\lambda>0$ denotes the Poisson parameter, and $!$ denotes the factorial function. The expectation of a Poisson random variable $X$ is given by:
+
+```{math}
+\mathbb{E}\left[X\right] = \lambda
+```
+
+while the variance $\text{Var}(X)$ is given by:
+
+```{math}
+\text{Var}\left[X\right] = \lambda
+```
+````
+

@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>American and European style option contracts &#8212; CHEME 5660</title>
+    <title>Derivative Securities &#8212; CHEME 5660</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -56,8 +56,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Example: Calculating the Price of an AMD put option" href="binomial-pricing-model.html" />
-    <link rel="prev" title="The Fantastic but Dangerous World of Derivatives, Futures, Hedging and Leverage" href="chapter-3.html" />
+    <link rel="next" title="Modern Portfolio Theory" href="markowitz.html" />
+    <link rel="prev" title="Equity Securities" href="Single-Index-Models.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -96,20 +96,15 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="bd-toc-item active">
         <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../intro.html">
-   Financial Data, Markets, and Mayhem for Scientists and Engineers
+  <a class="reference internal" href="../infrastructure.html">
+   CHEME 5660 Financial Data, Markets, and Mayhem for Scientists and Engineers
   </a>
  </li>
 </ul>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../infrastructure.html">
-   Objectives, Polices and Resources
-  </a>
- </li>
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../chapter-1-dir/chapter-1.html">
-   Assets, Money, Markets and the Global Financial System
+   Unit 1. The Financial System
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
   <label for="toctree-checkbox-1">
@@ -118,25 +113,25 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
+    <a class="reference internal" href="../chapter-1-dir/global.html">
+     The Global Finanical System
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="../chapter-1-dir/assets.html">
-     Assets are Current and Future Cash Flows
+     Financial Balances
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../chapter-1-dir/markets.html">
-     Markets and Market Structures
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../chapter-1-dir/global.html">
-     The Global Finanical System
+     Markets and Exchanges
     </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../chapter-2-dir/chapter-2.html">
-   The Dynamics of Assets and Markets
+   Unit 2. Modeling and Simulation of Asset Price Dynamics
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
   <label for="toctree-checkbox-2">
@@ -146,29 +141,24 @@ const thebe_selector_output = ".output, .cell_output"
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../chapter-2-dir/probability-random-variables.html">
-     Sets, Probability, and Random Variables
+     Probability, Random Variables and Stochastic Processes
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../chapter-2-dir/markowitz.html">
-     Modern Portfolio Theory
+    <a class="reference internal" href="../chapter-2-dir/stochastic-differential-equations.html">
+     Macroscopic Market Models
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../chapter-2-dir/random-walks.html">
-     Brownian Motion
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../chapter-2-dir/geometric-brownian-motion.html">
-     Geometric Brownian Motion
+    <a class="reference internal" href="../chapter-2-dir/agent-based-market-models.html">
+     Microscopic Market Models
     </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1 current active has-children">
-  <a class="reference internal" href="chapter-3.html">
-   Derivatives, Futures, and Leverage
+  <a class="reference internal" href="chapter-3-landing.html">
+   Unit 3. Risk, Portfolios, Derivatives, and Leverage
   </a>
   <input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
   <label for="toctree-checkbox-3">
@@ -176,21 +166,31 @@ const thebe_selector_output = ".output, .cell_output"
    </i>
   </label>
   <ul class="current">
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
-     American and European style option contracts
+   <li class="toctree-l2">
+    <a class="reference internal" href="bonds.html">
+     Fixed Income Securities
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="binomial-pricing-model.html">
-     Example: Calculating the Price of an AMD put option
+    <a class="reference internal" href="Single-Index-Models.html">
+     Equity Securities
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Derivative Securities
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="markowitz.html">
+     Modern Portfolio Theory
     </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../chapter-4-dir/chapter-4.html">
-   Process Finance and Decision Making
+   Unit 4. Process Finance and Decision Making
   </a>
  </li>
  <li class="toctree-l1">
@@ -286,8 +286,49 @@ const thebe_selector_output = ".output, .cell_output"
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#cox-ross-rubinstein-crr-binomial-pricing-model">
-   Cox-Ross-Rubinstein (CRR) binomial pricing model
+  <a class="reference internal nav-link" href="#introduction">
+   Introduction
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#option-contracts">
+   Option Contracts
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#call-contracts">
+     Call contracts
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#payoff-profit-and-loss-for-call-contracts">
+       Payoff, Profit and Loss for Call contracts
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#put-contracts">
+     Put contracts
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#payoff-profit-and-loss-for-put-contracts">
+       Payoff, Profit and Loss for Put contracts
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#options-pricing-algorithms">
+   Options Pricing Algorithms
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summary">
+   Summary
   </a>
  </li>
 </ul>
@@ -300,7 +341,7 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>American and European style option contracts</h1>
+                <h1>Derivative Securities</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -311,8 +352,49 @@ const thebe_selector_output = ".output, .cell_output"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#cox-ross-rubinstein-crr-binomial-pricing-model">
-   Cox-Ross-Rubinstein (CRR) binomial pricing model
+  <a class="reference internal nav-link" href="#introduction">
+   Introduction
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#option-contracts">
+   Option Contracts
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#call-contracts">
+     Call contracts
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#payoff-profit-and-loss-for-call-contracts">
+       Payoff, Profit and Loss for Call contracts
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#put-contracts">
+     Put contracts
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#payoff-profit-and-loss-for-put-contracts">
+       Payoff, Profit and Loss for Put contracts
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#options-pricing-algorithms">
+   Options Pricing Algorithms
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summary">
+   Summary
   </a>
  </li>
 </ul>
@@ -324,16 +406,137 @@ const thebe_selector_output = ".output, .cell_output"
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="american-and-european-style-option-contracts">
-<h1>American and European style option contracts<a class="headerlink" href="#american-and-european-style-option-contracts" title="Permalink to this headline">¶</a></h1>
-<p>There are two types of options contracts, a <a class="reference external" href="https://www.investopedia.com/terms/c/calloption.asp">call contract</a> and a <a class="reference external" href="https://www.investopedia.com/terms/p/putoption.asp">put contract</a>, and two different styles of contracts that we’ll consider American and European style contracts. A CALL contract gives the
-buyer the right but not the obligation to purchase 100 shares (per contract) of an underlying stock, <code class="docutils literal notranslate"><span class="pre">XYZ</span></code>, at a price per share called the strike price of <span class="math notranslate nohighlight">\(K\)</span>. On the other hand, a PUT contract gives the buyer the right but not the obligation to sell 100 shares (per contract) of an underlying stock, <code class="docutils literal notranslate"><span class="pre">XYZ</span></code>, at a strike price of <span class="math notranslate nohighlight">\(K\)</span> per share.</p>
-<p>In European-style contracts, the transaction codified in CALL or PUT options can only occur at some fixed date in the future called the expiration date, which is agreed upon when the contract is purchased. However, American contract styles have a different policy; American contracts can be exercised (the buyer can initiate the transaction) at any time between when the contract was purchased and the expiration date.</p>
-<div class="section" id="cox-ross-rubinstein-crr-binomial-pricing-model">
-<h2>Cox-Ross-Rubinstein (CRR) binomial pricing model<a class="headerlink" href="#cox-ross-rubinstein-crr-binomial-pricing-model" title="Permalink to this headline">¶</a></h2>
-<p>The binomial options pricing model provides a generalizable numerical method for the valuation of American style call and put options contacts. The model uses a discrete-time lattice model of the varying price over time of the underlying financial instrument. The binomial model was first proposed by William Sharpe in the 1978 edition of Investments and formalized by Cox, Ross and Rubinstein <span id="id1">[<a class="reference internal" href="../References.html#id6" title="John C. Cox, Stephen A. Ross, and Mark Rubinstein. Option pricing: a simplified approach. Journal of Financial Economics, 7(3):229-263, 1979. URL: https://www.sciencedirect.com/science/article/pii/0304405X79900151, doi:https://doi.org/10.1016/0304-405X(79)90015-1.">CRR79</a>]</span>.</p>
-<a class="reference internal image-reference" href="../_images/CRR-BinomialModel.pdf"><img alt="CRR-Schematic" class="align-center" src="../_images/CRR-BinomialModel.pdf" style="width: 480px;" /></a>
+  <div class="tex2jax_ignore mathjax_ignore section" id="derivative-securities">
+<h1>Derivative Securities<a class="headerlink" href="#derivative-securities" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>Derivatives are one of the three primary financial instrument categories: derivatives, equity (i.e., shares of stock), and debt (i.e., bonds and mortgages). Derivatives provide payoffs that depend on the value of other assets, such as commodities, bonds, stocks, or market indexes. Thus, the value of a derivative is based mainly on the price movements of an underlying asset, e.g., stocks, commodities, currencies, etc. In this lecture, we will focus exclusively on options, a type of derivative product that uses stock as its underlying asset. Like bonds, options are contractural agreements between buyers and sellers to conduct a particular transaction at some later date. Options, derivatives that use equity, i.e., shares of a stock or an exchange-traded fund, as their underlying asset, are structured agreements between a buyer and a seller that give the option buyer the right, but not the obligation, to execute the transaction described in the contract, i.e., to buy (or sell) an underlying asset in some predetermined way in a specified time frame.</p>
+<p>Investors can use options to <a class="reference external" href="https://www.investopedia.com/terms/h/hedge.asp">hedge</a> against future asset price movements or for speculation. For example, a trader can buy an option instead of shares of an underlying stock to generate profits from the underlying stock’s price movements, typically at a lower cost than the corresponding block of shares. Options contracts are traded on exchanges throughout the world; the <a class="reference external" href="https://www.cboe.com">The Chicago Board Options Exchange</a> is the largest options exchange in the United States, responsible for approximately 33% of the daily options trading volume in the United States (27 million contracts are traded each day in the United States). Worldwide, in 2021, there were about 33 billion options contracts traded annually.</p>
+<p>Options are attractive because they offer <a class="reference external" href="https://www.merrilledge.com/investment-products/options/options-trading-leverage-risk">leverage</a>, i.e., an option contract can control a unit of asset, e.g., 100 shares of a stock, at a cost that is typically <em>less</em> than the market value of that asset. This allows option buyers to pay a relatively small premium for market exposure in relation to the value of the underlying asset. An option buyer can see significant gains from comparatively small percentage moves in the price of the underlying asset. However, leverage also has a considerable downside. For example, if the underlying asset price does not rise or fall as anticipated during the lifetime of the option contract, leverage magnifies the investment’s percentage loss.</p>
+<!-- However, unlike bonds which is a codified lending agreement, the contract that underlies an option decribes the purchase or sale of shares of stock.  -->
+<!-- There are two types of options contracts, a [call contract](https://www.investopedia.com/terms/c/calloption.asp) and a [put contract](https://www.investopedia.com/terms/p/putoption.asp), and two different styles of contracts that we'll consider American and European style contracts. A CALL contract gives the 
+buyer the right but not the obligation to purchase 100 shares (per contract) of an underlying stock, `XYZ`, at a price per share called the strike price of $K$. On the other hand, a PUT contract gives the buyer the right but not the obligation to sell 100 shares (per contract) of an underlying stock, `XYZ`, at a strike price of $K$ per share. 
+
+In European-style contracts, the transaction codified in CALL or PUT options can only occur at some fixed date in the future called the expiration date, which is agreed upon when the contract is purchased. However, American contract styles have a different policy; American contracts can be exercised (the buyer can initiate the transaction) at any time between when the contract was purchased and the expiration date. -->
+<p>In this lecture, we will:</p>
+<ul class="simple">
+<li><p>Discuss the two types, and two styles of <a class="reference internal" href="#content-references-option-contracts"><span class="std std-ref">Option Contracts</span></a></p></li>
+<li><p>Discuss several <a class="reference internal" href="#content-references-option-pricing-algorithms"><span class="std std-ref">Options Pricing Algorithms</span></a></p></li>
+</ul>
+<hr class="docutils" />
 </div>
+<div class="section" id="option-contracts">
+<span id="content-references-option-contracts"></span><h2>Option Contracts<a class="headerlink" href="#option-contracts" title="Permalink to this headline">¶</a></h2>
+<div class="figure align-default" id="fig-options-contract-grid">
+<a class="reference internal image-reference" href="../_images/Fig-Options-Grid.pdf"><img alt="../_images/Fig-Options-Grid.pdf" src="../_images/Fig-Options-Grid.pdf" style="height: 280px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 6 </span><span class="caption-text">The rights and responsibilities of the buyer and seller of put and call option contracts.</span><a class="headerlink" href="#fig-options-contract-grid" title="Permalink to this image">¶</a></p>
+</div>
+<p>There are two types of options contracts, a <a class="reference external" href="https://www.investopedia.com/terms/c/calloption.asp">call contract</a> and a <a class="reference external" href="https://www.investopedia.com/terms/p/putoption.asp">put contract</a>, and many different styles of options contracts. However, we’ll consider only two styles, <a class="reference external" href="https://www.investopedia.com/terms/a/americanoption.asp">American</a> and <a class="reference external" href="https://www.investopedia.com/terms/e/europeanoption.asp">European</a> style options contracts. The roles and responsibilities of each contract type, and the respectrive role of the buyer and seller, are shown in (<a class="reference internal" href="#fig-options-contract-grid"><span class="std std-numref">Fig. 6</span></a>).</p>
+<div class="section" id="call-contracts">
+<h3>Call contracts<a class="headerlink" href="#call-contracts" title="Permalink to this headline">¶</a></h3>
+<p>A <a class="reference external" href="https://www.investopedia.com/terms/c/calloption.asp">call contract</a> gives the option contract buyer the right, but not the obligation, to purchase 100 shares of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> (per contract) from the seller at a particular price per share (called the strike price <span class="math notranslate nohighlight">\(K\)</span>) at some point in the future (called the expiration date). In the case of <a class="reference external" href="https://www.investopedia.com/terms/a/americanoption.asp">American</a> style <a class="reference external" href="https://www.investopedia.com/terms/c/calloption.asp">call contracts</a>, the option buyer can exercise their right at any point between when the contract was purchased and the expiration date. On the other hand, buyers of <a class="reference external" href="https://www.investopedia.com/terms/e/europeanoption.asp">European</a> style contracts can only exercise their right on the expiration date. The right to purchase shares of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> at <span class="math notranslate nohighlight">\(K\)</span> USD/share is not free; the option buyer pays a premium per contract to the option seller for this right.</p>
+<p>The profit that a call contract buyer experiences, denoted by <span class="math notranslate nohighlight">\(V_{c}\)</span>, depends upon the difference between the share price of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> and the strike price <span class="math notranslate nohighlight">\(K\)</span> of the contract (contract payoff) and how much the call contract costs:</p>
+<div class="proof definition admonition" id="defn-PL-call-contract">
+<p class="admonition-title"><span class="caption-number">Definition 30 </span> (Call Contract Payoff for Contract Holder)</p>
+<div class="definition-content section" id="proof-content">
+<p>An investor purchases a call contract for the underlying stock <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> for <span class="math notranslate nohighlight">\(\mathcal{P}\)</span> USD/contract, where the contract controls 100 shares of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code>.</p>
+<p>Let the strike price of the call contract be <span class="math notranslate nohighlight">\(K\)</span> USD/share, and the share price of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> be <span class="math notranslate nohighlight">\(S\)</span> USD/share. Then, at expiration, the call contract has the payoff:</p>
+<div class="math notranslate nohighlight">
+\[V_{c} = \max\left(S-K,0\right)\]</div>
+<p>and a profit (loss) of:</p>
+<div class="math notranslate nohighlight">
+\[P_{c} = V_{c} -  \mathcal{P}\]</div>
+<p>where <span class="math notranslate nohighlight">\(P_{c}\)</span> denotes the profit (or loss) per contract per share of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code>.</p>
+</div>
+</div><div class="section" id="payoff-profit-and-loss-for-call-contracts">
+<h4>Payoff, Profit and Loss for Call contracts<a class="headerlink" href="#payoff-profit-and-loss-for-call-contracts" title="Permalink to this headline">¶</a></h4>
+<p>The payoff (and profit/loss) diagram for a call contract at expiration for <a class="reference external" href="https://www.google.com/search?client=safari&amp;rls=en&amp;sxsrf=ALiCzsbTZ3IEA10C9Rgs6Lb7YLN8LAILVQ:1657882036543&amp;q=NASDAQ:+AMD&amp;stick=H4sIAAAAAAAAAONgecRoyi3w8sc9YSmdSWtOXmNU4-IKzsgvd80rySypFJLgYoOy-KR4uLj0c_UNzKuy4ytzeRaxcvs5Brs4BlopOPq6AACfr0n4SAAAAA&amp;sa=X&amp;ved=2ahUKEwjV_ffu2_r4AhUxJUQIHcXZAPkQsRV6BAhVEAM&amp;biw=1594&amp;bih=921&amp;dpr=2">AMD</a> is shown in
+<a class="reference internal" href="#call-contract-expiration">Example 7</a>. The <em>buyer</em> of the <a class="reference external" href="https://www.google.com/search?client=safari&amp;rls=en&amp;sxsrf=ALiCzsbTZ3IEA10C9Rgs6Lb7YLN8LAILVQ:1657882036543&amp;q=NASDAQ:+AMD&amp;stick=H4sIAAAAAAAAAONgecRoyi3w8sc9YSmdSWtOXmNU4-IKzsgvd80rySypFJLgYoOy-KR4uLj0c_UNzKuy4ytzeRaxcvs5Brs4BlopOPq6AACfr0n4SAAAAA&amp;sa=X&amp;ved=2ahUKEwjV_ffu2_r4AhUxJUQIHcXZAPkQsRV6BAhVEAM&amp;biw=1594&amp;bih=921&amp;dpr=2">AMD</a> call contract experiences (at expiration):</p>
+<ul class="simple">
+<li><p>Loss <span class="math notranslate nohighlight">\(S&lt;K+\mathcal{P}\)</span>: the share price is <em>less than</em> the strike price plus the premium paid per share for the contract.</p></li>
+<li><p>Breakeven <span class="math notranslate nohighlight">\(S=K+\mathcal{P}\)</span>: the share price <em>equals</em> the strike price plus the premium paid per share for the contract.</p></li>
+<li><p>Profit <span class="math notranslate nohighlight">\(S&gt;K+\mathcal{P}\)</span>: the share price is <em>greater than</em> the strike price plus the premium paid per share for the contract.</p></li>
+</ul>
+<div class="proof example admonition" id="call-contract-expiration">
+<p class="admonition-title"><span class="caption-number">Example 7 </span> (AMD Call Contract 1 DTE)</p>
+<div class="example-content section" id="proof-content">
+<p>We are interested in buying a call contract for <a class="reference external" href="https://www.google.com/search?client=safari&amp;rls=en&amp;sxsrf=ALiCzsbTZ3IEA10C9Rgs6Lb7YLN8LAILVQ:1657882036543&amp;q=NASDAQ:+AMD&amp;stick=H4sIAAAAAAAAAONgecRoyi3w8sc9YSmdSWtOXmNU4-IKzsgvd80rySypFJLgYoOy-KR4uLj0c_UNzKuy4ytzeRaxcvs5Brs4BlopOPq6AACfr0n4SAAAAA&amp;sa=X&amp;ved=2ahUKEwjV_ffu2_r4AhUxJUQIHcXZAPkQsRV6BAhVEAM&amp;biw=1594&amp;bih=921&amp;dpr=2">AMD</a>. The current share price of <code class="docutils literal notranslate"><span class="pre">AMD</span></code> is $78.94 per share (around 3:30 PM ITH time on Th 7/14), and we belive the shares will close higher before contract expiration.</p>
+<p>Compute the payoff and profit/loss diagram at expiration for a July 15 <code class="docutils literal notranslate"><span class="pre">AMD</span></code> call contract with a strike <span class="math notranslate nohighlight">\(K\)</span> = 80.0 USD/share. The market price for the July 15 <code class="docutils literal notranslate"><span class="pre">AMD</span></code> call contract is <span class="math notranslate nohighlight">\(\mathcal{P}\)</span> = 0.36 USD/share.</p>
+<div class="figure align-default" id="fig-call-contract-payout-schematic">
+<a class="reference internal image-reference" href="../_images/Fig-AMD-Call-Jul15-1DTE.pdf"><img alt="../_images/Fig-AMD-Call-Jul15-1DTE.pdf" src="../_images/Fig-AMD-Call-Jul15-1DTE.pdf" style="height: 420px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 7 </span><span class="caption-text">Payoff and profit diagrams for an AMD call option.</span><a class="headerlink" href="#fig-call-contract-payout-schematic" title="Permalink to this image">¶</a></p>
+</div>
+<p>Example source: <a class="reference external" href="https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks">live Pluto notebook</a> or <a class="reference external" href="https://htmlview.glitch.me/?https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks/blob/main/pluto-notebooks/html/Example-CallPutContract-Payoff.jl.html">static HTML</a></p>
+</div>
+</div><p>The business case for buying (or selling) call contracts:</p>
+<ul class="simple">
+<li><p><strong>Buyer</strong>: From the buyer’s perspective, call contracts allow an investor to benefit from the price movement of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> to the upside <em>without</em> purchasing <code class="docutils literal notranslate"><span class="pre">XYZ</span></code>. Further, call options (again from the buyer’s perspective) have <em>limited downside risk</em>, i.e., the maximum amount that the holder of the call option can lose is the premium paid for the option. Finally, call options are a mechanism to purchase shares of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> at the strike price of <span class="math notranslate nohighlight">\(K\)</span> instead of the market price of <span class="math notranslate nohighlight">\(S\)</span>.</p></li>
+<li><p><strong>Seller</strong>: From the seller’s perspective, the main objective of selling a call contract is to collect the premium <span class="math notranslate nohighlight">\(\mathcal{P}\)</span>. Call contracts also allow the seller to benefit from the price movement of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> to the downside <em>without</em> purchasing <code class="docutils literal notranslate"><span class="pre">XYZ</span></code>. However, for a seller, call options have <em>unlimted upside</em> risk; thus, call options are often only sold by investors who already own the required number of shares of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> (known as a <a class="reference external" href="https://www.investopedia.com/terms/c/coveredcall.asp">covered call position</a>). Finally, call options offer the seller the opportunity to sell shares of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> at the strike price of <span class="math notranslate nohighlight">\(K\)</span> instead of the market price of <span class="math notranslate nohighlight">\(S\)</span>.</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="put-contracts">
+<h3>Put contracts<a class="headerlink" href="#put-contracts" title="Permalink to this headline">¶</a></h3>
+<p>A <a class="reference external" href="https://www.investopedia.com/terms/p/putoption.asp">put contract</a> gives the option contract buyer the right, but not the obligation, to sell 100 shares of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> (per contract) to the option seller at the strike price <span class="math notranslate nohighlight">\(K\)</span>, either by or on the expiration date. In the case of <a class="reference external" href="https://www.investopedia.com/terms/a/americanoption.asp">American</a> style <a class="reference external" href="https://www.investopedia.com/terms/p/putoption.asp">put contracts</a>, the option buyer can exercise their right at any point between when the contract is purchased and the expiration date. On the other hand, buyers of <a class="reference external" href="https://www.investopedia.com/terms/e/europeanoption.asp">European</a> style contracts can only exercise their right on the expiration date. The right to sell shares of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> at <span class="math notranslate nohighlight">\(K\)</span> USD/share is not free; the option buyer pays a premium per contract to the option seller for this right.</p>
+<p>The profit that a put contract buyer experiences, denoted by <span class="math notranslate nohighlight">\(V_{p}\)</span>, depends upon the difference between the share price of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> and the strike price <span class="math notranslate nohighlight">\(K\)</span> of the contract:</p>
+<div class="proof definition admonition" id="defn-PL-put-contract">
+<p class="admonition-title"><span class="caption-number">Definition 31 </span> (Put Contract Payoff for Contract Holder)</p>
+<div class="definition-content section" id="proof-content">
+<p>An investor purchases a put contract for the underlying stock <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> for <span class="math notranslate nohighlight">\(\mathcal{P}\)</span> USD/contract, where the contract controls 100 shares of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code>.</p>
+<p>Let the strike price of the put contract be <span class="math notranslate nohighlight">\(K\)</span> USD/share, and the share price of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> be <span class="math notranslate nohighlight">\(S\)</span> USD/share. Then, at expiration, the put contract has the payoff <span class="math notranslate nohighlight">\(P_{p}\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[P_{p} = \max\left(K - S,0\right)\]</div>
+<p>and a profit (loss) of:</p>
+<div class="math notranslate nohighlight">
+\[V_{p} = P_{p} -  \mathcal{P}\]</div>
+<p>where <span class="math notranslate nohighlight">\(V_{p}\)</span> denotes the profit (or loss) per contract per share of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code>.</p>
+</div>
+</div><div class="section" id="payoff-profit-and-loss-for-put-contracts">
+<h4>Payoff, Profit and Loss for Put contracts<a class="headerlink" href="#payoff-profit-and-loss-for-put-contracts" title="Permalink to this headline">¶</a></h4>
+<p>The payoff (and profit/loss) diagram for a put contract at expiration for <a class="reference external" href="https://www.google.com/search?client=safari&amp;rls=en&amp;sxsrf=ALiCzsbTZ3IEA10C9Rgs6Lb7YLN8LAILVQ:1657882036543&amp;q=NASDAQ:+AMD&amp;stick=H4sIAAAAAAAAAONgecRoyi3w8sc9YSmdSWtOXmNU4-IKzsgvd80rySypFJLgYoOy-KR4uLj0c_UNzKuy4ytzeRaxcvs5Brs4BlopOPq6AACfr0n4SAAAAA&amp;sa=X&amp;ved=2ahUKEwjV_ffu2_r4AhUxJUQIHcXZAPkQsRV6BAhVEAM&amp;biw=1594&amp;bih=921&amp;dpr=2">AMD</a> is shown in
+<a class="reference internal" href="#put-contract-expiration">Example 8</a>. The <em>buyer</em> of the <a class="reference external" href="https://www.google.com/search?client=safari&amp;rls=en&amp;sxsrf=ALiCzsbTZ3IEA10C9Rgs6Lb7YLN8LAILVQ:1657882036543&amp;q=NASDAQ:+AMD&amp;stick=H4sIAAAAAAAAAONgecRoyi3w8sc9YSmdSWtOXmNU4-IKzsgvd80rySypFJLgYoOy-KR4uLj0c_UNzKuy4ytzeRaxcvs5Brs4BlopOPq6AACfr0n4SAAAAA&amp;sa=X&amp;ved=2ahUKEwjV_ffu2_r4AhUxJUQIHcXZAPkQsRV6BAhVEAM&amp;biw=1594&amp;bih=921&amp;dpr=2">AMD</a> put contract experiences (at expiration):</p>
+<ul class="simple">
+<li><p>Loss <span class="math notranslate nohighlight">\(S&gt;K+\mathcal{P}\)</span>: the share price is <em>greater than</em> the strike price plus the premium paid per share for the contract.</p></li>
+<li><p>Breakeven <span class="math notranslate nohighlight">\(S=K+\mathcal{P}\)</span>: the share price <em>equals</em> the strike price plus the premium paid per share for the contract.</p></li>
+<li><p>Profit <span class="math notranslate nohighlight">\(S&lt;K+\mathcal{P}\)</span>: the share price is <em>less than</em> the strike price plus the premium paid per share for the contract.</p></li>
+</ul>
+<div class="proof example admonition" id="put-contract-expiration">
+<p class="admonition-title"><span class="caption-number">Example 8 </span> (AMD Put Contract 1 DTE)</p>
+<div class="example-content section" id="proof-content">
+<p>We are interested in buying a put contract for <a class="reference external" href="https://www.google.com/search?client=safari&amp;rls=en&amp;sxsrf=ALiCzsbTZ3IEA10C9Rgs6Lb7YLN8LAILVQ:1657882036543&amp;q=NASDAQ:+AMD&amp;stick=H4sIAAAAAAAAAONgecRoyi3w8sc9YSmdSWtOXmNU4-IKzsgvd80rySypFJLgYoOy-KR4uLj0c_UNzKuy4ytzeRaxcvs5Brs4BlopOPq6AACfr0n4SAAAAA&amp;sa=X&amp;ved=2ahUKEwjV_ffu2_r4AhUxJUQIHcXZAPkQsRV6BAhVEAM&amp;biw=1594&amp;bih=921&amp;dpr=2">AMD</a>. The current share price of <code class="docutils literal notranslate"><span class="pre">AMD</span></code> is $78.94 per share (around 3:30 PM ITH time on Th 7/14), and we belive the shares will close lower before contract expiration.</p>
+<p>Compute the payoff and profit/loss diagram at expiration for a July 15 <code class="docutils literal notranslate"><span class="pre">AMD</span></code> put contract with a strike <span class="math notranslate nohighlight">\(K\)</span> = 77.0 USD/share. The market price for the July 15 <code class="docutils literal notranslate"><span class="pre">AMD</span></code> put contract is <span class="math notranslate nohighlight">\(\mathcal{P}\)</span> = 0.50 USD/share.</p>
+<div class="figure align-default" id="fig-put-contract-payout-schematic">
+<a class="reference internal image-reference" href="../_images/Fig-AMD-Put-Jul15-1DTE.pdf"><img alt="../_images/Fig-AMD-Put-Jul15-1DTE.pdf" src="../_images/Fig-AMD-Put-Jul15-1DTE.pdf" style="height: 420px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 8 </span><span class="caption-text">Payoff and profit diagrams for an AMD put option.</span><a class="headerlink" href="#fig-put-contract-payout-schematic" title="Permalink to this image">¶</a></p>
+</div>
+<p>Example source: <a class="reference external" href="https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks">live Pluto notebook</a> or <a class="reference external" href="https://htmlview.glitch.me/?https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks/blob/main/pluto-notebooks/html/Example-CallPutContract-Payoff.jl.html">static HTML</a></p>
+</div>
+</div><p>The business case for buying (or selling) put contracts:</p>
+<ul class="simple">
+<li><p><strong>Buyer</strong>: From the buyer’s perspective, put contracts allow an investor to benefit from the price movement of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> to the downside <em>without</em> purchasing <code class="docutils literal notranslate"><span class="pre">XYZ</span></code>. Further, put options (again from the buyer’s perspective) have <em>limited downside risk</em>, i.e., the maximum amount that the holder of the put option can lose is the premium paid for the option. Finally, put options are a mechanism to sell shares of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> at the strike price of <span class="math notranslate nohighlight">\(K\)</span> instead of the market price of <span class="math notranslate nohighlight">\(S\)</span>.</p></li>
+<li><p><strong>Seller</strong>: From the seller’s perspective, the main objective of selling a put contract is to collect the premium <span class="math notranslate nohighlight">\(\mathcal{P}\)</span>. Put contracts also allow the seller to benefit from the price movement of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> to the upside <em>without</em> purchasing <code class="docutils literal notranslate"><span class="pre">XYZ</span></code>. However, for a seller, put options have <em>unlimted downside</em> risk; thus, put options are often only sold by investors who have set aside the required capital to purchase
+the required number of shares of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> (known as a <a class="reference external" href="https://www.fidelity.com/learning-center/investment-products/options/know-about-cash-covered-puts">cash secured put position</a>). Finally, put options offer the seller the opportunity to buy shares of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> at the strike price of <span class="math notranslate nohighlight">\(K\)</span> instead of the market price of <span class="math notranslate nohighlight">\(S\)</span>.</p></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="section" id="options-pricing-algorithms">
+<span id="content-references-option-pricing-algorithms"></span><h2>Options Pricing Algorithms<a class="headerlink" href="#options-pricing-algorithms" title="Permalink to this headline">¶</a></h2>
+<p>Fill me in.</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+<p>Fill me in here.</p>
+<!-- ## Cox-Ross-Rubinstein (CRR) binomial pricing model
+
+The binomial options pricing model provides a generalizable numerical method for the valuation of American style call and put options contacts. The model uses a discrete-time lattice model of the varying price over time of the underlying financial instrument. The binomial model was first proposed by William Sharpe in the 1978 edition of Investments and formalized by Cox, Ross and Rubinstein {cite}`COX1979229`.
+
+```{image} ./figs/CRR-BinomialModel.pdf
+:alt: CRR-Schematic
+:width: 480px
+:align: center
+``` --></div>
 </div>
 
     <script type="text/x-thebe-config">
@@ -361,17 +564,17 @@ buyer the right but not the obligation to purchase 100 shares (per contract) of 
             
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="chapter-3.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="Single-Index-Models.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">The Fantastic but Dangerous World of Derivatives, Futures, Hedging and Leverage</p>
+            <p class="prev-next-title">Equity Securities</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="binomial-pricing-model.html" title="next page">
+    <a class='right-next' id="next-link" href="markowitz.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Example: Calculating the Price of an AMD put option</p>
+        <p class="prev-next-title">Modern Portfolio Theory</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

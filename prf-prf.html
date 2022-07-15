@@ -99,20 +99,15 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="bd-toc-item active">
         <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="intro.html">
-   Financial Data, Markets, and Mayhem for Scientists and Engineers
+  <a class="reference internal" href="infrastructure.html">
+   CHEME 5660 Financial Data, Markets, and Mayhem for Scientists and Engineers
   </a>
  </li>
 </ul>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="infrastructure.html">
-   Objectives, Polices and Resources
-  </a>
- </li>
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="chapter-1-dir/chapter-1.html">
-   Assets, Money, Markets and the Global Financial System
+   Unit 1. The Financial System
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
   <label for="toctree-checkbox-1">
@@ -121,25 +116,25 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
+    <a class="reference internal" href="chapter-1-dir/global.html">
+     The Global Finanical System
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="chapter-1-dir/assets.html">
-     Assets are Current and Future Cash Flows
+     Financial Balances
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="chapter-1-dir/markets.html">
-     Markets and Market Structures
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="chapter-1-dir/global.html">
-     The Global Finanical System
+     Markets and Exchanges
     </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="chapter-2-dir/chapter-2.html">
-   The Dynamics of Assets and Markets
+   Unit 2. Modeling and Simulation of Asset Price Dynamics
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
   <label for="toctree-checkbox-2">
@@ -153,20 +148,20 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="chapter-2-dir/markowitz.html">
-     Modern Portfolio Theory
+    <a class="reference internal" href="chapter-2-dir/stochastic-differential-equations.html">
+     Macroscopic Market Models
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="chapter-2-dir/random-walks.html">
-     Random Walks and Brownian Motion
+    <a class="reference internal" href="chapter-2-dir/agent-based-market-models.html">
+     Microscopic Market Models
     </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="chapter-3-dir/chapter-3.html">
-   Derivatives, Futures, and Leverage
+  <a class="reference internal" href="chapter-3-dir/chapter-3-landing.html">
+   Unit 3. Risk, Portfolios, Derivatives, and Leverage
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
   <label for="toctree-checkbox-3">
@@ -175,20 +170,30 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="chapter-3-dir/contracts.html">
-     American and European style option contracts
+    <a class="reference internal" href="chapter-3-dir/bonds.html">
+     Fixed Income Securities
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="chapter-3-dir/binomial-pricing-model.html">
-     Example: Calculating the Price of an AMD put option
+    <a class="reference internal" href="chapter-3-dir/Single-Index-Models.html">
+     Equity Securities
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="chapter-3-dir/contracts.html">
+     Derivative Securities
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="chapter-3-dir/markowitz.html">
+     Modern Portfolio Theory
     </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="chapter-4-dir/chapter-4.html">
-   Process Finance and Decision Making
+   Unit 4. Process Finance and Decision Making
   </a>
  </li>
  <li class="toctree-l1">
@@ -284,40 +289,56 @@ const thebe_selector_output = ".output, .cell_output"
 
    <div class="modindex-jumpbox">
    <a href="#cap-algo-expected-boltzmann-return"><strong>algo-expected-boltzmann-return</strong></a> | 
-   <a href="#cap-algo-ord-brownian-motion"><strong>algo-ord-brownian-motion</strong></a> | 
-   <a href="#cap-algo-volatility-exp-weighted"><strong>algo-volatility-exp-weighted</strong></a> | 
-   <a href="#cap-algo-volatility-unweighted"><strong>algo-volatility-unweighted</strong></a> | 
+   <a href="#cap-algo-unbiased-historic-volatility"><strong>algo-unbiased-historic-volatility</strong></a> | 
    <a href="#cap-axiom-probability"><strong>axiom-probability</strong></a> | 
    <a href="#cap-bayes-theorem"><strong>bayes-theorem</strong></a> | 
-   <a href="#cap-definition-1"><strong>definition-1</strong></a> | 
-   <a href="#cap-definition-5"><strong>definition-5</strong></a> | 
+   <a href="#cap-call-contract-expiration"><strong>call-contract-expiration</strong></a> | 
+   <a href="#cap-definition-2"><strong>definition-2</strong></a> | 
+   <a href="#cap-definition-3"><strong>definition-3</strong></a> | 
+   <a href="#cap-defn-PL-call-contract"><strong>defn-PL-call-contract</strong></a> | 
+   <a href="#cap-defn-PL-put-contract"><strong>defn-PL-put-contract</strong></a> | 
    <a href="#cap-defn-bwer"><strong>defn-bwer</strong></a> | 
    <a href="#cap-defn-complement"><strong>defn-complement</strong></a> | 
    <a href="#cap-defn-disjoint"><strong>defn-disjoint</strong></a> | 
-   <a href="#cap-defn-expectation"><strong>defn-expectation</strong></a> | 
+   <a href="#cap-defn-fixed-r-bond-pricing"><strong>defn-fixed-r-bond-pricing</strong></a> | 
    <a href="#cap-defn-independence"><strong>defn-independence</strong></a> | 
+   <a href="#cap-defn-internal-rate-of-return"><strong>defn-internal-rate-of-return</strong></a> | 
    <a href="#cap-defn-intersection"><strong>defn-intersection</strong></a> | 
    <a href="#cap-defn-law-total-probability"><strong>defn-law-total-probability</strong></a> | 
    <a href="#cap-defn-log-return"><strong>defn-log-return</strong></a> | 
+   <a href="#cap-defn-moments"><strong>defn-moments</strong></a> | 
+   <a href="#cap-defn-multi-perod-discrete-conversion"><strong>defn-multi-perod-discrete-conversion</strong></a> | 
+   <a href="#cap-defn-one-perod-discrete-conversion"><strong>defn-one-perod-discrete-conversion</strong></a> | 
    <a href="#cap-defn-partition"><strong>defn-partition</strong></a> | 
    <a href="#cap-defn-percentage-return"><strong>defn-percentage-return</strong></a> | 
    <a href="#cap-defn-pmf"><strong>defn-pmf</strong></a> | 
+   <a href="#cap-defn-pmf-bernouli"><strong>defn-pmf-bernouli</strong></a> | 
    <a href="#cap-defn-pmf-binomial"><strong>defn-pmf-binomial</strong></a> | 
    <a href="#cap-defn-pmf-geometric"><strong>defn-pmf-geometric</strong></a> | 
+   <a href="#cap-defn-pmf-poisson"><strong>defn-pmf-poisson</strong></a> | 
+   <a href="#cap-defn-portfolio-return"><strong>defn-portfolio-return</strong></a> | 
+   <a href="#cap-defn-portfolio-variance"><strong>defn-portfolio-variance</strong></a> | 
    <a href="#cap-defn-sets"><strong>defn-sets</strong></a> | 
    <a href="#cap-defn-single-index-model-standard"><strong>defn-single-index-model-standard</strong></a> | 
    <a href="#cap-defn-subsets"><strong>defn-subsets</strong></a> | 
    <a href="#cap-defn-union"><strong>defn-union</strong></a> | 
    <a href="#cap-defn-volatility"><strong>defn-volatility</strong></a> | 
    <a href="#cap-defn-wiener-process"><strong>defn-wiener-process</strong></a> | 
+   <a href="#cap-defn-yield-to-maturity"><strong>defn-yield-to-maturity</strong></a> | 
+   <a href="#cap-defn-zero-coupon-bond-pricing"><strong>defn-zero-coupon-bond-pricing</strong></a> | 
    <a href="#cap-ex-event-card-suits"><strong>ex-event-card-suits</strong></a> | 
    <a href="#cap-ex-future-value-continuous"><strong>ex-future-value-continuous</strong></a> | 
    <a href="#cap-ex-future-value-discrete"><strong>ex-future-value-discrete</strong></a> | 
    <a href="#cap-ex-pmf-double-coin-flip"><strong>ex-pmf-double-coin-flip</strong></a> | 
    <a href="#cap-ex-sample-space-dice"><strong>ex-sample-space-dice</strong></a> | 
+   <a href="#cap-example-3"><strong>example-3</strong></a> | 
    <a href="#cap-ito-lemma"><strong>ito-lemma</strong></a> | 
+   <a href="#cap-net-present-value-defn"><strong>net-present-value-defn</strong></a> | 
    <a href="#cap-obs-beta-risk-measure"><strong>obs-beta-risk-measure</strong></a> | 
-   <a href="#cap-riemann–stieltjes-integral"><strong>riemann–stieltjes-integral</strong></a>
+   <a href="#cap-obs-time-value-of-money"><strong>obs-time-value-of-money</strong></a> | 
+   <a href="#cap-observation-2"><strong>observation-2</strong></a> | 
+   <a href="#cap-put-contract-expiration"><strong>put-contract-expiration</strong></a> | 
+   <a href="#cap-remark-0"><strong>remark-0</strong></a>
    </div>
 
    <table class="indextable modindextable">
@@ -327,31 +348,15 @@ const thebe_selector_output = ".output, .cell_output"
      <tr>
        <td></td>
        <td>
-       <a href="chapter-2-dir/markowitz.html#algo-expected-boltzmann-return"><code class="xref">algo-expected-boltzmann-return</code></a> <em>(chapter-2-dir/markowitz)</em></td><td>
+       <a href="chapter-3-dir/Single-Index-Models.html#algo-expected-boltzmann-return"><code class="xref">algo-expected-boltzmann-return</code></a> <em>(chapter-3-dir/Single-Index-Models)</em></td><td>
        <em>algorithm</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
-     <tr class="cap" id="cap-algo-ord-brownian-motion"><td></td><td>
-       <strong>algo-ord-brownian-motion</strong></td><td></td></tr>
+     <tr class="cap" id="cap-algo-unbiased-historic-volatility"><td></td><td>
+       <strong>algo-unbiased-historic-volatility</strong></td><td></td></tr>
      <tr>
        <td></td>
        <td>
-       <a href="chapter-2-dir/random-walks.html#algo-ord-brownian-motion"><code class="xref">algo-ord-brownian-motion</code></a> <em>(chapter-2-dir/random-walks)</em></td><td>
-       <em>algorithm</em></td></tr>
-     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
-     <tr class="cap" id="cap-algo-volatility-exp-weighted"><td></td><td>
-       <strong>algo-volatility-exp-weighted</strong></td><td></td></tr>
-     <tr>
-       <td></td>
-       <td>
-       <a href="chapter-2-dir/markowitz.html#algo-volatility-exp-weighted"><code class="xref">algo-volatility-exp-weighted</code></a> <em>(chapter-2-dir/markowitz)</em></td><td>
-       <em>algorithm</em></td></tr>
-     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
-     <tr class="cap" id="cap-algo-volatility-unweighted"><td></td><td>
-       <strong>algo-volatility-unweighted</strong></td><td></td></tr>
-     <tr>
-       <td></td>
-       <td>
-       <a href="chapter-2-dir/markowitz.html#algo-volatility-unweighted"><code class="xref">algo-volatility-unweighted</code></a> <em>(chapter-2-dir/markowitz)</em></td><td>
+       <a href="chapter-3-dir/Single-Index-Models.html#algo-unbiased-historic-volatility"><code class="xref">algo-unbiased-historic-volatility</code></a> <em>(chapter-3-dir/Single-Index-Models)</em></td><td>
        <em>algorithm</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-axiom-probability"><td></td><td>
@@ -370,20 +375,44 @@ const thebe_selector_output = ".output, .cell_output"
        <a href="chapter-2-dir/probability-random-variables.html#bayes-theorem"><code class="xref">bayes-theorem</code></a> <em>(chapter-2-dir/probability-random-variables)</em></td><td>
        <em>theorem</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
-     <tr class="cap" id="cap-definition-1"><td></td><td>
-       <strong>definition-1</strong></td><td></td></tr>
+     <tr class="cap" id="cap-call-contract-expiration"><td></td><td>
+       <strong>call-contract-expiration</strong></td><td></td></tr>
      <tr>
        <td></td>
        <td>
-       <a href="chapter-2-dir/random-walks.html#definition-1"><code class="xref">definition-1</code></a> <em>(chapter-2-dir/random-walks)</em></td><td>
+       <a href="chapter-3-dir/contracts.html#call-contract-expiration"><code class="xref">call-contract-expiration</code></a> <em>(chapter-3-dir/contracts)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-definition-2"><td></td><td>
+       <strong>definition-2</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="chapter-2-dir/stochastic-differential-equations.html#definition-2"><code class="xref">definition-2</code></a> <em>(chapter-2-dir/stochastic-differential-equations)</em></td><td>
        <em>definition</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
-     <tr class="cap" id="cap-definition-5"><td></td><td>
-       <strong>definition-5</strong></td><td></td></tr>
+     <tr class="cap" id="cap-definition-3"><td></td><td>
+       <strong>definition-3</strong></td><td></td></tr>
      <tr>
        <td></td>
        <td>
-       <a href="chapter-2-dir/random-walks.html#definition-5"><code class="xref">definition-5</code></a> <em>(chapter-2-dir/random-walks)</em></td><td>
+       <a href="chapter-2-dir/stochastic-differential-equations.html#definition-3"><code class="xref">definition-3</code></a> <em>(chapter-2-dir/stochastic-differential-equations)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-defn-PL-call-contract"><td></td><td>
+       <strong>defn-PL-call-contract</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="chapter-3-dir/contracts.html#defn-PL-call-contract"><code class="xref">defn-PL-call-contract</code></a> <em>(chapter-3-dir/contracts)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-defn-PL-put-contract"><td></td><td>
+       <strong>defn-PL-put-contract</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="chapter-3-dir/contracts.html#defn-PL-put-contract"><code class="xref">defn-PL-put-contract</code></a> <em>(chapter-3-dir/contracts)</em></td><td>
        <em>definition</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-defn-bwer"><td></td><td>
@@ -391,7 +420,7 @@ const thebe_selector_output = ".output, .cell_output"
      <tr>
        <td></td>
        <td>
-       <a href="chapter-2-dir/markowitz.html#defn-bwer"><code class="xref">defn-bwer</code></a> <em>(chapter-2-dir/markowitz)</em></td><td>
+       <a href="chapter-3-dir/Single-Index-Models.html#defn-bwer"><code class="xref">defn-bwer</code></a> <em>(chapter-3-dir/Single-Index-Models)</em></td><td>
        <em>definition</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-defn-complement"><td></td><td>
@@ -410,12 +439,12 @@ const thebe_selector_output = ".output, .cell_output"
        <a href="chapter-2-dir/probability-random-variables.html#defn-disjoint"><code class="xref">defn-disjoint</code></a> <em>(chapter-2-dir/probability-random-variables)</em></td><td>
        <em>definition</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
-     <tr class="cap" id="cap-defn-expectation"><td></td><td>
-       <strong>defn-expectation</strong></td><td></td></tr>
+     <tr class="cap" id="cap-defn-fixed-r-bond-pricing"><td></td><td>
+       <strong>defn-fixed-r-bond-pricing</strong></td><td></td></tr>
      <tr>
        <td></td>
        <td>
-       <a href="chapter-2-dir/probability-random-variables.html#defn-expectation"><code class="xref">defn-expectation</code></a> <em>(chapter-2-dir/probability-random-variables)</em></td><td>
+       <a href="chapter-3-dir/bonds.html#defn-fixed-r-bond-pricing"><code class="xref">defn-fixed-r-bond-pricing</code></a> <em>(chapter-3-dir/bonds)</em></td><td>
        <em>definition</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-defn-independence"><td></td><td>
@@ -424,6 +453,14 @@ const thebe_selector_output = ".output, .cell_output"
        <td></td>
        <td>
        <a href="chapter-2-dir/probability-random-variables.html#defn-independence"><code class="xref">defn-independence</code></a> <em>(chapter-2-dir/probability-random-variables)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-defn-internal-rate-of-return"><td></td><td>
+       <strong>defn-internal-rate-of-return</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="chapter-1-dir/assets.html#defn-internal-rate-of-return"><code class="xref">defn-internal-rate-of-return</code></a> <em>(chapter-1-dir/assets)</em></td><td>
        <em>definition</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-defn-intersection"><td></td><td>
@@ -447,7 +484,31 @@ const thebe_selector_output = ".output, .cell_output"
      <tr>
        <td></td>
        <td>
-       <a href="chapter-2-dir/markowitz.html#defn-log-return"><code class="xref">defn-log-return</code></a> <em>(chapter-2-dir/markowitz)</em></td><td>
+       <a href="chapter-3-dir/Single-Index-Models.html#defn-log-return"><code class="xref">defn-log-return</code></a> <em>(chapter-3-dir/Single-Index-Models)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-defn-moments"><td></td><td>
+       <strong>defn-moments</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="chapter-2-dir/probability-random-variables.html#defn-moments"><code class="xref">defn-moments</code></a> <em>(chapter-2-dir/probability-random-variables)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-defn-multi-perod-discrete-conversion"><td></td><td>
+       <strong>defn-multi-perod-discrete-conversion</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="chapter-1-dir/assets.html#defn-multi-perod-discrete-conversion"><code class="xref">defn-multi-perod-discrete-conversion</code></a> <em>(chapter-1-dir/assets)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-defn-one-perod-discrete-conversion"><td></td><td>
+       <strong>defn-one-perod-discrete-conversion</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="chapter-1-dir/assets.html#defn-one-perod-discrete-conversion"><code class="xref">defn-one-perod-discrete-conversion</code></a> <em>(chapter-1-dir/assets)</em></td><td>
        <em>definition</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-defn-partition"><td></td><td>
@@ -463,7 +524,7 @@ const thebe_selector_output = ".output, .cell_output"
      <tr>
        <td></td>
        <td>
-       <a href="chapter-2-dir/markowitz.html#defn-percentage-return"><code class="xref">defn-percentage-return</code></a> <em>(chapter-2-dir/markowitz)</em></td><td>
+       <a href="chapter-3-dir/Single-Index-Models.html#defn-percentage-return"><code class="xref">defn-percentage-return</code></a> <em>(chapter-3-dir/Single-Index-Models)</em></td><td>
        <em>definition</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-defn-pmf"><td></td><td>
@@ -472,6 +533,14 @@ const thebe_selector_output = ".output, .cell_output"
        <td></td>
        <td>
        <a href="chapter-2-dir/probability-random-variables.html#defn-pmf"><code class="xref">defn-pmf</code></a> <em>(chapter-2-dir/probability-random-variables)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-defn-pmf-bernouli"><td></td><td>
+       <strong>defn-pmf-bernouli</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="chapter-2-dir/probability-random-variables.html#defn-pmf-bernouli"><code class="xref">defn-pmf-bernouli</code></a> <em>(chapter-2-dir/probability-random-variables)</em></td><td>
        <em>definition</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-defn-pmf-binomial"><td></td><td>
@@ -490,6 +559,30 @@ const thebe_selector_output = ".output, .cell_output"
        <a href="chapter-2-dir/probability-random-variables.html#defn-pmf-geometric"><code class="xref">defn-pmf-geometric</code></a> <em>(chapter-2-dir/probability-random-variables)</em></td><td>
        <em>definition</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-defn-pmf-poisson"><td></td><td>
+       <strong>defn-pmf-poisson</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="chapter-2-dir/probability-random-variables.html#defn-pmf-poisson"><code class="xref">defn-pmf-poisson</code></a> <em>(chapter-2-dir/probability-random-variables)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-defn-portfolio-return"><td></td><td>
+       <strong>defn-portfolio-return</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="chapter-3-dir/markowitz.html#defn-portfolio-return"><code class="xref">defn-portfolio-return</code></a> <em>(chapter-3-dir/markowitz)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-defn-portfolio-variance"><td></td><td>
+       <strong>defn-portfolio-variance</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="chapter-3-dir/markowitz.html#defn-portfolio-variance"><code class="xref">defn-portfolio-variance</code></a> <em>(chapter-3-dir/markowitz)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-defn-sets"><td></td><td>
        <strong>defn-sets</strong></td><td></td></tr>
      <tr>
@@ -503,7 +596,7 @@ const thebe_selector_output = ".output, .cell_output"
      <tr>
        <td></td>
        <td>
-       <a href="chapter-2-dir/markowitz.html#defn-single-index-model-standard"><code class="xref">defn-single-index-model-standard</code></a> <em>(chapter-2-dir/markowitz)</em></td><td>
+       <a href="chapter-3-dir/Single-Index-Models.html#defn-single-index-model-standard"><code class="xref">defn-single-index-model-standard</code></a> <em>(chapter-3-dir/Single-Index-Models)</em></td><td>
        <em>definition</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-defn-subsets"><td></td><td>
@@ -527,7 +620,7 @@ const thebe_selector_output = ".output, .cell_output"
      <tr>
        <td></td>
        <td>
-       <a href="chapter-2-dir/markowitz.html#defn-volatility"><code class="xref">defn-volatility</code></a> <em>(chapter-2-dir/markowitz)</em></td><td>
+       <a href="chapter-3-dir/Single-Index-Models.html#defn-volatility"><code class="xref">defn-volatility</code></a> <em>(chapter-3-dir/Single-Index-Models)</em></td><td>
        <em>definition</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-defn-wiener-process"><td></td><td>
@@ -535,7 +628,23 @@ const thebe_selector_output = ".output, .cell_output"
      <tr>
        <td></td>
        <td>
-       <a href="chapter-2-dir/random-walks.html#defn-wiener-process"><code class="xref">defn-wiener-process</code></a> <em>(chapter-2-dir/random-walks)</em></td><td>
+       <a href="chapter-2-dir/stochastic-differential-equations.html#defn-wiener-process"><code class="xref">defn-wiener-process</code></a> <em>(chapter-2-dir/stochastic-differential-equations)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-defn-yield-to-maturity"><td></td><td>
+       <strong>defn-yield-to-maturity</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="chapter-3-dir/bonds.html#defn-yield-to-maturity"><code class="xref">defn-yield-to-maturity</code></a> <em>(chapter-3-dir/bonds)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-defn-zero-coupon-bond-pricing"><td></td><td>
+       <strong>defn-zero-coupon-bond-pricing</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="chapter-3-dir/bonds.html#defn-zero-coupon-bond-pricing"><code class="xref">defn-zero-coupon-bond-pricing</code></a> <em>(chapter-3-dir/bonds)</em></td><td>
        <em>definition</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-ex-event-card-suits"><td></td><td>
@@ -578,29 +687,69 @@ const thebe_selector_output = ".output, .cell_output"
        <a href="chapter-2-dir/probability-random-variables.html#ex-sample-space-dice"><code class="xref">ex-sample-space-dice</code></a> <em>(chapter-2-dir/probability-random-variables)</em></td><td>
        <em>example</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-example-3"><td></td><td>
+       <strong>example-3</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="chapter-1-dir/assets.html#example-3"><code class="xref">example-3</code></a> <em>(chapter-1-dir/assets)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-ito-lemma"><td></td><td>
        <strong>ito-lemma</strong></td><td></td></tr>
      <tr>
        <td></td>
        <td>
-       <a href="chapter-2-dir/random-walks.html#ito-lemma"><code class="xref">ito-lemma</code></a> <em>(chapter-2-dir/random-walks)</em></td><td>
+       <a href="chapter-2-dir/stochastic-differential-equations.html#ito-lemma"><code class="xref">ito-lemma</code></a> <em>(chapter-2-dir/stochastic-differential-equations)</em></td><td>
        <em>lemma</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-net-present-value-defn"><td></td><td>
+       <strong>net-present-value-defn</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="chapter-1-dir/assets.html#net-present-value-defn"><code class="xref">net-present-value-defn</code></a> <em>(chapter-1-dir/assets)</em></td><td>
+       <em>definition</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-obs-beta-risk-measure"><td></td><td>
        <strong>obs-beta-risk-measure</strong></td><td></td></tr>
      <tr>
        <td></td>
        <td>
-       <a href="chapter-2-dir/markowitz.html#obs-beta-risk-measure"><code class="xref">obs-beta-risk-measure</code></a> <em>(chapter-2-dir/markowitz)</em></td><td>
+       <a href="chapter-3-dir/Single-Index-Models.html#obs-beta-risk-measure"><code class="xref">obs-beta-risk-measure</code></a> <em>(chapter-3-dir/Single-Index-Models)</em></td><td>
        <em>observation</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
-     <tr class="cap" id="cap-riemann–stieltjes-integral"><td></td><td>
-       <strong>riemann–stieltjes-integral</strong></td><td></td></tr>
+     <tr class="cap" id="cap-obs-time-value-of-money"><td></td><td>
+       <strong>obs-time-value-of-money</strong></td><td></td></tr>
      <tr>
        <td></td>
        <td>
-       <a href="chapter-2-dir/random-walks.html#riemann–stieltjes-integral"><code class="xref">riemann–stieltjes-integral</code></a> <em>(chapter-2-dir/random-walks)</em></td><td>
-       <em>definition</em></td></tr>
+       <a href="chapter-1-dir/assets.html#obs-time-value-of-money"><code class="xref">obs-time-value-of-money</code></a> <em>(chapter-1-dir/assets)</em></td><td>
+       <em>observation</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-observation-2"><td></td><td>
+       <strong>observation-2</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="chapter-3-dir/markowitz.html#observation-2"><code class="xref">observation-2</code></a> <em>(chapter-3-dir/markowitz)</em></td><td>
+       <em>observation</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-put-contract-expiration"><td></td><td>
+       <strong>put-contract-expiration</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="chapter-3-dir/contracts.html#put-contract-expiration"><code class="xref">put-contract-expiration</code></a> <em>(chapter-3-dir/contracts)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-remark-0"><td></td><td>
+       <strong>remark-0</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="chapter-1-dir/assets.html#remark-0"><code class="xref">remark-0</code></a> <em>(chapter-1-dir/assets)</em></td><td>
+       <em>remark</em></td></tr>
    </table>
 
 

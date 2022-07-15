@@ -1,24 +1,16 @@
----
-jupytext:
-  formats: md:myst
-  text_representation:
-    extension: .md
-    format_name: myst
-kernelspec:
-  display_name: Julia
-  language: julia
-  name: julia-1.7
----
+# Equity Securities
 
-# Modern Portfolio Theory
-Modern portfolio theory (MPT) is a practical method for selecting a collection of assets, e.g., stocks or bonds, to maximize the overall reward of the investor within an acceptable level of risk to the investor. Harry Markowitz, who developed the mathematical foundation of MPT {cite}`MPT1952`, was later awarded a [Nobel Prize for his work in 1990](https://www.nobelprize.org/prizes/economic-sciences/1990/markowitz/facts/). 
+## Introduction
+Common stocks, also known as equity securities or equities, represent ownership shares in a corporation. Each share of common stock entitles its owner to one vote on any matters of corporate governance that are put to a vote at the corporation’s annual meeting and to a share in the financial benefits of ownership. The corporation is controlled by a board of directors elected by the shareholders. The board, which meets only a few times each year, selects managers who actually run the corporation on a day-to-day basis. Managers have the authority to make most business decisions without the board’s specific approval. The board’s mandate is to oversee the management to ensure that it acts in the best interests of shareholders.
 
-The central theme of Markowitz is the balance between risk and reward, where the reward is measured as the [return](https://www.investopedia.com/terms/r/return.asp) of a basket of assets. In contrast, the risk is calculated as the standard deviation (or sometimes the variance) of the logarithmic return, otherwise known as [volatility](https://en.wikipedia.org/wiki/Volatility_(finance)). 
+The two most important characteristics of common stock as an investment are its residual claim and limited liability features:
 
-In this chapter:
-* We introduce the idea of reward as a {ref}`content:references:return` on the price of an asset
-* We introduce the idea of risk as the {ref}`content:references:risk-volatility` of the return
-* We introduce the {ref}`content:references:markowitz`
+ * Residual claim means that stockholders are the last in line of all those who have a claim on the assets and income of the corporation. In a liquidation of the firm’s assets the shareholders have a claim to what is left after all other claimants such as the tax authorities, employees, suppliers, bondholders, and other creditors have been paid. For a firm not in liquidation, shareholders have claim to the part of operating income left over after interest and taxes have been paid. Management can either pay this residual as cash dividends to shareholders or reinvest it in the business to increase the value of the shares. 
+
+ * Limited liability means that the most shareholders can lose in the event of failure of the corporation is their original investment. Unlike owners of unincorporated businesses, whose creditors can lay claim to the personal assets of the owner (house, car, furniture), corporate shareholders may at worst have worthless stock. They are not personally liable for the firm’s obligations.
+
+In this lecture, we will:
+Fill me in.
 
 ---
 
@@ -99,8 +91,7 @@ Eqn. {eq}`eq-cont-exchange-tvm`:
 P_{ij} = \exp\left(\bar{r}_{i,j-1\rightarrow{j}}\right)P_{i,j-1}
 ```
 
-Thus, the logarithmic daily return (or a logarithmic return computed between any two different dates) is a continuous discount rate that quantifies how the value of an asset, e.g., the share price of ticker `XYZ`, changes because of market forces. 
-Becuase $P_{i,\star}$ is a random variable, the return is also a random variable. 
+Thus, the logarithmic daily return (or a logarithmic return computed between any two different dates) is a continuous discount rate that quantifies how the value of an asset, e.g., the share price of ticker `XYZ`, changes because of market forces. Becuase $P_{i,\star}$ is a random variable, the return is also a random variable. 
 
 ### Single Index Return Models
 The {ref}`content:references:fractional-return` or {ref}`content:references:log-return` can be computed
@@ -200,9 +191,6 @@ Putting these two regimes together gives fundamental insight into the behavior o
 
 ````
 
-
-
-
 ### Expected Excess Returns from Data
 Suppose we had a data set $\mathcal{P}$ that contained the daily close
 price for a share of stock of firm $i$ for the last $T$ days, e.g., $1\rightarrow{T}$. 
@@ -281,90 +269,70 @@ the unweighted excess return vector $R$, and the probability array $p$
 
 (content:references:risk-volatility)=
 ## Volatility
-Now that we have defined different types of returns, and the rewards of a portfolio, let's define
-risk. This risk of an asset or a collection of assets can be quantified by asset price volatility.
-The volatility of an asset price e.g., the share price of firm $i$ with ticker symbol `XYZ` is 
-defined as the standard deviation of the {ref}`content:references:log-return`:
+Now that we have defined different types of returns, and the rewards of a portfolio, let's define the risk. One measure of risk is volatility, e.g., the standard deviation of the {ref}`content:references:log-return`:
 
 ````{prf:definition} Volatility
 :label: defn-volatility
 
 Let the price of asset $i$ at time $j$ be denoted by $P_{ij}>0$. Then the _volatility_ of asset $i$ is
-the standard devivation $\sigma_{i}$ of the logarithmic returns calculated between time periods 
+the standard deviation of the logarithmic returns calculated between time periods 
 $j\rightarrow{j+1}$.
 
 ````
+We can estimate the volatility of `XYZ` directly from historical price data; calculating volatility from data
+gives the _historic volatility_, a backward-looking measure of the risk. An unbiased 
+estimate of the variance (which is the square of the _historic volatility_) is given by:
 
-We can compute the volatility of the share price of `XYZ` from historic data; computing the volatility from data
-gives the _historic volatility_ which is a backward looking measure of the price volatility.
-{prf:ref}`algo-volatility-unweighted` describes an approach to calculate the _unweighted_ volatility (along with the return) from a 
-historic price dataset $\bar{\mathcal{P}}$; an _unweighted_ volatility (return) assumes all price values in dataset $\bar{\mathcal{P}}$
-are equally important.  
+```{math}
+\sigma_{n}^2 = \frac{1}{m-1}\sum_{i=1}^{m}\left(\bar{r}_{n-i}-\hat{\mu}_{r}\right)^2\qquad{n>{m+1}}
+```
+where $\bar{r}_{n-i}$ denotes logarithmic return computed for time $n-i-1\rightarrow{n-i}$ and
+$\hat{\mu}_{r}$ denotes the average logarithmic return, computed using the $m$ most recent values of
+the return:
 
-```{prf:algorithm} Unweighted Historic Return and Volatility for Firm $i$ 
-:label: algo-volatility-unweighted 
+```{math}
+\hat{\mu}_{r} = \frac{1}{m}\sum_{i=1}^{m}\bar{r}_{n-i}
+```
 
-**Inputs** Ticker `XYZ` price dataset $\bar{\mathcal{P}}$ for time period $1\rightarrow T$
+The choice of $(n,m)$ is up to you and the application you are interested in. A sketch of an algorithm that can be used to calculate the _historic volatility_ is given in {prf:ref}`algo-unbiased-historic-volatility`:
 
-**Output** unweighted rerturn and volatility for ticker `XYZ`
+```{prf:algorithm} Unbiased estimate of the return variance
+:label: algo-unbiased-historic-volatility
 
+**Inputs** Ticker `XYZ` price dataset $\bar{\mathcal{P}}$ for time period $1\rightarrow T$, parameters $(n,m)$ where $n>m+1$ and $\texttt{avg}$ a function that computes the average of a vector.
+
+**Outputs** An unbiased estimate of the return variance $\sigma_{n}^{2}$
+
+**Initialize**
 1. sort dataset $\mathcal{P}\leftarrow\bar{\mathcal{P}}$ from newest to oldest prices.
-1. initialize $\bar{r}~\leftarrow$ Array($\dim\left(T\right)$ - 1)
-1. initialize $\sigma~\leftarrow$ Array($\dim\left(T\right)$ - 1)
-1. for j $\in$ 2:$\dim\left(T\right)$
-    
-    1. $P_{1},P_{0} \leftarrow \mathcal{P}\left[j-1\right],\mathcal{P}\left[j\right]$
-    2. $\bar{r}\left[j-1\right]\leftarrow\log\left(P_{1}/P_{0}\right)$
+1. initialize $\bar{R}~\leftarrow$ Array($m$,1)
+1. initialize $\mu_{r}$ = 0
+1. initialize $\text{tmp}$ = 0
 
-1.
-1. compute mean return $\mu\leftarrow\left({\dim{T} - 1}\right)^{-1}\times\displaystyle{\sum_{k=1}^{\dim(T) - 1}\bar{r}\left[k\right]}$
-1. compute $\sigma^{2} \leftarrow \left({\dim{T} - 2}\right)^{-1}\times\displaystyle{\sum_{k=1}^{\dim(T) - 1}\left(\bar{r}\left[k\right]-\mu\right)^2}$
-1. $\sigma\leftarrow\sqrt{\sigma^{2}}$
-1. rerurn ($\bar{r},\sigma$)
+**Compute $\bar{R}$**
+1. for i $\in~1:m$
+  
+    1. compute $\bar{r}_{n-i}\leftarrow\log\left(\frac{P_{n-i}}{P_{n-i-1}}\right)$
+    1. store $\bar{R}[i]\leftarrow{\bar{r}_{n-i}}$
+
+**Compute $\mu_{r}$**
+1. compute $\mu_{r}\leftarrow\texttt{avg}\left(\bar{R}\right)$
+
+**Compute $\sigma_{n}^{2}$**
+1. for i $\in~1:m$
+
+    1. compute $\text{tmp}~\leftarrow~\text{tmp}~+ \left( \bar{R}[i] - \mu_{r} \right)^2$
+
+1. compute $\sigma_{n}^{2}\leftarrow\frac{1}{m-1}\cdot\text{tmp}$
+
+**Return**
+1. return $\sigma_{n}^{2}$
 ```
 
-### Weighted Volatility
-The weighted volatility for time point $n$ is computed over a window of length $m$, using data from the previous $n-1\rightarrow{n-m}$ time points:  
-
-```{math}
-:label: eqn-wghted-vol
-\sigma^{2}_{n} = \sum_{i=1}^{m}\alpha_{i}\left(\bar{r}_{n-i} - \mu\right)^2
-```
-
-where $\alpha_{i}>0~\forall{i}$ denotes the weight of the ith element in the window of length $m$ such that:
-
-```{math}
-\sum_{i=1}^{m}\alpha_{i} = 1
-```
-
-Thus, while Eqn. {eq}`eqn-wghted-vol` is still a backward-looking calculation (over the previous $m$ time points), the relative  importance of each time point is controlled by the selection of the weights $\alpha_{i}$. One common approach is the [exponentially weighted moving average](https://en.wikipedia.org/wiki/Moving_average), where the weight of 
-each older data value decreases exponentially but never reaches zero. An easy implementation of the 
-[exponentially weighted moving average](https://en.wikipedia.org/wiki/Moving_average) is to assume 
-$\alpha_{i+1} = \lambda\alpha_{i}$ where $0<\lambda\leq{1}$, which gives a recursion of the form:
-
-```{math}
-:label: eqn-wghted-vol-exma
-\sigma^{2}_{n} = \lambda\sigma_{n-1}^{2} + (1-\lambda)\left(\bar{r}_{n-1} - \mu\right)^2
-```
-
-{prf:ref}`algo-volatility-exp-weighted` implements the [exponentially weighted moving average](https://en.wikipedia.org/wiki/Moving_average) approach, emphasizing recent over past data. {prf:ref}`algo-volatility-exp-weighted` was inspired by the [exponentially weighted moving average](https://en.wikipedia.org/wiki/Moving_average) discussion in Hull {cite}`HULL2009`
-
-```{prf:algorithm} Exponentially Weighted Moving Average Return and Volatility for Firm $i$ 
-:label: algo-volatility-exp-weighted
-
-**Inputs** Ticker `XYZ` dataset $\bar{\mathcal{P}}$ for time period $1\rightarrow T$, starting index $n$, 
-window length $m$, and weight parameter $\lambda$.
-
-**Output** exponentially weighted return and volatility for ticker `XYZ`
-
-1. sort dataset $\mathcal{P}\leftarrow\bar{\mathcal{P}}$ from newest to oldest prices.
-1. initialize $\bar{r}~\leftarrow$ Array(m)
-
-```
+### Example
+* [Computation of the unbiased historical volatility using {prf:ref}`algo-unbiased-historic-volatility`](https://htmlview.glitch.me/?https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks/blob/main/pluto-notebooks/html/Example-UnbiasedVolatility-Estimation.jl.html)
 
 ---
 
-(content:references:markowitz)=
-## Markowitz Portfolio Allocation Problem
-Fill me in.
-
+## Summary
+Fill me in

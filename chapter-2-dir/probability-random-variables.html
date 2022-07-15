@@ -56,8 +56,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Modern Portfolio Theory" href="markowitz.html" />
-    <link rel="prev" title="Modeling and Analysis of Asset Price Dynamics and Market Mechanisms" href="chapter-2.html" />
+    <link rel="next" title="Macroscopic Market Models" href="stochastic-differential-equations.html" />
+    <link rel="prev" title="Unit 2: Modeling and Analysis of Asset Price Dynamics" href="chapter-2.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -96,20 +96,15 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="bd-toc-item active">
         <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../intro.html">
-   Financial Data, Markets, and Mayhem for Scientists and Engineers
+  <a class="reference internal" href="../infrastructure.html">
+   CHEME 5660 Financial Data, Markets, and Mayhem for Scientists and Engineers
   </a>
  </li>
 </ul>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../infrastructure.html">
-   Objectives, Polices and Resources
-  </a>
- </li>
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../chapter-1-dir/chapter-1.html">
-   Assets, Money, Markets and the Global Financial System
+   Unit 1. The Financial System
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
   <label for="toctree-checkbox-1">
@@ -118,25 +113,25 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
+    <a class="reference internal" href="../chapter-1-dir/global.html">
+     The Global Finanical System
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="../chapter-1-dir/assets.html">
-     Assets are Current and Future Cash Flows
+     Financial Balances
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../chapter-1-dir/markets.html">
-     Markets and Market Structures
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../chapter-1-dir/global.html">
-     The Global Finanical System
+     Markets and Exchanges
     </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1 current active has-children">
   <a class="reference internal" href="chapter-2.html">
-   The Dynamics of Assets and Markets
+   Unit 2. Modeling and Simulation of Asset Price Dynamics
   </a>
   <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
   <label for="toctree-checkbox-2">
@@ -150,20 +145,20 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="markowitz.html">
-     Modern Portfolio Theory
+    <a class="reference internal" href="stochastic-differential-equations.html">
+     Macroscopic Market Models
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="random-walks.html">
-     Random Walks and Brownian Motion
+    <a class="reference internal" href="agent-based-market-models.html">
+     Microscopic Market Models
     </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../chapter-3-dir/chapter-3.html">
-   Derivatives, Futures, and Leverage
+  <a class="reference internal" href="../chapter-3-dir/chapter-3-landing.html">
+   Unit 3. Risk, Portfolios, Derivatives, and Leverage
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
   <label for="toctree-checkbox-3">
@@ -172,20 +167,30 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../chapter-3-dir/contracts.html">
-     American and European style option contracts
+    <a class="reference internal" href="../chapter-3-dir/bonds.html">
+     Fixed Income Securities
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../chapter-3-dir/binomial-pricing-model.html">
-     Example: Calculating the Price of an AMD put option
+    <a class="reference internal" href="../chapter-3-dir/Single-Index-Models.html">
+     Equity Securities
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chapter-3-dir/contracts.html">
+     Derivative Securities
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chapter-3-dir/markowitz.html">
+     Modern Portfolio Theory
     </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../chapter-4-dir/chapter-4.html">
-   Process Finance and Decision Making
+   Unit 4. Process Finance and Decision Making
   </a>
  </li>
  <li class="toctree-l1">
@@ -323,8 +328,8 @@ const thebe_selector_output = ".output, .cell_output"
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#probability">
-   Probability
+  <a class="reference internal nav-link" href="#probability-space">
+   Probability Space
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
@@ -376,36 +381,58 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#expectation-of-discrete-random-variables">
-     Expectation of discrete random variables
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#moments-and-variance-of-discrete-random-variables">
-     Moments and variance of discrete random variables
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#probability-mass-function">
-     Probability mass function
+    <a class="reference internal nav-link" href="#moments-of-discrete-random-variables">
+     Moments of discrete random variables
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#bernoulli-random-variables">
-       Bernoulli random variables
+      <a class="reference internal nav-link" href="#expectation">
+       Expectation
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#binomial-random-variable">
-       Binomial random variable
+      <a class="reference internal nav-link" href="#variance">
+       Variance
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#geometric-random-variable">
-       Geometric random variable
+      <a class="reference internal nav-link" href="#skewness">
+       Skewness
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#kurtosis">
+       Kurtosis
       </a>
      </li>
     </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#probability-mass-functions">
+   Probability mass functions
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#bernoulli-random-variable">
+     Bernoulli random variable
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#binomial-random-variable">
+     Binomial random variable
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#geometric-random-variable">
+     Geometric random variable
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#poisson-random-variable">
+     Poisson random variable
+    </a>
    </li>
   </ul>
  </li>
@@ -452,8 +479,8 @@ const thebe_selector_output = ".output, .cell_output"
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#probability">
-   Probability
+  <a class="reference internal nav-link" href="#probability-space">
+   Probability Space
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
@@ -505,36 +532,58 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#expectation-of-discrete-random-variables">
-     Expectation of discrete random variables
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#moments-and-variance-of-discrete-random-variables">
-     Moments and variance of discrete random variables
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#probability-mass-function">
-     Probability mass function
+    <a class="reference internal nav-link" href="#moments-of-discrete-random-variables">
+     Moments of discrete random variables
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#bernoulli-random-variables">
-       Bernoulli random variables
+      <a class="reference internal nav-link" href="#expectation">
+       Expectation
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#binomial-random-variable">
-       Binomial random variable
+      <a class="reference internal nav-link" href="#variance">
+       Variance
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#geometric-random-variable">
-       Geometric random variable
+      <a class="reference internal nav-link" href="#skewness">
+       Skewness
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#kurtosis">
+       Kurtosis
       </a>
      </li>
     </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#probability-mass-functions">
+   Probability mass functions
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#bernoulli-random-variable">
+     Bernoulli random variable
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#binomial-random-variable">
+     Binomial random variable
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#geometric-random-variable">
+     Geometric random variable
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#poisson-random-variable">
+     Poisson random variable
+    </a>
    </li>
   </ul>
  </li>
@@ -556,7 +605,7 @@ For example, when you have a shortage of data, a Bayesian approach allows you to
 <p>In this chapter:</p>
 <ul class="simple">
 <li><p>We introduce <a class="reference internal" href="#content-references-set-theory"><span class="std std-ref">Set theory</span></a> and the <a class="reference internal" href="#content-references-union-intersection"><span class="std std-ref">Union and Intersection</span></a> of sets</p></li>
-<li><p>We introduce <a class="reference internal" href="#content-references-probability"><span class="std std-ref">Probability</span></a> the Axioms of Probablity (<a class="reference internal" href="#axiom-probability">Axiom 1</a>)</p></li>
+<li><p>We introduce <a class="reference internal" href="#content-references-probability"><span class="std std-ref">Probability Space</span></a> the Axioms of Probablity (<a class="reference internal" href="#axiom-probability">Axiom 1</a>)</p></li>
 <li><p>We introduce <a class="reference internal" href="#content-references-random-variables"><span class="std std-ref">Random Variables and Stochastic Processes</span></a></p></li>
 </ul>
 <hr class="docutils" />
@@ -565,7 +614,7 @@ For example, when you have a shortage of data, a Bayesian approach allows you to
 <p>In mathematics, we are often interested in describing a collection of numbers or other mathematical objects, for example, the numbers <span class="math notranslate nohighlight">\(\left[a, b\right]\)</span> on the real line, or the ordered pairs of numbers that define a circle. These collections of numbers can be abstractly defined as sets.
 A set is simply a collection of mathematical objets. Set theory is a mathematical tool that defines operations on sets. It provides the basic arithmetic for combining, separating, and decomposing sets.</p>
 <div class="proof definition admonition" id="defn-sets">
-<p class="admonition-title"><span class="caption-number">Definition 1 </span> (Sets)</p>
+<p class="admonition-title"><span class="caption-number">Definition 5 </span> (Sets)</p>
 <div class="definition-content section" id="proof-content">
 <p>A set is a collection of elements. We denote</p>
 <div class="math notranslate nohighlight">
@@ -577,7 +626,7 @@ For example, to show that the number <span class="math notranslate nohighlight">
 we write <span class="math notranslate nohighlight">\(1\in\left\{1, 2, 3,\dots,10\right\}\)</span>. The elements of sets can be anything; real numbers, complex numbers, functions or any mathematical object.</p>
 <p>Given a set, we often want to specify a portion of that set, which we call a subset.</p>
 <div class="proof definition admonition" id="defn-subsets">
-<p class="admonition-title"><span class="caption-number">Definition 2 </span> (Subsets)</p>
+<p class="admonition-title"><span class="caption-number">Definition 6 </span> (Subsets)</p>
 <div class="definition-content section" id="proof-content">
 <p><span class="math notranslate nohighlight">\(B\)</span> is a subset of <span class="math notranslate nohighlight">\(A\)</span> if for any <span class="math notranslate nohighlight">\(x\in{B}\)</span>, <span class="math notranslate nohighlight">\(x\)</span> is also in <span class="math notranslate nohighlight">\(A\)</span>. We write</p>
 <div class="math notranslate nohighlight">
@@ -594,7 +643,7 @@ the empty set <span class="math notranslate nohighlight">\(\emptyset\)</span> an
 <p>We now discuss basic set operations. By operations, we mean functions of two or more sets whose output value is a set. We use these operations to combine and separate sets. Let’s first describe the
 <a class="reference external" href="https://en.wikipedia.org/wiki/Union_(set_theory)">union</a>.</p>
 <div class="proof definition admonition" id="defn-union">
-<p class="admonition-title"><span class="caption-number">Definition 3 </span> (Union)</p>
+<p class="admonition-title"><span class="caption-number">Definition 7 </span> (Union)</p>
 <div class="definition-content section" id="proof-content">
 <p>The finite union of two sets <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span> contains all elements in that are <span class="math notranslate nohighlight">\(A\)</span> or in <span class="math notranslate nohighlight">\(B\)</span>:</p>
 <div class="math notranslate nohighlight">
@@ -605,7 +654,7 @@ thus, the union of two sets is always larger than or equal to the individual set
 <p>The <a class="reference external" href="https://en.wikipedia.org/wiki/Intersection_(set_theory)">intersection</a> operation relys on the
 logical <em>and</em> operator. Thus, the <a class="reference external" href="https://en.wikipedia.org/wiki/Intersection_(set_theory)">intersection</a> finds the common elements of the two sets:</p>
 <div class="proof definition admonition" id="defn-intersection">
-<p class="admonition-title"><span class="caption-number">Definition 4 </span> (Intersection)</p>
+<p class="admonition-title"><span class="caption-number">Definition 8 </span> (Intersection)</p>
 <div class="definition-content section" id="proof-content">
 <p>The finite intersection of two sets <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span> contains all elements that are in both <span class="math notranslate nohighlight">\(A\)</span> and in <span class="math notranslate nohighlight">\(B\)</span>:</p>
 <div class="math notranslate nohighlight">
@@ -619,7 +668,7 @@ there is a third basic operation called the <a class="reference external" href="
 Suppose you had a set <span class="math notranslate nohighlight">\(A\subset\Omega\)</span>. Then the complement of <span class="math notranslate nohighlight">\(A\)</span>, denoted by <span class="math notranslate nohighlight">\(\bar{A}\)</span>, is
 everything that is in <span class="math notranslate nohighlight">\(\Omega\)</span>, but <strong>not</strong> in <span class="math notranslate nohighlight">\(A\)</span>.</p>
 <div class="proof definition admonition" id="defn-complement">
-<p class="admonition-title"><span class="caption-number">Definition 5 </span> (Complement)</p>
+<p class="admonition-title"><span class="caption-number">Definition 9 </span> (Complement)</p>
 <div class="definition-content section" id="proof-content">
 <p>The abosulte complement of a set <span class="math notranslate nohighlight">\(A\)</span>, denoted by <span class="math notranslate nohighlight">\(\bar{A}\)</span>, is the set containing all elements that are in <span class="math notranslate nohighlight">\(\Omega\)</span> but not in <span class="math notranslate nohighlight">\(A\)</span>:</p>
 <div class="math notranslate nohighlight">
@@ -640,7 +689,7 @@ everything that is in <span class="math notranslate nohighlight">\(\Omega\)</spa
 is the <a class="reference external" href="https://en.wikipedia.org/wiki/Disjoint_sets">disjoint</a> relationship, and the idea of a partition.
 Suppose we had two sets <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span>; the sets <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span> are disjoint if they have no elements in common.</p>
 <div class="proof definition admonition" id="defn-disjoint">
-<p class="admonition-title"><span class="caption-number">Definition 6 </span> (Disjoint)</p>
+<p class="admonition-title"><span class="caption-number">Definition 10 </span> (Disjoint)</p>
 <div class="definition-content section" id="proof-content">
 <p>Two sets <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span> are said to be disjoint if thier intersection is the emptyset <span class="math notranslate nohighlight">\(\emptyset\)</span> (they have no common elements):</p>
 <div class="math notranslate nohighlight">
@@ -650,9 +699,9 @@ Suppose we had two sets <span class="math notranslate nohighlight">\(A\)</span> 
 \[A_{i}\cap{A_{j}} = \emptyset\]</div>
 <p>for all pairs of sets <span class="math notranslate nohighlight">\(A_{i}\)</span> and <span class="math notranslate nohighlight">\(A_{j}\)</span> where <span class="math notranslate nohighlight">\(i\neq{j}\)</span>.</p>
 </div>
-</div><p>Now that we understand disjoint sets (<a class="reference internal" href="#defn-disjoint">Definition 6</a>), we can define a partition of the universal set <span class="math notranslate nohighlight">\(\Omega\)</span>.</p>
+</div><p>Now that we understand disjoint sets (<a class="reference internal" href="#defn-disjoint">Definition 10</a>), we can define a partition of the universal set <span class="math notranslate nohighlight">\(\Omega\)</span>.</p>
 <div class="proof definition admonition" id="defn-partition">
-<p class="admonition-title"><span class="caption-number">Definition 7 </span> (Partition)</p>
+<p class="admonition-title"><span class="caption-number">Definition 11 </span> (Partition)</p>
 <div class="definition-content section" id="proof-content">
 <p>A collection of sets <span class="math notranslate nohighlight">\(\left\{A_{1},A_{2},\dots, A_{n}\right\}\)</span> is a partition of <span class="math notranslate nohighlight">\(\Omega\)</span> if the following
 two conditions are true:</p>
@@ -664,7 +713,7 @@ two conditions are true:</p>
 <div class="math notranslate nohighlight">
 \[\bigcup_{i=1}^{n}A_{i} = \Omega\]</div>
 </div>
-</div><p>The partition (<a class="reference internal" href="#defn-partition">Definition 7</a>) of the universal set <span class="math notranslate nohighlight">\(\Omega\)</span> is a collection of smaller non-overlapping subsets whose union gives back the universal set <span class="math notranslate nohighlight">\(\Omega\)</span>.
+</div><p>The partition (<a class="reference internal" href="#defn-partition">Definition 11</a>) of the universal set <span class="math notranslate nohighlight">\(\Omega\)</span> is a collection of smaller non-overlapping subsets whose union gives back the universal set <span class="math notranslate nohighlight">\(\Omega\)</span>.
 Partitions are important because they allow us to decompose the universal set <span class="math notranslate nohighlight">\(\Omega\)</span> into a collection of smaller subsets. Since these smaller subsets are disjoint, i.e., they do not overlap, we can analyze them separately from each other.</p>
 <p>In the context of probability, partitions are essential tools because they allow us to decouple complex events
 into many smaller disconnected events.
@@ -675,8 +724,8 @@ Then, for any set <span class="math notranslate nohighlight">\(B\subseteq\Omega\
 <span class="eqno">(5)<a class="headerlink" href="#equation-eqn-decomp-partition" title="Permalink to this equation">¶</a></span>\[\bigcup_{i=1}^{n}B\cap{A_{i}} = B\]</div>
 </div>
 </div>
-<div class="section" id="probability">
-<span id="content-references-probability"></span><h2>Probability<a class="headerlink" href="#probability" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="probability-space">
+<span id="content-references-probability"></span><h2>Probability Space<a class="headerlink" href="#probability-space" title="Permalink to this headline">¶</a></h2>
 <p>A probability space is completley described by the tuple <span class="math notranslate nohighlight">\((\Omega,\mathcal{F},P)\)</span>:</p>
 <ul class="simple">
 <li><p>Sample space <span class="math notranslate nohighlight">\(\Omega\)</span>: The set of all possible outcomes from an experiment.</p></li>
@@ -688,7 +737,7 @@ Then, for any set <span class="math notranslate nohighlight">\(B\subseteq\Omega\
 <p>We start by defining the sample space <span class="math notranslate nohighlight">\(\Omega\)</span>. Given an experiment, the sample space <span class="math notranslate nohighlight">\(\Omega\)</span> is the
 set containing all possible outcomes of that experiment. These experimental outcomes can be numbers, alphabets, vectors, or functions, as well as, images, videos, EEG signals, audio speeches, etc.</p>
 <div class="proof example admonition" id="ex-sample-space-dice">
-<p class="admonition-title"><span class="caption-number">Example 3 </span> (Sample space <span class="math notranslate nohighlight">\(\Omega\)</span> )</p>
+<p class="admonition-title"><span class="caption-number">Example 4 </span> (Sample space <span class="math notranslate nohighlight">\(\Omega\)</span> )</p>
 <div class="example-content section" id="proof-content">
 <p>Suppose we were intersted in the outcome of experiment where a six sided dice was rolled on time.
 Then the sample space for this experiment <span class="math notranslate nohighlight">\(\Omega\)</span> is given by:</p>
@@ -706,7 +755,7 @@ e.g., even integers, or the set of face cards, etc. These subsets are called eve
 the set of all possible events, denoted as <span class="math notranslate nohighlight">\(\mathcal{F}\)</span>, is called the event space.
 Thus, the event space <span class="math notranslate nohighlight">\(\mathcal{F}\)</span> is a special set of sets, it’s the sets of all possible subsets.</p>
 <div class="proof example admonition" id="ex-event-card-suits">
-<p class="admonition-title"><span class="caption-number">Example 4 </span> (Enumerate the event space <span class="math notranslate nohighlight">\(\mathcal{F}\)</span> )</p>
+<p class="admonition-title"><span class="caption-number">Example 5 </span> (Enumerate the event space <span class="math notranslate nohighlight">\(\mathcal{F}\)</span> )</p>
 <div class="example-content section" id="proof-content">
 <p>Let’s construct the event space <span class="math notranslate nohighlight">\(\mathcal{F}\)</span> for the sample space
 <span class="math notranslate nohighlight">\(\Omega=\left\{\clubsuit, \diamondsuit, \heartsuit, \spadesuit\right\}\)</span>.
@@ -791,7 +840,7 @@ to a real number in <span class="math notranslate nohighlight">\(\left[0, 1\righ
 However, what if the two events are unrelated? In other words, information about one event says nothing
 about the second event. In this case, the events <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span> are said ot be independent:</p>
 <div class="proof definition admonition" id="defn-independence">
-<p class="admonition-title"><span class="caption-number">Definition 8 </span> (Statistical Independence)</p>
+<p class="admonition-title"><span class="caption-number">Definition 12 </span> (Statistical Independence)</p>
 <div class="definition-content section" id="proof-content">
 <p>Two events A and B are statistically independent if:</p>
 <div class="math notranslate nohighlight">
@@ -830,89 +879,192 @@ Then for <span class="math notranslate nohighlight">\(B\subseteq\Omega\)</span>:
 <div class="math notranslate nohighlight">
 \[P(B) = \sum_{i=1}^{n}P\left(B\,\vert{A_{i}}\right)P\left(A_{i}\right)\]</div>
 </div>
-</div></div>
+</div><hr class="docutils" />
+</div>
 </div>
 <div class="section" id="random-variables-and-stochastic-processes">
 <span id="content-references-random-variables"></span><h2>Random Variables and Stochastic Processes<a class="headerlink" href="#random-variables-and-stochastic-processes" title="Permalink to this headline">¶</a></h2>
 <p>The sample space and the event space are all based on statements, for example, getting a head when flipping a coin, winning the game, or drawing a card, etc. These statements are not numbers; how do we convert a statement to a number?
 The answer is a random variable; random variables are mappings from events to numbers, these numbers are probabilities.</p>
-<div class="section" id="expectation-of-discrete-random-variables">
-<h3>Expectation of discrete random variables<a class="headerlink" href="#expectation-of-discrete-random-variables" title="Permalink to this headline">¶</a></h3>
-<p>It is often helpful to extract essential parameters such as the mean
-or standard deviation of the return when analyzing financial data. If we hypothesize that markets are random,
-then the values for these parameters can be estimated from the random prices observed in the market.</p>
-<p>Let the price of some asset, e.g., <code class="docutils literal notranslate"><span class="pre">XYZ,</span></code> stock price, be a discrete random variable denoted by <span class="math notranslate nohighlight">\(X\)</span>.
-Then expectation is the mean of the random variable <span class="math notranslate nohighlight">\(X\)</span>.</p>
-<div class="proof definition admonition" id="defn-expectation">
-<p class="admonition-title"><span class="caption-number">Definition 9 </span> (Expectation)</p>
+<div class="section" id="moments-of-discrete-random-variables">
+<h3>Moments of discrete random variables<a class="headerlink" href="#moments-of-discrete-random-variables" title="Permalink to this headline">¶</a></h3>
+<p>It is often helpful to extract characteristics such as the mean, standard deviation, or other quantities of interest from financial data sets.  However, markets (and hence asset prices) are random; thus, we compute these parameters of interest from random market data using
+a concept called the <a class="reference external" href="https://en.wikipedia.org/wiki/Moment_(mathematics)">moments of a random variable</a>.</p>
+<p>The mean, variance, skew, kurtosis, etc are all examples of the <a class="reference external" href="https://en.wikipedia.org/wiki/Moment_(mathematics)">moments of a random variable</a>.
+Let the daily close price of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> be a discrete random variable denoted by <span class="math notranslate nohighlight">\(X\)</span>.
+Then the moments of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> are defined as:</p>
+<div class="proof definition admonition" id="defn-moments">
+<p class="admonition-title"><span class="caption-number">Definition 13 </span> (Moments)</p>
 <div class="definition-content section" id="proof-content">
-<p>Let <span class="math notranslate nohighlight">\(X\)</span> denote a discrete random variable. Then, the expectation of the random variable <span class="math notranslate nohighlight">\(X\)</span> is given by:</p>
-<div class="math notranslate nohighlight" id="equation-eq-defn-expectation">
-<span class="eqno">(6)<a class="headerlink" href="#equation-eq-defn-expectation" title="Permalink to this equation">¶</a></span>\[\mathbb{E}\left(X\right) = \sum_{x\in{X(\Omega)}}xp_{X}(x)\]</div>
-<p>where <span class="math notranslate nohighlight">\(p_{X}(x)\)</span> denotes the probability that random variable <span class="math notranslate nohighlight">\(X=x\)</span>, and
-<span class="math notranslate nohighlight">\(X(\Omega)\)</span> denotes sample space for <span class="math notranslate nohighlight">\(X\)</span> (the set of all possible values that the random variable <span class="math notranslate nohighlight">\(X\)</span> can take.)</p>
+<p>Let <span class="math notranslate nohighlight">\(X\)</span> denote a discrete random variable which takes on values in the finite sample space <span class="math notranslate nohighlight">\(X(\Omega)\)</span>. Then, the kth moment of <span class="math notranslate nohighlight">\(X\)</span> is given by:</p>
+<div class="math notranslate nohighlight">
+\[\mathbb{E}\Biggl[\left(\frac{X - a}{b}\right)^k\Biggr] = \sum_{x\in{X(\Omega)}}\left(\frac{X - a}{b}\right)^{k}p_{X}(x)\]</div>
+<p>where <span class="math notranslate nohighlight">\(p_{X}(x)\)</span> denotes the probability that random variable <span class="math notranslate nohighlight">\(X=x\)</span>,
+<span class="math notranslate nohighlight">\(X(\Omega)\)</span> denotes sample space for <span class="math notranslate nohighlight">\(X\)</span>, and <span class="math notranslate nohighlight">\(a\geq{0}\)</span>
+and <span class="math notranslate nohighlight">\(b\geq{1}\)</span> are constants.</p>
+<p>Important moments:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(k=1\)</span> and <span class="math notranslate nohighlight">\((a,b) = (0,1)\)</span>: The first (raw) moment is the <a class="reference external" href="https://en.wikipedia.org/wiki/Expected_value">expectation</a> (mean) of <span class="math notranslate nohighlight">\(X\)</span>. The <a class="reference external" href="https://en.wikipedia.org/wiki/Expected_value">expectation</a> measures the central tendency in the data.</p></li>
+<li><p><span class="math notranslate nohighlight">\(k=2\)</span> and <span class="math notranslate nohighlight">\((a,b)=(\mu,1)\)</span>: The second (central) moment is the <a class="reference external" href="https://en.wikipedia.org/wiki/Variance">variance</a> of <span class="math notranslate nohighlight">\(X\)</span>. The <a class="reference external" href="https://en.wikipedia.org/wiki/Variance">variance</a> measures dispersion in the data, i.e., how far data points are spread out from their expected value.</p></li>
+<li><p><span class="math notranslate nohighlight">\(k=3\)</span> and <span class="math notranslate nohighlight">\((a,b)=(\mu,~\sigma)\)</span>: The third (normalized central) moment is the <a class="reference external" href="https://en.wikipedia.org/wiki/Skewness">skewness</a> of <span class="math notranslate nohighlight">\(X\)</span>. The <a class="reference external" href="https://en.wikipedia.org/wiki/Skewness">skewness</a> measures the asymmetry of a random variable about its expectation. Skewness can be positive, zero, negative, or undefined.</p></li>
+<li><p><span class="math notranslate nohighlight">\(k=4\)</span> and <span class="math notranslate nohighlight">\((a,b)=(\mu,~\sigma)\)</span>: The fourth (normalized central) moment is the <a class="reference external" href="https://en.wikipedia.org/wiki/Kurtosis">kurtosis</a> of <span class="math notranslate nohighlight">\(X\)</span>. The <a class="reference external" href="https://en.wikipedia.org/wiki/Kurtosis">kurtosis</a> measures the heaviness of the tail of the distribution relative to a normal distribution of the same variance.</p></li>
+</ul>
+<p>where <span class="math notranslate nohighlight">\(\mu = \mathbb{E}(X)\)</span> denotes the mean, and <span class="math notranslate nohighlight">\(\sigma\)</span> denotes the standard deviation.</p>
 </div>
-</div><p>The expectation of a random variable has several useful properties.</p>
+</div><div class="section" id="expectation">
+<h4>Expectation<a class="headerlink" href="#expectation" title="Permalink to this headline">¶</a></h4>
+<p>The <a class="reference external" href="https://en.wikipedia.org/wiki/Expected_value">expectation</a> (or mean), which measures the central tendency of a random variable <span class="math notranslate nohighlight">\(X\)</span>, is given by (discrete <span class="math notranslate nohighlight">\(X\)</span>):</p>
+<div class="math notranslate nohighlight" id="equation-eqn-expectation">
+<span class="eqno">(6)<a class="headerlink" href="#equation-eqn-expectation" title="Permalink to this equation">¶</a></span>\[\mathbb{E}\left[X\right] = \sum_{x\in{X}(\Omega)}xp_{X}(x)\]</div>
+<p>The expectation of a random variable <span class="math notranslate nohighlight">\(X\)</span> (discrete or continuous) has several useful (and important) properties:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\mathbb{E}\left(c\right) = c\)</span> for any constant <span class="math notranslate nohighlight">\(c\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\mathbb{E}\left(cX\right) = c\times\mathbb{E}\left(X\right)\)</span> for any constant <span class="math notranslate nohighlight">\(c\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\mathbb{E}\left(g(X)\right) = \sum_{x\in{X(\Omega)}}g(x)p_{X}(x)\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\mathbb{E}\left(g(X)+h(X)\right) = \mathbb{E}(g(X)) + \mathbb{E}(h(X))\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\mathbb{E}\left(X+c\right) = \mathbb{E}(X) + c\)</span> for any constant <span class="math notranslate nohighlight">\(c\)</span></p></li>
+</ul>
 </div>
-<div class="section" id="moments-and-variance-of-discrete-random-variables">
-<h3>Moments and variance of discrete random variables<a class="headerlink" href="#moments-and-variance-of-discrete-random-variables" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="variance">
+<h4>Variance<a class="headerlink" href="#variance" title="Permalink to this headline">¶</a></h4>
+<p>The <a class="reference external" href="https://en.wikipedia.org/wiki/Variance">variance</a> measures the expected dispersion for
+individual values of <span class="math notranslate nohighlight">\(X\)</span>, i.e., the average distance that values of <span class="math notranslate nohighlight">\(X\)</span> are spread out from their expected value (mean). The <a class="reference external" href="https://en.wikipedia.org/wiki/Variance">variance</a> is given by:</p>
+<div class="math notranslate nohighlight" id="equation-eqn-variance">
+<span class="eqno">(7)<a class="headerlink" href="#equation-eqn-variance" title="Permalink to this equation">¶</a></span>\[\text{Var}(X) = \mathbb{E}\Bigl[(X-\mu)^{2}\Bigr]\]</div>
+<p>where <span class="math notranslate nohighlight">\(\mu = \mathbb{E}(X)\)</span> denotes the expected value (mean) of the random variable <span class="math notranslate nohighlight">\(X\)</span>.
+Like the mean, the variance <span class="math notranslate nohighlight">\(\text{Var}(X)\)</span> has a few interesting (and important) properties:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\text{Var}(X) = \mathbb{E}\left(X^{2}\right) - \left(\mu\right)^2\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\text{Var}(cX) = {c^2}\text{Var}(X)\)</span> for any constant <span class="math notranslate nohighlight">\(c\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\text{Var}(X+c) = \text{Var}(X)\)</span> for any constant <span class="math notranslate nohighlight">\(c\)</span></p></li>
+</ul>
+<p>The more common quantity that is used to measure dispersion, the standard deviation <span class="math notranslate nohighlight">\(\sigma\)</span>,
+is related to the variance: <span class="math notranslate nohighlight">\(\sigma_{X} = \sqrt{\text{Var}(X)}\)</span>.</p>
 </div>
-<div class="section" id="probability-mass-function">
-<h3>Probability mass function<a class="headerlink" href="#probability-mass-function" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="skewness">
+<h4>Skewness<a class="headerlink" href="#skewness" title="Permalink to this headline">¶</a></h4>
+<p>The <a class="reference external" href="https://en.wikipedia.org/wiki/Skewness">skewness</a> measures the expected asymmetry of a random variable about its mean (expected value):</p>
+<div class="math notranslate nohighlight" id="equation-eqn-skewness">
+<span class="eqno">(8)<a class="headerlink" href="#equation-eqn-skewness" title="Permalink to this equation">¶</a></span>\[\gamma(X) = \mathbb{E}\Biggl[\left(\frac{X - \mu}{\sigma}\right)^3\Biggr]\]</div>
+<p>where <span class="math notranslate nohighlight">\(\mu\)</span> denotes the mean (expected value), and <span class="math notranslate nohighlight">\(\sigma\)</span> denotes the standard deviation.
+The skewness parameter <span class="math notranslate nohighlight">\(\gamma(X)\)</span> can be positive, zero, negative, or undefined.</p>
+</div>
+<div class="section" id="kurtosis">
+<h4>Kurtosis<a class="headerlink" href="#kurtosis" title="Permalink to this headline">¶</a></h4>
+<p>The <a class="reference external" href="https://en.wikipedia.org/wiki/Kurtosis">kurtosis</a> measures the heaviness of the tail of the distribution relative to a normal distribution of the same variance.
+The <a class="reference external" href="https://en.wikipedia.org/wiki/Kurtosis">kurtosis</a> of a random variable <span class="math notranslate nohighlight">\(X\)</span>, denoted as
+<span class="math notranslate nohighlight">\(\text{Kurt}(X)\)</span>, is defined as:</p>
+<div class="math notranslate nohighlight" id="equation-eqn-kurtosis">
+<span class="eqno">(9)<a class="headerlink" href="#equation-eqn-kurtosis" title="Permalink to this equation">¶</a></span>\[\kappa(X) = \mathbb{E}\Biggl[\left(\frac{X - \mu}{\sigma}\right)^4\Biggr]\]</div>
+<p>Large <span class="math notranslate nohighlight">\(\kappa(X)\)</span> values arise when most <span class="math notranslate nohighlight">\(X\)</span> values are near the mean, but a few values are very far away from the mean. Additionally, <span class="math notranslate nohighlight">\(\kappa(X)\)</span> can arise from the majority of <span class="math notranslate nohighlight">\(X\)</span> being near the tail of the distribution.</p>
+<!-- High values of  arise when $X$ is concentrated around the mean and the data-generating process produces occasional values very far away from the mean, or
+when $X$ is concentrated in the tails of the distribution. -->
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="probability-mass-functions">
+<h2>Probability mass functions<a class="headerlink" href="#probability-mass-functions" title="Permalink to this headline">¶</a></h2>
 <p>In the case of discrete random variables, for example, dice roles, coin flips etc, this is done using a concept called a <a class="reference external" href="https://en.wikipedia.org/wiki/Probability_mass_function">probability mass function (PMF)</a>.</p>
 <div class="proof definition admonition" id="defn-pmf">
-<p class="admonition-title"><span class="caption-number">Definition 10 </span> (Probability Mass Function)</p>
+<p class="admonition-title"><span class="caption-number">Definition 14 </span> (Probability Mass Function)</p>
 <div class="definition-content section" id="proof-content">
-<p>The probability mass function (PMF) of a random variable X is a function which specifies the probability of
-obtaining a number <span class="math notranslate nohighlight">\(x\)</span></p>
+<p>The probability mass function (PMF) of a random variable <span class="math notranslate nohighlight">\(X\)</span> is a function which specifies the probability of
+obtaining <span class="math notranslate nohighlight">\(X = x\)</span>, where <span class="math notranslate nohighlight">\(x\)</span> is a particular event outcome:</p>
 <div class="math notranslate nohighlight">
 \[p_{X}(x) = P\left(X=x\right)\]</div>
-<p>The set of all possible states of <span class="math notranslate nohighlight">\(X\)</span> is denoted as <span class="math notranslate nohighlight">\(X\left(\Omega\right)\)</span>. A PMF should satisfy the condition:</p>
+<p>The set of all possible outcomes of for a random variable <span class="math notranslate nohighlight">\(X\)</span> is denoted as <span class="math notranslate nohighlight">\(X\left(\Omega\right)\)</span>. A PMF should satisfy the condition:</p>
 <div class="math notranslate nohighlight">
 \[\sum_{x\in{X(\Omega)}}p_{X}(x)=1\]</div>
 </div>
 </div><p>The PMF is the weighing function for discrete random variables. To illustrate this idea, lets consider an example:</p>
 <div class="proof example admonition" id="ex-pmf-double-coin-flip">
-<p class="admonition-title"><span class="caption-number">Example 5 </span> (PMF example)</p>
+<p class="admonition-title"><span class="caption-number">Example 6 </span> (PMF example)</p>
 <div class="example-content section" id="proof-content">
 <p>Let’s consider an experiment where we flip a coin 2 times. The sample space <span class="math notranslate nohighlight">\(\Omega\)</span> is given by:</p>
 <div class="math notranslate nohighlight">
 \[\Omega = \left\{(HH),(HT),(TH),(TT)\right\}\]</div>
 </div>
-</div><div class="section" id="bernoulli-random-variables">
-<h4>Bernoulli random variables<a class="headerlink" href="#bernoulli-random-variables" title="Permalink to this headline">¶</a></h4>
-<p>A Bernoulli random variable, the simplest random variable, models a coin-flip.
-Bernoulli random variable have two states: either 1 or 0. The probability of getting 1 is <span class="math notranslate nohighlight">\(p\)</span>, while the probability of getting a value of 0 is <span class="math notranslate nohighlight">\(1 − p\)</span>. Bernoulli random variables model many binary events: coin flips (H or T),
-binary bits (1 or 0), true or false, yes or no, present or absent, etc.</p>
+</div><div class="section" id="bernoulli-random-variable">
+<h3>Bernoulli random variable<a class="headerlink" href="#bernoulli-random-variable" title="Permalink to this headline">¶</a></h3>
+<p>A Bernoulli random variable, the simplest random variable, models a coin-flip or some other type of binary
+outcome. Bernoulli random variable have two states: either 1 or 0. The probability of getting 1 is <span class="math notranslate nohighlight">\(p\)</span>, while the probability of getting a value of 0 is <span class="math notranslate nohighlight">\(1 − p\)</span>. Bernoulli random variables model many binary events: coin flips (H or T), binary bits (1 or 0), true or false, yes or no, present or absent, etc.</p>
+<div class="proof definition admonition" id="defn-pmf-bernouli">
+<p class="admonition-title"><span class="caption-number">Definition 15 </span> (Bionomial Random Variable)</p>
+<div class="definition-content section" id="proof-content">
+<p>Let <span class="math notranslate nohighlight">\(X\)</span> be a Bernoulli random variable. Then, the probability mass function of <span class="math notranslate nohighlight">\(X\)</span> is:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}p_{X}(x) =
+\begin{cases}
+  p &amp; \text{if } x = 1 \\
+  1 - p &amp; \text{if } x = 0
+\end{cases}\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(0&lt;p&lt;1\)</span> is called the Bernoulli parameter. For a Bernoulli random variable <span class="math notranslate nohighlight">\(X(\Omega) \in [0,1]\)</span>.
+The expectation of a Bernoulli random variable <span class="math notranslate nohighlight">\(X\)</span> is given by:</p>
+<div class="math notranslate nohighlight">
+\[\mathbb{E}\left[X\right] = p\]</div>
+<p>while the variance <span class="math notranslate nohighlight">\(\text{Var}(X)\)</span> is given by:</p>
+<div class="math notranslate nohighlight">
+\[\text{Var}\left[X\right] = p(1-p)\]</div>
 </div>
+</div></div>
 <div class="section" id="binomial-random-variable">
-<h4>Binomial random variable<a class="headerlink" href="#binomial-random-variable" title="Permalink to this headline">¶</a></h4>
-<p>The binomial distribution is the probability of getting exactly <span class="math notranslate nohighlight">\(k\)</span> successes in <span class="math notranslate nohighlight">\(n\)</span> independent Bernoulli trials.
-For example, the probability of getting 4 heads in 6 coin tosses.</p>
+<h3>Binomial random variable<a class="headerlink" href="#binomial-random-variable" title="Permalink to this headline">¶</a></h3>
+<p>The binomial distribution is the probability of getting exactly <span class="math notranslate nohighlight">\(k\)</span> successes in <span class="math notranslate nohighlight">\(n\)</span> independent Bernoulli trials. For example, the probability of getting 4 heads in 6 coin tosses.</p>
 <div class="proof definition admonition" id="defn-pmf-binomial">
-<p class="admonition-title"><span class="caption-number">Definition 11 </span> (Bionomial Random Variable)</p>
+<p class="admonition-title"><span class="caption-number">Definition 16 </span> (Bionomial Random Variable)</p>
 <div class="definition-content section" id="proof-content">
 <p>Let <span class="math notranslate nohighlight">\(X\)</span> be a binomial random variable. The probability mass function for a binomial random variable is given by:</p>
 <div class="math notranslate nohighlight">
 \[p_{X}(k) = \binom{n}{k}p^{k}\left(1-p\right)^{n-k}\qquad{k=0,1,\dots,n}\]</div>
-<p>where <span class="math notranslate nohighlight">\(p\)</span> denotes the binomial parameter <span class="math notranslate nohighlight">\(0&lt;p&lt;1\)</span>, and <span class="math notranslate nohighlight">\(n\)</span> is the number of states.</p>
+<p>where <span class="math notranslate nohighlight">\(n\)</span> denotes the number of experiments, and the binomial parameter <span class="math notranslate nohighlight">\(0&lt;p&lt;1\)</span> is the probability
+that each experiment yeilds a successful result.</p>
+<p>For a Bernoulli random variable <span class="math notranslate nohighlight">\(X(\Omega) \in [0,1]^n\)</span>, i.e., <span class="math notranslate nohighlight">\(n\)</span> Bernoulli trials.
+The expectation of a binomial random variable <span class="math notranslate nohighlight">\(X\)</span> is given by:</p>
+<div class="math notranslate nohighlight">
+\[\mathbb{E}\left[X\right] = np\]</div>
+<p>while the variance <span class="math notranslate nohighlight">\(\text{Var}(X)\)</span> is given by:</p>
+<div class="math notranslate nohighlight">
+\[\text{Var}\left[X\right] = np(1-p)\]</div>
 </div>
 </div></div>
 <div class="section" id="geometric-random-variable">
-<h4>Geometric random variable<a class="headerlink" href="#geometric-random-variable" title="Permalink to this headline">¶</a></h4>
-<p>In some applications, we are interested in trying a binary experiment e.g., a coin flip until a specified outcome is obtained.
-The outcome of this type of experiment is governed by a geometric random variable;
-a geometric random variable describes the number of failures obtained before a final success.</p>
+<h3>Geometric random variable<a class="headerlink" href="#geometric-random-variable" title="Permalink to this headline">¶</a></h3>
+<p>We may be interested in doing a binary experiment, e.g., a coin flip until a specified outcome is obtained.
+A geometric random variable governs the outcome of this type of experiment;
+a geometric random variable gives the probability that the first occurrence of success requires <span class="math notranslate nohighlight">\(k\)</span> independent trials, each with success probability <span class="math notranslate nohighlight">\(p\)</span>. In other words,
+a geometric random variable describes the number of failures obtained before final success.</p>
 <div class="proof definition admonition" id="defn-pmf-geometric">
-<p class="admonition-title"><span class="caption-number">Definition 12 </span> (Geometric Random Variable)</p>
+<p class="admonition-title"><span class="caption-number">Definition 17 </span> (Geometric Random Variable)</p>
 <div class="definition-content section" id="proof-content">
 <p>Let <span class="math notranslate nohighlight">\(X\)</span> be a geometric random variable. The probability mass function for a geometric random variable is given by:</p>
 <div class="math notranslate nohighlight">
 \[p_{X}(k) = (1-p)^{(k-1)}p\qquad{k=1,2,\dots}\]</div>
-<p>where <span class="math notranslate nohighlight">\(p\)</span> denotes the geometric parameter <span class="math notranslate nohighlight">\(0&lt;p&lt;1\)</span>.</p>
+<p>where <span class="math notranslate nohighlight">\(p\)</span> denotes the geometric parameter <span class="math notranslate nohighlight">\(0&lt;p&lt;1\)</span>. The expectation of a geometric random variable <span class="math notranslate nohighlight">\(X\)</span> is given by:</p>
+<div class="math notranslate nohighlight">
+\[\mathbb{E}\left[X\right] = \frac{1}{p}\]</div>
+<p>while the variance <span class="math notranslate nohighlight">\(\text{Var}(X)\)</span> is given by:</p>
+<div class="math notranslate nohighlight">
+\[\text{Var}\left[X\right] = \frac{1-p}{p^2}\]</div>
 </div>
 </div></div>
+<div class="section" id="poisson-random-variable">
+<h3>Poisson random variable<a class="headerlink" href="#poisson-random-variable" title="Permalink to this headline">¶</a></h3>
+<p>The Poisson distribution is a discrete probability distribution that expresses the probability of a given number of events occurring during a fixed interval if these events occur with a known constant mean rate and independently of the time since the last event. In other words, a Poisson distribution can be used to estimate how likely it is that something will happen <code class="docutils literal notranslate"><span class="pre">X</span></code> number of times. For example, the number of car crashes in a city of a given size or the number of cheeseburgers sold at a fast-food chain on a Friday night.</p>
+<div class="proof definition admonition" id="defn-pmf-poisson">
+<p class="admonition-title"><span class="caption-number">Definition 18 </span> (Poisson Random Variable)</p>
+<div class="definition-content section" id="proof-content">
+<p>Let <span class="math notranslate nohighlight">\(X\)</span> be a Poisson random variable. The probability mass function for a Poisson random variable is given by:</p>
+<div class="math notranslate nohighlight">
+\[p_{X}(x) = \frac{\lambda^{x}}{x!}\exp\left(-\lambda\right)\]</div>
+<p>where <span class="math notranslate nohighlight">\(\lambda&gt;0\)</span> denotes the Poisson parameter, and <span class="math notranslate nohighlight">\(!\)</span> denotes the factorial function. The expectation of a Poisson random variable <span class="math notranslate nohighlight">\(X\)</span> is given by:</p>
+<div class="math notranslate nohighlight">
+\[\mathbb{E}\left[X\right] = \lambda\]</div>
+<p>while the variance <span class="math notranslate nohighlight">\(\text{Var}(X)\)</span> is given by:</p>
+<div class="math notranslate nohighlight">
+\[\text{Var}\left[X\right] = \lambda\]</div>
 </div>
+</div></div>
 </div>
 </div>
 
@@ -945,13 +1097,13 @@ a geometric random variable describes the number of failures obtained before a f
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Modeling and Analysis of Asset Price Dynamics and Market Mechanisms</p>
+            <p class="prev-next-title">Unit 2: Modeling and Analysis of Asset Price Dynamics</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="markowitz.html" title="next page">
+    <a class='right-next' id="next-link" href="stochastic-differential-equations.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Modern Portfolio Theory</p>
+        <p class="prev-next-title">Macroscopic Market Models</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

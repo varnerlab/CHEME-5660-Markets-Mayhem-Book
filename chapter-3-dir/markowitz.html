@@ -1,0 +1,577 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Modern Portfolio Theory &#8212; CHEME 5660</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet">
+  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Unit 4: Process Finance and Decision Making" href="../chapter-4-dir/chapter-4.html" />
+    <link rel="prev" title="Derivative Securities" href="contracts.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/cornell_seal_simple_black.svg" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">CHEME 5660</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../infrastructure.html">
+   CHEME 5660 Financial Data, Markets, and Mayhem for Scientists and Engineers
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../chapter-1-dir/chapter-1.html">
+   Unit 1. The Financial System
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chapter-1-dir/global.html">
+     The Global Finanical System
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chapter-1-dir/assets.html">
+     Financial Balances
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chapter-1-dir/markets.html">
+     Markets and Exchanges
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../chapter-2-dir/chapter-2.html">
+   Unit 2. Modeling and Simulation of Asset Price Dynamics
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chapter-2-dir/probability-random-variables.html">
+     Probability, Random Variables and Stochastic Processes
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chapter-2-dir/stochastic-differential-equations.html">
+     Macroscopic Market Models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chapter-2-dir/agent-based-market-models.html">
+     Microscopic Market Models
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="chapter-3-landing.html">
+   Unit 3. Risk, Portfolios, Derivatives, and Leverage
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="bonds.html">
+     Fixed Income Securities
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Single-Index-Models.html">
+     Equity Securities
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="contracts.html">
+     Derivative Securities
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Modern Portfolio Theory
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../chapter-4-dir/chapter-4.html">
+   Unit 4. Process Finance and Decision Making
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../References.html">
+   References
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/chapter-3-dir/markowitz.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/executablebooks/jupyter-book"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fchapter-3-dir/markowitz.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduction">
+   Introduction
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#markowitz-portfolio-allocation">
+   Markowitz Portfolio Allocation
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#portfolio-risk-and-reward">
+     Portfolio Risk and Reward
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#asset-correlation-in-a-portfolio">
+       Asset correlation in a portfolio
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#examples">
+       Examples
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#solution-approaches-for-markowitz-portfolio-allocation">
+   Solution approaches for Markowitz Portfolio Allocation
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#single-index-model-portfolios">
+     Single-index model portfolios
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#does-markowitz-portfolio-allocation-work">
+   Does Markowitz Portfolio Allocation work?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summary">
+   Summary
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Modern Portfolio Theory</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduction">
+   Introduction
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#markowitz-portfolio-allocation">
+   Markowitz Portfolio Allocation
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#portfolio-risk-and-reward">
+     Portfolio Risk and Reward
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#asset-correlation-in-a-portfolio">
+       Asset correlation in a portfolio
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#examples">
+       Examples
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#solution-approaches-for-markowitz-portfolio-allocation">
+   Solution approaches for Markowitz Portfolio Allocation
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#single-index-model-portfolios">
+     Single-index model portfolios
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#does-markowitz-portfolio-allocation-work">
+   Does Markowitz Portfolio Allocation work?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summary">
+   Summary
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="modern-portfolio-theory">
+<h1>Modern Portfolio Theory<a class="headerlink" href="#modern-portfolio-theory" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>Modern portfolio theory (MPT) is a practical method for selecting a collection of assets, e.g., stocks or bonds, to maximize the overall reward of the investor within an acceptable level of risk to the investor. Harry Markowitz, who developed the mathematical foundation of MPT <span id="id1">[<a class="reference internal" href="../References.html#id13" title="Harry Markowitz. Portfolio selection. The Journal of Finance, 7(1):77–91, 1952. URL: http://www.jstor.org/stable/2975974 (visited on 2022-04-12).">Mar52</a>]</span>, was later awarded a <a class="reference external" href="https://www.nobelprize.org/prizes/economic-sciences/1990/markowitz/facts/">Nobel Prize for his work in 1990</a>.</p>
+<p>The central theme of Markowitz is the balance between risk and reward, where the reward is measured as the <a class="reference external" href="https://www.investopedia.com/terms/r/return.asp">expected return</a> of a basket of assets (called a portfolio). In contrast, the risk of a portfolio is calculated as the standard deviation (or sometimes the variance) of the logarithmic return, otherwise known as <a class="reference external" href="https://en.wikipedia.org/wiki/Volatility_(finance)">volatility</a>, of the portfolio.</p>
+<p>The ideas of this chapter closely follow Part II (chapters 5 - 8) of Bodie, Kane, and Marcus <span id="id2">[<a class="reference internal" href="../References.html#id3" title="Zvi Bodie, Alex Kane, and Alan J Marcus. Investments. The McGraw-Hill/Irwin series in finance, insurance and real estate. McGraw-Hill/Irwin, New York, 9th ed edition, 2011. ISBN 9780073530703 (alk. paper).">BKM11</a>]</span>. In particular, in this chapter:</p>
+<ul class="simple">
+<li><p>We introduce <a class="reference internal" href="#content-references-markowitz"><span class="std std-ref">Markowitz Portfolio Allocation</span></a> for a portfolio of risky and risk-free assets</p></li>
+<li><p>We introduce <a class="reference internal" href="#content-references-markowitz-solution"><span class="std std-ref">Solution approaches for Markowitz Portfolio Allocation</span></a> and</p></li>
+<li><p>We we explore the question  <a class="reference internal" href="#content-references-markowitz-solution-test"><span class="std std-ref">Does Markowitz Portfolio Allocation work?</span></a></p></li>
+</ul>
+<hr class="docutils" />
+</div>
+<div class="section" id="markowitz-portfolio-allocation">
+<span id="content-references-markowitz"></span><h2>Markowitz Portfolio Allocation<a class="headerlink" href="#markowitz-portfolio-allocation" title="Permalink to this headline">¶</a></h2>
+<p>Markowitz portfolio allocation assumes that investors are risk-averse and rational.
+Thus, if an investor chooses between two portfolios that offer <em>the same expected return</em>, a rational risk-averse investor will choose the less risky portfolio. Further, a rational risk-averse investor will incur increased risk only if compensated for this risk by a higher expected return, the so-called high-risk, high-reward paradigm. On the other hand, an investor who wants higher expected returns must accept more risk. However, the acceptable trade-off between risk and reward will differ for each investor; what you may find as an acceptable risk versus reward is not the same for everyone. Thus, a rational risk-averse investor will not invest in a portfolio if a second portfolio exists with a more favorable risk-expected return profile.</p>
+<div class="section" id="portfolio-risk-and-reward">
+<h3>Portfolio Risk and Reward<a class="headerlink" href="#portfolio-risk-and-reward" title="Permalink to this headline">¶</a></h3>
+<p>To make these ideas more concrete, let’s develop expressions for the risk and reward of a
+portfolio. Denote the set of assets in a portfolio as <span class="math notranslate nohighlight">\(\mathcal{P}\)</span>; where <span class="math notranslate nohighlight">\(\vert\mathcal{P}\vert\)</span> denotes the number of assets in the portfolio set. Then, the expected return (reward) of the portfolio <span class="math notranslate nohighlight">\(\mathcal{P}\)</span> is defined as (<a class="reference internal" href="#defn-portfolio-return">Definition 32</a>):</p>
+<div class="proof definition admonition" id="defn-portfolio-return">
+<p class="admonition-title"><span class="caption-number">Definition 32 </span> (Expected Portfolio Return)</p>
+<div class="definition-content section" id="proof-content">
+<p>Denote the return of asset <span class="math notranslate nohighlight">\(i\)</span> in portfolio <span class="math notranslate nohighlight">\(\mathcal{P}\)</span> on some time basis <span class="math notranslate nohighlight">\(\mathcal{B}\)</span> as <span class="math notranslate nohighlight">\(r_{i}\)</span>. Then, the expected return of portfolio <span class="math notranslate nohighlight">\(\mathcal{P}\)</span> denoted by
+<span class="math notranslate nohighlight">\(\mathbb{E}\left(r_{\mathcal{P}}\right)\)</span> is:</p>
+<div class="math notranslate nohighlight">
+\[\mathbb{E}\left(r_{\mathcal{P}}\right) = \sum_{i\in\mathcal{P}}\omega_{i}\mathbb{E}\left(r_{i}\right)\]</div>
+<p>where <span class="math notranslate nohighlight">\(w_{i}\)</span> denotes the fraction of asset <span class="math notranslate nohighlight">\(i\)</span> in the portfolio <span class="math notranslate nohighlight">\(\mathcal{P}\)</span>, and
+<span class="math notranslate nohighlight">\(\mathbb{E}\left(r_{i}\right)\)</span> denotes the expected return of asset <span class="math notranslate nohighlight">\(i\)</span> on time basis <span class="math notranslate nohighlight">\(\mathcal{B}\)</span>.</p>
+</div>
+</div><p>while the variance (risk) of the portfolio is defined as (<a class="reference internal" href="#defn-portfolio-variance">Definition 33</a>):</p>
+<div class="proof definition admonition" id="defn-portfolio-variance">
+<p class="admonition-title"><span class="caption-number">Definition 33 </span> (Portfolio Variance)</p>
+<div class="definition-content section" id="proof-content">
+<p>Denote the return of asset <span class="math notranslate nohighlight">\(i\)</span> in portfolio <span class="math notranslate nohighlight">\(\mathcal{P}\)</span> for some time basis <span class="math notranslate nohighlight">\(\mathcal{B}\)</span>
+as <span class="math notranslate nohighlight">\(r_{i}\)</span>. Then, the variance of a portfolio <span class="math notranslate nohighlight">\(\mathcal{P}\)</span> is given by:</p>
+<div class="math notranslate nohighlight">
+\[\sigma_{\mathcal{P}}^2 = 
+\sum_{i\in\mathcal{P}}\sum_{j\in\mathcal{P}}w_{i}w_{j}
+\text{cov}\left(r_{i},r_{j}\right)\]</div>
+<p>where <span class="math notranslate nohighlight">\(w_{\star}\)</span> denotes the fraction of asset <span class="math notranslate nohighlight">\(\star\)</span> in the portfolio <span class="math notranslate nohighlight">\(\mathcal{P}\)</span>, and
+<span class="math notranslate nohighlight">\(\text{cov}\left(r_{i},r_{j}\right)\)</span> denotes the covariance between the return on assets <span class="math notranslate nohighlight">\(i\)</span> and <span class="math notranslate nohighlight">\(j\)</span>.
+The <span class="math notranslate nohighlight">\(\text{cov}\left(r_{i},r_{j}\right)\)</span>, which quantifies the relationship between assets <span class="math notranslate nohighlight">\(i\)</span> and <span class="math notranslate nohighlight">\(j\)</span>, is given by:</p>
+<div class="math notranslate nohighlight">
+\[\text{cov}\left(r_{i},r_{j}\right) = \sigma_{i}\sigma_{j}\rho_{ij}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\sigma_{\star}\)</span> denote the standard deviation of the return of asset <span class="math notranslate nohighlight">\(\star\)</span>, and
+<span class="math notranslate nohighlight">\(\rho_{ij}\)</span> denotes the correlation between assets <span class="math notranslate nohighlight">\(i\)</span> and <span class="math notranslate nohighlight">\(j\)</span>.</p>
+</div>
+</div><p>Now that we know how to compute a portfolio’s risk and expected reward let’s think about what we can control as a financial engineer. Of course, we cannot control the return or volatility of asset <span class="math notranslate nohighlight">\(i\)</span>; the market drives those. However, we can control which assets we include in the portfolio and the relative amount of each of these assets. Thus, how we choose which assets to include and their associated weights give insight into the type of investor we are. If we are a Markowitz investor, we minimize the risk required to obtain a specified reward.</p>
+<div class="section" id="asset-correlation-in-a-portfolio">
+<h4>Asset correlation in a portfolio<a class="headerlink" href="#asset-correlation-in-a-portfolio" title="Permalink to this headline">¶</a></h4>
+<p>An exciting feature of the variance of the portfolio return (<a class="reference internal" href="#defn-portfolio-variance">Definition 33</a>) is the dependence on the <a class="reference external" href="https://en.wikipedia.org/wiki/Correlation">correlation</a> between assets <span class="math notranslate nohighlight">\(i\)</span> and <span class="math notranslate nohighlight">\(j\)</span>, denoted by <span class="math notranslate nohighlight">\(\rho_{ij}\)</span>. To see why this is exciting, let’s consider the case in which portfolio <span class="math notranslate nohighlight">\(\mathcal{P}\)</span> consists of two two risky assets;
+<span class="math notranslate nohighlight">\(\vert\mathcal{P}\vert\)</span> = 2.
+Then, the variance of the portfolio return <span class="math notranslate nohighlight">\(\sigma_{\mathcal{P}}^{2}\)</span> is given by:</p>
+<div class="math notranslate nohighlight">
+\[\sigma_{\mathcal{P}}^2 = w_{1}^{2}\sigma_{1}^{2}+w_{2}^{2}\sigma_{2}^{2}+2w_{1}w_{2}\sigma_{1}
+\sigma_{2}\rho_{12}\]</div>
+<p>where <span class="math notranslate nohighlight">\(w_{\star}\)</span> is the fraction of asset <span class="math notranslate nohighlight">\(\star\)</span> in the portfolio, and
+<span class="math notranslate nohighlight">\(\sigma_{\star}\)</span> denotes the standard deviation of the return of asset <span class="math notranslate nohighlight">\(\star\)</span>.
+Thus, we can influence the overall portfolio variance by choosing the assets
+based upon their correlation.</p>
+<div class="proof observation admonition" id="observation-2">
+<p class="admonition-title"><span class="caption-number">Observation 3 </span> (The role of correlation in <span class="math notranslate nohighlight">\(\mathcal{P}\)</span>)</p>
+<div class="observation-content section" id="proof-content">
+<ul class="simple">
+<li><p><strong>Positive correlation</strong>: For two assets that are positively correlated <span class="math notranslate nohighlight">\(p_{12}&gt;{0}\)</span>,
+the variance of the return of the portfolio <span class="math notranslate nohighlight">\(\sigma_{\mathcal{P}}^{2}\)</span> is <em>greater</em> than to the variance of the assets alone (assuming <span class="math notranslate nohighlight">\(w_{\star}\geq{0}\)</span>).</p></li>
+<li><p><strong>Zero (or small) correlation</strong>: For two assets that are either perfectly uncorrelated <span class="math notranslate nohighlight">\(p_{12} = 0\)</span> (or have small correlation <span class="math notranslate nohighlight">\(p_{12}\ll{1}\)</span>),
+the variance of the return of the portfolio <span class="math notranslate nohighlight">\(\sigma_{\mathcal{P}}^{2}\)</span> is <em>similar to</em> the variance of the assets alone (assuming <span class="math notranslate nohighlight">\(w_{\star}\geq{0}\)</span>).</p></li>
+<li><p><strong>Negative correlation</strong>: For two assets that are negatively correlated <span class="math notranslate nohighlight">\(p_{12}&lt;0\)</span>, the variance of the return of the portfolio <span class="math notranslate nohighlight">\(\sigma_{\mathcal{P}}^{2}\)</span> is <em>less</em> than to the variance of the assets alone (assuming <span class="math notranslate nohighlight">\(w_{\star}\geq{0}\)</span>).</p></li>
+</ul>
+</div>
+</div><p>Further, the correlation does not appear in the expected portfolio return (<a class="reference internal" href="#defn-portfolio-return">Definition 32</a>); thus, by carefully selecting assets with low correlation, the overall risk of a portfolio can be reduced without impacting the return (all else being equal).</p>
+</div>
+<div class="section" id="examples">
+<h4>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>Example: Computation of the variance of a portofilio for different asset combinations</p></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="section" id="solution-approaches-for-markowitz-portfolio-allocation">
+<span id="content-references-markowitz-solution"></span><h2>Solution approaches for Markowitz Portfolio Allocation<a class="headerlink" href="#solution-approaches-for-markowitz-portfolio-allocation" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="single-index-model-portfolios">
+<h3>Single-index model portfolios<a class="headerlink" href="#single-index-model-portfolios" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+<div class="section" id="does-markowitz-portfolio-allocation-work">
+<span id="content-references-markowitz-solution-test"></span><h2>Does Markowitz Portfolio Allocation work?<a class="headerlink" href="#does-markowitz-portfolio-allocation-work" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./chapter-3-dir"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            
+                <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="contracts.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Derivative Securities</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../chapter-4-dir/chapter-4.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Unit 4: Process Finance and Decision Making</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            
+        </div>
+    </div>
+    <footer class="footer">
+  <p>
+    
+      By Varner and Woltornist<br/>
+    
+        &copy; Copyright 2022.<br/>
+  </p>
+</footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+
+  </body>
+</html>

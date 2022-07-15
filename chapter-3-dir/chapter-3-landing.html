@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Geometric Brownian Motion &#8212; CHEME 5660</title>
+    <title>Unit 3: The Fantastic but Dangerous World of Derivatives, Futures, Hedging and Leverage &#8212; CHEME 5660</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet">
   <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
@@ -52,12 +52,10 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="The Fantastic but Dangerous World of Derivatives, Futures, Hedging and Leverage" href="../chapter-3-dir/chapter-3.html" />
-    <link rel="prev" title="Random Walks and Brownian Motion" href="random-walks.html" />
+    <link rel="next" title="Fixed Income Securities" href="bonds.html" />
+    <link rel="prev" title="Microscopic Market Models" href="../chapter-2-dir/agent-based-market-models.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -96,20 +94,15 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="bd-toc-item active">
         <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../intro.html">
-   Financial Data, Markets, and Mayhem for Scientists and Engineers
+  <a class="reference internal" href="../infrastructure.html">
+   CHEME 5660 Financial Data, Markets, and Mayhem for Scientists and Engineers
   </a>
  </li>
 </ul>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../infrastructure.html">
-   Objectives, Polices and Resources
-  </a>
- </li>
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../chapter-1-dir/chapter-1.html">
-   Assets, Money, Markets and the Global Financial System
+   Unit 1. The Financial System
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
   <label for="toctree-checkbox-1">
@@ -118,35 +111,72 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
+    <a class="reference internal" href="../chapter-1-dir/global.html">
+     The Global Finanical System
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="../chapter-1-dir/assets.html">
-     Assets are Current and Future Cash Flows
+     Financial Balances
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../chapter-1-dir/markets.html">
-     Markets and Market Structures
+     Markets and Exchanges
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../chapter-2-dir/chapter-2.html">
+   Unit 2. Modeling and Simulation of Asset Price Dynamics
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chapter-2-dir/probability-random-variables.html">
+     Probability, Random Variables and Stochastic Processes
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../chapter-1-dir/global.html">
-     The Global Finanical System
+    <a class="reference internal" href="../chapter-2-dir/stochastic-differential-equations.html">
+     Macroscopic Market Models
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chapter-2-dir/agent-based-market-models.html">
+     Microscopic Market Models
     </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1 current active has-children">
-  <a class="reference internal" href="chapter-2.html">
-   The Dynamics of Assets and Markets
+  <a class="current reference internal" href="#">
+   Unit 3. Risk, Portfolios, Derivatives, and Leverage
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-  <label for="toctree-checkbox-2">
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul class="current">
+  <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="probability-random-variables.html">
-     Probability, Random Variables and Stochastic Processes
+    <a class="reference internal" href="bonds.html">
+     Fixed Income Securities
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="Single-Index-Models.html">
+     Equity Securities
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="contracts.html">
+     Derivative Securities
     </a>
    </li>
    <li class="toctree-l2">
@@ -154,43 +184,11 @@ const thebe_selector_output = ".output, .cell_output"
      Modern Portfolio Theory
     </a>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="random-walks.html">
-     Random Walks and Brownian Motion
-    </a>
-   </li>
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
-     Geometric Brownian Motion
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../chapter-3-dir/chapter-3.html">
-   Derivatives, Futures, and Leverage
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
-  <label for="toctree-checkbox-3">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../chapter-3-dir/contracts.html">
-     American and European style option contracts
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../chapter-3-dir/binomial-pricing-model.html">
-     Example: Calculating the Price of an AMD put option
-    </a>
-   </li>
   </ul>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../chapter-4-dir/chapter-4.html">
-   Process Finance and Decision Making
+   Unit 4. Process Finance and Decision Making
   </a>
  </li>
  <li class="toctree-l1">
@@ -239,7 +237,7 @@ const thebe_selector_output = ".output, .cell_output"
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/chapter-2-dir/geometric-brownian-motion.md"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/chapter-3-dir/chapter-3-landing.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
@@ -259,7 +257,7 @@ const thebe_selector_output = ".output, .cell_output"
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fchapter-2-dir/geometric-brownian-motion.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fchapter-3-dir/chapter-3-landing.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -280,6 +278,19 @@ const thebe_selector_output = ".output, .cell_output"
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summary">
+   Summary
+  </a>
+ </li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -287,23 +298,45 @@ const thebe_selector_output = ".output, .cell_output"
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Geometric Brownian Motion</h1>
+                <h1>Unit 3: The Fantastic but Dangerous World of Derivatives, Futures, Hedging and Leverage</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summary">
+   Summary
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
             
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="geometric-brownian-motion">
-<h1>Geometric Brownian Motion<a class="headerlink" href="#geometric-brownian-motion" title="Permalink to this headline">¶</a></h1>
-<p>Unfortunately, Eqn. <a class="reference internal" href="random-walks.html#equation-eq-sde-bm">(14)</a> has a critical flaw, namely, it’s solution can admit negative values. Thus, as a model for stock price (or the price of another risky asset), it is not widely used. Instead, we often model asset price using a geometric brownian motion (gbm) model:</p>
-<div class="math notranslate nohighlight" id="equation-eq-sde-gbm">
-<span class="eqno">(17)<a class="headerlink" href="#equation-eq-sde-gbm" title="Permalink to this equation">¶</a></span>\[\frac{dS\left(t\right)}{S(t)} = \mu{dt}+\sigma{dW(t)}\]</div>
-<p>The use of geomtric Brownian motion as a model in mathematical finance is primary due to the work of Samuleson in the 1960s.</p>
+  <div class="tex2jax_ignore mathjax_ignore section" id="unit-3-the-fantastic-but-dangerous-world-of-derivatives-futures-hedging-and-leverage">
+<h1>Unit 3: The Fantastic but Dangerous World of Derivatives, Futures, Hedging and Leverage<a class="headerlink" href="#unit-3-the-fantastic-but-dangerous-world-of-derivatives-futures-hedging-and-leverage" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+<p>Futures contracts, much like options, are agreements between a buyer and a seller to buy (or sell) an asset on a specific date in the future. However, unlike options, futures contracts <em>require</em> the buyer to purchase the underlying asset and the contract seller to sell the asset on a specific future date unless the contract holder’s position is closed before the contract’s expiration date. Future contracts can control many underlying assets, agricultural products, currencies, and equities.
+Futures contracts are traded on an exchange; the largest exchange on which futures contracts are traded is the <a class="reference external" href="https://www.cmegroup.com">Chicago Board of Trade (CBOT)</a>. Worldwide, in 2021, there were about 29 billion futures contracts traded annually, with an approxmate daily volume of 11 million contracts traded on the CBOE.</p>
+<p>At the end of this chapter, students should be able to:</p>
+<ul class="simple">
+<li><p>Stuff goes here.</p></li>
+<li><p>Stuff goes here.</p></li>
+<li><p>Stuff goes here.</p></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+</div>
 </div>
 
     <script type="text/x-thebe-config">
@@ -319,7 +352,7 @@ const thebe_selector_output = ".output, .cell_output"
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./chapter-2-dir"
+            path: "./chapter-3-dir"
         },
         predefinedOutput: true
     }
@@ -331,17 +364,17 @@ const thebe_selector_output = ".output, .cell_output"
             
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="random-walks.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="../chapter-2-dir/agent-based-market-models.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Random Walks and Brownian Motion</p>
+            <p class="prev-next-title">Microscopic Market Models</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="../chapter-3-dir/chapter-3.html" title="next page">
+    <a class='right-next' id="next-link" href="bonds.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">The Fantastic but Dangerous World of Derivatives, Futures, Hedging and Leverage</p>
+        <p class="prev-next-title">Fixed Income Securities</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
