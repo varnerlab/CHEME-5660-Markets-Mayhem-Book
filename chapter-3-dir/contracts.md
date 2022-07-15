@@ -40,7 +40,7 @@ There are two types of options contracts, a [call contract](https://www.investop
 ### Call contracts
 A [call contract](https://www.investopedia.com/terms/c/calloption.asp) gives the option contract buyer the right, but not the obligation, to purchase 100 shares of `XYZ` (per contract) from the seller at a particular price per share (called the strike price $K$) at some point in the future (called the expiration date). In the case of [American](https://www.investopedia.com/terms/a/americanoption.asp) style [call contracts](https://www.investopedia.com/terms/c/calloption.asp), the option buyer can exercise their right at any point between when the contract was purchased and the expiration date. On the other hand, buyers of [European](https://www.investopedia.com/terms/e/europeanoption.asp) style contracts can only exercise their right on the expiration date. The right to purchase shares of `XYZ` at $K$ USD/share is not free; the option buyer pays a premium per contract to the option seller for this right. 
 
-The profit that a call contract buyer experiences, denoted by $V$, depends upon the difference between the share price of `XYZ` and the strike price $K$ of the contract:
+The profit that a call contract buyer experiences, denoted by $V_{c}$, depends upon the difference between the share price of `XYZ` and the strike price $K$ of the contract (contract payoff) and how much the call contract costs:
 
 ````{prf:definition} Call Contract Payoff for Contract Holder
 :label: defn-PL-call-contract
@@ -63,6 +63,26 @@ where $P_{c}$ denotes the profit (or loss) per contract per share of `XYZ`.
 
 ````
 
+````{prf:example} AMD Call Contract 1 DTE
+:label: call-contract-expiration
+
+We are interested in buying a call contract for [AMD](https://www.google.com/search?client=safari&rls=en&sxsrf=ALiCzsbTZ3IEA10C9Rgs6Lb7YLN8LAILVQ:1657882036543&q=NASDAQ:+AMD&stick=H4sIAAAAAAAAAONgecRoyi3w8sc9YSmdSWtOXmNU4-IKzsgvd80rySypFJLgYoOy-KR4uLj0c_UNzKuy4ytzeRaxcvs5Brs4BlopOPq6AACfr0n4SAAAAA&sa=X&ved=2ahUKEwjV_ffu2_r4AhUxJUQIHcXZAPkQsRV6BAhVEAM&biw=1594&bih=921&dpr=2). The current share price of `AMD` is \$78.94 per share (around 3:30 PM ITH time on Th 7/14), and we belive the shares will close higher before contract expiration.
+
+Compute the payoff and profit/loss diagram at expiration for a July 15 `AMD` call contract with a strike $K$ = 80.0 USD/share. The market price for the July 15 `AMD` call contract is $\mathcal{P}$ = 0.36 USD/share.
+
+
+```{figure} ./figs/Fig-AMD-Call-Jul15-1DTE.pdf
+---
+height: 420px
+name: fig-call-contract-payout-schematic
+---
+Payoff and profit diagrams for an AMD call option.   
+```
+
+Example source: [live Pluto notebook](https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks) or [static HTML](https://htmlview.glitch.me/?https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks/blob/main/pluto-notebooks/html/Example-CallPutContract-Payoff.jl.html)
+
+````
+
 ### Put contracts
 A [put contract](https://www.investopedia.com/terms/p/putoption.asp) gives the option contract buyer the right, but not the obligation, to sell 100 shares of `XYZ` (per contract) to the option seller at the strike price $K$, either by or on the expiration date. In the case of [American](https://www.investopedia.com/terms/a/americanoption.asp) style [put contracts](https://www.investopedia.com/terms/p/putoption.asp), the option buyer can exercise their right at any point between when the contract is purchased and the expiration date. On the other hand, buyers of [European](https://www.investopedia.com/terms/e/europeanoption.asp) style contracts can only exercise their right on the expiration date. The right to sell shares of `XYZ` at $K$ USD/share is not free; the option buyer pays a premium per contract to the option seller for this right. 
 
@@ -71,15 +91,43 @@ The profit that a put contract buyer experiences, denoted by $V_{p}$, depends up
 ````{prf:definition} Fractional return
 :label: defn-PL-put-contract
 
-One put contract was purchased for the underlying stock `XYZ` for $\mathcal{P}$ USD/contract. Let the strike price of the put contract be $K$ USD/share, and the share price of `XYZ` be $S$ USD/share. Then, at expiration, the put contract has
-value $V_{p}$:
+An investor purchases a put contract for the underlying stock `XYZ` for $\mathcal{P}$ USD/contract, where the contract controls 100 shares of `XYZ`. 
+
+Let the strike price of the put contract be $K$ USD/share, and the share price of `XYZ` be $S$ USD/share. Then, at expiration, the put contract has the payoff $P_{p}$:
 
 ```{math}
-V_{p} = \max\left(K - S,0\right) - \mathcal{P}
+P_{p} = \max\left(K - S,0\right)
 ```
+
+and a profit (loss) of:
+
+```{math}
+V_{p} = P_{p} -  \mathcal{P}
+```
+
+where $V_{p}$ denotes the profit (or loss) per contract per share of `XYZ`.
 
 ````
 
+````{prf:example} AMD Put Contract 1 DTE
+:label: put-contract-expiration
+
+We are interested in buying a put contract for [AMD](https://www.google.com/search?client=safari&rls=en&sxsrf=ALiCzsbTZ3IEA10C9Rgs6Lb7YLN8LAILVQ:1657882036543&q=NASDAQ:+AMD&stick=H4sIAAAAAAAAAONgecRoyi3w8sc9YSmdSWtOXmNU4-IKzsgvd80rySypFJLgYoOy-KR4uLj0c_UNzKuy4ytzeRaxcvs5Brs4BlopOPq6AACfr0n4SAAAAA&sa=X&ved=2ahUKEwjV_ffu2_r4AhUxJUQIHcXZAPkQsRV6BAhVEAM&biw=1594&bih=921&dpr=2). The current share price of `AMD` is \$78.94 per share (around 3:30 PM ITH time on Th 7/14), and we belive the shares will close lower before contract expiration.
+
+Compute the payoff and profit/loss diagram at expiration for a July 15 `AMD` put contract with a strike $K$ = 77.0 USD/share. The market price for the July 15 `AMD` put contract is $\mathcal{P}$ = 0.50 USD/share.
+
+
+```{figure} ./figs/Fig-AMD-Put-Jul15-1DTE.pdf
+---
+height: 420px
+name: fig-put-contract-payout-schematic
+---
+Payoff and profit diagrams for an AMD put option.   
+```
+
+Example source: [live Pluto notebook](https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks) or [static HTML](https://htmlview.glitch.me/?https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks/blob/main/pluto-notebooks/html/Example-CallPutContract-Payoff.jl.html)
+
+````
 
 (content:references:option-pricing-algorithms)=
 ## Options Pricing Algorithms
