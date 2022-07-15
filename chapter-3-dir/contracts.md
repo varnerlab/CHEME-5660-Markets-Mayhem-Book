@@ -63,6 +63,14 @@ where $P_{c}$ denotes the profit (or loss) per contract per share of `XYZ`.
 
 ````
 
+#### Payoff, Profit and Loss for Call contracts
+The payoff (and profit/loss) diagram for a call contract at expiration for [AMD](https://www.google.com/search?client=safari&rls=en&sxsrf=ALiCzsbTZ3IEA10C9Rgs6Lb7YLN8LAILVQ:1657882036543&q=NASDAQ:+AMD&stick=H4sIAAAAAAAAAONgecRoyi3w8sc9YSmdSWtOXmNU4-IKzsgvd80rySypFJLgYoOy-KR4uLj0c_UNzKuy4ytzeRaxcvs5Brs4BlopOPq6AACfr0n4SAAAAA&sa=X&ved=2ahUKEwjV_ffu2_r4AhUxJUQIHcXZAPkQsRV6BAhVEAM&biw=1594&bih=921&dpr=2) is shown in 
+{prf:ref}`call-contract-expiration`. The _buyer_ of the [AMD](https://www.google.com/search?client=safari&rls=en&sxsrf=ALiCzsbTZ3IEA10C9Rgs6Lb7YLN8LAILVQ:1657882036543&q=NASDAQ:+AMD&stick=H4sIAAAAAAAAAONgecRoyi3w8sc9YSmdSWtOXmNU4-IKzsgvd80rySypFJLgYoOy-KR4uLj0c_UNzKuy4ytzeRaxcvs5Brs4BlopOPq6AACfr0n4SAAAAA&sa=X&ved=2ahUKEwjV_ffu2_r4AhUxJUQIHcXZAPkQsRV6BAhVEAM&biw=1594&bih=921&dpr=2) call contract experiences (at expiration): 
+
+* Loss $S<K+\mathcal{P}$: the share price is _less than_ the strike price plus the premium paid per share for the contract. 
+* Breakeven $S=K+\mathcal{P}$: the share price _equals_ the strike price plus the premium paid per share for the contract. 
+* Profit $S>K+\mathcal{P}$: the share price is _greater than_ the strike price plus the premium paid per share for the contract. 
+
 ````{prf:example} AMD Call Contract 1 DTE
 :label: call-contract-expiration
 
@@ -83,12 +91,16 @@ Example source: [live Pluto notebook](https://github.com/varnerlab/CHEME-5660-Ma
 
 ````
 
+The business case for buying (or selling) a call contract:
+* __Buyer__: From the buyer's perspective, call contracts allow an investor to benefit from the price movement of `XYZ` to the upside _without_ purchasing `XYZ`. Further, call options (again from the buyer's perspective) have _limited downside risk_, i.e., the maximum amount that the holder of the call option can lose is the premium paid for the option. Finally, call options are a mechanism to purchase shares of `XYZ` at the strike price of $K$ instead of the market price of $S$. 
+* __Seller__: From the seller's perspective, the main objective of selling a call contract is to collect the premium $\mathcal{P}$. Call contracts also allow the seller to benefit from the price movement of `XYZ` to the downside _without_ purchasing `XYZ`. However, for a seller, call options have _unlimted upside_ risk; thus, call options are often only sold by investors who already own the required number of shares of `XYZ` (known as a [covered call position](https://www.investopedia.com/terms/c/coveredcall.asp)). Finally, call options offer the seller the opportunity to sell shares of `XYZ` at the strike price of $K$ instead of the market price of $S$.
+
 ### Put contracts
 A [put contract](https://www.investopedia.com/terms/p/putoption.asp) gives the option contract buyer the right, but not the obligation, to sell 100 shares of `XYZ` (per contract) to the option seller at the strike price $K$, either by or on the expiration date. In the case of [American](https://www.investopedia.com/terms/a/americanoption.asp) style [put contracts](https://www.investopedia.com/terms/p/putoption.asp), the option buyer can exercise their right at any point between when the contract is purchased and the expiration date. On the other hand, buyers of [European](https://www.investopedia.com/terms/e/europeanoption.asp) style contracts can only exercise their right on the expiration date. The right to sell shares of `XYZ` at $K$ USD/share is not free; the option buyer pays a premium per contract to the option seller for this right. 
 
 The profit that a put contract buyer experiences, denoted by $V_{p}$, depends upon the difference between the share price of `XYZ` and the strike price $K$ of the contract:
 
-````{prf:definition} Fractional return
+````{prf:definition} Put Contract Payoff for Contract Holder
 :label: defn-PL-put-contract
 
 An investor purchases a put contract for the underlying stock `XYZ` for $\mathcal{P}$ USD/contract, where the contract controls 100 shares of `XYZ`. 
@@ -109,6 +121,14 @@ where $V_{p}$ denotes the profit (or loss) per contract per share of `XYZ`.
 
 ````
 
+#### Payoff, Profit and Loss for Put contracts
+The payoff (and profit/loss) diagram for a put contract at expiration for [AMD](https://www.google.com/search?client=safari&rls=en&sxsrf=ALiCzsbTZ3IEA10C9Rgs6Lb7YLN8LAILVQ:1657882036543&q=NASDAQ:+AMD&stick=H4sIAAAAAAAAAONgecRoyi3w8sc9YSmdSWtOXmNU4-IKzsgvd80rySypFJLgYoOy-KR4uLj0c_UNzKuy4ytzeRaxcvs5Brs4BlopOPq6AACfr0n4SAAAAA&sa=X&ved=2ahUKEwjV_ffu2_r4AhUxJUQIHcXZAPkQsRV6BAhVEAM&biw=1594&bih=921&dpr=2) is shown in 
+{prf:ref}`put-contract-expiration`. The _buyer_ of the [AMD](https://www.google.com/search?client=safari&rls=en&sxsrf=ALiCzsbTZ3IEA10C9Rgs6Lb7YLN8LAILVQ:1657882036543&q=NASDAQ:+AMD&stick=H4sIAAAAAAAAAONgecRoyi3w8sc9YSmdSWtOXmNU4-IKzsgvd80rySypFJLgYoOy-KR4uLj0c_UNzKuy4ytzeRaxcvs5Brs4BlopOPq6AACfr0n4SAAAAA&sa=X&ved=2ahUKEwjV_ffu2_r4AhUxJUQIHcXZAPkQsRV6BAhVEAM&biw=1594&bih=921&dpr=2) put contract experiences (at expiration): 
+
+* Loss $S>K+\mathcal{P}$: the share price is _greater than_ the strike price plus the premium paid per share for the contract. 
+* Breakeven $S=K+\mathcal{P}$: the share price _equals_ the strike price plus the premium paid per share for the contract. 
+* Profit $S<K+\mathcal{P}$: the share price is _less than_ the strike price plus the premium paid per share for the contract. 
+
 ````{prf:example} AMD Put Contract 1 DTE
 :label: put-contract-expiration
 
@@ -128,6 +148,11 @@ Payoff and profit diagrams for an AMD put option.
 Example source: [live Pluto notebook](https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks) or [static HTML](https://htmlview.glitch.me/?https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks/blob/main/pluto-notebooks/html/Example-CallPutContract-Payoff.jl.html)
 
 ````
+
+The business case for buying (or selling) put contracts:
+* __Buyer__: From the buyer's perspective, put contracts allow an investor to benefit from the price movement of `XYZ` to the downside _without_ purchasing `XYZ`. Further, put options (again from the buyer's perspective) have _limited downside risk_, i.e., the maximum amount that the holder of the put option can lose is the premium paid for the option. Finally, put options are a mechanism to sell shares of `XYZ` at the strike price of $K$ instead of the market price of $S$. 
+* __Seller__: From the seller's perspective, the main objective of selling a put contract is to collect the premium $\mathcal{P}$. Put contracts also allow the seller to benefit from the price movement of `XYZ` to the upside _without_ purchasing `XYZ`. However, for a seller, put options have _unlimted downside_ risk; thus, put options are often only sold by investors who have set aside the required capital to purchase
+the required number of shares of `XYZ` (known as a [cash secured put position](https://www.fidelity.com/learning-center/investment-products/options/know-about-cash-covered-puts)). Finally, put options offer the seller the opportunity to buy shares of `XYZ` at the strike price of $K$ instead of the market price of $S$.
 
 (content:references:option-pricing-algorithms)=
 ## Options Pricing Algorithms
