@@ -32,17 +32,23 @@ In this lecture, we will:
 height: 280px
 name: fig-options-contract-grid
 ---
-The rights and responsibilities of the buyer and seller of put and call option contracts.  
+The rights and responsibilities of the buyer and seller of [American](https://www.investopedia.com/terms/a/americanoption.asp)
+style put and call option contracts.  
 ```
 
-There are two types of options contracts, a [call contract](https://www.investopedia.com/terms/c/calloption.asp) and a [put contract](https://www.investopedia.com/terms/p/putoption.asp), and many different styles of options contracts. However, we'll consider only two styles, [American](https://www.investopedia.com/terms/a/americanoption.asp) and [European](https://www.investopedia.com/terms/e/europeanoption.asp) style options contracts. The roles and responsibilities of each contract type, and the respectrive role of the buyer and seller, are shown in ({numref}`fig-options-contract-grid`).
+The types, rights and responsibilities of option contracts are shown in ({numref}`fig-options-contract-grid`).
+There are two types of options contracts, a [call contract](https://www.investopedia.com/terms/c/calloption.asp) and a [put contract](https://www.investopedia.com/terms/p/putoption.asp), and many different styles of options contracts. However, we'll consider only two styles, [American](https://www.investopedia.com/terms/a/americanoption.asp) and [European](https://www.investopedia.com/terms/e/europeanoption.asp) style contracts.  Option contract buyers, regardless of the type of contract, pay a premium to have the right (but not the obligation) to act (buy or sell shares of `XYZ`) between when the contract was purchased and expiration; [American](https://www.investopedia.com/terms/a/americanoption.asp) and [European](https://www.investopedia.com/terms/e/europeanoption.asp) style contract buyers can act at anytime before expiration, while [European](https://www.investopedia.com/terms/e/europeanoption.asp) style buyers can oonly act at expiration.  On the other hand, the option seller, in exchange for the premium paid by the buyer, _must_ buy or sell shares of `XYZ` in response to the choice of the contract buyer. 
+
+Like bonds, investors can profit from buying or selling options contracts and holding them until expiration or by trading the contract in the market. Thus, there are two ways to think about option contracts, at expiration or as a stand-alone tradable instrument. 
+
+Let's begin the discussion of options contracts by explaining their behavior at expiration.     
 
 ### Call contracts
 A [call contract](https://www.investopedia.com/terms/c/calloption.asp) gives the option contract buyer the right, but not the obligation, to purchase 100 shares of `XYZ` (per contract) from the seller at a particular price per share (called the strike price $K$) at some point in the future (called the expiration date). In the case of [American](https://www.investopedia.com/terms/a/americanoption.asp) style [call contracts](https://www.investopedia.com/terms/c/calloption.asp), the option buyer can exercise their right at any point between when the contract was purchased and the expiration date. On the other hand, buyers of [European](https://www.investopedia.com/terms/e/europeanoption.asp) style contracts can only exercise their right on the expiration date. The right to purchase shares of `XYZ` at $K$ USD/share is not free; the option buyer pays a premium per contract to the option seller for this right. 
 
 The profit that a call contract buyer experiences, denoted by $V_{c}$, depends upon the difference between the share price of `XYZ` and the strike price $K$ of the contract (contract payoff) and how much the call contract costs:
 
-````{prf:definition} Call Contract Payoff for Contract Holder
+````{prf:definition} Call Contract Payoff and Profit
 :label: defn-PL-call-contract
 
 An investor purchases a call contract for the underlying stock `XYZ` for $\mathcal{P}$ USD/contract, where the contract controls 100 shares of `XYZ`. 
@@ -53,16 +59,16 @@ Let the strike price of the call contract be $K$ USD/share, and the share price 
 V_{c} = \max\left(S-K,0\right)
 ```
 
-and a profit (loss) of:
+and a profit (loss) for the buyer of:
 
 ```{math}
 P_{c} = V_{c} -  \mathcal{P}
 ```
 
-where $P_{c}$ denotes the profit (or loss) per contract per share of `XYZ`. The contract seller experiences a profit (or loss) of $\bar{V}_{c}$ where
+where $P_{c}$ denotes the profit (or loss) per contract per share of `XYZ`. The contract seller experiences a profit (or loss) of $\bar{P}_{c}$ where
 
 ```{math}
-V_{c}+\bar{V}_{c} = 0
+P_{c}+\bar{P}_{c} = 0
 ```
 
 ````
@@ -88,7 +94,7 @@ Compute the payoff and profit/loss diagram at expiration for a July 15 `AMD` cal
 height: 420px
 name: fig-call-contract-payout-schematic
 ---
-Payoff and profit diagrams for an AMD call option.   
+Payoff and profit diagrams for an AMD call option.  Solid lines denote the payout (profit) from the perspective of the contract buyer. Dashed lines denote the payout (profit) from the perspective of the contract seller
 ```
 
 source: [live Pluto notebook](https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks) or [static HTML](https://htmlview.glitch.me/?https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks/blob/main/pluto-notebooks/html/Example-CallPutContract-Payoff.jl.html)
@@ -115,17 +121,17 @@ Let the strike price of the put contract be $K$ USD/share, and the share price o
 P_{p} = \max\left(K - S,0\right)
 ```
 
-and a profit (loss) of:
+and a profit (loss) for the buyer of:
 
 ```{math}
 V_{p} = P_{p} -  \mathcal{P}
 ```
 
 where $V_{p}$ denotes the profit (or loss) per contract per share of `XYZ`. 
-The contract seller experiences a profit (or loss) of $\bar{V}_{p}$ where
+The contract seller experiences a profit (or loss) of $\bar{P}_{p}$ where
 
 ```{math}
-V_{p}+\bar{V}_{p} = 0
+P_{p}+\bar{P}_{p} = 0
 ```
 
 ````
@@ -151,7 +157,7 @@ Compute the payoff and profit/loss diagram at expiration for a July 15 `AMD` put
 height: 420px
 name: fig-put-contract-payout-schematic
 ---
-Payoff and profit diagrams for an AMD put option.   
+Payoff and profit diagrams for an AMD put option. Solid lines denote the payout (profit) from the perspective of the contract buyer. Dashed lines denote the payout (profit) from the perspective of the contract seller.
 ```
 
 source: [live Pluto notebook](https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks) or [static HTML](https://htmlview.glitch.me/?https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks/blob/main/pluto-notebooks/html/Example-CallPutContract-Payoff.jl.html)
