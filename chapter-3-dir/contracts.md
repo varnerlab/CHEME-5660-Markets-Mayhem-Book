@@ -59,7 +59,11 @@ and a profit (loss) of:
 P_{c} = V_{c} -  \mathcal{P}
 ```
 
-where $P_{c}$ denotes the profit (or loss) per contract per share of `XYZ`.
+where $P_{c}$ denotes the profit (or loss) per contract per share of `XYZ`. The contract seller experiences a profit (or loss) of $\bar{V}_{c}$ where
+
+```{math}
+V_{c}+\bar{V}_{c} = 0
+```
 
 ````
 
@@ -71,7 +75,7 @@ The payoff (and profit/loss) diagram for a call contract at expiration for [AMD]
 * Breakeven $S=K+\mathcal{P}$: the share price _equals_ the strike price plus the premium paid per share for the contract. 
 * Profit $S>K+\mathcal{P}$: the share price is _greater than_ the strike price plus the premium paid per share for the contract. 
 
-````{prf:example} AMD Call Contract 1 DTE
+````{prf:example} AMD Call Contract
 :label: call-contract-expiration
 
 We are interested in buying a call contract for [AMD](https://www.google.com/search?client=safari&rls=en&sxsrf=ALiCzsbTZ3IEA10C9Rgs6Lb7YLN8LAILVQ:1657882036543&q=NASDAQ:+AMD&stick=H4sIAAAAAAAAAONgecRoyi3w8sc9YSmdSWtOXmNU4-IKzsgvd80rySypFJLgYoOy-KR4uLj0c_UNzKuy4ytzeRaxcvs5Brs4BlopOPq6AACfr0n4SAAAAA&sa=X&ved=2ahUKEwjV_ffu2_r4AhUxJUQIHcXZAPkQsRV6BAhVEAM&biw=1594&bih=921&dpr=2). The current share price of `AMD` is \$78.94 per share (around 3:30 PM ITH time on Th 7/14), and we belive the shares will close higher before contract expiration.
@@ -87,7 +91,7 @@ name: fig-call-contract-payout-schematic
 Payoff and profit diagrams for an AMD call option.   
 ```
 
-Example source: [live Pluto notebook](https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks) or [static HTML](https://htmlview.glitch.me/?https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks/blob/main/pluto-notebooks/html/Example-CallPutContract-Payoff.jl.html)
+source: [live Pluto notebook](https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks) or [static HTML](https://htmlview.glitch.me/?https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks/blob/main/pluto-notebooks/html/Example-CallPutContract-Payoff.jl.html)
 
 ````
 
@@ -100,7 +104,7 @@ A [put contract](https://www.investopedia.com/terms/p/putoption.asp) gives the o
 
 The profit that a put contract buyer experiences, denoted by $V_{p}$, depends upon the difference between the share price of `XYZ` and the strike price $K$ of the contract:
 
-````{prf:definition} Put Contract Payoff for Contract Holder
+````{prf:definition} Put Contract Payoff and Profit
 :label: defn-PL-put-contract
 
 An investor purchases a put contract for the underlying stock `XYZ` for $\mathcal{P}$ USD/contract, where the contract controls 100 shares of `XYZ`. 
@@ -117,7 +121,12 @@ and a profit (loss) of:
 V_{p} = P_{p} -  \mathcal{P}
 ```
 
-where $V_{p}$ denotes the profit (or loss) per contract per share of `XYZ`.
+where $V_{p}$ denotes the profit (or loss) per contract per share of `XYZ`. 
+The contract seller experiences a profit (or loss) of $\bar{V}_{p}$ where
+
+```{math}
+V_{p}+\bar{V}_{p} = 0
+```
 
 ````
 
@@ -145,7 +154,7 @@ name: fig-put-contract-payout-schematic
 Payoff and profit diagrams for an AMD put option.   
 ```
 
-Example source: [live Pluto notebook](https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks) or [static HTML](https://htmlview.glitch.me/?https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks/blob/main/pluto-notebooks/html/Example-CallPutContract-Payoff.jl.html)
+source: [live Pluto notebook](https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks) or [static HTML](https://htmlview.glitch.me/?https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks/blob/main/pluto-notebooks/html/Example-CallPutContract-Payoff.jl.html)
 
 ````
 
