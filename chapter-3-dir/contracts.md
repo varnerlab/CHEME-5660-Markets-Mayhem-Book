@@ -174,8 +174,16 @@ the required number of shares of `XYZ` (known as a [cash secured put position](h
 Call and put contracts can be combined to develop composite contract structures with interesting payoff diagrams. In this section, we'll limit our focus to contracts that have the same underlying asset and the same expiration date. However, for those interested in more advanced cases, e.g., combining contracts with different expiration dates, check out [calendar spreads](https://www.investopedia.com/terms/c/calendarspread.asp). 
 
 #### Vertical spreads
-#### Strangles and Straddles
+[Vertical spreads](https://www.investopedia.com/terms/v/verticalspread.asp) are constructed by simultaneously buying and selling the _same type of option_, with the same expiration date but with different strike prices. Vertical spreads are directional strategies, i.e., the investor believes the underlying asset `XYZ` share price will either increase or decrease (depending upon the type of vertical spread).
+
+#### Straddles
+A [strangle](https://www.investopedia.com/terms/s/straddle.asp) position is constructed by simultaneaously buying and selling a put and a call optionm, with the same expiration date and the same strike prices. 
+
+#### Strangles
+A [strangle](https://www.investopedia.com/terms/s/strangle.asp) position is contructed by simultaneously buying and selling a put and a call option, with the same experiation but with different strike pricess.
+
 #### Iron condor
+An [iron condor](https://www.investopedia.com/terms/i/ironcondor.asp) position is constructed by selling a put and a call options, and simulataneously buying a call and put options, where all legs have different strike prices. 
 
 (content:references:option-pricing-algorithms)=
 ## Options Pricing Algorithms
