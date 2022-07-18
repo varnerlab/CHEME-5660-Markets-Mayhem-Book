@@ -175,7 +175,9 @@ the required number of shares of `XYZ` (known as a [cash secured put position](h
 Call and put contracts can be combined to develop composite contract structures with interesting payoff diagrams. In this section, we'll limit our focus to contracts that have the same underlying asset and the same expiration date. However, for those interested in more advanced cases, e.g., combining contracts with different expiration dates, check out [calendar spreads](https://www.investopedia.com/terms/c/calendarspread.asp). 
 
 #### Vertical spreads
-[Vertical spreads](https://www.investopedia.com/terms/v/verticalspread.asp) are constructed by simultaneously buying and selling the _same type of option_, with the same expiration date but with different strike prices. Vertical spreads are directional strategies, i.e., the investor believes the underlying asset `XYZ` share price will either increase or decrease (depending upon the type of vertical spread).
+[Vertical spreads](https://www.investopedia.com/terms/v/verticalspread.asp) are constructed by simultaneously buying (long) and selling (short) the _same type of option_, with the same expiration date but with different strike prices. Thus, [vertical spreads](https://www.investopedia.com/terms/v/verticalspread.asp) have two _legs_: a long leg (the option purchased by the investor) and a short leg (the option sold by the investor). 
+
+[Vertical spreads](https://www.investopedia.com/terms/v/verticalspread.asp) are a defined risk, directional strategy, i.e., the investor believes the underlying asset `XYZ` share price will either increase or decrease (depending upon the vertical spread). [Vertical spreads](https://www.investopedia.com/terms/v/verticalspread.asp) are defined risk because the maximum possible gain and loss are known when the contract is sold; thus, an investor knows how much they can make or lose at expiration. 
 
 ````{prf:example} Vertical spreads
 :label: vertical-spread-expiration
