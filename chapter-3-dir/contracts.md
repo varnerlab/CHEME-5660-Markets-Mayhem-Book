@@ -175,7 +175,7 @@ the required number of shares of `XYZ` (known as a [cash secured put position](h
 Call and put contracts can be combined to develop composite contract structures with interesting payoff diagrams. In this section, we'll limit our focus to contracts that have the same underlying asset and the same expiration date. However, for those interested in more advanced cases, e.g., combining contracts with different expiration dates, check out [calendar spreads](https://www.investopedia.com/terms/c/calendarspread.asp). 
 
 #### Vertical spreads
-[Vertical spreads](https://www.investopedia.com/terms/v/verticalspread.asp) are constructed by simultaneously buying (long) and selling (short) the _same type of option_, with the same expiration date but with different strike prices. Thus, [vertical spreads](https://www.investopedia.com/terms/v/verticalspread.asp) have two _legs_: a long leg (the option purchased by the investor) and a short leg (the option sold by the investor). 
+[Vertical spreads](https://www.investopedia.com/terms/v/verticalspread.asp) are a _directional strategy_ constructed by simultaneously buying (long) and selling (short) the _same type of option_, with the same expiration date but with different strike prices. Thus, [vertical spreads](https://www.investopedia.com/terms/v/verticalspread.asp) have two _legs_: a long leg (the option purchased by the investor) and a short leg (the option sold by the investor). 
 
 [Vertical spreads](https://www.investopedia.com/terms/v/verticalspread.asp) are a defined risk, directional strategy, i.e., the investor believes the underlying asset `XYZ` share price will either increase or decrease (depending upon the vertical spread). [Vertical spreads](https://www.investopedia.com/terms/v/verticalspread.asp) are defined risk because the maximum possible gain and loss are known when the contract is sold; thus, an investor knows how much they can make or lose at expiration. 
 
@@ -186,7 +186,7 @@ Fill me in with some stuff.
 
 
 #### Straddles
-A [strangle](https://www.investopedia.com/terms/s/straddle.asp) position is constructed by simultaneaously buying and selling a put and a call optionm, with the same expiration, and the same strike prices. 
+A [strangle](https://www.investopedia.com/terms/s/straddle.asp) position is a _neutral strategy_ constructed by simultaneaously buying and selling a put and a call optionm, with the same expiration, and the same strike prices. 
 
 
 ````{prf:example} Straddle
@@ -195,7 +195,7 @@ Fill me in with some stuff.
 ````
 
 #### Strangles
-A [strangle](https://www.investopedia.com/terms/s/strangle.asp) position is contructed by simultaneously buying and selling a put and a call option, with the same experiation, but with different strike pricess.
+A [strangle](https://www.investopedia.com/terms/s/strangle.asp) position is a _neutral strategy_ contructed by simultaneously buying and selling a put and a call option, with the same experiation, but with different strike pricess.
 
 
 ````{prf:example} Strangle
@@ -213,8 +213,13 @@ Fill me in with some stuff.
 ````
 
 (content:references:option-probability-of-profit-algorithms)=
-## Probability of profit
-Fill me in.
+## Probability of profit at expiration
+The Probability of Profit (POP) at expiration is the probability that your option position will make at least $0.01 at expiration. 
+The probability of profit can be a useful deccison metric, e.g., investors engange in transactions that have a _large_ POP and avoid low probability trades. However, the exact meaning of _large_ or _small_ depnds upon the risk tolerance of the investor. 
+
+We can estimate the Probability of Profit (POP) at expiration using monte-carlo simulation. For example, we can develop a 
+geometric brownian motion model of the underlying price dynamics (based on historical data), and then use that model to project the underlying price into the future. 
+
 
 (content:references:option-pricing-algorithms)=
 ## Options Pricing Algorithms
