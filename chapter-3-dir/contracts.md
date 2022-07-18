@@ -20,6 +20,7 @@ In European-style contracts, the transaction codified in CALL or PUT options can
 
 In this lecture, we will:
 * Discuss the two types, and two styles of {ref}`content:references:option-contracts`
+* Discuss the {ref}`content:references:option-probability-of-profit-algorithms`
 * Discuss several {ref}`content:references:option-pricing-algorithms`
 
 ---
@@ -176,14 +177,42 @@ Call and put contracts can be combined to develop composite contract structures 
 #### Vertical spreads
 [Vertical spreads](https://www.investopedia.com/terms/v/verticalspread.asp) are constructed by simultaneously buying and selling the _same type of option_, with the same expiration date but with different strike prices. Vertical spreads are directional strategies, i.e., the investor believes the underlying asset `XYZ` share price will either increase or decrease (depending upon the type of vertical spread).
 
+````{prf:example} Vertical spreads
+:label: vertical-spread-expiration
+Fill me in with some stuff.
+````
+
+
 #### Straddles
-A [strangle](https://www.investopedia.com/terms/s/straddle.asp) position is constructed by simultaneaously buying and selling a put and a call optionm, with the same expiration date and the same strike prices. 
+A [strangle](https://www.investopedia.com/terms/s/straddle.asp) position is constructed by simultaneaously buying and selling a put and a call optionm, with the same expiration, and the same strike prices. 
+
+
+````{prf:example} Straddle
+:label: straddle-expiration
+Fill me in with some stuff.
+````
 
 #### Strangles
-A [strangle](https://www.investopedia.com/terms/s/strangle.asp) position is contructed by simultaneously buying and selling a put and a call option, with the same experiation but with different strike pricess.
+A [strangle](https://www.investopedia.com/terms/s/strangle.asp) position is contructed by simultaneously buying and selling a put and a call option, with the same experiation, but with different strike pricess.
+
+
+````{prf:example} Strangle
+:label: strangle-expiration
+Fill me in with some stuff.
+````
 
 #### Iron condor
 An [iron condor](https://www.investopedia.com/terms/i/ironcondor.asp) position is constructed by selling a put and a call options, and simulataneously buying a call and put options, where all legs have different strike prices. 
+
+
+````{prf:example} Iron condor
+:label: iron-condor-expiration
+Fill me in with some stuff.
+````
+
+(content:references:option-probability-of-profit-algorithms)=
+## Probability of profit
+Fill me in.
 
 (content:references:option-pricing-algorithms)=
 ## Options Pricing Algorithms
