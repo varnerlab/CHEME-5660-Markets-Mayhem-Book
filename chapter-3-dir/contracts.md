@@ -223,6 +223,25 @@ geometric brownian motion model of the underlying price dynamics (based on histo
 
 (content:references:option-pricing-algorithms)=
 ## Options Pricing Algorithms
+
+### Black-Scholes-Merton (BSM)
+The Black-Scholes-Merton (BSM) model is a partial differential equation widely used to price [European](https://www.investopedia.com/terms/e/europeanoption.asp) style options contracts; thus, the BSM model does not condsider the possibility of early excercise that is possible with [American](https://www.investopedia.com/terms/a/americanoption.asp) option contracts. In 1997, Scholes and Merton were awarded the [Nobel Memorial Prize in Economic Sciences](https://www.nobelprize.org/prizes/economic-sciences/1997/press-release/) for their work in finding "a new method to determine the value of derivatives." Black had passed away two years earlier; thus could not share in the prize.
+
+#### Assumptions of the BSM model
+The Black-Scholes model makes several assumptions when pricing [European](https://www.investopedia.com/terms/e/europeanoption.asp) style options contracts:
+
+* No dividends are paid by the underlying asset `XYZ` during the life of the option contract.
+* Markets are random (i.e., market movements cannot be predicted).
+* There are no transaction costs when buying (or selling) an option contract.
+* The risk-free rate and volatility of the underlying stock `XYZ` are known and constant.
+* The returns of the underlying stock `XYZ` are normally distributed.
+* No early excercise of the option contract is possible
+
+
+### Binomial pricing model
+Fill me in.
+
+### Monte-carlo pricing model
 Fill me in.
 
 ---
