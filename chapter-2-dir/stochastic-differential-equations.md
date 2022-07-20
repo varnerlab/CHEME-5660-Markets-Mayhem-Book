@@ -214,7 +214,7 @@ Scalar Geometric Brownian Motion (GBM) simulation of the daily close price of `A
 
 ```
 
-The GDM model _predicts_ the close price of `AMD` (out of sample) to within one standard deviation. However, the difference between the actual close price and the mean predicted close price changes over time. 
+The GDM model _predicts_ (out of sample) the close price of `AMD` too within one standard deviation. However, the difference between the actual close price and the mean predicted close price changes over time. 
 
 source: [live Pluto notebook](https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks) or [static HTML](https://htmlview.glitch.me/?https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks/blob/main/pluto-notebooks/html/Example-CallPutContract-Payoff.jl.html)
 
@@ -222,10 +222,10 @@ source: [live Pluto notebook](https://github.com/varnerlab/CHEME-5660-Markets-Ma
 
 (content:references:discretization)=
 ## Discretization Approaches
-In general, we cannot develop an analytical solution to Eqn. {eq}`eq-ito-process`; however, we can create an approximate numerical solution by discretization. This is an issue because we sometimes may want to use a more sophisticated model for the price of `XYZ`, for example a stochastic volatility model that can better capture changes in market conditions. 
+In general, we cannot develop an analytical solution to Eqn. {eq}`eq-ito-process`; however, we can create an approximate numerical solution by discretization. This is an issue because sometimes we may want to use more sophisticated models for the price of `XYZ`, for example, a stochastic volatility model that better captures changes in market conditions. 
 
 ### Stochastic Volatility Models
-For both the standard Brownian motion and the geometric Brownian motion equations, we have assumed that both the drift coefficient $\mu$ and the diffusion coefficient $\sigma^{2}$ are constant. There are situations where both $\mu$ and $\sigma$ can reasonably be assumed to be constants, but in many practical cases, this is not true, particularly in the case of $\sigma$. 
+For both the standard Brownian motion and the geometric Brownian motion equations, we have assumed that the drift coefficient $\mu$ and the diffusion coefficient $\sigma^{2}$ are constant. There are situations where both $\mu$ and $\sigma$ can reasonably be assumed to be constants, but in many practical cases, this is not true, particularly in the case of $\sigma$. 
 
 ## Extension to multiple simultaneous assets
 Fill me in.
