@@ -220,6 +220,19 @@ The probability of profit can be a useful deccison metric, e.g., investors engan
 We can estimate the Probability of Profit (POP) at expiration using monte-carlo simulation. For example, we can develop a 
 geometric brownian motion model of the underlying price dynamics (based on historical data), and then use that model to project the underlying price into the future. 
 
+````{prf:example} Probability of Profit at Expiration
+:label: pop-at-expiration
+
+
+```{figure} ./figs/Fig-AMD-GBM-Sim-N200-IS36-OS10.pdf
+---
+height: 420px
+name: fig-gbm-sim-AMD
+---
+Payoff and profit diagrams for an AMD put option. Solid lines denote the payout (profit) from the perspective of the contract buyer. Dashed lines denote the payout (profit) from the perspective of the contract seller.
+```
+
+````
 
 (content:references:option-pricing-algorithms)=
 ## Options Pricing Algorithms
