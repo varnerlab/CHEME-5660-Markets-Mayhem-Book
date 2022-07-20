@@ -198,20 +198,39 @@ where $k=1,2,\dots,n$.
 
 ````
 
+````{prf:example} Scalar Geometric Brownian Motion 
+:label: scalar-gbm-soln
 
+Let's simulate the daily close price of `AMD` using the analytical solution of the scalar geometric brownian motion ({numref}`fig-gbm-sim-AMD-scalar`). 
 
-### Stochastic Volatility Models
-For both the standard Brownian motion and the geometric Brownian motion equations, we have assumed that both the 
-drift coefficient $\mu$ and the diffusion coefficient $\sigma^{2}$ are constant. There are situations where
-both $\mu$ and $\sigma$ can reasonably be assumed to be constants, but in many practical cases, this is not true, particularly in the case of $\sigma$. 
+The scalar gbm analytical solution was used to generate N = 200 sample paths for a 46-day period (light blue lines in {numref}`fig-gbm-sim-AMD-scalar`); the first 36 days of data were used to estimate the mean return $\mu$ and the volatility of the return $\sigma$ which appear in the gbm solution. These model parameters were assumed to be fixed. An additional two trading weeks (10 days) was then simulated (out of sample prediction). 
+
+```{figure} ./figs/Fig-AMD-GBM-Sim-N200-IS36-OS10.pdf
+---
+height: 420px
+name: fig-gbm-sim-AMD-scalar
+---
+Scalar Geometric Brownian Motion (GBM) simulation of the daily close price of `AMD`. Data for the first m = 36 days was used to estimate the mean and volatility of the log return. The solid black line denotes the mean close price, while the shaded blue region denotes $\pm$ one standard-deviation from the mean close price. The red-line denotes the actual `AMD` close price.
+
+```
+
+The GDM model _predicts_ the close price of `AMD` (out of sample) to within one standard deviation. However, the difference between the actual close price and the mean predicted close price changes over time. 
+
+source: [live Pluto notebook](https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks) or [static HTML](https://htmlview.glitch.me/?https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks/blob/main/pluto-notebooks/html/Example-CallPutContract-Payoff.jl.html)
+
+````
 
 (content:references:discretization)=
 ## Discretization Approaches
-In general, we cannot develop an analytical solution to Eqn. {eq}`eq-ito-process`; however, we can create an
-approximate numerical solution by discretization.
+In general, we cannot develop an analytical solution to Eqn. {eq}`eq-ito-process`; however, we can create an approximate numerical solution by discretization. This is an issue because we sometimes may want to use a more sophisticated model for the price of `XYZ`, for example a stochastic volatility model that can better capture changes in market conditions. 
+
+### Stochastic Volatility Models
+For both the standard Brownian motion and the geometric Brownian motion equations, we have assumed that both the drift coefficient $\mu$ and the diffusion coefficient $\sigma^{2}$ are constant. There are situations where both $\mu$ and $\sigma$ can reasonably be assumed to be constants, but in many practical cases, this is not true, particularly in the case of $\sigma$. 
 
 ## Extension to multiple simultaneous assets
 Fill me in.
+
+---
 
 ## Summary
 Fill me in.
