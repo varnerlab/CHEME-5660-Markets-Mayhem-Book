@@ -36,7 +36,7 @@ Once the [REPL](https://docs.julialang.org/en/v1/stdlib/REPL/) is started, there
 
 Let's go through each of these modes. 
 
-### Julian REPL mode
+### Julian mode
 The [Julian REPL mode](https://docs.julialang.org/en/v1/stdlib/REPL/#The-Julian-mode) is the default mode of operation; each new line initially starts with the ``julia>`` prompt. [Julia](https://julialang.org) commands are entered at the prompt and the results are printed to the screen; hitting return or enter after a complete expression has been entered at the prompt will evaluate the entry and show the result of the last expression. 
 
 ```{figure} ./figs/Fig-Julian-mode-terminal.png
@@ -98,7 +98,21 @@ The [package mode](https://docs.julialang.org/en/v1/stdlib/REPL/#Pkg-mode) in th
 commands for managing packages in [package mode](https://docs.julialang.org/en/v1/stdlib/REPL/#Pkg-mode) can be found [here](https://pkgdocs.julialang.org/v1/managing-packages/#**3.**-Managing-Packages). To exit [package mode](https://docs.julialang.org/en/v1/stdlib/REPL/#Pkg-mode), a user types the `backspace` key (the `delete` key on macOS).
 
 (content:references:types-functions-md)=
-## Julia types, functions and multiple dispatch
+## Julia types, functions and language syntax
+Julia is a just-in-time compiled language (which gives it a runtime advantage over other popular interpreted languages). However, unlike other languages such as `C`, Julia code is compiled when you run it; a separate compile step is unnecessary. Thus, Julia gives the convenience and performance of a compiled language without the burden of manual compilation. 
+
+Further, Julia is a a dynamically-typed language. This means you are not required to declare the type of variables before you use them. When you Julia code is compiled, the compiler uses sophisticated logic to infer i.e., guess your types. 
+
+### Variable types
+Variables are values that you tell your computer to store with a specific name, so that you can later recover or change thier values. Julia has several variable types.
+
+### Data structures
+Fill me in.
+
+### Control flow
+Fill me in.
+
+### Functions
 Fill me in.
 
 (content:references:julia-programs)=
