@@ -4,6 +4,10 @@
 format: jb-book
 root: infrastructure
 chapters:
+- file: julia-dir/julia-landing
+  sections:
+  - file: julia-dir/julia-installation
+  - file: julia-dir/julia-basics
 - file: chapter-1-dir/chapter-1
   title: Unit 1. The Financial System
   sections:

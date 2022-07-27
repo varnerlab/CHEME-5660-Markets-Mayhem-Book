@@ -12,13 +12,14 @@ kernelspec:
 
 # Probability, Random Variables and Stochastic Processes
 
+## Introduction
 Frequentists argue that probability is the relative frequency of an outcome. For example, if you flip a fair coin infinitely times, you expect to get heads half the time. On the other hand, Bayesians argue that probability is a subjective belief. For example, the probability of getting an A in a class is subjective because no one can take a class infinitely many times to obtain the relative frequency. 
 The context of your problem will typically suggest which perspective to use.
 For example, when you have a shortage of data, a Bayesian approach allows you to use prior knowledge. In contrast, frequentists tell us how to compute the confidence interval of an estimate, if we have a latge data set. 
 
 Whether you prefer the frequentist’s or the Bayesian view, there is a more fundamental notion of probability thanks to [Andrey Kolmogorov](https://en.wikipedia.org/wiki/Andrey_Kolmogorov), namely, probability is a measure of the size of a set.
 
-In this chapter:
+In this lecture:
 
 * We introduce {ref}`content:references:set-theory` and the {ref}`content:references:union-intersection` of sets
 * We introduce {ref}`content:references:probability` the Axioms of Probablity ({prf:ref}`axiom-probability`)
@@ -562,3 +563,11 @@ while the variance $\text{Var}(X)$ is given by:
 ```
 ````
 
+---
+
+## Summary
+
+In this lecture:
+* We introduced {ref}`content:references:set-theory` and the {ref}`content:references:union-intersection` of sets
+* We introduced {ref}`content:references:probability` the Axioms of Probablity ({prf:ref}`axiom-probability`)
+* We introduced {ref}`content:references:random-variables`
