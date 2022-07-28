@@ -101,7 +101,7 @@ commands for managing packages in [package mode](https://docs.julialang.org/en/v
 ## Julia types, functions and language syntax
 Julia is a just-in-time compiled language (which gives it a runtime advantage over other popular interpreted languages). However, unlike other languages such as `C`, Julia code is compiled when you run it; a separate compile step is unnecessary. Thus, Julia gives the convenience and performance of a compiled language without the burden of manual compilation. 
 
-Further, Julia is a a dynamically-typed language. This means you are not required to declare the type of variables before you use them. When you Julia code is compiled, the compiler uses sophisticated logic to infer i.e., guess your types. 
+Further, Julia is a dynamically-typed language. This means you are not required to declare the type of variables before you use them. Instead, when your Julia code is compiled, the compiler uses sophisticated logic to infer, i.e., guess your data types. However, users can also specify types, potentially lessening the compiler’s burden. Further, many users find codes with the types annotated to be easier to read and maintain; remember, you may be supporting codes for _decades_, thus, making them easy to understand has an upside.
 
 ### Variable types
 Variables are values that you tell your computer to store with a specific name, so that you can later recover or change thier values. Julia has several variable types.
@@ -117,4 +117,44 @@ Fill me in.
 
 (content:references:julia-programs)=
 ## Writing and Executing Julia programs
-Fill me in.
+Julia programs are written in files with the extension ``.jl``. To load a Julia program contained in ``Program.jl``, the user executes the [include](https://docs.julialang.org/en/v1/manual/code-loading/) command in the [REPL](https://docs.julialang.org/en/v1/stdlib/REPL/) where the path to ``Program.jl`` is passed in as an argument of type ``String`` to the [include](https://docs.julialang.org/en/v1/manual/code-loading/) command. 
+
+````{prf:example} Include command
+:label: include-example-julia-program
+
+Julia code can be loaded using the [include](https://docs.julialang.org/en/v1/manual/code-loading/) command. 
+For example, to load Julia code in the ``Program.jl`` file, the user would execute the command in the [Julia REPL](https://docs.julialang.org/en/v1/stdlib/REPL/):
+
+```julia
+julia> include("Program.jl")
+```
+
+````
+
+{prf:ref}`include-example-julia-program` loads the code contained in the ``Program.jl`` file into the [REPL](https://docs.julialang.org/en/v1/stdlib/REPL/). If ``Program.jl`` is an _executable script_ then ``Program.jl`` will be executed, otherwise, the variables, data structures and functions encoded in ``Program.jl`` will be loaded into the memory of the [REPL](https://docs.julialang.org/en/v1/stdlib/REPL/). To make ``Program.jl`` executable, a `main` method is called (which in turn can load data, call other functions, etc):
+
+````{prf:example} Executable Program.jl
+:label: executable-julia-program-template
+
+```julia
+
+function example()
+
+    # stuff happens here
+    # ...
+end
+
+function main()
+    
+    # load data 
+    # ...
+
+    # call other functions -
+    example()
+
+end
+
+# call main method
+main()
+```
+````
