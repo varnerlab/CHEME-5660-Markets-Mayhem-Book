@@ -98,25 +98,123 @@ The [package mode](https://docs.julialang.org/en/v1/stdlib/REPL/#Pkg-mode) in th
 commands for managing packages in [package mode](https://docs.julialang.org/en/v1/stdlib/REPL/#Pkg-mode) can be found [here](https://pkgdocs.julialang.org/v1/managing-packages/#**3.**-Managing-Packages). To exit [package mode](https://docs.julialang.org/en/v1/stdlib/REPL/#Pkg-mode), a user types the `backspace` key (the `delete` key on macOS).
 
 (content:references:types-functions-md)=
-## Julia types, functions and language syntax
+## Julia types, functions and syntax
 Julia is a just-in-time compiled language (which gives it a runtime advantage over other popular interpreted languages). However, unlike other languages such as `C`, Julia code is compiled when you run it; a separate compile step is unnecessary. Thus, Julia gives the convenience and performance of a compiled language without the burden of manual compilation. 
 
 Further, Julia is a dynamically-typed language. This means you are not required to declare the type of variables before you use them. Instead, when your Julia code is compiled, the compiler uses sophisticated logic to infer, i.e., guess your data types. However, users can also specify types, potentially lessening the compiler’s burden. Further, many users find codes with the types annotated to be easier to read and maintain; remember, you may be supporting codes for _decades_, thus, making them easy to understand has an upside.
 
 ### Variable types
-Variables are values that you tell your computer to store with a specific name, so that you can later recover or change thier values. Julia has several variable types.
+Variables are values that you tell your computer to associate with a specific name so that you can later recover or change their values.  Variables can be of different types; [Julia](https://julialang.org) has an extensive [type system](https://docs.julialang.org/en/v1/manual/types/). However, in this course we will primarily use [floating point numbers](https://docs.julialang.org/en/v1/manual/integers-and-floating-point-numbers/#Floating-Point-Numbers), [integers](https://docs.julialang.org/en/v1/manual/integers-and-floating-point-numbers/#Integers) and [Strings](https://docs.julialang.org/en/v1/manual/strings/).
 
-### Data structures
+In [Julia](https://julialang.org), we do not have to declare a variable name or specify the variable type as in other languages such as `C`; we can just set the variable, and the compiler will figure out the rest. For example, suppose we wanted to store a floating point value (of type `Float64`) in the variable `x`:
+
+```{code-cell} julia
+# Set the value for the variable x
+x = 3.1;
+
+# typeof prints the type of the arg passed in
+typeof(x)
+```
+
+or store an integer (type `Int64`):
+
+```{code-cell} julia
+# Set the value for the variable x
+x = 1;
+
+# typeof prints the type of the arg passed in
+typeof(x)
+```
+
+or a String:
+
+```{code-cell} julia
+# Set the value for the variable x
+x = "HelloWorld";
+
+# typeof prints the type of the arg passed in
+typeof(x)
+```
+
+However, in some cases we may want to specify the type of a variable by using the `::` annotation, e.g., when composing 
+the list of input arguments or the type of data returned from a function, or the type of items that are stored in a collection of items.
+
+### Collections and Data Structures
+There are several [Collections and Data Structures](https://docs.julialang.org/en/v1/base/collections/#Collections-and-Data-Structures) that come with [Julia](https://julialang.org), for example [Arrays](https://docs.julialang.org/en/v1/base/arrays/#Core.Array-Tuple{UndefInitializer,%20Any}), [Tuples](https://docs.julialang.org/en/v1/manual/functions/#Tuples), [Dictionaries](https://docs.julialang.org/en/v1/base/collections/#Base.Dict) and [Sets](https://docs.julialang.org/en/v1/base/collections/#Base.Set). However, in addition to the built-in collection types, a particularly useful data structure is called a [DataFrame](https://dataframes.juliadata.org/stable/) which is provided by the [DataFrames.jl](https://github.com/JuliaData/DataFrames.jl) package. 
+
+#### Arrays
 Fill me in.
 
-### Control flow
+#### Tuples
+Fill me in.
+
+#### Dictionaries
+Fill me on.
+
+#### Sets
+Fill me in.
+
+#### DataFrames
+Objects of type ``DataFrame`` represent data tables where each column corresponds vector of values. The simplest way to construct a DataFrame is to pass vectors holding the values for each column using keyword arguments or pairs:
+
+```{code-cell} julia
+using DataFrames
+df = DataFrame(A=1:4, B=["M", "F", "F", "M"])
+```
+
+### Program Control Flow
 Fill me in.
 
 ### Functions
-Fill me in.
+In [Julia](https://julialang.org), a function is an object that maps a [tuple](https://docs.julialang.org/en/v1/manual/functions/#Tuples) of argument values to a return value. Unlike pure mathematical functions, [Julia](https://julialang.org) functions can alter and be affected by the global state of the program. The basic syntax for defining functions in [Julia](https://julialang.org) is:
+
+```{code-cell} julia
+
+# declare the add function -
+function add(x::Float64, y::Float64)::Float64
+  return (x+y)
+end
+
+# compute the sum of two numbers -
+value_1 = add(3.0, 2.0);
+
+# print the resulting value -
+println("Value from the add function: $(value_1)")
+```
+
+The `add` function accepts two arguments `x` and `y` (both of type `Float64`) and returns the sum (also of type `Float64`). Notice that when we declared the `add` function, we specified the types of the arguments and the return type using the `::` operator. 
+
+Thus, if we pass in arguments that are not of the correct type, an error will occur:
+
+```{code-cell} julia
+
+# declare the add function -
+function add(x::Float64, y::Float64)::Float64
+  return (x+y)
+end
+
+try 
+  
+  # compute the sum of two numbers -
+  value_1 = add(3.0, "Two");
+
+  # print the resulting value -
+  println("Value from the add function: $(value_1)")
+
+catch error
+  
+  bt = backtrace()
+  msg = sprint(showerror, error, bt)
+  println(msg)
+end
+```
+
+[Julia](https://julialang.org) function arguments follow the pass-by-sharing convention, i.e., values are __not__ copied when they are passed to functions. Instead, function arguments act as new variable bindings (new locations that can refer to values), but the values they refer to are identical to the passed values. 
+
+
 
 (content:references:julia-programs)=
-## Writing and Executing Julia programs
+## Writing and Executing Julia Programs
 Julia programs are written in files with the extension ``.jl``. To load a Julia program contained in ``Program.jl``, the user executes the [include](https://docs.julialang.org/en/v1/manual/code-loading/) command in the [REPL](https://docs.julialang.org/en/v1/stdlib/REPL/) where the path to ``Program.jl`` is passed in as an argument of type ``String`` to the [include](https://docs.julialang.org/en/v1/manual/code-loading/) command. 
 
 ````{prf:example} Include command

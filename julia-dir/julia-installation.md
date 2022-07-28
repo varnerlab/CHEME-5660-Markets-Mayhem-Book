@@ -1,4 +1,4 @@
-# Installation of Julia
+# Julia Installation 
 
 ## Introduction
 [Julia](https://julialang.org) is a dynamically typed compiled programming language developed at [MIT](https://julia.mit.edu) for general purpose computing. [Julia](https://julialang.org) has a number of interesting features, and is [an open source project available under the MIT license](https://github.com/JuliaLang/julia). [Julia](https://julialang.org) is available on all major computing platforms and operating sytstems (macOS, Windows and Linux). In addition, in this course we'll be using [Visual Studio Code (VS Code)](https://code.visualstudio.com) to compose and run our [Julia](https://julialang.org) programs.
