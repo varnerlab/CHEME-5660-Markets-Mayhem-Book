@@ -179,22 +179,32 @@ Call and put contracts can be combined to develop composite contract structures 
 
 [Vertical spreads](https://www.investopedia.com/terms/v/verticalspread.asp) are a defined risk, directional strategy, i.e., the investor believes the underlying asset `XYZ` share price will either increase or decrease (depending upon the vertical spread). [Vertical spreads](https://www.investopedia.com/terms/v/verticalspread.asp) are defined risk because the maximum possible gain and loss are known when the contract is sold; thus, an investor knows how much they can make or lose at expiration. 
 
-````{prf:example} Vertical spreads
+````{prf:example} Vertical Spreads
 :label: vertical-put-spread-expiration
 
+Put Credit Vertical Spread
 ```{figure} ./figs/Fig-SPY-Profit-Put-Credit-Spread.pdf
 ---
-height: 260px
+height: 420px
 name: fig-spy-profit-put-vertical-spread
 ---
 SPY Put Vertical Credit Spread   
+```
+
+Put Debit Vertical Spread
+```{figure} ./figs/Fig-AMD-Profit-Put-Debit-Spread.pdf
+---
+height: 420px
+name: fig-amd-profit-put-vertical-spread
+---
+AMD Put Vertical Debit Spread   
 ```
 
 ````
 
 
 #### Straddles
-A [strangle](https://www.investopedia.com/terms/s/straddle.asp) position is a _neutral strategy_ constructed by simultaneaously buying and selling a put and a call optionm, with the same expiration, and the same strike prices. 
+A [straddle](https://www.investopedia.com/terms/s/straddle.asp) position is a _neutral strategy_ constructed by simultaneaously buying and selling a put and a call option, with the same expiration, and the same strike prices. 
 
 
 ````{prf:example} Straddle
