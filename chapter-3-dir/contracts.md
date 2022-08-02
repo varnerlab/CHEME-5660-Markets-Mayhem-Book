@@ -72,6 +72,8 @@ where $P_{c}$ denotes the profit (or loss) per contract per share of `XYZ`. The 
 P_{c}+\bar{P}_{c} = 0
 ```
 
+The cost of a call contract $\mathcal{P}$ is a non-linear function of many variables including the current share price of the underlying asset $S$, the strike price of the contract, the number of days before contract expiration, and an unobservable quantity called the implied volatility.
+
 ````
 
 #### Payoff, Profit and Loss for Call contracts
@@ -135,6 +137,8 @@ The contract seller experiences a profit (or loss) of $\bar{P}_{p}$ where
 P_{p}+\bar{P}_{p} = 0
 ```
 
+The cost of a put contract leg $\mathcal{P}$ is a non-linear function of many variables including the current share price of the underlying asset $S$, the strike price of the contract, the number of days before contract expiration, and an unobservable quantity called the implied volatility. 
+
 ````
 
 #### Payoff, Profit and Loss for Put contracts
@@ -175,9 +179,29 @@ the required number of shares of `XYZ` (known as a [cash secured put position](h
 Call and put contracts can be combined to develop composite contract structures with interesting payoff diagrams. In this section, we'll limit our focus to contracts that have the same underlying asset and the same expiration date. However, for those interested in more advanced cases, e.g., combining contracts with different expiration dates, check out [calendar spreads](https://www.investopedia.com/terms/c/calendarspread.asp). 
 
 #### Vertical spreads
-[Vertical spreads](https://www.investopedia.com/terms/v/verticalspread.asp) are a _directional strategy_ constructed by simultaneously buying (long) and selling (short) the _same type of option_, with the same expiration date but with different strike prices. Thus, [vertical spreads](https://www.investopedia.com/terms/v/verticalspread.asp) have two _legs_: a long leg (the option purchased by the investor) and a short leg (the option sold by the investor). 
+[Vertical spreads](https://www.investopedia.com/terms/v/verticalspread.asp) are a _defined risk directional strategy_ constructed by simultaneously buying (long) and selling (short) the _same type of option_, with the same expiration date but with _different_ strike prices. Thus, [vertical spreads](https://www.investopedia.com/terms/v/verticalspread.asp) have two _legs_: a long leg (the option purchased by the investor) and a short leg (the option sold by the investor). [Vertical spreads](https://www.investopedia.com/terms/v/verticalspread.asp) are a defined risk, directional strategy, i.e., the investor believes the share price of the underlying asset `XYZ` will either increase or decrease, depending upon the type of vertical spread. [Vertical spreads](https://www.investopedia.com/terms/v/verticalspread.asp) are defined risk because the maximum possible gain (or loss) is known when the contract is sold; thus, an investor knows how much they can make or lose at expiration. 
 
-[Vertical spreads](https://www.investopedia.com/terms/v/verticalspread.asp) are a defined risk, directional strategy, i.e., the investor believes the underlying asset `XYZ` share price will either increase or decrease (depending upon the vertical spread). [Vertical spreads](https://www.investopedia.com/terms/v/verticalspread.asp) are defined risk because the maximum possible gain and loss are known when the contract is sold; thus, an investor knows how much they can make or lose at expiration. 
+##### Profit from Put Vertical Spreads
+There are two types of vertical spreads that can be constructed from put contracts, each has a different directional assumption. In general, the profit for a Put vertical spread is a function of the strike prices, and the cost of each of the legs of the composite contract.
+
+
+````{prf:definition} Profit Put Vertical Spread
+:label: defn-PL-put-contract-vertical-spread
+
+Consider a vertical spread constructed from Put contracts on the underlying stock `XYZ`. Let $K_{j}$ denote the strike price of put contract $j$, which is currently selling for $\mathcal{P}_{j}$. Further, let $S$ denote the share price of `XYZ` at expiration. Finally, let contract 1 be the short leg.
+
+Then the profit for a single Put Vertical spread $P$ at expiration is given by:
+
+$$P = \max\left(K_{1} - S,0\right) + \max\left(K_{2} - S,0\right) + \left(\mathcal{P}_{1} - \mathcal{P}_{2}\right)$$
+
+The first term is the combined payout of both legs of the spread, while the second term is the net cost of the two contracts.
+
+````
+{prf:ref}`defn-PL-put-contract-vertical-spread` has many exciting types of behavior and is much more complex than it might first appear; the cost of each contract $\mathcal{P}_{j}$ is a non-linear function of many variables including the current share price of the underlying asset $S$, the strike price of the contract, the number of days the contract has before expiration, and the implied volatility.
+
+Let's consider a few cases. Assume we have 45-days before expiration. Let the current share price of `XYZ` be given by $S_{o}$ USD/share, and let $S$ denote the share price of `XYZ` at expiration. Then:
+* If $S_{o}>K_{1}>K_{2}$ and leg 1 is the short put leg, $\mathcal{P}_{1}>\mathcal{P}_{2}$. A vertical put spread constructed in this regime will be a _bullish credit spread_, i.e., the investor will receive a _credit_ when opening the trade and expects the share price to increase $S>S_{o}$. 
+* If $S_{o}>K_{2}>K_{1}$ and leg 1 is the short put leg, $\mathcal{P}_{2}>\mathcal{P}_{1}$. A vertical put spread constructed in this regime will be a _bearish debit spread_, i.e., the investor will pay a _debit_ when opening the trade and expects the share price to decrease $S<S_{o}$. 
 
 ````{prf:example} Vertical Spreads
 :label: vertical-put-spread-expiration
