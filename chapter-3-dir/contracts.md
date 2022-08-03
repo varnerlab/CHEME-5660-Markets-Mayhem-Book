@@ -184,6 +184,7 @@ $$\hat{P} = \sum_{i\in\mathcal{C}}\theta_{i}n_{i}P_{i}$$
 
 where $\theta_{i}$ denotes the direction of contract $i$: if contract $i$ is short (sold), then $\theta_{i}=-1$, otherwise $\theta_{i}=1$. The quanitity $n_{i}$ denotes the copy number of contract $i$. 
 
+(content:references:option-contracts-vertical-spread)=
 #### Vertical spreads
 [Vertical spreads](https://www.investopedia.com/terms/v/verticalspread.asp) are a _defined risk directional strategy_ constructed by simultaneously buying (long) and selling (short) the _same type of option_, with the same expiration date but with _different_ strike prices. Thus, [vertical spreads](https://www.investopedia.com/terms/v/verticalspread.asp) have two _legs_: a long leg (the option purchased by the investor) and a short leg (the option sold by the investor). [Vertical spreads](https://www.investopedia.com/terms/v/verticalspread.asp) are a defined risk, directional strategy, i.e., the investor believes the share price of the underlying asset `XYZ` will either increase or decrease, depending upon the type of vertical spread. [Vertical spreads](https://www.investopedia.com/terms/v/verticalspread.asp) are defined risk because the maximum possible gain (or loss) is known when the contract is sold; thus, an investor knows how much they can make or lose at expiration _before_ they enter the trade. However, the future share price of `XYZ` is unknown when the investor opens the trade. 
 
@@ -248,6 +249,18 @@ source: [live Pluto notebook](https://github.com/varnerlab/CHEME-5660-Markets-Ma
 
 #### Straddles
 A [straddle](https://www.investopedia.com/terms/s/straddle.asp) position is a _neutral strategy_ constructed by simultaneaously buying and selling a put and a call option, with the same expiration, and the same strike prices. 
+Depending upon the choice of the short leg, [straddle](https://www.investopedia.com/terms/s/straddle.asp) positions can be initiated with a credit ot debit. However, unlike directional strategies such as {ref}`content:references:option-contracts-vertical-spread`, a [straddle](https://www.investopedia.com/terms/s/straddle.asp) is a neutral postion; an investor holding a [straddle](https://www.investopedia.com/terms/s/straddle.asp) can profit if the share price of `XYZ` moves up or down.
+
+##### Profit from a Straddle
+
+````{prf:definition} Profit of a Straddle
+:label: defn-PL-put-contract-straddle
+
+Consider a [straddle](https://www.investopedia.com/terms/s/straddle.asp) on the underlying asset `XYZ`. Let the current share price of `XYZ` be $S_{o}$ USD/share, and let $S$ denote the share price of `XYZ` at expiration. Further, let $K_{j}$ denote the strike price of contract $j$ (USD/share), where the price of contract $j$ is $\mathcal{P}_{j}$ (USD/share). 
+
+
+
+```
 
 
 ````{prf:example} Straddle
