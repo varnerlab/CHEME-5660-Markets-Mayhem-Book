@@ -188,7 +188,6 @@ where $\theta_{i}$ denotes the direction of contract $i$: if contract $i$ is sho
 #### Vertical spreads
 [Vertical spreads](https://www.investopedia.com/terms/v/verticalspread.asp) are a _defined risk directional strategy_ constructed by simultaneously buying (long) and selling (short) the _same type of option_, with the same expiration date but with _different_ strike prices. Thus, [vertical spreads](https://www.investopedia.com/terms/v/verticalspread.asp) have two _legs_: a long leg (the option purchased by the investor) and a short leg (the option sold by the investor). [Vertical spreads](https://www.investopedia.com/terms/v/verticalspread.asp) are a defined risk, directional strategy, i.e., the investor believes the share price of the underlying asset `XYZ` will either increase or decrease, depending upon the type of vertical spread. [Vertical spreads](https://www.investopedia.com/terms/v/verticalspread.asp) are defined risk because the maximum possible gain (or loss) is known when the contract is sold; thus, an investor knows how much they can make or lose at expiration _before_ they enter the trade. However, the future share price of `XYZ` is unknown when the investor opens the trade. 
 
-##### Profit from Put Vertical Spreads
 Two types of vertical spreads can be constructed from put contracts; each has a different directional assumption. A _put bullish credit spread_ assumes the underlying asset `XYZ` share price will increase between now and expiration. In contrast, a _put bearish debit spread_ assumes the underlying asset `XYZ` share price will decrease between now and expiration. When investors open a bullish credit spread, they receive a credit (the maximum profit) upfront. On the other hand, when opening a debit spread, the investor incurs a net debit to their account. The trade becomes profitable over time if the directional assumption is correct.
 
 In general, the profit for a put vertical spread is a function of the strike prices, and the cost of each of the legs of the composite contract:
@@ -246,19 +245,36 @@ source: [live Pluto notebook](https://github.com/varnerlab/CHEME-5660-Markets-Ma
 
 ````
 
+Although not shown here, [Vertical spreads](https://www.investopedia.com/terms/v/verticalspread.asp) can also be constructed using [call contracts](https://www.investopedia.com/terms/c/calloption.asp).
 
 #### Straddles
-A [straddle](https://www.investopedia.com/terms/s/straddle.asp) position is a _neutral strategy_ constructed by simultaneaously buying (or selling) a put and a call option, with the same expiration, and the same strike prices. 
-Depending upon the choice of the strike prices and whether an investor purchases or sells both legs, a [straddle](https://www.investopedia.com/terms/s/straddle.asp) position can be initiated with a credit ot debit. However, unlike directional strategies such as {ref}`content:references:option-contracts-vertical-spread`, a [straddle](https://www.investopedia.com/terms/s/straddle.asp) is a neutral postion; an investor holding a [straddle](https://www.investopedia.com/terms/s/straddle.asp) can profit if the share price of `XYZ` moves up or down.
-
-##### Profit from a Straddle
+A [straddle](https://www.investopedia.com/terms/s/straddle.asp) is a _neutral strategy_ constructed by simultaneaously buying (or selling) a put and a call option, with the _same expiration_, and the _same strike price_. Depending upon the choice of the strike prices and whether an investor buys or sells both legs, a [straddle](https://www.investopedia.com/terms/s/straddle.asp) can be initiated as a credit or debit and can potentially have undefined profit or loss. However, unlike directional strategies such as {ref}`content:references:option-contracts-vertical-spread`, a [straddle](https://www.investopedia.com/terms/s/straddle.asp) is a _neutral postion_; an investor holding a [straddle](https://www.investopedia.com/terms/s/straddle.asp) can profit if the share price of `XYZ` moves up or down.
 
 ````{prf:definition} Profit of a Straddle
 :label: defn-PL-put-contract-straddle
 
-Consider a [straddle](https://www.investopedia.com/terms/s/straddle.asp) on the underlying asset `XYZ`. Let the current share price of `XYZ` be $S_{o}$ USD/share, and let $S$ denote the share price of `XYZ` at expiration. Further, let $K_{j}$ denote the strike price of contract $j$ (USD/share), where the price of contract $j$ is $\mathcal{P}_{j}$ (USD/share). 
+Consider a [straddle](https://www.investopedia.com/terms/s/straddle.asp) on the underlying asset `XYZ`. 
+Let the current share price of `XYZ` be $S_{o}$ USD/share, and let $S$ denote the share price of `XYZ` at expiration. Further, let $K_{j}$ denote the strike price of contract $j$ (USD/share), where the price of contract $j$ is $\mathcal{P}_{j}$ (USD/share). Finally, let index $j=1$ denote the put contract, $j=2$ denote the call contract, and $K_{1}=K_{2}\equiv{K}$ (both legs have the same strike in a [straddle](https://www.investopedia.com/terms/s/straddle.asp)).
 
+Then, the profit for a single straddle contract $\hat{P}$ at expiration is given by:
 
+$$\hat{P} = \theta\cdot\left(P_{1}+P_{2}\right)$$
+
+where $\theta_{1}=\theta_{2}\equiv\theta$ denotes a direction parameter: $\theta=-1$ if each leg is sold (short), $\theta=1$ otherwise. After substitution of the profit functions for a put and a call contract, 
+the overall profit $\hat{P}$ is given by:
+
+$$\hat{P} = \theta\cdot\Bigl[(K-S)^{+}+(S-K)^{+}-(\mathcal{P}_{1}+\mathcal{P}_{2})\Bigr]$$
+
+where $(K-S)^{+}=\max(K-S,0)$ and $(S-K)^{+} = \max(S-K,0)$. 
+
+The maximum possible profit (or loss) is defined by:
+* If $S>K$: the profit of a straddle equals $\hat{P} = \theta\cdot\Bigl[(S-K)-\left(\mathcal{P}_{1}+\mathcal{P}_{2}\right)\Bigr]$
+* If $S=K$: the profit of a straddle equals $\hat{P} = -\theta\cdot\Bigl[\mathcal{P}_{1}+\mathcal{P}_{2}\Bigr]$.
+* If $S<K$: the profit of a straddle equals $\hat{P} = \theta\cdot\Bigl[(K-S)-\left(\mathcal{P}_{1}+\mathcal{P}_{2}\right)\Bigr]$
+
+A straddle has _two_ possible breakeven points denoted as $S^{+}$ and $S^{-}$:
+* If $S>K$: a straddle will breakeven at $S^{+} = K + \left(\mathcal{P}_{1}+\mathcal{P}_{2}\right)$
+* If $S<K$: a straddle will breakeven at $S^{-} = K - \left(\mathcal{P}_{1}+\mathcal{P}_{2}\right)$.
 
 ````
 
@@ -274,7 +290,7 @@ Describe me.
 height: 420px
 name: fig-amd-profit-short-straddle
 ---
-Example profit and loss diagram at expiration for a [AMD](https://finance.yahoo.com/quote/AMD/) put vertical debit spread. Parameters: $K_{1}$ = \$90 USD/share (short strike), $K_{2}$ = \$105 USD/share (long strike), $\mathcal{P}_{1}$ = \$4.70 USD/share and $\mathcal{P}_{2}$ = \$13.35 USD/share
+Example profit and loss diagram at expiration for an [AMD](https://finance.yahoo.com/quote/AMD/) short straddle. Parameters: $K$ = \$100 USD/share, $\mathcal{P}_{1}$ = \$9.95 USD/share and $\mathcal{P}_{2}$ = \$7.45 USD/share
 ```
 
 ```{figure} ./figs/Fig-AMD-Profit-Long-Straddle.pdf
@@ -282,7 +298,8 @@ Example profit and loss diagram at expiration for a [AMD](https://finance.yahoo.
 height: 420px
 name: fig-amd-profit-long-straddle
 ---
-Example profit and loss diagram at expiration for a [AMD](https://finance.yahoo.com/quote/AMD/) put vertical debit spread. Parameters: $K_{1}$ = \$90 USD/share (short strike), $K_{2}$ = \$105 USD/share (long strike), $\mathcal{P}_{1}$ = \$4.70 USD/share and $\mathcal{P}_{2}$ = \$13.35 USD/share
+Example profit and loss diagram at expiration for an [AMD](https://finance.yahoo.com/quote/AMD/) long straddle. 
+Parameters: $K$ = \$100 USD/share, $\mathcal{P}_{1}$ = \$9.95 USD/share and $\mathcal{P}_{2}$ = \$7.45 USD/share
 ```
 
 ````
