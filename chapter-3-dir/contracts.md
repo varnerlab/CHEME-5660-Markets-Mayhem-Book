@@ -248,8 +248,8 @@ source: [live Pluto notebook](https://github.com/varnerlab/CHEME-5660-Markets-Ma
 
 
 #### Straddles
-A [straddle](https://www.investopedia.com/terms/s/straddle.asp) position is a _neutral strategy_ constructed by simultaneaously buying and selling a put and a call option, with the same expiration, and the same strike prices. 
-Depending upon the choice of the short leg, [straddle](https://www.investopedia.com/terms/s/straddle.asp) positions can be initiated with a credit ot debit. However, unlike directional strategies such as {ref}`content:references:option-contracts-vertical-spread`, a [straddle](https://www.investopedia.com/terms/s/straddle.asp) is a neutral postion; an investor holding a [straddle](https://www.investopedia.com/terms/s/straddle.asp) can profit if the share price of `XYZ` moves up or down.
+A [straddle](https://www.investopedia.com/terms/s/straddle.asp) position is a _neutral strategy_ constructed by simultaneaously buying (or selling) a put and a call option, with the same expiration, and the same strike prices. 
+Depending upon the choice of the strike prices and whether an investor purchases or sells both legs, a [straddle](https://www.investopedia.com/terms/s/straddle.asp) position can be initiated with a credit ot debit. However, unlike directional strategies such as {ref}`content:references:option-contracts-vertical-spread`, a [straddle](https://www.investopedia.com/terms/s/straddle.asp) is a neutral postion; an investor holding a [straddle](https://www.investopedia.com/terms/s/straddle.asp) can profit if the share price of `XYZ` moves up or down.
 
 ##### Profit from a Straddle
 
@@ -260,12 +260,31 @@ Consider a [straddle](https://www.investopedia.com/terms/s/straddle.asp) on the 
 
 
 
-```
+````
 
+{prf:ref}`defn-PL-put-contract-straddle` Fill me in.
 
 ````{prf:example} Straddle
-:label: straddle-expiration
-Fill me in with some stuff.
+:label: straddle-profit-expiration
+
+Describe me.
+
+```{figure} ./figs/Fig-AMD-Profit-Short-Straddle.pdf
+---
+height: 420px
+name: fig-amd-profit-short-straddle
+---
+Example profit and loss diagram at expiration for a [AMD](https://finance.yahoo.com/quote/AMD/) put vertical debit spread. Parameters: $K_{1}$ = \$90 USD/share (short strike), $K_{2}$ = \$105 USD/share (long strike), $\mathcal{P}_{1}$ = \$4.70 USD/share and $\mathcal{P}_{2}$ = \$13.35 USD/share
+```
+
+```{figure} ./figs/Fig-AMD-Profit-Long-Straddle.pdf
+---
+height: 420px
+name: fig-amd-profit-long-straddle
+---
+Example profit and loss diagram at expiration for a [AMD](https://finance.yahoo.com/quote/AMD/) put vertical debit spread. Parameters: $K_{1}$ = \$90 USD/share (short strike), $K_{2}$ = \$105 USD/share (long strike), $\mathcal{P}_{1}$ = \$4.70 USD/share and $\mathcal{P}_{2}$ = \$13.35 USD/share
+```
+
 ````
 
 #### Strangles
