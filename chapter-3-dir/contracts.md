@@ -286,7 +286,12 @@ Finally, a straddle has _two_ possible breakeven points denoted as $S^{+}$ and $
 ````{prf:example} Profit of a Straddle
 :label: straddle-profit-expiration
 
-A short straddle is constructed by _selling_ both a put and a call option with the same expiration, same strike price and the same underlying asset `XYZ` ({numref}`fig-amd-profit-short-straddle`). 
+A __short straddle__ is constructed by simultaneously _selling_ both a put and a call option with the same expiration, strike price, and underlying asset `XYZ` ({numref}`fig-amd-profit-short-straddle`). When opening a short strangle, an investor receives a _credit_, i.e., the proceeds from selling the call and put options.
+
+At expiratiion:
+* A short straddle experiences the maximum profit when $S=K$ 
+* A short straddle can experience an _undefined loss_ when $S<S^{-}$ and $S>S^{+}$
+* A short straddle benefits from limited movement of the share price of `XYZ` during the lifetime of the contract
 
 ```{figure} ./figs/Fig-AMD-Profit-Short-Straddle.pdf
 ---
@@ -296,6 +301,13 @@ name: fig-amd-profit-short-straddle
 Example profit and loss diagram at expiration for an [AMD](https://finance.yahoo.com/quote/AMD/) short straddle. Parameters: $K$ = \$100 USD/share, $\mathcal{P}_{1}$ = \$9.95 USD/share and $\mathcal{P}_{2}$ = \$7.45 USD/share
 ```
 
+A __long straddle__ is constructed by simultaneously _buying_ both a put and a call option with the same expiration, strike price, and underlying asset `XYZ` ({numref}`fig-amd-profit-long-straddle`). When opening a short strangle, an investor is charged a _debit_ to their account, i.e., the cost of purchasing the call and put options.
+
+At expiratiion:
+* A long straddle experiences the maximum loss when $S=K$ 
+* A short straddle can experience an _undefined profit_ when $S<S^{-}$ and $S>S^{+}$ 
+* A short straddle benefits from large movements of the share price of `XYZ` during the lifetime of the contract
+
 ```{figure} ./figs/Fig-AMD-Profit-Long-Straddle.pdf
 ---
 height: 420px
@@ -304,6 +316,8 @@ name: fig-amd-profit-long-straddle
 Example profit and loss diagram at expiration for an [AMD](https://finance.yahoo.com/quote/AMD/) long straddle. 
 Parameters: $K$ = \$100 USD/share, $\mathcal{P}_{1}$ = \$9.95 USD/share and $\mathcal{P}_{2}$ = \$7.45 USD/share
 ```
+
+source: [live Pluto notebook](https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks) or [static HTML view](https://htmlview.glitch.me/?https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks/blob/main/pluto-notebooks/html/Example-Straddle-Profit.jl.html) 
 
 ````
 
