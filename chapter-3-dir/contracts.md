@@ -248,7 +248,7 @@ source: [live Pluto notebook](https://github.com/varnerlab/CHEME-5660-Markets-Ma
 Although not shown here, [Vertical spreads](https://www.investopedia.com/terms/v/verticalspread.asp) can also be constructed using [call contracts](https://www.investopedia.com/terms/c/calloption.asp).
 
 #### Straddles
-A [straddle](https://www.investopedia.com/terms/s/straddle.asp) is a _neutral strategy_ constructed by simultaneaously buying (or selling) a put and a call option, with the _same expiration_, and the _same strike price_. Depending upon the choice of the strike prices and whether an investor buys or sells both legs, a [straddle](https://www.investopedia.com/terms/s/straddle.asp) can be initiated as a credit or debit and can potentially have undefined profit or loss. However, unlike directional strategies such as {ref}`content:references:option-contracts-vertical-spread`, a [straddle](https://www.investopedia.com/terms/s/straddle.asp) is a _neutral postion_; an investor holding a [straddle](https://www.investopedia.com/terms/s/straddle.asp) can profit if the share price of `XYZ` moves up or down.
+A [straddle](https://www.investopedia.com/terms/s/straddle.asp) is a _neutral strategy_ constructed by simultaneously buying (or selling) a put and a call option with the _same expiration_, and the _same strike price_. Depending upon the choice of the strike prices and whether an investor buys or sells both legs, a [straddle](https://www.investopedia.com/terms/s/straddle.asp) can be initiated as a credit or debit and can potentially have undefined profit or loss. Unlike directional strategies such as {ref}`content:references:option-contracts-vertical-spread`, a [straddle](https://www.investopedia.com/terms/s/straddle.asp) is a _neutral_ position; an investor holding a [straddle](https://www.investopedia.com/terms/s/straddle.asp) profits if the share price of `XYZ` moves up, down or potentially zero depending upon the construction of the straddle.
 
 ````{prf:definition} Profit of a Straddle
 :label: defn-PL-put-contract-straddle
@@ -265,14 +265,17 @@ the overall profit $\hat{P}$ is given by:
 
 $$\hat{P} = \theta\cdot\Bigl[(K-S)^{+}+(S-K)^{+}-(\mathcal{P}_{1}+\mathcal{P}_{2})\Bigr]$$
 
-where $(K-S)^{+}=\max(K-S,0)$ and $(S-K)^{+} = \max(S-K,0)$. 
+where $(K-S)^{+}=\max(K-S,0)$ and $(S-K)^{+} = \max(S-K,0)$. Thus, the profit (or loss) of a straddle has three regimes given by:
 
-The maximum possible profit (or loss) is defined by:
-* If $S>K$: the profit of a straddle equals $\hat{P} = \theta\cdot\Bigl[(S-K)-\left(\mathcal{P}_{1}+\mathcal{P}_{2}\right)\Bigr]$
-* If $S=K$: the profit of a straddle equals $\hat{P} = -\theta\cdot\Bigl[\mathcal{P}_{1}+\mathcal{P}_{2}\Bigr]$.
-* If $S<K$: the profit of a straddle equals $\hat{P} = \theta\cdot\Bigl[(K-S)-\left(\mathcal{P}_{1}+\mathcal{P}_{2}\right)\Bigr]$
+$$
+\hat{P} = \begin{cases}
+  \theta\cdot\Bigl[(S-K)-\left(\mathcal{P}_{1}+\mathcal{P}_{2}\right)\Bigr]  & S>K \\
+  -\theta\cdot\Bigl[\mathcal{P}_{1}+\mathcal{P}_{2}\Bigr] & S=K \\
+    \theta\cdot\Bigl[(K-S)-\left(\mathcal{P}_{1}+\mathcal{P}_{2}\right)\Bigr] & S<K
+\end{cases}
+$$
 
-A straddle has _two_ possible breakeven points denoted as $S^{+}$ and $S^{-}$:
+Finally, a straddle has _two_ possible breakeven points denoted as $S^{+}$ and $S^{-}$:
 * If $S>K$: a straddle will breakeven at $S^{+} = K + \left(\mathcal{P}_{1}+\mathcal{P}_{2}\right)$
 * If $S<K$: a straddle will breakeven at $S^{-} = K - \left(\mathcal{P}_{1}+\mathcal{P}_{2}\right)$.
 
@@ -280,10 +283,10 @@ A straddle has _two_ possible breakeven points denoted as $S^{+}$ and $S^{-}$:
 
 {prf:ref}`defn-PL-put-contract-straddle` Fill me in.
 
-````{prf:example} Straddle
+````{prf:example} Profit of a Straddle
 :label: straddle-profit-expiration
 
-Describe me.
+A short straddle is constructed by _selling_ both a put and a call option with the same expiration, same strike price and the same underlying asset `XYZ` ({numref}`fig-amd-profit-short-straddle`). 
 
 ```{figure} ./figs/Fig-AMD-Profit-Short-Straddle.pdf
 ---
