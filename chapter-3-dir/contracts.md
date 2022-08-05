@@ -281,14 +281,21 @@ Finally, a straddle has _two_ possible breakeven points denoted as $S^{+}$ and $
 
 ````
 
-{prf:ref}`defn-PL-put-contract-straddle` Fill me in.
+{prf:ref}`defn-PL-put-contract-straddle` gives the profit conditions for both long (buy both the call and the put legs) and short (sell both the call and put legs) straddles. Let's put some numbers into the profit conditions and analyze their behavior ({prf:ref}`straddle-profit-expiration`).
+
 
 ````{prf:example} Profit of a Straddle
 :label: straddle-profit-expiration
 
-A __short straddle__ is constructed by simultaneously _selling_ both a put and a call option with the same expiration, strike price, and underlying asset `XYZ` ({numref}`fig-amd-profit-short-straddle`). When opening a short strangle, an investor receives a _credit_, i.e., the proceeds from selling the call and put options.
+A __short straddle__ is constructed by simultaneously _selling_ both a put and a call option with the same expiration, strike price, and underlying asset `XYZ` ({numref}`fig-amd-profit-short-straddle`). When opening a short strangle, an investor receives a _credit_, i.e., the proceeds from selling the call and put options. For a short straddle, $\theta=-1$ which gives the profit condtions:
 
-At expiratiion:
+$$\hat{P} = \begin{cases}
+  -\Bigl[(S-K)-\left(\mathcal{P}_{1}+\mathcal{P}_{2}\right)\Bigr]  & S>K \\
+  \Bigl[\mathcal{P}_{1}+\mathcal{P}_{2}\Bigr] & S=K \\
+    -\Bigl[(K-S)-\left(\mathcal{P}_{1}+\mathcal{P}_{2}\right)\Bigr] & S<K
+\end{cases}$$
+
+A short straddle is profitable if the share price of the underlying asset of `XYZ` stays near the strike price of $K$. Thus, for a short straddle, the investor wants small price movements. At expiration:
 * A short straddle experiences the maximum profit when $S=K$ 
 * A short straddle can experience an _undefined loss_ when $S<S^{-}$ and $S>S^{+}$
 * A short straddle benefits from limited movement of the share price of `XYZ` during the lifetime of the contract
@@ -301,12 +308,18 @@ name: fig-amd-profit-short-straddle
 Example profit and loss diagram at expiration for an [AMD](https://finance.yahoo.com/quote/AMD/) short straddle. Parameters: $K$ = \$100 USD/share, $\mathcal{P}_{1}$ = \$9.95 USD/share and $\mathcal{P}_{2}$ = \$7.45 USD/share
 ```
 
-A __long straddle__ is constructed by simultaneously _buying_ both a put and a call option with the same expiration, strike price, and underlying asset `XYZ` ({numref}`fig-amd-profit-long-straddle`). When opening a short strangle, an investor is charged a _debit_ to their account, i.e., the cost of purchasing the call and put options.
+A __long straddle__ is constructed by simultaneously _buying_ both a put and a call option with the same expiration, strike price, and underlying asset `XYZ` ({numref}`fig-amd-profit-long-straddle`). When opening a short strangle, an investor is charged a _debit_ to their account, i.e., the cost of purchasing the call and put options. For a long straddle, $\theta=1$ which gives the profit condtions:
 
-At expiratiion:
+$$\hat{P} = \begin{cases}
+  (S-K)-\left(\mathcal{P}_{1}+\mathcal{P}_{2}\right) & S>K \\
+  -\left(\mathcal{P}_{1}+\mathcal{P}_{2}\right) & S=K \\
+  (K-S)-\left(\mathcal{P}_{1}+\mathcal{P}_{2}\right) & S<K
+\end{cases}$$
+
+As the share price of `XYZ` moves _away_ from the strike price of $K$, the long straddle becomes profitable. Thus, for a long straddle, the investor wants large price movements so that they can overcome the initial investment required to purchase the call and put options. At expiration:
 * A long straddle experiences the maximum loss when $S=K$ 
-* A short straddle can experience an _undefined profit_ when $S<S^{-}$ and $S>S^{+}$ 
-* A short straddle benefits from large movements of the share price of `XYZ` during the lifetime of the contract
+* A long straddle can experience an _undefined profit_ when $S<S^{-}$ and $S>S^{+}$ 
+* A long straddle benefits from large movements of the share price of `XYZ` during the lifetime of the contract
 
 ```{figure} ./figs/Fig-AMD-Profit-Long-Straddle.pdf
 ---
@@ -322,11 +335,39 @@ source: [live Pluto notebook](https://github.com/varnerlab/CHEME-5660-Markets-Ma
 ````
 
 #### Strangles
-A [strangle](https://www.investopedia.com/terms/s/strangle.asp) position is a _neutral strategy_ contructed by simultaneously buying and selling a put and a call option, with the same experiation, but with different strike pricess.
+A [strangle](https://www.investopedia.com/terms/s/strangle.asp) position is a _neutral strategy_ constructed by simultaneously buying and selling a put and a call option on the same underlying asset `XYZ`, with the same expiration but with _different_ strike prices. Depending upon the choice of the strike prices and whether an investor buys or sells both legs, a [strangle](https://www.investopedia.com/terms/s/strangle.asp) can be initiated as a credit or debit and can potentially have undefined profit or loss. Unlike directional strategies such as {ref}`content:references:option-contracts-vertical-spread`, a [strangle](https://www.investopedia.com/terms/s/strangle.asp) is a _neutral_ position; an investor holding a [strangle](https://www.investopedia.com/terms/s/strangle.asp) profits if the share price of `XYZ` moves up, down or potentially zero depending upon the construction of the strangle.
 
+````{prf:definition} Profit of a Strangle
+:label: defn-PL-put-contract-strangle
+
+Consider a [strangle](https://www.investopedia.com/terms/s/strangle.asp) on the underlying asset `XYZ`. 
+Let the current share price of `XYZ` be $S_{o}$ USD/share, and let $S$ denote the share price of `XYZ` at expiration. Further, let $K_{j}$ denote the strike price of contract $j$ (USD/share), where the price of contract $j$ is $\mathcal{P}_{j}$ (USD/share). Finally, let index $j=1$ denote the put contract, $j=2$ denote the call contract; for a [strangle](https://www.investopedia.com/terms/s/strangle.asp) $K_{1} < K_{2}$.
+
+Then, the profit for a single strangle contract $\hat{P}$ at expiration is given by:
+
+$$\hat{P} = \theta\cdot\left(P_{1}+P_{2}\right)$$
+
+where $\theta_{1}=\theta_{2}\equiv\theta$ denotes a direction parameter: $\theta=-1$ if each leg is sold (short), $\theta=1$ otherwise. After substitution of the profit functions for a put and a call contract, 
+the overall profit $\hat{P}$ is given by:
+
+$$\hat{P} = \theta\cdot\Bigl[(K_{1}-S)^{+}+(S-K_{2})^{+}-(\mathcal{P}_{1}+\mathcal{P}_{2})\Bigr]$$
+
+where $(K_{1}-S)^{+}=\max(K_{1}-S,0)$ and $(S-K_{2})^{+} = \max(S-K_{2},0)$. Thus, the profit (or loss) of a strangle has three regimes given by:
+
+$$
+\hat{P} = \begin{cases}
+  \theta\cdot\Bigl[(S-K_{2})-\left(\mathcal{P}_{1}+\mathcal{P}_{2}\right)\Bigr]  & S{>}K_{2} \\
+  -\theta\cdot\Bigl[\mathcal{P}_{1}+\mathcal{P}_{2}\Bigr] & K_{1}\leq{S}\leq{K_{2}} \\
+  \theta\cdot\Bigl[(K_{1}-S)-\left(\mathcal{P}_{1}+\mathcal{P}_{2}\right)\Bigr] & S<{K_{1}}
+\end{cases}
+$$
+
+````
+
+{prf:ref}`defn-PL-put-contract-strangle` gives the profit conditions for both long (buy both the call and the put legs) and short (sell both the call and put legs) strangles. Let's put some numbers into the profit conditions and analyze their behavior ({prf:ref}`strangle-profit-expiration`).
 
 ````{prf:example} Strangle
-:label: strangle-expiration
+:label: strangle-profit-expiration
 Fill me in with some stuff.
 ````
 
