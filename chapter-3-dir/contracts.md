@@ -358,7 +358,7 @@ where $(K_{1}-S)^{+}=\max(K_{1}-S,0)$ and $(S-K_{2})^{+} = \max(S-K_{2},0)$. Thu
 
 $$
 \hat{P} = \begin{cases}
-  \theta\cdot\Bigl[(S-K_{2})-\left(\mathcal{P}_{1}+\mathcal{P}_{2}\right)\Bigr]  & S{>}K_{2} \\
+  \theta\cdot\Bigl[(S-K_{2})-\left(\mathcal{P}_{1}+\mathcal{P}_{2}\right)\Bigr]  & S>K_{2} \\
   -\theta\cdot\Bigl[\mathcal{P}_{1}+\mathcal{P}_{2}\Bigr] & K_{1}\leq{S}\leq{K_{2}} \\
   \theta\cdot\Bigl[(K_{1}-S)-\left(\mathcal{P}_{1}+\mathcal{P}_{2}\right)\Bigr] & S<{K_{1}}
 \end{cases}
@@ -368,7 +368,7 @@ $$
 
 {prf:ref}`defn-PL-put-contract-strangle` gives the profit conditions for both long (buy both the call and the put legs) and short (sell both the call and put legs) strangles. Let's put some numbers into the profit conditions and analyze their behavior ({prf:ref}`strangle-profit-expiration`).
 
-````{prf:example} Strangle
+````{prf:example} Profit of a Strangle
 :label: strangle-profit-expiration
 Fill me in with some stuff.
 ````
