@@ -401,7 +401,22 @@ An investor holding an [iron condor](https://www.investopedia.com/terms/i/ironco
 
 ````{prf:definition} Profit of an Iron Condor
 :label: defn-PL-iron-condor
-Fill me in with some stuff.
+
+An [iron condor](https://www.investopedia.com/terms/i/ironcondor.asp) is a _neutral defined risk_ position constructed by _selling_ a put (1) and call (2) options on the underlying asset `XYZ`, while simultaneously _buying_ a put (3) and call (4) options on `XYZ`. All legs have the same underlying asset `XYZ`, the same expiration, but different strike prices.
+
+Let the current share price of `XYZ` be $S_{o}$ USD/share, and let $S$ denote the share price of `XYZ` at expiration. Further, let $K_{j}$ denote the strike price of contract $j$ (USD/share), where the price of contract $j$ is $\mathcal{P}_{j}$ (USD/share). Finally, let index $j=1$ denote the short put contract, $j=2$ denote the short call contract,  $j=3$ denote the long put contract and  $j=4$ denote the long call contract; for an [iron condor](https://www.investopedia.com/terms/i/ironcondor.asp) $K_{3} < K_{1} <K_{2} < K_{3}$.
+
+Then, the profit for a single iron condor contract $\hat{P}$ at expiration is given by:
+
+$$\hat{P} = \theta_{1}P_{1} + \theta_{2}P_{2} + \theta_{3}P_{3} + \theta_{4}P_{4}$$
+
+where $\theta_{1}=\theta_{2} = -1$ (short legs) and $\theta_{3}=\theta_{4} = 1$ (long legs). After substitution of the profit functions for put and call contracts, the overall profit $\hat{P}$ is given by:
+
+$$\hat{P} = -(K_{1}-S)^{+} - (S-K_{2})^{+} + (K_{3} - S)^{+} + (S-K_{4})^{+} + \left(\mathcal{P}_{1} + \mathcal{P}_{2} - \mathcal{P}_{3}-\mathcal{P}_{4}\right)$$
+
+where $(K_{\star}-S)^{+}=\max(K_{\star}-S,0)$ and $(S-K_{\star})^{+} = \max(S-K_{\star},0)$.
+
+
 ````
 
 
