@@ -248,12 +248,13 @@ source: [live Pluto notebook](https://github.com/varnerlab/CHEME-5660-Markets-Ma
 Although not shown here, [Vertical spreads](https://www.investopedia.com/terms/v/verticalspread.asp) can also be constructed using [call contracts](https://www.investopedia.com/terms/c/calloption.asp).
 
 #### Straddles
-A [straddle](https://www.investopedia.com/terms/s/straddle.asp) is a _neutral strategy_ constructed by simultaneously buying (or selling) a put and a call option with the _same expiration_, and the _same strike price_. Depending upon the choice of the strike prices and whether an investor buys or sells both legs, a [straddle](https://www.investopedia.com/terms/s/straddle.asp) can be initiated as a credit or debit and can potentially have undefined profit or loss. Unlike directional strategies such as {ref}`content:references:option-contracts-vertical-spread`, a [straddle](https://www.investopedia.com/terms/s/straddle.asp) is a _neutral_ position; an investor holding a [straddle](https://www.investopedia.com/terms/s/straddle.asp) profits if the share price of `XYZ` moves up, down or potentially zero depending upon the construction of the straddle.
+A [straddle](https://www.investopedia.com/terms/s/straddle.asp) is a _neutral strategy_ constructed by simultaneously buying (or selling) a put and a call option on the same underlying asset `XYZ`, with the _same expiration_, and the _same strike price_. Depending upon the choice of the strike prices and whether an investor buys or sells both legs, a [straddle](https://www.investopedia.com/terms/s/straddle.asp) can be initiated as a credit or debit and can potentially have undefined profit or loss. Unlike directional strategies such as {ref}`content:references:option-contracts-vertical-spread`, a [straddle](https://www.investopedia.com/terms/s/straddle.asp) is a _neutral_ position; an investor holding a [straddle](https://www.investopedia.com/terms/s/straddle.asp) profits if the share price of `XYZ` moves up, down or potentially zero depending upon the construction of the straddle.
 
 ````{prf:definition} Profit of a Straddle
 :label: defn-PL-put-contract-straddle
 
-Consider a [straddle](https://www.investopedia.com/terms/s/straddle.asp) on the underlying asset `XYZ`. 
+A [straddle](https://www.investopedia.com/terms/s/straddle.asp) is a _neutral strategy_ constructed by simultaneously buying (or selling) a put and a call option on the underlying asset `XYZ`, with the _same expiration_, and the _same strike price_. 
+
 Let the current share price of `XYZ` be $S_{o}$ USD/share, and let $S$ denote the share price of `XYZ` at expiration. Further, let $K_{j}$ denote the strike price of contract $j$ (USD/share), where the price of contract $j$ is $\mathcal{P}_{j}$ (USD/share). Finally, let index $j=1$ denote the put contract, $j=2$ denote the call contract, and $K_{1}=K_{2}\equiv{K}$ (both legs have the same strike in a [straddle](https://www.investopedia.com/terms/s/straddle.asp)).
 
 Then, the profit for a single straddle contract $\hat{P}$ at expiration is given by:
@@ -340,7 +341,8 @@ A [strangle](https://www.investopedia.com/terms/s/strangle.asp) position is a _n
 ````{prf:definition} Profit of a Strangle
 :label: defn-PL-put-contract-strangle
 
-Consider a [strangle](https://www.investopedia.com/terms/s/strangle.asp) on the underlying asset `XYZ`. 
+A [strangle](https://www.investopedia.com/terms/s/strangle.asp) position is a _neutral strategy_ constructed by simultaneously buying (or selling) a put and a call option on the same underlying asset `XYZ`, with the same expiration but with _different_ strike prices.
+
 Let the current share price of `XYZ` be $S_{o}$ USD/share, and let $S$ denote the share price of `XYZ` at expiration. Further, let $K_{j}$ denote the strike price of contract $j$ (USD/share), where the price of contract $j$ is $\mathcal{P}_{j}$ (USD/share). Finally, let index $j=1$ denote the put contract, $j=2$ denote the call contract; for a [strangle](https://www.investopedia.com/terms/s/strangle.asp) $K_{1} < K_{2}$.
 
 Then, the profit for a single strangle contract $\hat{P}$ at expiration is given by:
