@@ -288,7 +288,7 @@ Finally, a straddle has _two_ possible breakeven points denoted as $S^{+}$ and $
 ````{prf:example} Profit of a Straddle
 :label: straddle-profit-expiration
 
-A __short straddle__ is constructed by simultaneously _selling_ both a put and a call option with the same expiration, strike price, and underlying asset `XYZ` ({numref}`fig-amd-profit-short-straddle`). When opening a short strangle, an investor receives a _credit_, i.e., the proceeds from selling the call and put options. For a short straddle, $\theta=-1$ which gives the profit condtions:
+A __short straddle__ is constructed by simultaneously _selling_ both a put and a call option with the same expiration, strike price, and underlying asset `XYZ` ({numref}`fig-amd-profit-short-straddle`). When opening a short straddle, an investor receives a _credit_, i.e., the proceeds from selling the call and put options. For a short straddle, $\theta=-1$ which gives the profit condtions:
 
 $$\hat{P} = \begin{cases}
   -\Bigl[(S-K)-\left(\mathcal{P}_{1}+\mathcal{P}_{2}\right)\Bigr]  & S>K \\
@@ -370,7 +370,27 @@ $$
 
 ````{prf:example} Profit of a Strangle
 :label: strangle-profit-expiration
-Fill me in with some stuff.
+
+A __short strangle__ is constructed by simultaneously _selling_ both a put and a call option with the same underlying asset `XYZ` and the same expiration, but with different strike prices ({numref}`fig-amd-profit-short-strangle`). When opening a short strangle, an investor receives a _credit_, i.e., the proceeds from selling the call and put options. For a short strangle, $\theta=-1$ which gives the profit condtions:
+
+
+```{figure} ./figs/Fig-AMD-Profit-Short-Strangle.pdf
+---
+height: 420px
+name: fig-amd-profit-short-strangle
+---
+Example profit and loss diagram at expiration for an [AMD](https://finance.yahoo.com/quote/AMD/) short strangle. Parameters: $K_{1}$ = \$90 USD/share, $K_{2}$ = \$110 USD/share, $\mathcal{P}_{1}$ = \$4.05 USD/share and $\mathcal{P}_{2}$ = \$5.70 USD/share. $S_{o}$ = \$101.57 USD/share.
+```
+
+A __long strangle__ is constructed by simultaneously _buying_ both a put and a call option with the same underlying asset `XYZ` and the same expiration, but with different strike prices ({numref}`fig-amd-profit-long-strangle`). When opening a long strangle, the investor is charged a _debit_ to their account, i.e., the cost of purchasing the call and put options. For a long strangle, $\theta=1$ which gives the profit condtions::
+
+```{figure} ./figs/Fig-AMD-Profit-Long-Strangle.pdf
+---
+height: 420px
+name: fig-amd-profit-long-strangle
+---
+Example profit and loss diagram at expiration for an [AMD](https://finance.yahoo.com/quote/AMD/) long strangle. Parameters: $K_{1}$ = \$90 USD/share, $K_{2}$ = \$110 USD/share, $\mathcal{P}_{1}$ = \$4.05 USD/share and $\mathcal{P}_{2}$ = \$5.70 USD/share. $S_{o}$ = \$101.57 USD/share.
+```
 ````
 
 #### Iron condor
