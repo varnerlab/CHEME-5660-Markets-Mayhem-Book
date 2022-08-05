@@ -336,7 +336,7 @@ source: [live Pluto notebook](https://github.com/varnerlab/CHEME-5660-Markets-Ma
 ````
 
 #### Strangles
-A [strangle](https://www.investopedia.com/terms/s/strangle.asp) position is a _neutral strategy_ constructed by simultaneously buying and selling a put and a call option on the same underlying asset `XYZ`, with the same expiration but with _different_ strike prices. Depending upon the choice of the strike prices and whether an investor buys or sells both legs, a [strangle](https://www.investopedia.com/terms/s/strangle.asp) can be initiated as a credit or debit and can potentially have undefined profit or loss. Unlike directional strategies such as {ref}`content:references:option-contracts-vertical-spread`, a [strangle](https://www.investopedia.com/terms/s/strangle.asp) is a _neutral_ position; an investor holding a [strangle](https://www.investopedia.com/terms/s/strangle.asp) profits if the share price of `XYZ` moves up, down or potentially zero depending upon the construction of the strangle.
+A [strangle](https://www.investopedia.com/terms/s/strangle.asp) position is a _neutral strategy_ constructed by simultaneously buying and selling a put and a call option on the same underlying asset `XYZ`, with the same expiration but with _different_ strike prices. Depending upon the choice of the strike prices and whether an investor buys or sells both legs, a [strangle](https://www.investopedia.com/terms/s/strangle.asp) can be initiated as a credit or debit and can potentially have undefined profit or loss. Unlike directional strategies such as {ref}`content:references:option-contracts-vertical-spread`, a [strangle](https://www.investopedia.com/terms/s/strangle.asp) is a _neutral_ position; an investor holding a [strangle](https://www.investopedia.com/terms/s/strangle.asp) profits if the share price of `XYZ` moves between the strike prices of the strangle.
 
 ````{prf:definition} Profit of a Strangle
 :label: defn-PL-put-contract-strangle
@@ -393,8 +393,19 @@ Example profit and loss diagram at expiration for an [AMD](https://finance.yahoo
 ```
 ````
 
-#### Iron condor
-An [iron condor](https://www.investopedia.com/terms/i/ironcondor.asp) position is constructed by selling a put and a call options, and simulataneously buying a call and put options, where all legs have different strike prices. 
+#### Iron Condor
+An [iron condor](https://www.investopedia.com/terms/i/ironcondor.asp) is a _neutral defined risk_ position constructed by _selling_ a put (1) and call (2) options on the underlying asset `XYZ`, while simultaneously _buying_ a put (3) and call (4) options on `XYZ`. All the legs of an [iron condor](https://www.investopedia.com/terms/i/ironcondor.asp) have the same underlying asset `XYZ`, and have the same expiration, but different strike prices where $K_{3}<K_{1}<K_{2}<K_{4}$. In particular, the two short options are sold with strikes on either side of the current share price $S_{o}$ of `XYZ`, with the short put strike price $K_{1}<S_{o}$ and the short call strike price $K_{2}>S_{o}$. Then, the long legs are purchased above and below the short strikes.  Thus, an [iron condor](https://www.investopedia.com/terms/i/ironcondor.asp) position has the character of a [strangle](https://www.investopedia.com/terms/s/strangle.asp) combined with a vertical spread. 
+
+An investor holding an [iron condor](https://www.investopedia.com/terms/i/ironcondor.asp) profits if the share price of `XYZ` remians between the strike prices of the two short options (like a short strangle). However, unlike a [strangle](https://www.investopedia.com/terms/s/strangle.asp), an [iron condor](https://www.investopedia.com/terms/i/ironcondor.asp) is a defined risk strategy; the long options act to limit any possible losses, but they also restrict potential gains (because of their cost).
+
+
+````{prf:definition} Profit of an Iron Condor
+:label: defn-PL-iron-condor
+Fill me in with some stuff.
+````
+
+
+{prf:ref}`defn-PL-iron-condor` gives the profit condition for an [iron condor](https://www.investopedia.com/terms/i/ironcondor.asp). Let's put some numbers into the profit conditions and analyze their behavior ({prf:ref}`iron-condor-expiration`).
 
 
 ````{prf:example} Iron condor
@@ -404,11 +415,10 @@ Fill me in with some stuff.
 
 (content:references:option-probability-of-profit-algorithms)=
 ## Probability of profit at expiration
-The Probability of Profit (POP) at expiration is the probability that your option position will make at least $0.01 at expiration. 
-The probability of profit can be a useful deccison metric, e.g., investors engange in transactions that have a _large_ POP and avoid low probability trades. However, the exact meaning of _large_ or _small_ depnds upon the risk tolerance of the investor. 
+The Probability of Profit (POP) at expiration is the probability that your option position will make at least $0.01 at expiration. The probability of profit can be a helpful decision metric, e.g., investors engage in transactions with a _large_ POP and avoid low probability trades. However, the exact meaning of _large_ or _small_ depends upon the investor’s risk tolerance. 
 
-We can estimate the Probability of Profit (POP) at expiration using monte-carlo simulation. For example, we can develop a 
-geometric brownian motion model of the underlying price dynamics (based on historical data), and then use that model to project the underlying price into the future. 
+Using Monte-Carlo simulation, we can estimate the Probability of Profit (POP) at expiration. For example, we can develop a 
+geometric Brownian motion model of the underlying price dynamics (based on historical data), and then use that model to project the underlying price into the future. 
 
 
 (content:references:option-pricing-algorithms)=
