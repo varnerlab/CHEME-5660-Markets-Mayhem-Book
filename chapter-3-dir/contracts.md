@@ -473,8 +473,20 @@ source: [live Pluto notebook](https://github.com/varnerlab/CHEME-5660-Markets-Ma
 ## Probability of profit at expiration
 The Probability of Profit (POP) at expiration is the probability that your option position will make at least $0.01 at expiration. The probability of profit can be a helpful decision metric, e.g., investors engage in transactions with a _large_ POP and avoid low probability trades. However, the exact meaning of _large_ or _small_ depends upon the investor’s risk tolerance. 
 
-Using Monte-Carlo simulation, we can estimate the Probability of Profit (POP) at expiration. For example, we can develop a 
-geometric Brownian motion model of the underlying price dynamics (based on historical data), and then use that model to project the underlying price into the future. 
+### Monte-Carlo simulation
+Using Monte-Carlo simulation, we can estimate the option position’s probability of Profit (POP) at expiration. 
+First, we can develop a simulation of the price of the underlying asset `XYZ` e.g., using a geometric Brownian motion model developed from historical data, and then use that model to project the underlying price into the future until expiration. Finally, we count the number of simulation trajectories in which a profit condition is met and divide that by the total number of trajectories to arrive at the probability that the profit condition is satisfied. 
+
+To explore this idea, let's compute the probability of profit of a [short strangle](https://www.investopedia.com/terms/s/strangle.asp) position on [AMD](https://finance.yahoo.com/quote/AMD/).
+
+
+````{prf:example} Probability of Profit at Expiration AMD Strangle
+:label: pop-amd-strange-expiration
+
+
+
+````
+
 
 
 (content:references:option-pricing-algorithms)=
