@@ -435,7 +435,12 @@ $$
 
 ````{prf:example} Iron condor
 :label: iron-condor-expiration
-Fill me in with some stuff.
+
+An [iron condor](https://www.investopedia.com/terms/i/ironcondor.asp) is constructed by _selling_ a put (1) and call (2) options on the underlying asset `XYZ`, while simultaneously _buying_ a put (3) and call (4) options on `XYZ`. All legs have the same expiration, but different strike prices. In particular, the short legs of an [iron condor](https://www.investopedia.com/terms/i/ironcondor.asp) have strike prices near the share price of `XYZ`, while the two long legs are further out of the money (farther away from the current share price of `XYZ`). 
+
+The profit (or loss) for an [iron condor](https://www.investopedia.com/terms/i/ironcondor.asp) on [MU](https://finance.yahoo.com/quote/MU/) is shown in XXX.
+
+
 ````
 
 (content:references:option-probability-of-profit-algorithms)=
