@@ -433,13 +433,21 @@ $$
 {prf:ref}`defn-PL-iron-condor` gives the profit conditions for an [iron condor](https://www.investopedia.com/terms/i/ironcondor.asp). Let's put some numbers into the profit conditions and analyze their behavior ({prf:ref}`iron-condor-expiration`).
 
 
-````{prf:example} Iron condor
+````{prf:example} Profit of an Iron Condor
 :label: iron-condor-expiration
 
-An [iron condor](https://www.investopedia.com/terms/i/ironcondor.asp) is constructed by _selling_ a put (1) and call (2) options on the underlying asset `XYZ`, while simultaneously _buying_ a put (3) and call (4) options on `XYZ`. All legs have the same expiration, but different strike prices. In particular, the short legs of an [iron condor](https://www.investopedia.com/terms/i/ironcondor.asp) have strike prices near the share price of `XYZ`, while the two long legs are further out of the money (farther away from the current share price of `XYZ`). 
+An [iron condor](https://www.investopedia.com/terms/i/ironcondor.asp) is constructed by _selling_ a put (1) and call (2) options on the underlying asset `XYZ`, while simultaneously _buying_ a put (3) and call (4) options on `XYZ`. All legs have the same expiration, but different strike prices. 
 
-The profit (or loss) for an [iron condor](https://www.investopedia.com/terms/i/ironcondor.asp) on [MU](https://finance.yahoo.com/quote/MU/) is shown in XXX.
+In particular, the short legs of an [iron condor](https://www.investopedia.com/terms/i/ironcondor.asp) have strike prices near the share price of `XYZ`, while the two long legs are further out of the money (farther away from the current share price of `XYZ`). 
 
+The profit (or loss) for an [iron condor](https://www.investopedia.com/terms/i/ironcondor.asp) on [MU](https://finance.yahoo.com/quote/MU/) is shown in {numref}`fig-mu-iron-condor`.
+
+```{figure} ./figs/Fig-MU-Profit-IronCondor.pdf
+---
+height: 420px
+name: fig-mu-iron-condor
+---
+Example profit and loss diagram at expiration for an [MU](https://finance.yahoo.com/quote/MU/) iron condor. Parameters: $K_{1}$ = \$90 USD/share, $K_{2}$ = \$110 USD/share, $\mathcal{P}_{1}$ = \$4.05 USD/share and $\mathcal{P}_{2}$ = \$5.70 USD/share. $S_{o}$ = \$101.57 USD/share.
 
 ````
 
