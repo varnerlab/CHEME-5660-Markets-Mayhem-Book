@@ -477,11 +477,12 @@ The Probability of Profit (POP) at expiration is the probability that your optio
 Using Monte-Carlo simulation, we can estimate the option position’s probability of Profit (POP) at expiration. 
 First, we can develop a simulation of the price of the underlying asset `XYZ` e.g., using a geometric Brownian motion model developed from historical data, and then use that model to project the underlying price into the future until expiration. Finally, we count the number of simulation trajectories in which a profit condition is met and divide that by the total number of trajectories to arrive at the probability that the profit condition is satisfied. 
 
-To explore this idea, let's compute the probability of profit of a [short strangle](https://www.investopedia.com/terms/s/strangle.asp) position on [AMD](https://finance.yahoo.com/quote/AMD/).
+To explore this idea, let's compute the probability of profit of a [short strangle](https://www.investopedia.com/terms/s/strangle.asp) position in [AMD](https://finance.yahoo.com/quote/AMD/) in {prf:ref}`pop-amd-strange-expiration`:
 
 
-````{prf:example} Probability of Profit at Expiration AMD Strangle
+````{prf:example} Probability of Profit at Expiration for AMD Strangle
 :label: pop-amd-strange-expiration
+
 
 
 
