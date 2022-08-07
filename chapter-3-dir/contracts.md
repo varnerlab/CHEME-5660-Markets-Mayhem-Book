@@ -464,7 +464,9 @@ height: 420px
 name: fig-mu-iron-condor
 ---
 Example profit and loss diagram at expiration for an [MU](https://finance.yahoo.com/quote/MU/) iron condor. Parameters: $K_{1}$ = \$50 USD/share, $K_{2}$ = \$70 USD/share, $K_{3}$ = \$45 USD/share, $K_{4}$ = \$75 USD/share, $\mathcal{P}_{1}$ = \$1.09 USD/share $\mathcal{P}_{2}$ = \$2.00 USD/share, $\mathcal{P}_{3}$ = \$0.60 USD/share and $\mathcal{P}_{4}$ = \$1.03 USD/share. $S_{o}$ = \$62.46 USD/share.
+```
 
+source: [live Pluto notebook](https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks) or [static HTML view](https://htmlview.glitch.me/?https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks/blob/main/pluto-notebooks/html/Example-IronCondor-Profit.jl.html)
 ````
 
 (content:references:option-probability-of-profit-algorithms)=
