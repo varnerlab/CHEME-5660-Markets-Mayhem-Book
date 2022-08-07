@@ -484,7 +484,7 @@ To explore this idea, let's compute the probability of profit of a [short strang
 :label: pop-amd-strange-expiration
 
 
-
+Fill me in here.
 
 ````
 
