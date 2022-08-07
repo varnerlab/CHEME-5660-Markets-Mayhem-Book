@@ -364,6 +364,14 @@ $$
 \end{cases}
 $$
 
+A [strangle](https://www.investopedia.com/terms/s/strangle.asp) has two break-even points $S^{+}$ and $S^{-}$ where we know that $K_{2}<S^{+}$ and $S^{-}<K_{1}$. Thus, the low break-even point $S^{-}$ is given by:
+
+$$S^{-} = K_{1} - \left(\mathcal{P}_{1}+\mathcal{P}_{2}\right)$$
+
+while the high break-even point $S^{+}$ is given by:
+
+$$S^{+} = K_{2} + \left(\mathcal{P}_{1}+\mathcal{P}_{2}\right)$$
+
 ````
 
 {prf:ref}`defn-PL-put-contract-strangle` gives the profit conditions for both long (buy both the call and the put legs) and short (sell both the call and put legs) strangles. Let's put some numbers into the profit conditions and analyze their behavior ({prf:ref}`strangle-profit-expiration`).
@@ -394,9 +402,9 @@ Example profit and loss diagram at expiration for an [AMD](https://finance.yahoo
 ````
 
 #### Iron Condor
-An [iron condor](https://www.investopedia.com/terms/i/ironcondor.asp) is a _neutral defined risk_ position constructed by _selling_ a put (1) and call (2) options on the underlying asset `XYZ`, while simultaneously _buying_ a put (3) and call (4) options on `XYZ`. All the legs of an [iron condor](https://www.investopedia.com/terms/i/ironcondor.asp) have the same underlying asset `XYZ`, and have the same expiration, but different strike prices where $K_{3}<K_{1}<K_{2}<K_{4}$. In particular, the two short options are sold with strikes on either side of the current share price $S_{o}$ of `XYZ`, with the short put strike price $K_{1}<S_{o}$ and the short call strike price $K_{2}>S_{o}$. Then, the long legs are purchased above and below the short strikes.  Thus, an [iron condor](https://www.investopedia.com/terms/i/ironcondor.asp) position has the character of a [strangle](https://www.investopedia.com/terms/s/strangle.asp) combined with a vertical spread. 
+An [iron condor](https://www.investopedia.com/terms/i/ironcondor.asp) is a _neutral defined risk_ position constructed by _selling_ a put (1) and call (2) options on the underlying asset `XYZ`, while simultaneously _buying_ a put (3) and call (4) options on `XYZ`. All the legs of an [iron condor](https://www.investopedia.com/terms/i/ironcondor.asp) have the same underlying asset `XYZ`, and have the same expiration, but they have different strike prices where $K_{3}<K_{1}<K_{2}<K_{4}$. In particular, the two short options are sold with strikes on either side of the current share price $S_{o}$ of `XYZ`, with the short put strike price $K_{1}<S_{o}$ and the short call strike price $K_{2}>S_{o}$. Then, the long legs are purchased above and below the short strikes.  Thus, an [iron condor](https://www.investopedia.com/terms/i/ironcondor.asp) position has the character of a [strangle](https://www.investopedia.com/terms/s/strangle.asp) combined with a vertical spread. 
 
-An investor holding an [iron condor](https://www.investopedia.com/terms/i/ironcondor.asp) profits if the share price of `XYZ` remians between the strike prices of the two short options (like a short strangle). However, unlike a [strangle](https://www.investopedia.com/terms/s/strangle.asp), an [iron condor](https://www.investopedia.com/terms/i/ironcondor.asp) is a defined risk strategy; the long options act to limit any possible losses, but they also restrict potential gains (because of their cost).
+An investor holding an [iron condor](https://www.investopedia.com/terms/i/ironcondor.asp) profits if the share price of `XYZ` remains between the strike prices of the two short options (like a short strangle). However, unlike a [strangle](https://www.investopedia.com/terms/s/strangle.asp), an [iron condor](https://www.investopedia.com/terms/i/ironcondor.asp) is a defined risk strategy; the long options act to limit any possible losses, but they also restrict potential gains (because of their cost).
 
 
 ````{prf:definition} Profit of an Iron Condor
@@ -419,12 +427,20 @@ where $(K_{\star}-S)^{+}=\max(K_{\star}-S,0)$ and $(S-K_{\star})^{+} = \max(S-K_
 $$
 \hat{P} = \begin{cases}
   K_{2} - K_{4} + \Bigl(\mathcal{P}_{1} + \mathcal{P}_{2} - \mathcal{P}_{3}-\mathcal{P}_{4}\Bigr)  & S>K_{4} \\
-  S-K_{2} + \Bigl(\mathcal{P}_{1} + \mathcal{P}_{2} - \mathcal{P}_{3}-\mathcal{P}_{4}\Bigr)  & K_{2}<S<K_{4} \\
+  K_{2} - S + \Bigl(\mathcal{P}_{1} + \mathcal{P}_{2} - \mathcal{P}_{3}-\mathcal{P}_{4}\Bigr)  & K_{2}<S<K_{4} \\
   \Bigl(\mathcal{P}_{1} + \mathcal{P}_{2} - \mathcal{P}_{3}-\mathcal{P}_{4}\Bigr) & K_{1}\leq{S}\leq{K_{2}} \\
-  K_{1} - S + \Bigl(\mathcal{P}_{1} + \mathcal{P}_{2} - \mathcal{P}_{3}-\mathcal{P}_{4}\Bigr) & K_{3}<S<K_{1} \\
+  S - K_{1} + \Bigl(\mathcal{P}_{1} + \mathcal{P}_{2} - \mathcal{P}_{3}-\mathcal{P}_{4}\Bigr) & K_{3}<S<K_{1} \\
   K_{3} - K_{1} + \Bigl(\mathcal{P}_{1} + \mathcal{P}_{2} - \mathcal{P}_{3}-\mathcal{P}_{4}\Bigr) & S<K_{3}
 \end{cases}
 $$
+
+An [iron condor](https://www.investopedia.com/terms/i/ironcondor.asp) has two break-even points $S^{+}$ and $S^{-}$ where we know that $K_{2}<S^{+}<K_{4}$ and $K_{3}<S^{-}<K_{1}$. Thus, the low break-even point $S^{-}$ is given by:
+
+$$S^{-} = K_{1} - \Bigl(\mathcal{P}_{1} + \mathcal{P}_{2} - \mathcal{P}_{3}-\mathcal{P}_{4}\Bigr)$$
+
+while the high break-even point $S^{+}$ is given by:
+
+$$S^{+} = K_{2} + \Bigl(\mathcal{P}_{1} + \mathcal{P}_{2} - \mathcal{P}_{3}-\mathcal{P}_{4}\Bigr)$$
 
 
 ````
@@ -440,14 +456,14 @@ An [iron condor](https://www.investopedia.com/terms/i/ironcondor.asp) is constru
 
 In particular, the short legs of an [iron condor](https://www.investopedia.com/terms/i/ironcondor.asp) have strike prices near the share price of `XYZ`, while the two long legs are further out of the money (farther away from the current share price of `XYZ`). 
 
-The profit (or loss) for an [iron condor](https://www.investopedia.com/terms/i/ironcondor.asp) on [MU](https://finance.yahoo.com/quote/MU/) is shown in {numref}`fig-mu-iron-condor`.
+The profit (or loss) for an [iron condor](https://www.investopedia.com/terms/i/ironcondor.asp) on [MU](https://finance.yahoo.com/quote/MU/) is shown in {numref}`fig-mu-iron-condor`. The low break-even point $S^{-}$ = \$48.54 USD/share while the high break-even point $S^{+}$ = \$71.46 USD/share.
 
 ```{figure} ./figs/Fig-MU-Profit-IronCondor.pdf
 ---
 height: 420px
 name: fig-mu-iron-condor
 ---
-Example profit and loss diagram at expiration for an [MU](https://finance.yahoo.com/quote/MU/) iron condor. Parameters: $K_{1}$ = \$90 USD/share, $K_{2}$ = \$110 USD/share, $\mathcal{P}_{1}$ = \$4.05 USD/share and $\mathcal{P}_{2}$ = \$5.70 USD/share. $S_{o}$ = \$101.57 USD/share.
+Example profit and loss diagram at expiration for an [MU](https://finance.yahoo.com/quote/MU/) iron condor. Parameters: $K_{1}$ = \$50 USD/share, $K_{2}$ = \$70 USD/share, $K_{3}$ = \$45 USD/share, $K_{4}$ = \$75 USD/share, $\mathcal{P}_{1}$ = \$1.09 USD/share $\mathcal{P}_{2}$ = \$2.00 USD/share, $\mathcal{P}_{3}$ = \$0.60 USD/share and $\mathcal{P}_{4}$ = \$1.03 USD/share. $S_{o}$ = \$62.46 USD/share.
 
 ````
 
