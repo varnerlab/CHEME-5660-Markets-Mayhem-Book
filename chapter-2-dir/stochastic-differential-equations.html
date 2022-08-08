@@ -4,11 +4,13 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Macroscopic Market Models &#8212; CHEME 5660</title>
     
-  <link href="../_static/css/theme.css" rel="stylesheet">
-  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -18,21 +20,17 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    
-      
-
-    
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
@@ -40,20 +38,21 @@
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script src="../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Microscopic Market Models" href="agent-based-market-models.html" />
@@ -65,7 +64,21 @@ const thebe_selector_output = ".output, .cell_output"
     <!-- Google Analytics -->
     
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
     
     <div class="container-fluid" id="banner"></div>
 
@@ -74,9 +87,10 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="container-xl">
       <div class="row">
           
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../index.html">
       
         <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
@@ -94,17 +108,18 @@ const thebe_selector_output = ".output, .cell_output"
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
-        <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../infrastructure.html">
-   CHEME 5660 Financial Data, Markets, and Mayhem for Scientists and Engineers
-  </a>
- </li>
-</ul>
-<ul class="current nav bd-sidenav">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../infrastructure.html">
+                    CHEME 5660 Course Outline and Information
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../chapter-1-dir/chapter-1.html">
-   Unit 1. The Financial System
+  <a class="reference internal" href="../julia-dir/julia-landing.html">
+   Julia Programming Language
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
   <label for="toctree-checkbox-1">
@@ -113,8 +128,30 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
+    <a class="reference internal" href="../julia-dir/julia-installation.html">
+     Julia Installation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../julia-dir/julia-basics.html">
+     Introduction to Julia Basics
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../chapter-1-dir/chapter-1.html">
+   Unit 1. The Financial System
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
     <a class="reference internal" href="../chapter-1-dir/global.html">
-     The Global Finanical System
+     The Global Financial System and Blah Blah
     </a>
    </li>
    <li class="toctree-l2">
@@ -133,8 +170,8 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="chapter-2.html">
    Unit 2. Modeling and Simulation of Asset Price Dynamics
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-  <label for="toctree-checkbox-2">
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -160,8 +197,8 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="../chapter-3-dir/chapter-3-landing.html">
    Unit 3. Risk, Portfolios, Derivatives, and Leverage
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
-  <label for="toctree-checkbox-3">
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -201,90 +238,180 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 
     </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-</div>
-
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
             
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/chapter-2-dir/stochastic-differential-equations.md"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.md</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
-    </div>
-</div>
-
-            <!-- Source interaction buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        <a class="repository-button"
-            href="https://github.com/executablebooks/jupyter-book"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
-        <a class="issues-button"
-            href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fchapter-2-dir/stochastic-differential-equations.html&body=Your%20issue%20content%20here."><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-        
-    </div>
-</div>
-
-            <!-- Full screen (wrap in <a> to have style consistency -->
-
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
-
-            <!-- Launch buttons -->
-
-        </div>
-
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
-            
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
             </div>
-            <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/executablebooks/jupyter-book"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fchapter-2-dir/stochastic-differential-equations.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/chapter-2-dir/stochastic-differential-equations.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#introduction">
    Introduction
@@ -334,17 +461,19 @@ const thebe_selector_output = ".output, .cell_output"
      </li>
     </ul>
    </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#stochastic-volatility-models">
-     Stochastic Volatility Models
-    </a>
-   </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#discretization-approaches">
    Discretization Approaches
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#stochastic-volatility-models">
+     Stochastic Volatility Models
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#extension-to-multiple-simultaneous-assets">
@@ -358,12 +487,11 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
 </ul>
 
-            </nav>
-        </div>
-    </div>
+    </nav>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
                 <h1>Macroscopic Market Models</h1>
@@ -425,17 +553,19 @@ const thebe_selector_output = ".output, .cell_output"
      </li>
     </ul>
    </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#stochastic-volatility-models">
-     Stochastic Volatility Models
-    </a>
-   </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#discretization-approaches">
    Discretization Approaches
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#stochastic-volatility-models">
+     Stochastic Volatility Models
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#extension-to-multiple-simultaneous-assets">
@@ -453,13 +583,14 @@ const thebe_selector_output = ".output, .cell_output"
                     </div>
                 </div>
             </div>
-            
+            <main id="main-content" role="main">
+                
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="macroscopic-market-models">
-<h1>Macroscopic Market Models<a class="headerlink" href="#macroscopic-market-models" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="introduction">
-<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+  <section class="tex2jax_ignore mathjax_ignore" id="macroscopic-market-models">
+<h1>Macroscopic Market Models<a class="headerlink" href="#macroscopic-market-models" title="Permalink to this headline">#</a></h1>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">#</a></h2>
 <p>Stochastic differential equations can model various physical, biological, and chemical systems.
 For example, the path traced by a molecule as it travels through a liquid or a gas can be modeled as a
 random walk, a type of stochastic differential equation.
@@ -469,7 +600,7 @@ They are a top-down approach to simulating market behavior, where markers are tr
 dueling perspectives on the randomness of stock prices in the finance and economics community.
 <a class="reference external" href="https://en.wikipedia.org/wiki/Burton_Malkiel">Malkiel</a>, in his book <a class="reference external" href="https://en.wikipedia.org/wiki/A_Random_Walk_Down_Wall_Street">A Random Walk Down Wall Street</a>, argues that asset prices typically exhibit signs of a random walk and that investors cannot consistently outperform market averages. On the other hand, in their book <a class="reference external" href="https://www.jstor.org/stable/j.ctt7tccx">A Non-Random Walk Down Wall Street, Lo and MacKinlay present</a>, several studies that suggest there are stock market pricing trends are somewhat predictable.</p>
 <p>To better understand these arguments and build mathematical models that can be used to simulate market
-dynamics, we need to introduce analytical and numerical tools to solve SDEs. Our development will follow the previous work of Glasserman <span id="id1">[<a class="reference internal" href="../References.html#id8" title="Paul Glasserman. Monte Carlo methods in financial engineering. Volume 53. Springer, New York, 2004. ISBN 0387004513 (alk. paper). URL: http://www.loc.gov/catdir/enhancements/fy0813/2003050499-d.html.">Gla04</a>]</span>; in particular, chapters 3, 6, and Appendix B.</p>
+dynamics, we need to introduce analytical and numerical tools to solve SDEs. Our development will follow the previous work of Glasserman <span id="id1">[<a class="reference internal" href="../References.html#id8" title="Paul Glasserman. Monte Carlo methods in financial engineering. Volume 53. Springer, New York, 2004. ISBN 0387004513 (alk. paper). URL: http://www.loc.gov/catdir/enhancements/fy0813/2003050499-d.html.">Glasserman, 2004</a>]</span>; in particular, chapters 3, 6, and Appendix B.</p>
 <p><strong>Topics:</strong></p>
 <ul class="simple">
 <li><p>Scalar and vector <a class="reference internal" href="#content-references-wiener-process"><span class="std std-ref">Brownian Motion</span></a></p></li>
@@ -477,26 +608,26 @@ dynamics, we need to introduce analytical and numerical tools to solve SDEs. Our
 <li><p><a class="reference internal" href="#content-references-discretization"><span class="std std-ref">Discretization Approaches</span></a> to solve stochastic differential equations</p></li>
 </ul>
 <hr class="docutils" />
-</div>
-<div class="section" id="brownian-motion">
-<span id="content-references-wiener-process"></span><h2>Brownian Motion<a class="headerlink" href="#brownian-motion" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="brownian-motion">
+<span id="content-references-wiener-process"></span><h2>Brownian Motion<a class="headerlink" href="#brownian-motion" title="Permalink to this headline">#</a></h2>
 <p>A <a class="reference external" href="https://en.wikipedia.org/wiki/Wiener_process">Wiener Process</a> (also often referred to as a <a class="reference external" href="https://en.wikipedia.org/wiki/Brownian_motion">standard Brownian motion</a>) is a real-valued continuous-time stochastic process named after the <a class="reference external" href="https://en.wikipedia.org/wiki/Norbert_Wiener">Norbert Wiener</a> for the study of one-dimensional Brownian motion:</p>
 <div class="proof definition admonition" id="defn-wiener-process">
 <p class="admonition-title"><span class="caption-number">Definition 19 </span> (One-dimensional Wiener Process)</p>
-<div class="definition-content section" id="proof-content">
+<section class="definition-content" id="proof-content">
 <p>A Wiener process is a continuous one-dimensional stochastic process <span class="math notranslate nohighlight">\(\left\{W\left(t\right), 0\leq{t}\leq{T}\right\}\)</span> with the following properties:</p>
 <ul class="simple">
 <li><p>W<span class="math notranslate nohighlight">\(\left(0\right)\)</span> = <span class="math notranslate nohighlight">\(0\)</span></p></li>
 <li><p>The increments <span class="math notranslate nohighlight">\(\left\{W(t_{1}) - W(t_{o}),\dots, W(t_{k}) - W(t_{k-1})\right\}\)</span> are independent for any <span class="math notranslate nohighlight">\(k\)</span> and <span class="math notranslate nohighlight">\(0\leq{t_{o}}&lt; t_{1} &lt; \dots &lt; t_{k} \leq{T}\)</span>.</p></li>
 <li><p>The increment W(t) - W(s) <span class="math notranslate nohighlight">\(\sim~N\left(0,t-s\right)\)</span> for any <span class="math notranslate nohighlight">\(0\leq{s}&lt; t \leq{T}\)</span>, where <span class="math notranslate nohighlight">\(N\left(0,t-s\right)\)</span> denotes a <a class="reference external" href="https://en.wikipedia.org/wiki/Normal_distribution">normally distributed random variable</a> with mean <span class="math notranslate nohighlight">\(0\)</span> and variance <span class="math notranslate nohighlight">\(t - s\)</span>.</p></li>
 </ul>
-</div>
-</div></div>
-<div class="section" id="ito-processes">
-<span id="content-references-ito-calculus"></span><h2>Ito Processes<a class="headerlink" href="#ito-processes" title="Permalink to this headline">¶</a></h2>
+</section>
+</div></section>
+<section id="ito-processes">
+<span id="content-references-ito-calculus"></span><h2>Ito Processes<a class="headerlink" href="#ito-processes" title="Permalink to this headline">#</a></h2>
 <p>We are interested in random variables <span class="math notranslate nohighlight">\(X(t)\)</span> whose time evolution is governed by stochastic differential equations of the form (<a class="reference external" href="https://en.wikipedia.org/wiki/It%C3%B4_diffusion">Ito Process or Ito Diffusion</a>):</p>
 <div class="math notranslate nohighlight" id="equation-eq-ito-process">
-<span class="eqno">(10)<a class="headerlink" href="#equation-eq-ito-process" title="Permalink to this equation">¶</a></span>\[dX = a(X(t),t)dt + b(X(t),t)dW(t)\]</div>
+<span class="eqno">(10)<a class="headerlink" href="#equation-eq-ito-process" title="Permalink to this equation">#</a></span>\[dX = a(X(t),t)dt + b(X(t),t)dW(t)\]</div>
 <p>subject to the (known) constant initial condition <span class="math notranslate nohighlight">\(X(0)\)</span>.
 Eqn. <a class="reference internal" href="#equation-eq-ito-process">(10)</a> is called an <a class="reference external" href="https://en.wikipedia.org/wiki/It%C3%B4_diffusion">Ito Process or Ito Diffusion</a>. The random variable <span class="math notranslate nohighlight">\(X\in\mathbb{R}^{d}\)</span>, while the functions
 <span class="math notranslate nohighlight">\(a:\mathbb{R}^{d}\times\mathbb{R}\rightarrow\mathbb{R}^{d}\)</span>
@@ -507,35 +638,35 @@ and <span class="math notranslate nohighlight">\(W\)</span> denotes an m-dimensi
 analytically. However, in the general case, we’ll need to solve Eqn <a class="reference internal" href="#equation-eq-ito-process">(10)</a>
 numerically. Numerical approximations to the solution of Eqn <a class="reference internal" href="#equation-eq-ito-process">(10)</a> can be
 developed quickly; however, they have different levels of error depending upon the solution approach.</p>
-<div class="section" id="ito-s-lemma">
-<h3>Ito’s Lemma<a class="headerlink" href="#ito-s-lemma" title="Permalink to this headline">¶</a></h3>
+<section id="ito-s-lemma">
+<h3>Ito’s Lemma<a class="headerlink" href="#ito-s-lemma" title="Permalink to this headline">#</a></h3>
 <p>A critical theoretical result that supports the construction of analytical solutions to stochastic differential equations is <a class="reference external" href="https://en.wikipedia.org/wiki/It%C3%B4%27s_lemma">Ito’s Lemma</a>; Ito’s Lemma,  developed by K. Ito in 1951 [REFHERE], is the analog of the Taylor series for stochastic systems:</p>
 <div class="proof lemma admonition" id="ito-lemma">
 <p class="admonition-title"><span class="caption-number">Lemma 1 </span> (Scalar Ito’s Lemma)</p>
-<div class="lemma-content section" id="proof-content">
+<section class="lemma-content" id="proof-content">
 <p>Let the behavior of the random variable <span class="math notranslate nohighlight">\(X(t)\)</span> be governed by the stochastic differential equation:</p>
 <div class="math notranslate nohighlight">
 \[dX = a\left(X(t),t\right)dt + b\left(X(t),t\right)dW(t)\]</div>
 <p>where <span class="math notranslate nohighlight">\(dW(t)\)</span> is a one-dimensional Wiener process and <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> are functions of <span class="math notranslate nohighlight">\(X(t)\)</span> and <span class="math notranslate nohighlight">\(t\)</span>.</p>
 <p>Let <span class="math notranslate nohighlight">\(Y(t) = \phi\left(t,X(t)\right)\)</span> be another process that is a function of <span class="math notranslate nohighlight">\(X(t)\)</span> and time <span class="math notranslate nohighlight">\(t\)</span>, where <span class="math notranslate nohighlight">\(\phi\left(t,X(t)\right)\)</span> is twice differentiable with respect to <span class="math notranslate nohighlight">\(X(t)\)</span>, and singly differentiable with respect to <span class="math notranslate nohighlight">\(t\)</span>. Then, the process <span class="math notranslate nohighlight">\(Y(t)\)</span> is governed by the equation:</p>
 <div class="math notranslate nohighlight" id="equation-eq-ito-lemma">
-<span class="eqno">(11)<a class="headerlink" href="#equation-eq-ito-lemma" title="Permalink to this equation">¶</a></span>\[dY = \left(\frac{\partial{Y}}{\partial{t}}+a\frac{\partial{Y}}{\partial{X}}+\frac{b^{2}}{2}\frac{\partial^{2}{Y}}{\partial{X}^{2}}\right)dt+b\left(\frac{\partial{Y}}{\partial{X}}\right)dW(t)\]</div>
-</div>
-</div></div>
-<div class="section" id="ordinary-brownian-motion">
-<h3>Ordinary Brownian Motion<a class="headerlink" href="#ordinary-brownian-motion" title="Permalink to this headline">¶</a></h3>
+<span class="eqno">(11)<a class="headerlink" href="#equation-eq-ito-lemma" title="Permalink to this equation">#</a></span>\[dY = \left(\frac{\partial{Y}}{\partial{t}}+a\frac{\partial{Y}}{\partial{X}}+\frac{b^{2}}{2}\frac{\partial^{2}{Y}}{\partial{X}^{2}}\right)dt+b\left(\frac{\partial{Y}}{\partial{X}}\right)dW(t)\]</div>
+</section>
+</div></section>
+<section id="ordinary-brownian-motion">
+<h3>Ordinary Brownian Motion<a class="headerlink" href="#ordinary-brownian-motion" title="Permalink to this headline">#</a></h3>
 <p>Ordinary Brownian Motion (OBM) is a general class of problems involving constant volatility fluctuations around a constant deterministic drift term, i.e., both <span class="math notranslate nohighlight">\(a = \mu\)</span> and <span class="math notranslate nohighlight">\(b = \sigma&gt;0\)</span> are constants.</p>
 <div class="proof definition admonition" id="definition-2">
 <p class="admonition-title"><span class="caption-number">Definition 20 </span> (Scalar Ordinary Brownian Motion)</p>
-<div class="definition-content section" id="proof-content">
+<section class="definition-content" id="proof-content">
 <p>There exists constants <span class="math notranslate nohighlight">\(\mu\)</span> and <span class="math notranslate nohighlight">\(\sigma&gt;0\)</span>.
 Then a random process <span class="math notranslate nohighlight">\(X(t)\)</span> follows an Ordinary Brownian Motion (Wiener) process with drift <span class="math notranslate nohighlight">\(\mu\)</span> and diffusion <span class="math notranslate nohighlight">\(\sigma^{2}\)</span> if <span class="math notranslate nohighlight">\(X(t)\)</span> is a solution to the Stochastic Differential Equation (SDE):</p>
 <div class="math notranslate nohighlight" id="equation-eq-sde-standardbm">
-<span class="eqno">(12)<a class="headerlink" href="#equation-eq-sde-standardbm" title="Permalink to this equation">¶</a></span>\[dX\left(t\right) = \mu{dt}+\sigma{dW(t)}\]</div>
+<span class="eqno">(12)<a class="headerlink" href="#equation-eq-sde-standardbm" title="Permalink to this equation">#</a></span>\[dX\left(t\right) = \mu{dt}+\sigma{dW(t)}\]</div>
 <p>where <span class="math notranslate nohighlight">\(dW(t)\)</span> is a one-dimensional Wiener Process.</p>
-</div>
-</div><div class="section" id="analytical-solution-ordinary-brownian-motion">
-<h4>Analytical solution: Ordinary Brownian Motion<a class="headerlink" href="#analytical-solution-ordinary-brownian-motion" title="Permalink to this headline">¶</a></h4>
+</section>
+</div><section id="analytical-solution-ordinary-brownian-motion">
+<h4>Analytical solution: Ordinary Brownian Motion<a class="headerlink" href="#analytical-solution-ordinary-brownian-motion" title="Permalink to this headline">#</a></h4>
 <p>The ordinary Brownian motion described by Eqn. <a class="reference internal" href="#equation-eq-sde-standardbm">(12)</a>
 has an analytical solution. To develop this solution, let’s use <a class="reference external" href="https://en.wikipedia.org/wiki/It%C3%B4%27s_lemma">Ito’s Lemma</a>.</p>
 <div class="admonition-derivation-analytical-solution-scalar-ordinary-brownian-motion admonition">
@@ -550,38 +681,38 @@ If we assume <span class="math notranslate nohighlight">\(Y(t) = X(t)\)</span>, 
 <p>where <span class="math notranslate nohighlight">\(Y_{\star}\)</span> and <span class="math notranslate nohighlight">\(W_{\star}\)</span> denote the <span class="math notranslate nohighlight">\(Y\)</span> (or <span class="math notranslate nohighlight">\(W\)</span>) evaluated at time <span class="math notranslate nohighlight">\(\star\)</span>.
 However, <span class="math notranslate nohighlight">\(Y(t) = X(t)\)</span>, and the noise is a Wiener process; <span class="math notranslate nohighlight">\(W_{2}-W_{1}\sim{N\left(0,t_{2}-t_{1}\right)}\)</span>:</p>
 <div class="math notranslate nohighlight" id="equation-eq-sbm-soln">
-<span class="eqno">(13)<a class="headerlink" href="#equation-eq-sbm-soln" title="Permalink to this equation">¶</a></span>\[X_{2} - X_{1} = \mu\left(t_{2}-t_{1}\right)+\sigma\sqrt{t_2-t_1}\cdot{Z(0,1)}\]</div>
+<span class="eqno">(13)<a class="headerlink" href="#equation-eq-sbm-soln" title="Permalink to this equation">#</a></span>\[X_{2} - X_{1} = \mu\left(t_{2}-t_{1}\right)+\sigma\sqrt{t_2-t_1}\cdot{Z(0,1)}\]</div>
 <p>where <span class="math notranslate nohighlight">\(Z(0,1)\)</span> is a standard normal random variable with mean <span class="math notranslate nohighlight">\(0\)</span> and a variance of <span class="math notranslate nohighlight">\(1\)</span>.</p>
 <p>Finally, imagine that we are simulating an ordinary Brownian motion from <span class="math notranslate nohighlight">\(t = 0\rightarrow{T}\)</span>.
 Let’s break this interval into <span class="math notranslate nohighlight">\(n\)</span> time steps of fixed length <span class="math notranslate nohighlight">\(t_{k+1} - t_{k}, k = 1,2,\dots, n\)</span> where <span class="math notranslate nohighlight">\(t_1 = 0\)</span>.
 Then, we can re-write Eqn. <a class="reference internal" href="#equation-eq-sbm-soln">(13)</a> as:</p>
 <div class="math notranslate nohighlight" id="equation-eq-sbm-soln-arb-rime">
-<span class="eqno">(14)<a class="headerlink" href="#equation-eq-sbm-soln-arb-rime" title="Permalink to this equation">¶</a></span>\[X_{k+1} = X_{k} + \mu\left(t_{k+1}-t_{k}\right)+\sigma\sqrt{t_{k+1}-t_{k}}\cdot{Z(0,1)}\qquad{k=1,2,\dots,n}\]</div>
+<span class="eqno">(14)<a class="headerlink" href="#equation-eq-sbm-soln-arb-rime" title="Permalink to this equation">#</a></span>\[X_{k+1} = X_{k} + \mu\left(t_{k+1}-t_{k}\right)+\sigma\sqrt{t_{k+1}-t_{k}}\cdot{Z(0,1)}\qquad{k=1,2,\dots,n}\]</div>
 </div>
-</div>
-<div class="section" id="example">
-<h4>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h4>
+</section>
+<section id="example">
+<h4>Example<a class="headerlink" href="#example" title="Permalink to this headline">#</a></h4>
 <ul class="simple">
 <li><p><a class="reference external" href="https://htmlview.glitch.me/?https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks/blob/main/pluto-notebooks/html/Example-OrdinaryBrownianMotion-Simulation.jl.html">Simulation of ordinary Brownian motion analytical solution</a></p></li>
 </ul>
-</div>
-</div>
-<div class="section" id="geometric-brownian-motion">
-<h3>Geometric Brownian Motion<a class="headerlink" href="#geometric-brownian-motion" title="Permalink to this headline">¶</a></h3>
+</section>
+</section>
+<section id="geometric-brownian-motion">
+<h3>Geometric Brownian Motion<a class="headerlink" href="#geometric-brownian-motion" title="Permalink to this headline">#</a></h3>
 <p>Unfortunately, ordinary Brownian motion has a critical flaw; its solutions can be negative.
 Thus, it is not widely used to model the price of a risky asset because asset prices are non-negative. Instead, we often model asset prices using a <a class="reference external" href="https://en.wikipedia.org/wiki/Geometric_Brownian_motion">Geometric Brownian Motion (GBM) model</a>:</p>
 <div class="proof definition admonition" id="definition-3">
 <p class="admonition-title"><span class="caption-number">Definition 21 </span> (Scalar Geometric Brownian Motion)</p>
-<div class="definition-content section" id="proof-content">
+<section class="definition-content" id="proof-content">
 <p>There exists constants <span class="math notranslate nohighlight">\(\mu\)</span> and <span class="math notranslate nohighlight">\(\sigma&gt;0\)</span>.
 Then a random process <span class="math notranslate nohighlight">\(X(t)\)</span> follows a Geometric Brownian Motion (Wiener) process with drift <span class="math notranslate nohighlight">\(\mu\)</span> and diffusion <span class="math notranslate nohighlight">\(\sigma^{2}\)</span> if <span class="math notranslate nohighlight">\(X(t)\)</span> is a solution to the Stochastic Differential Equation (SDE):</p>
 <div class="math notranslate nohighlight" id="equation-eq-sde-gbm">
-<span class="eqno">(15)<a class="headerlink" href="#equation-eq-sde-gbm" title="Permalink to this equation">¶</a></span>\[\frac{dX\left(t\right)}{X(t)} = \mu{dt}+\sigma{dW(t)}\]</div>
+<span class="eqno">(15)<a class="headerlink" href="#equation-eq-sde-gbm" title="Permalink to this equation">#</a></span>\[\frac{dX\left(t\right)}{X(t)} = \mu{dt}+\sigma{dW(t)}\]</div>
 <p>where <span class="math notranslate nohighlight">\(dW(t)\)</span> is a one-dimensional Wiener Process.</p>
-</div>
-</div><p>The use of geometric Brownian motion as a financial model is primarily due to the work of Samuelson in the 1950s and 1960s <span id="id2">[<a class="reference internal" href="../References.html#id10" title="Robert C. Merton. Paul samuelson and financial economics. The American Economist, 50(2):9–31, 2006. URL: http://www.jstor.org/stable/40657651 (visited on 2022-05-16).">Mer06</a>]</span>. However, today Geometric Brownian Motion is more often associated with the Black–Scholes options pricing model (which we’ll describe later) <span id="id3">[<a class="reference internal" href="../References.html#id9" title="Fischer Black and Myron Scholes. The pricing of options and corporate liabilities. Journal of Political Economy, 81(3):637–654, 1973. URL: http://www.jstor.org/stable/1831029 (visited on 2022-05-16).">BS73</a>]</span>.</p>
-<div class="section" id="analytical-solution-geometric-brownian-motion">
-<h4>Analytical solution: Geometric Brownian Motion<a class="headerlink" href="#analytical-solution-geometric-brownian-motion" title="Permalink to this headline">¶</a></h4>
+</section>
+</div><p>The use of geometric Brownian motion as a financial model is primarily due to the work of Samuelson in the 1950s and 1960s <span id="id2">[<a class="reference internal" href="../References.html#id10" title="Robert C. Merton. Paul samuelson and financial economics. The American Economist, 50(2):9–31, 2006. URL: http://www.jstor.org/stable/40657651 (visited on 2022-05-16).">Merton, 2006</a>]</span>. However, today Geometric Brownian Motion is more often associated with the Black–Scholes options pricing model (which we’ll describe later) <span id="id3">[<a class="reference internal" href="../References.html#id9" title="Fischer Black and Myron Scholes. The pricing of options and corporate liabilities. Journal of Political Economy, 81(3):637–654, 1973. URL: http://www.jstor.org/stable/1831029 (visited on 2022-05-16).">Black and Scholes, 1973</a>]</span>.</p>
+<section id="analytical-solution-geometric-brownian-motion">
+<h4>Analytical solution: Geometric Brownian Motion<a class="headerlink" href="#analytical-solution-geometric-brownian-motion" title="Permalink to this headline">#</a></h4>
 <p>The geometric Brownian motion described by Eqn. <a class="reference internal" href="#equation-eq-sde-gbm">(15)</a> also has an analytical solution.
 To develop this solution, let’s use <a class="reference external" href="https://en.wikipedia.org/wiki/It%C3%B4%27s_lemma">Ito’s Lemma</a>.</p>
 <div class="admonition-derivation-analytical-solution-scalar-geometric-brownian-motion admonition">
@@ -589,46 +720,58 @@ To develop this solution, let’s use <a class="reference external" href="https:
 <p>There exists constants <span class="math notranslate nohighlight">\(\mu\)</span> and <span class="math notranslate nohighlight">\(\sigma&gt;0\)</span>. Let <span class="math notranslate nohighlight">\(Y(t) = \ln{X(t)}\)</span>.
 Then <a class="reference external" href="https://en.wikipedia.org/wiki/It%C3%B4%27s_lemma">Ito’s Lemma</a> gives:</p>
 <div class="math notranslate nohighlight" id="equation-eq-gdm-soln-anal-almost-1">
-<span class="eqno">(16)<a class="headerlink" href="#equation-eq-gdm-soln-anal-almost-1" title="Permalink to this equation">¶</a></span>\[dY = \left(\mu-\frac{\sigma^{2}}{2}\right)dt+\sigma{dW}\]</div>
+<span class="eqno">(16)<a class="headerlink" href="#equation-eq-gdm-soln-anal-almost-1" title="Permalink to this equation">#</a></span>\[dY = \left(\mu-\frac{\sigma^{2}}{2}\right)dt+\sigma{dW}\]</div>
 <p>Integrating both sides of Eqn <a class="reference internal" href="#equation-eq-gdm-soln-anal-almost-1">(16)</a> from <span class="math notranslate nohighlight">\(t_{1}\rightarrow{t_{2}}\)</span> gives:</p>
 <div class="math notranslate nohighlight" id="equation-eq-gdm-soln-anal-almost-2">
-<span class="eqno">(17)<a class="headerlink" href="#equation-eq-gdm-soln-anal-almost-2" title="Permalink to this equation">¶</a></span>\[Y_{2} - Y_{1} = \left(\mu-\frac{\sigma^{2}}{2}\right)\left(t_{2} - t_{1}\right)+\sigma\left(W_{2} - W_{1}\right)\]</div>
+<span class="eqno">(17)<a class="headerlink" href="#equation-eq-gdm-soln-anal-almost-2" title="Permalink to this equation">#</a></span>\[Y_{2} - Y_{1} = \left(\mu-\frac{\sigma^{2}}{2}\right)\left(t_{2} - t_{1}\right)+\sigma\left(W_{2} - W_{1}\right)\]</div>
 <p>However, <span class="math notranslate nohighlight">\(Y(t) = \ln{X(t)}\)</span> and the noise is a Wiener process <span class="math notranslate nohighlight">\(W_{2}-W_{1}\sim{N\left(0,t_{2}-t_{1}\right)}\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[\ln\left(\frac{X_{2}}{X_{1}}\right) = \left(\mu-\frac{\sigma^{2}}{2}\right)\left(t_{2} - t_{1}\right) + \sigma\sqrt{t_2-t_1}\cdot{Z(0,1)}\]</div>
 <p>or:</p>
 <div class="math notranslate nohighlight" id="equation-eq-gdm-soln-anal-almost-3">
-<span class="eqno">(18)<a class="headerlink" href="#equation-eq-gdm-soln-anal-almost-3" title="Permalink to this equation">¶</a></span>\[X_{2} = X_{1}\exp\Biggl[\left(\mu-\frac{\sigma^{2}}{2}\right)\left(t_{2} - t_{1}\right) + \sigma\sqrt{t_2-t_1}\cdot{Z(0,1)}\Biggr]\]</div>
+<span class="eqno">(18)<a class="headerlink" href="#equation-eq-gdm-soln-anal-almost-3" title="Permalink to this equation">#</a></span>\[X_{2} = X_{1}\exp\Biggl[\left(\mu-\frac{\sigma^{2}}{2}\right)\left(t_{2} - t_{1}\right) + \sigma\sqrt{t_2-t_1}\cdot{Z(0,1)}\Biggr]\]</div>
 <p>Finally, imagine that we are simulating a geometric Brownian motion from <span class="math notranslate nohighlight">\(t = 0\rightarrow{T}\)</span>.
 Let’s break this interval into <span class="math notranslate nohighlight">\(n\)</span> time steps of fixed length <span class="math notranslate nohighlight">\(t_{k+1} - t_{k}, k = 1,2, \dots, n\)</span> where <span class="math notranslate nohighlight">\(t_1 = 0\)</span>.
 Then, we can re-write Eqn <a class="reference internal" href="#equation-eq-gdm-soln-anal-almost-3">(18)</a> as:</p>
 <div class="math notranslate nohighlight" id="equation-eq-gdm-soln-anal-4">
-<span class="eqno">(19)<a class="headerlink" href="#equation-eq-gdm-soln-anal-4" title="Permalink to this equation">¶</a></span>\[X_{k+1} = X_{k}\exp\Biggl[\left(\mu-\frac{\sigma^{2}}{2}\right)\left(t_{k+1} - t_{k}\right) + \sigma\sqrt{t_{k+1}-t_{k}}\cdot{Z(0,1)}\Biggr]\]</div>
+<span class="eqno">(19)<a class="headerlink" href="#equation-eq-gdm-soln-anal-4" title="Permalink to this equation">#</a></span>\[X_{k+1} = X_{k}\exp\Biggl[\left(\mu-\frac{\sigma^{2}}{2}\right)\left(t_{k+1} - t_{k}\right) + \sigma\sqrt{t_{k+1}-t_{k}}\cdot{Z(0,1)}\Biggr]\]</div>
 <p>where <span class="math notranslate nohighlight">\(k=1,2,\dots,n\)</span>.</p>
 </div>
-</div>
-</div>
-<div class="section" id="stochastic-volatility-models">
-<h3>Stochastic Volatility Models<a class="headerlink" href="#stochastic-volatility-models" title="Permalink to this headline">¶</a></h3>
-<p>For both the standard Brownian motion and the geometric Brownian motion equations, we have assumed that both the
-drift coefficient <span class="math notranslate nohighlight">\(\mu\)</span> and the diffusion coefficient <span class="math notranslate nohighlight">\(\sigma^{2}\)</span> are constant. There are situations where
-both <span class="math notranslate nohighlight">\(\mu\)</span> and <span class="math notranslate nohighlight">\(\sigma\)</span> can reasonably be assumed to be constants, but in many practical cases, this is not true, particularly in the case of <span class="math notranslate nohighlight">\(\sigma\)</span>.</p>
-</div>
-</div>
-<div class="section" id="discretization-approaches">
-<span id="content-references-discretization"></span><h2>Discretization Approaches<a class="headerlink" href="#discretization-approaches" title="Permalink to this headline">¶</a></h2>
-<p>In general, we cannot develop an analytical solution to Eqn. <a class="reference internal" href="#equation-eq-ito-process">(10)</a>; however, we can create an
-approximate numerical solution by discretization.</p>
-</div>
-<div class="section" id="extension-to-multiple-simultaneous-assets">
-<h2>Extension to multiple simultaneous assets<a class="headerlink" href="#extension-to-multiple-simultaneous-assets" title="Permalink to this headline">¶</a></h2>
+<div class="proof example admonition" id="scalar-gbm-soln">
+<p class="admonition-title"><span class="caption-number">Example 9 </span> (Scalar Geometric Brownian Motion )</p>
+<section class="example-content" id="proof-content">
+<p>Let’s simulate the daily close price of <code class="docutils literal notranslate"><span class="pre">AMD</span></code> using the analytical solution of the scalar geometric brownian motion (<a class="reference internal" href="#fig-gbm-sim-amd-scalar"><span class="std std-numref">Fig. 9</span></a>).</p>
+<p>The scalar gbm analytical solution was used to generate N = 200 sample paths for a 46-day period (light blue lines in <a class="reference internal" href="#fig-gbm-sim-amd-scalar"><span class="std std-numref">Fig. 9</span></a>); the first 36 days of data were used to estimate the mean return <span class="math notranslate nohighlight">\(\mu\)</span> and the volatility of the return <span class="math notranslate nohighlight">\(\sigma\)</span> which appear in the gbm solution. These model parameters were assumed to be fixed. An additional two trading weeks (10 days) was then simulated (out of sample prediction).</p>
+<figure class="align-default" id="fig-gbm-sim-amd-scalar">
+<a class="reference internal image-reference" href="../_images/Fig-AMD-GBM-Sim-N200-IS36-OS10.pdf"><img alt="../_images/Fig-AMD-GBM-Sim-N200-IS36-OS10.pdf" src="../_images/Fig-AMD-GBM-Sim-N200-IS36-OS10.pdf" style="height: 420px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 9 </span><span class="caption-text">Scalar Geometric Brownian Motion (GBM) simulation of the daily close price of <code class="docutils literal notranslate"><span class="pre">AMD</span></code>. Data for the first m = 36 days was used to estimate the mean and volatility of the log return. The solid black line denotes the mean close price, while the shaded blue region denotes <span class="math notranslate nohighlight">\(\pm\)</span> one standard-deviation from the mean close price. The red-line denotes the actual <code class="docutils literal notranslate"><span class="pre">AMD</span></code> close price.</span><a class="headerlink" href="#fig-gbm-sim-amd-scalar" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>The GDM model <em>predicts</em> (out of sample) the close price of <code class="docutils literal notranslate"><span class="pre">AMD</span></code> too within one standard deviation. However, the difference between the actual close price and the mean predicted close price changes over time.</p>
+<p>source: <a class="reference external" href="https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks">live Pluto notebook</a> or <a class="reference external" href="https://htmlview.glitch.me/?https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks/blob/main/pluto-notebooks/html/Example-CallPutContract-Payoff.jl.html">static HTML</a></p>
+</section>
+</div></section>
+</section>
+</section>
+<section id="discretization-approaches">
+<span id="content-references-discretization"></span><h2>Discretization Approaches<a class="headerlink" href="#discretization-approaches" title="Permalink to this headline">#</a></h2>
+<p>In general, we cannot develop an analytical solution to Eqn. <a class="reference internal" href="#equation-eq-ito-process">(10)</a>; however, we can create an approximate numerical solution by discretization. This is an issue because sometimes we may want to use more sophisticated models for the price of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code>, for example, a stochastic volatility model that better captures changes in market conditions.</p>
+<section id="stochastic-volatility-models">
+<h3>Stochastic Volatility Models<a class="headerlink" href="#stochastic-volatility-models" title="Permalink to this headline">#</a></h3>
+<p>For both the standard Brownian motion and the geometric Brownian motion equations, we have assumed that the drift coefficient <span class="math notranslate nohighlight">\(\mu\)</span> and the diffusion coefficient <span class="math notranslate nohighlight">\(\sigma^{2}\)</span> are constant. There are situations where both <span class="math notranslate nohighlight">\(\mu\)</span> and <span class="math notranslate nohighlight">\(\sigma\)</span> can reasonably be assumed to be constants, but in many practical cases, this is not true, particularly in the case of <span class="math notranslate nohighlight">\(\sigma\)</span>.</p>
+</section>
+</section>
+<section id="extension-to-multiple-simultaneous-assets">
+<h2>Extension to multiple simultaneous assets<a class="headerlink" href="#extension-to-multiple-simultaneous-assets" title="Permalink to this headline">#</a></h2>
 <p>Fill me in.</p>
-</div>
-<div class="section" id="summary">
-<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+</section>
+<hr class="docutils" />
+<section id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">#</a></h2>
 <p>Fill me in.</p>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -652,9 +795,11 @@ approximate numerical solution by discretization.</p>
 
               </div>
               
-            
-                <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
     <a class='left-prev' id="prev-link" href="probability-random-variables.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
@@ -670,24 +815,28 @@ approximate numerical solution by discretization.</p>
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-            
+            </footer>
         </div>
     </div>
-    <footer class="footer">
-  <p>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Varner and Woltornist<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
     
-      By Varner and Woltornist<br/>
-    
-        &copy; Copyright 2022.<br/>
-  </p>
-</footer>
-</main>
+</div>
 
 
       </div>
     </div>
   
-  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
 
   </body>
 </html>

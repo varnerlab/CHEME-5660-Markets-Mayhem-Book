@@ -1,4 +1,4 @@
-# CHEME 5660 Financial Data, Markets, and Mayhem for Scientists and Engineers
+# CHEME 5660 Course Outline and Information
 
 ## Course objectives 
 

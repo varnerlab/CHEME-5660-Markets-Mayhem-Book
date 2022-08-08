@@ -4,11 +4,13 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
     <title>Derivative Securities &#8212; CHEME 5660</title>
     
-  <link href="../_static/css/theme.css" rel="stylesheet">
-  <link href="../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -18,21 +20,17 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    
-      
-
-    
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.be7d3bbb2ef33a8344ce.js">
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
@@ -40,20 +38,21 @@
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script src="../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Modern Portfolio Theory" href="markowitz.html" />
@@ -65,7 +64,21 @@ const thebe_selector_output = ".output, .cell_output"
     <!-- Google Analytics -->
     
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
     
     <div class="container-fluid" id="banner"></div>
 
@@ -74,9 +87,10 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="container-xl">
       <div class="row">
           
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../index.html">
       
         <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
@@ -94,20 +108,43 @@ const thebe_selector_output = ".output, .cell_output"
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
-        <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../infrastructure.html">
-   CHEME 5660 Financial Data, Markets, and Mayhem for Scientists and Engineers
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../infrastructure.html">
+                    CHEME 5660 Course Outline and Information
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../julia-dir/julia-landing.html">
+   Julia Programming Language
   </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../julia-dir/julia-installation.html">
+     Julia Installation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../julia-dir/julia-basics.html">
+     Introduction to Julia Basics
+    </a>
+   </li>
+  </ul>
  </li>
-</ul>
-<ul class="current nav bd-sidenav">
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../chapter-1-dir/chapter-1.html">
    Unit 1. The Financial System
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -133,8 +170,8 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="../chapter-2-dir/chapter-2.html">
    Unit 2. Modeling and Simulation of Asset Price Dynamics
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-  <label for="toctree-checkbox-2">
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -160,8 +197,8 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="chapter-3-landing.html">
    Unit 3. Risk, Portfolios, Derivatives, and Leverage
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
-  <label for="toctree-checkbox-3">
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -201,90 +238,180 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 
     </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-</div>
-
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
             
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/chapter-3-dir/contracts.md"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.md</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
-    </div>
-</div>
-
-            <!-- Source interaction buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        <a class="repository-button"
-            href="https://github.com/executablebooks/jupyter-book"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
-        <a class="issues-button"
-            href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fchapter-3-dir/contracts.html&body=Your%20issue%20content%20here."><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-        
-    </div>
-</div>
-
-            <!-- Full screen (wrap in <a> to have style consistency -->
-
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
-
-            <!-- Launch buttons -->
-
-        </div>
-
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
-            
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
             </div>
-            <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/executablebooks/jupyter-book"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fchapter-3-dir/contracts.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/chapter-3-dir/contracts.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#introduction">
    Introduction
@@ -319,12 +446,75 @@ const thebe_selector_output = ".output, .cell_output"
      </li>
     </ul>
    </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#composite-contracts">
+     Composite contracts
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vertical-spreads">
+       Vertical spreads
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#straddles">
+       Straddles
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#strangles">
+       Strangles
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#iron-condor">
+       Iron Condor
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#probability-of-profit-at-expiration">
+   Probability of profit at expiration
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#monte-carlo-simulation">
+     Monte-Carlo simulation
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#options-pricing-algorithms">
    Options Pricing Algorithms
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#black-scholes-merton-bsm">
+     Black-Scholes-Merton (BSM)
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#assumptions-of-the-bsm-model">
+       Assumptions of the BSM model
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#binomial-pricing-model">
+     Binomial pricing model
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#monte-carlo-pricing-model">
+     Monte-carlo pricing model
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#summary">
@@ -333,12 +523,11 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
 </ul>
 
-            </nav>
-        </div>
-    </div>
+    </nav>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
                 <h1>Derivative Securities</h1>
@@ -385,12 +574,75 @@ const thebe_selector_output = ".output, .cell_output"
      </li>
     </ul>
    </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#composite-contracts">
+     Composite contracts
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#vertical-spreads">
+       Vertical spreads
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#straddles">
+       Straddles
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#strangles">
+       Strangles
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#iron-condor">
+       Iron Condor
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#probability-of-profit-at-expiration">
+   Probability of profit at expiration
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#monte-carlo-simulation">
+     Monte-Carlo simulation
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#options-pricing-algorithms">
    Options Pricing Algorithms
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#black-scholes-merton-bsm">
+     Black-Scholes-Merton (BSM)
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#assumptions-of-the-bsm-model">
+       Assumptions of the BSM model
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#binomial-pricing-model">
+     Binomial pricing model
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#monte-carlo-pricing-model">
+     Monte-carlo pricing model
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#summary">
@@ -403,13 +655,14 @@ const thebe_selector_output = ".output, .cell_output"
                     </div>
                 </div>
             </div>
-            
+            <main id="main-content" role="main">
+                
               <div>
                 
-  <div class="tex2jax_ignore mathjax_ignore section" id="derivative-securities">
-<h1>Derivative Securities<a class="headerlink" href="#derivative-securities" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="introduction">
-<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+  <section class="tex2jax_ignore mathjax_ignore" id="derivative-securities">
+<h1>Derivative Securities<a class="headerlink" href="#derivative-securities" title="Permalink to this headline">#</a></h1>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">#</a></h2>
 <p>Derivatives are one of the three primary financial instrument categories: derivatives, equity (i.e., shares of stock), and debt (i.e., bonds and mortgages). Derivatives provide payoffs that depend on the value of other assets, such as commodities, bonds, stocks, or market indexes. Thus, the value of a derivative is based mainly on the price movements of an underlying asset, e.g., stocks, commodities, currencies, etc. In this lecture, we will focus exclusively on options, a type of derivative product that uses stock as its underlying asset. Like bonds, options are contractural agreements between buyers and sellers to conduct a particular transaction at some later date. Options, derivatives that use equity, i.e., shares of a stock or an exchange-traded fund, as their underlying asset, are structured agreements between a buyer and a seller that give the option buyer the right, but not the obligation, to execute the transaction described in the contract, i.e., to buy (or sell) an underlying asset in some predetermined way in a specified time frame.</p>
 <p>Investors can use options to <a class="reference external" href="https://www.investopedia.com/terms/h/hedge.asp">hedge</a> against future asset price movements or for speculation. For example, a trader can buy an option instead of shares of an underlying stock to generate profits from the underlying stock’s price movements, typically at a lower cost than the corresponding block of shares. Options contracts are traded on exchanges throughout the world; the <a class="reference external" href="https://www.cboe.com">The Chicago Board Options Exchange</a> is the largest options exchange in the United States, responsible for approximately 33% of the daily options trading volume in the United States (27 million contracts are traded each day in the United States). Worldwide, in 2021, there were about 33 billion options contracts traded annually.</p>
 <p>Options are attractive because they offer <a class="reference external" href="https://www.merrilledge.com/investment-products/options/options-trading-leverage-risk">leverage</a>, i.e., an option contract can control a unit of asset, e.g., 100 shares of a stock, at a cost that is typically <em>less</em> than the market value of that asset. This allows option buyers to pay a relatively small premium for market exposure in relation to the value of the underlying asset. An option buyer can see significant gains from comparatively small percentage moves in the price of the underlying asset. However, leverage also has a considerable downside. For example, if the underlying asset price does not rise or fall as anticipated during the lifetime of the option contract, leverage magnifies the investment’s percentage loss.</p>
@@ -421,112 +674,402 @@ In European-style contracts, the transaction codified in CALL or PUT options can
 <p>In this lecture, we will:</p>
 <ul class="simple">
 <li><p>Discuss the two types, and two styles of <a class="reference internal" href="#content-references-option-contracts"><span class="std std-ref">Option Contracts</span></a></p></li>
+<li><p>Discuss the <a class="reference internal" href="#content-references-option-probability-of-profit-algorithms"><span class="std std-ref">Probability of profit at expiration</span></a></p></li>
 <li><p>Discuss several <a class="reference internal" href="#content-references-option-pricing-algorithms"><span class="std std-ref">Options Pricing Algorithms</span></a></p></li>
 </ul>
 <hr class="docutils" />
-</div>
-<div class="section" id="option-contracts">
-<span id="content-references-option-contracts"></span><h2>Option Contracts<a class="headerlink" href="#option-contracts" title="Permalink to this headline">¶</a></h2>
-<div class="figure align-default" id="fig-options-contract-grid">
+</section>
+<section id="option-contracts">
+<span id="content-references-option-contracts"></span><h2>Option Contracts<a class="headerlink" href="#option-contracts" title="Permalink to this headline">#</a></h2>
+<figure class="align-default" id="fig-options-contract-grid">
 <a class="reference internal image-reference" href="../_images/Fig-Options-Grid.pdf"><img alt="../_images/Fig-Options-Grid.pdf" src="../_images/Fig-Options-Grid.pdf" style="height: 280px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 6 </span><span class="caption-text">The rights and responsibilities of the buyer and seller of put and call option contracts.</span><a class="headerlink" href="#fig-options-contract-grid" title="Permalink to this image">¶</a></p>
-</div>
-<p>There are two types of options contracts, a <a class="reference external" href="https://www.investopedia.com/terms/c/calloption.asp">call contract</a> and a <a class="reference external" href="https://www.investopedia.com/terms/p/putoption.asp">put contract</a>, and many different styles of options contracts. However, we’ll consider only two styles, <a class="reference external" href="https://www.investopedia.com/terms/a/americanoption.asp">American</a> and <a class="reference external" href="https://www.investopedia.com/terms/e/europeanoption.asp">European</a> style options contracts. The roles and responsibilities of each contract type, and the respectrive role of the buyer and seller, are shown in (<a class="reference internal" href="#fig-options-contract-grid"><span class="std std-numref">Fig. 6</span></a>).</p>
-<div class="section" id="call-contracts">
-<h3>Call contracts<a class="headerlink" href="#call-contracts" title="Permalink to this headline">¶</a></h3>
+<figcaption>
+<p><span class="caption-number">Fig. 13 </span><span class="caption-text">The rights and responsibilities of the buyer and seller of <a class="reference external" href="https://www.investopedia.com/terms/a/americanoption.asp">American</a>
+style put and call option contracts.</span><a class="headerlink" href="#fig-options-contract-grid" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>The types, rights, and responsibilities of options contracts are shown in (<a class="reference internal" href="#fig-options-contract-grid"><span class="std std-numref">Fig. 13</span></a>).
+There are two types of contracts, a <a class="reference external" href="https://www.investopedia.com/terms/c/calloption.asp">call contract</a> and a <a class="reference external" href="https://www.investopedia.com/terms/p/putoption.asp">put contract</a>, and many different styles of contracts. However, we’ll consider only <a class="reference external" href="https://www.investopedia.com/terms/a/americanoption.asp">American</a> and <a class="reference external" href="https://www.investopedia.com/terms/e/europeanoption.asp">European</a> style contracts.  Option contract buyers (long positions), regardless of the type of contract, pay a premium to have the right (but not the obligation) to perform an action (buy or sell shares of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code>); <a class="reference external" href="https://www.investopedia.com/terms/a/americanoption.asp">American</a> style contract buyers can act at any time between when the contract was purchased and expiration, while <a class="reference external" href="https://www.investopedia.com/terms/e/europeanoption.asp">European</a> style buyers can only act at expiration.  On the other hand, the option seller (short position), in exchange for the premium paid by the buyer, <em>must</em> buy or sell shares of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> in response to the choice of the contract buyer.</p>
+<p>Like bonds, investors can profit from holding contracts until expiration or by trading the contracts in the options market. Thus, options contracts can be reviewed from two perspectives, at expiration or as stand-alone tradable instruments.</p>
+<p>Let’s begin the discussion of options contracts by exploring their behavior at expiration.</p>
+<section id="call-contracts">
+<h3>Call contracts<a class="headerlink" href="#call-contracts" title="Permalink to this headline">#</a></h3>
 <p>A <a class="reference external" href="https://www.investopedia.com/terms/c/calloption.asp">call contract</a> gives the option contract buyer the right, but not the obligation, to purchase 100 shares of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> (per contract) from the seller at a particular price per share (called the strike price <span class="math notranslate nohighlight">\(K\)</span>) at some point in the future (called the expiration date). In the case of <a class="reference external" href="https://www.investopedia.com/terms/a/americanoption.asp">American</a> style <a class="reference external" href="https://www.investopedia.com/terms/c/calloption.asp">call contracts</a>, the option buyer can exercise their right at any point between when the contract was purchased and the expiration date. On the other hand, buyers of <a class="reference external" href="https://www.investopedia.com/terms/e/europeanoption.asp">European</a> style contracts can only exercise their right on the expiration date. The right to purchase shares of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> at <span class="math notranslate nohighlight">\(K\)</span> USD/share is not free; the option buyer pays a premium per contract to the option seller for this right.</p>
-<p>The profit that a call contract buyer experiences, denoted by <span class="math notranslate nohighlight">\(V_{c}\)</span>, depends upon the difference between the share price of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> and the strike price <span class="math notranslate nohighlight">\(K\)</span> of the contract (contract payoff) and how much the call contract costs:</p>
+<p>The profit at expiration that a call contract buyer experiences depends upon the difference between the share price of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> and the strike price <span class="math notranslate nohighlight">\(K\)</span> of the contract (contract payoff) and how much the call contract costs:</p>
 <div class="proof definition admonition" id="defn-PL-call-contract">
-<p class="admonition-title"><span class="caption-number">Definition 30 </span> (Call Contract Payoff for Contract Holder)</p>
-<div class="definition-content section" id="proof-content">
+<p class="admonition-title"><span class="caption-number">Definition 30 </span> (Call Contract Payoff and Profit)</p>
+<section class="definition-content" id="proof-content">
 <p>An investor purchases a call contract for the underlying stock <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> for <span class="math notranslate nohighlight">\(\mathcal{P}\)</span> USD/contract, where the contract controls 100 shares of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code>.</p>
-<p>Let the strike price of the call contract be <span class="math notranslate nohighlight">\(K\)</span> USD/share, and the share price of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> be <span class="math notranslate nohighlight">\(S\)</span> USD/share. Then, at expiration, the call contract has the payoff:</p>
+<p>Let the strike price of the call contract be <span class="math notranslate nohighlight">\(K\)</span> USD/share, and the share price of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> at expiration be <span class="math notranslate nohighlight">\(S\)</span> USD/share. Then, at expiration, the call contract has the payoff <span class="math notranslate nohighlight">\(V_{c}\)</span> USD/share:</p>
 <div class="math notranslate nohighlight">
 \[V_{c} = \max\left(S-K,0\right)\]</div>
-<p>and a profit (loss) of:</p>
+<p>and a profit (loss) for the buyer of:</p>
 <div class="math notranslate nohighlight">
 \[P_{c} = V_{c} -  \mathcal{P}\]</div>
-<p>where <span class="math notranslate nohighlight">\(P_{c}\)</span> denotes the profit (or loss) per contract per share of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code>.</p>
-</div>
-</div><div class="section" id="payoff-profit-and-loss-for-call-contracts">
-<h4>Payoff, Profit and Loss for Call contracts<a class="headerlink" href="#payoff-profit-and-loss-for-call-contracts" title="Permalink to this headline">¶</a></h4>
-<p>The payoff (and profit/loss) diagram for a call contract at expiration for <a class="reference external" href="https://www.google.com/search?client=safari&amp;rls=en&amp;sxsrf=ALiCzsbTZ3IEA10C9Rgs6Lb7YLN8LAILVQ:1657882036543&amp;q=NASDAQ:+AMD&amp;stick=H4sIAAAAAAAAAONgecRoyi3w8sc9YSmdSWtOXmNU4-IKzsgvd80rySypFJLgYoOy-KR4uLj0c_UNzKuy4ytzeRaxcvs5Brs4BlopOPq6AACfr0n4SAAAAA&amp;sa=X&amp;ved=2ahUKEwjV_ffu2_r4AhUxJUQIHcXZAPkQsRV6BAhVEAM&amp;biw=1594&amp;bih=921&amp;dpr=2">AMD</a> is shown in
-<a class="reference internal" href="#call-contract-expiration">Example 7</a>. The <em>buyer</em> of the <a class="reference external" href="https://www.google.com/search?client=safari&amp;rls=en&amp;sxsrf=ALiCzsbTZ3IEA10C9Rgs6Lb7YLN8LAILVQ:1657882036543&amp;q=NASDAQ:+AMD&amp;stick=H4sIAAAAAAAAAONgecRoyi3w8sc9YSmdSWtOXmNU4-IKzsgvd80rySypFJLgYoOy-KR4uLj0c_UNzKuy4ytzeRaxcvs5Brs4BlopOPq6AACfr0n4SAAAAA&amp;sa=X&amp;ved=2ahUKEwjV_ffu2_r4AhUxJUQIHcXZAPkQsRV6BAhVEAM&amp;biw=1594&amp;bih=921&amp;dpr=2">AMD</a> call contract experiences (at expiration):</p>
+<p>where <span class="math notranslate nohighlight">\(P_{c}\)</span> denotes the profit (or loss) per contract per share of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code>. The contract seller experiences a profit (or loss) of <span class="math notranslate nohighlight">\(\bar{P}_{c}\)</span> where</p>
+<div class="math notranslate nohighlight">
+\[P_{c}+\bar{P}_{c} = 0\]</div>
+<p>The cost of a call contract <span class="math notranslate nohighlight">\(\mathcal{P}\)</span> is a non-linear function of many variables including the current share price of the underlying asset <span class="math notranslate nohighlight">\(S\)</span>, the strike price of the contract, the number of days before contract expiration, and an unobservable quantity called the implied volatility.</p>
+</section>
+</div><section id="payoff-profit-and-loss-for-call-contracts">
+<h4>Payoff, Profit and Loss for Call contracts<a class="headerlink" href="#payoff-profit-and-loss-for-call-contracts" title="Permalink to this headline">#</a></h4>
+<p>The payoff (and profit/loss) diagram for a call contract at expiration for Advanced Micro Devices with ticker <a class="reference external" href="https://www.google.com/search?client=safari&amp;rls=en&amp;sxsrf=ALiCzsbTZ3IEA10C9Rgs6Lb7YLN8LAILVQ:1657882036543&amp;q=NASDAQ:+AMD&amp;stick=H4sIAAAAAAAAAONgecRoyi3w8sc9YSmdSWtOXmNU4-IKzsgvd80rySypFJLgYoOy-KR4uLj0c_UNzKuy4ytzeRaxcvs5Brs4BlopOPq6AACfr0n4SAAAAA&amp;sa=X&amp;ved=2ahUKEwjV_ffu2_r4AhUxJUQIHcXZAPkQsRV6BAhVEAM&amp;biw=1594&amp;bih=921&amp;dpr=2">AMD</a> is shown in
+<a class="reference internal" href="#call-contract-expiration">Example 10</a>. The <em>buyer</em> of the <a class="reference external" href="https://www.google.com/search?client=safari&amp;rls=en&amp;sxsrf=ALiCzsbTZ3IEA10C9Rgs6Lb7YLN8LAILVQ:1657882036543&amp;q=NASDAQ:+AMD&amp;stick=H4sIAAAAAAAAAONgecRoyi3w8sc9YSmdSWtOXmNU4-IKzsgvd80rySypFJLgYoOy-KR4uLj0c_UNzKuy4ytzeRaxcvs5Brs4BlopOPq6AACfr0n4SAAAAA&amp;sa=X&amp;ved=2ahUKEwjV_ffu2_r4AhUxJUQIHcXZAPkQsRV6BAhVEAM&amp;biw=1594&amp;bih=921&amp;dpr=2">AMD</a> call contract experiences (at expiration):</p>
 <ul class="simple">
 <li><p>Loss <span class="math notranslate nohighlight">\(S&lt;K+\mathcal{P}\)</span>: the share price is <em>less than</em> the strike price plus the premium paid per share for the contract.</p></li>
 <li><p>Breakeven <span class="math notranslate nohighlight">\(S=K+\mathcal{P}\)</span>: the share price <em>equals</em> the strike price plus the premium paid per share for the contract.</p></li>
 <li><p>Profit <span class="math notranslate nohighlight">\(S&gt;K+\mathcal{P}\)</span>: the share price is <em>greater than</em> the strike price plus the premium paid per share for the contract.</p></li>
 </ul>
 <div class="proof example admonition" id="call-contract-expiration">
-<p class="admonition-title"><span class="caption-number">Example 7 </span> (AMD Call Contract 1 DTE)</p>
-<div class="example-content section" id="proof-content">
-<p>We are interested in buying a call contract for <a class="reference external" href="https://www.google.com/search?client=safari&amp;rls=en&amp;sxsrf=ALiCzsbTZ3IEA10C9Rgs6Lb7YLN8LAILVQ:1657882036543&amp;q=NASDAQ:+AMD&amp;stick=H4sIAAAAAAAAAONgecRoyi3w8sc9YSmdSWtOXmNU4-IKzsgvd80rySypFJLgYoOy-KR4uLj0c_UNzKuy4ytzeRaxcvs5Brs4BlopOPq6AACfr0n4SAAAAA&amp;sa=X&amp;ved=2ahUKEwjV_ffu2_r4AhUxJUQIHcXZAPkQsRV6BAhVEAM&amp;biw=1594&amp;bih=921&amp;dpr=2">AMD</a>. The current share price of <code class="docutils literal notranslate"><span class="pre">AMD</span></code> is $78.94 per share (around 3:30 PM ITH time on Th 7/14), and we belive the shares will close higher before contract expiration.</p>
+<p class="admonition-title"><span class="caption-number">Example 10 </span> (AMD Call Contract)</p>
+<section class="example-content" id="proof-content">
+<p>We are interested in buying a call contract for Advanced Micro Devices with ticker <a class="reference external" href="https://www.google.com/search?client=safari&amp;rls=en&amp;sxsrf=ALiCzsbTZ3IEA10C9Rgs6Lb7YLN8LAILVQ:1657882036543&amp;q=NASDAQ:+AMD&amp;stick=H4sIAAAAAAAAAONgecRoyi3w8sc9YSmdSWtOXmNU4-IKzsgvd80rySypFJLgYoOy-KR4uLj0c_UNzKuy4ytzeRaxcvs5Brs4BlopOPq6AACfr0n4SAAAAA&amp;sa=X&amp;ved=2ahUKEwjV_ffu2_r4AhUxJUQIHcXZAPkQsRV6BAhVEAM&amp;biw=1594&amp;bih=921&amp;dpr=2">AMD</a>. The current share price of <code class="docutils literal notranslate"><span class="pre">AMD</span></code> is $78.94 per share (around 3:30 PM ITH time on Th 7/14), and we belive the shares will close higher before contract expiration.</p>
 <p>Compute the payoff and profit/loss diagram at expiration for a July 15 <code class="docutils literal notranslate"><span class="pre">AMD</span></code> call contract with a strike <span class="math notranslate nohighlight">\(K\)</span> = 80.0 USD/share. The market price for the July 15 <code class="docutils literal notranslate"><span class="pre">AMD</span></code> call contract is <span class="math notranslate nohighlight">\(\mathcal{P}\)</span> = 0.36 USD/share.</p>
-<div class="figure align-default" id="fig-call-contract-payout-schematic">
+<figure class="align-default" id="fig-call-contract-payout-schematic">
 <a class="reference internal image-reference" href="../_images/Fig-AMD-Call-Jul15-1DTE.pdf"><img alt="../_images/Fig-AMD-Call-Jul15-1DTE.pdf" src="../_images/Fig-AMD-Call-Jul15-1DTE.pdf" style="height: 420px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 7 </span><span class="caption-text">Payoff and profit diagrams for an AMD call option.</span><a class="headerlink" href="#fig-call-contract-payout-schematic" title="Permalink to this image">¶</a></p>
-</div>
-<p>Example source: <a class="reference external" href="https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks">live Pluto notebook</a> or <a class="reference external" href="https://htmlview.glitch.me/?https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks/blob/main/pluto-notebooks/html/Example-CallPutContract-Payoff.jl.html">static HTML</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 14 </span><span class="caption-text">Payoff and profit diagrams for an AMD call option.  Solid lines denote the payout (profit) from the perspective of the contract buyer. Dashed lines denote the payout (profit) from the perspective of the contract seller</span><a class="headerlink" href="#fig-call-contract-payout-schematic" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>source: <a class="reference external" href="https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks">live Pluto notebook</a> or <a class="reference external" href="https://htmlview.glitch.me/?https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks/blob/main/pluto-notebooks/html/Example-CallPutContract-Payoff.jl.html">static HTML</a></p>
+</section>
 </div><p>The business case for buying (or selling) a call contract:</p>
 <ul class="simple">
-<li><p><strong>Buyer</strong>: From the buyer’s perspective, call contracts allow an investor to benefit from the price movement of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> to the upside <em>without</em> purchasing <code class="docutils literal notranslate"><span class="pre">XYZ</span></code>. Further, call options (again from the buyer’s perspective) have <em>limited downside risk</em>, i.e., the maximum amount that the holder of the call option can lose is the premium paid for the option. Finally, call options are a mechanism to purchase shares of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> at the strike price of <span class="math notranslate nohighlight">\(K\)</span> instead of the market price of <span class="math notranslate nohighlight">\(S\)</span>.</p></li>
-<li><p><strong>Seller</strong>: From the seller’s perspective, the main objective of selling a call contract is to collect the premium <span class="math notranslate nohighlight">\(\mathcal{P}\)</span>. Call contracts also allow the seller to benefit from the price movement of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> to the downside <em>without</em> purchasing <code class="docutils literal notranslate"><span class="pre">XYZ</span></code>. However, for a seller, call options have <em>unlimted upside</em> risk; thus, call options are often only sold by investors who already own the required number of shares of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> (known as a <a class="reference external" href="https://www.investopedia.com/terms/c/coveredcall.asp">covered call position</a>). Finally, call options offer the seller the opportunity to sell shares of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> at the strike price of <span class="math notranslate nohighlight">\(K\)</span> instead of the market price of <span class="math notranslate nohighlight">\(S\)</span>.</p></li>
+<li><p><strong>Buyer (long)</strong>: From the buyer’s perspective, call contracts allow an investor to benefit from the price movement of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> to the upside <em>without</em> purchasing <code class="docutils literal notranslate"><span class="pre">XYZ</span></code>. Further, call options (again from the buyer’s perspective) have <em>limited downside risk</em>, i.e., the maximum amount that the holder of the call option can lose is the premium paid for the option. Finally, call options are a mechanism to purchase shares of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> at the strike price of <span class="math notranslate nohighlight">\(K\)</span> instead of the market price of <span class="math notranslate nohighlight">\(S\)</span>.</p></li>
+<li><p><strong>Seller (short)</strong>: From the seller’s perspective, the main objective of selling a call contract is to collect the premium <span class="math notranslate nohighlight">\(\mathcal{P}\)</span>. Call contracts also allow the seller to benefit from the price movement of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> to the downside <em>without</em> purchasing <code class="docutils literal notranslate"><span class="pre">XYZ</span></code>. However, for a seller, call options have <em>unlimted upside</em> risk; thus, call options are often only sold by investors who already own the required number of shares of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> (known as a <a class="reference external" href="https://www.investopedia.com/terms/c/coveredcall.asp">covered call position</a>). Finally, call options offer the seller the opportunity to sell shares of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> at the strike price of <span class="math notranslate nohighlight">\(K\)</span> instead of the market price of <span class="math notranslate nohighlight">\(S\)</span>.</p></li>
 </ul>
-</div>
-</div>
-<div class="section" id="put-contracts">
-<h3>Put contracts<a class="headerlink" href="#put-contracts" title="Permalink to this headline">¶</a></h3>
+</section>
+</section>
+<section id="put-contracts">
+<h3>Put contracts<a class="headerlink" href="#put-contracts" title="Permalink to this headline">#</a></h3>
 <p>A <a class="reference external" href="https://www.investopedia.com/terms/p/putoption.asp">put contract</a> gives the option contract buyer the right, but not the obligation, to sell 100 shares of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> (per contract) to the option seller at the strike price <span class="math notranslate nohighlight">\(K\)</span>, either by or on the expiration date. In the case of <a class="reference external" href="https://www.investopedia.com/terms/a/americanoption.asp">American</a> style <a class="reference external" href="https://www.investopedia.com/terms/p/putoption.asp">put contracts</a>, the option buyer can exercise their right at any point between when the contract is purchased and the expiration date. On the other hand, buyers of <a class="reference external" href="https://www.investopedia.com/terms/e/europeanoption.asp">European</a> style contracts can only exercise their right on the expiration date. The right to sell shares of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> at <span class="math notranslate nohighlight">\(K\)</span> USD/share is not free; the option buyer pays a premium per contract to the option seller for this right.</p>
 <p>The profit that a put contract buyer experiences, denoted by <span class="math notranslate nohighlight">\(V_{p}\)</span>, depends upon the difference between the share price of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> and the strike price <span class="math notranslate nohighlight">\(K\)</span> of the contract:</p>
 <div class="proof definition admonition" id="defn-PL-put-contract">
-<p class="admonition-title"><span class="caption-number">Definition 31 </span> (Put Contract Payoff for Contract Holder)</p>
-<div class="definition-content section" id="proof-content">
+<p class="admonition-title"><span class="caption-number">Definition 31 </span> (Put Contract Payoff and Profit)</p>
+<section class="definition-content" id="proof-content">
 <p>An investor purchases a put contract for the underlying stock <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> for <span class="math notranslate nohighlight">\(\mathcal{P}\)</span> USD/contract, where the contract controls 100 shares of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code>.</p>
-<p>Let the strike price of the put contract be <span class="math notranslate nohighlight">\(K\)</span> USD/share, and the share price of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> be <span class="math notranslate nohighlight">\(S\)</span> USD/share. Then, at expiration, the put contract has the payoff <span class="math notranslate nohighlight">\(P_{p}\)</span>:</p>
+<p>Let the strike price of the put contract be <span class="math notranslate nohighlight">\(K\)</span> USD/share, and the share price of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> be <span class="math notranslate nohighlight">\(S\)</span> USD/share. Then, at expiration, the put contract has the payoff <span class="math notranslate nohighlight">\(V_{p}\)</span> USD/share:</p>
 <div class="math notranslate nohighlight">
-\[P_{p} = \max\left(K - S,0\right)\]</div>
-<p>and a profit (loss) of:</p>
+\[V_{p} = \max\left(K - S,0\right)\]</div>
+<p>and a profit (loss) for the buyer of:</p>
 <div class="math notranslate nohighlight">
-\[V_{p} = P_{p} -  \mathcal{P}\]</div>
-<p>where <span class="math notranslate nohighlight">\(V_{p}\)</span> denotes the profit (or loss) per contract per share of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code>.</p>
-</div>
-</div><div class="section" id="payoff-profit-and-loss-for-put-contracts">
-<h4>Payoff, Profit and Loss for Put contracts<a class="headerlink" href="#payoff-profit-and-loss-for-put-contracts" title="Permalink to this headline">¶</a></h4>
-<p>The payoff (and profit/loss) diagram for a put contract at expiration for <a class="reference external" href="https://www.google.com/search?client=safari&amp;rls=en&amp;sxsrf=ALiCzsbTZ3IEA10C9Rgs6Lb7YLN8LAILVQ:1657882036543&amp;q=NASDAQ:+AMD&amp;stick=H4sIAAAAAAAAAONgecRoyi3w8sc9YSmdSWtOXmNU4-IKzsgvd80rySypFJLgYoOy-KR4uLj0c_UNzKuy4ytzeRaxcvs5Brs4BlopOPq6AACfr0n4SAAAAA&amp;sa=X&amp;ved=2ahUKEwjV_ffu2_r4AhUxJUQIHcXZAPkQsRV6BAhVEAM&amp;biw=1594&amp;bih=921&amp;dpr=2">AMD</a> is shown in
-<a class="reference internal" href="#put-contract-expiration">Example 8</a>. The <em>buyer</em> of the <a class="reference external" href="https://www.google.com/search?client=safari&amp;rls=en&amp;sxsrf=ALiCzsbTZ3IEA10C9Rgs6Lb7YLN8LAILVQ:1657882036543&amp;q=NASDAQ:+AMD&amp;stick=H4sIAAAAAAAAAONgecRoyi3w8sc9YSmdSWtOXmNU4-IKzsgvd80rySypFJLgYoOy-KR4uLj0c_UNzKuy4ytzeRaxcvs5Brs4BlopOPq6AACfr0n4SAAAAA&amp;sa=X&amp;ved=2ahUKEwjV_ffu2_r4AhUxJUQIHcXZAPkQsRV6BAhVEAM&amp;biw=1594&amp;bih=921&amp;dpr=2">AMD</a> put contract experiences (at expiration):</p>
+\[P_{p} = V_{p} -  \mathcal{P}\]</div>
+<p>where <span class="math notranslate nohighlight">\(P_{p}\)</span> denotes the profit (or loss) per contract per share of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code>.
+The contract seller experiences a profit (or loss) of <span class="math notranslate nohighlight">\(\bar{P}_{p}\)</span> where</p>
+<div class="math notranslate nohighlight">
+\[P_{p}+\bar{P}_{p} = 0\]</div>
+<p>The cost of a put contract leg <span class="math notranslate nohighlight">\(\mathcal{P}\)</span> is a non-linear function of many variables including the current share price of the underlying asset <span class="math notranslate nohighlight">\(S\)</span>, the strike price of the contract, the number of days before contract expiration, and an unobservable quantity called the implied volatility.</p>
+</section>
+</div><section id="payoff-profit-and-loss-for-put-contracts">
+<h4>Payoff, Profit and Loss for Put contracts<a class="headerlink" href="#payoff-profit-and-loss-for-put-contracts" title="Permalink to this headline">#</a></h4>
+<p>The payoff (and profit/loss) diagram for a put contract at expiration for Advanced Micro Devices with ticker <a class="reference external" href="https://www.google.com/search?client=safari&amp;rls=en&amp;sxsrf=ALiCzsbTZ3IEA10C9Rgs6Lb7YLN8LAILVQ:1657882036543&amp;q=NASDAQ:+AMD&amp;stick=H4sIAAAAAAAAAONgecRoyi3w8sc9YSmdSWtOXmNU4-IKzsgvd80rySypFJLgYoOy-KR4uLj0c_UNzKuy4ytzeRaxcvs5Brs4BlopOPq6AACfr0n4SAAAAA&amp;sa=X&amp;ved=2ahUKEwjV_ffu2_r4AhUxJUQIHcXZAPkQsRV6BAhVEAM&amp;biw=1594&amp;bih=921&amp;dpr=2">AMD</a> is shown in
+<a class="reference internal" href="#put-contract-expiration">Example 11</a>. The <em>buyer</em> of the <a class="reference external" href="https://www.google.com/search?client=safari&amp;rls=en&amp;sxsrf=ALiCzsbTZ3IEA10C9Rgs6Lb7YLN8LAILVQ:1657882036543&amp;q=NASDAQ:+AMD&amp;stick=H4sIAAAAAAAAAONgecRoyi3w8sc9YSmdSWtOXmNU4-IKzsgvd80rySypFJLgYoOy-KR4uLj0c_UNzKuy4ytzeRaxcvs5Brs4BlopOPq6AACfr0n4SAAAAA&amp;sa=X&amp;ved=2ahUKEwjV_ffu2_r4AhUxJUQIHcXZAPkQsRV6BAhVEAM&amp;biw=1594&amp;bih=921&amp;dpr=2">AMD</a> put contract experiences (at expiration):</p>
 <ul class="simple">
 <li><p>Loss <span class="math notranslate nohighlight">\(S&gt;K+\mathcal{P}\)</span>: the share price is <em>greater than</em> the strike price plus the premium paid per share for the contract.</p></li>
 <li><p>Breakeven <span class="math notranslate nohighlight">\(S=K+\mathcal{P}\)</span>: the share price <em>equals</em> the strike price plus the premium paid per share for the contract.</p></li>
 <li><p>Profit <span class="math notranslate nohighlight">\(S&lt;K+\mathcal{P}\)</span>: the share price is <em>less than</em> the strike price plus the premium paid per share for the contract.</p></li>
 </ul>
 <div class="proof example admonition" id="put-contract-expiration">
-<p class="admonition-title"><span class="caption-number">Example 8 </span> (AMD Put Contract 1 DTE)</p>
-<div class="example-content section" id="proof-content">
-<p>We are interested in buying a put contract for <a class="reference external" href="https://www.google.com/search?client=safari&amp;rls=en&amp;sxsrf=ALiCzsbTZ3IEA10C9Rgs6Lb7YLN8LAILVQ:1657882036543&amp;q=NASDAQ:+AMD&amp;stick=H4sIAAAAAAAAAONgecRoyi3w8sc9YSmdSWtOXmNU4-IKzsgvd80rySypFJLgYoOy-KR4uLj0c_UNzKuy4ytzeRaxcvs5Brs4BlopOPq6AACfr0n4SAAAAA&amp;sa=X&amp;ved=2ahUKEwjV_ffu2_r4AhUxJUQIHcXZAPkQsRV6BAhVEAM&amp;biw=1594&amp;bih=921&amp;dpr=2">AMD</a>. The current share price of <code class="docutils literal notranslate"><span class="pre">AMD</span></code> is $78.94 per share (around 3:30 PM ITH time on Th 7/14), and we belive the shares will close lower before contract expiration.</p>
+<p class="admonition-title"><span class="caption-number">Example 11 </span> (AMD Put Contract 1 DTE)</p>
+<section class="example-content" id="proof-content">
+<p>We are interested in buying a call contract for Advanced Micro Devices with ticker <a class="reference external" href="https://www.google.com/search?client=safari&amp;rls=en&amp;sxsrf=ALiCzsbTZ3IEA10C9Rgs6Lb7YLN8LAILVQ:1657882036543&amp;q=NASDAQ:+AMD&amp;stick=H4sIAAAAAAAAAONgecRoyi3w8sc9YSmdSWtOXmNU4-IKzsgvd80rySypFJLgYoOy-KR4uLj0c_UNzKuy4ytzeRaxcvs5Brs4BlopOPq6AACfr0n4SAAAAA&amp;sa=X&amp;ved=2ahUKEwjV_ffu2_r4AhUxJUQIHcXZAPkQsRV6BAhVEAM&amp;biw=1594&amp;bih=921&amp;dpr=2">AMD</a>. The current share price of <code class="docutils literal notranslate"><span class="pre">AMD</span></code> is $78.94 per share (around 3:30 PM ITH time on Th 7/14), and we belive the shares will close lower before contract expiration.</p>
 <p>Compute the payoff and profit/loss diagram at expiration for a July 15 <code class="docutils literal notranslate"><span class="pre">AMD</span></code> put contract with a strike <span class="math notranslate nohighlight">\(K\)</span> = 77.0 USD/share. The market price for the July 15 <code class="docutils literal notranslate"><span class="pre">AMD</span></code> put contract is <span class="math notranslate nohighlight">\(\mathcal{P}\)</span> = 0.50 USD/share.</p>
-<div class="figure align-default" id="fig-put-contract-payout-schematic">
+<figure class="align-default" id="fig-put-contract-payout-schematic">
 <a class="reference internal image-reference" href="../_images/Fig-AMD-Put-Jul15-1DTE.pdf"><img alt="../_images/Fig-AMD-Put-Jul15-1DTE.pdf" src="../_images/Fig-AMD-Put-Jul15-1DTE.pdf" style="height: 420px;" /></a>
-<p class="caption"><span class="caption-number">Fig. 8 </span><span class="caption-text">Payoff and profit diagrams for an AMD put option.</span><a class="headerlink" href="#fig-put-contract-payout-schematic" title="Permalink to this image">¶</a></p>
-</div>
-<p>Example source: <a class="reference external" href="https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks">live Pluto notebook</a> or <a class="reference external" href="https://htmlview.glitch.me/?https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks/blob/main/pluto-notebooks/html/Example-CallPutContract-Payoff.jl.html">static HTML</a></p>
-</div>
+<figcaption>
+<p><span class="caption-number">Fig. 15 </span><span class="caption-text">Payoff and profit diagrams for an AMD put option. Solid lines denote the payout (profit) from the perspective of the contract buyer. Dashed lines denote the payout (profit) from the perspective of the contract seller.</span><a class="headerlink" href="#fig-put-contract-payout-schematic" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>source: <a class="reference external" href="https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks">live Pluto notebook</a> or <a class="reference external" href="https://htmlview.glitch.me/?https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks/blob/main/pluto-notebooks/html/Example-CallPutContract-Payoff.jl.html">static HTML</a></p>
+</section>
 </div><p>The business case for buying (or selling) put contracts:</p>
 <ul class="simple">
-<li><p><strong>Buyer</strong>: From the buyer’s perspective, put contracts allow an investor to benefit from the price movement of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> to the downside <em>without</em> purchasing <code class="docutils literal notranslate"><span class="pre">XYZ</span></code>. Further, put options (again from the buyer’s perspective) have <em>limited downside risk</em>, i.e., the maximum amount that the holder of the put option can lose is the premium paid for the option. Finally, put options are a mechanism to sell shares of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> at the strike price of <span class="math notranslate nohighlight">\(K\)</span> instead of the market price of <span class="math notranslate nohighlight">\(S\)</span>.</p></li>
-<li><p><strong>Seller</strong>: From the seller’s perspective, the main objective of selling a put contract is to collect the premium <span class="math notranslate nohighlight">\(\mathcal{P}\)</span>. Put contracts also allow the seller to benefit from the price movement of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> to the upside <em>without</em> purchasing <code class="docutils literal notranslate"><span class="pre">XYZ</span></code>. However, for a seller, put options have <em>unlimted downside</em> risk; thus, put options are often only sold by investors who have set aside the required capital to purchase
-the required number of shares of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> (known as a <a class="reference external" href="https://www.fidelity.com/learning-center/investment-products/options/know-about-cash-covered-puts">cash secured put position</a>). Finally, put options offer the seller the opportunity to buy shares of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> at the strike price of <span class="math notranslate nohighlight">\(K\)</span> instead of the market price of <span class="math notranslate nohighlight">\(S\)</span>.</p></li>
+<li><p><strong>Buyer (long)</strong>: From the buyer’s perspective, put contracts allow an investor to benefit from the price movement of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> to the downside <em>without</em> purchasing <code class="docutils literal notranslate"><span class="pre">XYZ</span></code>. Further, put options (again from the buyer’s perspective) have <em>limited downside risk</em>, i.e., the maximum amount that the holder of the put option can lose is the premium paid for the option. Finally, put options are a mechanism to sell shares of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> at the strike price of <span class="math notranslate nohighlight">\(K\)</span> instead of the market price of <span class="math notranslate nohighlight">\(S\)</span>.</p></li>
+<li><p><strong>Seller (short)</strong>: From the seller’s perspective, the main objective of selling a put contract is to collect the premium <span class="math notranslate nohighlight">\(\mathcal{P}\)</span>. Put contracts also allow the seller to benefit from the price movement of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> to the upside <em>without</em> purchasing <code class="docutils literal notranslate"><span class="pre">XYZ</span></code>. However, for a seller, put options have <em>unlimted downside</em> risk; thus, put options are often only sold by investors who have set aside the required capital to purchase
+the required number of shares of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> (known as a <a class="reference external" href="https://www.fidelity.com/learning-center/investment-products/options/know-about-cash-covered-puts">cash secured put position</a>). Finally, put options offer the seller the opportunity to buy shares of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> at the strike price of <span class="math notranslate nohighlight">\(K-\mathcal{P}\)</span> instead of the market price of <span class="math notranslate nohighlight">\(S\)</span>.</p></li>
 </ul>
-</div>
-</div>
-</div>
-<div class="section" id="options-pricing-algorithms">
-<span id="content-references-option-pricing-algorithms"></span><h2>Options Pricing Algorithms<a class="headerlink" href="#options-pricing-algorithms" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="composite-contracts">
+<h3>Composite contracts<a class="headerlink" href="#composite-contracts" title="Permalink to this headline">#</a></h3>
+<p>Call and put contracts can be combined to develop composite contract structures with interesting payoff diagrams. In this section, we’ll limit our focus to contracts that have the same underlying asset and the same expiration date. However, for those interested in more advanced cases, e.g., combining contracts with different expiration dates, check out <a class="reference external" href="https://www.investopedia.com/terms/c/calendarspread.asp">calendar spreads</a>.</p>
+<p>The overall profit <span class="math notranslate nohighlight">\(\hat{P}\)</span> for a composite contract structure consiting of <span class="math notranslate nohighlight">\(\mathcal{C}\)</span> indiviudal contracts, is the sum of the profits for each the individual contracts (legs) weighted by the number of contracts of type <span class="math notranslate nohighlight">\(i\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\hat{P} = \sum_{i\in\mathcal{C}}\theta_{i}n_{i}P_{i}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\theta_{i}\)</span> denotes the direction of contract <span class="math notranslate nohighlight">\(i\)</span>: if contract <span class="math notranslate nohighlight">\(i\)</span> is short (sold), then <span class="math notranslate nohighlight">\(\theta_{i}=-1\)</span>, otherwise <span class="math notranslate nohighlight">\(\theta_{i}=1\)</span>. The quanitity <span class="math notranslate nohighlight">\(n_{i}\)</span> denotes the copy number of contract <span class="math notranslate nohighlight">\(i\)</span>.</p>
+<section id="vertical-spreads">
+<span id="content-references-option-contracts-vertical-spread"></span><h4>Vertical spreads<a class="headerlink" href="#vertical-spreads" title="Permalink to this headline">#</a></h4>
+<p><a class="reference external" href="https://www.investopedia.com/terms/v/verticalspread.asp">Vertical spreads</a> are a <em>defined risk directional strategy</em> constructed by simultaneously buying (long) and selling (short) the <em>same type of option</em>, with the same expiration date but with <em>different</em> strike prices. Thus, <a class="reference external" href="https://www.investopedia.com/terms/v/verticalspread.asp">vertical spreads</a> have two <em>legs</em>: a long leg (the option purchased by the investor) and a short leg (the option sold by the investor). <a class="reference external" href="https://www.investopedia.com/terms/v/verticalspread.asp">Vertical spreads</a> are a defined risk, directional strategy, i.e., the investor believes the share price of the underlying asset <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> will either increase or decrease, depending upon the type of vertical spread. <a class="reference external" href="https://www.investopedia.com/terms/v/verticalspread.asp">Vertical spreads</a> are defined risk because the maximum possible gain (or loss) is known when the contract is sold; thus, an investor knows how much they can make or lose at expiration <em>before</em> they enter the trade. However, the future share price of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> is unknown when the investor opens the trade.</p>
+<p>Two types of vertical spreads can be constructed from put contracts; each has a different directional assumption. A <em>put bullish credit spread</em> assumes the underlying asset <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> share price will increase between now and expiration. In contrast, a <em>put bearish debit spread</em> assumes the underlying asset <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> share price will decrease between now and expiration. When investors open a bullish credit spread, they receive a credit (the maximum profit) upfront. On the other hand, when opening a debit spread, the investor incurs a net debit to their account. The trade becomes profitable over time if the directional assumption is correct.</p>
+<p>In general, the profit for a put vertical spread is a function of the strike prices, and the cost of each of the legs of the composite contract:</p>
+<div class="proof definition admonition" id="defn-PL-put-contract-vertical-spread">
+<p class="admonition-title"><span class="caption-number">Definition 32 </span> (Profit Put Vertical Spread)</p>
+<section class="definition-content" id="proof-content">
+<p>Consider a vertical spread constructed from put contracts on the underlying stock <code class="docutils literal notranslate"><span class="pre">XYZ</span></code>. Let <span class="math notranslate nohighlight">\(K_{j}\)</span> denote the strike price of put contract <span class="math notranslate nohighlight">\(j\)</span>. The price of contract <span class="math notranslate nohighlight">\(j\)</span> <span class="math notranslate nohighlight">\(\mathcal{P}_{j}\)</span>. Further, let <span class="math notranslate nohighlight">\(S\)</span> denote the share price of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> at expiration. Finally, let contract 1 be the short leg (<span class="math notranslate nohighlight">\(\theta_{1} = -1\)</span>, <span class="math notranslate nohighlight">\(\theta_{2}=1\)</span>), and <span class="math notranslate nohighlight">\(n_{1} = n_{2} = 1\)</span>.</p>
+<p>Then, the profit for a single Put Vertical spread <span class="math notranslate nohighlight">\(P\)</span> at expiration is given by:</p>
+<div class="math notranslate nohighlight">
+\[\hat{P} = -P_{1}+P_{2}\]</div>
+<p>which after substitution of the profit functions for a put contract gives:</p>
+<div class="math notranslate nohighlight">
+\[\hat{P} = \max\left(K_{2} - S,0\right) - \max\left(K_{1} - S,0\right) + \left(\mathcal{P}_{1} - \mathcal{P}_{2}\right)\]</div>
+<p>The first term is the net payout of the two legs of the spread, while the second term is the net cost of the two contracts.</p>
+<p>The maximum possible profit, loss and breakeven conditions are given by:</p>
+<ul class="simple">
+<li><p>The maximum possible profit of <span class="math notranslate nohighlight">\(\left(\mathcal{P}_{1} - \mathcal{P}_{2}\right)\)</span> will occur when <span class="math notranslate nohighlight">\(S\geq{K_{1}}\)</span>.</p></li>
+<li><p>The maximum possible loss of <span class="math notranslate nohighlight">\(K_{2} - K_{1} + \left(\mathcal{P}_{1} - \mathcal{P}_{2}\right)\)</span> will occur when <span class="math notranslate nohighlight">\(S\leq{K_{2}}\)</span>.</p></li>
+<li><p>The vertical put spread will breakeven, <span class="math notranslate nohighlight">\(\hat{P} = 0\)</span>, when <span class="math notranslate nohighlight">\(S =  K_{1}+\left(\mathcal{P}_{2} - \mathcal{P}_{1}\right)\)</span>.</p></li>
+</ul>
+</section>
+</div><p><a class="reference internal" href="#defn-PL-put-contract-vertical-spread">Definition 32</a> has many exciting types of behavior; it is much more complex than it might first appear as the cost of each contract <span class="math notranslate nohighlight">\(\mathcal{P}_{j}\)</span> is a non-linear function of many variables including the current share price of the underlying asset <span class="math notranslate nohighlight">\(S\)</span>, the strike price of the contract, the number of days the contract has before expiration, and the implied volatility.</p>
+<div class="proof example admonition" id="vertical-put-spread-expiration">
+<p class="admonition-title"><span class="caption-number">Example 12 </span> (Vertical Put Spreads)</p>
+<section class="example-content" id="proof-content">
+<p>Let the current share price of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> be <span class="math notranslate nohighlight">\(S_{o}\)</span> USD/share, and let <span class="math notranslate nohighlight">\(S\)</span> denote the share price of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> at expiration. Then:</p>
+<ul class="simple">
+<li><p>If <span class="math notranslate nohighlight">\(S_{o}&gt;K_{1}&gt;K_{2}\)</span> and leg 1 is the short put leg, <span class="math notranslate nohighlight">\(\mathcal{P}_{1}&gt;\mathcal{P}_{2}\)</span>. A vertical put spread constructed in this regime will be a <em>bullish credit spread</em>, i.e., the investor will receive a <em>credit</em> when opening the trade, and expects the share price of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> to <em>increase</em>, <span class="math notranslate nohighlight">\(S&gt;S_{o}\)</span>. The trade will reach maximum profit when <span class="math notranslate nohighlight">\(S\geq{K_{1}}\)</span>, maximum loss when <span class="math notranslate nohighlight">\(S\leq{K_{2}}\)</span> and will break even at <span class="math notranslate nohighlight">\(S =  K_{1}+\left(\mathcal{P}_{2} - \mathcal{P}_{1}\right)\)</span>.</p></li>
+</ul>
+<figure class="align-default" id="fig-spy-profit-put-vertical-spread">
+<a class="reference internal image-reference" href="../_images/Fig-SPY-Profit-Put-Credit-Spread.pdf"><img alt="../_images/Fig-SPY-Profit-Put-Credit-Spread.pdf" src="../_images/Fig-SPY-Profit-Put-Credit-Spread.pdf" style="height: 420px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 16 </span><span class="caption-text">Example profit and loss diagram at expiration for a <a class="reference external" href="https://finance.yahoo.com/quote/SPY/">SPY</a> put vertical credit spread. Parameters: <span class="math notranslate nohighlight">\(K_{1}\)</span> = $315 USD/share (short strike), <span class="math notranslate nohighlight">\(K_{2}\)</span> = $310 USD/share (long strike), <span class="math notranslate nohighlight">\(\mathcal{P}_{1}\)</span> = $5.25 USD/share and <span class="math notranslate nohighlight">\(\mathcal{P}_{2}\)</span> = $4.31 USD/share.</span><a class="headerlink" href="#fig-spy-profit-put-vertical-spread" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p>If <span class="math notranslate nohighlight">\(S_{o}&gt;K_{2}&gt;K_{1}\)</span> and leg 1 is the short put leg, <span class="math notranslate nohighlight">\(\mathcal{P}_{2}&gt;\mathcal{P}_{1}\)</span>. A vertical put spread constructed in this regime will be a <em>bearish debit spread</em>, i.e., the investor will pay a <em>debit</em> when opening the trade and expects the share price of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> to <em>decrease</em> <span class="math notranslate nohighlight">\(S&lt;S_{o}\)</span>. The trade will reach maximum profit when <span class="math notranslate nohighlight">\(S\leq{K_{1}}\)</span>, maximum loss when <span class="math notranslate nohighlight">\(S\geq{K_{2}}\)</span> and will break even at <span class="math notranslate nohighlight">\(S =  K_{1}+\left(\mathcal{P}_{2} - \mathcal{P}_{1}\right)\)</span>.</p></li>
+</ul>
+<figure class="align-default" id="fig-amd-profit-put-vertical-spread">
+<a class="reference internal image-reference" href="../_images/Fig-AMD-Profit-Put-Debit-Spread.pdf"><img alt="../_images/Fig-AMD-Profit-Put-Debit-Spread.pdf" src="../_images/Fig-AMD-Profit-Put-Debit-Spread.pdf" style="height: 420px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 17 </span><span class="caption-text">Example profit and loss diagram at expiration for a <a class="reference external" href="https://finance.yahoo.com/quote/AMD/">AMD</a> put vertical debit spread. Parameters: <span class="math notranslate nohighlight">\(K_{1}\)</span> = $90 USD/share (short strike), <span class="math notranslate nohighlight">\(K_{2}\)</span> = $105 USD/share (long strike), <span class="math notranslate nohighlight">\(\mathcal{P}_{1}\)</span> = $4.70 USD/share and <span class="math notranslate nohighlight">\(\mathcal{P}_{2}\)</span> = $13.35 USD/share</span><a class="headerlink" href="#fig-amd-profit-put-vertical-spread" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>source: <a class="reference external" href="https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks">live Pluto notebook</a> or <a class="reference external" href="https://htmlview.glitch.me/?https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks/blob/main/pluto-notebooks/html/Example-SPY-VericalSpread-Contract-Payoff.jl.html">static HTML</a></p>
+</section>
+</div><p>Although not shown here, <a class="reference external" href="https://www.investopedia.com/terms/v/verticalspread.asp">Vertical spreads</a> can also be constructed using <a class="reference external" href="https://www.investopedia.com/terms/c/calloption.asp">call contracts</a>.</p>
+</section>
+<section id="straddles">
+<h4>Straddles<a class="headerlink" href="#straddles" title="Permalink to this headline">#</a></h4>
+<p>A <a class="reference external" href="https://www.investopedia.com/terms/s/straddle.asp">straddle</a> is a <em>neutral strategy</em> constructed by simultaneously buying (or selling) a put and a call option on the same underlying asset <code class="docutils literal notranslate"><span class="pre">XYZ</span></code>, with the <em>same expiration</em>, and the <em>same strike price</em>. Depending upon the choice of the strike prices and whether an investor buys or sells both legs, a <a class="reference external" href="https://www.investopedia.com/terms/s/straddle.asp">straddle</a> can be initiated as a credit or debit and can potentially have undefined profit or loss. Unlike directional strategies such as <a class="reference internal" href="#content-references-option-contracts-vertical-spread"><span class="std std-ref">Vertical spreads</span></a>, a <a class="reference external" href="https://www.investopedia.com/terms/s/straddle.asp">straddle</a> is a <em>neutral</em> position; an investor holding a <a class="reference external" href="https://www.investopedia.com/terms/s/straddle.asp">straddle</a> profits if the share price of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> moves up, down or potentially zero depending upon the construction of the straddle.</p>
+<div class="proof definition admonition" id="defn-PL-put-contract-straddle">
+<p class="admonition-title"><span class="caption-number">Definition 33 </span> (Profit of a Straddle)</p>
+<section class="definition-content" id="proof-content">
+<p>A <a class="reference external" href="https://www.investopedia.com/terms/s/straddle.asp">straddle</a> is a <em>neutral strategy</em> constructed by simultaneously buying (or selling) a put and a call option on the underlying asset <code class="docutils literal notranslate"><span class="pre">XYZ</span></code>, with the <em>same expiration</em>, and the <em>same strike price</em>.</p>
+<p>Let the current share price of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> be <span class="math notranslate nohighlight">\(S_{o}\)</span> USD/share, and let <span class="math notranslate nohighlight">\(S\)</span> denote the share price of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> at expiration. Further, let <span class="math notranslate nohighlight">\(K_{j}\)</span> denote the strike price of contract <span class="math notranslate nohighlight">\(j\)</span> (USD/share), where the price of contract <span class="math notranslate nohighlight">\(j\)</span> is <span class="math notranslate nohighlight">\(\mathcal{P}_{j}\)</span> (USD/share). Finally, let index <span class="math notranslate nohighlight">\(j=1\)</span> denote the put contract, <span class="math notranslate nohighlight">\(j=2\)</span> denote the call contract, and <span class="math notranslate nohighlight">\(K_{1}=K_{2}\equiv{K}\)</span> (both legs have the same strike in a <a class="reference external" href="https://www.investopedia.com/terms/s/straddle.asp">straddle</a>).</p>
+<p>Then, the profit for a single straddle contract <span class="math notranslate nohighlight">\(\hat{P}\)</span> at expiration is given by:</p>
+<div class="math notranslate nohighlight">
+\[\hat{P} = \theta\cdot\left(P_{1}+P_{2}\right)\]</div>
+<p>where <span class="math notranslate nohighlight">\(\theta_{1}=\theta_{2}\equiv\theta\)</span> denotes a direction parameter: <span class="math notranslate nohighlight">\(\theta=-1\)</span> if each leg is sold (short), <span class="math notranslate nohighlight">\(\theta=1\)</span> otherwise. After substitution of the profit functions for a put and a call contract,
+the overall profit <span class="math notranslate nohighlight">\(\hat{P}\)</span> is given by:</p>
+<div class="math notranslate nohighlight">
+\[\hat{P} = \theta\cdot\Bigl[(K-S)^{+}+(S-K)^{+}-(\mathcal{P}_{1}+\mathcal{P}_{2})\Bigr]\]</div>
+<p>where <span class="math notranslate nohighlight">\((K-S)^{+}=\max(K-S,0)\)</span> and <span class="math notranslate nohighlight">\((S-K)^{+} = \max(S-K,0)\)</span>. Thus, the profit (or loss) of a straddle has three regimes given by:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\hat{P} = \begin{cases}
+  \theta\cdot\Bigl[(S-K)-\left(\mathcal{P}_{1}+\mathcal{P}_{2}\right)\Bigr]  &amp; S&gt;K \\
+  -\theta\cdot\Bigl[\mathcal{P}_{1}+\mathcal{P}_{2}\Bigr] &amp; S=K \\
+    \theta\cdot\Bigl[(K-S)-\left(\mathcal{P}_{1}+\mathcal{P}_{2}\right)\Bigr] &amp; S&lt;K
+\end{cases}
+\end{split}\]</div>
+<p>Finally, a straddle has <em>two</em> possible breakeven points denoted as <span class="math notranslate nohighlight">\(S^{+}\)</span> and <span class="math notranslate nohighlight">\(S^{-}\)</span>:</p>
+<ul class="simple">
+<li><p>If <span class="math notranslate nohighlight">\(S&gt;K\)</span>: a straddle will breakeven at <span class="math notranslate nohighlight">\(S^{+} = K + \left(\mathcal{P}_{1}+\mathcal{P}_{2}\right)\)</span></p></li>
+<li><p>If <span class="math notranslate nohighlight">\(S&lt;K\)</span>: a straddle will breakeven at <span class="math notranslate nohighlight">\(S^{-} = K - \left(\mathcal{P}_{1}+\mathcal{P}_{2}\right)\)</span>.</p></li>
+</ul>
+</section>
+</div><p><a class="reference internal" href="#defn-PL-put-contract-straddle">Definition 33</a> gives the profit conditions for both long (buy both the call and the put legs) and short (sell both the call and put legs) straddles. Let’s put some numbers into the profit conditions and analyze their behavior (<a class="reference internal" href="#straddle-profit-expiration">Example 13</a>).</p>
+<div class="proof example admonition" id="straddle-profit-expiration">
+<p class="admonition-title"><span class="caption-number">Example 13 </span> (Profit of a Straddle)</p>
+<section class="example-content" id="proof-content">
+<p>A <strong>short straddle</strong> is constructed by simultaneously <em>selling</em> both a put and a call option with the same expiration, strike price, and underlying asset <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> (<a class="reference internal" href="#fig-amd-profit-short-straddle"><span class="std std-numref">Fig. 18</span></a>). When opening a short straddle, an investor receives a <em>credit</em>, i.e., the proceeds from selling the call and put options. For a short straddle, <span class="math notranslate nohighlight">\(\theta=-1\)</span> which gives the profit condtions:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\hat{P} = \begin{cases}
+  -\Bigl[(S-K)-\left(\mathcal{P}_{1}+\mathcal{P}_{2}\right)\Bigr]  &amp; S&gt;K \\
+  \Bigl[\mathcal{P}_{1}+\mathcal{P}_{2}\Bigr] &amp; S=K \\
+    -\Bigl[(K-S)-\left(\mathcal{P}_{1}+\mathcal{P}_{2}\right)\Bigr] &amp; S&lt;K
+\end{cases}\end{split}\]</div>
+<p>A short straddle is profitable if the share price of the underlying asset of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> stays near the strike price of <span class="math notranslate nohighlight">\(K\)</span>. Thus, for a short straddle, the investor wants small price movements. At expiration:</p>
+<ul class="simple">
+<li><p>A short straddle experiences the maximum profit when <span class="math notranslate nohighlight">\(S=K\)</span></p></li>
+<li><p>A short straddle can experience an <em>undefined loss</em> when <span class="math notranslate nohighlight">\(S&lt;S^{-}\)</span> and <span class="math notranslate nohighlight">\(S&gt;S^{+}\)</span></p></li>
+<li><p>A short straddle benefits from limited movement of the share price of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> during the lifetime of the contract</p></li>
+</ul>
+<figure class="align-default" id="fig-amd-profit-short-straddle">
+<a class="reference internal image-reference" href="../_images/Fig-AMD-Profit-Short-Straddle.pdf"><img alt="../_images/Fig-AMD-Profit-Short-Straddle.pdf" src="../_images/Fig-AMD-Profit-Short-Straddle.pdf" style="height: 420px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 18 </span><span class="caption-text">Example profit and loss diagram at expiration for an <a class="reference external" href="https://finance.yahoo.com/quote/AMD/">AMD</a> short straddle. Parameters: <span class="math notranslate nohighlight">\(K\)</span> = $100 USD/share, <span class="math notranslate nohighlight">\(\mathcal{P}_{1}\)</span> = $9.95 USD/share and <span class="math notranslate nohighlight">\(\mathcal{P}_{2}\)</span> = $7.45 USD/share</span><a class="headerlink" href="#fig-amd-profit-short-straddle" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>A <strong>long straddle</strong> is constructed by simultaneously <em>buying</em> both a put and a call option with the same expiration, strike price, and underlying asset <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> (<a class="reference internal" href="#fig-amd-profit-long-straddle"><span class="std std-numref">Fig. 19</span></a>). When opening a short strangle, an investor is charged a <em>debit</em> to their account, i.e., the cost of purchasing the call and put options. For a long straddle, <span class="math notranslate nohighlight">\(\theta=1\)</span> which gives the profit condtions:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\hat{P} = \begin{cases}
+  (S-K)-\left(\mathcal{P}_{1}+\mathcal{P}_{2}\right) &amp; S&gt;K \\
+  -\left(\mathcal{P}_{1}+\mathcal{P}_{2}\right) &amp; S=K \\
+  (K-S)-\left(\mathcal{P}_{1}+\mathcal{P}_{2}\right) &amp; S&lt;K
+\end{cases}\end{split}\]</div>
+<p>As the share price of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> moves <em>away</em> from the strike price of <span class="math notranslate nohighlight">\(K\)</span>, the long straddle becomes profitable. Thus, for a long straddle, the investor wants large price movements so that they can overcome the initial investment required to purchase the call and put options. At expiration:</p>
+<ul class="simple">
+<li><p>A long straddle experiences the maximum loss when <span class="math notranslate nohighlight">\(S=K\)</span></p></li>
+<li><p>A long straddle can experience an <em>undefined profit</em> when <span class="math notranslate nohighlight">\(S&lt;S^{-}\)</span> and <span class="math notranslate nohighlight">\(S&gt;S^{+}\)</span></p></li>
+<li><p>A long straddle benefits from large movements of the share price of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> during the lifetime of the contract</p></li>
+</ul>
+<figure class="align-default" id="fig-amd-profit-long-straddle">
+<a class="reference internal image-reference" href="../_images/Fig-AMD-Profit-Long-Straddle.pdf"><img alt="../_images/Fig-AMD-Profit-Long-Straddle.pdf" src="../_images/Fig-AMD-Profit-Long-Straddle.pdf" style="height: 420px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 19 </span><span class="caption-text">Example profit and loss diagram at expiration for an <a class="reference external" href="https://finance.yahoo.com/quote/AMD/">AMD</a> long straddle.
+Parameters: <span class="math notranslate nohighlight">\(K\)</span> = $100 USD/share, <span class="math notranslate nohighlight">\(\mathcal{P}_{1}\)</span> = $9.95 USD/share and <span class="math notranslate nohighlight">\(\mathcal{P}_{2}\)</span> = $7.45 USD/share</span><a class="headerlink" href="#fig-amd-profit-long-straddle" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>source: <a class="reference external" href="https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks">live Pluto notebook</a> or <a class="reference external" href="https://htmlview.glitch.me/?https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks/blob/main/pluto-notebooks/html/Example-Straddle-Profit.jl.html">static HTML view</a></p>
+</section>
+</div></section>
+<section id="strangles">
+<h4>Strangles<a class="headerlink" href="#strangles" title="Permalink to this headline">#</a></h4>
+<p>A <a class="reference external" href="https://www.investopedia.com/terms/s/strangle.asp">strangle</a> position is a <em>neutral strategy</em> constructed by simultaneously buying and selling a put and a call option on the same underlying asset <code class="docutils literal notranslate"><span class="pre">XYZ</span></code>, with the same expiration but with <em>different</em> strike prices. Depending upon the choice of the strike prices and whether an investor buys or sells both legs, a <a class="reference external" href="https://www.investopedia.com/terms/s/strangle.asp">strangle</a> can be initiated as a credit or debit and can potentially have undefined profit or loss. Unlike directional strategies such as <a class="reference internal" href="#content-references-option-contracts-vertical-spread"><span class="std std-ref">Vertical spreads</span></a>, a <a class="reference external" href="https://www.investopedia.com/terms/s/strangle.asp">strangle</a> is a <em>neutral</em> position; an investor holding a <a class="reference external" href="https://www.investopedia.com/terms/s/strangle.asp">strangle</a> profits if the share price of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> moves between the strike prices of the strangle.</p>
+<div class="proof definition admonition" id="defn-PL-put-contract-strangle">
+<p class="admonition-title"><span class="caption-number">Definition 34 </span> (Profit of a Strangle)</p>
+<section class="definition-content" id="proof-content">
+<p>A <a class="reference external" href="https://www.investopedia.com/terms/s/strangle.asp">strangle</a> position is a <em>neutral strategy</em> constructed by simultaneously buying (or selling) a put and a call option on the same underlying asset <code class="docutils literal notranslate"><span class="pre">XYZ</span></code>, with the same expiration but with <em>different</em> strike prices.</p>
+<p>Let the current share price of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> be <span class="math notranslate nohighlight">\(S_{o}\)</span> USD/share, and let <span class="math notranslate nohighlight">\(S\)</span> denote the share price of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> at expiration. Further, let <span class="math notranslate nohighlight">\(K_{j}\)</span> denote the strike price of contract <span class="math notranslate nohighlight">\(j\)</span> (USD/share), where the price of contract <span class="math notranslate nohighlight">\(j\)</span> is <span class="math notranslate nohighlight">\(\mathcal{P}_{j}\)</span> (USD/share). Finally, let index <span class="math notranslate nohighlight">\(j=1\)</span> denote the put contract, <span class="math notranslate nohighlight">\(j=2\)</span> denote the call contract; for a <a class="reference external" href="https://www.investopedia.com/terms/s/strangle.asp">strangle</a> <span class="math notranslate nohighlight">\(K_{1} &lt; K_{2}\)</span>.</p>
+<p>Then, the profit for a single strangle contract <span class="math notranslate nohighlight">\(\hat{P}\)</span> at expiration is given by:</p>
+<div class="math notranslate nohighlight">
+\[\hat{P} = \theta\cdot\left(P_{1}+P_{2}\right)\]</div>
+<p>where <span class="math notranslate nohighlight">\(\theta_{1}=\theta_{2}\equiv\theta\)</span> denotes a direction parameter: <span class="math notranslate nohighlight">\(\theta=-1\)</span> if each leg is sold (short), <span class="math notranslate nohighlight">\(\theta=1\)</span> otherwise. After substitution of the profit functions for a put and a call contract,
+the overall profit <span class="math notranslate nohighlight">\(\hat{P}\)</span> is given by:</p>
+<div class="math notranslate nohighlight">
+\[\hat{P} = \theta\cdot\Bigl[(K_{1}-S)^{+}+(S-K_{2})^{+}-(\mathcal{P}_{1}+\mathcal{P}_{2})\Bigr]\]</div>
+<p>where <span class="math notranslate nohighlight">\((K_{1}-S)^{+}=\max(K_{1}-S,0)\)</span> and <span class="math notranslate nohighlight">\((S-K_{2})^{+} = \max(S-K_{2},0)\)</span>. Thus, the profit (or loss) of a strangle has three regimes given by:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\hat{P} = \begin{cases}
+  \theta\cdot\Bigl[(S-K_{2})-\left(\mathcal{P}_{1}+\mathcal{P}_{2}\right)\Bigr]  &amp; S&gt;K_{2} \\
+  -\theta\cdot\Bigl[\mathcal{P}_{1}+\mathcal{P}_{2}\Bigr] &amp; K_{1}\leq{S}\leq{K_{2}} \\
+  \theta\cdot\Bigl[(K_{1}-S)-\left(\mathcal{P}_{1}+\mathcal{P}_{2}\right)\Bigr] &amp; S&lt;{K_{1}}
+\end{cases}
+\end{split}\]</div>
+<p>A <a class="reference external" href="https://www.investopedia.com/terms/s/strangle.asp">strangle</a> has two break-even points <span class="math notranslate nohighlight">\(S^{+}\)</span> and <span class="math notranslate nohighlight">\(S^{-}\)</span> where we know that <span class="math notranslate nohighlight">\(K_{2}&lt;S^{+}\)</span> and <span class="math notranslate nohighlight">\(S^{-}&lt;K_{1}\)</span>. Thus, the low break-even point <span class="math notranslate nohighlight">\(S^{-}\)</span> is given by:</p>
+<div class="math notranslate nohighlight">
+\[S^{-} = K_{1} - \left(\mathcal{P}_{1}+\mathcal{P}_{2}\right)\]</div>
+<p>while the high break-even point <span class="math notranslate nohighlight">\(S^{+}\)</span> is given by:</p>
+<div class="math notranslate nohighlight">
+\[S^{+} = K_{2} + \left(\mathcal{P}_{1}+\mathcal{P}_{2}\right)\]</div>
+</section>
+</div><p><a class="reference internal" href="#defn-PL-put-contract-strangle">Definition 34</a> gives the profit conditions for both long (buy both the call and the put legs) and short (sell both the call and put legs) strangles. Let’s put some numbers into the profit conditions and analyze their behavior (<a class="reference internal" href="#strangle-profit-expiration">Example 14</a>).</p>
+<div class="proof example admonition" id="strangle-profit-expiration">
+<p class="admonition-title"><span class="caption-number">Example 14 </span> (Profit of a Strangle)</p>
+<section class="example-content" id="proof-content">
+<p>A <strong>short strangle</strong> is constructed by simultaneously <em>selling</em> both a put and a call option with the same underlying asset <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> and the same expiration, but with different strike prices (<a class="reference internal" href="#fig-amd-profit-short-strangle"><span class="std std-numref">Fig. 20</span></a>). When opening a short strangle, an investor receives a <em>credit</em>, i.e., the proceeds from selling the call and put options. For a short strangle, <span class="math notranslate nohighlight">\(\theta=-1\)</span> which gives the profit condtions:</p>
+<figure class="align-default" id="fig-amd-profit-short-strangle">
+<a class="reference internal image-reference" href="../_images/Fig-AMD-Profit-Short-Strangle.pdf"><img alt="../_images/Fig-AMD-Profit-Short-Strangle.pdf" src="../_images/Fig-AMD-Profit-Short-Strangle.pdf" style="height: 420px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 20 </span><span class="caption-text">Example profit and loss diagram at expiration for an <a class="reference external" href="https://finance.yahoo.com/quote/AMD/">AMD</a> short strangle. Parameters: <span class="math notranslate nohighlight">\(K_{1}\)</span> = $90 USD/share, <span class="math notranslate nohighlight">\(K_{2}\)</span> = $110 USD/share, <span class="math notranslate nohighlight">\(\mathcal{P}_{1}\)</span> = $4.05 USD/share and <span class="math notranslate nohighlight">\(\mathcal{P}_{2}\)</span> = $5.70 USD/share. <span class="math notranslate nohighlight">\(S_{o}\)</span> = $101.57 USD/share.</span><a class="headerlink" href="#fig-amd-profit-short-strangle" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>A <strong>long strangle</strong> is constructed by simultaneously <em>buying</em> both a put and a call option with the same underlying asset <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> and the same expiration, but with different strike prices (<a class="reference internal" href="#fig-amd-profit-long-strangle"><span class="std std-numref">Fig. 21</span></a>). When opening a long strangle, the investor is charged a <em>debit</em> to their account, i.e., the cost of purchasing the call and put options. For a long strangle, <span class="math notranslate nohighlight">\(\theta=1\)</span> which gives the profit condtions::</p>
+<figure class="align-default" id="fig-amd-profit-long-strangle">
+<a class="reference internal image-reference" href="../_images/Fig-AMD-Profit-Long-Strangle.pdf"><img alt="../_images/Fig-AMD-Profit-Long-Strangle.pdf" src="../_images/Fig-AMD-Profit-Long-Strangle.pdf" style="height: 420px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 21 </span><span class="caption-text">Example profit and loss diagram at expiration for an <a class="reference external" href="https://finance.yahoo.com/quote/AMD/">AMD</a> long strangle. Parameters: <span class="math notranslate nohighlight">\(K_{1}\)</span> = $90 USD/share, <span class="math notranslate nohighlight">\(K_{2}\)</span> = $110 USD/share, <span class="math notranslate nohighlight">\(\mathcal{P}_{1}\)</span> = $4.05 USD/share and <span class="math notranslate nohighlight">\(\mathcal{P}_{2}\)</span> = $5.70 USD/share. <span class="math notranslate nohighlight">\(S_{o}\)</span> = $101.57 USD/share.</span><a class="headerlink" href="#fig-amd-profit-long-strangle" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+</div></section>
+<section id="iron-condor">
+<h4>Iron Condor<a class="headerlink" href="#iron-condor" title="Permalink to this headline">#</a></h4>
+<p>An <a class="reference external" href="https://www.investopedia.com/terms/i/ironcondor.asp">iron condor</a> is a <em>neutral defined risk</em> position constructed by <em>selling</em> a put (1) and call (2) options on the underlying asset <code class="docutils literal notranslate"><span class="pre">XYZ</span></code>, while simultaneously <em>buying</em> a put (3) and call (4) options on <code class="docutils literal notranslate"><span class="pre">XYZ</span></code>. All the legs of an <a class="reference external" href="https://www.investopedia.com/terms/i/ironcondor.asp">iron condor</a> have the same underlying asset <code class="docutils literal notranslate"><span class="pre">XYZ</span></code>, and have the same expiration, but they have different strike prices where <span class="math notranslate nohighlight">\(K_{3}&lt;K_{1}&lt;K_{2}&lt;K_{4}\)</span>. In particular, the two short options are sold with strikes on either side of the current share price <span class="math notranslate nohighlight">\(S_{o}\)</span> of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code>, with the short put strike price <span class="math notranslate nohighlight">\(K_{1}&lt;S_{o}\)</span> and the short call strike price <span class="math notranslate nohighlight">\(K_{2}&gt;S_{o}\)</span>. Then, the long legs are purchased above and below the short strikes.  Thus, an <a class="reference external" href="https://www.investopedia.com/terms/i/ironcondor.asp">iron condor</a> position has the character of a <a class="reference external" href="https://www.investopedia.com/terms/s/strangle.asp">strangle</a> combined with a vertical spread.</p>
+<p>An investor holding an <a class="reference external" href="https://www.investopedia.com/terms/i/ironcondor.asp">iron condor</a> profits if the share price of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> remains between the strike prices of the two short options (like a short strangle). However, unlike a <a class="reference external" href="https://www.investopedia.com/terms/s/strangle.asp">strangle</a>, an <a class="reference external" href="https://www.investopedia.com/terms/i/ironcondor.asp">iron condor</a> is a defined risk strategy; the long options act to limit any possible losses, but they also restrict potential gains (because of their cost).</p>
+<div class="proof definition admonition" id="defn-PL-iron-condor">
+<p class="admonition-title"><span class="caption-number">Definition 35 </span> (Profit of an Iron Condor)</p>
+<section class="definition-content" id="proof-content">
+<p>An <a class="reference external" href="https://www.investopedia.com/terms/i/ironcondor.asp">iron condor</a> is a <em>neutral defined risk</em> position constructed by <em>selling</em> a put (1) and call (2) options on the underlying asset <code class="docutils literal notranslate"><span class="pre">XYZ</span></code>, while simultaneously <em>buying</em> a put (3) and call (4) options on <code class="docutils literal notranslate"><span class="pre">XYZ</span></code>. All legs have the same underlying asset <code class="docutils literal notranslate"><span class="pre">XYZ</span></code>, the same expiration, but different strike prices.</p>
+<p>Let the current share price of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> be <span class="math notranslate nohighlight">\(S_{o}\)</span> USD/share, and let <span class="math notranslate nohighlight">\(S\)</span> denote the share price of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> at expiration. Further, let <span class="math notranslate nohighlight">\(K_{j}\)</span> denote the strike price of contract <span class="math notranslate nohighlight">\(j\)</span> (USD/share), where the price of contract <span class="math notranslate nohighlight">\(j\)</span> is <span class="math notranslate nohighlight">\(\mathcal{P}_{j}\)</span> (USD/share). Finally, let index <span class="math notranslate nohighlight">\(j=1\)</span> denote the short put contract, <span class="math notranslate nohighlight">\(j=2\)</span> denote the short call contract,  <span class="math notranslate nohighlight">\(j=3\)</span> denote the long put contract and  <span class="math notranslate nohighlight">\(j=4\)</span> denote the long call contract; for an <a class="reference external" href="https://www.investopedia.com/terms/i/ironcondor.asp">iron condor</a> <span class="math notranslate nohighlight">\(K_{3} &lt; K_{1} &lt;K_{2} &lt; K_{3}\)</span>.</p>
+<p>Then, the profit for a single iron condor contract <span class="math notranslate nohighlight">\(\hat{P}\)</span> at expiration is given by:</p>
+<div class="math notranslate nohighlight">
+\[\hat{P} = \theta_{1}P_{1} + \theta_{2}P_{2} + \theta_{3}P_{3} + \theta_{4}P_{4}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\theta_{1}=\theta_{2} = -1\)</span> (short legs) and <span class="math notranslate nohighlight">\(\theta_{3}=\theta_{4} = 1\)</span> (long legs). After substitution of the profit functions for put and call contracts, the overall profit <span class="math notranslate nohighlight">\(\hat{P}\)</span> is given by:</p>
+<div class="math notranslate nohighlight">
+\[\hat{P} = -(K_{1}-S)^{+} - (S-K_{2})^{+} + (K_{3} - S)^{+} + (S-K_{4})^{+} + \left(\mathcal{P}_{1} + \mathcal{P}_{2} - \mathcal{P}_{3}-\mathcal{P}_{4}\right)\]</div>
+<p>where <span class="math notranslate nohighlight">\((K_{\star}-S)^{+}=\max(K_{\star}-S,0)\)</span> and <span class="math notranslate nohighlight">\((S-K_{\star})^{+} = \max(S-K_{\star},0)\)</span>. The profit (or loss) of an iron condor has several important regimes given by:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\hat{P} = \begin{cases}
+  K_{2} - K_{4} + \Bigl(\mathcal{P}_{1} + \mathcal{P}_{2} - \mathcal{P}_{3}-\mathcal{P}_{4}\Bigr)  &amp; S&gt;K_{4} \\
+  K_{2} - S + \Bigl(\mathcal{P}_{1} + \mathcal{P}_{2} - \mathcal{P}_{3}-\mathcal{P}_{4}\Bigr)  &amp; K_{2}&lt;S&lt;K_{4} \\
+  \Bigl(\mathcal{P}_{1} + \mathcal{P}_{2} - \mathcal{P}_{3}-\mathcal{P}_{4}\Bigr) &amp; K_{1}\leq{S}\leq{K_{2}} \\
+  S - K_{1} + \Bigl(\mathcal{P}_{1} + \mathcal{P}_{2} - \mathcal{P}_{3}-\mathcal{P}_{4}\Bigr) &amp; K_{3}&lt;S&lt;K_{1} \\
+  K_{3} - K_{1} + \Bigl(\mathcal{P}_{1} + \mathcal{P}_{2} - \mathcal{P}_{3}-\mathcal{P}_{4}\Bigr) &amp; S&lt;K_{3}
+\end{cases}
+\end{split}\]</div>
+<p>An <a class="reference external" href="https://www.investopedia.com/terms/i/ironcondor.asp">iron condor</a> has two break-even points <span class="math notranslate nohighlight">\(S^{+}\)</span> and <span class="math notranslate nohighlight">\(S^{-}\)</span> where we know that <span class="math notranslate nohighlight">\(K_{2}&lt;S^{+}&lt;K_{4}\)</span> and <span class="math notranslate nohighlight">\(K_{3}&lt;S^{-}&lt;K_{1}\)</span>. Thus, the low break-even point <span class="math notranslate nohighlight">\(S^{-}\)</span> is given by:</p>
+<div class="math notranslate nohighlight">
+\[S^{-} = K_{1} - \Bigl(\mathcal{P}_{1} + \mathcal{P}_{2} - \mathcal{P}_{3}-\mathcal{P}_{4}\Bigr)\]</div>
+<p>while the high break-even point <span class="math notranslate nohighlight">\(S^{+}\)</span> is given by:</p>
+<div class="math notranslate nohighlight">
+\[S^{+} = K_{2} + \Bigl(\mathcal{P}_{1} + \mathcal{P}_{2} - \mathcal{P}_{3}-\mathcal{P}_{4}\Bigr)\]</div>
+</section>
+</div><p><a class="reference internal" href="#defn-PL-iron-condor">Definition 35</a> gives the profit conditions for an <a class="reference external" href="https://www.investopedia.com/terms/i/ironcondor.asp">iron condor</a>. Let’s put some numbers into the profit conditions and analyze their behavior (<a class="reference internal" href="#iron-condor-expiration">Example 15</a>).</p>
+<div class="proof example admonition" id="iron-condor-expiration">
+<p class="admonition-title"><span class="caption-number">Example 15 </span> (Profit of an Iron Condor)</p>
+<section class="example-content" id="proof-content">
+<p>An <a class="reference external" href="https://www.investopedia.com/terms/i/ironcondor.asp">iron condor</a> is constructed by <em>selling</em> a put (1) and call (2) options on the underlying asset <code class="docutils literal notranslate"><span class="pre">XYZ</span></code>, while simultaneously <em>buying</em> a put (3) and call (4) options on <code class="docutils literal notranslate"><span class="pre">XYZ</span></code>. All legs have the same expiration, but different strike prices.</p>
+<p>In particular, the short legs of an <a class="reference external" href="https://www.investopedia.com/terms/i/ironcondor.asp">iron condor</a> have strike prices near the share price of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code>, while the two long legs are further out of the money (farther away from the current share price of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code>).</p>
+<p>The profit (or loss) for an <a class="reference external" href="https://www.investopedia.com/terms/i/ironcondor.asp">iron condor</a> on <a class="reference external" href="https://finance.yahoo.com/quote/MU/">MU</a> is shown in <a class="reference internal" href="#fig-mu-iron-condor"><span class="std std-numref">Fig. 22</span></a>. The low break-even point <span class="math notranslate nohighlight">\(S^{-}\)</span> = $48.54 USD/share while the high break-even point <span class="math notranslate nohighlight">\(S^{+}\)</span> = $71.46 USD/share.</p>
+<figure class="align-default" id="fig-mu-iron-condor">
+<a class="reference internal image-reference" href="../_images/Fig-MU-Profit-IronCondor.pdf"><img alt="../_images/Fig-MU-Profit-IronCondor.pdf" src="../_images/Fig-MU-Profit-IronCondor.pdf" style="height: 420px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 22 </span><span class="caption-text">Example profit and loss diagram at expiration for an <a class="reference external" href="https://finance.yahoo.com/quote/MU/">MU</a> iron condor. Parameters: <span class="math notranslate nohighlight">\(K_{1}\)</span> = $50 USD/share, <span class="math notranslate nohighlight">\(K_{2}\)</span> = $70 USD/share, <span class="math notranslate nohighlight">\(K_{3}\)</span> = $45 USD/share, <span class="math notranslate nohighlight">\(K_{4}\)</span> = $75 USD/share, <span class="math notranslate nohighlight">\(\mathcal{P}_{1}\)</span> = $1.09 USD/share <span class="math notranslate nohighlight">\(\mathcal{P}_{2}\)</span> = $2.00 USD/share, <span class="math notranslate nohighlight">\(\mathcal{P}_{3}\)</span> = $0.60 USD/share and <span class="math notranslate nohighlight">\(\mathcal{P}_{4}\)</span> = $1.03 USD/share. <span class="math notranslate nohighlight">\(S_{o}\)</span> = $62.46 USD/share.</span><a class="headerlink" href="#fig-mu-iron-condor" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>source: <a class="reference external" href="https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks">live Pluto notebook</a> or <a class="reference external" href="https://htmlview.glitch.me/?https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks/blob/main/pluto-notebooks/html/Example-IronCondor-Profit.jl.html">static HTML view</a></p>
+</section>
+</div></section>
+</section>
+</section>
+<section id="probability-of-profit-at-expiration">
+<span id="content-references-option-probability-of-profit-algorithms"></span><h2>Probability of profit at expiration<a class="headerlink" href="#probability-of-profit-at-expiration" title="Permalink to this headline">#</a></h2>
+<p>The Probability of Profit (POP) at expiration is the probability that your option position will make at least $0.01 at expiration. The probability of profit can be a helpful decision metric, e.g., investors engage in transactions with a <em>large</em> POP and avoid low probability trades. However, the exact meaning of <em>large</em> or <em>small</em> depends upon the investor’s risk tolerance.</p>
+<section id="monte-carlo-simulation">
+<h3>Monte-Carlo simulation<a class="headerlink" href="#monte-carlo-simulation" title="Permalink to this headline">#</a></h3>
+<p>Using Monte-Carlo simulation, we can estimate the option position’s probability of Profit (POP) at expiration.
+First, we can develop a simulation of the price of the underlying asset <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> e.g., using a geometric Brownian motion model developed from historical data, and then use that model to project the underlying price into the future until expiration. Finally, we count the number of simulation trajectories in which a profit condition is met and divide that by the total number of trajectories to arrive at the probability that the profit condition is satisfied.</p>
+<p>To explore this idea, let’s compute the probability of profit of a <a class="reference external" href="https://www.investopedia.com/terms/s/strangle.asp">short strangle</a> position in <a class="reference external" href="https://finance.yahoo.com/quote/AMD/">AMD</a> in <a class="reference internal" href="#pop-amd-strange-expiration">Example 16</a>:</p>
+<div class="proof example admonition" id="pop-amd-strange-expiration">
+<p class="admonition-title"><span class="caption-number">Example 16 </span> (Probability of Profit at Expiration for AMD Strangle)</p>
+<section class="example-content" id="proof-content">
+<p>Fill me in here.</p>
+</section>
+</div></section>
+</section>
+<section id="options-pricing-algorithms">
+<span id="content-references-option-pricing-algorithms"></span><h2>Options Pricing Algorithms<a class="headerlink" href="#options-pricing-algorithms" title="Permalink to this headline">#</a></h2>
+<section id="black-scholes-merton-bsm">
+<h3>Black-Scholes-Merton (BSM)<a class="headerlink" href="#black-scholes-merton-bsm" title="Permalink to this headline">#</a></h3>
+<p>The Black-Scholes-Merton (BSM) model is a partial differential equation widely used to price <a class="reference external" href="https://www.investopedia.com/terms/e/europeanoption.asp">European</a> style options contracts; thus, the BSM model does not condsider the possibility of early excercise that is possible with <a class="reference external" href="https://www.investopedia.com/terms/a/americanoption.asp">American</a> option contracts. In 1997, Scholes and Merton were awarded the <a class="reference external" href="https://www.nobelprize.org/prizes/economic-sciences/1997/press-release/">Nobel Memorial Prize in Economic Sciences</a> for their work in finding “a new method to determine the value of derivatives.” Black had passed away two years earlier; thus could not share in the prize.</p>
+<section id="assumptions-of-the-bsm-model">
+<h4>Assumptions of the BSM model<a class="headerlink" href="#assumptions-of-the-bsm-model" title="Permalink to this headline">#</a></h4>
+<p>The Black-Scholes model makes several assumptions when pricing <a class="reference external" href="https://www.investopedia.com/terms/e/europeanoption.asp">European</a> style options contracts:</p>
+<ul class="simple">
+<li><p>No dividends are paid by the underlying asset <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> during the life of the option contract.</p></li>
+<li><p>Markets are random (i.e., market movements cannot be predicted).</p></li>
+<li><p>There are no transaction costs when buying (or selling) an option contract.</p></li>
+<li><p>The risk-free rate and volatility of the underlying stock <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> are known and constant.</p></li>
+<li><p>The returns of the underlying stock <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> are normally distributed.</p></li>
+<li><p>No early excercise of the option contract is possible</p></li>
+</ul>
+</section>
+</section>
+<section id="binomial-pricing-model">
+<h3>Binomial pricing model<a class="headerlink" href="#binomial-pricing-model" title="Permalink to this headline">#</a></h3>
 <p>Fill me in.</p>
-</div>
+</section>
+<section id="monte-carlo-pricing-model">
+<h3>Monte-carlo pricing model<a class="headerlink" href="#monte-carlo-pricing-model" title="Permalink to this headline">#</a></h3>
+<p>Fill me in.</p>
+</section>
+</section>
 <hr class="docutils" />
-<div class="section" id="summary">
-<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">¶</a></h2>
+<section id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">#</a></h2>
 <p>Fill me in here.</p>
 <!-- ## Cox-Ross-Rubinstein (CRR) binomial pricing model
 
@@ -536,8 +1079,8 @@ The binomial options pricing model provides a generalizable numerical method for
 :alt: CRR-Schematic
 :width: 480px
 :align: center
-``` --></div>
-</div>
+``` --></section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -561,9 +1104,11 @@ The binomial options pricing model provides a generalizable numerical method for
 
               </div>
               
-            
-                <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
     <a class='left-prev' id="prev-link" href="Single-Index-Models.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
@@ -579,24 +1124,28 @@ The binomial options pricing model provides a generalizable numerical method for
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-            
+            </footer>
         </div>
     </div>
-    <footer class="footer">
-  <p>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Varner and Woltornist<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
     
-      By Varner and Woltornist<br/>
-    
-        &copy; Copyright 2022.<br/>
-  </p>
-</footer>
-</main>
+</div>
 
 
       </div>
     </div>
   
-  <script src="../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
 
   </body>
 </html>
