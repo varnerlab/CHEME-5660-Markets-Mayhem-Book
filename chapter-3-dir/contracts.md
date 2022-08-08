@@ -483,7 +483,7 @@ To explore this idea, let's compute the probability of profit of a [short strang
 ````{prf:example} Probability of Profit at Expiration for AMD Strangle
 :label: pop-amd-strange-expiration
 
-Let's compute the probability of profit for a short strangle for  [AMD](https://finance.yahoo.com/quote/AMD/) with the following data: short put strike $K_{1}$ = \$80.0 USD/share, short call srtike $K_{1}$ = \$120.0 USD/share, $\mathcal{P}_{1}$ = \$1.69 USD/share and $\mathcal{P}_{2}$ = \$2.97 USD/share. The current share price of [AMD](https://finance.yahoo.com/quote/AMD/) is $S_{o}$ = 102.53 USD/share.
+Let's compute the probability of profit at expiration for a short strangle for  [AMD](https://finance.yahoo.com/quote/AMD/) with the following data: short put strike $K_{1}$ = \$80.0 USD/share, short call srtike $K_{1}$ = \$120.0 USD/share, $\mathcal{P}_{1}$ = \$1.69 USD/share and $\mathcal{P}_{2}$ = \$2.97 USD/share. The current share price of [AMD](https://finance.yahoo.com/quote/AMD/) is $S_{o}$ = 102.53 USD/share.
 
 * The first step is to _estimate_ the future close price of the underlying asset in this case [AMD](https://finance.yahoo.com/quote/AMD/) at expiration. The close price was _predicted_ by building a GBM model based on the previous 45-days of AMD close price data; close price data was downloaded from the [Polygon.io application programming interface (API)](https://polygon.io). The GBM analytical solution developed previously was used to generate N = 10,000 sample paths from which the cumulative probability was calculated ({numref}`fig-cumulative-d-AMD-10K`).
 
@@ -492,12 +492,20 @@ Let's compute the probability of profit for a short strangle for  [AMD](https://
 height: 380px
 name: fig-cumulative-d-AMD-10K
 ---
-Estimated cumulative distribution for the close price of [AMD](https://finance.yahoo.com/quote/AMD/) on 10/21/2022. 
+Estimated [cumulative distribution curve](https://en.wikipedia.org/wiki/Cumulative_distribution_function) for the close price of [AMD](https://finance.yahoo.com/quote/AMD/) on 10/21/2022. 
 ```
 
 * Next, we calculated the two break even points for an [AMD](https://finance.yahoo.com/quote/AMD/) short strangle with expiration on 10/21/2022. From {prf:ref}`defn-PL-put-contract-strangle` and the data for AMD we found: $S^{-}$ = \$75.34 USD/share and $S^{+}$ = \$124.66 USD/share.
 
 * Finally, we used the [cumulative probability curve](https://en.wikipedia.org/wiki/Cumulative_distribution_function) shown in {numref}`fig-cumulative-d-AMD-10K`, which we estimated from Monte-Carlo simulation, to calculate the probability that [AMD](https://finance.yahoo.com/quote/AMD/) will close at various essential price points.
+
+| Probability   | Are           
+| ------------- |:-------------:|
+| $P(X<S^{+})$  | 0.81 |
+| $P(X<S^{-})$  | 0.21 |
+| $P(X<K_{2})$  | 0.76 |
+| $P(X<K_{1})$  | 0.27 |
+| $P(K_{1}<X\leq{K_{2}})$ | 0.49
 
 ````
 
