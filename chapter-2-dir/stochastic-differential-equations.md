@@ -158,6 +158,7 @@ The geometric Brownian motion described by Eqn. {eq}`eq-SDE-GBM` also has an ana
 To develop this solution, let's use [Ito's Lemma](https://en.wikipedia.org/wiki/Itô%27s_lemma).
 
 ````{admonition} Derivation: Analytical Solution Scalar Geometric Brownian Motion
+:label: derivation-scalar-gbm-soln
 There exists constants $\mu$ and $\sigma>0$. Let $Y(t) = \ln{X(t)}$. 
 Then [Ito's Lemma](https://en.wikipedia.org/wiki/Itô%27s_lemma) gives:
 
