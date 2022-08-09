@@ -497,15 +497,16 @@ Estimated [cumulative distribution curve](https://en.wikipedia.org/wiki/Cumulati
 
 * Next, we calculated the two break even points for an [AMD](https://finance.yahoo.com/quote/AMD/) short strangle with expiration on 10/21/2022. From {prf:ref}`defn-PL-put-contract-strangle` and the data for AMD we found: $S^{-}$ = \$75.34 USD/share and $S^{+}$ = \$124.66 USD/share.
 
-* Finally, we used the [cumulative probability curve](https://en.wikipedia.org/wiki/Cumulative_distribution_function) shown in {numref}`fig-cumulative-d-AMD-10K`, which we estimated from Monte-Carlo simulation, to calculate the probability that [AMD](https://finance.yahoo.com/quote/AMD/) will close at various essential price points.
+* Finally, we used the [cumulative probability curve](https://en.wikipedia.org/wiki/Cumulative_distribution_function) shown in {numref}`fig-cumulative-d-AMD-10K`, estimated from Monte-Carlo simulation, to calculate the probability that [AMD](https://finance.yahoo.com/quote/AMD/) will close at various essential price points:
 
-| Probability   | Are           
-| ------------- |:-------------:|
-| $P(X<S^{+})$  | 0.81 |
-| $P(X<S^{-})$  | 0.21 |
-| $P(X<K_{2})$  | 0.76 |
-| $P(X<K_{1})$  | 0.27 |
-| $P(K_{1}<X\leq{K_{2}})$ | 0.49
+| Case   | Symbol |         Probability   
+| :------------- | :-- | :-------------|
+| AMD closes less than high break-even | $P(X<S^{+})$  | 0.80 |
+| AMD closes less than low break-even | $P(X<S^{-})$  | 0.21 |
+| AMD closes less than short call strike | $P(X<K_{2})$  | 0.76 |
+| AMD closes less than short put strike  | $P(X<K_{1})$  | 0.27 |
+| AMD closes between strikes (max profit) | $P(K_{1}<X\leq{K_{2}})$ | 0.49
+| AMD closes between break-even points (profit) | $P(S^{-}<X\leq{S^{+}})$ | 0.59
 
 ````
 
