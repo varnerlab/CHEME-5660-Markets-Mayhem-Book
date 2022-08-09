@@ -475,7 +475,7 @@ The Probability of Profit (POP) at expiration is the probability that your optio
 
 ### Monte-Carlo simulation
 Using Monte-Carlo simulation, we can estimate the option position’s probability of Profit (POP) at expiration. 
-First, we can develop a simulation of the price of the underlying asset `XYZ` e.g., using a geometric Brownian motion model developed from historical data, and then use that model to project the underlying price into the future until expiration. Finally, we count the number of simulation trajectories in which a profit condition is met and divide that by the total number of trajectories to arrive at the probability that the profit condition is satisfied. 
+First, we can develop a simulation of the price of the underlying asset `XYZ,` e.g., using a geometric Brownian motion model developed from historical data, and then use that model to project the underlying price into the future until expiration. Finally, we can compute the cumulative probability curve to determine the probability that a profit condition is satisfied.
 
 To explore this idea, let's compute the probability of profit of a [short strangle](https://www.investopedia.com/terms/s/strangle.asp) position in [AMD](https://finance.yahoo.com/quote/AMD/) in {prf:ref}`pop-amd-strange-expiration`:
 
@@ -508,9 +508,44 @@ Estimated [cumulative distribution curve](https://en.wikipedia.org/wiki/Cumulati
 | AMD closes between strikes (max profit) | $P(K_{1}<X\leq{K_{2}})$ | 0.49
 | AMD closes between break-even points (profit) | $P(S^{-}<X\leq{S^{+}})$ | 0.59
 
+
+source: [live Pluto notebook](https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks) or [static HTML view](https://htmlview.glitch.me/?https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks/blob/main/pluto-notebooks/html/Example-POP-Short-AMD-Strangle.jl.html)
 ````
 
+### Implied Volatility
+The [implied volatility (IV)](https://www.investopedia.com/terms/i/iv.asp) is the market's forecast of the likely movement in the price of the underlying asset `XYZ`. Thus, it is a subjective belief of the traders buying and selling options contracts on `XYZ.` As we shall see, the IV is a critical factor in determining the price of an options contract. However, the IV can also be used as a tool to forecast the market’s belief of the price of the underlying asset `XYZ` into the future:
 
+````{prf:definition} Implied Volatility
+:label: defn-iv-std-model
+Let the current share price of the underlying asset `XYZ` be given by $S_{o}$. 
+
+Then, the [implied volatility (IV)](https://www.investopedia.com/terms/i/iv.asp) is the options markets estimate of the standard deviation of the share price of `XYZ` one year in the future. Thus, the IV is a forecast of the standard deviation of the price of `XYZ` (volatility), denoted as $\hat{\sigma}(\Delta{T})$, into the future:
+
+```{math}
+\hat{\sigma}(\Delta{T}) = S_{o}\cdot{IV}\cdot\sqrt{\beta\Delta{T}}
+```
+
+where $\Delta{T}$ denotes the number of days into the future for which we wish to estimate the share price of `XYZ,` and $\beta$ denotes a conversion factor; $\beta$ is the inverse of the number of trading days per year, typically 252 days.
+
+````
+
+Unfortunately, knowing a value for the standard deviation estimated from the [implied volatility (IV)](https://www.investopedia.com/terms/i/iv.asp) is only half of what we need to compute the probability of profit for an options position at expiration. In addition, we need a model of how the share price is distributed. 
+
+A fundamental assumption in the mathematical finance community is that share prices are [Log-normally distributed](https://www.investopedia.com/articles/investing/102014/lognormal-and-normal-distribution.asp). Given the premise of [Log-normal distributed](https://www.investopedia.com/articles/investing/102014/lognormal-and-normal-distribution.asp) share prices of `XYZ` and the IV model of the volatility ({prf:ref}`defn-iv-std-model`) we postulate:
+
+````{prf:conjecture} IV-Projected price distribution
+:label: 
+
+The share price of `XYZ` is [log-normal distributed](https://www.investopedia.com/articles/investing/102014/lognormal-and-normal-distribution.asp) distributed. Further, let $S_{o}$ denote the current share price of `XYZ`.
+
+Then, the share price of `XYZ` $\Delta{T}$ days into the future, denoted by $S(\Delta{T})$, is a random variable governed by the probability density function (PDF):
+
+```{math}
+S(\Delta{T}) \sim \text{Lognormal}(S_{o},\hat{\sigma}(\Delta)^2)
+```
+
+
+````
 
 (content:references:option-pricing-algorithms)=
 ## Options Pricing Algorithms
