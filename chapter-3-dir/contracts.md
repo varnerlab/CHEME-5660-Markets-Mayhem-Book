@@ -538,7 +538,7 @@ A fundamental assumption in the mathematical finance community is that share pri
 
 The share price of `XYZ` is [log-normally distributed](https://www.investopedia.com/articles/investing/102014/lognormal-and-normal-distribution.asp) distributed. Further, let $S_{o}$ denote the current share price of `XYZ`.
 
-Then, the share price of `XYZ` $\Delta{T}$ days into the future, denoted by $S(\Delta{T})$, is a random variable governed by the probability density function (PDF):
+Then, the share price of `XYZ` projected $\Delta{T}$ days into the future, denoted by $S(\Delta{T})$, is a random variable governed by the probability density function:
 
 ```{math}
 S(\Delta{T}) \sim \text{Lognormal}(S_{o},\hat{\sigma}(\Delta)^2)
