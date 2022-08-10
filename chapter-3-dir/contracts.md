@@ -588,7 +588,11 @@ Fill me in.
 ---
 
 ## Summary
-Fill me in here.
+In this lecture, we:
+
+* Discussed the two types, and two styles of {ref}`content:references:option-contracts`. A put option gives the option buyer the right, but not the obligation, to sell shares of the underlying asset `XYZ` at the strike price of \$$K$ per share. On the other hand, call options give the option buyer the right, but not the obligation, to purchase shares of the underlying asset `XYZ` at a strike price of \$$K$ per share. American-style call (put) contracts can be exercised anytime before the option contract expires, while European call (put) contracts can only be exercised on the expiration date. Each call and put option contract controls 100 shares of `XYZ`. 
+* Discussed the profit conditions for option contracts and how you, an investor, can compute {ref}`content:references:option-probability-of-profit-algorithms`.
+* Discussed several {ref}`content:references:option-pricing-algorithms`, which are used to calculate the price of European and American call (put) option contracts as a function of market parameters.
 
 <!-- ## Cox-Ross-Rubinstein (CRR) binomial pricing model
 
