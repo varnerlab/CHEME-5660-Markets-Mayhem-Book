@@ -541,11 +541,18 @@ The share price of `XYZ` is [log-normally distributed](https://www.investopedia.
 Then, the share price of `XYZ` projected $\Delta{T}$ days into the future, denoted by $S(\Delta{T})$, is a random variable governed by the probability density function:
 
 ```{math}
-S(\Delta{T}) \sim \text{Lognormal}(S_{o},\hat{\sigma}(\Delta)^2)
+S(\Delta{T}) \sim \text{Lognormal}(S_{o},~\hat{\sigma}(\Delta{T})^2)
 ```
 
+where
+
+```{math}
+\text{Lognormal}(\mu, \sigma) = \left(\frac{1}{x\sigma\sqrt{2\pi}}\right)\exp\left(-\frac{(\ln(x) - \mu)^{2}}{2\sigma^{2}}\right)
+```
 
 ````
+
+
 
 (content:references:option-pricing-algorithms)=
 ## Options Pricing Algorithms
