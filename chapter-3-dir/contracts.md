@@ -550,6 +550,14 @@ where
 \text{Lognormal}(\mu, \sigma) = \left(\frac{1}{x\sigma\sqrt{2\pi}}\right)\exp\left(-\frac{(\ln(x) - \mu)^{2}}{2\sigma^{2}}\right)
 ```
 
+Finally, the [cumulative distribution function](https://en.wikipedia.org/wiki/Cumulative_distribution_function) for a [Log-Normal distribution](https://www.investopedia.com/articles/investing/102014/lognormal-and-normal-distribution.asp), from which we can use to calculate the probability of profit, is given by:
+
+```{math}
+P(X\leq{x}) = \frac{1}{2}\left[1+\text{erf}\left(\frac{\ln{x}-\mu}{\sigma\sqrt{2}}\right)\right]
+```
+
+where $\text{erf}$ denotes the [error function](https://en.wikipedia.org/wiki/Error_function).
+
 ````
 
 
