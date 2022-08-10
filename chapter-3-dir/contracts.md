@@ -531,6 +531,11 @@ where $\Delta{T}$ denotes the number of days into the future for which we wish t
 
 Unfortunately, knowing a value for the standard deviation estimated from the [implied volatility (IV)](https://www.investopedia.com/terms/i/iv.asp) is only half of what we need to compute the probability of profit for an options position at expiration. In addition, we need a model of how the share price is distributed. 
 
+#### Normal distribution
+Fill me in.
+
+#### Log-Normal distribution
+
 A fundamental assumption in the mathematical finance community is that share prices are [Log-normally distributed](https://www.investopedia.com/articles/investing/102014/lognormal-and-normal-distribution.asp). Given the premise of [Log-normal distributed](https://www.investopedia.com/articles/investing/102014/lognormal-and-normal-distribution.asp) share prices of `XYZ` and the IV model of the volatility ({prf:ref}`defn-iv-std-model`) we postulate:
 
 ````{prf:conjecture} IV-Projected price distribution
@@ -541,16 +546,16 @@ The share price of `XYZ` is [log-normally distributed](https://www.investopedia.
 Then, the share price of `XYZ` projected $\Delta{T}$ days into the future, denoted by $S(\Delta{T})$, is a random variable governed by the probability density function:
 
 ```{math}
-S(\Delta{T}) \sim \text{Lognormal}(S_{o},~\hat{\sigma}(\Delta{T})^2)
+S \sim \text{Lognormal}(\mu,~\sigma)
 ```
 
-where
+where $\mu$ denotes the mean, and $\sigma$ denotes the standard deviation of the log-normal distribution:
 
 ```{math}
 \text{Lognormal}(\mu, \sigma) = \left(\frac{1}{x\sigma\sqrt{2\pi}}\right)\exp\left(-\frac{(\ln(x) - \mu)^{2}}{2\sigma^{2}}\right)
 ```
 
-Finally, the [cumulative distribution function](https://en.wikipedia.org/wiki/Cumulative_distribution_function) for a [Log-Normal distribution](https://www.investopedia.com/articles/investing/102014/lognormal-and-normal-distribution.asp), from which we can use to calculate the probability of profit, is given by:
+Finally, the [cumulative distribution function](https://en.wikipedia.org/wiki/Cumulative_distribution_function) for a [Log-Normal distribution](https://www.investopedia.com/articles/investing/102014/lognormal-and-normal-distribution.asp), which we can use to calculate the probability of profit, is given by:
 
 ```{math}
 P(X\leq{x}) = \frac{1}{2}\left[1+\text{erf}\left(\frac{\ln{x}-\mu}{\sigma\sqrt{2}}\right)\right]

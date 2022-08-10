@@ -28,6 +28,7 @@ Denote the return of asset $i$ in portfolio $\mathcal{P}$ on some time basis $\m
 $\mathbb{E}\left(r_{\mathcal{P}}\right)$ is:
 
 ```{math}
+:label: eqn-expected-p-rerturn
 \mathbb{E}\left(r_{\mathcal{P}}\right) = \sum_{i\in\mathcal{P}}\omega_{i}\mathbb{E}\left(r_{i}\right)
 ```
 
@@ -45,6 +46,7 @@ Denote the return of asset $i$ in portfolio $\mathcal{P}$ for some time basis $\
 as $r_{i}$. Then, the variance of a portfolio $\mathcal{P}$ is given by:
 
 ```{math}
+:label: eqn-p-var-general
 \sigma_{\mathcal{P}}^2 = 
 \sum_{i\in\mathcal{P}}\sum_{j\in\mathcal{P}}w_{i}w_{j}
 \text{cov}\left(r_{i},r_{j}\right)
@@ -93,15 +95,74 @@ Further, the correlation does not appear in the expected portfolio return ({prf:
 * Example: Computation of the variance of a portofilio for different asset combinations
 
 (content:references:markowitz-solution)=
-## Solution approaches for Markowitz Portfolio Allocation
+## Solution Markowitz Portfolio Allocation
 
+The objective of Markowitz portfolio allocation is to estimate the weight of each asset in a portfolio of assets such that overall variance of the portfolio is minimized, for a specified return.  Formally, the Markowitz allocation problem for a portfolio $\mathcal{P}$ composed of only risky assets is (typically) formulated as the [quadratic program](https://en.wikipedia.org/wiki/Quadratic_programming):
 
+```{math}
+\min_{w} w^{T}{\Sigma}w
+```
+
+subject to the constraints:
+
+$$
+\begin{eqnarray}
+w^{T}\mathbb{E}\left(r\right)&\geq&{R}\\
+1^{T}w &=& 1\\
+w_{i}&\geq&{0}\qquad{\forall{i}\in\mathcal{P}}
+\end{eqnarray}
+$$
+
+where $w$ denotes the vector of weights of the assets in portfolio $\mathcal{P}$, $\Sigma$ represents the [covariance matrix](https://en.wikipedia.org/wiki/Covariance_matrix), $\mathbb{E}\left(r\right)$ denotes the vector of expected returns for each asset in portfolio $\mathcal{P}$, $R$ denotes the minimal required return for $\mathcal{P}$ and $1^{T}$ denotes a vector of ones (full allocation constraint). The last constraint $w_{i}\geq{0}~\forall{i}\in\mathcal{P}$ says that no short selling (borrowing shares) is allowed; if short selling is allowed, then this constraint can be removed.
+
+The challenge to solving the Markowitz problem is estimating the expected asset return values and the covariance matrix $\Sigma$. These can be estimated from data if available or from models of the return and variance of the assets in the portfolio. Let's consider both approaches. 
+
+### Data-driven portfolios
+Fill me in.
 
 ### Single-index model portfolios
+The application of index models to construct risky portfolios was originally proposed by Treynor and Black {cite}`FB1973`. [Single index models (SIMs)](./Single-Index-Models.md) are asset pricing models which measure the risk and the return of a stock relative to a risk-free alternative investment, e.g., [government treasury bonds](./bonds.md). A single index model describes the return of a firm’s stock in terms of a firm-specific return and the overall market return. One of the simplest (yet still widely used) single index model (SIM) developed by Sharpe {cite}`SHARPE1963` was presented previously in {prf:ref}`defn-single-index-model-standard`.
+
+#### Portfolio Return and Variance using Single Index Models
+{prf:ref}`defn-portfolio-return` shows the expected return of portfolio $\mathcal{P}$ in terms of the expected return of each of the assets in the portfolio (see Eqn. {eq}`eqn-expected-p-rerturn`). 
+
+````{prf:observation} Single Index Model Portfolio Return
+:label: obs-single-index-model-p-return
+
+Rearranging the expected excess return from the SIM, and substituting this into Eqn. {eq}`eqn-expected-p-rerturn` gives:
+
+```{math}
+:label: eqn-almost-sim-portfolio
+\mathbb{E}(r_{\mathcal{P}}) = \sum_{i\in\mathcal{P}}w_{i}\Bigl[\hat{\alpha}_{i}+\beta_{i}\mathbb{E}(R_{M})\Bigr]
+```
+
+where the constant $\hat{\alpha}_{i}\equiv{\alpha_{i}+r_{f}}$ and $\mathbb{E}(R_{M})$ denotes the expected excess return of the market. Carrying through the multiplication in Eqn. {eq}`eqn-almost-sim-portfolio` gives:
+
+```{math}
+:label: eqn-expected-return-sim-portfolio
+\mathbb{E}(r_{\mathcal{P}}) = \hat{\alpha}_{\mathcal{P}}+\beta_{\mathcal{P}}\mathbb{E}(R_{M})
+```
+
+where the constants $\hat{\alpha}_{\mathcal{P}}$ and $\beta_{\mathcal{P}}$ are:
+
+$$
+\begin{eqnarray}
+\hat{\alpha}_{\mathcal{P}} & = & \sum_{i\in\mathcal{P}}w_{i}\hat{\alpha}_{i}\\
+\beta_{\mathcal{P}} & = & \sum_{i\in\mathcal{P}}w_{i}\beta_{i}
+\end{eqnarray}
+$$
+
+````
+
+For the portfolio variance, we build upon {prf:ref}`defn-portfolio-variance` and Eqn. {eq}`eqn-p-var-general`.
+In particular, 
 
 (content:references:markowitz-solution-test)=
 ## Does Markowitz Portfolio Allocation work?
+Fill me in.
 
+---
 
 ## Summary
+Fill me in.
 
