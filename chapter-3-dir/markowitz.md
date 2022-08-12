@@ -186,20 +186,18 @@ where $\alpha_{\star}$ denotes the firm-specific return, $\beta_{\star}$ denotes
 
 Substituting the single index model into Eqn. {eq}`eqn-prop-cov` and simplifing gives:
 
-```{math}
-\text{cov}(R_{i},R_{j}) = \beta_{i}\beta_{j}\sigma_{m}^2
-```
-
-where $\sigma_{m}^2$ denotes the variance of the excess return of the market portfolio. Finally, we can construct the elements of the covariance matrix $\sigma_{ij}$:
 
 $$
-\sigma_{ij} = \begin{cases}
+\text{cov}(R_{i}, R_{j}) = \begin{cases}
 \beta_{i}^{2}\sigma_{m}^{2}+\sigma_{\epsilon_{i}}^{2} & i = j \\
 \beta_{i}\beta_{j}\sigma_{m}^2 & i \neq j
 \end{cases}
 $$
 
-The covariance matrix $\Sigma$, constructed when using the single index model, has a theoretically attractive structure that reduces to computing the variance of the market, the variance of the error, and the $\beta_{\star}$ values, which are often publicly tabulated (but are also relatively easy to calculate on our own). 
+
+where $\sigma_{m}^2$ denotes the variance of the excess return of the market portfolio and $\sigma_{\epsilon_{i}}^{2}$ denotes the variance of the firm-specific error.
+
+Thus, the covariance matrix $\Sigma$, when constructed using the single index model of Sharpe {cite}`SHARPE1963`, has a theoretically attractive structure that reduces to computing the variance of the market, the variance of the error, and the $\beta_{\star}$ values; $\beta_{\star}$ are often publicly tabulated (but are also relatively easy to calculate on our own). 
 
 ````
 
