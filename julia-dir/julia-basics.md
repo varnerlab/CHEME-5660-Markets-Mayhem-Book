@@ -136,20 +136,123 @@ x = "HelloWorld";
 typeof(x)
 ```
 
-However, in some cases we may want to specify the type of a variable by using the `::` annotation, e.g., when composing 
-the list of input arguments or the type of data returned from a function, or the type of items that are stored in a collection of items.
+However, in some cases we may want to specify the type of a variable by using the `::` annotation, e.g., when composing the list of input arguments or the type of data returned from a function, or the type of items that are stored in a collection of items.
 
 ### Collections and Data Structures
 There are several [Collections and Data Structures](https://docs.julialang.org/en/v1/base/collections/#Collections-and-Data-Structures) that come with [Julia](https://julialang.org), for example [Arrays](https://docs.julialang.org/en/v1/base/arrays/#Core.Array-Tuple{UndefInitializer,%20Any}), [Tuples](https://docs.julialang.org/en/v1/manual/functions/#Tuples), [Dictionaries](https://docs.julialang.org/en/v1/base/collections/#Base.Dict) and [Sets](https://docs.julialang.org/en/v1/base/collections/#Base.Set). However, in addition to the built-in collection types, a particularly useful data structure is called a [DataFrame](https://dataframes.juliadata.org/stable/) which is provided by the [DataFrames.jl](https://github.com/JuliaData/DataFrames.jl) package. 
 
 #### Arrays
-Fill me in.
+[Arrays](https://docs.julialang.org/en/v1/base/arrays/#lib-arrays) are collections that hold ordered lists of items of the same type (typcially). Arrays can be initialized empty (and filled with an arbitraty number of elements) or the number of elements of an Array can be specified when the Array is initialized. 
 
+For example, this code block initializes an empty array of Float64 types:
+```{code-cell} julia
+# initialize an empty array of Floats -
+x = Array{Float64,1}()
+
+# typeof: prints the type of the arg passed in 
+# length: returns number of elements in a 1d Array
+typeof(x), length(x)
+```
+
+To add elements to an array that has no length, use the `push!` command:
+```{code-cell} julia
+# initialize an empty array of Floats -
+x = Array{Float64,1}()
+
+# add a Float64 -
+push!(x,1.32)
+push!(x,6.54)
+
+# show the array x -
+@show x;
+```
+
+Alternatively, we can specify the type and number of elements that we need:
+```{code-cell} julia
+# initialize an array of Float64 with 100 elements
+# initially each element of the array is of type undef (undefined)
+x = Array{Float64,1}(undef,100)
+
+# typeof: prints the type of the arg passed in 
+# length: returns number of elements in a 1d Array
+typeof(x), length(x)
+```
+
+To add elements to an Array with specified dimensions, we can use the Array indexes; the first index is the row number, while the second is the column number of a two-dimensional Array. For example, this code block initializes a 2 x 2 matrix (a two-dimensional array), fills the matrix with ones, and then updates the 1,2-element with a random value:
+
+```{code-cell} julia
+# initialize a 2 x 2 array A 
+A = Array{Float64,2}(undef,2,2)
+
+# fill A with 1's
+fill!(A, 1.0)
+
+# update the 1,2 element with a random value -
+A[1,2] = rand()
+
+# show A -
+@show A;
+```
+
+Please read through the [Array documentation](https://docs.julialang.org/en/v1/base/arrays/#lib-arrays) for a detailed discussion of the properties of Arrays and [the various functions that can operate on Arrays](https://docs.julialang.org/en/v1/base/arrays/#Basic-functions).
+
+(content:references:julia-basics-tuples)=
 #### Tuples
-Fill me in.
+Julia has a built-in data structure called a [tuple](https://docs.julialang.org/en/v1/manual/functions/#Tuples); a [tuple](https://docs.julialang.org/en/v1/manual/functions/#Tuples) is a fixed-length container that can hold a mixture of values of any type, but cannot be modified i.e., it is immutable once the values have been added to the [tuple](https://docs.julialang.org/en/v1/manual/functions/#Tuples). In other words, [tuples](https://docs.julialang.org/en/v1/manual/functions/#Tuples); a [tuple](https://docs.julialang.org/en/v1/manual/functions/#Tuples) are read-only once constructed. [Tuples](https://docs.julialang.org/en/v1/manual/functions/#Tuples) are constructed with commas and parentheses, and can be accessed via indexing:
+
+```{code-cell} julia
+# initialize a tuple of stuff -
+x = (0.0, "hello", 6*7)
+
+# what is held in index 2?
+@show x[2];
+```
+
+Further, you can optionally give the values held in a tuple a name; these types of data structures are called [NamedTuples](https://docs.julialang.org/en/v1/manual/functions/#Named-Tuples). 
+
+```{code-cell} julia
+# initialize a named tuple of stuff -
+x = (firstname="Fred", lastname="Rogers")
+
+# what is the first name?
+@show x.firstname;
+```
+
+You can access the values stored in a [NamedTuple](https://docs.julialang.org/en/v1/manual/functions/#Named-Tuples) using `dot notation` (as shown above). However, because a [NamedTuple](https://docs.julialang.org/en/v1/manual/functions/#Named-Tuples) is just a fancy [Tuple](https://docs.julialang.org/en/v1/manual/functions/#Tuples), you can also access data through indexing:
+
+```{code-cell} julia
+# initialize a named tuple of stuff -
+x = (firstname="Fred", lastname="Rogers")
+
+# what is the first name?
+@show x[1];
+```
 
 #### Dictionaries
-Fill me on.
+One the most useful built-in data structures in Julia is the [Dictionary](https://docs.julialang.org/en/v1/base/collections/#Dictionaries); [Dictionaries](https://docs.julialang.org/en/v1/base/collections/#Dictionaries) allow the user to store `key => value` pairs, where the (key, value) pairs can be anytype. 
+
+There are several ways to create [Dictionaries](https://docs.julialang.org/en/v1/base/collections/#Dictionaries) in Julia. For example, [Dicts](https://docs.julialang.org/en/v1/base/collections/#Base.Dict) can be created by passing pair objects constructed with the `=>` operator to a [Dict](https://docs.julialang.org/en/v1/base/collections/#Base.Dict) constructor: 
+
+```{code-cell} julia
+# build a Dict -
+d = Dict("A"=>1, "B"=>2)
+
+@show d;
+```
+
+This call attempts to infer type information stored in the dictionary from the keys and values, i.e. this example creates a Dict{String, Int64}. However, you can also explicitly specify the types of the `key => value` pairs by initializing the constructor with type information `Dict{KeyType,ValueType}(...)`: 
+
+```{code-cell} julia
+# build a Dict -
+d = Dict{String,Int32}("A"=>1, "B"=>2)
+
+@show typeof(d);
+```
+
+Given a dictionary `D`, the syntax `D[x]` returns the value stored in `D` with key `x` (if key `x` exists) or throws an error. On the other hand, a statement like `D[x] = y` stores the key-value pair `x => y` in `D` (replacing any existing value for the key `x`). Multiple arguments to `D[...]` are converted to [tuples](https://docs.julialang.org/en/v1/manual/functions/#Tuples); for example, the syntax `D[x,y]` is equivalent to `D[(x,y)]`, i.e. it refers to the value with a key equal to the tuple (x,y).
+
+[Dictionaries](https://docs.julialang.org/en/v1/base/collections/#Dictionaries) have fast data lookup, insertion, and deletion. Thus, they are ideal for in-memory storage of all kinds of data. However, [Dictionaries](https://docs.julialang.org/en/v1/base/collections/#Dictionaries) do not maintain order, i.e., the keys in [Dictionary](https://docs.julialang.org/en/v1/base/collections/#Dictionaries) are not ordered. Thus, if the order of data is important then a [Dictionary](https://docs.julialang.org/en/v1/base/collections/#Dictionaries) may not by an appropriate data structure.
+Further, [Dictionaries](https://docs.julialang.org/en/v1/base/collections/#Dictionaries) are mutable, i.e., they can be changed after they are constructed; this is a good thing most of the time, but care should be taken to regulate changes to dictionaries. 
 
 #### Sets
 Fill me in.
