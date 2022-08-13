@@ -287,7 +287,7 @@ push!(S,1); # repeat: will not get added to S
 @show S;
 ```
 
-However, unlike arrays, [sets](https://docs.julialang.org/en/v1/base/collections/#Base.Set) can not be indexed, i.e., there is not an order hence no indexes. To retrieve an item from a [set](https://docs.julialang.org/en/v1/base/collections/#Base.Set) use the [pop!](https://docs.julialang.org/en/v1/base/collections/#Base.pop!) which removes a random element from the [set](https://docs.julialang.org/en/v1/base/collections/#Base.Set).
+However, unlike arrays, [sets](https://docs.julialang.org/en/v1/base/collections/#Base.Set) can not be indexed, i.e., there is not an order hence no indexes. Thus, to retrieve an item from a [set](https://docs.julialang.org/en/v1/base/collections/#Base.Set) use the [pop!](https://docs.julialang.org/en/v1/base/collections/#Base.pop!) function which removes a _random_ element from the [set](https://docs.julialang.org/en/v1/base/collections/#Base.Set). 
 
 ```{code-cell} julia
 # build a set S -
@@ -301,6 +301,18 @@ println("Output 2: what value of x did we get = $(x)")
 # show the S -
 @show S;
 ```
+
+Many functions that work with other collection types, e.g., the [length](https://docs.julialang.org/en/v1/base/arrays/#Base.length-Tuple{AbstractArray}) function for arrays, have an equilvent implementation for [sets](https://docs.julialang.org/en/v1/base/collections/#Base.Set):
+
+```{code-cell} julia
+# another way to build a set - array comprehension
+S = Set{Int}([2i for i = 1:5])
+
+# how many elements?
+println("The number of elements of set S = $(length(S))")
+```
+
+Finally, there are several set-specific concepts, [which are useful in the context of probability](../chapter-2-dir/probability-random-variables.md), that have been implemented in Julia. For example, the [intersection](https://en.wikipedia.org/wiki/Intersection_(set_theory)) or [union](https://en.wikipedia.org/wiki/Union_(set_theory)) of sets is encoded in the [intersect](https://docs.julialang.org/en/v1/base/collections/#Base.intersect) and [union](https://docs.julialang.org/en/v1/base/collections/#Base.union) functions.
 
 #### DataFrames
 Objects of type ``DataFrame`` represent data tables where each column corresponds vector of values. The simplest way to construct a DataFrame is to pass vectors holding the values for each column using keyword arguments or pairs:
