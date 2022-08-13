@@ -287,7 +287,7 @@ push!(S,1); # repeat: will not get added to S
 @show S;
 ```
 
-However, unlike arrays, [sets](https://docs.julialang.org/en/v1/base/collections/#Base.Set) can not be indexed, i.e., there is not an order hence no indexes. To retrive an item from a [set](https://docs.julialang.org/en/v1/base/collections/#Base.Set) use the [pop!](https://docs.julialang.org/en/v1/base/collections/#Base.pop!) which removes a random element from the [set](https://docs.julialang.org/en/v1/base/collections/#Base.Set).
+However, unlike arrays, [sets](https://docs.julialang.org/en/v1/base/collections/#Base.Set) can not be indexed, i.e., there is not an order hence no indexes. To retrieve an item from a [set](https://docs.julialang.org/en/v1/base/collections/#Base.Set) use the [pop!](https://docs.julialang.org/en/v1/base/collections/#Base.pop!) which removes a random element from the [set](https://docs.julialang.org/en/v1/base/collections/#Base.Set).
 
 ```{code-cell} julia
 # build a set S -
