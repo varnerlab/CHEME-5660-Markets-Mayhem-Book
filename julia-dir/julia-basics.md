@@ -252,10 +252,55 @@ d = Dict{String,Int32}("A"=>1, "B"=>2)
 Given a dictionary `D`, the syntax `D[x]` returns the value stored in `D` with key `x` (if key `x` exists) or throws an error. On the other hand, a statement like `D[x] = y` stores the key-value pair `x => y` in `D` (replacing any existing value for the key `x`). Multiple arguments to `D[...]` are converted to [tuples](https://docs.julialang.org/en/v1/manual/functions/#Tuples); for example, the syntax `D[x,y]` is equivalent to `D[(x,y)]`, i.e. it refers to the value with a key equal to the tuple (x,y).
 
 [Dictionaries](https://docs.julialang.org/en/v1/base/collections/#Dictionaries) have fast data lookup, insertion, and deletion. Thus, they are ideal for in-memory storage of all kinds of data. However, [Dictionaries](https://docs.julialang.org/en/v1/base/collections/#Dictionaries) do not maintain order, i.e., the keys in [Dictionary](https://docs.julialang.org/en/v1/base/collections/#Dictionaries) are not ordered. Thus, if the order of data is important then a [Dictionary](https://docs.julialang.org/en/v1/base/collections/#Dictionaries) may not by an appropriate data structure.
-Further, [Dictionaries](https://docs.julialang.org/en/v1/base/collections/#Dictionaries) are mutable, i.e., they can be changed after they are constructed; this is a good thing most of the time, but care should be taken to regulate changes to dictionaries. 
+Further, [Dictionaries](https://docs.julialang.org/en/v1/base/collections/#Dictionaries) by default are mutable, i.e., they can be changed after they are constructed; this is a good thing most of the time, but care should be taken to regulate changes to dictionaries. 
+
+For use cases where data should not be changed, i.e., configuration data or other such applications, an immutable dictionary can be created, see [ImmutableDict](https://docs.julialang.org/en/v1/base/collections/#Base.ImmutableDict).
+
+There are many methods for working with [Dictionaries](https://docs.julialang.org/en/v1/base/collections/#Dictionaries), check out the [Julia documentation](https://docs.julialang.org/en/v1/base/collections/#Base.haskey).
 
 #### Sets
-Fill me in.
+[Sets](https://docs.julialang.org/en/v1/base/collections/#Base.Set), like arrays, hold a mutable collection of objects. However, unlike an array, the items in a [Set](https://docs.julialang.org/en/v1/base/collections/#Base.Set) must be unqiue. Further, [Sets](https://docs.julialang.org/en/v1/base/collections/#Base.Set) do not maintain order. Thus, a useful mental model for a [Set](https://docs.julialang.org/en/v1/base/collections/#Base.Set) is a sack of unique objects. 
+
+[Sets](https://docs.julialang.org/en/v1/base/collections/#Base.Set) are constructured by passing an interable collection of items into the constructor:
+
+```{code-cell} julia
+# build a set S (notice the brackets)
+# We are adding repeated elements, we have two 3's what is going to happen?
+S = Set([1, 3, 4, 5, 3]);
+
+@show S;
+```
+
+When adding objects to a set, if the object is already present, any repeated objects will not be added. [Sets](https://docs.julialang.org/en/v1/base/collections/#Base.Set) can also be initialized empty, then items added using the `push!` function:
+
+```{code-cell} julia
+# build an empty set of type Int
+S = Set{Int}();
+
+# add some items to the set S -
+push!(S,1);
+push!(S,3);
+push!(S,5);
+push!(S,1); # repeat: will not get added to S
+
+# show the set -
+@show S;
+```
+
+However, unlike arrays, [sets](https://docs.julialang.org/en/v1/base/collections/#Base.Set) can not be indexed, i.e., there is not an order hence no indexes. To retrive an item from a [set](https://docs.julialang.org/en/v1/base/collections/#Base.Set) use the [pop!](https://docs.julialang.org/en/v1/base/collections/#Base.pop!) which removes a random element from the [set](https://docs.julialang.org/en/v1/base/collections/#Base.Set).
+
+```{code-cell} julia
+# build a set S -
+S = Set([1,2])
+println("Output 1: Set S = $(S)")
+
+# remove element -
+x = pop!(S)
+println("Output 2: what value of x did we get = $(x)")
+
+# show the S -
+@show S;
+```
 
 #### DataFrames
 Objects of type ``DataFrame`` represent data tables where each column corresponds vector of values. The simplest way to construct a DataFrame is to pass vectors holding the values for each column using keyword arguments or pairs:
