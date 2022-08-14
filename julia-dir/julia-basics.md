@@ -323,7 +323,70 @@ df = DataFrame(A=1:4, B=["M", "F", "F", "M"])
 ```
 
 ### Program Control Flow
+Julia provides several tools for [program control flow](https://docs.julialang.org/en/v1/manual/control-flow/#Control-Flow) and [repeated evaluation](https://docs.julialang.org/en/v1/manual/control-flow/#man-loops); let's review a few important examples: `if` statements, `while` loops and `for` loops.
+
+#### If-else-end statements
 Fill me in.
+
+#### While loops
+A `while` loop consists of a control statement and a body:
+
+```{code-block} julia
+while statement == true
+  body
+end
+```
+
+In a `while` loop, a control statement is evaluated, and as long as the control statement remains true, the code in the body of the `while` loop is executed. For example:
+
+```{code-cell} julia
+# declarations -
+counter = 1       # loop counter, we start at 1
+const limit = 5   # how many times do we want to go around?
+
+# main loop -
+while (counter <= limit)
+
+  # body to execute (for now, print info about the counter) -
+  delta = limit - counter; # how many more times around?
+  println("Counter = $(counter), remaining = $(delta)")
+
+  # update the counter value -
+  global counter = counter + 1
+end
+```
+In this example, the `while` loop continues to execute as long the statement $\text{counter}\leq\text{limit}$ evaluates to `true`. However, the value of $\text{counter}$ is updated each pass through the loop. Thus, when the value of $\text{counter} = 6$, the control statement fails (evaluates to `false`) and the loop stops.
+
+If the control statement evaluates to `false` when the `while` loop is first reached, the body of the `while` statement is never evaluated. 
+
+#### For loops
+The `for` loop makes repeated evaluation of a code block easier to write; since counting like the `while` loop is such a common programming task, it can be expressed more concisely with a `for` loop:
+
+```{code-block} julia
+for range
+  body
+end
+```
+
+where `range` represent the list of items to iterate over. For example, we can re-write the `while` loop shown above as a the `for` loop:
+
+```{code-cell} julia
+# declarations -
+const limit = 5   # how many times do we want to go around?
+
+# main loop -
+for i = 1:limit
+
+  # body that is executed (for now, print info about the counter) -
+  delta = limit - i; # how many more times around?
+  println("index i = $(i), remaining = $(delta)")
+
+end
+```
+
+where the 1:limit is a [range object](https://docs.julialang.org/en/v1/base/math/#Base.range), which in this case represents the sequence of numbers $1,2,\dots,\text{limit}$. The `for` loop iterates through these values, assigning each one to the loop index variable $i$. 
+
+One important difference between the `while` loop example and the equivlant `for` loop form is the scope in which variables are visible. If the loop index variable $i$ has not been introduced previously in another scope, in the `for` loop form, it is visible only inside of the `for` loop, and not outside/afterwards. For more information on variable score, see the [scope of variables documentation](https://docs.julialang.org/en/v1/manual/variables-and-scoping/#scope-of-variables).
 
 ### Functions
 In [Julia](https://julialang.org), a function is an object that maps a [tuple](https://docs.julialang.org/en/v1/manual/functions/#Tuples) of argument values to a return value. Unlike pure mathematical functions, [Julia](https://julialang.org) functions can alter and be affected by the global state of the program. The basic syntax for defining functions in [Julia](https://julialang.org) is:
