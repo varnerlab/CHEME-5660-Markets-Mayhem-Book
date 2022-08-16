@@ -8,6 +8,7 @@ chapters:
   sections:
   - file: julia-dir/julia-installation
   - file: julia-dir/julia-basics
+  - file: julia-dir/julia-data
 - file: chapter-1-dir/chapter-1
   title: Unit 1. The Financial System
   sections:

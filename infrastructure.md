@@ -2,7 +2,7 @@
 
 ## Course objectives 
 
-Financial factors are an essential part of technological progress and the personal lives of members of our society. However, finance and economic forecasting, modeling, and decision-making are typically not part of the traditional engineering or physical science curriculum. A growing percentage of engineers and scientists are migrating toward employment opportunities in the financial and consulting industries. Further, despite increased market access, there remains a significant barrier to entry for many individuals in our society to the wealth creation opportunities offered by financial systems. Toward these unmet needs, this course will introduce financial systems, markets, and the tools to analyze economic systems and business operations to engineers and scientists. We’ll use tools from engineering, statistics, artificial intelligence (AI), data science (DS), and machine learning (ML) to model, analyze, and ultimately optimize financial systems and financial decision-making. The material from this course can be applied to traditional economic and engineering fields and provide a core set of tools for students interested in pursuing an entrepreneurial track of studies.  
+Financial factors are an essential part of technological progress and the personal lives of members of our society. However, finance and economic forecasting, modeling, and decision-making are typically not part of the traditional engineering or physical science curriculum. A growing percentage of engineers and scientists are migrating toward employment opportunities in the financial and consulting industries. Further, despite increased market access, there remains a significant barrier to entry for many individuals in our society to the wealth creation opportunities offered by financial systems. Toward these unmet needs, this course will introduce financial systems, markets, and the tools to analyze economic systems and business operations to engineers and scientists. We’ll use tools from engineering, statistics, data science (DS), and machine learning (ML) to model, analyze, and ultimately optimize financial systems and financial decision-making. The material from this course can be applied to traditional economic and engineering fields and provide a core set of tools for students interested in pursuing an entrepreneurial track of studies.  
 
 We believe there is a compelling opportunity for scientists and engineers to leverage their proficiency in mathematical modeling, optimization, and process control, combined with AI, DS, and ML tools, to optimize financial decision-making, drive value creation within businesses, and ultimately democratize wealth creation. 
 
@@ -13,12 +13,11 @@ There are no formal prerequisites for this course. However, general familiarity 
 
 Grades will be computed from 3 take-home prelims (dates/times indicated on the course calendar), a final group project (scheduled by the University), and a participation score. The take-home prelims are collectively worth 60%, while the group project is worth 30% of your final grade. Class participation, problem set attempts, and other designated assignments will collectively account for 10% of your final grade.  
 
-### Problem sets and participation
-This course will have optional weekly problem sets, which will be discussed in the discussion section(s) each week. Thus, while problem sets are optional (unless specified otherwise), we expect everyone to attempt every problem and to participate in the discussion section:
+This course will have weekly hands-on case studies completed as teams in the discussion section(s). We expect everyone to attempt every case study and to participate in the discussion section:
 
-* The teaching team reserves the right to collect entire problem sets or specific questions of problem sets throughout the course. 
+* The teaching team reserves the right to collect and grade entire case studies or specific questions of case studies throughout the course. 
 
-* Group work is welcome (and encouraged) on problem sets and course projects, but the prelim exams must be completed individually. 
+* Teamwork is welcome (and encouraged) on case studies and course projects, but the take-home exams must be completed individually. 
 
 ## Course policies 
 Scientists and engineers are responsible for maintaining a very high degree of professional integrity in their work. As a student, this means strictly adhering to the Cornell Code of Academic Integrity and the specific policies detailed in your courses.  Please review Cornell’s academic integrity policy if you are not already familiar with it. 

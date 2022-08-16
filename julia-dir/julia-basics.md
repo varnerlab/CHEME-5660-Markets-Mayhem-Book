@@ -377,7 +377,7 @@ const limit = 5   # how many times do we want to go around?
 # main loop -
 for i = 1:limit
 
-  # body that is executed (for now, print info about the counter) -
+  # body that is executed (for now, print info about the index) -
   delta = limit - i; # how many more times around?
   println("index i = $(i), remaining = $(delta)")
 
@@ -389,7 +389,7 @@ where the 1:limit is a [range object](https://docs.julialang.org/en/v1/base/math
 One important difference between the `while` loop example and the equivlant `for` loop form is the scope in which variables are visible. If the loop index variable $i$ has not been introduced previously in another scope, in the `for` loop form, it is visible only inside of the `for` loop, and not outside/afterwards. For more information on variable score, see the [scope of variables documentation](https://docs.julialang.org/en/v1/manual/variables-and-scoping/#scope-of-variables).
 
 ### Functions
-In [Julia](https://julialang.org), a function is an object that maps a [tuple](https://docs.julialang.org/en/v1/manual/functions/#Tuples) of argument values to a return value. Unlike pure mathematical functions, [Julia](https://julialang.org) functions can alter and be affected by the global state of the program. The basic syntax for defining functions in [Julia](https://julialang.org) is:
+In [Julia](https://julialang.org), a function is an object that maps a [tuple](https://docs.julialang.org/en/v1/manual/functions/#Tuples) of argument values to a return value. Unlike pure mathematical functions, [Julia](https://julialang.org) functions can alter their arguments and change the global state of the program. The basic syntax for defining functions in [Julia](https://julialang.org) is:
 
 ```{code-cell} julia
 
@@ -434,29 +434,68 @@ end
 
 [Julia](https://julialang.org) function arguments follow the pass-by-sharing convention, i.e., values are __not__ copied when they are passed to functions. Instead, function arguments act as new variable bindings (new locations that can refer to values), but the values they refer to are identical to the passed values. 
 
+#### Multiple dispatch and generics
+In the example above, the `add` function takes arguments of type `Float64`, but what if we want to sum arguments of type `Int64` or some other numerical format such as `Float32` (which is popular in the machine learning community), or a combination of these arguments? 
+
+[Julia](https://julialang.org) approaches this problem using a technique called [multiple dispatch](https://en.wikipedia.org/wiki/Multiple_dispatch). In particular, program developers can write different versions of the `add` function that accept different argument types; these different `add` versions are called [methods](https://docs.julialang.org/en/v1/manual/methods/#Methods). At runtime, [Julia](https://julialang.org) dynamically determines which [method](https://docs.julialang.org/en/v1/manual/methods/#Methods) to call based upon the argument types. For example:
+
+```{code-cell} julia
+
+# declare the add function -
+function add(x::Float64, y::Float64)::Float64
+  return (x+y)
+end
+
+function add(x::Int64, y::Int64)::Int64
+  return (x+y)
+end
+
+# Julia determines which version of add to call
+value_1 = add(3.0, 2.0);
+value_2 = add(2,6)
+
+# print the resulting value -
+println("Values from the add methods: value_1 = $(value_1), value_2 = $(value_2)")
+```
+
+In this case, the correct version of `add` is called based on the type of arguments. However, writing different `add` methods for each argument type (or combination of argument types) would be a burden. 
+
+Toward this challenge, [Julia](https://julialang.org) has [parametric methods](https://docs.julialang.org/en/v1/manual/methods/#Parametric-Methods) in which the argument type itself is variable. In particular, instead of specifying the specific argument type, e.g., `Float64` or `Int64`, we declare rules that generate a set of permissible types that we expect the function can operate on. For example, the parametric `add` function:
+
+```{code-block} julia
+function add(x::T1, y::T2)::Number where {T1, T2 <: Number} 
+  return (x+y)
+end
+```
+
+specifies that the argument types `T1` and `T2` are a [subtype](https://docs.julialang.org/en/v1/devdocs/reflection/#Subtypes) (defined using the `<:` operator) of [Number](https://docs.julialang.org/en/v1/base/numbers/#Core.Number), the supertype for all numbers in [Julia](https://julialang.org); thus, we expect the parametric `add` function to work on _any_ combination of real and complex numbers. This is possible because the `+` operator that appears in the `add` function is itself a function with 206 methods (which can be listed using the [methods](https://docs.julialang.org/en/v1/base/base/#Base.methods) function).
+
+```{code-cell} julia
+
+# declare the add function -
+function add(x::T1, y::T2)::Number where {T1, T2 <: Number} 
+  return (x+y)
+end
+
+# Julia determines which version of add to call
+value_1 = add(3.0, 2);
+value_2 = add(2,6)
+
+# print the resulting values -
+println("Values from the add methods: value_1 = $(value_1), value_2 = $(value_2)")
+```
 
 (content:references:julia-programs)=
 ## Writing and Executing Julia Programs
-Julia programs are written in files with the extension ``.jl``. To load a Julia program contained in ``Program.jl``, the user executes the [include](https://docs.julialang.org/en/v1/manual/code-loading/) command in the [REPL](https://docs.julialang.org/en/v1/stdlib/REPL/) where the path to ``Program.jl`` is passed in as an argument of type ``String`` to the [include](https://docs.julialang.org/en/v1/manual/code-loading/) command. 
+Julia programs are files with the extension ``.jl``. To load a Julia program contained in ``Program.jl``, the user executes the [include](https://docs.julialang.org/en/v1/manual/code-loading/) command in the [REPL](https://docs.julialang.org/en/v1/stdlib/REPL/) where the path to ``Program.jl`` is passed in as an argument of type ``String`` to the [include](https://docs.julialang.org/en/v1/manual/code-loading/) command. 
 
-````{prf:example} Include command
-:label: include-example-julia-program
-
-Julia code can be loaded using the [include](https://docs.julialang.org/en/v1/manual/code-loading/) command. 
-For example, to load Julia code in the ``Program.jl`` file, the user would execute the command in the [Julia REPL](https://docs.julialang.org/en/v1/stdlib/REPL/):
-
-```julia
+```{code-block} julia
 julia> include("Program.jl")
 ```
 
-````
+The code block above loads the code contained in the ``Program.jl`` file into the [REPL](https://docs.julialang.org/en/v1/stdlib/REPL/). If ``Program.jl`` is an _executable script_ then ``Program.jl`` will be executed, otherwise, the variables, data structures and functions encoded in ``Program.jl`` will be loaded into the memory of the [REPL](https://docs.julialang.org/en/v1/stdlib/REPL/). To make ``Program.jl`` executable, a `main` method is called (which in turn can load data, call other functions, etc):
 
-{prf:ref}`include-example-julia-program` loads the code contained in the ``Program.jl`` file into the [REPL](https://docs.julialang.org/en/v1/stdlib/REPL/). If ``Program.jl`` is an _executable script_ then ``Program.jl`` will be executed, otherwise, the variables, data structures and functions encoded in ``Program.jl`` will be loaded into the memory of the [REPL](https://docs.julialang.org/en/v1/stdlib/REPL/). To make ``Program.jl`` executable, a `main` method is called (which in turn can load data, call other functions, etc):
-
-````{prf:example} Executable Program.jl
-:label: executable-julia-program-template
-
-```julia
+```{code-block} julia
 
 function example()
 
@@ -477,4 +516,36 @@ end
 # call main method
 main()
 ```
-````
+
+For example, consider the following executable script:
+
+```{code-cell} julia
+function example()
+
+    # stuff happens here
+    println("A message from inside the example method ... ")
+end
+
+function main()
+    
+    # print a message -
+    println("A message from inside the main method ...")
+
+    # call other functions -
+    example()
+end
+
+# call the main method -
+main()
+```
+
+The `example` method is loaded into the [REPL](https://docs.julialang.org/en/v1/stdlib/REPL/) before `main` (code is parsed by [Julia](https://julialang.org) from top to bottom of the file) but `example` is _not_ executed until is called from the `main` method. 
+
+## Summary
+In this chapter, we introduced some key features of [the Julia programming language](https://julialang.org):
+
+* Working with {ref}`content:references:julia-repl`
+* {ref}`content:references:types-functions-md`
+* {ref}`content:references:julia-programs`
+
+For more information on [Julia](https://julialang.org), please consult the [Julia documentation](https://docs.julialang.org/en/v1/).
