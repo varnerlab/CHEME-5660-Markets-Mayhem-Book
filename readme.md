@@ -1,9 +1,7 @@
 # CHEME 5660 JupyterBook Repository 
 
 ## Introduction
-![JupyterBook](https://img.shields.io/badge/jupyter-%23FA0F00.svg?style=for-the-badge&logo=jupyter&logoColor=white)
-
-![Julia](https://img.shields.io/badge/-Julia-9558B2?style=for-the-badge&logo=julia&logoColor=white)
+![JupyterBook](https://img.shields.io/badge/jupyter-%23FA0F00.svg?style=for-the-badge&logo=jupyter&logoColor=white) ![Julia](https://img.shields.io/badge/-Julia-9558B2?style=for-the-badge&logo=julia&logoColor=white)
 
 [CHEME 5660 at Cornell University](https://classes.cornell.edu/browse/roster/FA22/class/CHEME/5660) employs tools from engineering, statistics, data science (DS), and machine learning (ML) to model, analyze, and ultimately optimize financial systems and financial decision-making. The material from this course can be applied to traditional economic and engineering fields while simultaneously providing a core set of tools for students interested in entrepreneurship or opportunities in the financial and consulting industries. 
 
