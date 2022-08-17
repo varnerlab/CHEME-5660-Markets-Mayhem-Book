@@ -17,7 +17,7 @@ kernelspec:
 
 In this chapter, we will introduce some of the key features of [Julia](https://julialang.org):
 
-* Working with {ref}`content:references:julia-repl`
+* {ref}`content:references:julia-repl`
 * {ref}`content:references:types-functions-md`
 * {ref}`content:references:julia-programs`
 * {ref}`content:references:julia-basics-using-external-packages`
@@ -570,6 +570,7 @@ Let's assume that you have used the {ref}`content:references:julia-repl-pkg-mode
 Let's do an example. Suppose we wanted to generate samples from and then visualize a [Laplace distribution](https://en.wikipedia.org/wiki/Laplace_distribution) using [Distributions.jl](https://github.com/JuliaStats/Distributions.jl), a [Julia](https://julialang.org) package for probability distributions and associated functions, and [StatsPlots.jl](https://github.com/JuliaPlots/StatsPlots.jl), a [Julia](https://julialang.org) package for statistical visualization. Further, suppose we have already installed [Distributions.jl](https://github.com/JuliaStats/Distributions.jl) and [StatsPlots.jl](https://github.com/JuliaPlots/StatsPlots.jl) using the {ref}`content:references:julia-repl-pkg-mode`.
 
 The code block:
+
 ```{code-block} julia
 
 # load packages -
@@ -585,15 +586,16 @@ xlabel!("Value for x (AU)", fontsize=18)
 ylabel!("Laplace(x) proability density (AU)", fontsize=18)
 ```
 
-produces the plot:
+where the `Laplace` and `plot` functions are exported from [Distributions.jl](https://github.com/JuliaStats/Distributions.jl) and [StatsPlots.jl](https://github.com/JuliaPlots/StatsPlots.jl), respectively,  produces the plot:
 
 ```{figure} ./figs/Fig-LaplaceDistribution-PDF.pdf
 ---
 height: 420px
 name: fig-laplace-pdf
 ---
-The [package mode](https://docs.julialang.org/en/v1/stdlib/REPL/#Pkg-mode) in the [Terminal on macOS](https://support.apple.com/guide/terminal/open-or-quit-terminal-apd5265185d-f365-44cb-8b09-71a064a42125/mac).
+Plot of a [Laplace distribution](https://en.wikipedia.org/wiki/Laplace_distribution) using [Distributions.jl](https://github.com/JuliaStats/Distributions.jl) and [StatsPlots.jl](https://github.com/JuliaPlots/StatsPlots.jl)
 ```
+
 
 ## Summary
 In this chapter, we introduced some key features of [the Julia programming language](https://julialang.org):
