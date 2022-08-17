@@ -5,4 +5,5 @@ In this course, we will use the [Julia programming language](https://julialang.o
 
 In particular, we will:
 * [Dicuss the installation of Julia and VSCode](./julia-installation.md)
-* [Introduce Julia types, functions and syntax](./julia-basics.md)
+* [Introduce Julia types, functions and basic syntax](./julia-basics.md)
+* [Packages and patterns for working with data](./julia-data.md)

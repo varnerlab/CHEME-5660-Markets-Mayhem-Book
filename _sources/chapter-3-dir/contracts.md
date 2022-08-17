@@ -475,7 +475,7 @@ The Probability of Profit (POP) at expiration is the probability that your optio
 
 ### Monte-Carlo simulation
 Using Monte-Carlo simulation, we can estimate the option position’s probability of Profit (POP) at expiration. 
-First, we can develop a simulation of the price of the underlying asset `XYZ` e.g., using a geometric Brownian motion model developed from historical data, and then use that model to project the underlying price into the future until expiration. Finally, we count the number of simulation trajectories in which a profit condition is met and divide that by the total number of trajectories to arrive at the probability that the profit condition is satisfied. 
+First, we can develop a simulation of the price of the underlying asset `XYZ,` e.g., using a geometric Brownian motion model developed from historical data, and then use that model to project the underlying price into the future until expiration. Finally, we can compute the cumulative probability curve to determine the probability that a profit condition is satisfied.
 
 To explore this idea, let's compute the probability of profit of a [short strangle](https://www.investopedia.com/terms/s/strangle.asp) position in [AMD](https://finance.yahoo.com/quote/AMD/) in {prf:ref}`pop-amd-strange-expiration`:
 
@@ -483,8 +483,85 @@ To explore this idea, let's compute the probability of profit of a [short strang
 ````{prf:example} Probability of Profit at Expiration for AMD Strangle
 :label: pop-amd-strange-expiration
 
+Let's compute the probability of profit at expiration for a short strangle for  [AMD](https://finance.yahoo.com/quote/AMD/) with the following data: short put strike $K_{1}$ = \$80.0 USD/share, short call srtike $K_{1}$ = \$120.0 USD/share, $\mathcal{P}_{1}$ = \$1.69 USD/share and $\mathcal{P}_{2}$ = \$2.97 USD/share. The current share price of [AMD](https://finance.yahoo.com/quote/AMD/) is $S_{o}$ = 102.53 USD/share.
 
-Fill me in here.
+* The first step is to _estimate_ the future close price of the underlying asset in this case [AMD](https://finance.yahoo.com/quote/AMD/) at expiration. The close price was _predicted_ by building a GBM model based on the previous 45-days of AMD close price data; close price data was downloaded from the [Polygon.io application programming interface (API)](https://polygon.io). The GBM analytical solution developed previously was used to generate N = 10,000 sample paths from which the cumulative probability was calculated ({numref}`fig-cumulative-d-AMD-10K`).
+
+```{figure} ./figs/Fig-CumulativeDistribution-C-AMD-D-10-21-22-N10K.pdf
+---
+height: 380px
+name: fig-cumulative-d-AMD-10K
+---
+Estimated [cumulative distribution curve](https://en.wikipedia.org/wiki/Cumulative_distribution_function) for the close price of [AMD](https://finance.yahoo.com/quote/AMD/) on 10/21/2022. 
+```
+
+* Next, we calculated the two break even points for an [AMD](https://finance.yahoo.com/quote/AMD/) short strangle with expiration on 10/21/2022. From {prf:ref}`defn-PL-put-contract-strangle` and the data for AMD we found: $S^{-}$ = \$75.34 USD/share and $S^{+}$ = \$124.66 USD/share.
+
+* Finally, we used the [cumulative probability curve](https://en.wikipedia.org/wiki/Cumulative_distribution_function) shown in {numref}`fig-cumulative-d-AMD-10K`, estimated from Monte-Carlo simulation, to calculate the probability that [AMD](https://finance.yahoo.com/quote/AMD/) will close at various essential price points:
+
+| Case   | Symbol |         Probability   
+| :------------- | :-- | :-------------|
+| AMD closes less than high break-even | $P(X<S^{+})$  | 0.80 |
+| AMD closes less than low break-even | $P(X<S^{-})$  | 0.21 |
+| AMD closes less than short call strike | $P(X<K_{2})$  | 0.76 |
+| AMD closes less than short put strike  | $P(X<K_{1})$  | 0.27 |
+| AMD closes between strikes (max profit) | $P(K_{1}<X\leq{K_{2}})$ | 0.49
+| AMD closes between break-even points (profit) | $P(S^{-}<X\leq{S^{+}})$ | 0.59
+
+
+source: [live Pluto notebook](https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks) or [static HTML view](https://htmlview.glitch.me/?https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks/blob/main/pluto-notebooks/html/Example-POP-Short-AMD-Strangle.jl.html)
+````
+
+### Implied Volatility
+The [implied volatility (IV)](https://www.investopedia.com/terms/i/iv.asp) is the market's forecast of the likely movement in the price of the underlying asset `XYZ`. Thus, it is a subjective belief of the traders buying and selling options contracts on `XYZ.` As we shall see, the IV is a critical factor in determining the price of an options contract. However, the IV can also be used as a tool to forecast the market’s belief of the price of the underlying asset `XYZ` into the future:
+
+````{prf:definition} Implied Volatility
+:label: defn-iv-std-model
+Let the current share price of the underlying asset `XYZ` be given by $S_{o}$. 
+
+Then, the [implied volatility (IV)](https://www.investopedia.com/terms/i/iv.asp) is the options markets estimate of the standard deviation of the share price of `XYZ` one year in the future. Thus, the IV is a forecast of the standard deviation of the price of `XYZ` (volatility), denoted as $\hat{\sigma}(\Delta{T})$, into the future:
+
+```{math}
+\hat{\sigma}(\Delta{T}) = S_{o}\cdot{IV}\cdot\sqrt{\beta\Delta{T}}
+```
+
+where $\Delta{T}$ denotes the number of days into the future for which we wish to estimate the share price of `XYZ,` and $\beta$ denotes a conversion factor; $\beta$ is the inverse of the number of trading days per year, typically 252 days.
+
+````
+
+Unfortunately, knowing a value for the standard deviation estimated from the [implied volatility (IV)](https://www.investopedia.com/terms/i/iv.asp) is only half of what we need to compute the probability of profit for an options position at expiration. In addition, we need a model of how the share price is distributed. 
+
+#### Normal distribution
+Fill me in.
+
+#### Log-Normal distribution
+
+A fundamental assumption in the mathematical finance community is that share prices are [Log-normally distributed](https://www.investopedia.com/articles/investing/102014/lognormal-and-normal-distribution.asp). Given the premise of [Log-normal distributed](https://www.investopedia.com/articles/investing/102014/lognormal-and-normal-distribution.asp) share prices of `XYZ` and the IV model of the volatility ({prf:ref}`defn-iv-std-model`) we postulate:
+
+````{prf:conjecture} IV-Projected price distribution
+:label: 
+
+The share price of `XYZ` is [log-normally distributed](https://www.investopedia.com/articles/investing/102014/lognormal-and-normal-distribution.asp) distributed. Further, let $S_{o}$ denote the current share price of `XYZ`.
+
+Then, the share price of `XYZ` projected $\Delta{T}$ days into the future, denoted by $S(\Delta{T})$, is a random variable governed by the probability density function:
+
+```{math}
+S \sim \text{Lognormal}(\mu,~\sigma)
+```
+
+where $\mu$ denotes the mean, and $\sigma$ denotes the standard deviation of the log-normal distribution:
+
+```{math}
+\text{Lognormal}(\mu, \sigma) = \left(\frac{1}{x\sigma\sqrt{2\pi}}\right)\exp\left(-\frac{(\ln(x) - \mu)^{2}}{2\sigma^{2}}\right)
+```
+
+Finally, the [cumulative distribution function](https://en.wikipedia.org/wiki/Cumulative_distribution_function) for a [Log-Normal distribution](https://www.investopedia.com/articles/investing/102014/lognormal-and-normal-distribution.asp), which we can use to calculate the probability of profit, is given by:
+
+```{math}
+P(X\leq{x}) = \frac{1}{2}\left[1+\text{erf}\left(\frac{\ln{x}-\mu}{\sigma\sqrt{2}}\right)\right]
+```
+
+where $\text{erf}$ denotes the [error function](https://en.wikipedia.org/wiki/Error_function).
 
 ````
 
@@ -516,7 +593,11 @@ Fill me in.
 ---
 
 ## Summary
-Fill me in here.
+In this lecture, we:
+
+* Discussed the two types, and two styles of {ref}`content:references:option-contracts`. A put option gives the option buyer the right, but not the obligation, to sell shares of the underlying asset `XYZ` at the strike price of \$$K$ per share. On the other hand, call options give the option buyer the right, but not the obligation, to purchase shares of the underlying asset `XYZ` at a strike price of \$$K$ per share. American-style call (put) contracts can be exercised anytime before the option contract expires, while European call (put) contracts can only be exercised on the expiration date. Each call and put option contract controls 100 shares of `XYZ`. 
+* Discussed the profit conditions for option contracts and how you, an investor, can compute {ref}`content:references:option-probability-of-profit-algorithms`.
+* Discussed several {ref}`content:references:option-pricing-algorithms`, which are used to calculate the price of European and American call (put) option contracts as a function of market parameters.
 
 <!-- ## Cox-Ross-Rubinstein (CRR) binomial pricing model
 

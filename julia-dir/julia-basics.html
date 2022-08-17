@@ -51,9 +51,11 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Unit 1: The Basics of Assets, Money, Markets and the Global Financial System" href="../chapter-1-dir/chapter-1.html" />
+    <link rel="next" title="Working with Data" href="julia-data.html" />
     <link rel="prev" title="Julia Installation" href="julia-installation.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -133,6 +135,11 @@ const thebe_selector_output = ".output, .cell_output"
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
      Introduction to Julia Basics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="julia-data.html">
+     Working with Data
     </a>
    </li>
   </ul>
@@ -523,28 +530,57 @@ title="Print to PDF"
        Sets
       </a>
      </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#dataframes">
-       DataFrames
-      </a>
-     </li>
     </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#program-control-flow">
      Program Control Flow
     </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#if-else-end-statements">
+       If-else-end statements
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#while-loops">
+       While loops
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#for-loops">
+       For loops
+      </a>
+     </li>
+    </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#functions">
      Functions
     </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#multiple-dispatch-and-generics">
+       Multiple dispatch and generics
+      </a>
+     </li>
+    </ul>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#writing-and-executing-julia-programs">
    Writing and Executing Julia Programs
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#using-external-packages">
+   Using external packages
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summary">
+   Summary
   </a>
  </li>
 </ul>
@@ -633,28 +669,57 @@ title="Print to PDF"
        Sets
       </a>
      </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#dataframes">
-       DataFrames
-      </a>
-     </li>
     </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#program-control-flow">
      Program Control Flow
     </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#if-else-end-statements">
+       If-else-end statements
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#while-loops">
+       While loops
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#for-loops">
+       For loops
+      </a>
+     </li>
+    </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#functions">
      Functions
     </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#multiple-dispatch-and-generics">
+       Multiple dispatch and generics
+      </a>
+     </li>
+    </ul>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#writing-and-executing-julia-programs">
    Writing and Executing Julia Programs
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#using-external-packages">
+   Using external packages
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summary">
+   Summary
   </a>
  </li>
 </ul>
@@ -677,6 +742,7 @@ title="Print to PDF"
 <li><p>Working with <a class="reference internal" href="#content-references-julia-repl"><span class="std std-ref">The Julia REPL</span></a></p></li>
 <li><p><a class="reference internal" href="#content-references-types-functions-md"><span class="std std-ref">Julia types, functions and syntax</span></a></p></li>
 <li><p><a class="reference internal" href="#content-references-julia-programs"><span class="std std-ref">Writing and Executing Julia Programs</span></a></p></li>
+<li><p><a class="reference internal" href="#content-references-julia-basics-using-external-packages"><span class="std std-ref">Using external packages</span></a></p></li>
 </ul>
 <hr class="docutils" />
 </section>
@@ -728,7 +794,7 @@ title="Print to PDF"
 <p>A list of basic <a class="reference external" href="https://swcarpentry.github.io/shell-novice/reference.html">Unix shell commands can be found here</a>.</p>
 </section>
 <section id="package-mode">
-<h3>Package mode<a class="headerlink" href="#package-mode" title="Permalink to this headline">#</a></h3>
+<span id="content-references-julia-repl-pkg-mode"></span><h3>Package mode<a class="headerlink" href="#package-mode" title="Permalink to this headline">#</a></h3>
 <p>The <a class="reference external" href="https://docs.julialang.org/en/v1/stdlib/REPL/#Pkg-mode">package mode</a> allows the user to add, delete or update external <a class="reference external" href="https://julialang.org">Julia</a> packages. A user enters <a class="reference external" href="https://docs.julialang.org/en/v1/stdlib/REPL/#Pkg-mode">package mode</a> by hitting the <code class="docutils literal notranslate"><span class="pre">]</span></code> key which brings up the <a class="reference external" href="https://docs.julialang.org/en/v1/stdlib/REPL/#Pkg-mode">package mode</a> prompt <code class="docutils literal notranslate"><span class="pre">pkg&gt;</span></code>. At this prompt, users can manage the packages that are installed globally, or in the local project environment.</p>
 <figure class="align-default" id="fig-pkg-mode-terminal">
 <a class="reference internal image-reference" href="../_images/Fig-pkg-mode-terminal.png"><img alt="../_images/Fig-pkg-mode-terminal.png" src="../_images/Fig-pkg-mode-terminal.png" style="height: 560px;" /></a>
@@ -736,14 +802,16 @@ title="Print to PDF"
 <p><span class="caption-number">Fig. 6 </span><span class="caption-text">The <a class="reference external" href="https://docs.julialang.org/en/v1/stdlib/REPL/#Pkg-mode">package mode</a> in the <a class="reference external" href="https://support.apple.com/guide/terminal/open-or-quit-terminal-apd5265185d-f365-44cb-8b09-71a064a42125/mac">Terminal on macOS</a>.</span><a class="headerlink" href="#fig-pkg-mode-terminal" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<p><a class="reference internal" href="#fig-pkg-mode-terminal"><span class="std std-numref">Fig. 6</span></a> shows the results of the <code class="docutils literal notranslate"><span class="pre">add</span> <span class="pre">Distributions</span></code> command, which installs the <a class="reference external" href="https://github.com/JuliaStats/Distributions.jl">Distributions.jl</a> package into the <code class="docutils literal notranslate"><span class="pre">local_example_project</span></code> project environment. In addition to adding packages, users can update package versions globally or in the local project environment using the <code class="docutils literal notranslate"><span class="pre">up</span></code> command; packages can also be deleted using the <code class="docutils literal notranslate"><span class="pre">rm</span> <span class="pre">&lt;package&gt;</span></code> command. A full list of
-commands for managing packages in <a class="reference external" href="https://docs.julialang.org/en/v1/stdlib/REPL/#Pkg-mode">package mode</a> can be found <a class="reference external" href="https://pkgdocs.julialang.org/v1/managing-packages/#**3.**-Managing-Packages">here</a>. To exit <a class="reference external" href="https://docs.julialang.org/en/v1/stdlib/REPL/#Pkg-mode">package mode</a>, a user types the <code class="docutils literal notranslate"><span class="pre">backspace</span></code> key (the <code class="docutils literal notranslate"><span class="pre">delete</span></code> key on macOS).</p>
+<p>The results of the <code class="docutils literal notranslate"><span class="pre">add</span> <span class="pre">Distributions</span></code> command, which installs the <a class="reference external" href="https://github.com/JuliaStats/Distributions.jl">Distributions.jl</a> package into the <code class="docutils literal notranslate"><span class="pre">local_example_project</span></code> project environment is shown in <a class="reference internal" href="#fig-pkg-mode-terminal"><span class="std std-numref">Fig. 6</span></a>. In addition to adding packages, users can update package versions globally or in the local project environment using the <code class="docutils literal notranslate"><span class="pre">up</span></code> command; packages can also be deleted using the <code class="docutils literal notranslate"><span class="pre">rm</span> <span class="pre">&lt;package&gt;</span></code> command. A full list of
+commands for managing packages in <a class="reference external" href="https://docs.julialang.org/en/v1/stdlib/REPL/#Pkg-mode">package mode</a> can be found <a class="reference external" href="https://pkgdocs.julialang.org/v1/managing-packages/#**3.**-Managing-Packages">here</a>.</p>
+<p>To exit <a class="reference external" href="https://docs.julialang.org/en/v1/stdlib/REPL/#Pkg-mode">package mode</a>, a user types the <code class="docutils literal notranslate"><span class="pre">backspace</span></code> key (the <code class="docutils literal notranslate"><span class="pre">delete</span></code> key on macOS).</p>
+<p>Loading installed packages into the <a class="reference external" href="https://docs.julialang.org/en/v1/stdlib/REPL/">REPL</a> (or your program) is done with the <a class="reference external" href="https://docs.julialang.org/en/v1/base/base/#using">using</a> or <a class="reference external" href="https://docs.julialang.org/en/v1/base/base/#import">import</a> functions; we discuss what these functions do, and the differences between them, in the <a class="reference internal" href="#content-references-julia-basics-using-external-packages"><span class="std std-ref">Using external packages</span></a> section.</p>
 </section>
 </section>
 <section id="julia-types-functions-and-syntax">
 <span id="content-references-types-functions-md"></span><h2>Julia types, functions and syntax<a class="headerlink" href="#julia-types-functions-and-syntax" title="Permalink to this headline">#</a></h2>
 <p>Julia is a just-in-time compiled language (which gives it a runtime advantage over other popular interpreted languages). However, unlike other languages such as <code class="docutils literal notranslate"><span class="pre">C</span></code>, Julia code is compiled when you run it; a separate compile step is unnecessary. Thus, Julia gives the convenience and performance of a compiled language without the burden of manual compilation.</p>
-<p>Further, Julia is a dynamically-typed language. This means you are not required to declare the type of variables before you use them. Instead, when your Julia code is compiled, the compiler uses sophisticated logic to infer, i.e., guess your data types. However, users can also specify types, potentially lessening the compiler’s burden. Further, many users find codes with the types annotated to be easier to read and maintain; remember, you may be supporting codes for <em>decades</em>, thus, making them easy to understand has an upside.</p>
+<p>Further, Julia is a dynamically-typed language. This means you are not required to declare the type of variables before you use them. Instead, when your Julia code is compiled, the compiler uses sophisticated logic to infer, i.e., guess your data types. However, users can also specify types, potentially lessening the compiler’s burden. Further, many users find codes with the types annotated to be easier to read and maintain; remember, you may be supporting codes for <em>decades</em>, thus, making them easy to understand is critical.</p>
 <section id="variable-types">
 <h3>Variable types<a class="headerlink" href="#variable-types" title="Permalink to this headline">#</a></h3>
 <p>Variables are values that you tell your computer to associate with a specific name so that you can later recover or change their values.  Variables can be of different types; <a class="reference external" href="https://julialang.org">Julia</a> has an extensive <a class="reference external" href="https://docs.julialang.org/en/v1/manual/types/">type system</a>. However, in this course we will primarily use <a class="reference external" href="https://docs.julialang.org/en/v1/manual/integers-and-floating-point-numbers/#Floating-Point-Numbers">floating point numbers</a>, <a class="reference external" href="https://docs.julialang.org/en/v1/manual/integers-and-floating-point-numbers/#Integers">integers</a> and <a class="reference external" href="https://docs.julialang.org/en/v1/manual/strings/">Strings</a>.</p>
@@ -798,50 +866,370 @@ commands for managing packages in <a class="reference external" href="https://do
 </div>
 </div>
 </div>
-<p>However, in some cases we may want to specify the type of a variable by using the <code class="docutils literal notranslate"><span class="pre">::</span></code> annotation, e.g., when composing
-the list of input arguments or the type of data returned from a function, or the type of items that are stored in a collection of items.</p>
+<p>However, in some cases we may want to specify the type of a variable by using the <code class="docutils literal notranslate"><span class="pre">::</span></code> annotation, e.g., when composing the list of input arguments or the type of data returned from a function, or the type of items that are stored in a collection of items.</p>
 </section>
 <section id="collections-and-data-structures">
 <h3>Collections and Data Structures<a class="headerlink" href="#collections-and-data-structures" title="Permalink to this headline">#</a></h3>
-<p>There are several <a class="reference external" href="https://docs.julialang.org/en/v1/base/collections/#Collections-and-Data-Structures">Collections and Data Structures</a> that come with <a class="reference external" href="https://julialang.org">Julia</a>, for example <a class="reference external" href="https://docs.julialang.org/en/v1/base/arrays/#Core.Array-Tuple%7BUndefInitializer,%20Any%7D">Arrays</a>, <a class="reference external" href="https://docs.julialang.org/en/v1/manual/functions/#Tuples">Tuples</a>, <a class="reference external" href="https://docs.julialang.org/en/v1/base/collections/#Base.Dict">Dictionaries</a> and <a class="reference external" href="https://docs.julialang.org/en/v1/base/collections/#Base.Set">Sets</a>. However, in addition to the built-in collection types, a particularly useful data structure is called a <a class="reference external" href="https://dataframes.juliadata.org/stable/">DataFrame</a> which is provided by the <a class="reference external" href="https://github.com/JuliaData/DataFrames.jl">DataFrames.jl</a> package.</p>
+<p>There are several <a class="reference external" href="https://docs.julialang.org/en/v1/base/collections/#Collections-and-Data-Structures">Collections and Data Structures</a> that come with <a class="reference external" href="https://julialang.org">Julia</a>, for example <a class="reference external" href="https://docs.julialang.org/en/v1/base/arrays/#Core.Array-Tuple%7BUndefInitializer,%20Any%7D">Arrays</a>, <a class="reference external" href="https://docs.julialang.org/en/v1/manual/functions/#Tuples">Tuples</a>, <a class="reference external" href="https://docs.julialang.org/en/v1/base/collections/#Base.Dict">Dictionaries</a> and <a class="reference external" href="https://docs.julialang.org/en/v1/base/collections/#Base.Set">Sets</a>.</p>
+<p>In addition to the built-in collection types, a particularly useful data structure is called a <a class="reference external" href="https://dataframes.juliadata.org/stable/">DataFrame</a> which is provided by the <a class="reference external" href="https://github.com/JuliaData/DataFrames.jl">DataFrames.jl</a> package. We’ll discuss <a class="reference external" href="https://dataframes.juliadata.org/stable/">DataFrames</a> in the <a class="reference internal" href="julia-data.html"><span class="doc std std-doc">Working with Data chapter</span></a>.</p>
 <section id="arrays">
 <h4>Arrays<a class="headerlink" href="#arrays" title="Permalink to this headline">#</a></h4>
-<p>Fill me in.</p>
-</section>
-<section id="tuples">
-<h4>Tuples<a class="headerlink" href="#tuples" title="Permalink to this headline">#</a></h4>
-<p>Fill me in.</p>
-</section>
-<section id="dictionaries">
-<h4>Dictionaries<a class="headerlink" href="#dictionaries" title="Permalink to this headline">#</a></h4>
-<p>Fill me on.</p>
-</section>
-<section id="sets">
-<h4>Sets<a class="headerlink" href="#sets" title="Permalink to this headline">#</a></h4>
-<p>Fill me in.</p>
-</section>
-<section id="dataframes">
-<h4>DataFrames<a class="headerlink" href="#dataframes" title="Permalink to this headline">#</a></h4>
-<p>Objects of type <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> represent data tables where each column corresponds vector of values. The simplest way to construct a DataFrame is to pass vectors holding the values for each column using keyword arguments or pairs:</p>
+<p><a class="reference external" href="https://docs.julialang.org/en/v1/base/arrays/#lib-arrays">Arrays</a> are collections that hold ordered lists of items of the same type (typcially). Arrays can be initialized empty (and filled with an arbitraty number of elements) or the number of elements of an Array can be specified when the Array is initialized.</p>
+<p>For example, this code block initializes an empty array of Float64 types:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">using</span> <span class="n">DataFrames</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">DataFrame</span><span class="p">(</span><span class="n">A</span><span class="o">=</span><span class="mi">1</span><span class="o">:</span><span class="mi">4</span><span class="p">,</span> <span class="n">B</span><span class="o">=</span><span class="p">[</span><span class="s">&quot;M&quot;</span><span class="p">,</span> <span class="s">&quot;F&quot;</span><span class="p">,</span> <span class="s">&quot;F&quot;</span><span class="p">,</span> <span class="s">&quot;M&quot;</span><span class="p">])</span>
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># initialize an empty array of Floats -</span>
+<span class="n">x</span> <span class="o">=</span> <span class="kt">Array</span><span class="p">{</span><span class="kt">Float64</span><span class="p">,</span><span class="mi">1</span><span class="p">}()</span>
+
+<span class="c"># typeof: prints the type of the arg passed in </span>
+<span class="c"># length: returns number of elements in a 1d Array</span>
+<span class="n">typeof</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">length</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><div class="data-frame"><p>4 rows × 2 columns</p><table class="data-frame"><thead><tr><th></th><th>A</th><th>B</th></tr><tr><th></th><th title="Int64">Int64</th><th title="String">String</th></tr></thead><tbody><tr><th>1</th><td>1</td><td>M</td></tr><tr><th>2</th><td>2</td><td>F</td></tr><tr><th>3</th><td>3</td><td>F</td></tr><tr><th>4</th><td>4</td><td>M</td></tr></tbody></table></div></div></div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(Vector{Float64}, 0)
+</pre></div>
 </div>
+</div>
+</div>
+<p>To add elements to an array that has no length, use the <code class="docutils literal notranslate"><span class="pre">push!</span></code> command:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># initialize an empty array of Floats -</span>
+<span class="n">x</span> <span class="o">=</span> <span class="kt">Array</span><span class="p">{</span><span class="kt">Float64</span><span class="p">,</span><span class="mi">1</span><span class="p">}()</span>
+
+<span class="c"># add a Float64 -</span>
+<span class="n">push!</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="mf">1.32</span><span class="p">)</span>
+<span class="n">push!</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="mf">6.54</span><span class="p">)</span>
+
+<span class="c"># show the array x -</span>
+<span class="nd">@show</span> <span class="n">x</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>x = [1.32, 6.54]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Alternatively, we can specify the type and number of elements that we need:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># initialize an array of Float64 with 100 elements</span>
+<span class="c"># initially each element of the array is of type undef (undefined)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="kt">Array</span><span class="p">{</span><span class="kt">Float64</span><span class="p">,</span><span class="mi">1</span><span class="p">}(</span><span class="nb">undef</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
+
+<span class="c"># typeof: prints the type of the arg passed in </span>
+<span class="c"># length: returns number of elements in a 1d Array</span>
+<span class="n">typeof</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">length</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(Vector{Float64}, 100)
+</pre></div>
+</div>
+</div>
+</div>
+<p>To add elements to an Array with specified dimensions, we can use the Array indexes; the first index is the row number, while the second is the column number of a two-dimensional Array. For example, this code block initializes a 2 x 2 matrix (a two-dimensional array), fills the matrix with ones, and then updates the 1,2-element with a random value:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># initialize a 2 x 2 array A </span>
+<span class="n">A</span> <span class="o">=</span> <span class="kt">Array</span><span class="p">{</span><span class="kt">Float64</span><span class="p">,</span><span class="mi">2</span><span class="p">}(</span><span class="nb">undef</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="c"># fill A with 1&#39;s</span>
+<span class="n">fill!</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
+
+<span class="c"># update the 1,2 element with a random value -</span>
+<span class="n">A</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">rand</span><span class="p">()</span>
+
+<span class="c"># show A -</span>
+<span class="nd">@show</span> <span class="n">A</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A = [1.0 0.8703437259241565; 1.0 1.0]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Please read through the <a class="reference external" href="https://docs.julialang.org/en/v1/base/arrays/#lib-arrays">Array documentation</a> for a detailed discussion of the properties of Arrays and <a class="reference external" href="https://docs.julialang.org/en/v1/base/arrays/#Basic-functions">the various functions that can operate on Arrays</a>.</p>
+</section>
+<section id="tuples">
+<span id="content-references-julia-basics-tuples"></span><h4>Tuples<a class="headerlink" href="#tuples" title="Permalink to this headline">#</a></h4>
+<p>Julia has a built-in data structure called a <a class="reference external" href="https://docs.julialang.org/en/v1/manual/functions/#Tuples">tuple</a>; a <a class="reference external" href="https://docs.julialang.org/en/v1/manual/functions/#Tuples">tuple</a> is a fixed-length container that can hold a mixture of values of any type, but cannot be modified i.e., it is immutable once the values have been added to the <a class="reference external" href="https://docs.julialang.org/en/v1/manual/functions/#Tuples">tuple</a>. In other words, <a class="reference external" href="https://docs.julialang.org/en/v1/manual/functions/#Tuples">tuples</a>; a <a class="reference external" href="https://docs.julialang.org/en/v1/manual/functions/#Tuples">tuple</a> are read-only once constructed. <a class="reference external" href="https://docs.julialang.org/en/v1/manual/functions/#Tuples">Tuples</a> are constructed with commas and parentheses, and can be accessed via indexing:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># initialize a tuple of stuff -</span>
+<span class="n">x</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="s">&quot;hello&quot;</span><span class="p">,</span> <span class="mi">6</span><span class="o">*</span><span class="mi">7</span><span class="p">)</span>
+
+<span class="c"># what is held in index 2?</span>
+<span class="nd">@show</span> <span class="n">x</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>x[2] = &quot;hello&quot;
+</pre></div>
+</div>
+</div>
+</div>
+<p>Further, you can optionally give the values held in a tuple a name; these types of data structures are called <a class="reference external" href="https://docs.julialang.org/en/v1/manual/functions/#Named-Tuples">NamedTuples</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># initialize a named tuple of stuff -</span>
+<span class="n">x</span> <span class="o">=</span> <span class="p">(</span><span class="n">firstname</span><span class="o">=</span><span class="s">&quot;Fred&quot;</span><span class="p">,</span> <span class="n">lastname</span><span class="o">=</span><span class="s">&quot;Rogers&quot;</span><span class="p">)</span>
+
+<span class="c"># what is the first name?</span>
+<span class="nd">@show</span> <span class="n">x</span><span class="o">.</span><span class="n">firstname</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>x.firstname = &quot;Fred&quot;
+</pre></div>
+</div>
+</div>
+</div>
+<p>You can access the values stored in a <a class="reference external" href="https://docs.julialang.org/en/v1/manual/functions/#Named-Tuples">NamedTuple</a> using <code class="docutils literal notranslate"><span class="pre">dot</span> <span class="pre">notation</span></code> (as shown above). However, because a <a class="reference external" href="https://docs.julialang.org/en/v1/manual/functions/#Named-Tuples">NamedTuple</a> is just a fancy <a class="reference external" href="https://docs.julialang.org/en/v1/manual/functions/#Tuples">Tuple</a>, you can also access data through indexing:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># initialize a named tuple of stuff -</span>
+<span class="n">x</span> <span class="o">=</span> <span class="p">(</span><span class="n">firstname</span><span class="o">=</span><span class="s">&quot;Fred&quot;</span><span class="p">,</span> <span class="n">lastname</span><span class="o">=</span><span class="s">&quot;Rogers&quot;</span><span class="p">)</span>
+
+<span class="c"># what is the first name?</span>
+<span class="nd">@show</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">];</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>x[1] = &quot;Fred&quot;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="dictionaries">
+<h4>Dictionaries<a class="headerlink" href="#dictionaries" title="Permalink to this headline">#</a></h4>
+<p>One the most useful built-in data structures in Julia is the <a class="reference external" href="https://docs.julialang.org/en/v1/base/collections/#Dictionaries">Dictionary</a>; <a class="reference external" href="https://docs.julialang.org/en/v1/base/collections/#Dictionaries">Dictionaries</a> allow the user to store <code class="docutils literal notranslate"><span class="pre">key</span> <span class="pre">=&gt;</span> <span class="pre">value</span></code> pairs, where the (key, value) pairs can be anytype.</p>
+<p>There are several ways to create <a class="reference external" href="https://docs.julialang.org/en/v1/base/collections/#Dictionaries">Dictionaries</a> in Julia. For example, <a class="reference external" href="https://docs.julialang.org/en/v1/base/collections/#Base.Dict">Dicts</a> can be created by passing pair objects constructed with the <code class="docutils literal notranslate"><span class="pre">=&gt;</span></code> operator to a <a class="reference external" href="https://docs.julialang.org/en/v1/base/collections/#Base.Dict">Dict</a> constructor:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># build a Dict -</span>
+<span class="n">d</span> <span class="o">=</span> <span class="kt">Dict</span><span class="p">(</span><span class="s">&quot;A&quot;</span><span class="o">=&gt;</span><span class="mi">1</span><span class="p">,</span> <span class="s">&quot;B&quot;</span><span class="o">=&gt;</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="nd">@show</span> <span class="n">d</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>d = Dict(&quot;B&quot; =&gt; 2, &quot;A&quot; =&gt; 1)
+</pre></div>
+</div>
+</div>
+</div>
+<p>This call attempts to infer type information stored in the dictionary from the keys and values, i.e. this example creates a Dict{String, Int64}. However, you can also explicitly specify the types of the <code class="docutils literal notranslate"><span class="pre">key</span> <span class="pre">=&gt;</span> <span class="pre">value</span></code> pairs by initializing the constructor with type information <code class="docutils literal notranslate"><span class="pre">Dict{KeyType,ValueType}(...)</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># build a Dict -</span>
+<span class="n">d</span> <span class="o">=</span> <span class="kt">Dict</span><span class="p">{</span><span class="kt">String</span><span class="p">,</span><span class="kt">Int32</span><span class="p">}(</span><span class="s">&quot;A&quot;</span><span class="o">=&gt;</span><span class="mi">1</span><span class="p">,</span> <span class="s">&quot;B&quot;</span><span class="o">=&gt;</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="nd">@show</span> <span class="n">typeof</span><span class="p">(</span><span class="n">d</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>typeof(d) = Dict{String, Int32}
+</pre></div>
+</div>
+</div>
+</div>
+<p>Given a dictionary <code class="docutils literal notranslate"><span class="pre">D</span></code>, the syntax <code class="docutils literal notranslate"><span class="pre">D[x]</span></code> returns the value stored in <code class="docutils literal notranslate"><span class="pre">D</span></code> with key <code class="docutils literal notranslate"><span class="pre">x</span></code> (if key <code class="docutils literal notranslate"><span class="pre">x</span></code> exists) or throws an error. On the other hand, a statement like <code class="docutils literal notranslate"><span class="pre">D[x]</span> <span class="pre">=</span> <span class="pre">y</span></code> stores the key-value pair <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=&gt;</span> <span class="pre">y</span></code> in <code class="docutils literal notranslate"><span class="pre">D</span></code> (replacing any existing value for the key <code class="docutils literal notranslate"><span class="pre">x</span></code>). Multiple arguments to <code class="docutils literal notranslate"><span class="pre">D[...]</span></code> are converted to <a class="reference external" href="https://docs.julialang.org/en/v1/manual/functions/#Tuples">tuples</a>; for example, the syntax <code class="docutils literal notranslate"><span class="pre">D[x,y]</span></code> is equivalent to <code class="docutils literal notranslate"><span class="pre">D[(x,y)]</span></code>, i.e. it refers to the value with a key equal to the tuple (x,y).</p>
+<p><a class="reference external" href="https://docs.julialang.org/en/v1/base/collections/#Dictionaries">Dictionaries</a> have fast data lookup, insertion, and deletion. Thus, they are ideal for in-memory storage of all kinds of data. However, <a class="reference external" href="https://docs.julialang.org/en/v1/base/collections/#Dictionaries">Dictionaries</a> do not maintain order, i.e., the keys in <a class="reference external" href="https://docs.julialang.org/en/v1/base/collections/#Dictionaries">Dictionary</a> are not ordered. Thus, if the order of data is important then a <a class="reference external" href="https://docs.julialang.org/en/v1/base/collections/#Dictionaries">Dictionary</a> may not by an appropriate data structure.
+Further, <a class="reference external" href="https://docs.julialang.org/en/v1/base/collections/#Dictionaries">Dictionaries</a> by default are mutable, i.e., they can be changed after they are constructed; this is a good thing most of the time, but care should be taken to regulate changes to dictionaries.</p>
+<p>For use cases where data should not be changed, i.e., configuration data or other such applications, an immutable dictionary can be created, see <a class="reference external" href="https://docs.julialang.org/en/v1/base/collections/#Base.ImmutableDict">ImmutableDict</a>.</p>
+<p>There are many methods for working with <a class="reference external" href="https://docs.julialang.org/en/v1/base/collections/#Dictionaries">Dictionaries</a>, check out the <a class="reference external" href="https://docs.julialang.org/en/v1/base/collections/#Base.haskey">Julia documentation</a>.</p>
+</section>
+<section id="sets">
+<h4>Sets<a class="headerlink" href="#sets" title="Permalink to this headline">#</a></h4>
+<p><a class="reference external" href="https://docs.julialang.org/en/v1/base/collections/#Base.Set">Sets</a>, like arrays, hold a mutable collection of objects. However, unlike an array, the items in a <a class="reference external" href="https://docs.julialang.org/en/v1/base/collections/#Base.Set">Set</a> must be unqiue. Further, <a class="reference external" href="https://docs.julialang.org/en/v1/base/collections/#Base.Set">Sets</a> do not maintain order. Thus, a useful mental model for a <a class="reference external" href="https://docs.julialang.org/en/v1/base/collections/#Base.Set">Set</a> is a sack of unique objects.</p>
+<p><a class="reference external" href="https://docs.julialang.org/en/v1/base/collections/#Base.Set">Sets</a> are constructured by passing an interable collection of items into the constructor:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># build a set S (notice the brackets)</span>
+<span class="c"># We are adding repeated elements, we have two 3&#39;s what is going to happen?</span>
+<span class="n">S</span> <span class="o">=</span> <span class="kt">Set</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">]);</span>
+
+<span class="nd">@show</span> <span class="n">S</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>S = Set([5, 4, 3, 1])
+</pre></div>
+</div>
+</div>
+</div>
+<p>When adding objects to a set, if the object is already present, any repeated objects will not be added. <a class="reference external" href="https://docs.julialang.org/en/v1/base/collections/#Base.Set">Sets</a> can also be initialized empty, then items added using the <code class="docutils literal notranslate"><span class="pre">push!</span></code> function:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># build an empty set of type Int</span>
+<span class="n">S</span> <span class="o">=</span> <span class="kt">Set</span><span class="p">{</span><span class="kt">Int</span><span class="p">}();</span>
+
+<span class="c"># add some items to the set S -</span>
+<span class="n">push!</span><span class="p">(</span><span class="n">S</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span>
+<span class="n">push!</span><span class="p">(</span><span class="n">S</span><span class="p">,</span><span class="mi">3</span><span class="p">);</span>
+<span class="n">push!</span><span class="p">(</span><span class="n">S</span><span class="p">,</span><span class="mi">5</span><span class="p">);</span>
+<span class="n">push!</span><span class="p">(</span><span class="n">S</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span> <span class="c"># repeat: will not get added to S</span>
+
+<span class="c"># show the set -</span>
+<span class="nd">@show</span> <span class="n">S</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>S = Set([5, 3, 1])
+</pre></div>
+</div>
+</div>
+</div>
+<p>However, unlike arrays, <a class="reference external" href="https://docs.julialang.org/en/v1/base/collections/#Base.Set">sets</a> can not be indexed, i.e., there is not an order hence no indexes. Thus, to retrieve an item from a <a class="reference external" href="https://docs.julialang.org/en/v1/base/collections/#Base.Set">set</a> use the <a class="reference external" href="https://docs.julialang.org/en/v1/base/collections/#Base.pop%21">pop!</a> function which removes a <em>random</em> element from the <a class="reference external" href="https://docs.julialang.org/en/v1/base/collections/#Base.Set">set</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># build a set S -</span>
+<span class="n">S</span> <span class="o">=</span> <span class="kt">Set</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">])</span>
+<span class="n">println</span><span class="p">(</span><span class="s">&quot;Output 1: Set S = </span><span class="si">$</span><span class="p">(</span><span class="n">S</span><span class="p">)</span><span class="s">&quot;</span><span class="p">)</span>
+
+<span class="c"># remove element -</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">pop!</span><span class="p">(</span><span class="n">S</span><span class="p">)</span>
+<span class="n">println</span><span class="p">(</span><span class="s">&quot;Output 2: what value of x did we get = </span><span class="si">$</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="s">&quot;</span><span class="p">)</span>
+
+<span class="c"># show the S -</span>
+<span class="nd">@show</span> <span class="n">S</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Output 1: Set S = Set([2, 1])
+Output 2: what value of x did we get = 2
+S = Set([1])
+</pre></div>
+</div>
+</div>
+</div>
+<p>Many functions that work with other collection types, e.g., the <a class="reference external" href="https://docs.julialang.org/en/v1/base/arrays/#Base.length-Tuple%7BAbstractArray%7D">length</a> function for arrays, have an equilvent implementation for <a class="reference external" href="https://docs.julialang.org/en/v1/base/collections/#Base.Set">sets</a>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># another way to build a set - array comprehension</span>
+<span class="n">S</span> <span class="o">=</span> <span class="kt">Set</span><span class="p">{</span><span class="kt">Int</span><span class="p">}([</span><span class="mi">2</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="o">:</span><span class="mi">5</span><span class="p">])</span>
+
+<span class="c"># how many elements?</span>
+<span class="n">println</span><span class="p">(</span><span class="s">&quot;The number of elements of set S = </span><span class="si">$</span><span class="p">(</span><span class="n">length</span><span class="p">(</span><span class="n">S</span><span class="p">))</span><span class="s">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The number of elements of set S = 5
+</pre></div>
+</div>
+</div>
+</div>
+<p>Finally, there are several set-specific concepts, <a class="reference internal" href="../chapter-2-dir/probability-random-variables.html"><span class="doc std std-doc">which are useful in the context of probability</span></a>, that have been implemented in Julia. For example, the <a class="reference external" href="https://en.wikipedia.org/wiki/Intersection_(set_theory)">intersection</a> or <a class="reference external" href="https://en.wikipedia.org/wiki/Union_(set_theory)">union</a> of sets is encoded in the <a class="reference external" href="https://docs.julialang.org/en/v1/base/collections/#Base.intersect">intersect</a> and <a class="reference external" href="https://docs.julialang.org/en/v1/base/collections/#Base.union">union</a> functions.</p>
 </section>
 </section>
 <section id="program-control-flow">
 <h3>Program Control Flow<a class="headerlink" href="#program-control-flow" title="Permalink to this headline">#</a></h3>
+<p>Julia provides several tools for <a class="reference external" href="https://docs.julialang.org/en/v1/manual/control-flow/#Control-Flow">program control flow</a> and <a class="reference external" href="https://docs.julialang.org/en/v1/manual/control-flow/#man-loops">repeated evaluation</a>; let’s review a few important examples: <code class="docutils literal notranslate"><span class="pre">if</span></code> statements, <code class="docutils literal notranslate"><span class="pre">while</span></code> loops and <code class="docutils literal notranslate"><span class="pre">for</span></code> loops.</p>
+<section id="if-else-end-statements">
+<h4>If-else-end statements<a class="headerlink" href="#if-else-end-statements" title="Permalink to this headline">#</a></h4>
 <p>Fill me in.</p>
+</section>
+<section id="while-loops">
+<h4>While loops<a class="headerlink" href="#while-loops" title="Permalink to this headline">#</a></h4>
+<p>A <code class="docutils literal notranslate"><span class="pre">while</span></code> loop consists of a control statement and a body:</p>
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">while</span> <span class="n">statement</span> <span class="o">==</span> <span class="nb">true</span>
+  <span class="n">body</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+<p>In a <code class="docutils literal notranslate"><span class="pre">while</span></code> loop, a control statement is evaluated, and as long as the control statement remains true, the code in the body of the <code class="docutils literal notranslate"><span class="pre">while</span></code> loop is executed. For example:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># declarations -</span>
+<span class="n">counter</span> <span class="o">=</span> <span class="mi">1</span>       <span class="c"># loop counter, we start at 1</span>
+<span class="k">const</span> <span class="n">limit</span> <span class="o">=</span> <span class="mi">5</span>   <span class="c"># how many times do we want to go around?</span>
+
+<span class="c"># main loop -</span>
+<span class="k">while</span> <span class="p">(</span><span class="n">counter</span> <span class="o">&lt;=</span> <span class="n">limit</span><span class="p">)</span>
+
+  <span class="c"># body to execute (for now, print info about the counter) -</span>
+  <span class="n">delta</span> <span class="o">=</span> <span class="n">limit</span> <span class="o">-</span> <span class="n">counter</span><span class="p">;</span> <span class="c"># how many more times around?</span>
+  <span class="n">println</span><span class="p">(</span><span class="s">&quot;Counter = </span><span class="si">$</span><span class="p">(</span><span class="n">counter</span><span class="p">)</span><span class="s">, remaining = </span><span class="si">$</span><span class="p">(</span><span class="n">delta</span><span class="p">)</span><span class="s">&quot;</span><span class="p">)</span>
+
+  <span class="c"># update the counter value -</span>
+  <span class="k">global</span> <span class="n">counter</span> <span class="o">=</span> <span class="n">counter</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Counter = 1, remaining = 4
+Counter = 2, remaining = 3
+Counter = 3, remaining = 2
+Counter = 4, remaining = 1
+Counter = 5, remaining = 0
+</pre></div>
+</div>
+</div>
+</div>
+<p>In this example, the <code class="docutils literal notranslate"><span class="pre">while</span></code> loop continues to execute as long the statement <span class="math notranslate nohighlight">\(\text{counter}\leq\text{limit}\)</span> evaluates to <code class="docutils literal notranslate"><span class="pre">true</span></code>. However, the value of <span class="math notranslate nohighlight">\(\text{counter}\)</span> is updated each pass through the loop. Thus, when the value of <span class="math notranslate nohighlight">\(\text{counter} = 6\)</span>, the control statement fails (evaluates to <code class="docutils literal notranslate"><span class="pre">false</span></code>) and the loop stops.</p>
+<p>If the control statement evaluates to <code class="docutils literal notranslate"><span class="pre">false</span></code> when the <code class="docutils literal notranslate"><span class="pre">while</span></code> loop is first reached, the body of the <code class="docutils literal notranslate"><span class="pre">while</span></code> statement is never evaluated.</p>
+</section>
+<section id="for-loops">
+<h4>For loops<a class="headerlink" href="#for-loops" title="Permalink to this headline">#</a></h4>
+<p>The <code class="docutils literal notranslate"><span class="pre">for</span></code> loop makes repeated evaluation of a code block easier to write; since counting like the <code class="docutils literal notranslate"><span class="pre">while</span></code> loop is such a common programming task, it can be expressed more concisely with a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop:</p>
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">range</span>
+  <span class="n">body</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+<p>where <code class="docutils literal notranslate"><span class="pre">range</span></code> represent the list of items to iterate over. For example, we can re-write the <code class="docutils literal notranslate"><span class="pre">while</span></code> loop shown above as a the <code class="docutils literal notranslate"><span class="pre">for</span></code> loop:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># declarations -</span>
+<span class="k">const</span> <span class="n">limit</span> <span class="o">=</span> <span class="mi">5</span>   <span class="c"># how many times do we want to go around?</span>
+
+<span class="c"># main loop -</span>
+<span class="k">for</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="o">:</span><span class="n">limit</span>
+
+  <span class="c"># body that is executed (for now, print info about the index) -</span>
+  <span class="n">delta</span> <span class="o">=</span> <span class="n">limit</span> <span class="o">-</span> <span class="n">i</span><span class="p">;</span> <span class="c"># how many more times around?</span>
+  <span class="n">println</span><span class="p">(</span><span class="s">&quot;index i = </span><span class="si">$</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="s">, remaining = </span><span class="si">$</span><span class="p">(</span><span class="n">delta</span><span class="p">)</span><span class="s">&quot;</span><span class="p">)</span>
+
+<span class="k">end</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>index i = 1, remaining = 4
+index i = 2, remaining = 3
+index i = 3, remaining = 2
+index i = 4, remaining = 1
+index i = 5, remaining = 0
+</pre></div>
+</div>
+</div>
+</div>
+<p>where the 1:limit is a <a class="reference external" href="https://docs.julialang.org/en/v1/base/math/#Base.range">range object</a>, which in this case represents the sequence of numbers <span class="math notranslate nohighlight">\(1,2,\dots,\text{limit}\)</span>. The <code class="docutils literal notranslate"><span class="pre">for</span></code> loop iterates through these values, assigning each one to the loop index variable <span class="math notranslate nohighlight">\(i\)</span>.</p>
+<p>One important difference between the <code class="docutils literal notranslate"><span class="pre">while</span></code> loop example and the equivlant <code class="docutils literal notranslate"><span class="pre">for</span></code> loop form is the scope in which variables are visible. If the loop index variable <span class="math notranslate nohighlight">\(i\)</span> has not been introduced previously in another scope, in the <code class="docutils literal notranslate"><span class="pre">for</span></code> loop form, it is visible only inside of the <code class="docutils literal notranslate"><span class="pre">for</span></code> loop, and not outside/afterwards. For more information on variable score, see the <a class="reference external" href="https://docs.julialang.org/en/v1/manual/variables-and-scoping/#scope-of-variables">scope of variables documentation</a>.</p>
+</section>
 </section>
 <section id="functions">
 <h3>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">#</a></h3>
-<p>In <a class="reference external" href="https://julialang.org">Julia</a>, a function is an object that maps a <a class="reference external" href="https://docs.julialang.org/en/v1/manual/functions/#Tuples">tuple</a> of argument values to a return value. Unlike pure mathematical functions, <a class="reference external" href="https://julialang.org">Julia</a> functions can alter and be affected by the global state of the program. The basic syntax for defining functions in <a class="reference external" href="https://julialang.org">Julia</a> is:</p>
+<p>In <a class="reference external" href="https://julialang.org">Julia</a>, a function is an object that maps a <a class="reference external" href="https://docs.julialang.org/en/v1/manual/functions/#Tuples">tuple</a> of argument values to a return value. Unlike pure mathematical functions, <a class="reference external" href="https://julialang.org">Julia</a> functions can alter their arguments and change the global state of the program. The basic syntax for defining functions in <a class="reference external" href="https://julialang.org">Julia</a> is:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># declare the add function -</span>
@@ -892,10 +1280,10 @@ the list of input arguments or the type of data returned from a function, or the
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>MethodError: no method matching add(::Float64, ::String)
 Closest candidates are:
-  add(::Float64, !Matched::Float64) at In[6]:2
+  add(::Float64, !Matched::Float64) at In[20]:2
 Stacktrace:
  [1] top-level scope
-   @ In[6]:16
+   @ In[20]:16
  [2] eval
    @ ./boot.jl:373 [inlined]
  [3] include_string(mapexpr::typeof(REPL.softscope), mod::Module, code::String, filename::String)
@@ -917,24 +1305,77 @@ Stacktrace:
 </div>
 </div>
 <p><a class="reference external" href="https://julialang.org">Julia</a> function arguments follow the pass-by-sharing convention, i.e., values are <strong>not</strong> copied when they are passed to functions. Instead, function arguments act as new variable bindings (new locations that can refer to values), but the values they refer to are identical to the passed values.</p>
+<section id="multiple-dispatch-and-generics">
+<h4>Multiple dispatch and generics<a class="headerlink" href="#multiple-dispatch-and-generics" title="Permalink to this headline">#</a></h4>
+<p>In the example above, the <code class="docutils literal notranslate"><span class="pre">add</span></code> function takes arguments of type <code class="docutils literal notranslate"><span class="pre">Float64</span></code>, but what if we want to sum arguments of type <code class="docutils literal notranslate"><span class="pre">Int64</span></code> or some other numerical format such as <code class="docutils literal notranslate"><span class="pre">Float32</span></code> (which is popular in the machine learning community), or a combination of these arguments?</p>
+<p><a class="reference external" href="https://julialang.org">Julia</a> approaches this problem using a technique called <a class="reference external" href="https://en.wikipedia.org/wiki/Multiple_dispatch">multiple dispatch</a>. In particular, program developers can write different versions of the <code class="docutils literal notranslate"><span class="pre">add</span></code> function that accept different argument types; these different <code class="docutils literal notranslate"><span class="pre">add</span></code> versions are called <a class="reference external" href="https://docs.julialang.org/en/v1/manual/methods/#Methods">methods</a>. At runtime, <a class="reference external" href="https://julialang.org">Julia</a> dynamically determines which <a class="reference external" href="https://docs.julialang.org/en/v1/manual/methods/#Methods">method</a> to call based upon the argument types. For example:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># declare the add function that works on Float64</span>
+<span class="k">function</span> <span class="n">add</span><span class="p">(</span><span class="n">x</span><span class="o">::</span><span class="kt">Float64</span><span class="p">,</span> <span class="n">y</span><span class="o">::</span><span class="kt">Float64</span><span class="p">)</span><span class="o">::</span><span class="kt">Float64</span>
+  <span class="k">return</span> <span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="n">y</span><span class="p">)</span>
+<span class="k">end</span>
+
+<span class="c"># declare the add function that works on Int64</span>
+<span class="k">function</span> <span class="n">add</span><span class="p">(</span><span class="n">x</span><span class="o">::</span><span class="kt">Int64</span><span class="p">,</span> <span class="n">y</span><span class="o">::</span><span class="kt">Int64</span><span class="p">)</span><span class="o">::</span><span class="kt">Int64</span>
+  <span class="k">return</span> <span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="n">y</span><span class="p">)</span>
+<span class="k">end</span>
+
+<span class="c"># Julia determines which version of add to call</span>
+<span class="n">value_1</span> <span class="o">=</span> <span class="n">add</span><span class="p">(</span><span class="mf">3.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">);</span>
+<span class="n">value_2</span> <span class="o">=</span> <span class="n">add</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">6</span><span class="p">)</span>
+
+<span class="c"># print the resulting value -</span>
+<span class="n">println</span><span class="p">(</span><span class="s">&quot;Values from the add methods: value_1 = </span><span class="si">$</span><span class="p">(</span><span class="n">value_1</span><span class="p">)</span><span class="s">, value_2 = </span><span class="si">$</span><span class="p">(</span><span class="n">value_2</span><span class="p">)</span><span class="s">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Values from the add methods: value_1 = 5.0, value_2 = 8
+</pre></div>
+</div>
+</div>
+</div>
+<p>In this case, the correct version of <code class="docutils literal notranslate"><span class="pre">add</span></code> is called based on the type of arguments. However, writing different <code class="docutils literal notranslate"><span class="pre">add</span></code> methods for each argument type (or combination of argument types) would be a burden.</p>
+<p>Toward this challenge, <a class="reference external" href="https://julialang.org">Julia</a> has <a class="reference external" href="https://docs.julialang.org/en/v1/manual/methods/#Parametric-Methods">parametric methods</a> in which the argument type itself is variable. In particular, instead of specifying the specific argument type, e.g., <code class="docutils literal notranslate"><span class="pre">Float64</span></code> or <code class="docutils literal notranslate"><span class="pre">Int64</span></code>, we declare rules that generate a set of permissible types that we expect the function can operate on. For example, the parametric <code class="docutils literal notranslate"><span class="pre">add</span></code> function:</p>
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">function</span> <span class="n">add</span><span class="p">(</span><span class="n">x</span><span class="o">::</span><span class="kt">T1</span><span class="p">,</span> <span class="n">y</span><span class="o">::</span><span class="kt">T2</span><span class="p">)</span><span class="o">::</span><span class="kt">Number</span> <span class="k">where</span> <span class="p">{</span><span class="kt">T1</span><span class="p">,</span> <span class="kt">T2</span> <span class="o">&lt;:</span> <span class="kt">Number</span><span class="p">}</span> 
+  <span class="k">return</span> <span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="n">y</span><span class="p">)</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+<p>specifies that the argument types <code class="docutils literal notranslate"><span class="pre">T1</span></code> and <code class="docutils literal notranslate"><span class="pre">T2</span></code> are a <a class="reference external" href="https://docs.julialang.org/en/v1/devdocs/reflection/#Subtypes">subtype</a> (defined using the <code class="docutils literal notranslate"><span class="pre">&lt;:</span></code> operator) of <a class="reference external" href="https://docs.julialang.org/en/v1/base/numbers/#Core.Number">Number</a>, the supertype for all numbers in <a class="reference external" href="https://julialang.org">Julia</a>; thus, we expect the parametric <code class="docutils literal notranslate"><span class="pre">add</span></code> function to work on <em>any</em> combination of real and complex numbers. This is possible because the <code class="docutils literal notranslate"><span class="pre">+</span></code> operator that appears in the <code class="docutils literal notranslate"><span class="pre">add</span></code> function is itself a function with 206 methods (which can be listed using the <a class="reference external" href="https://docs.julialang.org/en/v1/base/base/#Base.methods">methods</a> function).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># declare the add function -</span>
+<span class="k">function</span> <span class="n">add</span><span class="p">(</span><span class="n">x</span><span class="o">::</span><span class="kt">T1</span><span class="p">,</span> <span class="n">y</span><span class="o">::</span><span class="kt">T2</span><span class="p">)</span><span class="o">::</span><span class="kt">Number</span> <span class="k">where</span> <span class="p">{</span><span class="kt">T1</span><span class="p">,</span> <span class="kt">T2</span> <span class="o">&lt;:</span> <span class="kt">Number</span><span class="p">}</span> 
+  <span class="k">return</span> <span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="n">y</span><span class="p">)</span>
+<span class="k">end</span>
+
+<span class="c"># Julia determines which version of add to call</span>
+<span class="n">value_1</span> <span class="o">=</span> <span class="n">add</span><span class="p">(</span><span class="mf">3.0</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+<span class="n">value_2</span> <span class="o">=</span> <span class="n">add</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">6</span><span class="p">)</span>
+
+<span class="c"># print the resulting values -</span>
+<span class="n">println</span><span class="p">(</span><span class="s">&quot;Values from the add methods: value_1 = </span><span class="si">$</span><span class="p">(</span><span class="n">value_1</span><span class="p">)</span><span class="s">, value_2 = </span><span class="si">$</span><span class="p">(</span><span class="n">value_2</span><span class="p">)</span><span class="s">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Values from the add methods: value_1 = 5.0, value_2 = 8
+</pre></div>
+</div>
+</div>
+</div>
+</section>
 </section>
 </section>
 <section id="writing-and-executing-julia-programs">
 <span id="content-references-julia-programs"></span><h2>Writing and Executing Julia Programs<a class="headerlink" href="#writing-and-executing-julia-programs" title="Permalink to this headline">#</a></h2>
-<p>Julia programs are written in files with the extension <code class="docutils literal notranslate"><span class="pre">.jl</span></code>. To load a Julia program contained in <code class="docutils literal notranslate"><span class="pre">Program.jl</span></code>, the user executes the <a class="reference external" href="https://docs.julialang.org/en/v1/manual/code-loading/">include</a> command in the <a class="reference external" href="https://docs.julialang.org/en/v1/stdlib/REPL/">REPL</a> where the path to <code class="docutils literal notranslate"><span class="pre">Program.jl</span></code> is passed in as an argument of type <code class="docutils literal notranslate"><span class="pre">String</span></code> to the <a class="reference external" href="https://docs.julialang.org/en/v1/manual/code-loading/">include</a> command.</p>
-<div class="proof example admonition" id="include-example-julia-program">
-<p class="admonition-title"><span class="caption-number">Example 1 </span> (Include command)</p>
-<section class="example-content" id="proof-content">
-<p>Julia code can be loaded using the <a class="reference external" href="https://docs.julialang.org/en/v1/manual/code-loading/">include</a> command.
-For example, to load Julia code in the <code class="docutils literal notranslate"><span class="pre">Program.jl</span></code> file, the user would execute the command in the <a class="reference external" href="https://docs.julialang.org/en/v1/stdlib/REPL/">Julia REPL</a>:</p>
+<p>Julia programs are files with the extension <code class="docutils literal notranslate"><span class="pre">.jl</span></code>. To load a Julia program contained in <code class="docutils literal notranslate"><span class="pre">Program.jl</span></code>, the user executes the <a class="reference external" href="https://docs.julialang.org/en/v1/manual/code-loading/">include</a> command in the <a class="reference external" href="https://docs.julialang.org/en/v1/stdlib/REPL/">REPL</a> where the path to <code class="docutils literal notranslate"><span class="pre">Program.jl</span></code> is passed in as an argument of type <code class="docutils literal notranslate"><span class="pre">String</span></code> to the <a class="reference external" href="https://docs.julialang.org/en/v1/manual/code-loading/">include</a> command.</p>
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">julia</span><span class="o">&gt;</span> <span class="n">include</span><span class="p">(</span><span class="s">&quot;Program.jl&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-</section>
-</div><p><a class="reference internal" href="#include-example-julia-program">Example 1</a> loads the code contained in the <code class="docutils literal notranslate"><span class="pre">Program.jl</span></code> file into the <a class="reference external" href="https://docs.julialang.org/en/v1/stdlib/REPL/">REPL</a>. If <code class="docutils literal notranslate"><span class="pre">Program.jl</span></code> is an <em>executable script</em> then <code class="docutils literal notranslate"><span class="pre">Program.jl</span></code> will be executed, otherwise, the variables, data structures and functions encoded in <code class="docutils literal notranslate"><span class="pre">Program.jl</span></code> will be loaded into the memory of the <a class="reference external" href="https://docs.julialang.org/en/v1/stdlib/REPL/">REPL</a>. To make <code class="docutils literal notranslate"><span class="pre">Program.jl</span></code> executable, a <code class="docutils literal notranslate"><span class="pre">main</span></code> method is called (which in turn can load data, call other functions, etc):</p>
-<div class="proof example admonition" id="executable-julia-program-template">
-<p class="admonition-title"><span class="caption-number">Example 2 </span> (Executable Program.jl)</p>
-<section class="example-content" id="proof-content">
+<p>The code block above loads the code contained in the <code class="docutils literal notranslate"><span class="pre">Program.jl</span></code> file into the <a class="reference external" href="https://docs.julialang.org/en/v1/stdlib/REPL/">REPL</a>. If <code class="docutils literal notranslate"><span class="pre">Program.jl</span></code> is an <em>executable script</em> then <code class="docutils literal notranslate"><span class="pre">Program.jl</span></code> will be executed, otherwise, the variables, data structures and functions encoded in <code class="docutils literal notranslate"><span class="pre">Program.jl</span></code> will be loaded into the memory of the <a class="reference external" href="https://docs.julialang.org/en/v1/stdlib/REPL/">REPL</a>. To make <code class="docutils literal notranslate"><span class="pre">Program.jl</span></code> executable, a <code class="docutils literal notranslate"><span class="pre">main</span></code> method is called (which in turn can load data, call other functions, etc):</p>
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">function</span> <span class="n">example</span><span class="p">()</span>
 
     <span class="c"># stuff happens here</span>
@@ -955,8 +1396,68 @@ For example, to load Julia code in the <code class="docutils literal notranslate
 <span class="n">main</span><span class="p">()</span>
 </pre></div>
 </div>
+<p>For example, consider the following executable script:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">function</span> <span class="n">example</span><span class="p">()</span>
+
+    <span class="c"># stuff happens here</span>
+    <span class="n">println</span><span class="p">(</span><span class="s">&quot;A message from inside the example method ... &quot;</span><span class="p">)</span>
+<span class="k">end</span>
+
+<span class="k">function</span> <span class="n">main</span><span class="p">()</span>
+    
+    <span class="c"># print a message -</span>
+    <span class="n">println</span><span class="p">(</span><span class="s">&quot;A message from inside the main method ...&quot;</span><span class="p">)</span>
+
+    <span class="c"># call other functions -</span>
+    <span class="n">example</span><span class="p">()</span>
+<span class="k">end</span>
+
+<span class="c"># call the main method -</span>
+<span class="n">main</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A message from inside the main method ...
+A message from inside the example method ... 
+</pre></div>
+</div>
+</div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">example</span></code> method is loaded into the <a class="reference external" href="https://docs.julialang.org/en/v1/stdlib/REPL/">REPL</a> memory before the <code class="docutils literal notranslate"><span class="pre">main</span></code> method (code is parsed by <a class="reference external" href="https://julialang.org">Julia</a> from top to bottom of the file) but <code class="docutils literal notranslate"><span class="pre">example</span></code> is <em>not</em> executed until is called from the <code class="docutils literal notranslate"><span class="pre">main</span></code> method.</p>
 </section>
-</div></section>
+<section id="using-external-packages">
+<span id="content-references-julia-basics-using-external-packages"></span><h2>Using external packages<a class="headerlink" href="#using-external-packages" title="Permalink to this headline">#</a></h2>
+<p>External packages in <a class="reference external" href="https://julialang.org">Julia</a> are organized as <a class="reference external" href="https://docs.julialang.org/en/v1/manual/modules/">Modules</a>; the basic structure of a module is given by:</p>
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">module</span> <span class="n">SomeModule</span>
+
+<span class="c"># export, using, import statements are usually here; we discuss these below</span>
+
+<span class="n">include</span><span class="p">(</span><span class="s">&quot;file1.jl&quot;</span><span class="p">)</span>
+<span class="n">include</span><span class="p">(</span><span class="s">&quot;file2.jl&quot;</span><span class="p">)</span>
+
+<span class="k">end</span>
+</pre></div>
+</div>
+<p>Thus, <a class="reference external" href="https://docs.julialang.org/en/v1/manual/modules/">modules</a> in <a class="reference external" href="https://julialang.org">Julia</a> are just containers that organize functions, and perhaps <a class="reference external" href="https://docs.julialang.org/en/v1/manual/types/#Composite-Types">user defined types</a> or other data, into a unit. While constructing your own <a class="reference external" href="https://docs.julialang.org/en/v1/manual/modules/">modules</a> is not difficult, it’s beyond the scope of this introduction. For more information on building (and registering) your own <a class="reference external" href="https://docs.julialang.org/en/v1/manual/modules/">modules</a>, please consult the <a class="reference external" href="https://docs.julialang.org/en/v1/">Julia documentation</a>.</p>
+<p>Let’s assume that you have used the <a class="reference internal" href="#content-references-julia-repl-pkg-mode"><span class="std std-ref">Package mode</span></a> to install some external <a class="reference external" href="https://julialang.org">Julia</a> package called <code class="docutils literal notranslate"><span class="pre">Foo.jl</span></code>. To use that package in your <code class="docutils literal notranslate"><span class="pre">Program.jl</span></code> or in the <a class="reference external" href="https://docs.julialang.org/en/v1/stdlib/REPL/">REPL</a> you’ll need to load it into memory. There are two ways to do that, the <a class="reference external" href="https://docs.julialang.org/en/v1/base/base/#using">using</a> or <a class="reference external" href="https://docs.julialang.org/en/v1/base/base/#import">import</a> functions.</p>
+<ul class="simple">
+<li><p>The <a class="reference external" href="https://docs.julialang.org/en/v1/base/base/#using">using</a> will load the <code class="docutils literal notranslate"><span class="pre">Foo</span></code> package and make its <a class="reference external" href="https://docs.julialang.org/en/v1/base/base/#export">exported names</a> available for direct use. Names can also be used via dot syntax (e.g. Foo.foo to access the name foo), whether they are exported or not.</p></li>
+<li><p>The <a class="reference external" href="https://docs.julialang.org/en/v1/base/base/#import">import</a> function is similar to <a class="reference external" href="https://docs.julialang.org/en/v1/base/base/#using">using</a> with one key exception; <a class="reference external" href="https://docs.julialang.org/en/v1/base/base/#import">import</a> will load the package <code class="docutils literal notranslate"><span class="pre">Foo</span></code>. However, names from the imported <code class="docutils literal notranslate"><span class="pre">Foo</span></code> module can <em>only</em> be accessed with dot syntax (e.g. Foo.foo to access the name foo).</p></li>
+</ul>
+</section>
+<section id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">#</a></h2>
+<p>In this chapter, we introduced some key features of <a class="reference external" href="https://julialang.org">the Julia programming language</a>:</p>
+<ul class="simple">
+<li><p>Working with <a class="reference internal" href="#content-references-julia-repl"><span class="std std-ref">The Julia REPL</span></a></p></li>
+<li><p><a class="reference internal" href="#content-references-types-functions-md"><span class="std std-ref">Julia types, functions and syntax</span></a></p></li>
+<li><p><a class="reference internal" href="#content-references-julia-programs"><span class="std std-ref">Writing and Executing Julia Programs</span></a></p></li>
+</ul>
+<p>For more information on <a class="reference external" href="https://julialang.org">Julia</a>, please consult the <a class="reference external" href="https://docs.julialang.org/en/v1/">Julia documentation</a>.</p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -993,10 +1494,10 @@ For example, to load Julia code in the <code class="docutils literal notranslate
             <p class="prev-next-title">Julia Installation</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="../chapter-1-dir/chapter-1.html" title="next page">
+    <a class='right-next' id="next-link" href="julia-data.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Unit 1: The Basics of Assets, Money, Markets and the Global Financial System</p>
+        <p class="prev-next-title">Working with Data</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

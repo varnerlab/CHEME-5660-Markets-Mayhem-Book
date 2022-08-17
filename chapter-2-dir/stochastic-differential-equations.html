@@ -137,6 +137,11 @@ const thebe_selector_output = ".output, .cell_output"
      Introduction to Julia Basics
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../julia-dir/julia-data.html">
+     Working with Data
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
@@ -600,7 +605,7 @@ They are a top-down approach to simulating market behavior, where markers are tr
 dueling perspectives on the randomness of stock prices in the finance and economics community.
 <a class="reference external" href="https://en.wikipedia.org/wiki/Burton_Malkiel">Malkiel</a>, in his book <a class="reference external" href="https://en.wikipedia.org/wiki/A_Random_Walk_Down_Wall_Street">A Random Walk Down Wall Street</a>, argues that asset prices typically exhibit signs of a random walk and that investors cannot consistently outperform market averages. On the other hand, in their book <a class="reference external" href="https://www.jstor.org/stable/j.ctt7tccx">A Non-Random Walk Down Wall Street, Lo and MacKinlay present</a>, several studies that suggest there are stock market pricing trends are somewhat predictable.</p>
 <p>To better understand these arguments and build mathematical models that can be used to simulate market
-dynamics, we need to introduce analytical and numerical tools to solve SDEs. Our development will follow the previous work of Glasserman <span id="id1">[<a class="reference internal" href="../References.html#id8" title="Paul Glasserman. Monte Carlo methods in financial engineering. Volume 53. Springer, New York, 2004. ISBN 0387004513 (alk. paper). URL: http://www.loc.gov/catdir/enhancements/fy0813/2003050499-d.html.">Glasserman, 2004</a>]</span>; in particular, chapters 3, 6, and Appendix B.</p>
+dynamics, we need to introduce analytical and numerical tools to solve SDEs. Our development will follow the previous work of Glasserman <span id="id1">[<a class="reference internal" href="../References.html#id9" title="Paul Glasserman. Monte Carlo methods in financial engineering. Volume 53. Springer, New York, 2004. ISBN 0387004513 (alk. paper). URL: http://www.loc.gov/catdir/enhancements/fy0813/2003050499-d.html.">Glasserman, 2004</a>]</span>; in particular, chapters 3, 6, and Appendix B.</p>
 <p><strong>Topics:</strong></p>
 <ul class="simple">
 <li><p>Scalar and vector <a class="reference internal" href="#content-references-wiener-process"><span class="std std-ref">Brownian Motion</span></a></p></li>
@@ -710,7 +715,7 @@ Then a random process <span class="math notranslate nohighlight">\(X(t)\)</span>
 <span class="eqno">(15)<a class="headerlink" href="#equation-eq-sde-gbm" title="Permalink to this equation">#</a></span>\[\frac{dX\left(t\right)}{X(t)} = \mu{dt}+\sigma{dW(t)}\]</div>
 <p>where <span class="math notranslate nohighlight">\(dW(t)\)</span> is a one-dimensional Wiener Process.</p>
 </section>
-</div><p>The use of geometric Brownian motion as a financial model is primarily due to the work of Samuelson in the 1950s and 1960s <span id="id2">[<a class="reference internal" href="../References.html#id10" title="Robert C. Merton. Paul samuelson and financial economics. The American Economist, 50(2):9–31, 2006. URL: http://www.jstor.org/stable/40657651 (visited on 2022-05-16).">Merton, 2006</a>]</span>. However, today Geometric Brownian Motion is more often associated with the Black–Scholes options pricing model (which we’ll describe later) <span id="id3">[<a class="reference internal" href="../References.html#id9" title="Fischer Black and Myron Scholes. The pricing of options and corporate liabilities. Journal of Political Economy, 81(3):637–654, 1973. URL: http://www.jstor.org/stable/1831029 (visited on 2022-05-16).">Black and Scholes, 1973</a>]</span>.</p>
+</div><p>The use of geometric Brownian motion as a financial model is primarily due to the work of Samuelson in the 1950s and 1960s <span id="id2">[<a class="reference internal" href="../References.html#id11" title="Robert C. Merton. Paul samuelson and financial economics. The American Economist, 50(2):9–31, 2006. URL: http://www.jstor.org/stable/40657651 (visited on 2022-05-16).">Merton, 2006</a>]</span>. However, today Geometric Brownian Motion is more often associated with the Black–Scholes options pricing model (which we’ll describe later) <span id="id3">[<a class="reference internal" href="../References.html#id10" title="Fischer Black and Myron Scholes. The pricing of options and corporate liabilities. Journal of Political Economy, 81(3):637–654, 1973. URL: http://www.jstor.org/stable/1831029 (visited on 2022-05-16).">Black and Scholes, 1973</a>]</span>.</p>
 <section id="analytical-solution-geometric-brownian-motion">
 <h4>Analytical solution: Geometric Brownian Motion<a class="headerlink" href="#analytical-solution-geometric-brownian-motion" title="Permalink to this headline">#</a></h4>
 <p>The geometric Brownian motion described by Eqn. <a class="reference internal" href="#equation-eq-sde-gbm">(15)</a> also has an analytical solution.
@@ -738,7 +743,7 @@ Then, we can re-write Eqn <a class="reference internal" href="#equation-eq-gdm-s
 <p>where <span class="math notranslate nohighlight">\(k=1,2,\dots,n\)</span>.</p>
 </div>
 <div class="proof example admonition" id="scalar-gbm-soln">
-<p class="admonition-title"><span class="caption-number">Example 9 </span> (Scalar Geometric Brownian Motion )</p>
+<p class="admonition-title"><span class="caption-number">Example 7 </span> (Scalar Geometric Brownian Motion )</p>
 <section class="example-content" id="proof-content">
 <p>Let’s simulate the daily close price of <code class="docutils literal notranslate"><span class="pre">AMD</span></code> using the analytical solution of the scalar geometric brownian motion (<a class="reference internal" href="#fig-gbm-sim-amd-scalar"><span class="std std-numref">Fig. 9</span></a>).</p>
 <p>The scalar gbm analytical solution was used to generate N = 200 sample paths for a 46-day period (light blue lines in <a class="reference internal" href="#fig-gbm-sim-amd-scalar"><span class="std std-numref">Fig. 9</span></a>); the first 36 days of data were used to estimate the mean return <span class="math notranslate nohighlight">\(\mu\)</span> and the volatility of the return <span class="math notranslate nohighlight">\(\sigma\)</span> which appear in the gbm solution. These model parameters were assumed to be fixed. An additional two trading weeks (10 days) was then simulated (out of sample prediction).</p>

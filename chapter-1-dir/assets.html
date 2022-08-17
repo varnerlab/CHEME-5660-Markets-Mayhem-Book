@@ -137,6 +137,11 @@ const thebe_selector_output = ".output, .cell_output"
      Introduction to Julia Basics
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../julia-dir/julia-data.html">
+     Working with Data
+    </a>
+   </li>
   </ul>
  </li>
  <li class="toctree-l1 current active has-children">
@@ -644,7 +649,7 @@ into today’s dollars (or vice-versa, we want to compute the value of a future 
 </section>
 </div><p>Let’s do a few examples to illustrate one-period conversions.</p>
 <div class="proof example admonition" id="example-3">
-<p class="admonition-title"><span class="caption-number">Example 3 </span> (One Period Conversion)</p>
+<p class="admonition-title"><span class="caption-number">Example 1 </span> (One Period Conversion)</p>
 <section class="example-content" id="proof-content">
 <p>Prof. Varner offers to buy you a coffee tommorrow (one time period in the future) for <span class="math notranslate nohighlight">\(CF_{2} = \$ 3.35\)</span>. How much is the future coffee worth today if <span class="math notranslate nohighlight">\(r_{21}=0.10\)</span>?</p>
 <p>Let’s put some numbers into Eqn. <a class="reference internal" href="#equation-eq-cash-flow-1-period">(2)</a> to answer this.  Rearraninging Eqn. <a class="reference internal" href="#equation-eq-cash-flow-1-period">(2)</a> for <span class="math notranslate nohighlight">\(CF_{1}\)</span> gives:</p>
@@ -681,7 +686,7 @@ into today’s dollars (or vice-versa, we want to compute the value of a future 
 \[\mathcal{D}_{t,1} = (1+\bar{r})^{t-1}\qquad{t=2,3,\dots,T}\]</div>
 <p>Let’s do some multi-period discounting examples to better understand <a class="reference internal" href="#defn-multi-perod-discrete-conversion">Definition 2</a>.</p>
 <div class="proof example admonition" id="ex-future-value-discrete">
-<p class="admonition-title"><span class="caption-number">Example 4 </span> (What is $1 collected T time periods in the future worth today? )</p>
+<p class="admonition-title"><span class="caption-number">Example 2 </span> (What is $1 collected T time periods in the future worth today? )</p>
 <section class="example-content" id="proof-content">
 <p>The value of money today is the present value, whereas the value of money in the <span class="math notranslate nohighlight">\(T\)</span> time units from now is the future  value.
 In terms of the asset model, <span class="math notranslate nohighlight">\(CF_{1}\)</span> denotes the present value (i = 1 denotes now),
@@ -712,7 +717,7 @@ Given that we are looking at the present value of $1, we can set <span class="ma
 <div class="math notranslate nohighlight">
 \[\exp\left(x\right) = \sum_{k=0}^{\infty} \frac{x^{k}}{k!} = 1+x+\frac{x^{2}}{2}+\frac{x^{3}}{6}+\dots\]</div>
 <div class="proof example admonition" id="ex-future-value-continuous">
-<p class="admonition-title"><span class="caption-number">Example 5 </span> (What is $1 collected today worth T years from now? )</p>
+<p class="admonition-title"><span class="caption-number">Example 3 </span> (What is $1 collected today worth T years from now? )</p>
 <section class="example-content" id="proof-content">
 <p>Let’s consider the opposite case as the previous example. Suppose we are given $1 dollar today. What is the future value of $1 in T years from now for a 2.0% instantaneous annualized discount factor.</p>
 </section>
