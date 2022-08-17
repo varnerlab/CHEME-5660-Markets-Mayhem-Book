@@ -561,12 +561,39 @@ end
 
 Thus, [modules](https://docs.julialang.org/en/v1/manual/modules/) in [Julia](https://julialang.org) are just containers that organize functions, and perhaps [user defined types](https://docs.julialang.org/en/v1/manual/types/#Composite-Types) or other data, into a unit. While constructing your own [modules](https://docs.julialang.org/en/v1/manual/modules/) is not difficult, it's beyond the scope of this introduction. For more information on building (and registering) your own [modules](https://docs.julialang.org/en/v1/manual/modules/), please consult the [Julia documentation](https://docs.julialang.org/en/v1/). 
 
-Let's assume that you have used the {ref}`content:references:julia-repl-pkg-mode` to install some external [Julia](https://julialang.org) package called `Foo.jl`. To use that package in your `Program.jl` or in the [REPL](https://docs.julialang.org/en/v1/stdlib/REPL/) you'll need to load it into memory. There are two ways to do that, the [using](https://docs.julialang.org/en/v1/base/base/#using) or [import](https://docs.julialang.org/en/v1/base/base/#import) functions.
+Let's assume that you have used the {ref}`content:references:julia-repl-pkg-mode` to install some external [Julia](https://julialang.org) package called `Foo.jl`. To use that package in your `Program.jl` (or in the [REPL](https://docs.julialang.org/en/v1/stdlib/REPL/)) you'll need to load `Foo.jl` module into memory. There are two ways to do that, the [using](https://docs.julialang.org/en/v1/base/base/#using) or [import](https://docs.julialang.org/en/v1/base/base/#import) functions.
 
-* The [using](https://docs.julialang.org/en/v1/base/base/#using) will load the `Foo` package and make its [exported names](https://docs.julialang.org/en/v1/base/base/#export) available for direct use. Names can also be used via dot syntax (e.g. Foo.foo to access the name foo), whether they are exported or not.
+* The [using](https://docs.julialang.org/en/v1/base/base/#using) function will load the `Foo` package and make its [exported names](https://docs.julialang.org/en/v1/base/base/#export) available for _direct_ use, i.e., the functions and data contained in the package that are visible are loaded directly into memory for the users of the package. However, names can also be accessed via dot syntax (e.g., Foo.foo to access the name foo), whether exported or not.
 
-* The [import](https://docs.julialang.org/en/v1/base/base/#import) function is similar to [using](https://docs.julialang.org/en/v1/base/base/#using) with one key exception; [import](https://docs.julialang.org/en/v1/base/base/#import) will load the package `Foo`. However, names from the imported `Foo` module can _only_ be accessed with dot syntax (e.g. Foo.foo to access the name foo).
+* The [import](https://docs.julialang.org/en/v1/base/base/#import) function is similar to [using](https://docs.julialang.org/en/v1/base/base/#using) with one key exception; [import](https://docs.julialang.org/en/v1/base/base/#import) will load the package `Foo`. However, names from the imported `Foo` module can _only_ be accessed with dot syntax (e.g., Foo.foo to access the name foo).
 
+Let's do an example. Suppose we wanted to generate samples from and then visualize a [Laplace distribution](https://en.wikipedia.org/wiki/Laplace_distribution) using [Distributions.jl](https://github.com/JuliaStats/Distributions.jl), a [Julia](https://julialang.org) package for probability distributions and associated functions, and [StatsPlots.jl](https://github.com/JuliaPlots/StatsPlots.jl), a [Julia](https://julialang.org) package for statistical visualization. Further, suppose we have already installed [Distributions.jl](https://github.com/JuliaStats/Distributions.jl) and [StatsPlots.jl](https://github.com/JuliaPlots/StatsPlots.jl) using the {ref}`content:references:julia-repl-pkg-mode`.
+
+The code block:
+```{code-block} julia
+
+# load packages -
+using Distributions
+using StatsPlots
+
+# Build a Laplace distribution (from the Distributions package)
+d = Laplace(0,1); # initialize Laplace distribution with (0,1)
+
+# plot the distribution (from StatsPlots package) -
+plot(d,lw=2, label="(μ,b) = (0,1)")
+xlabel!("Value for x (AU)", fontsize=18)
+ylabel!("Laplace(x) proability density (AU)", fontsize=18)
+```
+
+produces the plot:
+
+```{figure} ./figs/Fig-LaplaceDistribution-PDF.pdf
+---
+height: 420px
+name: fig-laplace-pdf
+---
+The [package mode](https://docs.julialang.org/en/v1/stdlib/REPL/#Pkg-mode) in the [Terminal on macOS](https://support.apple.com/guide/terminal/open-or-quit-terminal-apd5265185d-f365-44cb-8b09-71a064a42125/mac).
+```
 
 ## Summary
 In this chapter, we introduced some key features of [the Julia programming language](https://julialang.org):
