@@ -325,7 +325,56 @@ Finally, there are several set-specific concepts, [which are useful in the conte
 Julia provides several tools for [program control flow](https://docs.julialang.org/en/v1/manual/control-flow/#Control-Flow) and [repeated evaluation](https://docs.julialang.org/en/v1/manual/control-flow/#man-loops); let's review a few important examples: `if` statements, `while` loops and `for` loops.
 
 #### If-else-end statements
-Fill me in.
+A common task is to do something if a condition is true, or something else if the condition is false.
+This task is accomplished with the `if-elseif-else-end` pattern:
+
+```{code-block} julia
+if x < y
+    code block-1
+elseif x > y
+    code block-2
+else
+    code block-3
+end
+```
+
+In the code snippet above, if the conditional expression `x < y` evaluates to `true`, then `code block-1` is executed; otherwise the conditional expression `x > y` is evaluated, and if it evaluates to `true`, the `code block-2` is executed; if neither expression is `true`, the else `code block-3` is executed. Let's see this in action:
+
+```{code-cell} julia
+# initialize x and y -
+x = 10.0
+y = 12.0
+
+if x < y
+    println("x is less than y")
+elseif x > y
+    println("x is greater than y")
+else
+    println("x is equal to y")
+end
+```
+
+The `elseif` and `else` blocks are optional. Further, as many `elseif` blocks as needed can be used. The conditional expressions in the `if-elseif-else-end` construct are evaluated until the first `true`, then no further conditional expressions (or code blocks) are evaluated. Thus, if we only have one condition to check, e.g., `x < y` then we can omit the `elseif` condition:
+
+```{code-cell} julia
+# initialize x and y -
+x = 16.0
+y = 2.0
+
+if x < y
+    println("x is less than y")
+else
+    println("x is greater than or equal to y")
+end
+```
+
+Finally, we may have more multiple statements (or even function calls) in the conditional checks. Suppose we had two complicated conditions that need to be checked to make a decision; perhaps these conditions are computed using two expensive function calls. Let these conditions be `a` and `b`.
+
+Logical checks can be chained together with the `&&` and ``||`` operators in [Julia](https://julialang.org); these operators correspond to logical `and` and `or` operations, respectively. Thus, these operators can check [logical and](https://en.wikipedia.org/wiki/Logical_conjunction), or [logical or](https://en.wikipedia.org/wiki/Logical_disjunction) conditions. They also have the additional property of short-circuit evaluation: they don't necessarily evaluate their second argument:
+
+* In the [logical and expression](https://en.wikipedia.org/wiki/Logical_conjunction) ``a && b``, the subexpression `b` is only evaluated if `a` evaluates to `true`. 
+
+* In the [logical or expression](https://en.wikipedia.org/wiki/Logical_disjunction) ``a || b``, the subexpression `b` is only evaluated if `a` evaluates to  `false`. 
 
 #### While loops
 A `while` loop consists of a control statement and a body:
@@ -581,7 +630,7 @@ using StatsPlots
 d = Laplace(0,1); # initialize Laplace distribution with (0,1)
 
 # plot the distribution (from StatsPlots package) -
-plot(d,lw=2, label="(μ,b) = (0,1)")
+plot(d,lw=2, label="(0,1)")
 xlabel!("Value for x (AU)", fontsize=18)
 ylabel!("Laplace(x) proability density (AU)", fontsize=18)
 ```
