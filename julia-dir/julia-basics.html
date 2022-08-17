@@ -739,7 +739,7 @@ title="Print to PDF"
 <p><a class="reference external" href="https://julialang.org">Julia</a> is a dynamically typed compiled programming language developed at <a class="reference external" href="https://julia.mit.edu">MIT</a> for general purpose computing. <a class="reference external" href="https://julialang.org">Julia</a> has a number of interesting features, and is an <a class="reference external" href="https://github.com/JuliaLang/julia">open source project available under the MIT license</a>.</p>
 <p>In this chapter, we will introduce some of the key features of <a class="reference external" href="https://julialang.org">Julia</a>:</p>
 <ul class="simple">
-<li><p>Working with <a class="reference internal" href="#content-references-julia-repl"><span class="std std-ref">The Julia REPL</span></a></p></li>
+<li><p><a class="reference internal" href="#content-references-julia-repl"><span class="std std-ref">The Julia REPL</span></a></p></li>
 <li><p><a class="reference internal" href="#content-references-types-functions-md"><span class="std std-ref">Julia types, functions and syntax</span></a></p></li>
 <li><p><a class="reference internal" href="#content-references-julia-programs"><span class="std std-ref">Writing and Executing Julia Programs</span></a></p></li>
 <li><p><a class="reference internal" href="#content-references-julia-basics-using-external-packages"><span class="std std-ref">Using external packages</span></a></p></li>
@@ -951,7 +951,7 @@ commands for managing packages in <a class="reference external" href="https://do
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A = [1.0 0.8703437259241565; 1.0 1.0]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A = [1.0 0.7448168318537296; 1.0 1.0]
 </pre></div>
 </div>
 </div>
@@ -1145,7 +1145,67 @@ S = Set([1])
 <p>Julia provides several tools for <a class="reference external" href="https://docs.julialang.org/en/v1/manual/control-flow/#Control-Flow">program control flow</a> and <a class="reference external" href="https://docs.julialang.org/en/v1/manual/control-flow/#man-loops">repeated evaluation</a>; let’s review a few important examples: <code class="docutils literal notranslate"><span class="pre">if</span></code> statements, <code class="docutils literal notranslate"><span class="pre">while</span></code> loops and <code class="docutils literal notranslate"><span class="pre">for</span></code> loops.</p>
 <section id="if-else-end-statements">
 <h4>If-else-end statements<a class="headerlink" href="#if-else-end-statements" title="Permalink to this headline">#</a></h4>
-<p>Fill me in.</p>
+<p>A common task is to do something if a condition is true, or something else if the condition is false.
+This task is accomplished with the <code class="docutils literal notranslate"><span class="pre">if-elseif-else-end</span></code> pattern:</p>
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="n">y</span>
+    <span class="n">code</span> <span class="n">block</span><span class="o">-</span><span class="mi">1</span>
+<span class="k">elseif</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="n">y</span>
+    <span class="n">code</span> <span class="n">block</span><span class="o">-</span><span class="mi">2</span>
+<span class="k">else</span>
+    <span class="n">code</span> <span class="n">block</span><span class="o">-</span><span class="mi">3</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+<p>In the code snippet above, if the conditional expression <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">&lt;</span> <span class="pre">y</span></code> evaluates to <code class="docutils literal notranslate"><span class="pre">true</span></code>, then <code class="docutils literal notranslate"><span class="pre">code</span> <span class="pre">block-1</span></code> is executed; otherwise the conditional expression <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">&gt;</span> <span class="pre">y</span></code> is evaluated, and if it evaluates to <code class="docutils literal notranslate"><span class="pre">true</span></code>, the <code class="docutils literal notranslate"><span class="pre">code</span> <span class="pre">block-2</span></code> is executed; if neither expression is <code class="docutils literal notranslate"><span class="pre">true</span></code>, the else <code class="docutils literal notranslate"><span class="pre">code</span> <span class="pre">block-3</span></code> is executed. Let’s see this in action:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># initialize x and y -</span>
+<span class="n">x</span> <span class="o">=</span> <span class="mf">10.0</span>
+<span class="n">y</span> <span class="o">=</span> <span class="mf">12.0</span>
+
+<span class="k">if</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="n">y</span>
+    <span class="n">println</span><span class="p">(</span><span class="s">&quot;x is less than y&quot;</span><span class="p">)</span>
+<span class="k">elseif</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="n">y</span>
+    <span class="n">println</span><span class="p">(</span><span class="s">&quot;x is greater than y&quot;</span><span class="p">)</span>
+<span class="k">else</span>
+    <span class="n">println</span><span class="p">(</span><span class="s">&quot;x is equal to y&quot;</span><span class="p">)</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>x is less than y
+</pre></div>
+</div>
+</div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">elseif</span></code> and <code class="docutils literal notranslate"><span class="pre">else</span></code> blocks are optional. Further, as many <code class="docutils literal notranslate"><span class="pre">elseif</span></code> blocks as needed can be used. The conditional expressions in the <code class="docutils literal notranslate"><span class="pre">if-elseif-else-end</span></code> construct are evaluated until the first <code class="docutils literal notranslate"><span class="pre">true</span></code>, then no further conditional expressions (or code blocks) are evaluated. Thus, if we only have one condition to check, e.g., <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">&lt;</span> <span class="pre">y</span></code> then we can omit the <code class="docutils literal notranslate"><span class="pre">elseif</span></code> condition:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># initialize x and y -</span>
+<span class="n">x</span> <span class="o">=</span> <span class="mf">16.0</span>
+<span class="n">y</span> <span class="o">=</span> <span class="mf">2.0</span>
+
+<span class="k">if</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="n">y</span>
+    <span class="n">println</span><span class="p">(</span><span class="s">&quot;x is less than y&quot;</span><span class="p">)</span>
+<span class="k">else</span>
+    <span class="n">println</span><span class="p">(</span><span class="s">&quot;x is greater than or equal to y&quot;</span><span class="p">)</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>x is greater than or equal to y
+</pre></div>
+</div>
+</div>
+</div>
+<p>Finally, we may have more multiple statements (or even function calls) in the conditional checks. Suppose we had two complicated conditions that need to be checked to make a decision; perhaps these conditions are computed using two expensive function calls. Let these conditions be <code class="docutils literal notranslate"><span class="pre">a</span></code> and <code class="docutils literal notranslate"><span class="pre">b</span></code>.</p>
+<p>Logical checks can be chained together with the <code class="docutils literal notranslate"><span class="pre">&amp;&amp;</span></code> and <code class="docutils literal notranslate"><span class="pre">||</span></code> operators in <a class="reference external" href="https://julialang.org">Julia</a>; these operators correspond to logical <code class="docutils literal notranslate"><span class="pre">and</span></code> and <code class="docutils literal notranslate"><span class="pre">or</span></code> operations, respectively. Thus, these operators can check <a class="reference external" href="https://en.wikipedia.org/wiki/Logical_conjunction">logical and</a>, or <a class="reference external" href="https://en.wikipedia.org/wiki/Logical_disjunction">logical or</a> conditions. They also have the additional property of short-circuit evaluation: they don’t necessarily evaluate their second argument:</p>
+<ul class="simple">
+<li><p>In the <a class="reference external" href="https://en.wikipedia.org/wiki/Logical_conjunction">logical and expression</a> <code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">&amp;&amp;</span> <span class="pre">b</span></code>, the subexpression <code class="docutils literal notranslate"><span class="pre">b</span></code> is only evaluated if <code class="docutils literal notranslate"><span class="pre">a</span></code> evaluates to <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p></li>
+<li><p>In the <a class="reference external" href="https://en.wikipedia.org/wiki/Logical_disjunction">logical or expression</a> <code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">||</span> <span class="pre">b</span></code>, the subexpression <code class="docutils literal notranslate"><span class="pre">b</span></code> is only evaluated if <code class="docutils literal notranslate"><span class="pre">a</span></code> evaluates to  <code class="docutils literal notranslate"><span class="pre">false</span></code>.</p></li>
+</ul>
 </section>
 <section id="while-loops">
 <h4>While loops<a class="headerlink" href="#while-loops" title="Permalink to this headline">#</a></h4>
@@ -1280,10 +1340,10 @@ index i = 5, remaining = 0
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>MethodError: no method matching add(::Float64, ::String)
 Closest candidates are:
-  add(::Float64, !Matched::Float64) at In[20]:2
+  add(::Float64, !Matched::Float64) at In[22]:2
 Stacktrace:
  [1] top-level scope
-   @ In[20]:16
+   @ In[22]:16
  [2] eval
    @ ./boot.jl:373 [inlined]
  [3] include_string(mapexpr::typeof(REPL.softscope), mod::Module, code::String, filename::String)
@@ -1442,11 +1502,33 @@ A message from inside the example method ...
 </pre></div>
 </div>
 <p>Thus, <a class="reference external" href="https://docs.julialang.org/en/v1/manual/modules/">modules</a> in <a class="reference external" href="https://julialang.org">Julia</a> are just containers that organize functions, and perhaps <a class="reference external" href="https://docs.julialang.org/en/v1/manual/types/#Composite-Types">user defined types</a> or other data, into a unit. While constructing your own <a class="reference external" href="https://docs.julialang.org/en/v1/manual/modules/">modules</a> is not difficult, it’s beyond the scope of this introduction. For more information on building (and registering) your own <a class="reference external" href="https://docs.julialang.org/en/v1/manual/modules/">modules</a>, please consult the <a class="reference external" href="https://docs.julialang.org/en/v1/">Julia documentation</a>.</p>
-<p>Let’s assume that you have used the <a class="reference internal" href="#content-references-julia-repl-pkg-mode"><span class="std std-ref">Package mode</span></a> to install some external <a class="reference external" href="https://julialang.org">Julia</a> package called <code class="docutils literal notranslate"><span class="pre">Foo.jl</span></code>. To use that package in your <code class="docutils literal notranslate"><span class="pre">Program.jl</span></code> or in the <a class="reference external" href="https://docs.julialang.org/en/v1/stdlib/REPL/">REPL</a> you’ll need to load it into memory. There are two ways to do that, the <a class="reference external" href="https://docs.julialang.org/en/v1/base/base/#using">using</a> or <a class="reference external" href="https://docs.julialang.org/en/v1/base/base/#import">import</a> functions.</p>
+<p>Let’s assume that you have used the <a class="reference internal" href="#content-references-julia-repl-pkg-mode"><span class="std std-ref">Package mode</span></a> to install some external <a class="reference external" href="https://julialang.org">Julia</a> package called <code class="docutils literal notranslate"><span class="pre">Foo.jl</span></code>. To use that package in your <code class="docutils literal notranslate"><span class="pre">Program.jl</span></code> (or in the <a class="reference external" href="https://docs.julialang.org/en/v1/stdlib/REPL/">REPL</a>) you’ll need to load <code class="docutils literal notranslate"><span class="pre">Foo.jl</span></code> module into memory. There are two ways to do that, the <a class="reference external" href="https://docs.julialang.org/en/v1/base/base/#using">using</a> or <a class="reference external" href="https://docs.julialang.org/en/v1/base/base/#import">import</a> functions.</p>
 <ul class="simple">
-<li><p>The <a class="reference external" href="https://docs.julialang.org/en/v1/base/base/#using">using</a> will load the <code class="docutils literal notranslate"><span class="pre">Foo</span></code> package and make its <a class="reference external" href="https://docs.julialang.org/en/v1/base/base/#export">exported names</a> available for direct use. Names can also be used via dot syntax (e.g. Foo.foo to access the name foo), whether they are exported or not.</p></li>
-<li><p>The <a class="reference external" href="https://docs.julialang.org/en/v1/base/base/#import">import</a> function is similar to <a class="reference external" href="https://docs.julialang.org/en/v1/base/base/#using">using</a> with one key exception; <a class="reference external" href="https://docs.julialang.org/en/v1/base/base/#import">import</a> will load the package <code class="docutils literal notranslate"><span class="pre">Foo</span></code>. However, names from the imported <code class="docutils literal notranslate"><span class="pre">Foo</span></code> module can <em>only</em> be accessed with dot syntax (e.g. Foo.foo to access the name foo).</p></li>
+<li><p>The <a class="reference external" href="https://docs.julialang.org/en/v1/base/base/#using">using</a> function will load the <code class="docutils literal notranslate"><span class="pre">Foo</span></code> package and make its <a class="reference external" href="https://docs.julialang.org/en/v1/base/base/#export">exported names</a> available for <em>direct</em> use, i.e., the functions and data contained in the package that are visible are loaded directly into memory for the users of the package. However, names can also be accessed via dot syntax (e.g., Foo.foo to access the name foo), whether exported or not.</p></li>
+<li><p>The <a class="reference external" href="https://docs.julialang.org/en/v1/base/base/#import">import</a> function is similar to <a class="reference external" href="https://docs.julialang.org/en/v1/base/base/#using">using</a> with one key exception; <a class="reference external" href="https://docs.julialang.org/en/v1/base/base/#import">import</a> will load the package <code class="docutils literal notranslate"><span class="pre">Foo</span></code>. However, names from the imported <code class="docutils literal notranslate"><span class="pre">Foo</span></code> module can <em>only</em> be accessed with dot syntax (e.g., Foo.foo to access the name foo).</p></li>
 </ul>
+<p>Let’s do an example. Suppose we wanted to generate samples from and then visualize a <a class="reference external" href="https://en.wikipedia.org/wiki/Laplace_distribution">Laplace distribution</a> using <a class="reference external" href="https://github.com/JuliaStats/Distributions.jl">Distributions.jl</a>, a <a class="reference external" href="https://julialang.org">Julia</a> package for probability distributions and associated functions, and <a class="reference external" href="https://github.com/JuliaPlots/StatsPlots.jl">StatsPlots.jl</a>, a <a class="reference external" href="https://julialang.org">Julia</a> package for statistical visualization. Further, suppose we have already installed <a class="reference external" href="https://github.com/JuliaStats/Distributions.jl">Distributions.jl</a> and <a class="reference external" href="https://github.com/JuliaPlots/StatsPlots.jl">StatsPlots.jl</a> using the <a class="reference internal" href="#content-references-julia-repl-pkg-mode"><span class="std std-ref">Package mode</span></a>.</p>
+<p>The code block:</p>
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># load packages -</span>
+<span class="k">using</span> <span class="n">Distributions</span>
+<span class="k">using</span> <span class="n">StatsPlots</span>
+
+<span class="c"># Build a Laplace distribution (from the Distributions package)</span>
+<span class="n">d</span> <span class="o">=</span> <span class="n">Laplace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">);</span> <span class="c"># initialize Laplace distribution with (0,1)</span>
+
+<span class="c"># plot the distribution (from StatsPlots package) -</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">d</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">&quot;(0,1)&quot;</span><span class="p">)</span>
+<span class="n">xlabel!</span><span class="p">(</span><span class="s">&quot;Value for x (AU)&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
+<span class="n">ylabel!</span><span class="p">(</span><span class="s">&quot;Laplace(x) proability density (AU)&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>where the <code class="docutils literal notranslate"><span class="pre">Laplace</span></code> and <code class="docutils literal notranslate"><span class="pre">plot</span></code> functions are exported from <a class="reference external" href="https://github.com/JuliaStats/Distributions.jl">Distributions.jl</a> and <a class="reference external" href="https://github.com/JuliaPlots/StatsPlots.jl">StatsPlots.jl</a>, respectively,  produces the plot:</p>
+<figure class="align-default" id="fig-laplace-pdf">
+<a class="reference internal image-reference" href="../_images/Fig-LaplaceDistribution-PDF.pdf"><img alt="../_images/Fig-LaplaceDistribution-PDF.pdf" src="../_images/Fig-LaplaceDistribution-PDF.pdf" style="height: 420px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 7 </span><span class="caption-text">Plot of a <a class="reference external" href="https://en.wikipedia.org/wiki/Laplace_distribution">Laplace distribution</a> using <a class="reference external" href="https://github.com/JuliaStats/Distributions.jl">Distributions.jl</a> and <a class="reference external" href="https://github.com/JuliaPlots/StatsPlots.jl">StatsPlots.jl</a></span><a class="headerlink" href="#fig-laplace-pdf" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
 </section>
 <section id="summary">
 <h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">#</a></h2>
