@@ -20,7 +20,7 @@ In this chapter, we will introduce some of the key features of [Julia](https://j
 * Working with {ref}`content:references:julia-repl`
 * {ref}`content:references:types-functions-md`
 * {ref}`content:references:julia-programs`
-
+* {ref}`content:references:julia-basics-using-external-packages`
 ---
 
 (content:references:julia-repl)=
@@ -83,6 +83,7 @@ The [shell mode](https://docs.julialang.org/en/v1/stdlib/REPL/#man-shell-mode) i
 
 A list of basic [Unix shell commands can be found here](https://swcarpentry.github.io/shell-novice/reference.html).
 
+(content:references:julia-repl-pkg-mode)=
 ### Package mode
 The [package mode](https://docs.julialang.org/en/v1/stdlib/REPL/#Pkg-mode) allows the user to add, delete or update external [Julia](https://julialang.org) packages. A user enters [package mode](https://docs.julialang.org/en/v1/stdlib/REPL/#Pkg-mode) by hitting the ``]`` key which brings up the [package mode](https://docs.julialang.org/en/v1/stdlib/REPL/#Pkg-mode) prompt ``pkg>``. At this prompt, users can manage the packages that are installed globally, or in the local project environment.
 
@@ -94,14 +95,18 @@ name: fig-pkg-mode-terminal
 The [package mode](https://docs.julialang.org/en/v1/stdlib/REPL/#Pkg-mode) in the [Terminal on macOS](https://support.apple.com/guide/terminal/open-or-quit-terminal-apd5265185d-f365-44cb-8b09-71a064a42125/mac).
 ```
 
-{numref}`fig-pkg-mode-terminal` shows the results of the ``add Distributions`` command, which installs the [Distributions.jl](https://github.com/JuliaStats/Distributions.jl) package into the ``local_example_project`` project environment. In addition to adding packages, users can update package versions globally or in the local project environment using the ``up`` command; packages can also be deleted using the ``rm <package>`` command. A full list of 
-commands for managing packages in [package mode](https://docs.julialang.org/en/v1/stdlib/REPL/#Pkg-mode) can be found [here](https://pkgdocs.julialang.org/v1/managing-packages/#**3.**-Managing-Packages). To exit [package mode](https://docs.julialang.org/en/v1/stdlib/REPL/#Pkg-mode), a user types the `backspace` key (the `delete` key on macOS).
+The results of the ``add Distributions`` command, which installs the [Distributions.jl](https://github.com/JuliaStats/Distributions.jl) package into the ``local_example_project`` project environment is shown in {numref}`fig-pkg-mode-terminal`. In addition to adding packages, users can update package versions globally or in the local project environment using the ``up`` command; packages can also be deleted using the ``rm <package>`` command. A full list of 
+commands for managing packages in [package mode](https://docs.julialang.org/en/v1/stdlib/REPL/#Pkg-mode) can be found [here](https://pkgdocs.julialang.org/v1/managing-packages/#**3.**-Managing-Packages). 
+
+To exit [package mode](https://docs.julialang.org/en/v1/stdlib/REPL/#Pkg-mode), a user types the `backspace` key (the `delete` key on macOS).
+
+Loading installed packages into the [REPL](https://docs.julialang.org/en/v1/stdlib/REPL/) (or your program) is done with the [using](https://docs.julialang.org/en/v1/base/base/#using) or [import](https://docs.julialang.org/en/v1/base/base/#import) functions; we discuss what these functions do, and the differences between them, in the {ref}`content:references:julia-basics-using-external-packages` section. 
 
 (content:references:types-functions-md)=
 ## Julia types, functions and syntax
 Julia is a just-in-time compiled language (which gives it a runtime advantage over other popular interpreted languages). However, unlike other languages such as `C`, Julia code is compiled when you run it; a separate compile step is unnecessary. Thus, Julia gives the convenience and performance of a compiled language without the burden of manual compilation. 
 
-Further, Julia is a dynamically-typed language. This means you are not required to declare the type of variables before you use them. Instead, when your Julia code is compiled, the compiler uses sophisticated logic to infer, i.e., guess your data types. However, users can also specify types, potentially lessening the compiler’s burden. Further, many users find codes with the types annotated to be easier to read and maintain; remember, you may be supporting codes for _decades_, thus, making them easy to understand has an upside.
+Further, Julia is a dynamically-typed language. This means you are not required to declare the type of variables before you use them. Instead, when your Julia code is compiled, the compiler uses sophisticated logic to infer, i.e., guess your data types. However, users can also specify types, potentially lessening the compiler’s burden. Further, many users find codes with the types annotated to be easier to read and maintain; remember, you may be supporting codes for _decades_, thus, making them easy to understand is critical.
 
 ### Variable types
 Variables are values that you tell your computer to associate with a specific name so that you can later recover or change their values.  Variables can be of different types; [Julia](https://julialang.org) has an extensive [type system](https://docs.julialang.org/en/v1/manual/types/). However, in this course we will primarily use [floating point numbers](https://docs.julialang.org/en/v1/manual/integers-and-floating-point-numbers/#Floating-Point-Numbers), [integers](https://docs.julialang.org/en/v1/manual/integers-and-floating-point-numbers/#Integers) and [Strings](https://docs.julialang.org/en/v1/manual/strings/).
@@ -139,7 +144,9 @@ typeof(x)
 However, in some cases we may want to specify the type of a variable by using the `::` annotation, e.g., when composing the list of input arguments or the type of data returned from a function, or the type of items that are stored in a collection of items.
 
 ### Collections and Data Structures
-There are several [Collections and Data Structures](https://docs.julialang.org/en/v1/base/collections/#Collections-and-Data-Structures) that come with [Julia](https://julialang.org), for example [Arrays](https://docs.julialang.org/en/v1/base/arrays/#Core.Array-Tuple{UndefInitializer,%20Any}), [Tuples](https://docs.julialang.org/en/v1/manual/functions/#Tuples), [Dictionaries](https://docs.julialang.org/en/v1/base/collections/#Base.Dict) and [Sets](https://docs.julialang.org/en/v1/base/collections/#Base.Set). However, in addition to the built-in collection types, a particularly useful data structure is called a [DataFrame](https://dataframes.juliadata.org/stable/) which is provided by the [DataFrames.jl](https://github.com/JuliaData/DataFrames.jl) package. 
+There are several [Collections and Data Structures](https://docs.julialang.org/en/v1/base/collections/#Collections-and-Data-Structures) that come with [Julia](https://julialang.org), for example [Arrays](https://docs.julialang.org/en/v1/base/arrays/#Core.Array-Tuple{UndefInitializer,%20Any}), [Tuples](https://docs.julialang.org/en/v1/manual/functions/#Tuples), [Dictionaries](https://docs.julialang.org/en/v1/base/collections/#Base.Dict) and [Sets](https://docs.julialang.org/en/v1/base/collections/#Base.Set). 
+
+In addition to the built-in collection types, a particularly useful data structure is called a [DataFrame](https://dataframes.juliadata.org/stable/) which is provided by the [DataFrames.jl](https://github.com/JuliaData/DataFrames.jl) package. We'll discuss [DataFrames](https://dataframes.juliadata.org/stable/) in the [Working with Data chapter](./julia-data.md).
 
 #### Arrays
 [Arrays](https://docs.julialang.org/en/v1/base/arrays/#lib-arrays) are collections that hold ordered lists of items of the same type (typcially). Arrays can be initialized empty (and filled with an arbitraty number of elements) or the number of elements of an Array can be specified when the Array is initialized. 
@@ -314,14 +321,6 @@ println("The number of elements of set S = $(length(S))")
 
 Finally, there are several set-specific concepts, [which are useful in the context of probability](../chapter-2-dir/probability-random-variables.md), that have been implemented in Julia. For example, the [intersection](https://en.wikipedia.org/wiki/Intersection_(set_theory)) or [union](https://en.wikipedia.org/wiki/Union_(set_theory)) of sets is encoded in the [intersect](https://docs.julialang.org/en/v1/base/collections/#Base.intersect) and [union](https://docs.julialang.org/en/v1/base/collections/#Base.union) functions.
 
-#### DataFrames
-Objects of type ``DataFrame`` represent data tables where each column corresponds vector of values. The simplest way to construct a DataFrame is to pass vectors holding the values for each column using keyword arguments or pairs:
-
-```{code-cell} julia
-using DataFrames
-df = DataFrame(A=1:4, B=["M", "F", "F", "M"])
-```
-
 ### Program Control Flow
 Julia provides several tools for [program control flow](https://docs.julialang.org/en/v1/manual/control-flow/#Control-Flow) and [repeated evaluation](https://docs.julialang.org/en/v1/manual/control-flow/#man-loops); let's review a few important examples: `if` statements, `while` loops and `for` loops.
 
@@ -355,6 +354,7 @@ while (counter <= limit)
   global counter = counter + 1
 end
 ```
+
 In this example, the `while` loop continues to execute as long the statement $\text{counter}\leq\text{limit}$ evaluates to `true`. However, the value of $\text{counter}$ is updated each pass through the loop. Thus, when the value of $\text{counter} = 6$, the control statement fails (evaluates to `false`) and the loop stops.
 
 If the control statement evaluates to `false` when the `while` loop is first reached, the body of the `while` statement is never evaluated. 
@@ -441,11 +441,12 @@ In the example above, the `add` function takes arguments of type `Float64`, but 
 
 ```{code-cell} julia
 
-# declare the add function -
+# declare the add function that works on Float64
 function add(x::Float64, y::Float64)::Float64
   return (x+y)
 end
 
+# declare the add function that works on Int64
 function add(x::Int64, y::Int64)::Int64
   return (x+y)
 end
@@ -539,7 +540,33 @@ end
 main()
 ```
 
-The `example` method is loaded into the [REPL](https://docs.julialang.org/en/v1/stdlib/REPL/) before `main` (code is parsed by [Julia](https://julialang.org) from top to bottom of the file) but `example` is _not_ executed until is called from the `main` method. 
+The `example` method is loaded into the [REPL](https://docs.julialang.org/en/v1/stdlib/REPL/) memory before the `main` method (code is parsed by [Julia](https://julialang.org) from top to bottom of the file) but `example` is _not_ executed until is called from the `main` method. 
+
+(content:references:julia-basics-using-external-packages)=
+## Using external packages
+External packages in [Julia](https://julialang.org) are organized as [Modules](https://docs.julialang.org/en/v1/manual/modules/); the basic structure of a module is given by:
+
+```{code-block} julia
+
+module SomeModule
+
+# export, using, import statements are usually here; we discuss these below
+
+include("file1.jl")
+include("file2.jl")
+
+end
+
+```
+
+Thus, [modules](https://docs.julialang.org/en/v1/manual/modules/) in [Julia](https://julialang.org) are just containers that organize functions, and perhaps [user defined types](https://docs.julialang.org/en/v1/manual/types/#Composite-Types) or other data, into a unit. While constructing your own [modules](https://docs.julialang.org/en/v1/manual/modules/) is not difficult, it's beyond the scope of this introduction. For more information on building (and registering) your own [modules](https://docs.julialang.org/en/v1/manual/modules/), please consult the [Julia documentation](https://docs.julialang.org/en/v1/). 
+
+Let's assume that you have used the {ref}`content:references:julia-repl-pkg-mode` to install some external [Julia](https://julialang.org) package called `Foo.jl`. To use that package in your `Program.jl` or in the [REPL](https://docs.julialang.org/en/v1/stdlib/REPL/) you'll need to load it into memory. There are two ways to do that, the [using](https://docs.julialang.org/en/v1/base/base/#using) or [import](https://docs.julialang.org/en/v1/base/base/#import) functions.
+
+* The [using](https://docs.julialang.org/en/v1/base/base/#using) will load the `Foo` package and make its [exported names](https://docs.julialang.org/en/v1/base/base/#export) available for direct use. Names can also be used via dot syntax (e.g. Foo.foo to access the name foo), whether they are exported or not.
+
+* The [import](https://docs.julialang.org/en/v1/base/base/#import) function is similar to [using](https://docs.julialang.org/en/v1/base/base/#using) with one key exception; [import](https://docs.julialang.org/en/v1/base/base/#import) will load the package `Foo`. However, names from the imported `Foo` module can _only_ be accessed with dot syntax (e.g. Foo.foo to access the name foo).
+
 
 ## Summary
 In this chapter, we introduced some key features of [the Julia programming language](https://julialang.org):
