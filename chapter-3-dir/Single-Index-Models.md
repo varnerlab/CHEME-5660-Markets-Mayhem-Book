@@ -200,7 +200,7 @@ R_{i}\left(t\right) = \alpha_{i}+\beta_{i}R_{m}\left(t\right)+\epsilon_{i}
 \left(t\right)\qquad{t=1,2,\dots,T}
 ```
 
-where $\alpha_{i}$ and $\beta_{i}$ are constant (unkown) model paramaters. 
+where $\alpha_{i}$ and $\beta_{i}$ are constant (unknown) model paramaters. 
 ````
 
 The $\alpha_{i}$ parameter in Eqn {eq}`eq-single-index-model-standard` describes the firm specific 
@@ -287,7 +287,35 @@ when we have assumed $\det(X^{T}X)\neq{0}$. {prf:ref}`example-dmi-single-index-m
 ````{prf:example} Direct matrix inversion to compute $\theta$
 :label: example-dmi-single-index-model
 
-Fill me in.
+Estimate the unknown single index model parameters $\theta = (\alpha,\beta)^{T}$ for [AMD](https://finance.yahoo.com/quote/AMD) using the daily log returns for the last 90 days. The [three-month T-bill interest rate](https://ycharts.com/indicators/3_month_t_bill) is r = 2.61\%. Finally, assume [SPY](https://finance.yahoo.com/quote/SPY) represents the market.
+
+__Compute daily risk-free rate__: Because we are using daily price data to compute the excess return, we must convert the risk-free rate, reported in annual units, to daily units. Let $r_{f}$ denote the risk-free daily rate, then:
+
+$$r_{f} = (1+r)^{(1/365)} - 1$$
+
+The value for the daily risk-free rate of return was found to be $r_{f}$ = 7.06e-5.
+
+__Estimate $\theta$__:
+The daily log-return for [AMD](https://finance.yahoo.com/quote/AMD) and [SPY](https://finance.yahoo.com/quote/SPY) was computed using {prf:ref}`defn-log-return`; six-months of daily open high low close (OHLC) data was downloaded from [Polygon.io](https://polygon.io). The last 90-days of data were used to calculate the log return and to formulate the $Y$ vector and $X$ matrix. The matrix inverse $\left(X^{T}X\right)^{-1}$ was computed using the `inv` command from the `LinearAlgebra` package:
+
+```{code-block} julia
+Xᵀ = transpose(X);
+θ = inv((Xᵀ*X))*Xᵀ*Y
+```
+
+The firm-specific return was $\alpha$ = -0.000432, while $\beta$ = 1.96. 
+
+```{figure} ./figs/Fig-AMD-SIM-v-Data.pdf
+---
+height: 380px
+name: fig-AMD-SIM-v-Data
+---
+Estimated performance of the single index model for [AMD](https://finance.yahoo.com/quote/AMD/) computed using direct matrix inversion.
+```
+
+
+
+source: [live Pluto notebook](https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks) or [static HTML view](https://htmlview.glitch.me/?https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks/blob/main/pluto-notebooks/html/Example-DirectMatrixInversion-SIM.jl.html)
 
 ````
 
