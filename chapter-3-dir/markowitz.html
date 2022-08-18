@@ -621,7 +621,7 @@ portfolio. Denote the set of assets in a portfolio as <span class="math notransl
 <p>Denote the return of asset <span class="math notranslate nohighlight">\(i\)</span> in portfolio <span class="math notranslate nohighlight">\(\mathcal{P}\)</span> on some time basis <span class="math notranslate nohighlight">\(\mathcal{B}\)</span> as <span class="math notranslate nohighlight">\(r_{i}\)</span>. Then, the expected return of portfolio <span class="math notranslate nohighlight">\(\mathcal{P}\)</span> denoted by
 <span class="math notranslate nohighlight">\(\mathbb{E}\left(r_{\mathcal{P}}\right)\)</span> is:</p>
 <div class="math notranslate nohighlight" id="equation-eqn-expected-p-rerturn">
-<span class="eqno">(26)<a class="headerlink" href="#equation-eqn-expected-p-rerturn" title="Permalink to this equation">#</a></span>\[\mathbb{E}\left(r_{\mathcal{P}}\right) = \sum_{i\in\mathcal{P}}\omega_{i}\mathbb{E}\left(r_{i}\right)\]</div>
+<span class="eqno">(29)<a class="headerlink" href="#equation-eqn-expected-p-rerturn" title="Permalink to this equation">#</a></span>\[\mathbb{E}\left(r_{\mathcal{P}}\right) = \sum_{i\in\mathcal{P}}\omega_{i}\mathbb{E}\left(r_{i}\right)\]</div>
 <p>where <span class="math notranslate nohighlight">\(w_{i}\)</span> denotes the fraction of asset <span class="math notranslate nohighlight">\(i\)</span> in the portfolio <span class="math notranslate nohighlight">\(\mathcal{P}\)</span>, and
 <span class="math notranslate nohighlight">\(\mathbb{E}\left(r_{i}\right)\)</span> denotes the expected return of asset <span class="math notranslate nohighlight">\(i\)</span> on time basis <span class="math notranslate nohighlight">\(\mathcal{B}\)</span>.</p>
 </section>
@@ -632,7 +632,7 @@ portfolio. Denote the set of assets in a portfolio as <span class="math notransl
 <p>Denote the return of asset <span class="math notranslate nohighlight">\(i\)</span> in portfolio <span class="math notranslate nohighlight">\(\mathcal{P}\)</span> for some time basis <span class="math notranslate nohighlight">\(\mathcal{B}\)</span>
 as <span class="math notranslate nohighlight">\(r_{i}\)</span>. Then, the variance of a portfolio <span class="math notranslate nohighlight">\(\mathcal{P}\)</span> is given by:</p>
 <div class="math notranslate nohighlight" id="equation-eqn-p-var-general">
-<span class="eqno">(27)<a class="headerlink" href="#equation-eqn-p-var-general" title="Permalink to this equation">#</a></span>\[\sigma_{\mathcal{P}}^2 = 
+<span class="eqno">(30)<a class="headerlink" href="#equation-eqn-p-var-general" title="Permalink to this equation">#</a></span>\[\sigma_{\mathcal{P}}^2 = 
 \sum_{i\in\mathcal{P}}\sum_{j\in\mathcal{P}}w_{i}w_{j}
 \text{cov}\left(r_{i},r_{j}\right)\]</div>
 <p>where <span class="math notranslate nohighlight">\(w_{\star}\)</span> denotes the fraction of asset <span class="math notranslate nohighlight">\(\star\)</span> in the portfolio <span class="math notranslate nohighlight">\(\mathcal{P}\)</span>, and
@@ -697,7 +697,7 @@ The quantity <span class="math notranslate nohighlight">\(R^{*}\)</span> denotes
 <p>A couple of issues:</p>
 <ul class="simple">
 <li><p>While the problem above is written in terms of absolute return <span class="math notranslate nohighlight">\(r_{\star}\)</span>, we can also write the portfolio allocation problem using excess returns; the excess return is <span class="math notranslate nohighlight">\(R_{\star} = r_{\star} - r_{f}\)</span>, where <span class="math notranslate nohighlight">\(r_{f}\)</span> denotes the risk free rate of return.</p></li>
-<li><p>The challenge to solving the Markowitz problem is estimating the expected assets in the portfolio and the covariance matrix <span class="math notranslate nohighlight">\(\Sigma\)</span>. These quantities can be calculated from data if available or from models of the return and variance of the assets in the portfolio. Let’s consider both approaches.</p></li>
+<li><p>The challenge to solving the Markowitz problem is estimating the expected return of assets in the portfolio and the covariance matrix <span class="math notranslate nohighlight">\(\Sigma\)</span>. These quantities can be calculated from data if available or from models of the return and variance of the assets in the portfolio. Let’s consider both approaches.</p></li>
 </ul>
 </section>
 <section id="data-driven-risky-portfolios">
@@ -714,12 +714,12 @@ The quantity <span class="math notranslate nohighlight">\(R^{*}\)</span> denotes
 <div class="proof observation admonition" id="obs-single-index-model-p-return">
 <p class="admonition-title"><span class="caption-number">Observation 4 </span> (Single Index Model Portfolio Return)</p>
 <section class="observation-content" id="proof-content">
-<p>The single index model of Sharpe <span id="id5">[<a class="reference internal" href="../References.html#id12" title="William F. Sharpe. A simplified model for portfolio analysis. Management Science, 9(2):277-293, 1963. URL: https://doi.org/10.1287/mnsc.9.2.277, arXiv:https://doi.org/10.1287/mnsc.9.2.277, doi:10.1287/mnsc.9.2.277.">Sharpe, 1963</a>]</span> describes the excess return of asset <span class="math notranslate nohighlight">\(i\)</span> in terms of a firm specific contribution, and a contribution from the overall market. Substituting the expected excess return for asset <span class="math notranslate nohighlight">\(i\)</span> into Eqn. <a class="reference internal" href="#equation-eqn-expected-p-rerturn">(26)</a> gives:</p>
+<p>The single index model of Sharpe <span id="id5">[<a class="reference internal" href="../References.html#id12" title="William F. Sharpe. A simplified model for portfolio analysis. Management Science, 9(2):277-293, 1963. URL: https://doi.org/10.1287/mnsc.9.2.277, arXiv:https://doi.org/10.1287/mnsc.9.2.277, doi:10.1287/mnsc.9.2.277.">Sharpe, 1963</a>]</span> describes the excess return of asset <span class="math notranslate nohighlight">\(i\)</span> in terms of a firm specific contribution, and a contribution from the overall market. Substituting the expected excess return for asset <span class="math notranslate nohighlight">\(i\)</span> into Eqn. <a class="reference internal" href="#equation-eqn-expected-p-rerturn">(29)</a> gives:</p>
 <div class="math notranslate nohighlight" id="equation-eqn-almost-sim-portfolio">
-<span class="eqno">(28)<a class="headerlink" href="#equation-eqn-almost-sim-portfolio" title="Permalink to this equation">#</a></span>\[\mathbb{E}(R_{\mathcal{P}}) = w^{T}\mathbb{E}(R) = \sum_{i\in\mathcal{P}}w_{i}\Bigl[\alpha_{i}+\beta_{i}\mathbb{E}(R_{m})\Bigr]\]</div>
-<p>where the constant <span class="math notranslate nohighlight">\(\alpha_{i}\)</span> is the estimated unexplained firm-specific return and <span class="math notranslate nohighlight">\(\mathbb{E}(R_{m})\)</span> denotes the expected excess return of the market. Carrying through the multiplication in Eqn. <a class="reference internal" href="#equation-eqn-almost-sim-portfolio">(28)</a> gives:</p>
+<span class="eqno">(31)<a class="headerlink" href="#equation-eqn-almost-sim-portfolio" title="Permalink to this equation">#</a></span>\[\mathbb{E}(R_{\mathcal{P}}) = w^{T}\mathbb{E}(R) = \sum_{i\in\mathcal{P}}w_{i}\Bigl[\alpha_{i}+\beta_{i}\mathbb{E}(R_{m})\Bigr]\]</div>
+<p>where the constant <span class="math notranslate nohighlight">\(\alpha_{i}\)</span> is the estimated unexplained firm-specific return and <span class="math notranslate nohighlight">\(\mathbb{E}(R_{m})\)</span> denotes the expected excess return of the market. Carrying through the multiplication in Eqn. <a class="reference internal" href="#equation-eqn-almost-sim-portfolio">(31)</a> gives:</p>
 <div class="math notranslate nohighlight" id="equation-eqn-expected-return-sim-portfolio">
-<span class="eqno">(29)<a class="headerlink" href="#equation-eqn-expected-return-sim-portfolio" title="Permalink to this equation">#</a></span>\[\mathbb{E}(r_{\mathcal{P}}) = w^{T}\mathbb{E}(r) = \alpha_{\mathcal{P}}+\beta_{\mathcal{P}}\mathbb{E}(R_{m})\]</div>
+<span class="eqno">(32)<a class="headerlink" href="#equation-eqn-expected-return-sim-portfolio" title="Permalink to this equation">#</a></span>\[\mathbb{E}(r_{\mathcal{P}}) = w^{T}\mathbb{E}(r) = \alpha_{\mathcal{P}}+\beta_{\mathcal{P}}\mathbb{E}(R_{m})\]</div>
 <p>where the constants <span class="math notranslate nohighlight">\(\alpha_{\mathcal{P}}\)</span> and <span class="math notranslate nohighlight">\(\beta_{\mathcal{P}}\)</span> are given by:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -739,12 +739,12 @@ The quantity <span class="math notranslate nohighlight">\(R^{*}\)</span> denotes
 <section class="observation-content" id="proof-content">
 <p>To calculate the portfolio covariance matrix <span class="math notranslate nohighlight">\(\Sigma\)</span>, we must calculate <span class="math notranslate nohighlight">\(\text{cov}(R_{i}, R_{j})\)</span>, the covariance between the excess return of asset <span class="math notranslate nohighlight">\(i\)</span> and <span class="math notranslate nohighlight">\(j\)</span> in portfolio <span class="math notranslate nohighlight">\(\mathcal{P}\)</span>. Toward this, we take advantage of a property of the covariance between random variables <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span>:</p>
 <div class="math notranslate nohighlight" id="equation-eqn-prop-cov">
-<span class="eqno">(30)<a class="headerlink" href="#equation-eqn-prop-cov" title="Permalink to this equation">#</a></span>\[\text{cov}(X,Y) = \mathbb{E}(XY) - \mathbb{E}(X)\mathbb{E}(Y)\]</div>
+<span class="eqno">(33)<a class="headerlink" href="#equation-eqn-prop-cov" title="Permalink to this equation">#</a></span>\[\text{cov}(X,Y) = \mathbb{E}(XY) - \mathbb{E}(X)\mathbb{E}(Y)\]</div>
 <p>Let <span class="math notranslate nohighlight">\(X=R_{i}\)</span> and <span class="math notranslate nohighlight">\(Y=R_{j}\)</span> where the excess return of asset <span class="math notranslate nohighlight">\(\star\)</span> is modeled using the single index model:</p>
 <div class="math notranslate nohighlight">
 \[R_{\star} = \alpha_{\star}+\beta_{\star}R_{m} + \epsilon_{\star}\]</div>
 <p>where <span class="math notranslate nohighlight">\(\alpha_{\star}\)</span> denotes the firm-specific return, <span class="math notranslate nohighlight">\(\beta_{\star}\)</span> denotes the proportion of the firm’s return associated with the overall market, and <span class="math notranslate nohighlight">\(\epsilon_{\star}\)</span> is an error term; we have suppressed the time argument in the excess returns and the error.</p>
-<p>Substituting the single index model into Eqn. <a class="reference internal" href="#equation-eqn-prop-cov">(30)</a> and simplifing gives:</p>
+<p>Substituting the single index model into Eqn. <a class="reference internal" href="#equation-eqn-prop-cov">(33)</a> and simplifing gives:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \text{cov}(R_{i}, R_{j}) = \begin{cases}

@@ -443,6 +443,46 @@ title="Print to PDF"
      Expected Excess Returns from Data
     </a>
    </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#single-index-models">
+     Single Index Models
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#estimating-single-index-models-from-data">
+       Estimating Single Index Models from Data
+      </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#phase-1-estimate-alpha-i-beta-i">
+         Phase 1: Estimate
+         <span class="math notranslate nohighlight">
+          \((\alpha_{i},\beta_{i})\)
+         </span>
+         .
+        </a>
+        <ul class="nav section-nav flex-column">
+         <li class="toc-h6 nav-item toc-entry">
+          <a class="reference internal nav-link" href="#direct-matrix-inversion">
+           Direct Matrix Inversion
+          </a>
+         </li>
+         <li class="toc-h6 nav-item toc-entry">
+          <a class="reference internal nav-link" href="#optimization-approaches">
+           Optimization Approaches
+          </a>
+         </li>
+        </ul>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#phase-2-identification-of-the-residual-model">
+         Phase 2: Identification of the residual model
+        </a>
+       </li>
+      </ul>
+     </li>
+    </ul>
+   </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -454,18 +494,6 @@ title="Print to PDF"
     <a class="reference internal nav-link" href="#example">
      Example
     </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#single-index-models">
-     Single Index Models
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#estimating-single-index-models-from-data">
-       Estimating Single Index Models from Data
-      </a>
-     </li>
-    </ul>
    </li>
   </ul>
  </li>
@@ -518,6 +546,46 @@ title="Print to PDF"
      Expected Excess Returns from Data
     </a>
    </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#single-index-models">
+     Single Index Models
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#estimating-single-index-models-from-data">
+       Estimating Single Index Models from Data
+      </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#phase-1-estimate-alpha-i-beta-i">
+         Phase 1: Estimate
+         <span class="math notranslate nohighlight">
+          \((\alpha_{i},\beta_{i})\)
+         </span>
+         .
+        </a>
+        <ul class="nav section-nav flex-column">
+         <li class="toc-h6 nav-item toc-entry">
+          <a class="reference internal nav-link" href="#direct-matrix-inversion">
+           Direct Matrix Inversion
+          </a>
+         </li>
+         <li class="toc-h6 nav-item toc-entry">
+          <a class="reference internal nav-link" href="#optimization-approaches">
+           Optimization Approaches
+          </a>
+         </li>
+        </ul>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#phase-2-identification-of-the-residual-model">
+         Phase 2: Identification of the residual model
+        </a>
+       </li>
+      </ul>
+     </li>
+    </ul>
+   </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -529,18 +597,6 @@ title="Print to PDF"
     <a class="reference internal nav-link" href="#example">
      Example
     </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#single-index-models">
-     Single Index Models
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#estimating-single-index-models-from-data">
-       Estimating Single Index Models from Data
-      </a>
-     </li>
-    </ul>
    </li>
   </ul>
  </li>
@@ -688,12 +744,136 @@ the unweighted excess return vector <span class="math notranslate nohighlight">\
 </ol>
 </section>
 </div></section>
+<section id="single-index-models">
+<h3>Single Index Models<a class="headerlink" href="#single-index-models" title="Permalink to this headline">#</a></h3>
+<p>The <a class="reference internal" href="#content-references-fractional-return"><span class="std std-ref">Fractional return</span></a> or <a class="reference internal" href="#content-references-log-return"><span class="std std-ref">Logarithmic return</span></a> can be computed
+from historical data. However, if we do not have access to price data for <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> or want to
+<em>predict</em> the return of <code class="docutils literal notranslate"><span class="pre">XYZ,</span></code> for example, in an automated trading system, we need a model. One of the simplest (yet still widely used) models is the single index model (SIM) developed by Sharpe <span id="id1">[<a class="reference internal" href="../References.html#id12" title="William F. Sharpe. A simplified model for portfolio analysis. Management Science, 9(2):277-293, 1963. URL: https://doi.org/10.1287/mnsc.9.2.277, arXiv:https://doi.org/10.1287/mnsc.9.2.277, doi:10.1287/mnsc.9.2.277.">Sharpe, 1963</a>]</span>.</p>
+<p>The single-index model (SIM) is an asset pricing model which measures both the risk and the return of a stock, relative to a risk free alternative investment e.g., government treasury bounds. The single index model describes the return of the stock of firm <span class="math notranslate nohighlight">\(i\)</span> in terms of a firm-specific return, and the overall market return:</p>
+<div class="math notranslate nohighlight" id="equation-eq-single-index-model">
+<span class="eqno">(23)<a class="headerlink" href="#equation-eq-single-index-model" title="Permalink to this equation">#</a></span>\[r_{i}\left(t\right) - r_{f} = \alpha_{i}+\beta_{i}\left(r_{m}\left(t\right)-r_{f}\right)+\epsilon_{i}
+\left(t\right)\qquad{t=1,2,\dots,T}\]</div>
+<p>The term <span class="math notranslate nohighlight">\(r_{i}\left(t\right)\)</span> denotes the return of firm <span class="math notranslate nohighlight">\(i\)</span>, during time period <span class="math notranslate nohighlight">\(t\)</span>,
+<span class="math notranslate nohighlight">\(r_{f}\)</span> denotes the risk-free rate i.e., the <a class="reference external" href="https://fred.stlouisfed.org/series/DTB3">interest rate of a riskless investment such as treasury bills</a>, while <span class="math notranslate nohighlight">\(r_{m}\left(t\right)\)</span> denotes the return on a market portfolio e.g., an index such as the <a class="reference external" href="https://en.wikipedia.org/wiki/S%26P_500">S&amp;P500</a> during time period <span class="math notranslate nohighlight">\(t\)</span>.  The term <span class="math notranslate nohighlight">\(\alpha_{i}\)</span> denotes the firm-specific return, while <span class="math notranslate nohighlight">\(\beta_{i}\)</span> denotes the proportion of the the firm’s return associated with the overall market.</p>
+<p>The term <span class="math notranslate nohighlight">\(R_{i}(t)\equiv\left(r_{i}\left(t\right) - r_{f}\right)\)</span> describes the excess return of specific firm <span class="math notranslate nohighlight">\(i\)</span>, while <span class="math notranslate nohighlight">\(R_{m}(t)\equiv\left(r_{m}\left(t\right)-r_{f}\right)\)</span> describes the excess return of the market portfolio. Replacing the excess returns in Eqn. <a class="reference internal" href="#equation-eq-single-index-model">(23)</a> gives the single index model in standard form:</p>
+<div class="proof definition admonition" id="defn-single-index-model-standard">
+<p class="admonition-title"><span class="caption-number">Definition 28 </span> (Single index model)</p>
+<section class="definition-content" id="proof-content">
+<p>Let <span class="math notranslate nohighlight">\(R_{i}(t)\)</span> and <span class="math notranslate nohighlight">\(R_{m}(t)\)</span> denote the firm specific and market excess returns (random variables)
+for time period <span class="math notranslate nohighlight">\(t\)</span>. Further, let <span class="math notranslate nohighlight">\(\epsilon_{i}\left(t\right)\)</span> denote a <a class="reference external" href="https://en.wikipedia.org/wiki/Normal_distribution">stationary normally distributed random noise process</a> with mean zero and standard deviation <span class="math notranslate nohighlight">\(\sigma_{i}\)</span>.</p>
+<p>Then, the single index model of Sharpe is given by <span id="id2">[<a class="reference internal" href="../References.html#id12" title="William F. Sharpe. A simplified model for portfolio analysis. Management Science, 9(2):277-293, 1963. URL: https://doi.org/10.1287/mnsc.9.2.277, arXiv:https://doi.org/10.1287/mnsc.9.2.277, doi:10.1287/mnsc.9.2.277.">Sharpe, 1963</a>]</span>:</p>
+<div class="math notranslate nohighlight" id="equation-eq-single-index-model-standard">
+<span class="eqno">(24)<a class="headerlink" href="#equation-eq-single-index-model-standard" title="Permalink to this equation">#</a></span>\[R_{i}\left(t\right) = \alpha_{i}+\beta_{i}R_{m}\left(t\right)+\epsilon_{i}
+\left(t\right)\qquad{t=1,2,\dots,T}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\alpha_{i}\)</span> and <span class="math notranslate nohighlight">\(\beta_{i}\)</span> are constant (unknown) model paramaters.</p>
+</section>
+</div><p>The <span class="math notranslate nohighlight">\(\alpha_{i}\)</span> parameter in Eqn <a class="reference internal" href="#equation-eq-single-index-model-standard">(24)</a> describes the firm specific
+return that is not explained by the market; thus, <span class="math notranslate nohighlight">\(\alpha_{i}\)</span> is the
+idiosyncratic return of firm <span class="math notranslate nohighlight">\(i\)</span>.</p>
+<p>The <span class="math notranslate nohighlight">\(\beta_{i}\)</span> parameter in Eqn <a class="reference internal" href="#equation-eq-single-index-model-standard">(24)</a> has several interpretations.
+First, <span class="math notranslate nohighlight">\(\beta_{i}\)</span> measures how the excess return of firm <span class="math notranslate nohighlight">\(i\)</span> is related to the overall excess return of the market; a large <span class="math notranslate nohighlight">\(\beta_{i}\)</span> suggests the market returns (or losses) are <em>amplified</em> for firm <span class="math notranslate nohighlight">\(i\)</span>, while
+a small <span class="math notranslate nohighlight">\(\beta_{i}\)</span> suggests the market returns (or losses) are <em>damped</em> for firm <span class="math notranslate nohighlight">\(i\)</span>.
+On the other hand, <span class="math notranslate nohighlight">\(\beta_{i}\)</span> can also be interpreted as a measure of the relative risk of investing in firm <span class="math notranslate nohighlight">\(i\)</span>.</p>
+<p>To understand the various interpretations of <span class="math notranslate nohighlight">\(\beta_{i}\)</span>, we first must understand that both the firm specific <span class="math notranslate nohighlight">\(R_{i}\)</span> and overall market excess returns <span class="math notranslate nohighlight">\(R_{m}\)</span> are random variables. Thus, we can compute the expectation and variance of these variables and look at how these quantities depend upon <span class="math notranslate nohighlight">\(\beta_{i}\)</span>:</p>
+<div class="proof observation admonition" id="obs-beta-risk-measure">
+<p class="admonition-title"><span class="caption-number">Observation 2 </span> (Risk and Reward intepretations of <span class="math notranslate nohighlight">\(\beta_{i}\)</span>)</p>
+<section class="observation-content" id="proof-content">
+<p>Taking the expectation of the firm excess return <span class="math notranslate nohighlight">\(R_{i}\)</span> gives:</p>
+<div class="math notranslate nohighlight" id="equation-eq-expected-r-sim">
+<span class="eqno">(25)<a class="headerlink" href="#equation-eq-expected-r-sim" title="Permalink to this equation">#</a></span>\[\mathbb{E}\left(R_{i}\right) = \alpha_{i}+\beta_{i}\mathbb{E}\left(R_{m}\right)\]</div>
+<p>where <span class="math notranslate nohighlight">\(\mathbb{E}\left(\epsilon_{i}\left(t\right)\right) = 0\)</span>.
+Solving Eqn. <a class="reference internal" href="#equation-eq-expected-r-sim">(25)</a> for <span class="math notranslate nohighlight">\(\beta_{i}\)</span> gives:</p>
+<div class="math notranslate nohighlight">
+\[\beta_{i} = \frac{\mathbb{E}\left(R_{i}\right) - \alpha_{i}}{\mathbb{E}\left(R_{m}\right)}\]</div>
+<p>Thus, <span class="math notranslate nohighlight">\(\beta_{i}\)</span> is a corrected ratio of expected (average) returns:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\beta_{i}&gt;1\)</span> expected return of firm <span class="math notranslate nohighlight">\(i\)</span> is <em>greater</em> than the expected market return</p></li>
+<li><p><span class="math notranslate nohighlight">\(\beta_{i}\sim{1}\)</span> firm <span class="math notranslate nohighlight">\(i\)</span> performs <em>similar</em> to the overall market on average</p></li>
+<li><p><span class="math notranslate nohighlight">\(\beta_{i}&lt;1\)</span> expected excess return of firm <span class="math notranslate nohighlight">\(i\)</span> is <em>less</em> than the expected excess market return</p></li>
+</ul>
+<p>The <span class="math notranslate nohighlight">\(\beta_{i}\)</span> for asset <span class="math notranslate nohighlight">\(i\)</span> can also be thought of as a measure of risk of asset <span class="math notranslate nohighlight">\(i\)</span> relative to the market. For example, we can show that:</p>
+<div class="math notranslate nohighlight">
+\[\beta_{i} = \frac{\text{cov}(R_{i}, R_{m})}{\text{var}(R_{m})}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\text{cov}(R_{i}, R_{m})\)</span> denotes the <a class="reference external" href="https://en.wikipedia.org/wiki/Covariance">covariance</a> between the excess return of asset <span class="math notranslate nohighlight">\(i\)</span> and the market, and <span class="math notranslate nohighlight">\(\text{var}(R_{m})\)</span> denotes the variance of the market excess return. Thus, in the context of risk, <span class="math notranslate nohighlight">\(\beta_{i}\)</span> has the interpretation:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\beta_{i}&gt;1\)</span> suggests firm <span class="math notranslate nohighlight">\(i\)</span> has <em>greater risk</em> than the overall market</p></li>
+<li><p><span class="math notranslate nohighlight">\(\beta_{i}\sim{1}\)</span> suggests that firm <span class="math notranslate nohighlight">\(i\)</span> has the <em>same risk</em> as the overall market on average</p></li>
+<li><p><span class="math notranslate nohighlight">\(\beta_{i}&lt;1\)</span> suggests firm <span class="math notranslate nohighlight">\(i\)</span> has <em>less risk</em> compared to overall market</p></li>
+</ul>
+<p>Putting these two regimes together gives fundamental insight into the behavior of markets: <strong>high returns come with high-risk</strong>.</p>
+</section>
+</div><section id="estimating-single-index-models-from-data">
+<h4>Estimating Single Index Models from Data<a class="headerlink" href="#estimating-single-index-models-from-data" title="Permalink to this headline">#</a></h4>
+<p>Estimating single index models from data reduces to estimating values for the <span class="math notranslate nohighlight">\((\alpha_{i},\beta_{i})\)</span> parameters and developing a residual model <span class="math notranslate nohighlight">\(\epsilon_{i}(t)\)</span>. Let’s decompose this problem into two phases:</p>
+<ul class="simple">
+<li><p>Phase 1: Estimate values for <span class="math notranslate nohighlight">\((\alpha_{i},\beta_{i})\)</span> using one of many possible approaches, and</p></li>
+<li><p>Phase 2: Estimate the <span class="math notranslate nohighlight">\(\epsilon_{i}(t)\)</span> distribution by computing the residual between the data and the model with parameter values from phase 1.</p></li>
+</ul>
+<section id="phase-1-estimate-alpha-i-beta-i">
+<h5>Phase 1: Estimate <span class="math notranslate nohighlight">\((\alpha_{i},\beta_{i})\)</span>.<a class="headerlink" href="#phase-1-estimate-alpha-i-beta-i" title="Permalink to this headline">#</a></h5>
+<p>Imagine that we have historical data for the excess return of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> and the market over some period of time; say we have <span class="math notranslate nohighlight">\(\mathcal{M}\)</span> measurements for the excess returns. Then, the excess return for <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> can be encoded as a <span class="math notranslate nohighlight">\(\mathcal{M}\times{1}\)</span> column vector <span class="math notranslate nohighlight">\(Y\)</span>, while the excess market return can be encoded as an <span class="math notranslate nohighlight">\(\mathcal{M}\times{2}\)</span> matrix <span class="math notranslate nohighlight">\(X\)</span>, where the first column of <span class="math notranslate nohighlight">\(X\)</span> is all 1’s while the second column holds the excess market return values. Then, the single index model (in the absence of the residual) is the overdetermined (<span class="math notranslate nohighlight">\(\mathcal{M}\gg{2}\)</span>) linear system:</p>
+<div class="math notranslate nohighlight" id="equation-eqn-linear-sys-sim">
+<span class="eqno">(26)<a class="headerlink" href="#equation-eqn-linear-sys-sim" title="Permalink to this equation">#</a></span>\[Y = X\theta\]</div>
+<p>where <span class="math notranslate nohighlight">\(\theta = (\alpha_{i},\beta_{i})^{T}\)</span> is the <span class="math notranslate nohighlight">\(2\times{1}\)</span> column vector of unknown parameters. The task is to estimate the unknown <span class="math notranslate nohighlight">\(\theta\)</span> vector, given <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span>.</p>
+<section id="direct-matrix-inversion">
+<h6>Direct Matrix Inversion<a class="headerlink" href="#direct-matrix-inversion" title="Permalink to this headline">#</a></h6>
+<p>One method to estimate the unknown parameter vector <span class="math notranslate nohighlight">\(\theta\)</span> is to directly invert the data matrix <span class="math notranslate nohighlight">\(X\)</span>. In particular, if we multiply both sides of Eqn. <a class="reference internal" href="#equation-eqn-linear-sys-sim">(26)</a> by the transpose of the data matrix:</p>
+<div class="math notranslate nohighlight" id="equation-eqn-linear-sys-sim-1">
+<span class="eqno">(27)<a class="headerlink" href="#equation-eqn-linear-sys-sim-1" title="Permalink to this equation">#</a></span>\[X^{T}Y = X^{T}X\theta\]</div>
+<p>we get a square matrix <span class="math notranslate nohighlight">\(X^{T}X\)</span> that can be inverted to solve for the unknown parameter vector <span class="math notranslate nohighlight">\(\theta\)</span>:</p>
+<div class="math notranslate nohighlight" id="equation-eqn-linear-sys-sim-2">
+<span class="eqno">(28)<a class="headerlink" href="#equation-eqn-linear-sys-sim-2" title="Permalink to this equation">#</a></span>\[\theta = \left(X^{T}X\right)^{-1}X^{T}Y\]</div>
+<p>when we have assumed <span class="math notranslate nohighlight">\(\det(X^{T}X)\neq{0}\)</span>. <a class="reference internal" href="#example-dmi-single-index-model">Example 8</a> explores the direct matrix inversion approach for computing the unknown parameter vector <span class="math notranslate nohighlight">\(\theta\)</span>:</p>
+<div class="proof example admonition" id="example-dmi-single-index-model">
+<p class="admonition-title"><span class="caption-number">Example 8 </span> (Direct matrix inversion to compute <span class="math notranslate nohighlight">\(\theta\)</span>)</p>
+<section class="example-content" id="proof-content">
+<p>Estimate the unknown single index model parameters <span class="math notranslate nohighlight">\(\theta = (\alpha,\beta)^{T}\)</span> for <a class="reference external" href="https://finance.yahoo.com/quote/AMD">AMD</a> using the daily log returns for the last 90 days. The <a class="reference external" href="https://ycharts.com/indicators/3_month_t_bill">three-month T-bill interest rate</a> is r = 2.61%. Finally, assume <a class="reference external" href="https://finance.yahoo.com/quote/SPY">SPY</a> represents the market.</p>
+<p><strong>Compute daily risk-free rate</strong>: Because we are using daily price data to compute the excess return, we must convert the risk-free rate, reported in annual units, to daily units. Let <span class="math notranslate nohighlight">\(r_{f}\)</span> denote the risk-free daily rate, then:</p>
+<div class="math notranslate nohighlight">
+\[r_{f} = (1+r)^{(1/365)} - 1\]</div>
+<p>The value for the daily risk-free rate of return was found to be <span class="math notranslate nohighlight">\(r_{f}\)</span> = 7.06e-5.</p>
+<p><strong>Estimate <span class="math notranslate nohighlight">\(\theta\)</span></strong>:
+The daily log-return for <a class="reference external" href="https://finance.yahoo.com/quote/AMD">AMD</a> and <a class="reference external" href="https://finance.yahoo.com/quote/SPY">SPY</a> was computed using <a class="reference internal" href="#defn-log-return">Definition 26</a>; six-months of daily open high low close (OHLC) data was downloaded from <a class="reference external" href="https://polygon.io">Polygon.io</a>.</p>
+<p>The last 90-days of data were used to calculate the log return and to formulate the <span class="math notranslate nohighlight">\(Y\)</span> vector and <span class="math notranslate nohighlight">\(X\)</span> matrix. The matrix inverse <span class="math notranslate nohighlight">\(\left(X^{T}X\right)^{-1}\)</span> was computed using the <code class="docutils literal notranslate"><span class="pre">inv</span></code> command from the <code class="docutils literal notranslate"><span class="pre">LinearAlgebra</span></code> package:</p>
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">Xᵀ</span> <span class="o">=</span> <span class="n">transpose</span><span class="p">(</span><span class="n">X</span><span class="p">);</span>
+<span class="n">θ</span> <span class="o">=</span> <span class="n">inv</span><span class="p">((</span><span class="n">Xᵀ</span><span class="o">*</span><span class="n">X</span><span class="p">))</span><span class="o">*</span><span class="n">Xᵀ</span><span class="o">*</span><span class="n">Y</span>
+</pre></div>
+</div>
+<p>The firm-specific return was <span class="math notranslate nohighlight">\(\alpha\)</span> = -0.000432, while <span class="math notranslate nohighlight">\(\beta\)</span> = 1.96.</p>
+<figure class="align-default" id="fig-amd-sim-v-data">
+<a class="reference internal image-reference" href="../_images/Fig-AMD-SIM-v-Data.pdf"><img alt="../_images/Fig-AMD-SIM-v-Data.pdf" src="../_images/Fig-AMD-SIM-v-Data.pdf" style="height: 380px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 14 </span><span class="caption-text">Estimated performance of the single index model for <a class="reference external" href="https://finance.yahoo.com/quote/AMD/">AMD</a> computed using direct matrix inversion.</span><a class="headerlink" href="#fig-amd-sim-v-data" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>source: <a class="reference external" href="https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks">live Pluto notebook</a> or <a class="reference external" href="https://htmlview.glitch.me/?https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks/blob/main/pluto-notebooks/html/Example-DirectMatrixInversion-SIM.jl.html">static HTML view</a></p>
+</section>
+</div></section>
+<section id="optimization-approaches">
+<h6>Optimization Approaches<a class="headerlink" href="#optimization-approaches" title="Permalink to this headline">#</a></h6>
+<p>The least-squares formulation to estimate the unknown parameters <span class="math notranslate nohighlight">\(\theta = (\alpha_{i},\beta_{i})^{T}\)</span> is given be:</p>
+<div class="math notranslate nohighlight">
+\[\min_{\theta} ||X\theta - Y||_{p}\]</div>
+<p>subject (potentially) to constaints on the unknown parameters <span class="math notranslate nohighlight">\(\theta\)</span>, where <span class="math notranslate nohighlight">\(||\star||_{p}\)</span> denotes the <a class="reference external" href="https://en.wikipedia.org/wiki/Norm_(mathematics)">p-vector norm</a>; typically this will be something like the <a class="reference external" href="https://en.wikipedia.org/wiki/Norm_(mathematics)#p-norm"><span class="math notranslate nohighlight">\(l_{2}\)</span>-norm</a> but it doesn’t have to be. <a class="reference internal" href="#example-lsq-single-index-model">Example 9</a> explores the least-squares approach for estimating the unknown parameter vector <span class="math notranslate nohighlight">\(\theta\)</span>:</p>
+<div class="proof example admonition" id="example-lsq-single-index-model">
+<p class="admonition-title"><span class="caption-number">Example 9 </span> (Least-squares estimation of <span class="math notranslate nohighlight">\(\theta\)</span> )</p>
+<section class="example-content" id="proof-content">
+<p>Fill me in.</p>
+</section>
+</div></section>
+</section>
+<section id="phase-2-identification-of-the-residual-model">
+<h5>Phase 2: Identification of the residual model<a class="headerlink" href="#phase-2-identification-of-the-residual-model" title="Permalink to this headline">#</a></h5>
+<p>Fill me in.</p>
+</section>
+</section>
+</section>
 </section>
 <section id="volatility">
 <span id="content-references-risk-volatility"></span><h2>Volatility<a class="headerlink" href="#volatility" title="Permalink to this headline">#</a></h2>
-<p>Now that we have defined different types of returns, and the rewards of a portfolio, let’s define the risk. One measure of risk is volatility, e.g., the standard deviation of the <a class="reference internal" href="#content-references-log-return"><span class="std std-ref">Logarithmic return</span></a>:</p>
+<p>Now that we have defined different types of returns, the rewards of a portfolio, let’s define the risk. One measure of risk is volatility, e.g., the standard deviation of the <a class="reference internal" href="#content-references-log-return"><span class="std std-ref">Logarithmic return</span></a>:</p>
 <div class="proof definition admonition" id="defn-volatility">
-<p class="admonition-title"><span class="caption-number">Definition 28 </span> (Volatility)</p>
+<p class="admonition-title"><span class="caption-number">Definition 29 </span> (Volatility)</p>
 <section class="definition-content" id="proof-content">
 <p>Let the price of asset <span class="math notranslate nohighlight">\(i\)</span> at time <span class="math notranslate nohighlight">\(j\)</span> be denoted by <span class="math notranslate nohighlight">\(P_{ij}&gt;0\)</span>. Then the <em>volatility</em> of asset <span class="math notranslate nohighlight">\(i\)</span> is
 the standard deviation of the logarithmic returns calculated between time periods
@@ -754,69 +934,6 @@ the return:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://htmlview.glitch.me/?https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks/blob/main/pluto-notebooks/html/Example-UnbiasedVolatility-Estimation.jl.html">Computation of the unbiased historical volatility using <a class="reference internal" href="#algo-unbiased-historic-volatility">Algorithm 2</a></a></p></li>
 </ul>
-</section>
-<section id="single-index-models">
-<h3>Single Index Models<a class="headerlink" href="#single-index-models" title="Permalink to this headline">#</a></h3>
-<p>The <a class="reference internal" href="#content-references-fractional-return"><span class="std std-ref">Fractional return</span></a> or <a class="reference internal" href="#content-references-log-return"><span class="std std-ref">Logarithmic return</span></a> can be computed
-from historical data. However, if we do not have access to price data for <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> or want to
-<em>predict</em> the return of <code class="docutils literal notranslate"><span class="pre">XYZ,</span></code> for example, in an automated trading system, we need a model. One of the simplest (yet still widely used) models is the single index model (SIM) developed by Sharpe <span id="id1">[<a class="reference internal" href="../References.html#id12" title="William F. Sharpe. A simplified model for portfolio analysis. Management Science, 9(2):277-293, 1963. URL: https://doi.org/10.1287/mnsc.9.2.277, arXiv:https://doi.org/10.1287/mnsc.9.2.277, doi:10.1287/mnsc.9.2.277.">Sharpe, 1963</a>]</span>.</p>
-<p>The single-index model (SIM) is an asset pricing model which measures both the risk and the return of a stock, relative to a risk free alternative investment e.g., government treasury bounds. The single index model describes the return of the stock of firm <span class="math notranslate nohighlight">\(i\)</span> in terms of a firm-specific return, and the overall market return:</p>
-<div class="math notranslate nohighlight" id="equation-eq-single-index-model">
-<span class="eqno">(23)<a class="headerlink" href="#equation-eq-single-index-model" title="Permalink to this equation">#</a></span>\[r_{i}\left(t\right) - r_{f} = \alpha_{i}+\beta_{i}\left(r_{m}\left(t\right)-r_{f}\right)+\epsilon_{i}
-\left(t\right)\qquad{t=1,2,\dots,T}\]</div>
-<p>The term <span class="math notranslate nohighlight">\(r_{i}\left(t\right)\)</span> denotes the return of firm <span class="math notranslate nohighlight">\(i\)</span>, during time period <span class="math notranslate nohighlight">\(t\)</span>,
-<span class="math notranslate nohighlight">\(r_{f}\)</span> denotes the risk-free rate i.e., the <a class="reference external" href="https://fred.stlouisfed.org/series/DTB3">interest rate of a riskless investment such as treasury bills</a>, while <span class="math notranslate nohighlight">\(r_{m}\left(t\right)\)</span> denotes the return on a market portfolio e.g., an index such as the <a class="reference external" href="https://en.wikipedia.org/wiki/S%26P_500">S&amp;P500</a> during time period <span class="math notranslate nohighlight">\(t\)</span>.  The term <span class="math notranslate nohighlight">\(\alpha_{i}\)</span> denotes the firm-specific return, while <span class="math notranslate nohighlight">\(\beta_{i}\)</span> denotes the proportion of the the firm’s return associated with the overall market.</p>
-<p>The term <span class="math notranslate nohighlight">\(R_{i}(t)\equiv\left(r_{i}\left(t\right) - r_{f}\right)\)</span> describes the excess return of specific firm <span class="math notranslate nohighlight">\(i\)</span>, while <span class="math notranslate nohighlight">\(R_{m}(t)\equiv\left(r_{m}\left(t\right)-r_{f}\right)\)</span> describes the excess return of the market portfolio. Replacing the excess returns in Eqn. <a class="reference internal" href="#equation-eq-single-index-model">(23)</a> gives the single index model in standard form:</p>
-<div class="proof definition admonition" id="defn-single-index-model-standard">
-<p class="admonition-title"><span class="caption-number">Definition 29 </span> (Single index model)</p>
-<section class="definition-content" id="proof-content">
-<p>Let <span class="math notranslate nohighlight">\(R_{i}(t)\)</span> and <span class="math notranslate nohighlight">\(R_{m}(t)\)</span> denote the firm specific and market excess returns (random variables)
-for time period <span class="math notranslate nohighlight">\(t\)</span>. Further, let <span class="math notranslate nohighlight">\(\epsilon_{i}\left(t\right)\)</span> denote a <a class="reference external" href="https://en.wikipedia.org/wiki/Normal_distribution">stationary normally distributed random noise process</a> with mean zero and standard deviation <span class="math notranslate nohighlight">\(\sigma_{i}\)</span>.</p>
-<p>Then, the standard single index model of Sharpe is given by <span id="id2">[<a class="reference internal" href="../References.html#id12" title="William F. Sharpe. A simplified model for portfolio analysis. Management Science, 9(2):277-293, 1963. URL: https://doi.org/10.1287/mnsc.9.2.277, arXiv:https://doi.org/10.1287/mnsc.9.2.277, doi:10.1287/mnsc.9.2.277.">Sharpe, 1963</a>]</span>:</p>
-<div class="math notranslate nohighlight" id="equation-eq-single-index-model-standard">
-<span class="eqno">(24)<a class="headerlink" href="#equation-eq-single-index-model-standard" title="Permalink to this equation">#</a></span>\[R_{i}\left(t\right) = \alpha_{i}+\beta_{i}R_{m}\left(t\right)+\epsilon_{i}
-\left(t\right)\qquad{t=1,2,\dots,T}\]</div>
-<p>where <span class="math notranslate nohighlight">\(\alpha_{i}\)</span> and <span class="math notranslate nohighlight">\(\beta_{i}\)</span> are constant model paramaters.</p>
-</section>
-</div><p>The <span class="math notranslate nohighlight">\(\alpha_{i}\)</span> parameter in Eqn <a class="reference internal" href="#equation-eq-single-index-model-standard">(24)</a> describes the firm specific
-return that is not explained by the market; thus, <span class="math notranslate nohighlight">\(\alpha_{i}\)</span> is the
-idiosyncratic return of firm <span class="math notranslate nohighlight">\(i\)</span>.</p>
-<p>The <span class="math notranslate nohighlight">\(\beta_{i}\)</span> parameter in Eqn <a class="reference internal" href="#equation-eq-single-index-model-standard">(24)</a> has several interpretations.
-First, <span class="math notranslate nohighlight">\(\beta_{i}\)</span> measures how the excess return of firm <span class="math notranslate nohighlight">\(i\)</span> is related to the overall excess return of the market; a large <span class="math notranslate nohighlight">\(\beta_{i}\)</span> suggests the market returns (or losses) are <em>amplified</em> for firm <span class="math notranslate nohighlight">\(i\)</span>, while
-a small <span class="math notranslate nohighlight">\(\beta_{i}\)</span> suggests the market returns (or losses) are <em>damped</em> for firm <span class="math notranslate nohighlight">\(i\)</span>.
-On the other hand, <span class="math notranslate nohighlight">\(\beta_{i}\)</span> can also be interpreted as a measure of the relative risk of investing in firm <span class="math notranslate nohighlight">\(i\)</span>.</p>
-<p>To understand the various interpretations of <span class="math notranslate nohighlight">\(\beta_{i}\)</span>, we first must understand that both the firm specific <span class="math notranslate nohighlight">\(R_{i}\)</span> and overall market excess returns <span class="math notranslate nohighlight">\(R_{m}\)</span> are random variables. Thus, we can compute the expectation and variance of these variables and look at how these quantities depend upon <span class="math notranslate nohighlight">\(\beta_{i}\)</span>:</p>
-<div class="proof observation admonition" id="obs-beta-risk-measure">
-<p class="admonition-title"><span class="caption-number">Observation 2 </span> (Risk and Reward intepretations of <span class="math notranslate nohighlight">\(\beta_{i}\)</span>)</p>
-<section class="observation-content" id="proof-content">
-<p>Taking the expectation of the firm excess return <span class="math notranslate nohighlight">\(R_{i}\)</span> gives:</p>
-<div class="math notranslate nohighlight" id="equation-eq-expected-r-sim">
-<span class="eqno">(25)<a class="headerlink" href="#equation-eq-expected-r-sim" title="Permalink to this equation">#</a></span>\[\mathbb{E}\left(R_{i}\right) = \alpha_{i}+\beta_{i}\mathbb{E}\left(R_{m}\right)\]</div>
-<p>where <span class="math notranslate nohighlight">\(\mathbb{E}\left(\epsilon_{i}\left(t\right)\right) = 0\)</span>.
-Solving Eqn. <a class="reference internal" href="#equation-eq-expected-r-sim">(25)</a> for <span class="math notranslate nohighlight">\(\beta_{i}\)</span> gives:</p>
-<div class="math notranslate nohighlight">
-\[\beta_{i} = \frac{\mathbb{E}\left(R_{i}\right) - \alpha_{i}}{\mathbb{E}\left(R_{m}\right)}\]</div>
-<p>Thus, <span class="math notranslate nohighlight">\(\beta_{i}\)</span> is a corrected ratio of expected (average) returns:</p>
-<ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(\beta_{i}&gt;1\)</span> expected return of firm <span class="math notranslate nohighlight">\(i\)</span> is <em>greater</em> than the expected market return</p></li>
-<li><p><span class="math notranslate nohighlight">\(\beta_{i}\sim{1}\)</span> firm <span class="math notranslate nohighlight">\(i\)</span> performs <em>similar</em> to the overall market on average</p></li>
-<li><p><span class="math notranslate nohighlight">\(\beta_{i}&lt;1\)</span> expected excess return of firm <span class="math notranslate nohighlight">\(i\)</span> is <em>less</em> than the expected excess market return</p></li>
-</ul>
-<p>The <span class="math notranslate nohighlight">\(\beta_{i}\)</span> for asset <span class="math notranslate nohighlight">\(i\)</span> can also be thought of as a measure of risk of asset <span class="math notranslate nohighlight">\(i\)</span> relative to the market. For example, we can show that:</p>
-<div class="math notranslate nohighlight">
-\[\beta_{i} = \frac{\text{cov}(R_{i}, R_{m})}{\text{var}(R_{m})}\]</div>
-<p>where <span class="math notranslate nohighlight">\(\text{cov}(R_{i}, R_{m})\)</span> denotes the <a class="reference external" href="https://en.wikipedia.org/wiki/Covariance">covariance</a> of asset <span class="math notranslate nohighlight">\(i\)</span> with the market, and <span class="math notranslate nohighlight">\(\text{var}(R_{m})\)</span> denotes the variance of the market return. Thus, in the context of risk, <span class="math notranslate nohighlight">\(\beta_{i}\)</span> has the interpretation:</p>
-<ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(\beta_{i}&gt;1\)</span> suggests firm <span class="math notranslate nohighlight">\(i\)</span> has <em>greater risk</em> than the overall market</p></li>
-<li><p><span class="math notranslate nohighlight">\(\beta_{i}\sim{1}\)</span> suggests that firm <span class="math notranslate nohighlight">\(i\)</span> has the <em>same risk</em> as the overall market on average</p></li>
-<li><p><span class="math notranslate nohighlight">\(\beta_{i}&lt;1\)</span> suggests firm <span class="math notranslate nohighlight">\(i\)</span> has <em>less risk</em> compared to overall market</p></li>
-</ul>
-<p>Putting these two regimes together gives fundamental insight into the behavior of markets: <strong>high returns come with high-risk</strong>.</p>
-</section>
-</div><section id="estimating-single-index-models-from-data">
-<h4>Estimating Single Index Models from Data<a class="headerlink" href="#estimating-single-index-models-from-data" title="Permalink to this headline">#</a></h4>
-<p>Fill me in.</p>
-</section>
 </section>
 </section>
 <hr class="docutils" />

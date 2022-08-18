@@ -119,7 +119,7 @@ The quantity $R^{*}$ denotes the minimal required return for $\mathcal{P}$ and $
 
 A couple of issues:
 * While the problem above is written in terms of absolute return $r_{\star}$, we can also write the portfolio allocation problem using excess returns; the excess return is $R_{\star} = r_{\star} - r_{f}$, where $r_{f}$ denotes the risk free rate of return.
-* The challenge to solving the Markowitz problem is estimating the expected assets in the portfolio and the covariance matrix $\Sigma$. These quantities can be calculated from data if available or from models of the return and variance of the assets in the portfolio. Let's consider both approaches. 
+* The challenge to solving the Markowitz problem is estimating the expected return of assets in the portfolio and the covariance matrix $\Sigma$. These quantities can be calculated from data if available or from models of the return and variance of the assets in the portfolio. Let's consider both approaches. 
 
 (content:references:markowitz-solution-data)=
 ### Data-driven risky portfolios
