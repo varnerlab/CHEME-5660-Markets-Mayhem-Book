@@ -296,7 +296,9 @@ $$r_{f} = (1+r)^{(1/365)} - 1$$
 The value for the daily risk-free rate of return was found to be $r_{f}$ = 7.06e-5.
 
 __Estimate $\theta$__:
-The daily log-return for [AMD](https://finance.yahoo.com/quote/AMD) and [SPY](https://finance.yahoo.com/quote/SPY) was computed using {prf:ref}`defn-log-return`; six-months of daily open high low close (OHLC) data was downloaded from [Polygon.io](https://polygon.io). The last 90-days of data were used to calculate the log return and to formulate the $Y$ vector and $X$ matrix. The matrix inverse $\left(X^{T}X\right)^{-1}$ was computed using the `inv` command from the `LinearAlgebra` package:
+The daily log-return for [AMD](https://finance.yahoo.com/quote/AMD) and [SPY](https://finance.yahoo.com/quote/SPY) was computed using {prf:ref}`defn-log-return`; six-months of daily open high low close (OHLC) data was downloaded from [Polygon.io](https://polygon.io). 
+
+The last 90-days of data were used to calculate the log return and to formulate the $Y$ vector and $X$ matrix. The matrix inverse $\left(X^{T}X\right)^{-1}$ was computed using the `inv` command from the `LinearAlgebra` package:
 
 ```{code-block} julia
 Xᵀ = transpose(X);
