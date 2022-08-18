@@ -192,7 +192,7 @@ The term $R_{i}(t)\equiv\left(r_{i}\left(t\right) - r_{f}\right)$ describes the 
 Let $R_{i}(t)$ and $R_{m}(t)$ denote the firm specific and market excess returns (random variables) 
 for time period $t$. Further, let $\epsilon_{i}\left(t\right)$ denote a [stationary normally distributed random noise process](https://en.wikipedia.org/wiki/Normal_distribution) with mean zero and standard deviation $\sigma_{i}$. 
 
-Then, the standard single index model of Sharpe is given by {cite}`SHARPE1963`:
+Then, the single index model of Sharpe is given by {cite}`SHARPE1963`:
 
 ```{math}
 :label: eq-single-index-model-standard
@@ -200,7 +200,7 @@ R_{i}\left(t\right) = \alpha_{i}+\beta_{i}R_{m}\left(t\right)+\epsilon_{i}
 \left(t\right)\qquad{t=1,2,\dots,T}
 ```
 
-where $\alpha_{i}$ and $\beta_{i}$ are constant model paramaters. 
+where $\alpha_{i}$ and $\beta_{i}$ are constant (unkown) model paramaters. 
 ````
 
 The $\alpha_{i}$ parameter in Eqn {eq}`eq-single-index-model-standard` describes the firm specific 
@@ -258,14 +258,14 @@ Estimating single index models from data reduces to estimating values for the $(
 * Phase 2: Estimate the $\epsilon_{i}(t)$ distribution by computing the residual between the data and the model with parameter values from phase 1.
 
 ##### Phase 1: Estimate $(\alpha_{i},\beta_{i})$.
-Imagine that we have historical data for the excess return of `XYZ` and the market over some period of time; say we have $\mathcal{M}$ measurements for the excess returns. Then, the excess return for `XYZ` can be encoded as a $\mathcal{M}\times{1}$ column vector $Y$, while the excess market return can be encoded as an $\mathcal{M}\times{2}$ matrix $X$, where the first column of $X$ is all 1's while the second column holds the excess market return values. Then, the single index model (in the absense of the residual) is the overdetermined ($\mathcal{M}\gg{2}$) linear system:
+Imagine that we have historical data for the excess return of `XYZ` and the market over some period of time; say we have $\mathcal{M}$ measurements for the excess returns. Then, the excess return for `XYZ` can be encoded as a $\mathcal{M}\times{1}$ column vector $Y$, while the excess market return can be encoded as an $\mathcal{M}\times{2}$ matrix $X$, where the first column of $X$ is all 1's while the second column holds the excess market return values. Then, the single index model (in the absence of the residual) is the overdetermined ($\mathcal{M}\gg{2}$) linear system:
 
 ```{math}
 :label: eqn-linear-sys-sim
 Y = X\theta
 ```
 
-where $\theta = (\alpha_{i},\beta_{i})^{T}$ is the $2\times{1}$ column vector of unknown parameters. The task is to estimate the unkown $\theta$ vector, given $X$ and $Y$.
+where $\theta = (\alpha_{i},\beta_{i})^{T}$ is the $2\times{1}$ column vector of unknown parameters. The task is to estimate the unknown $\theta$ vector, given $X$ and $Y$.
 
 ###### Direct Matrix Inversion
 One method to estimate the unknown parameter vector $\theta$ is to directly invert the data matrix $X$. In particular, if we multiply both sides of Eqn. {eq}`eqn-linear-sys-sim` by the transpose of the data matrix:
@@ -275,7 +275,7 @@ One method to estimate the unknown parameter vector $\theta$ is to directly inve
 X^{T}Y = X^{T}X\theta
 ```
 
-we get a square matrix $X^{T}X$ that can be inverted to solve for the unkown parameter vector $\theta$:
+we get a square matrix $X^{T}X$ that can be inverted to solve for the unknown parameter vector $\theta$:
 
 ```{math}
 :label: eqn-linear-sys-sim-2
