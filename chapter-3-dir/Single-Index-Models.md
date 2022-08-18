@@ -308,7 +308,7 @@ The $\beta_{i}$ for asset $i$ can also be thought of as a measure of risk of ass
 \beta_{i} = \frac{\text{cov}(R_{i}, R_{m})}{\text{var}(R_{m})}
 ```
 
-where $\text{cov}(R_{i}, R_{m})$ denotes the [covariance](https://en.wikipedia.org/wiki/Covariance) of asset $i$ with the market, and $\text{var}(R_{m})$ denotes the variance of the market return. Thus, in the context of risk, $\beta_{i}$ has the interpretation:
+where $\text{cov}(R_{i}, R_{m})$ denotes the [covariance](https://en.wikipedia.org/wiki/Covariance) between the excess return of asset $i$ and the market, and $\text{var}(R_{m})$ denotes the variance of the market excess return. Thus, in the context of risk, $\beta_{i}$ has the interpretation:
 
 * $\beta_{i}>1$ suggests firm $i$ has _greater risk_ than the overall market
 * $\beta_{i}\sim{1}$ suggests that firm $i$ has the _same risk_ as the overall market on average
@@ -318,8 +318,62 @@ Putting these two regimes together gives fundamental insight into the behavior o
 ````
 
 #### Estimating Single Index Models from Data
+Estimating single index models from data reduces to estimating values for the $(\alpha_{i},\beta_{i})$ parameters and developing a residual model $\epsilon_{i}(t)$. Let's decompose this problem into two phases:
+
+* Phase 1: Estimate values for $(\alpha_{i},\beta_{i})$ using one of many possible approaches, and
+* Phase 2: Estimate the $\epsilon_{i}(t)$ distribution by computing the residual between the data and the model with parameter values from phase 1.
+
+##### Phase 1: Estimate $(\alpha_{i},\beta_{i})$.
+Imagine that we have historical data for the excess return of `XYZ` and the market over some period of time; say we have $\mathcal{M}$ measurements for the excess returns. Then, the excess return for `XYZ` can be encoded as a $\mathcal{M}\times{1}$ column vector $Y$, while the excess market return can be encoded as an $\mathcal{M}\times{2}$ matrix $X$, where the first column of $X$ is all 1's while the second column holds the excess market return values. Then, the single index model (in the absense of the residual) is the overdetermined ($\mathcal{M}\gg{2}$) linear system:
+
+```{math}
+:label: eqn-linear-sys-sim
+Y = X\theta
+```
+
+where $\theta = (\alpha_{i},\beta_{i})^{T}$ is the $2\times{1}$ column vector of unknown parameters. The task is to estimate the unkown $\theta$ vector, given $X$ and $Y$.
+
+###### Direct Matrix Inversion
+One method to estimate the unknown parameter vector $\theta$ is to directly invert the data matrix $X$. In particular, if we multiply both sides of Eqn. {eq}`eqn-linear-sys-sim` by the transpose of the data matrix:
+
+```{math}
+:label: eqn-linear-sys-sim-1
+X^{T}Y = X^{T}X\theta
+```
+
+we get a square matrix $X^{T}X$ that can be inverted to solve for the unkown parameter vector $\theta$:
+
+```{math}
+:label: eqn-linear-sys-sim-2
+\theta = \left(X^{T}X\right)^{-1}X^{T}Y
+```
+
+when we have assumed $\det(X^{T}X)\neq{0}$. {prf:ref}`example-dmi-single-index-model` explores the direct matrix inversion approach for computing the unknown parameter vector $\theta$:
+
+````{prf:example} Direct matrix inversion to compute $\theta$
+:label: example-dmi-single-index-model
+
 Fill me in.
 
+````
+
+
+###### Optimization Approaches
+The least-squares formulation to estimate the unknown parameters $\theta = (\alpha_{i},\beta_{i})^{T}$ is given be:
+
+$$\min_{\theta} ||X\theta - Y||_{p}$$
+
+subject (potentially) to constaints on the unknown parameters $\theta$, where $||\star||_{p}$ denotes the [p-vector norm](https://en.wikipedia.org/wiki/Norm_(mathematics)); typically this will be something like the [$l_{2}$-norm](https://en.wikipedia.org/wiki/Norm_(mathematics)#p-norm) but it doesn't have to be. {prf:ref}`example-lsq-single-index-model` explores the least-squares approach for estimating the unknown parameter vector $\theta$:
+
+````{prf:example} Least-squares estimation of $\theta$ 
+:label: example-lsq-single-index-model
+
+Fill me in.
+
+````
+
+##### Phase 2: Identification of the residual model
+Fill me in.
 
 ---
 
