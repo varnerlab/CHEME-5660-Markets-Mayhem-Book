@@ -345,10 +345,14 @@ $$\Delta = Y - \hat{Y}$$
 
 where $\hat{Y}$ denotes the _estimated_ excess return of firm $i$ (computed using the single index model), and $Y$ indicates the _actual_ excess return of firm $i$ as observed in the market. Then, for each data point, e.g., close price value in our dataset, we'll have a value for $\Delta$, the difference between the predicted and actual excess return; the values of $\Delta$ can be thought of as samples from the residual distribution $\epsilon_{i}(t)$. Thus, we can use $\Delta$ to estimate $\sigma_{\epsilon,i}^2$. {prf:ref}`example-normal-residual-model` explores an approach to estimate the variance of the residuals.
 
-````{prf:example} Identification of the Residual Model
+````{prf:example} Identification of the Residual Model for [AMD](https://finance.yahoo.com/quote/AMD)
 :label: example-normal-residual-model
 
-Fill me in.
+Let's use the data and the estimated single index model parameters $\hat{\theta}$ for [AMD](https://finance.yahoo.com/quote/AMD) from {prf:ref}`example-dmi-single-index-model`. Given this data, let's estimate the variance of the unknown residual distribution, $\sigma_{\epsilon,i}^2$, using a maximum likelihood approach. 
+
+We implemented the maximum likelihood strategy using routines implemented in the [Distributions.jl](https://github.com/JuliaStats/Distributions.jl) package.
+
+
 
 ````
 
