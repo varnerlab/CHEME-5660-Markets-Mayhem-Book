@@ -619,14 +619,17 @@ title="Print to PDF"
 <h1>Equity Securities<a class="headerlink" href="#equity-securities" title="Permalink to this headline">#</a></h1>
 <section id="introduction">
 <h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">#</a></h2>
-<p>Common stocks, also known as equity securities or equities, represent ownership shares in a corporation. Each share of common stock entitles its owner to one vote on any matters of corporate governance that are put to a vote at the corporation’s annual meeting and to a share in the financial benefits of ownership. The corporation is controlled by a board of directors elected by the shareholders. The board, which meets only a few times each year, selects managers who actually run the corporation on a day-to-day basis. Managers have the authority to make most business decisions without the board’s specific approval. The board’s mandate is to oversee the management to ensure that it acts in the best interests of shareholders.</p>
+<p>Common stocks, also known as equity securities or equities, represent ownership shares in a corporation. Each share of common stock entitles its owner to one vote on any matters of corporate governance that are put to a vote at the corporation’s annual meeting and to a share in the financial benefits of ownership. The corporation is controlled by a board of directors elected by the shareholders. The board, which meets a few times per year, selects the management team that runs the corporation on a day-to-day basis. Managers have the authority to make most business decisions without the board’s specific approval. The board’s mandate is to oversee the management to ensure that it acts in the best interests of shareholders.</p>
 <p>The two most important characteristics of common stock as an investment are its residual claim and limited liability features:</p>
 <ul class="simple">
 <li><p>Residual claim means that stockholders are the last in line of all those who have a claim on the assets and income of the corporation. In a liquidation of the firm’s assets the shareholders have a claim to what is left after all other claimants such as the tax authorities, employees, suppliers, bondholders, and other creditors have been paid. For a firm not in liquidation, shareholders have claim to the part of operating income left over after interest and taxes have been paid. Management can either pay this residual as cash dividends to shareholders or reinvest it in the business to increase the value of the shares.</p></li>
 <li><p>Limited liability means that the most shareholders can lose in the event of failure of the corporation is their original investment. Unlike owners of unincorporated businesses, whose creditors can lay claim to the personal assets of the owner (house, car, furniture), corporate shareholders may at worst have worthless stock. They are not personally liable for the firm’s obligations.</p></li>
 </ul>
-<p>In this lecture, we will:
-Fill me in.</p>
+<p>In this lecture, we’ll build upon our earlier discussion of <a class="reference internal" href="../chapter-2-dir/stochastic-differential-equations.html"><span class="doc std std-doc">macroscopic</span></a> and <a class="reference internal" href="../chapter-2-dir/agent-based-market-models.html"><span class="doc std std-doc">microscopic</span></a> models of asset price, to begin thinking about the risk and reward of owning shares of stock. In particular, we will:</p>
+<ul class="simple">
+<li><p>Develop tools to model the <em>reward</em> of a stock, which we’ll call the <a class="reference internal" href="#content-references-return"><span class="std std-ref">Return</span></a>.</p></li>
+<li><p>Develop tools to model the <em>risk</em> of a stock, which we’ll call the <a class="reference internal" href="#content-references-risk-volatility"><span class="std std-ref">Volatility</span></a>.</p></li>
+</ul>
 <hr class="docutils" />
 </section>
 <section id="return">
@@ -822,7 +825,7 @@ Solving Eqn. <a class="reference internal" href="#equation-eq-expected-r-sim">(2
 <span class="eqno">(27)<a class="headerlink" href="#equation-eqn-linear-sys-sim-1" title="Permalink to this equation">#</a></span>\[X^{T}Y = X^{T}X\theta\]</div>
 <p>we get a square matrix <span class="math notranslate nohighlight">\(X^{T}X\)</span> that can be inverted to solve for the unknown parameter vector <span class="math notranslate nohighlight">\(\theta\)</span>:</p>
 <div class="math notranslate nohighlight" id="equation-eqn-linear-sys-sim-2">
-<span class="eqno">(28)<a class="headerlink" href="#equation-eqn-linear-sys-sim-2" title="Permalink to this equation">#</a></span>\[\theta = \left(X^{T}X\right)^{-1}X^{T}Y\]</div>
+<span class="eqno">(28)<a class="headerlink" href="#equation-eqn-linear-sys-sim-2" title="Permalink to this equation">#</a></span>\[\hat{\theta} = \left(X^{T}X\right)^{-1}X^{T}Y\]</div>
 <p>when we have assumed <span class="math notranslate nohighlight">\(\det(X^{T}X)\neq{0}\)</span>. <a class="reference internal" href="#example-dmi-single-index-model">Example 8</a> explores the direct matrix inversion approach for computing the unknown parameter vector <span class="math notranslate nohighlight">\(\theta\)</span>:</p>
 <div class="proof example admonition" id="example-dmi-single-index-model">
 <p class="admonition-title"><span class="caption-number">Example 8 </span> (Direct matrix inversion to compute <span class="math notranslate nohighlight">\(\theta\)</span>)</p>
@@ -836,14 +839,14 @@ Solving Eqn. <a class="reference internal" href="#equation-eq-expected-r-sim">(2
 The daily log-return for <a class="reference external" href="https://finance.yahoo.com/quote/AMD">AMD</a> and <a class="reference external" href="https://finance.yahoo.com/quote/SPY">SPY</a> was computed using <a class="reference internal" href="#defn-log-return">Definition 26</a>; six-months of daily open high low close (OHLC) data was downloaded from <a class="reference external" href="https://polygon.io">Polygon.io</a>.</p>
 <p>The last 90-days of data were used to calculate the log return and to formulate the <span class="math notranslate nohighlight">\(Y\)</span> vector and <span class="math notranslate nohighlight">\(X\)</span> matrix. The matrix inverse <span class="math notranslate nohighlight">\(\left(X^{T}X\right)^{-1}\)</span> was computed using the <code class="docutils literal notranslate"><span class="pre">inv</span></code> command from the <code class="docutils literal notranslate"><span class="pre">LinearAlgebra</span></code> package:</p>
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">Xᵀ</span> <span class="o">=</span> <span class="n">transpose</span><span class="p">(</span><span class="n">X</span><span class="p">);</span>
-<span class="n">θ</span> <span class="o">=</span> <span class="n">inv</span><span class="p">((</span><span class="n">Xᵀ</span><span class="o">*</span><span class="n">X</span><span class="p">))</span><span class="o">*</span><span class="n">Xᵀ</span><span class="o">*</span><span class="n">Y</span>
+<span class="n">θ̂</span> <span class="o">=</span> <span class="n">inv</span><span class="p">((</span><span class="n">Xᵀ</span><span class="o">*</span><span class="n">X</span><span class="p">))</span><span class="o">*</span><span class="n">Xᵀ</span><span class="o">*</span><span class="n">Y</span>
 </pre></div>
 </div>
-<p>The firm-specific return was <span class="math notranslate nohighlight">\(\alpha\)</span> = -0.000432, while <span class="math notranslate nohighlight">\(\beta\)</span> = 1.96.</p>
+<p>where θ̂ denotes the estimated model parameters; the estimated firm-specific return was <span class="math notranslate nohighlight">\(\hat{\alpha}\)</span> = -0.000432, while <span class="math notranslate nohighlight">\(\hat{\beta}\)</span> = 1.96.</p>
 <figure class="align-default" id="fig-amd-sim-v-data">
 <a class="reference internal image-reference" href="../_images/Fig-AMD-SIM-v-Data.pdf"><img alt="../_images/Fig-AMD-SIM-v-Data.pdf" src="../_images/Fig-AMD-SIM-v-Data.pdf" style="height: 380px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 14 </span><span class="caption-text">Estimated performance of the single index model for <a class="reference external" href="https://finance.yahoo.com/quote/AMD/">AMD</a> computed using direct matrix inversion.</span><a class="headerlink" href="#fig-amd-sim-v-data" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 14 </span><span class="caption-text">Estimated performance of the single index model for <a class="reference external" href="https://finance.yahoo.com/quote/AMD/">AMD</a> computed using direct matrix inversion. Green dots denote prediction data, while gray dots denote training data.</span><a class="headerlink" href="#fig-amd-sim-v-data" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>source: <a class="reference external" href="https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks">live Pluto notebook</a> or <a class="reference external" href="https://htmlview.glitch.me/?https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks/blob/main/pluto-notebooks/html/Example-DirectMatrixInversion-SIM.jl.html">static HTML view</a></p>
@@ -864,8 +867,18 @@ The daily log-return for <a class="reference external" href="https://finance.yah
 </section>
 <section id="phase-2-identification-of-the-residual-model">
 <h5>Phase 2: Identification of the residual model<a class="headerlink" href="#phase-2-identification-of-the-residual-model" title="Permalink to this headline">#</a></h5>
-<p>Fill me in.</p>
+<p>Now that we have estimated <span class="math notranslate nohighlight">\(\hat{\theta}\)</span>, we can compute the residual model. The residual model <span class="math notranslate nohighlight">\(\epsilon_{i}(t)\)</span> describes the unmodeled random component of the return of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code>; thus, it explains all the influences on the excess return that are <em>not</em> associated with the firm or the overall market.</p>
+<p>Let’s assume <span class="math notranslate nohighlight">\(\epsilon_{i}(t)\sim{N(0,\sigma_{\epsilon,i}^2)}\)</span>, i.e., the residual is <a class="reference external" href="https://en.wikipedia.org/wiki/Normal_distribution">normally distributed</a> with a zero mean and a variance of <span class="math notranslate nohighlight">\(\sigma_{\epsilon,i}^2\)</span>; we’ll estimate the variance from data. In particular, define the residual (difference) between the model and the data as:</p>
+<div class="math notranslate nohighlight">
+\[\Delta = Y - \hat{Y}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\hat{Y}\)</span> denotes the <em>estimated</em> excess return of firm <span class="math notranslate nohighlight">\(i\)</span> (computed using the single index model), and <span class="math notranslate nohighlight">\(Y\)</span> indicates the <em>actual</em> excess return of firm <span class="math notranslate nohighlight">\(i\)</span> as observed in the market. Then, for each data point, e.g., close price value in our dataset, we’ll have a value for <span class="math notranslate nohighlight">\(\Delta\)</span>, the difference between the predicted and actual excess return; the values of <span class="math notranslate nohighlight">\(\Delta\)</span> can be thought of as samples from the residual distribution <span class="math notranslate nohighlight">\(\epsilon_{i}(t)\)</span>. Thus, we can use <span class="math notranslate nohighlight">\(\Delta\)</span> to estimate <span class="math notranslate nohighlight">\(\sigma_{\epsilon,i}^2\)</span>. <a class="reference internal" href="#example-normal-residual-model">Example 10</a> explores an approach to estimate the variance of the residuals.</p>
+<div class="proof example admonition" id="example-normal-residual-model">
+<p class="admonition-title"><span class="caption-number">Example 10 </span> (Identification of the Residual Model for <a class="reference external" href="https://finance.yahoo.com/quote/AMD">AMD</a>)</p>
+<section class="example-content" id="proof-content">
+<p>Let’s use the data and the estimated single index model parameters <span class="math notranslate nohighlight">\(\hat{\theta}\)</span> for <a class="reference external" href="https://finance.yahoo.com/quote/AMD">AMD</a> from <a class="reference internal" href="#example-dmi-single-index-model">Example 8</a>. Given this data, let’s estimate the variance of the unknown residual distribution, <span class="math notranslate nohighlight">\(\sigma_{\epsilon,i}^2\)</span>, using a maximum likelihood approach.</p>
+<p>We implemented the maximum likelihood strategy using routines implemented in the <a class="reference external" href="https://github.com/JuliaStats/Distributions.jl">Distributions.jl</a> package.</p>
 </section>
+</div></section>
 </section>
 </section>
 </section>

@@ -1,7 +1,7 @@
 # Equity Securities
 
 ## Introduction
-Common stocks, also known as equity securities or equities, represent ownership shares in a corporation. Each share of common stock entitles its owner to one vote on any matters of corporate governance that are put to a vote at the corporation’s annual meeting and to a share in the financial benefits of ownership. The corporation is controlled by a board of directors elected by the shareholders. The board, which meets only a few times each year, selects managers who actually run the corporation on a day-to-day basis. Managers have the authority to make most business decisions without the board’s specific approval. The board’s mandate is to oversee the management to ensure that it acts in the best interests of shareholders.
+Common stocks, also known as equity securities or equities, represent ownership shares in a corporation. Each share of common stock entitles its owner to one vote on any matters of corporate governance that are put to a vote at the corporation’s annual meeting and to a share in the financial benefits of ownership. The corporation is controlled by a board of directors elected by the shareholders. The board, which meets a few times per year, selects the management team that runs the corporation on a day-to-day basis. Managers have the authority to make most business decisions without the board’s specific approval. The board’s mandate is to oversee the management to ensure that it acts in the best interests of shareholders.
 
 The two most important characteristics of common stock as an investment are its residual claim and limited liability features:
 
@@ -9,10 +9,13 @@ The two most important characteristics of common stock as an investment are its 
 
  * Limited liability means that the most shareholders can lose in the event of failure of the corporation is their original investment. Unlike owners of unincorporated businesses, whose creditors can lay claim to the personal assets of the owner (house, car, furniture), corporate shareholders may at worst have worthless stock. They are not personally liable for the firm’s obligations.
 
-In this lecture, we will:
-Fill me in.
+In this lecture, we'll build upon our earlier discussion of [macroscopic](../chapter-2-dir/stochastic-differential-equations.md) and [microscopic](../chapter-2-dir/agent-based-market-models.md) models of asset price, to begin thinking about the risk and reward of owning shares of stock. In particular, we will:
+
+* Develop tools to model the _reward_ of a stock, which we'll call the {ref}`content:references:return`. 
+* Develop tools to model the _risk_ of a stock, which we'll call the {ref}`content:references:risk-volatility`.
 
 ---
+
 
 (content:references:return)=
 ## Return
@@ -279,7 +282,7 @@ we get a square matrix $X^{T}X$ that can be inverted to solve for the unknown pa
 
 ```{math}
 :label: eqn-linear-sys-sim-2
-\theta = \left(X^{T}X\right)^{-1}X^{T}Y
+\hat{\theta} = \left(X^{T}X\right)^{-1}X^{T}Y
 ```
 
 when we have assumed $\det(X^{T}X)\neq{0}$. {prf:ref}`example-dmi-single-index-model` explores the direct matrix inversion approach for computing the unknown parameter vector $\theta$:
@@ -302,25 +305,22 @@ The last 90-days of data were used to calculate the log return and to formulate 
 
 ```{code-block} julia
 Xᵀ = transpose(X);
-θ = inv((Xᵀ*X))*Xᵀ*Y
+θ̂ = inv((Xᵀ*X))*Xᵀ*Y
 ```
 
-The firm-specific return was $\alpha$ = -0.000432, while $\beta$ = 1.96. 
+where θ̂ denotes the estimated model parameters; the estimated firm-specific return was $\hat{\alpha}$ = -0.000432, while $\hat{\beta}$ = 1.96. 
 
 ```{figure} ./figs/Fig-AMD-SIM-v-Data.pdf
 ---
 height: 380px
 name: fig-AMD-SIM-v-Data
 ---
-Estimated performance of the single index model for [AMD](https://finance.yahoo.com/quote/AMD/) computed using direct matrix inversion.
+Estimated performance of the single index model for [AMD](https://finance.yahoo.com/quote/AMD/) computed using direct matrix inversion. Green dots denote prediction data, while gray dots denote training data.
 ```
-
-
 
 source: [live Pluto notebook](https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks) or [static HTML view](https://htmlview.glitch.me/?https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks/blob/main/pluto-notebooks/html/Example-DirectMatrixInversion-SIM.jl.html)
 
 ````
-
 
 ###### Optimization Approaches
 The least-squares formulation to estimate the unknown parameters $\theta = (\alpha_{i},\beta_{i})^{T}$ is given be:
@@ -337,7 +337,24 @@ Fill me in.
 ````
 
 ##### Phase 2: Identification of the residual model
-Fill me in.
+Now that we have estimated $\hat{\theta}$, we can compute the residual model. The residual model $\epsilon_{i}(t)$ describes the unmodeled random component of the return of `XYZ`; thus, it explains all the influences on the excess return that are _not_ associated with the firm or the overall market. 
+
+Let's assume $\epsilon_{i}(t)\sim{N(0,\sigma_{\epsilon,i}^2)}$, i.e., the residual is [normally distributed](https://en.wikipedia.org/wiki/Normal_distribution) with a zero mean and a variance of $\sigma_{\epsilon,i}^2$; we'll estimate the variance from data. In particular, define the residual (difference) between the model and the data as:
+
+$$\Delta = Y - \hat{Y}$$
+
+where $\hat{Y}$ denotes the _estimated_ excess return of firm $i$ (computed using the single index model), and $Y$ indicates the _actual_ excess return of firm $i$ as observed in the market. Then, for each data point, e.g., close price value in our dataset, we'll have a value for $\Delta$, the difference between the predicted and actual excess return; the values of $\Delta$ can be thought of as samples from the residual distribution $\epsilon_{i}(t)$. Thus, we can use $\Delta$ to estimate $\sigma_{\epsilon,i}^2$. {prf:ref}`example-normal-residual-model` explores an approach to estimate the variance of the residuals.
+
+````{prf:example} Identification of the Residual Model for [AMD](https://finance.yahoo.com/quote/AMD)
+:label: example-normal-residual-model
+
+Let's use the data and the estimated single index model parameters $\hat{\theta}$ for [AMD](https://finance.yahoo.com/quote/AMD) from {prf:ref}`example-dmi-single-index-model`. Given this data, let's estimate the variance of the unknown residual distribution, $\sigma_{\epsilon,i}^2$, using a maximum likelihood approach. 
+
+We implemented the maximum likelihood strategy using routines implemented in the [Distributions.jl](https://github.com/JuliaStats/Distributions.jl) package.
+
+
+
+````
 
 (content:references:risk-volatility)=
 ## Volatility
