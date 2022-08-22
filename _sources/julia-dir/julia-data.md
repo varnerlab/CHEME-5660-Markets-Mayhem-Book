@@ -24,20 +24,23 @@ There are various tools and approaches to reading and writing data files in [Jul
 ---
 
 (content:references:julia-csv-files)=
-## Comma seperated value files
+## Comma seperated value (CSV) files
 Arguably, the most widely used data file format for the universe of possible applications is the [comma separated value (CSV) format](https://en.wikipedia.org/wiki/Comma-separated_values). A CVS file is a delimited text file that uses a comma to separate data values. Each line of a CSV file is called a record, where each record consists of one or more fields (data values), separated by commas; hence the name comma separated value file. 
 
-A CSV file is typically used to store tabular data (numbers and text) in plain text, where each line has the same number of fields. However, the CSV file format is not standardized. Thus, while separating fields in records with commas is standard, various exceptions and exceptional cases sometimes make CSV files problematic, e.g., fields with commas in the data or records with a variable number of fields can make working CSV files challenging. 
+A CSV file is typically used to store tabular data (numbers and text) in plain text, where each line has the same number of fields. However, the CSV file format is not standardized. For example, column headers may or may not be present. Further, while separating fields in records with commas is standard, various exceptions and exceptional cases sometimes make CSV files problematic, e.g., fields with commas in the data or records with a variable number of fields can make working CSV files challenging.  
 
 Fortunately, the applications we are interested in typically involve numerical [CSV files](https://en.wikipedia.org/wiki/Comma-separated_values) that are easily handled using the [CSV.jl](https://github.com/JuliaData/CSV.jl) package. The [CSV.jl](https://github.com/JuliaData/CSV.jl) package can be downloaded and installed using the [Julia package manager](./julia-basics.md). To load the `CSV` package into your program, or the [REPL](./julia-basics.md), issue the [using](https://docs.julialang.org/en/v1/base/base/#using) or [import](https://docs.julialang.org/en/v1/base/base/#import) commands. Once loaded, the `CSV` package publishes several commands to read and write [CSV files](https://en.wikipedia.org/wiki/Comma-separated_values). 
 
+The main methods exported by the [CSV.jl](https://github.com/JuliaData/CSV.jl) package are the [CVS.read](https://csv.juliadata.org/stable/reading.html#CSV.read) and [CVS.write](https://csv.juliadata.org/stable/writing.html#CSV.write) methods. 
 
+* [CVS.read](https://csv.juliadata.org/stable/reading.html#CSV.read) allows the user to load a data file into one of several data structures
+* [CVS.write](https://csv.juliadata.org/stable/writing.html#CSV.write) allows the user to write a tabular data structure to a CSV file. 
+
+For most of the applications, we will be doing, the source and sink data structure will be [DataFrames](https://dataframes.juliadata.org/stable/lib/types/#DataFrames.DataFrame), a handy tabular data structure. Thus, we do not read (or write) a [DataFrame](https://dataframes.juliadata.org/stable/lib/types/#DataFrames.DataFrame) directly; instead, we store it as (or read from) a CSV file. 
 
 (content:references:julia-dataframes)=
 ## DataFrames
-[DataFrame.jl](https://dataframes.juliadata.org/stable/lib/types/#DataFrames.DataFrame) is a [Julia](https://julialang.org) package that provides tools for working with tabular data in [Julia](https://julialang.org), e.g., numerical data tables.  
-
-The [DataFrame.jl](https://dataframes.juliadata.org/stable/lib/types/#DataFrames.DataFrame) package can be downloaded and installed using the [Julia package manager](./julia-basics.md). To load the `DataFrames` package into your program, or the [REPL](./julia-basics.md), issue the [using](https://docs.julialang.org/en/v1/base/base/#using) or [import](https://docs.julialang.org/en/v1/base/base/#import) commands. Once the `DataFrames`  package is loaded, it publishes several commands to work with tabular data.
+[DataFrame.jl](https://dataframes.juliadata.org/stable/lib/types/#DataFrames.DataFrame) is a [Julia](https://julialang.org) package that provides tools for working with tabular data in [Julia](https://julialang.org), e.g., numerical data tables. The [DataFrame.jl](https://dataframes.juliadata.org/stable/lib/types/#DataFrames.DataFrame) package can be downloaded and installed using the [Julia package manager](./julia-basics.md). To load the `DataFrames` package into your program, or the [REPL](./julia-basics.md), issue the [using](https://docs.julialang.org/en/v1/base/base/#using) or [import](https://docs.julialang.org/en/v1/base/base/#import) commands. Once the `DataFrames`  package is loaded, it publishes several commands to work with tabular data.
 
 Objects of type [DataFrame](https://dataframes.juliadata.org/stable/lib/types/#DataFrames.DataFrame) represent data tables where each column corresponds vector of values. The simplest way to construct a [DataFrame](https://dataframes.juliadata.org/stable/lib/types/#DataFrames.DataFrame) is to pass vectors holding the values for each column using keyword arguments or pairs:
 
@@ -52,7 +55,7 @@ using DataFrames
 df = DataFrame(A=1:4, B=["M", "F", "F", "M"])
 ```
 
-A [DataFrame](https://dataframes.juliadata.org/stable/lib/types/#DataFrames.DataFrame) can also be created from a [Dictionary](https://docs.julialang.org/en/v1/base/collections/#Dictionaries), where the column header names are the keys of the dictionary, and the columns are the data associated with each key:
+A [DataFrame](https://dataframes.juliadata.org/stable/lib/types/#DataFrames.DataFrame) can also be created from a [Dictionary](https://docs.julialang.org/en/v1/base/collections/#Dictionaries), where the column header names are constructed from the keys of the dictionary, and the column values are the data associated with each key:
 
 ```{code-cell} julia
 # This example was reproduced from the DataFrames.jl package documentation
@@ -62,18 +65,60 @@ A [DataFrame](https://dataframes.juliadata.org/stable/lib/types/#DataFrames.Data
 using DataFrames
 
 # create a dictionary w/data -> variable dict
-dict = Dict(:customer_age => [15, 20, 25], 
+dict = Dict(:customer_age => [22, 20, 25], 
   :first_name => ["Rohit", "Rahul", "Akshat"])
 
 # convert the dictionary to a DataFrame -> variable df
 df = DataFrame(dict)
 ```
 
-Notice the [Dictionary](https://docs.julialang.org/en/v1/base/collections/#Dictionaries) keys are of type [Symbol](https://docs.julialang.org/en/v1/base/base/#Core.Symbol) and __not__ [Strings](https://docs.julialang.org/en/v1/base/strings/#lib-strings); a [Symbol](https://docs.julialang.org/en/v1/base/base/#Core.Symbol) represents an identifier in parsed julia code (ASTs). A [Symbol](https://docs.julialang.org/en/v1/base/base/#Core.Symbol) is often used as a name or label to identify an entity, e.g., as a dictionary key as shown above. [Symbols](https://docs.julialang.org/en/v1/base/base/#Core.Symbol) can be entered using the `:` quote operator or constructed from [Strings](https://docs.julialang.org/en/v1/base/strings/#lib-strings) using the `Symbol(x...)` constructor method.
+Notice the [Dictionary](https://docs.julialang.org/en/v1/base/collections/#Dictionaries) keys are of type [Symbol](https://docs.julialang.org/en/v1/base/base/#Core.Symbol) and __not__ [Strings](https://docs.julialang.org/en/v1/base/strings/#lib-strings); a [Symbol](https://docs.julialang.org/en/v1/base/base/#Core.Symbol) represents a special type of identifier in [Julia](https://julialang.org). [Symbols](https://docs.julialang.org/en/v1/base/base/#Core.Symbol) are often used as names or labels to identify an entity, e.g., as a dictionary key as shown above. [Symbols](https://docs.julialang.org/en/v1/base/base/#Core.Symbol) can be entered using the `:` quote operator or constructed from [Strings](https://docs.julialang.org/en/v1/base/strings/#lib-strings) using the `Symbol(x...)` constructor method.
 
+### Why are DataFrames interesting?
+[DataFrames](https://dataframes.juliadata.org/stable/lib/types/#DataFrames.DataFrame) are interesting because, in many ways, they act like [Arrays](https://docs.julialang.org/en/v1/base/arrays/), e.g., they can be indexed to get access to values, and they are [iterable](https://docs.julialang.org/en/v1/base/collections/#lib-collections-iteration), i.e., they can be used in loops. However, [DataFrames](https://dataframes.juliadata.org/stable/lib/types/#DataFrames.DataFrame) can also be used in complex data manipulation operations often found in databases, e.g., [sorting](https://dataframes.juliadata.org/stable/lib/functions/#Sorting) and [filtering](https://dataframes.juliadata.org/stable/lib/functions/#Filtering-rows) of data, and [Join](https://dataframes.juliadata.org/stable/man/joins/) operations, etc.   
 
-### Reading and writing dataframes from disk
-While it's easy to create a [DataFrame](https://dataframes.juliadata.org/stable/lib/types/#DataFrames.DataFrame) manually, many of the applications that we are interested in typically require that we read data files from disk and convert that into a [DataFrame](https://dataframes.juliadata.org/stable/lib/types/#DataFrames.DataFrame) object, or we save a [DataFrame](https://dataframes.juliadata.org/stable/lib/types/#DataFrames.DataFrame) object to a file. 
+### Reading and writing DataFrames from disk
+While it's easy to create a [DataFrame](https://dataframes.juliadata.org/stable/lib/types/#DataFrames.DataFrame), e.g., from a [Dictionary](https://docs.julialang.org/en/v1/base/collections/#Dictionaries), we are also often interested in applications that require reading and writing of data files from disk. 
+
+Converting data files e.g., a table of numerical values, into a [DataFrame](https://dataframes.juliadata.org/stable/lib/types/#DataFrames.DataFrame) object, (or exporting a [DataFrame](https://dataframes.juliadata.org/stable/lib/types/#DataFrames.DataFrame) object to a file) can be done with the [CSV.jl](https://github.com/JuliaData/CSV.jl) package described above. 
+
+### Loading a CSV file into a DataFrame
+Suppose we have a CSV file which holds numerical data, e.g., stock price values for the firm with ticker symbol `XYZ`. We can load this file from disk, and automatically convert the data to a [DataFrame](https://dataframes.juliadata.org/stable/lib/types/#DataFrames.DataFrame) using the `read` method in the [CSV.jl](https://github.com/JuliaData/CSV.jl) package:
+
+```{code-cell} julia
+# Load external packages
+using CSV
+using DataFrames
+
+# setup the path to the data file -
+path_to_datafile = joinpath(pwd(),"data", "AMD-OCHL-from-05-07-22-to-2022-08-05.csv")
+
+# load the CSV file into a DataFrame -> df
+df = CSV.read(path_to_datafile, DataFrame)
+
+# show the first few rows of data 
+df[1:4,:] # Indexing allows DataFrames to behave like arrays 
+```
+
+### Saving a DataFrame to a CSV file
+Conversely, suppose we have a [DataFrame](https://dataframes.juliadata.org/stable/lib/types/#DataFrames.DataFrame) holding numerical data want to save. In this case, we can take advantage of the `save` methods published by the [CSV.jl](https://github.com/JuliaData/CSV.jl) package; `save` takes two arguments, the first is the path to the file we want to save, and the second is the [DataFrame](https://dataframes.juliadata.org/stable/lib/types/#DataFrames.DataFrame) instance that we want to save. 
+
+For example, assume we have a variable of type [DataFrame](https://dataframes.juliadata.org/stable/lib/types/#DataFrames.DataFrame) named `df`, then the following code snippet shows how we could save `df` to a CSV file:
+
+```{code-block} julia
+# Load external packages 
+using CSV
+using DataFrames
+
+# some mythical process generates the DataFrame df
+df = ...
+
+# Dump df to disk as a CSV file 
+path_to_csv_file = ...
+
+# write out the file 
+CSV.write(path_to_csv_file, df)
+```
 
 (content:references:julia-binary-formats)=
 ## Binary file formats

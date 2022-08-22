@@ -468,8 +468,8 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#comma-seperated-value-files">
-   Comma seperated value files
+  <a class="reference internal nav-link" href="#comma-seperated-value-csv-files">
+   Comma seperated value (CSV) files
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -478,8 +478,23 @@ title="Print to PDF"
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#why-are-dataframes-interesting">
+     Why are DataFrames interesting?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#reading-and-writing-dataframes-from-disk">
-     Reading and writing dataframes from disk
+     Reading and writing DataFrames from disk
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#loading-a-csv-file-into-a-dataframe">
+     Loading a CSV file into a DataFrame
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#saving-a-dataframe-to-a-csv-file">
+     Saving a DataFrame to a CSV file
     </a>
    </li>
   </ul>
@@ -531,8 +546,8 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#comma-seperated-value-files">
-   Comma seperated value files
+  <a class="reference internal nav-link" href="#comma-seperated-value-csv-files">
+   Comma seperated value (CSV) files
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -541,8 +556,23 @@ title="Print to PDF"
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#why-are-dataframes-interesting">
+     Why are DataFrames interesting?
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#reading-and-writing-dataframes-from-disk">
-     Reading and writing dataframes from disk
+     Reading and writing DataFrames from disk
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#loading-a-csv-file-into-a-dataframe">
+     Loading a CSV file into a DataFrame
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#saving-a-dataframe-to-a-csv-file">
+     Saving a DataFrame to a CSV file
     </a>
    </li>
   </ul>
@@ -586,22 +616,27 @@ title="Print to PDF"
 <p>Working with data is one of the most common tasks in any programming language, including <a class="reference external" href="https://julialang.org">Julia</a>. For example, loading data into a program, doing some calculations using that data, and then saving the results to a file (either locally or in the cloud) describes the majority of programs you will write in this course.</p>
 <p>There are various tools and approaches to reading and writing data files in <a class="reference external" href="https://julialang.org">Julia</a>. This chapter will consider a few common approaches and introduce some patterns for working with data files. In particular, we will:</p>
 <ul class="simple">
-<li><p>Introduce reading and writing <a class="reference internal" href="#content-references-julia-csv-files"><span class="std std-ref">Comma seperated value files</span></a>, a common data format for numerical data files</p></li>
+<li><p>Introduce reading and writing <a class="reference internal" href="#content-references-julia-csv-files"><span class="std std-ref">Comma seperated value (CSV) files</span></a>, a common data format for numerical data files</p></li>
 <li><p>Introduce more expressive tools such as <a class="reference internal" href="#content-references-julia-dataframes"><span class="std std-ref">DataFrames</span></a>, which are in-memory tabular data structures</p></li>
 <li><p>Introduce reading and writing data in <a class="reference internal" href="#content-references-julia-binary-formats"><span class="std std-ref">Binary file formats</span></a>, a common approach for large data files and more complex data structures</p></li>
 </ul>
 <hr class="docutils" />
 </section>
-<section id="comma-seperated-value-files">
-<span id="content-references-julia-csv-files"></span><h2>Comma seperated value files<a class="headerlink" href="#comma-seperated-value-files" title="Permalink to this headline">#</a></h2>
+<section id="comma-seperated-value-csv-files">
+<span id="content-references-julia-csv-files"></span><h2>Comma seperated value (CSV) files<a class="headerlink" href="#comma-seperated-value-csv-files" title="Permalink to this headline">#</a></h2>
 <p>Arguably, the most widely used data file format for the universe of possible applications is the <a class="reference external" href="https://en.wikipedia.org/wiki/Comma-separated_values">comma separated value (CSV) format</a>. A CVS file is a delimited text file that uses a comma to separate data values. Each line of a CSV file is called a record, where each record consists of one or more fields (data values), separated by commas; hence the name comma separated value file.</p>
-<p>A CSV file is typically used to store tabular data (numbers and text) in plain text, where each line has the same number of fields. However, the CSV file format is not standardized. Thus, while separating fields in records with commas is standard, various exceptions and exceptional cases sometimes make CSV files problematic, e.g., fields with commas in the data or records with a variable number of fields can make working CSV files challenging.</p>
+<p>A CSV file is typically used to store tabular data (numbers and text) in plain text, where each line has the same number of fields. However, the CSV file format is not standardized. For example, column headers may or may not be present. Further, while separating fields in records with commas is standard, various exceptions and exceptional cases sometimes make CSV files problematic, e.g., fields with commas in the data or records with a variable number of fields can make working CSV files challenging.</p>
 <p>Fortunately, the applications we are interested in typically involve numerical <a class="reference external" href="https://en.wikipedia.org/wiki/Comma-separated_values">CSV files</a> that are easily handled using the <a class="reference external" href="https://github.com/JuliaData/CSV.jl">CSV.jl</a> package. The <a class="reference external" href="https://github.com/JuliaData/CSV.jl">CSV.jl</a> package can be downloaded and installed using the <a class="reference internal" href="julia-basics.html"><span class="doc std std-doc">Julia package manager</span></a>. To load the <code class="docutils literal notranslate"><span class="pre">CSV</span></code> package into your program, or the <a class="reference internal" href="julia-basics.html"><span class="doc std std-doc">REPL</span></a>, issue the <a class="reference external" href="https://docs.julialang.org/en/v1/base/base/#using">using</a> or <a class="reference external" href="https://docs.julialang.org/en/v1/base/base/#import">import</a> commands. Once loaded, the <code class="docutils literal notranslate"><span class="pre">CSV</span></code> package publishes several commands to read and write <a class="reference external" href="https://en.wikipedia.org/wiki/Comma-separated_values">CSV files</a>.</p>
+<p>The main methods exported by the <a class="reference external" href="https://github.com/JuliaData/CSV.jl">CSV.jl</a> package are the <a class="reference external" href="https://csv.juliadata.org/stable/reading.html#CSV.read">CVS.read</a> and <a class="reference external" href="https://csv.juliadata.org/stable/writing.html#CSV.write">CVS.write</a> methods.</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://csv.juliadata.org/stable/reading.html#CSV.read">CVS.read</a> allows the user to load a data file into one of several data structures</p></li>
+<li><p><a class="reference external" href="https://csv.juliadata.org/stable/writing.html#CSV.write">CVS.write</a> allows the user to write a tabular data structure to a CSV file.</p></li>
+</ul>
+<p>For most of the applications, we will be doing, the source and sink data structure will be <a class="reference external" href="https://dataframes.juliadata.org/stable/lib/types/#DataFrames.DataFrame">DataFrames</a>, a handy tabular data structure. Thus, we do not read (or write) a <a class="reference external" href="https://dataframes.juliadata.org/stable/lib/types/#DataFrames.DataFrame">DataFrame</a> directly; instead, we store it as (or read from) a CSV file.</p>
 </section>
 <section id="dataframes">
 <span id="content-references-julia-dataframes"></span><h2>DataFrames<a class="headerlink" href="#dataframes" title="Permalink to this headline">#</a></h2>
-<p><a class="reference external" href="https://dataframes.juliadata.org/stable/lib/types/#DataFrames.DataFrame">DataFrame.jl</a> is a <a class="reference external" href="https://julialang.org">Julia</a> package that provides tools for working with tabular data in <a class="reference external" href="https://julialang.org">Julia</a>, e.g., numerical data tables.</p>
-<p>The <a class="reference external" href="https://dataframes.juliadata.org/stable/lib/types/#DataFrames.DataFrame">DataFrame.jl</a> package can be downloaded and installed using the <a class="reference internal" href="julia-basics.html"><span class="doc std std-doc">Julia package manager</span></a>. To load the <code class="docutils literal notranslate"><span class="pre">DataFrames</span></code> package into your program, or the <a class="reference internal" href="julia-basics.html"><span class="doc std std-doc">REPL</span></a>, issue the <a class="reference external" href="https://docs.julialang.org/en/v1/base/base/#using">using</a> or <a class="reference external" href="https://docs.julialang.org/en/v1/base/base/#import">import</a> commands. Once the <code class="docutils literal notranslate"><span class="pre">DataFrames</span></code>  package is loaded, it publishes several commands to work with tabular data.</p>
+<p><a class="reference external" href="https://dataframes.juliadata.org/stable/lib/types/#DataFrames.DataFrame">DataFrame.jl</a> is a <a class="reference external" href="https://julialang.org">Julia</a> package that provides tools for working with tabular data in <a class="reference external" href="https://julialang.org">Julia</a>, e.g., numerical data tables. The <a class="reference external" href="https://dataframes.juliadata.org/stable/lib/types/#DataFrames.DataFrame">DataFrame.jl</a> package can be downloaded and installed using the <a class="reference internal" href="julia-basics.html"><span class="doc std std-doc">Julia package manager</span></a>. To load the <code class="docutils literal notranslate"><span class="pre">DataFrames</span></code> package into your program, or the <a class="reference internal" href="julia-basics.html"><span class="doc std std-doc">REPL</span></a>, issue the <a class="reference external" href="https://docs.julialang.org/en/v1/base/base/#using">using</a> or <a class="reference external" href="https://docs.julialang.org/en/v1/base/base/#import">import</a> commands. Once the <code class="docutils literal notranslate"><span class="pre">DataFrames</span></code>  package is loaded, it publishes several commands to work with tabular data.</p>
 <p>Objects of type <a class="reference external" href="https://dataframes.juliadata.org/stable/lib/types/#DataFrames.DataFrame">DataFrame</a> represent data tables where each column corresponds vector of values. The simplest way to construct a <a class="reference external" href="https://dataframes.juliadata.org/stable/lib/types/#DataFrames.DataFrame">DataFrame</a> is to pass vectors holding the values for each column using keyword arguments or pairs:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -619,7 +654,7 @@ title="Print to PDF"
 <div class="cell_output docutils container">
 <div class="output text_html"><div class="data-frame"><p>4 rows × 2 columns</p><table class="data-frame"><thead><tr><th></th><th>A</th><th>B</th></tr><tr><th></th><th title="Int64">Int64</th><th title="String">String</th></tr></thead><tbody><tr><th>1</th><td>1</td><td>M</td></tr><tr><th>2</th><td>2</td><td>F</td></tr><tr><th>3</th><td>3</td><td>F</td></tr><tr><th>4</th><td>4</td><td>M</td></tr></tbody></table></div></div></div>
 </div>
-<p>A <a class="reference external" href="https://dataframes.juliadata.org/stable/lib/types/#DataFrames.DataFrame">DataFrame</a> can also be created from a <a class="reference external" href="https://docs.julialang.org/en/v1/base/collections/#Dictionaries">Dictionary</a>, where the column header names are the keys of the dictionary, and the columns are the data associated with each key:</p>
+<p>A <a class="reference external" href="https://dataframes.juliadata.org/stable/lib/types/#DataFrames.DataFrame">DataFrame</a> can also be created from a <a class="reference external" href="https://docs.julialang.org/en/v1/base/collections/#Dictionaries">Dictionary</a>, where the column header names are constructed from the keys of the dictionary, and the column values are the data associated with each key:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># This example was reproduced from the DataFrames.jl package documentation</span>
@@ -629,7 +664,7 @@ title="Print to PDF"
 <span class="k">using</span> <span class="n">DataFrames</span>
 
 <span class="c"># create a dictionary w/data -&gt; variable dict</span>
-<span class="n">dict</span> <span class="o">=</span> <span class="kt">Dict</span><span class="p">(</span><span class="ss">:customer_age</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="mi">15</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">25</span><span class="p">],</span> 
+<span class="n">dict</span> <span class="o">=</span> <span class="kt">Dict</span><span class="p">(</span><span class="ss">:customer_age</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="mi">22</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">25</span><span class="p">],</span> 
   <span class="ss">:first_name</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s">&quot;Rohit&quot;</span><span class="p">,</span> <span class="s">&quot;Rahul&quot;</span><span class="p">,</span> <span class="s">&quot;Akshat&quot;</span><span class="p">])</span>
 
 <span class="c"># convert the dictionary to a DataFrame -&gt; variable df</span>
@@ -638,12 +673,60 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><div class="data-frame"><p>3 rows × 2 columns</p><table class="data-frame"><thead><tr><th></th><th>customer_age</th><th>first_name</th></tr><tr><th></th><th title="Int64">Int64</th><th title="String">String</th></tr></thead><tbody><tr><th>1</th><td>15</td><td>Rohit</td></tr><tr><th>2</th><td>20</td><td>Rahul</td></tr><tr><th>3</th><td>25</td><td>Akshat</td></tr></tbody></table></div></div></div>
+<div class="output text_html"><div class="data-frame"><p>3 rows × 2 columns</p><table class="data-frame"><thead><tr><th></th><th>customer_age</th><th>first_name</th></tr><tr><th></th><th title="Int64">Int64</th><th title="String">String</th></tr></thead><tbody><tr><th>1</th><td>22</td><td>Rohit</td></tr><tr><th>2</th><td>20</td><td>Rahul</td></tr><tr><th>3</th><td>25</td><td>Akshat</td></tr></tbody></table></div></div></div>
 </div>
-<p>Notice the <a class="reference external" href="https://docs.julialang.org/en/v1/base/collections/#Dictionaries">Dictionary</a> keys are of type <a class="reference external" href="https://docs.julialang.org/en/v1/base/base/#Core.Symbol">Symbol</a> and <strong>not</strong> <a class="reference external" href="https://docs.julialang.org/en/v1/base/strings/#lib-strings">Strings</a>; a <a class="reference external" href="https://docs.julialang.org/en/v1/base/base/#Core.Symbol">Symbol</a> represents an identifier in parsed julia code (ASTs). A <a class="reference external" href="https://docs.julialang.org/en/v1/base/base/#Core.Symbol">Symbol</a> is often used as a name or label to identify an entity, e.g., as a dictionary key as shown above. <a class="reference external" href="https://docs.julialang.org/en/v1/base/base/#Core.Symbol">Symbols</a> can be entered using the <code class="docutils literal notranslate"><span class="pre">:</span></code> quote operator or constructed from <a class="reference external" href="https://docs.julialang.org/en/v1/base/strings/#lib-strings">Strings</a> using the <code class="docutils literal notranslate"><span class="pre">Symbol(x...)</span></code> constructor method.</p>
+<p>Notice the <a class="reference external" href="https://docs.julialang.org/en/v1/base/collections/#Dictionaries">Dictionary</a> keys are of type <a class="reference external" href="https://docs.julialang.org/en/v1/base/base/#Core.Symbol">Symbol</a> and <strong>not</strong> <a class="reference external" href="https://docs.julialang.org/en/v1/base/strings/#lib-strings">Strings</a>; a <a class="reference external" href="https://docs.julialang.org/en/v1/base/base/#Core.Symbol">Symbol</a> represents a special type of identifier in <a class="reference external" href="https://julialang.org">Julia</a>. <a class="reference external" href="https://docs.julialang.org/en/v1/base/base/#Core.Symbol">Symbols</a> are often used as names or labels to identify an entity, e.g., as a dictionary key as shown above. <a class="reference external" href="https://docs.julialang.org/en/v1/base/base/#Core.Symbol">Symbols</a> can be entered using the <code class="docutils literal notranslate"><span class="pre">:</span></code> quote operator or constructed from <a class="reference external" href="https://docs.julialang.org/en/v1/base/strings/#lib-strings">Strings</a> using the <code class="docutils literal notranslate"><span class="pre">Symbol(x...)</span></code> constructor method.</p>
+<section id="why-are-dataframes-interesting">
+<h3>Why are DataFrames interesting?<a class="headerlink" href="#why-are-dataframes-interesting" title="Permalink to this headline">#</a></h3>
+<p><a class="reference external" href="https://dataframes.juliadata.org/stable/lib/types/#DataFrames.DataFrame">DataFrames</a> are interesting because, in many ways, they act like <a class="reference external" href="https://docs.julialang.org/en/v1/base/arrays/">Arrays</a>, e.g., they can be indexed to get access to values, and they are <a class="reference external" href="https://docs.julialang.org/en/v1/base/collections/#lib-collections-iteration">iterable</a>, i.e., they can be used in loops. However, <a class="reference external" href="https://dataframes.juliadata.org/stable/lib/types/#DataFrames.DataFrame">DataFrames</a> can also be used in complex data manipulation operations often found in databases, e.g., <a class="reference external" href="https://dataframes.juliadata.org/stable/lib/functions/#Sorting">sorting</a> and <a class="reference external" href="https://dataframes.juliadata.org/stable/lib/functions/#Filtering-rows">filtering</a> of data, and <a class="reference external" href="https://dataframes.juliadata.org/stable/man/joins/">Join</a> operations, etc.</p>
+</section>
 <section id="reading-and-writing-dataframes-from-disk">
-<h3>Reading and writing dataframes from disk<a class="headerlink" href="#reading-and-writing-dataframes-from-disk" title="Permalink to this headline">#</a></h3>
-<p>While it’s easy to create a <a class="reference external" href="https://dataframes.juliadata.org/stable/lib/types/#DataFrames.DataFrame">DataFrame</a> manually, many of the applications that we are interested in typically require that we read data files from disk and convert that into a <a class="reference external" href="https://dataframes.juliadata.org/stable/lib/types/#DataFrames.DataFrame">DataFrame</a> object, or we save a <a class="reference external" href="https://dataframes.juliadata.org/stable/lib/types/#DataFrames.DataFrame">DataFrame</a> object to a file.</p>
+<h3>Reading and writing DataFrames from disk<a class="headerlink" href="#reading-and-writing-dataframes-from-disk" title="Permalink to this headline">#</a></h3>
+<p>While it’s easy to create a <a class="reference external" href="https://dataframes.juliadata.org/stable/lib/types/#DataFrames.DataFrame">DataFrame</a>, e.g., from a <a class="reference external" href="https://docs.julialang.org/en/v1/base/collections/#Dictionaries">Dictionary</a>, we are also often interested in applications that require reading and writing of data files from disk.</p>
+<p>Converting data files e.g., a table of numerical values, into a <a class="reference external" href="https://dataframes.juliadata.org/stable/lib/types/#DataFrames.DataFrame">DataFrame</a> object, (or exporting a <a class="reference external" href="https://dataframes.juliadata.org/stable/lib/types/#DataFrames.DataFrame">DataFrame</a> object to a file) can be done with the <a class="reference external" href="https://github.com/JuliaData/CSV.jl">CSV.jl</a> package described above.</p>
+</section>
+<section id="loading-a-csv-file-into-a-dataframe">
+<h3>Loading a CSV file into a DataFrame<a class="headerlink" href="#loading-a-csv-file-into-a-dataframe" title="Permalink to this headline">#</a></h3>
+<p>Suppose we have a CSV file which holds numerical data, e.g., stock price values for the firm with ticker symbol <code class="docutils literal notranslate"><span class="pre">XYZ</span></code>. We can load this file from disk, and automatically convert the data to a <a class="reference external" href="https://dataframes.juliadata.org/stable/lib/types/#DataFrames.DataFrame">DataFrame</a> using the <code class="docutils literal notranslate"><span class="pre">read</span></code> method in the <a class="reference external" href="https://github.com/JuliaData/CSV.jl">CSV.jl</a> package:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># Load external packages</span>
+<span class="k">using</span> <span class="n">CSV</span>
+<span class="k">using</span> <span class="n">DataFrames</span>
+
+<span class="c"># setup the path to the data file -</span>
+<span class="n">path_to_datafile</span> <span class="o">=</span> <span class="n">joinpath</span><span class="p">(</span><span class="n">pwd</span><span class="p">(),</span><span class="s">&quot;data&quot;</span><span class="p">,</span> <span class="s">&quot;AMD-OCHL-from-05-07-22-to-2022-08-05.csv&quot;</span><span class="p">)</span>
+
+<span class="c"># load the CSV file into a DataFrame -&gt; df</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">CSV</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">path_to_datafile</span><span class="p">,</span> <span class="n">DataFrame</span><span class="p">)</span>
+
+<span class="c"># show the first few rows of data </span>
+<span class="n">df</span><span class="p">[</span><span class="mi">1</span><span class="o">:</span><span class="mi">4</span><span class="p">,</span><span class="o">:</span><span class="p">]</span> <span class="c"># Indexing allows DataFrames to behave like arrays </span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div class="data-frame"><p>4 rows × 8 columns</p><table class="data-frame"><thead><tr><th></th><th>volume</th><th>vwap</th><th>open</th><th>close</th><th>high</th><th>low</th><th>timestamp</th><th>n</th></tr><tr><th></th><th title="Float64">Float64</th><th title="Float64">Float64</th><th title="Float64">Float64</th><th title="Float64">Float64</th><th title="Float64">Float64</th><th title="Float64">Float64</th><th title="Dates.DateTime">DateTime</th><th title="Int64">Int64</th></tr></thead><tbody><tr><th>1</th><td>1.44524e8</td><td>88.7007</td><td>92.865</td><td>86.36</td><td>93.74</td><td>85.38</td><td>2022-05-09T04:00:00</td><td>901147</td></tr><tr><th>2</th><td>1.37235e8</td><td>88.0634</td><td>89.18</td><td>88.73</td><td>90.7721</td><td>85.41</td><td>2022-05-10T04:00:00</td><td>735895</td></tr><tr><th>3</th><td>1.36138e8</td><td>90.3059</td><td>87.84</td><td>87.92</td><td>93.46</td><td>86.53</td><td>2022-05-11T04:00:00</td><td>859974</td></tr><tr><th>4</th><td>1.29214e8</td><td>85.6857</td><td>86.6</td><td>87.06</td><td>88.55</td><td>83.27</td><td>2022-05-12T04:00:00</td><td>882934</td></tr></tbody></table></div></div></div>
+</div>
+</section>
+<section id="saving-a-dataframe-to-a-csv-file">
+<h3>Saving a DataFrame to a CSV file<a class="headerlink" href="#saving-a-dataframe-to-a-csv-file" title="Permalink to this headline">#</a></h3>
+<p>Conversely, suppose we have a <a class="reference external" href="https://dataframes.juliadata.org/stable/lib/types/#DataFrames.DataFrame">DataFrame</a> holding numerical data want to save. In this case, we can take advantage of the <code class="docutils literal notranslate"><span class="pre">save</span></code> methods published by the <a class="reference external" href="https://github.com/JuliaData/CSV.jl">CSV.jl</a> package; <code class="docutils literal notranslate"><span class="pre">save</span></code> takes two arguments, the first is the path to the file we want to save, and the second is the <a class="reference external" href="https://dataframes.juliadata.org/stable/lib/types/#DataFrames.DataFrame">DataFrame</a> instance that we want to save.</p>
+<p>For example, assume we have a variable of type <a class="reference external" href="https://dataframes.juliadata.org/stable/lib/types/#DataFrames.DataFrame">DataFrame</a> named <code class="docutils literal notranslate"><span class="pre">df</span></code>, then the following code snippet shows how we could save <code class="docutils literal notranslate"><span class="pre">df</span></code> to a CSV file:</p>
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># Load external packages </span>
+<span class="k">using</span> <span class="n">CSV</span>
+<span class="k">using</span> <span class="n">DataFrames</span>
+
+<span class="c"># some mythical process generates the DataFrame df</span>
+<span class="n">df</span> <span class="o">=</span> <span class="o">...</span>
+
+<span class="c"># Dump df to disk as a CSV file </span>
+<span class="n">path_to_csv_file</span> <span class="o">=</span> <span class="o">...</span>
+
+<span class="c"># write out the file </span>
+<span class="n">CSV</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">path_to_csv_file</span><span class="p">,</span> <span class="n">df</span><span class="p">)</span>
+</pre></div>
+</div>
 </section>
 </section>
 <section id="binary-file-formats">
@@ -696,7 +779,7 @@ title="Print to PDF"
 <h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">#</a></h2>
 <p>In this chpater we:</p>
 <ul class="simple">
-<li><p>Introduced reading and writing <a class="reference internal" href="#content-references-julia-csv-files"><span class="std std-ref">Comma seperated value files</span></a>, a standard data format for working with numerical data files</p></li>
+<li><p>Introduced reading and writing <a class="reference internal" href="#content-references-julia-csv-files"><span class="std std-ref">Comma seperated value (CSV) files</span></a>, a standard data format for working with numerical data files</p></li>
 <li><p>Introduced more expressive tools such as <a class="reference internal" href="#content-references-julia-dataframes"><span class="std std-ref">DataFrames</span></a>, which are in-memory tabular data structures. <code class="docutils literal notranslate"><span class="pre">DataFrames</span></code> are highly flexible data structures offering many advanced storage and query capabilities.</p></li>
 <li><p>Introduced reading and writing data in <a class="reference internal" href="#content-references-julia-binary-formats"><span class="std std-ref">Binary file formats</span></a>, a common approach for large data files and more complex data structures</p></li>
 </ul>
