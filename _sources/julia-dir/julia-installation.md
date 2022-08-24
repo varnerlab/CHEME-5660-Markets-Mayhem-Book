@@ -51,7 +51,7 @@ export PATH="$PATH:/path/to/<Julia directory>/bin"
 ### Windows
 Although [Julia](https://julialang.org) can run on Windows directly, the teaching team asks that all Windows users install [the Windows Subsystem for Linux (WSL)](https://docs.microsoft.com/en-us/windows/wsl/about), along with the latest [Ubuntu](https://ubuntu.com) distribution, to run [Julia](https://julialang.org) in a Linux environment.  Instructions on how to install WSL can be found [here](https://docs.microsoft.com/en-us/windows/wsl/install).
 
-Once [the Windows Subsystem for Linux](https://docs.microsoft.com/en-us/windows/wsl/about) has been installed, [Julia](https://julialang.org) can installed following the Linux instructions.
+Once [the Windows Subsystem for Linux](https://docs.microsoft.com/en-us/windows/wsl/about) has been installed, [Julia](https://julialang.org) can installed following the [Generic Linux instructions](https://julialang.org/downloads/platform/#linux_and_freebsd).
 
 (content:references:vscode-installation)=
 ### Installation and Requirments for VSCode
