@@ -16,9 +16,9 @@ In this chapter, we will:
 For Windows users, before downloading, please [Julia](https://julialang.org), see the specific instructions below.
 
 ### macOS
-On macOS, a ``julia-1.x.x-mac64.dmg`` installation file is contained in the download, which contains the executable ``Julia-1.7.app``. Installation of [Julia](https://julialang.org) on macOS works the same as any other Mac software: drag the Julia-1.7.app to Applications Folder. [Julia](https://julialang.org) runs on macOS 10.9 Mavericks or later.
+On macOS, a ``julia-1.x.x-mac64.dmg`` installation file is contained in the download, which contains the executable ``Julia-1.x.app``. Installation of [Julia](https://julialang.org) on macOS works the same as any other Mac software: drag the Julia-1.x.app to Applications Folder. [Julia](https://julialang.org) runs on macOS 10.9 Mavericks or later.
 
-To launch [Julia](https://julialang.org) from the command line, you'll need to update your ``PATH`` environmental variable to include the location of [Julia](https://julialang.org); add the following line to the ``.zshrc`` file in your home directory using the [nano text editor](https://www.nano-editor.org) or some other editor (path on macOS, your path may be different):
+To launch [Julia](https://julialang.org) from the command line, you'll need to update your ``PATH`` environmental variable to include the location of [Julia](https://julialang.org); add the following line to the ``.zshrc`` file in your home directory using the [nano text editor](https://www.nano-editor.org) or some other editor (path on macOS for version `1.7`, your path may be different):
 
 ```zsh
 export PATH="$PATH:/Applications/Julia-1.7.app/Contents/Resources/julia/bin"
