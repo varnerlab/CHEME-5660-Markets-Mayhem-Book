@@ -77,10 +77,11 @@ To install the [Julia extension for VSCode](https://code.visualstudio.com/docs/l
 height: 460px
 name: fig-vscode-julia-ext
 ---
-Stuff goes here
+The [Julia extension for VSCode](https://code.visualstudio.com/docs/languages/julia) can be installed from the Extension tab of [Visual Studio Code (VSCode)](https://code.visualstudio.com) or by accessing the Extensions from the Preferences menu.
 ```
 
 ---
 
 ## Additional Resources
-Fill me in.
+* For the latest information on [Julia](https://julialang.org), check out the [Julia blog](https://julialang.org/blog/).
+* For the latest updates on [VSCode](https://code.visualstudio.com), check out the [VSCode blog](https://code.visualstudio.com/blogs/2022/08/16/markdown-language-server).
