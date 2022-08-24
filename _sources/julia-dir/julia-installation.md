@@ -13,7 +13,7 @@ In this chapter, we will:
 ### Installation and Requirments for Julia
 [Julia](https://julialang.org), which runs on all major systems, can be downloaded from the [Julia downloads page](https://julialang.org/downloads/). Select the appropriate download version, and then follow the instructions for installation. 
 
-For Windows users, before downloading, please [Julia](https://julialang.org), see the specific instructions below.
+For Windows users, before downloading [Julia](https://julialang.org), please see the specific instructions below.
 
 ### macOS
 On macOS, a ``julia-1.x.x-mac64.dmg`` installation file is contained in the download, which contains the executable ``Julia-1.x.app``. Installation of [Julia](https://julialang.org) on macOS works the same as any other Mac software: drag the Julia-1.x.app to Applications Folder. [Julia](https://julialang.org) runs on macOS 10.9 Mavericks or later.
