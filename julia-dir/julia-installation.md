@@ -13,7 +13,7 @@ In this chapter, we will:
 ### Installation and Requirments for Julia
 [Julia](https://julialang.org), which runs on all major systems, can be downloaded from the [Julia downloads page](https://julialang.org/downloads/). Select the appropriate download version, and then follow the instructions for installation. 
 
-For Windows users, before downloading, please [Julia](https://julialang.org), see the specific instructions below.
+For Windows users, before downloading [Julia](https://julialang.org), please see the specific instructions below.
 
 ### macOS
 On macOS, a ``julia-1.x.x-mac64.dmg`` installation file is contained in the download, which contains the executable ``Julia-1.x.app``. Installation of [Julia](https://julialang.org) on macOS works the same as any other Mac software: drag the Julia-1.x.app to Applications Folder. [Julia](https://julialang.org) runs on macOS 10.9 Mavericks or later.
@@ -77,10 +77,11 @@ To install the [Julia extension for VSCode](https://code.visualstudio.com/docs/l
 height: 460px
 name: fig-vscode-julia-ext
 ---
-Stuff goes here
+The [Julia extension for VSCode](https://code.visualstudio.com/docs/languages/julia) can be installed from the Extension tab of [Visual Studio Code (VSCode)](https://code.visualstudio.com) or by accessing the Extensions from the Preferences menu.
 ```
 
 ---
 
 ## Additional Resources
-Fill me in.
+* For the latest information on [Julia](https://julialang.org), check out the [Julia blog](https://julialang.org/blog/).
+* For the latest updates on [VSCode](https://code.visualstudio.com), check out the [VSCode blog](https://code.visualstudio.com/blogs/2022/08/16/markdown-language-server).
