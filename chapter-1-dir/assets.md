@@ -172,6 +172,16 @@ Given that we are looking at the present value of \$1, we can set $CF_{i}$ = 1, 
 CF_{1} = \frac{1}{(1+r)^{i-1}}\qquad{i=2,3,\dots,T}
 ```
 
+```{figure} ./figs/Fig-PresentValue-FuturePayment.pdf
+---
+height: 380px
+name: fig-presentvalue-futurepayment
+---
+Present value (PV) of \$1 USD collected T periods in the future.
+```
+
+source: [live Pluto notebook](https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks) or [static HTML](https://htmlview.glitch.me/?https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks/blob/main/pluto-notebooks/html/Example-CallPutContract-Payoff.jl.html)
+
 ````
 
 #### Continuous compounding
