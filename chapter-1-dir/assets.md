@@ -177,7 +177,7 @@ CF_{1} = \frac{1}{(1+r)^{i-1}}\qquad{i=2,3,\dots,T}
 height: 380px
 name: fig-presentvalue-futurepayment
 ---
-Present value (PV) of \$1 USD collected T periods in the future.
+Present value (PV) of \$1 USD collected T periods in the future. 
 ```
 
 source: [live Pluto notebook](https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks) or [static HTML](https://htmlview.glitch.me/?https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks/blob/main/pluto-notebooks/html/Example-CallPutContract-Payoff.jl.html)
@@ -200,11 +200,19 @@ A continuous discount factor gives a future value expression of the form:
 CF(t) = \exp\left(rt\right)CF(t_{o})
 ```
 
-where $r$ denotes the _instantaneous_ discount rate.  Of course there is a relationship between the discrete and continous cases because we know that:
+where $r$ denotes the _instantaneous_ discount rate.  
+
+````{prf:observation} Connection 
+:label: continuous-compounding
+
+Of course there is a relationship between the discrete and continous cases because we know that:
 
 ```{math}
 \exp\left(x\right) = \sum_{k=0}^{\infty} \frac{x^{k}}{k!} = 1+x+\frac{x^{2}}{2}+\frac{x^{3}}{6}+\dots
 ```
+````
+
+
 
 ````{prf:example} What is \$1 collected today worth T years from now? 
 :label: ex-future-value-continuous
