@@ -449,8 +449,8 @@ title="Print to PDF"
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#continuous-compounding">
-       Continuous compounding
+      <a class="reference internal nav-link" href="#continuous-discounting">
+       Continuous discounting
       </a>
      </li>
     </ul>
@@ -534,8 +534,8 @@ title="Print to PDF"
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#continuous-compounding">
-       Continuous compounding
+      <a class="reference internal nav-link" href="#continuous-discounting">
+       Continuous discounting
       </a>
      </li>
     </ul>
@@ -675,7 +675,7 @@ into today’s dollars (or vice-versa, we want to compute the value of a future 
 <div class="proof definition admonition" id="defn-multi-perod-discrete-conversion">
 <p class="admonition-title"><span class="caption-number">Definition 2 </span> (Multiple Period Discrete Conversion)</p>
 <section class="definition-content" id="proof-content">
-<p>Let <span class="math notranslate nohighlight">\(CF_{1}\)</span> denote the cash-flow in period 1 (current value), and <span class="math notranslate nohighlight">\(CF_{t}\)</span> the cash-flow in period <span class="math notranslate nohighlight">\(t&gt;1\)</span> (future value). Futher, let <span class="math notranslate nohighlight">\(r_{j+1,j}\)</span> denote the rate of return between discrete time period <span class="math notranslate nohighlight">\(j\)</span> and <span class="math notranslate nohighlight">\(j+1\)</span>. Then:</p>
+<p>Let <span class="math notranslate nohighlight">\(CF_{1}\)</span> denote the cash-flow in period 1 (current value), and <span class="math notranslate nohighlight">\(CF_{t}\)</span> the cash-flow in period <span class="math notranslate nohighlight">\(t&gt;1\)</span> (future value). Further, let <span class="math notranslate nohighlight">\(r_{j+1,j}\)</span> denote the rate of return between discrete time period <span class="math notranslate nohighlight">\(j\)</span> and <span class="math notranslate nohighlight">\(j+1\)</span>. Then:</p>
 <div class="math notranslate nohighlight" id="equation-eq-cash-flow-multiple-period">
 <span class="eqno">(3)<a class="headerlink" href="#equation-eq-cash-flow-multiple-period" title="Permalink to this equation">#</a></span>\[CF_{t} = \left[\prod_{j=1}^{t-1}\left(1+r_{j+1,j}\right)\right]\cdot{CF_{1}}\qquad{t=2,3,\dots,T}\]</div>
 </section>
@@ -689,38 +689,58 @@ into today’s dollars (or vice-versa, we want to compute the value of a future 
 <div class="proof example admonition" id="ex-future-value-discrete">
 <p class="admonition-title"><span class="caption-number">Example 2 </span> (What is $1 collected T time periods in the future worth today? )</p>
 <section class="example-content" id="proof-content">
-<p>The value of money today is the present value, whereas the value of money in the <span class="math notranslate nohighlight">\(T\)</span> time units from now is the future  value.
-In terms of the asset model, <span class="math notranslate nohighlight">\(CF_{1}\)</span> denotes the present value (i = 1 denotes now),
-while <span class="math notranslate nohighlight">\(CF_{i},i=2,3,\dots,T\)</span> denotes future value. Thus, to compute the present value of $1 collected <span class="math notranslate nohighlight">\(T\)</span> time units into the future, we solve Eqn. <a class="reference internal" href="#equation-eq-cash-flow-multiple-period">(3)</a>
+<p>Compute the present value of $1 collected <span class="math notranslate nohighlight">\(T\)</span> time units into the future for a constant discount rate of 2%, 4%, and 6%.</p>
+<p>The value of money today is the present value, whereas the value of money in the <span class="math notranslate nohighlight">\(T\)</span> time units from now is the future  value. In terms of the asset model, <span class="math notranslate nohighlight">\(CF_{1}\)</span> denotes the present value (i = 1 denotes now), while <span class="math notranslate nohighlight">\(CF_{i},i=2,3,\dots,T\)</span> denotes future value. Thus, to compute the present value of $1 collected <span class="math notranslate nohighlight">\(T\)</span> time units into the future, we solve Eqn. <a class="reference internal" href="#equation-eq-cash-flow-multiple-period">(3)</a>
 for <span class="math notranslate nohighlight">\(CF_{1}\)</span> in terms of the future value <span class="math notranslate nohighlight">\(CF_{i},i=2,\dots,T\)</span> and the discount factor
 <span class="math notranslate nohighlight">\(\mathcal{D}\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[CF_{1} = \mathcal{D}_{i1}^{-1}CF_{i}\qquad{i=2,3,\dots,T}\]</div>
 <p>where <span class="math notranslate nohighlight">\(\mathcal{D}_{i1}^{-1}\)</span> is given by:</p>
 <div class="math notranslate nohighlight">
-\[\mathcal{D}_{i1}^{-1} = \frac{1}{(1+r)^{i-1}}\qquad{i=2,3,\dots,T}\]</div>
+\[\mathcal{D}_{i1}^{-1} = \frac{1}{(1+\bar{r})^{i-1}}\qquad{i=2,3,\dots,T}\]</div>
 <p>We have assumed a constant discount rate <span class="math notranslate nohighlight">\(r\)</span> between now (i = 1) and <span class="math notranslate nohighlight">\(i = T\)</span> time units into the future.
 Given that we are looking at the present value of $1, we can set <span class="math notranslate nohighlight">\(CF_{i}\)</span> = 1, which gives:</p>
 <div class="math notranslate nohighlight">
-\[CF_{1} = \frac{1}{(1+r)^{i-1}}\qquad{i=2,3,\dots,T}\]</div>
+\[CF_{1} = \frac{1}{(1+\bar{r})^{i-1}}\qquad{i=2,3,\dots,T}\]</div>
+<figure class="align-default" id="fig-presentvalue-futurepayment">
+<a class="reference internal image-reference" href="../_images/Fig-PresentValue-FuturePayment.pdf"><img alt="../_images/Fig-PresentValue-FuturePayment.pdf" src="../_images/Fig-PresentValue-FuturePayment.pdf" style="height: 380px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 9 </span><span class="caption-text">Present value (PV) of $1 USD collected T periods in the future.</span><a class="headerlink" href="#fig-presentvalue-futurepayment" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>source: <a class="reference external" href="https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks">live Pluto notebook</a> or <a class="reference external" href="https://htmlview.glitch.me/?https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks/blob/main/pluto-notebooks/html/Example-PresentValue.jl.html">static HTML</a></p>
 </section>
 </div></section>
-<section id="continuous-compounding">
-<h4>Continuous compounding<a class="headerlink" href="#continuous-compounding" title="Permalink to this headline">#</a></h4>
-<p>When we formulated Eqn. <a class="reference internal" href="#equation-eq-cash-flow-1-period">(2)</a> we used a finite discrete-time difference, e.g., days, weeks, or maybe even years. However, suppose the time difference between <span class="math notranslate nohighlight">\(t\rightarrow{t+1}\)</span> were infetesimmaly small, i.e., the time difference was continuous. In this case, we have <a class="reference external" href="https://www.investopedia.com/terms/c/continuouscompounding.asp">continuous compounding</a> where the discount factor
-<span class="math notranslate nohighlight">\(\mathcal{D}\)</span> is defined as:</p>
+<section id="continuous-discounting">
+<h4>Continuous discounting<a class="headerlink" href="#continuous-discounting" title="Permalink to this headline">#</a></h4>
+<p>When formulating Eqn. <a class="reference internal" href="#equation-eq-cash-flow-1-period">(2)</a> we used a finite discrete-time difference, e.g., days, weeks, or maybe even years to compute the discount factor. However, suppose the time difference between <span class="math notranslate nohighlight">\(t\rightarrow{t+1}\)</span> were infinitesimally small, i.e., the time difference was continuous. In this case, we have <a class="reference external" href="https://www.investopedia.com/terms/c/continuouscompounding.asp">continuous compounding</a> where the discount factor <span class="math notranslate nohighlight">\(\mathcal{D}\)</span> is defined as:</p>
 <div class="math notranslate nohighlight">
 \[\mathcal{D}(r,t) = \exp\left(rt\right)\]</div>
 <p>A continuous discount factor gives a future value expression of the form:</p>
 <div class="math notranslate nohighlight" id="equation-eq-cont-exchange-tvm">
 <span class="eqno">(4)<a class="headerlink" href="#equation-eq-cont-exchange-tvm" title="Permalink to this equation">#</a></span>\[CF(t) = \exp\left(rt\right)CF(t_{o})\]</div>
-<p>where <span class="math notranslate nohighlight">\(r\)</span> denotes the <em>instantaneous</em> discount rate.  Of course there is a relationship between the discrete and continous cases because we know that:</p>
+<p>where <span class="math notranslate nohighlight">\(r\)</span> denotes the <em>instantaneous</em> discount rate, <span class="math notranslate nohighlight">\(t\)</span> denotes the current time, <span class="math notranslate nohighlight">\(t_{o}\)</span> denotes the initial time.</p>
+<div class="proof observation admonition" id="continuous-compounding">
+<p class="admonition-title"><span class="caption-number">Observation 2 </span> (Discrete and continuous discount factor)</p>
+<section class="observation-content" id="proof-content">
+<p>There is a relationship between the discrete and continuous discount factors; the discrete discount factor is the linear portion of the continuous discount factor. We can see this by looking at the series representation of the <code class="docutils literal notranslate"><span class="pre">exp</span></code> function:</p>
 <div class="math notranslate nohighlight">
 \[\exp\left(x\right) = \sum_{k=0}^{\infty} \frac{x^{k}}{k!} = 1+x+\frac{x^{2}}{2}+\frac{x^{3}}{6}+\dots\]</div>
+<p>The first two terms are the discrete discount factor. Thus, for <em>small</em> values of <span class="math notranslate nohighlight">\(rt\)</span> the discrete and continuous discount factors will be similar.</p>
+</section>
+</div><p>Let’s do a continuous discount factor example.</p>
 <div class="proof example admonition" id="ex-future-value-continuous">
 <p class="admonition-title"><span class="caption-number">Example 3 </span> (What is $1 collected today worth T years from now? )</p>
 <section class="example-content" id="proof-content">
-<p>Let’s consider the opposite case as the previous example. Suppose we are given $1 dollar today. What is the future value of $1 in T years from now for a 2.0% instantaneous annualized discount factor.</p>
+<p>Let’s consider the opposite case from the previous example. Suppose we are given $1 dollar today. What is the future value of $1 in T years from now? Assume a 2.0%, 4.0% and 6.0% instantaneous annualized discount factor.</p>
+<p>In this example, <span class="math notranslate nohighlight">\(CF(t_{o}) = 1\)</span>, the value of <span class="math notranslate nohighlight">\(r\)</span> = 2%, 4% and 6% and the time <span class="math notranslate nohighlight">\(t\)</span> will be in years. Plugging these into <a class="reference external" href="https://julialang.org">Julia</a> and plotting using the <a class="reference external" href="https://github.com/JuliaPlots/Plots.jl">Plots.jl</a> package gives:</p>
+<figure class="align-default" id="fig-futurevalue-1-dollar">
+<a class="reference internal image-reference" href="../_images/Fig-FutureValue-1-dollar.pdf"><img alt="../_images/Fig-FutureValue-1-dollar.pdf" src="../_images/Fig-FutureValue-1-dollar.pdf" style="height: 380px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 10 </span><span class="caption-text">Future value (FV) of $1 USD (today) T-years in the future using a continuous discont factor.</span><a class="headerlink" href="#fig-futurevalue-1-dollar" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>source: <a class="reference external" href="https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks">live Pluto notebook</a> or <a class="reference external" href="https://htmlview.glitch.me/?https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks/blob/main/pluto-notebooks/html/Example-CDF.jl.html">static HTML</a></p>
 </section>
 </div></section>
 </section>
@@ -730,7 +750,7 @@ Given that we are looking at the present value of $1, we can set <span class="ma
 <figure class="align-default" id="cash-financial-node-flow-fig">
 <a class="reference internal image-reference" href="../_images/Fig-FinanicalNode-Schematic.pdf"><img alt="../_images/Fig-FinanicalNode-Schematic.pdf" src="../_images/Fig-FinanicalNode-Schematic.pdf" style="height: 220px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 9 </span><span class="caption-text">Node cash-flow balance diagram. During time <span class="math notranslate nohighlight">\(t=k\)</span> monety flows enter (revenues) and exit (expenses) the time-node.</span><a class="headerlink" href="#cash-financial-node-flow-fig" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 11 </span><span class="caption-text">Node cash-flow balance diagram. During time <span class="math notranslate nohighlight">\(t=k\)</span> monety flows enter (revenues) and exit (expenses) the time-node.</span><a class="headerlink" href="#cash-financial-node-flow-fig" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Now that we have tools to account for the time value of money, we can return to the question of how to value an asset. The most intuitive aproach is to compute the net cash flow at every node. Imagine at node <span class="math notranslate nohighlight">\(t=k\)</span> we have <span class="math notranslate nohighlight">\(\mathcal{S}^{t=k}\)</span> cash streams, denoted as <span class="math notranslate nohighlight">\(\dot{C}_{s}\)</span>, entering (or exiting) the asset node. Then, the net cash would at node <span class="math notranslate nohighlight">\(t=k\)</span> is given by:</p>

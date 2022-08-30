@@ -498,6 +498,11 @@ title="Print to PDF"
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#buy-and-hold-strategy">
+   Buy and Hold Strategy
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#summary">
    Summary
   </a>
@@ -601,6 +606,11 @@ title="Print to PDF"
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#buy-and-hold-strategy">
+   Buy and Hold Strategy
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#summary">
    Summary
   </a>
@@ -625,16 +635,17 @@ title="Print to PDF"
 <li><p>Residual claim means that stockholders are the last in line of all those who have a claim on the assets and income of the corporation. In a liquidation of the firm’s assets the shareholders have a claim to what is left after all other claimants such as the tax authorities, employees, suppliers, bondholders, and other creditors have been paid. For a firm not in liquidation, shareholders have claim to the part of operating income left over after interest and taxes have been paid. Management can either pay this residual as cash dividends to shareholders or reinvest it in the business to increase the value of the shares.</p></li>
 <li><p>Limited liability means that the most shareholders can lose in the event of failure of the corporation is their original investment. Unlike owners of unincorporated businesses, whose creditors can lay claim to the personal assets of the owner (house, car, furniture), corporate shareholders may at worst have worthless stock. They are not personally liable for the firm’s obligations.</p></li>
 </ul>
-<p>In this lecture, we’ll build upon our earlier discussion of <a class="reference internal" href="../chapter-2-dir/stochastic-differential-equations.html"><span class="doc std std-doc">macroscopic</span></a> and <a class="reference internal" href="../chapter-2-dir/agent-based-market-models.html"><span class="doc std std-doc">microscopic</span></a> models of asset price, to begin thinking about the risk and reward of owning shares of stock. In particular, we will:</p>
+<p>In this lecture, we’ll build upon our earlier discussion of <a class="reference internal" href="../chapter-2-dir/stochastic-differential-equations.html"><span class="doc std std-doc">macroscopic</span></a> and <a class="reference internal" href="../chapter-2-dir/agent-based-market-models.html"><span class="doc std std-doc">microscopic</span></a> models of asset price, and begin thinking about the risk and reward of owning shares of stock. In particular, we will:</p>
 <ul class="simple">
 <li><p>Develop tools to model the <em>reward</em> of a stock, which we’ll call the <a class="reference internal" href="#content-references-return"><span class="std std-ref">Return</span></a>.</p></li>
 <li><p>Develop tools to model the <em>risk</em> of a stock, which we’ll call the <a class="reference internal" href="#content-references-risk-volatility"><span class="std std-ref">Volatility</span></a>.</p></li>
+<li><p>Introduce one of the simplest investment strategies the <a class="reference internal" href="#content-references-buy-and-hold-strategy"><span class="std std-ref">Buy and Hold Strategy</span></a>.</p></li>
 </ul>
 <hr class="docutils" />
 </section>
 <section id="return">
 <span id="content-references-return"></span><h2>Return<a class="headerlink" href="#return" title="Permalink to this headline">#</a></h2>
-<p>The return of an asset is a measure of the difference in the price of that asset between two time periods.
+<p>The return of an asset is a measure of the price difference of that asset between two time periods.
 Return can be calculated in many ways; two common approaches are the percentage or fractional return and the
 logarithmic return.</p>
 <section id="fractional-return">
@@ -779,7 +790,7 @@ a small <span class="math notranslate nohighlight">\(\beta_{i}\)</span> suggests
 On the other hand, <span class="math notranslate nohighlight">\(\beta_{i}\)</span> can also be interpreted as a measure of the relative risk of investing in firm <span class="math notranslate nohighlight">\(i\)</span>.</p>
 <p>To understand the various interpretations of <span class="math notranslate nohighlight">\(\beta_{i}\)</span>, we first must understand that both the firm specific <span class="math notranslate nohighlight">\(R_{i}\)</span> and overall market excess returns <span class="math notranslate nohighlight">\(R_{m}\)</span> are random variables. Thus, we can compute the expectation and variance of these variables and look at how these quantities depend upon <span class="math notranslate nohighlight">\(\beta_{i}\)</span>:</p>
 <div class="proof observation admonition" id="obs-beta-risk-measure">
-<p class="admonition-title"><span class="caption-number">Observation 2 </span> (Risk and Reward intepretations of <span class="math notranslate nohighlight">\(\beta_{i}\)</span>)</p>
+<p class="admonition-title"><span class="caption-number">Observation 3 </span> (Risk and Reward intepretations of <span class="math notranslate nohighlight">\(\beta_{i}\)</span>)</p>
 <section class="observation-content" id="proof-content">
 <p>Taking the expectation of the firm excess return <span class="math notranslate nohighlight">\(R_{i}\)</span> gives:</p>
 <div class="math notranslate nohighlight" id="equation-eq-expected-r-sim">
@@ -846,7 +857,7 @@ The daily log-return for <a class="reference external" href="https://finance.yah
 <figure class="align-default" id="fig-amd-sim-v-data">
 <a class="reference internal image-reference" href="../_images/Fig-AMD-SIM-v-Data.pdf"><img alt="../_images/Fig-AMD-SIM-v-Data.pdf" src="../_images/Fig-AMD-SIM-v-Data.pdf" style="height: 380px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 14 </span><span class="caption-text">Estimated performance of the single index model for <a class="reference external" href="https://finance.yahoo.com/quote/AMD/">AMD</a> computed using direct matrix inversion. Green dots denote prediction data, while gray dots denote training data.</span><a class="headerlink" href="#fig-amd-sim-v-data" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 16 </span><span class="caption-text">Estimated performance of the single index model for <a class="reference external" href="https://finance.yahoo.com/quote/AMD/">AMD</a> computed using direct matrix inversion. Green dots denote prediction data, while gray dots denote training data.</span><a class="headerlink" href="#fig-amd-sim-v-data" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>source: <a class="reference external" href="https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks">live Pluto notebook</a> or <a class="reference external" href="https://htmlview.glitch.me/?https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks/blob/main/pluto-notebooks/html/Example-DirectMatrixInversion-SIM.jl.html">static HTML view</a></p>
@@ -949,10 +960,31 @@ the return:</p>
 </ul>
 </section>
 </section>
+<section id="buy-and-hold-strategy">
+<span id="content-references-buy-and-hold-strategy"></span><h2>Buy and Hold Strategy<a class="headerlink" href="#buy-and-hold-strategy" title="Permalink to this headline">#</a></h2>
+<p>We have tools to measure the risk and reward of stocks, now, let’s begin the discussion of investment strategies. The <a class="reference external" href="https://www.investopedia.com/terms/b/buyandhold.asp">buy and hold strategy</a> is arguably the most straightforward approach for investing in stocks (or ETFs). In this approach, an investor buys shares of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> on a regular basis and then holds these shares indefinitely, regardless of the short-term price fluctuations in <code class="docutils literal notranslate"><span class="pre">XYZ.</span></code></p>
+<p>The <a class="reference external" href="https://www.investopedia.com/terms/b/buyandhold.asp">buy and hold strategy</a> is a passive investment approach. No consideration is given to unrealized gains (or losses), and no adjustments are made to the fund other than adding new shares. However, while this approach may appear naive, it can be surprisingly successful.</p>
+<p>The keys to the success of the <a class="reference external" href="https://www.investopedia.com/terms/b/buyandhold.asp">buy and hold strategy</a> are:</p>
+<ul class="simple">
+<li><p>The expected return of the market, when viewed over a long time horizon, is positive; thus, stocks (or ETFs) with <span class="math notranslate nohighlight">\(\beta&gt;0\)</span> will (on average) be expected to appreciate.</p></li>
+<li><p>Further, because the investor is periodically adding new shares of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> to their overall portfolio, the average share price of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> held by the investor can reflect short-term price fluctuations.</p></li>
+</ul>
+<p>Let’s explore these two points with an example:</p>
+<div class="proof example admonition" id="example-average-cost">
+<p class="admonition-title"><span class="caption-number">Example 11 </span> (Buy and hold strategy for <a class="reference external" href="https://finance.yahoo.com/quote/SPY/">SPY</a> )</p>
+<section class="example-content" id="proof-content">
+<p>Suppose we purchased $1.00’s worth of <a class="reference external" href="https://finance.yahoo.com/quote/SPY/">SPY</a> shares at the close of every trading day over a five year period.</p>
+</section>
+</div></section>
 <hr class="docutils" />
 <section id="summary">
 <h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">#</a></h2>
-<p>Fill me in</p>
+<p>In this lecture, we build upon our earlier discussion of <a class="reference internal" href="../chapter-2-dir/stochastic-differential-equations.html"><span class="doc std std-doc">macroscopic</span></a> and <a class="reference internal" href="../chapter-2-dir/agent-based-market-models.html"><span class="doc std std-doc">microscopic</span></a> models of asset price. In particular, we:</p>
+<ul class="simple">
+<li><p>Develop tools to model the <em>reward</em> of a stock, which we’ll call the <a class="reference internal" href="#content-references-return"><span class="std std-ref">Return</span></a>.</p></li>
+<li><p>Develop tools to model the <em>risk</em> of a stock, which we’ll call the <a class="reference internal" href="#content-references-risk-volatility"><span class="std std-ref">Volatility</span></a>.</p></li>
+<li><p>Introduce one of the simplest investment strategies the <a class="reference internal" href="#content-references-buy-and-hold-strategy"><span class="std std-ref">Buy and Hold Strategy</span></a>.</p></li>
+</ul>
 </section>
 </section>
 

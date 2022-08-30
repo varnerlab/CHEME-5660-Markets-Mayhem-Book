@@ -122,7 +122,7 @@ If we do this computation between 3 and 4, and then 4 to 5, etc, we develop a re
 ````{prf:definition} Multiple Period Discrete Conversion
 :label: defn-multi-perod-discrete-conversion
 
-Let $CF_{1}$ denote the cash-flow in period 1 (current value), and $CF_{t}$ the cash-flow in period $t>1$ (future value). Futher, let $r_{j+1,j}$ denote the rate of return between discrete time period $j$ and $j+1$. Then: 
+Let $CF_{1}$ denote the cash-flow in period 1 (current value), and $CF_{t}$ the cash-flow in period $t>1$ (future value). Further, let $r_{j+1,j}$ denote the rate of return between discrete time period $j$ and $j+1$. Then: 
 
 ```{math}
 :label: eq-cash-flow-multiple-period
@@ -147,10 +147,9 @@ Let's do some multi-period discounting examples to better understand {prf:ref}`d
 ````{prf:example} What is \$1 collected T time periods in the future worth today? 
 :label: ex-future-value-discrete
 
+Compute the present value of \$1 collected $T$ time units into the future for a constant discount rate of 2\%, 4\%, and 6\%.
 
-The value of money today is the present value, whereas the value of money in the $T$ time units from now is the future  value.
-In terms of the asset model, $CF_{1}$ denotes the present value (i = 1 denotes now), 
-while $CF_{i},i=2,3,\dots,T$ denotes future value. Thus, to compute the present value of \$1 collected $T$ time units into the future, we solve Eqn. {eq}`eq-cash-flow-multiple-period` 
+The value of money today is the present value, whereas the value of money in the $T$ time units from now is the future  value. In terms of the asset model, $CF_{1}$ denotes the present value (i = 1 denotes now), while $CF_{i},i=2,3,\dots,T$ denotes future value. Thus, to compute the present value of \$1 collected $T$ time units into the future, we solve Eqn. {eq}`eq-cash-flow-multiple-period` 
 for $CF_{1}$ in terms of the future value $CF_{i},i=2,\dots,T$ and the discount factor 
 $\mathcal{D}$:
 
@@ -161,7 +160,7 @@ CF_{1} = \mathcal{D}_{i1}^{-1}CF_{i}\qquad{i=2,3,\dots,T}
 where $\mathcal{D}_{i1}^{-1}$ is given by:
 
 ```{math}
-\mathcal{D}_{i1}^{-1} = \frac{1}{(1+r)^{i-1}}\qquad{i=2,3,\dots,T}
+\mathcal{D}_{i1}^{-1} = \frac{1}{(1+\bar{r})^{i-1}}\qquad{i=2,3,\dots,T}
 ```
 
 We have assumed a constant discount rate $r$ between now (i = 1) and $i = T$ time units into the future. 
@@ -169,15 +168,23 @@ Given that we are looking at the present value of \$1, we can set $CF_{i}$ = 1, 
 
 
 ```{math}
-CF_{1} = \frac{1}{(1+r)^{i-1}}\qquad{i=2,3,\dots,T}
+CF_{1} = \frac{1}{(1+\bar{r})^{i-1}}\qquad{i=2,3,\dots,T}
 ```
+
+```{figure} ./figs/Fig-PresentValue-FuturePayment.pdf
+---
+height: 380px
+name: fig-presentvalue-futurepayment
+---
+Present value (PV) of \$1 USD collected T periods in the future. 
+```
+
+source: [live Pluto notebook](https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks) or [static HTML](https://htmlview.glitch.me/?https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks/blob/main/pluto-notebooks/html/Example-PresentValue.jl.html)
 
 ````
 
-#### Continuous compounding
-When we formulated Eqn. {eq}`eq-cash-flow-1-period` we used a finite discrete-time difference, e.g., days, weeks, or maybe even years. However, suppose the time difference between $t\rightarrow{t+1}$ were infetesimmaly small, i.e., the time difference was continuous. In this case, we have [continuous compounding](https://www.investopedia.com/terms/c/continuouscompounding.asp) where the discount factor 
-$\mathcal{D}$ is defined as:
-
+#### Continuous discounting
+When formulating Eqn. {eq}`eq-cash-flow-1-period` we used a finite discrete-time difference, e.g., days, weeks, or maybe even years to compute the discount factor. However, suppose the time difference between $t\rightarrow{t+1}$ were infinitesimally small, i.e., the time difference was continuous. In this case, we have [continuous compounding](https://www.investopedia.com/terms/c/continuouscompounding.asp) where the discount factor $\mathcal{D}$ is defined as:
 
 ```{math}
 \mathcal{D}(r,t) = \exp\left(rt\right)
@@ -190,17 +197,39 @@ A continuous discount factor gives a future value expression of the form:
 CF(t) = \exp\left(rt\right)CF(t_{o})
 ```
 
-where $r$ denotes the _instantaneous_ discount rate.  Of course there is a relationship between the discrete and continous cases because we know that:
+where $r$ denotes the _instantaneous_ discount rate, $t$ denotes the current time, $t_{o}$ denotes the initial time.  
+
+````{prf:observation} Discrete and continuous discount factor
+:label: continuous-compounding
+
+There is a relationship between the discrete and continuous discount factors; the discrete discount factor is the linear portion of the continuous discount factor. We can see this by looking at the series representation of the `exp` function:
 
 ```{math}
 \exp\left(x\right) = \sum_{k=0}^{\infty} \frac{x^{k}}{k!} = 1+x+\frac{x^{2}}{2}+\frac{x^{3}}{6}+\dots
 ```
 
+The first two terms are the discrete discount factor. Thus, for _small_ values of $rt$ the discrete and continuous discount factors will be similar.  
+
+````
+
+Let's do a continuous discount factor example. 
+
 ````{prf:example} What is \$1 collected today worth T years from now? 
 :label: ex-future-value-continuous
 
-Let's consider the opposite case as the previous example. Suppose we are given \$1 dollar today. What is the future value of \$1 in T years from now for a 2.0\% instantaneous annualized discount factor. 
+Let's consider the opposite case from the previous example. Suppose we are given \$1 dollar today. What is the future value of \$1 in T years from now? Assume a 2.0\%, 4.0\% and 6.0\% instantaneous annualized discount factor. 
 
+In this example, $CF(t_{o}) = 1$, the value of $r$ = 2\%, 4\% and 6\% and the time $t$ will be in years. Plugging these into [Julia](https://julialang.org) and plotting using the [Plots.jl](https://github.com/JuliaPlots/Plots.jl) package gives:
+
+```{figure} ./figs/Fig-FutureValue-1-dollar.pdf
+---
+height: 380px
+name: fig-futurevalue-1-dollar
+---
+Future value (FV) of \$1 USD (today) T-years in the future using a continuous discont factor. 
+```
+
+source: [live Pluto notebook](https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks) or [static HTML](https://htmlview.glitch.me/?https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks/blob/main/pluto-notebooks/html/Example-CDF.jl.html)
 ````
 
 (content:references:npv-defn)=

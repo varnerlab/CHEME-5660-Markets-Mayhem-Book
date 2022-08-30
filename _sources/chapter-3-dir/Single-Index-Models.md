@@ -9,17 +9,18 @@ The two most important characteristics of common stock as an investment are its 
 
  * Limited liability means that the most shareholders can lose in the event of failure of the corporation is their original investment. Unlike owners of unincorporated businesses, whose creditors can lay claim to the personal assets of the owner (house, car, furniture), corporate shareholders may at worst have worthless stock. They are not personally liable for the firm’s obligations.
 
-In this lecture, we'll build upon our earlier discussion of [macroscopic](../chapter-2-dir/stochastic-differential-equations.md) and [microscopic](../chapter-2-dir/agent-based-market-models.md) models of asset price, to begin thinking about the risk and reward of owning shares of stock. In particular, we will:
+In this lecture, we'll build upon our earlier discussion of [macroscopic](../chapter-2-dir/stochastic-differential-equations.md) and [microscopic](../chapter-2-dir/agent-based-market-models.md) models of asset price, and begin thinking about the risk and reward of owning shares of stock. In particular, we will:
 
 * Develop tools to model the _reward_ of a stock, which we'll call the {ref}`content:references:return`. 
 * Develop tools to model the _risk_ of a stock, which we'll call the {ref}`content:references:risk-volatility`.
+* Introduce one of the simplest investment strategies the {ref}`content:references:buy-and-hold-strategy`.
 
 ---
 
 
 (content:references:return)=
 ## Return
-The return of an asset is a measure of the difference in the price of that asset between two time periods. 
+The return of an asset is a measure of the price difference of that asset between two time periods. 
 Return can be calculated in many ways; two common approaches are the percentage or fractional return and the
 logarithmic return. 
 
@@ -422,7 +423,32 @@ The choice of $(n,m)$ is up to you and the application you are interested in. A 
 * [Computation of the unbiased historical volatility using {prf:ref}`algo-unbiased-historic-volatility`](https://htmlview.glitch.me/?https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks/blob/main/pluto-notebooks/html/Example-UnbiasedVolatility-Estimation.jl.html)
 
 
+(content:references:buy-and-hold-strategy)=
+## Buy and Hold Strategy
+We have tools to measure the risk and reward of stocks, now, let's begin the discussion of investment strategies. The [buy and hold strategy](https://www.investopedia.com/terms/b/buyandhold.asp) is arguably the most straightforward approach for investing in stocks (or ETFs). In this approach, an investor buys shares of `XYZ` on a regular basis and then holds these shares indefinitely, regardless of the short-term price fluctuations in `XYZ.` 
+
+The [buy and hold strategy](https://www.investopedia.com/terms/b/buyandhold.asp) is a passive investment approach. No consideration is given to unrealized gains (or losses), and no adjustments are made to the fund other than adding new shares. However, while this approach may appear naive, it can be surprisingly successful. 
+
+The keys to the success of the [buy and hold strategy](https://www.investopedia.com/terms/b/buyandhold.asp) are:
+
+* The expected return of the market, when viewed over a long time horizon, is positive; thus, stocks (or ETFs) with $\beta>0$ will (on average) be expected to appreciate. 
+* Further, because the investor is periodically adding new shares of `XYZ` to their overall portfolio, the average share price of `XYZ` held by the investor can reflect short-term price fluctuations. 
+
+Let's explore these two points with an example:   
+
+````{prf:example} Buy and hold strategy for [SPY](https://finance.yahoo.com/quote/SPY/) 
+:label: example-average-cost
+
+Suppose we purchased \$1.00's worth of [SPY](https://finance.yahoo.com/quote/SPY/) shares at the close of every trading day over a five year period. 
+
+````
+
+
 ---
 
 ## Summary
-Fill me in
+
+In this lecture, we build upon our earlier discussion of [macroscopic](../chapter-2-dir/stochastic-differential-equations.md) and [microscopic](../chapter-2-dir/agent-based-market-models.md) models of asset price. In particular, we:
+* Develop tools to model the _reward_ of a stock, which we'll call the {ref}`content:references:return`. 
+* Develop tools to model the _risk_ of a stock, which we'll call the {ref}`content:references:risk-volatility`.
+* Introduce one of the simplest investment strategies the {ref}`content:references:buy-and-hold-strategy`.

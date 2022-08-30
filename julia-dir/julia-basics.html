@@ -952,7 +952,7 @@ commands for managing packages in <a class="reference external" href="https://do
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A = [1.0 0.8729306342393971; 1.0 1.0]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>A = [1.0 0.4968556515786776; 1.0 1.0]
 </pre></div>
 </div>
 </div>
@@ -1343,24 +1343,26 @@ index i = 5, remaining = 0
 Closest candidates are:
   add(::Float64, !Matched::Float64) at In[22]:2
 Stacktrace:
- [1] top-level scope
-   @ In[22]:16
- [2] eval
-   @ ./boot.jl:373 [inlined]
- [3] include_string(mapexpr::typeof(REPL.softscope), mod::Module, code::String, filename::String)
-   @ Base ./loading.jl:1196
- [4] softscope_include_string(m::Module, code::String, filename::String)
-   @ SoftGlobalScope ~/.julia/packages/SoftGlobalScope/u4UzH/src/SoftGlobalScope.jl:65
- [5] execute_request(socket::ZMQ.Socket, msg::IJulia.Msg)
-   @ IJulia ~/.julia/packages/IJulia/AQu2H/src/execute_request.jl:67
- [6] #invokelatest#2
-   @ ./essentials.jl:716 [inlined]
- [7] invokelatest
-   @ ./essentials.jl:714 [inlined]
- [8] eventloop(socket::ZMQ.Socket)
-   @ IJulia ~/.julia/packages/IJulia/AQu2H/src/eventloop.jl:8
- [9] (::IJulia.var&quot;#15#18&quot;)()
-   @ IJulia ./task.jl:429
+  [1] backtrace()
+    @ Base ./error.jl:114
+  [2] top-level scope
+    @ In[22]:16
+  [3] eval
+    @ ./boot.jl:368 [inlined]
+  [4] include_string(mapexpr::typeof(REPL.softscope), mod::Module, code::String, filename::String)
+    @ Base ./loading.jl:1428
+  [5] softscope_include_string(m::Module, code::String, filename::String)
+    @ SoftGlobalScope ~/.julia/packages/SoftGlobalScope/u4UzH/src/SoftGlobalScope.jl:65
+  [6] execute_request(socket::ZMQ.Socket, msg::IJulia.Msg)
+    @ IJulia ~/.julia/packages/IJulia/AQu2H/src/execute_request.jl:67
+  [7] #invokelatest#2
+    @ ./essentials.jl:729 [inlined]
+  [8] invokelatest
+    @ ./essentials.jl:726 [inlined]
+  [9] eventloop(socket::ZMQ.Socket)
+    @ IJulia ~/.julia/packages/IJulia/AQu2H/src/eventloop.jl:8
+ [10] (::IJulia.var&quot;#15#18&quot;)()
+    @ IJulia ./task.jl:484
 </pre></div>
 </div>
 </div>
@@ -1552,16 +1554,16 @@ A message from inside the example method ...
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "julia-1.7"
+            mode: "julia-1.8"
         },
         kernelOptions: {
-            kernelName: "julia-1.7",
+            kernelName: "julia-1.8",
             path: "./julia-dir"
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'julia-1.7'</script>
+    <script>kernelName = 'julia-1.8'</script>
 
               </div>
               

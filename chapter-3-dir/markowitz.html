@@ -655,7 +655,7 @@ The <span class="math notranslate nohighlight">\(\text{cov}\left(r_{i},r_{j}\rig
 Thus, we can influence the overall portfolio variance by choosing the assets
 based upon their correlation.</p>
 <div class="proof observation admonition" id="observation-2">
-<p class="admonition-title"><span class="caption-number">Observation 3 </span> (The role of correlation in <span class="math notranslate nohighlight">\(\mathcal{P}\)</span>)</p>
+<p class="admonition-title"><span class="caption-number">Observation 4 </span> (The role of correlation in <span class="math notranslate nohighlight">\(\mathcal{P}\)</span>)</p>
 <section class="observation-content" id="proof-content">
 <ul class="simple">
 <li><p><strong>Positive correlation</strong>: For two assets that are positively correlated <span class="math notranslate nohighlight">\(p_{12}&gt;{0}\)</span>,
@@ -712,7 +712,7 @@ The quantity <span class="math notranslate nohighlight">\(R^{*}\)</span> denotes
 <h4>Portfolio Return using Single Index Models<a class="headerlink" href="#portfolio-return-using-single-index-models" title="Permalink to this headline">#</a></h4>
 <p><a class="reference internal" href="#defn-portfolio-return">Definition 37</a> shows the expected return of portfolio <span class="math notranslate nohighlight">\(\mathcal{P}\)</span> in terms of the expected return of each of the assets in the portfolio. Thus, we must estimate the expected returns for each asset when solving the Markowitz allocation problem from data (as shown in <a class="reference internal" href="#content-references-markowitz-solution-data"><span class="std std-ref">Data-driven risky portfolios</span></a>). However, a single index model can limit this work; instead of estimating the expected return for each asset from data, we only need to calculate the expected excess market return <span class="math notranslate nohighlight">\(\mathbb{E}(R_{m})\)</span> and then use the single index model to predict the firm-specific expected excess returns <span class="math notranslate nohighlight">\(\mathbb{E}(R_{i})\)</span>:</p>
 <div class="proof observation admonition" id="obs-single-index-model-p-return">
-<p class="admonition-title"><span class="caption-number">Observation 4 </span> (Single Index Model Portfolio Return)</p>
+<p class="admonition-title"><span class="caption-number">Observation 5 </span> (Single Index Model Portfolio Return)</p>
 <section class="observation-content" id="proof-content">
 <p>The single index model of Sharpe <span id="id5">[<a class="reference internal" href="../References.html#id12" title="William F. Sharpe. A simplified model for portfolio analysis. Management Science, 9(2):277-293, 1963. URL: https://doi.org/10.1287/mnsc.9.2.277, arXiv:https://doi.org/10.1287/mnsc.9.2.277, doi:10.1287/mnsc.9.2.277.">Sharpe, 1963</a>]</span> describes the excess return of asset <span class="math notranslate nohighlight">\(i\)</span> in terms of a firm specific contribution, and a contribution from the overall market. Substituting the expected excess return for asset <span class="math notranslate nohighlight">\(i\)</span> into Eqn. <a class="reference internal" href="#equation-eqn-expected-p-rerturn">(29)</a> gives:</p>
 <div class="math notranslate nohighlight" id="equation-eqn-almost-sim-portfolio">
@@ -735,7 +735,7 @@ The quantity <span class="math notranslate nohighlight">\(R^{*}\)</span> denotes
 <h4>Portfolio Variance using Single Index Models<a class="headerlink" href="#portfolio-variance-using-single-index-models" title="Permalink to this headline">#</a></h4>
 <p>The single index portfolio approach provides a theoretically attractive model for the covariance matrix <span class="math notranslate nohighlight">\(\Sigma\)</span>. In particular, let’s build upon <a class="reference internal" href="#defn-portfolio-variance">Definition 38</a>:</p>
 <div class="proof observation admonition" id="obs-single-index-model-covariance">
-<p class="admonition-title"><span class="caption-number">Observation 5 </span> (Single Index Model Portfolio Variance)</p>
+<p class="admonition-title"><span class="caption-number">Observation 6 </span> (Single Index Model Portfolio Variance)</p>
 <section class="observation-content" id="proof-content">
 <p>To calculate the portfolio covariance matrix <span class="math notranslate nohighlight">\(\Sigma\)</span>, we must calculate <span class="math notranslate nohighlight">\(\text{cov}(R_{i}, R_{j})\)</span>, the covariance between the excess return of asset <span class="math notranslate nohighlight">\(i\)</span> and <span class="math notranslate nohighlight">\(j\)</span> in portfolio <span class="math notranslate nohighlight">\(\mathcal{P}\)</span>. Toward this, we take advantage of a property of the covariance between random variables <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span>:</p>
 <div class="math notranslate nohighlight" id="equation-eqn-prop-cov">
