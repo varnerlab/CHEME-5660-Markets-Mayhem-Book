@@ -149,9 +149,7 @@ Let's do some multi-period discounting examples to better understand {prf:ref}`d
 
 Compute the present value of \$1 collected $T$ time units into the future for a constant discount rate of 2\%, 4\%, and 6\%.
 
-The value of money today is the present value, whereas the value of money in the $T$ time units from now is the future  value.
-In terms of the asset model, $CF_{1}$ denotes the present value (i = 1 denotes now), 
-while $CF_{i},i=2,3,\dots,T$ denotes future value. Thus, to compute the present value of \$1 collected $T$ time units into the future, we solve Eqn. {eq}`eq-cash-flow-multiple-period` 
+The value of money today is the present value, whereas the value of money in the $T$ time units from now is the future  value. In terms of the asset model, $CF_{1}$ denotes the present value (i = 1 denotes now), while $CF_{i},i=2,3,\dots,T$ denotes future value. Thus, to compute the present value of \$1 collected $T$ time units into the future, we solve Eqn. {eq}`eq-cash-flow-multiple-period` 
 for $CF_{1}$ in terms of the future value $CF_{i},i=2,\dots,T$ and the discount factor 
 $\mathcal{D}$:
 
@@ -221,14 +219,14 @@ Let's do a continuous discount factor example.
 
 Let's consider the opposite case from the previous example. Suppose we are given \$1 dollar today. What is the future value of \$1 in T years from now? Assume a 2.0\%, 4.0\% and 6.0\% instantaneous annualized discount factor. 
 
-In this example, $CF(t_{o}) = 1$, the value of $r = 0.02, 0.4 \text{and} 0.06$ and the time $t$ will be in years. Plugging these into [Julia](https://julialang.org) and plotting using the [Plots.jl](https://github.com/JuliaPlots/Plots.jl) package gives:
+In this example, $CF(t_{o}) = 1$, the value of $r$ = 2\%, 4\% and 6\% and the time $t$ will be in years. Plugging these into [Julia](https://julialang.org) and plotting using the [Plots.jl](https://github.com/JuliaPlots/Plots.jl) package gives:
 
 ```{figure} ./figs/Fig-FutureValue-1-dollar.pdf
 ---
 height: 380px
 name: fig-futurevalue-1-dollar
 ---
-Future value (FV) of \$1 USD T-years in the future using a continuous discont factor. 
+Future value (FV) of \$1 USD (today) T-years in the future using a continuous discont factor. 
 ```
 
 source: [live Pluto notebook](https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks) or [static HTML](https://htmlview.glitch.me/?https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks/blob/main/pluto-notebooks/html/Example-CDF.jl.html)
