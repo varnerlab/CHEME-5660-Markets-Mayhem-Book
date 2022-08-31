@@ -1,9 +1,8 @@
-# Financial Balances
+# Financial Balances and Abstract Assets
 
 ## Introduction
 The development of processes or products does not occur inside a mythical universe that is free 
-from market forces. Instead, processes and products must be, at a minimum, financially neutral to be viable.
-Processes and products that are not financially viable, while perhaps being technically 
+from market forces. Instead, processes and products must be, at a minimum, financially neutral to be viable. Processes and products that are not financially viable, while perhaps being technically 
 innovative or otherwise advantageous, will not survive in the marketplace without external support e.g., local, state or federal government subsities. 
 
 In this lecture we will:
@@ -56,9 +55,13 @@ Hypothetically, suppose a _risk-free_ investment was guaranteed to return $i>0$ 
 F = (1+i)\cdot{P}
 ```
 
-Thus, if given a choice between $P$ dollars today, or the same $P$ dollars one investment period in the future, you would _always_ choose (assuming you were a rational investor) to take the $P$ now; you could invest those $P$ dollars now in a risk-free product and get $F = (1+i)\cdot{C}$ back, where $F>C$. The only case where it makes sense to take the future money is if $i=0$, i.e., $F = P$ (which is forbidden by the condition $i>0$).
+Thus, if given a choice between $P$ dollars today, or the same $P$ dollars one investment period in the future, you would _always_ choose (assuming you were a rational investor) to take the $P$ dollars now. 
 
-This explanation assumes that a _risk-free_ investment exists that always returns $i>0$. Does such an investment exist? [Unfortunately no, the _risk-free_ investment is only a theoretical concept](https://www.investopedia.com/terms/r/risk-freerate.asp). However, the _risk-free rate of return_ $i$ is often approximated by the [yield on 10-year US Treasury bonds](https://www.bloomberg.com/markets/rates-bonds/government-bonds/us). 
+__Why?__ 
+
+* By taking $P$ dollars today, you could invest those $P$ dollars now in a risk-free product and get $F = (1+i)\cdot{P}$ back, where $F>P$. Thus, the only case where it makes sense to take the future money is if $i=0$, i.e., $F = P$ (which is forbidden by the condition $i>0$). 
+
+* This hypothetical scenario assumes that a _risk-free_ investment exists that always returns $i>0$. Does such an investment exist? [Unfortunately, the _risk-free_ investment is only a theoretical concept](https://www.investopedia.com/terms/r/risk-freerate.asp). However, the _risk-free rate of return_ $i$ is often approximated by the [yield on 10-year US Treasury bonds](https://www.bloomberg.com/markets/rates-bonds/government-bonds/us) or some other US Treasury debt security. 
 
 ````
 
@@ -163,8 +166,7 @@ where $\mathcal{D}_{i1}^{-1}$ is given by:
 \mathcal{D}_{i1}^{-1} = \frac{1}{(1+\bar{r})^{i-1}}\qquad{i=2,3,\dots,T}
 ```
 
-We have assumed a constant discount rate $r$ between now (i = 1) and $i = T$ time units into the future. 
-Given that we are looking at the present value of \$1, we can set $CF_{i}$ = 1, which gives:
+We have assumed a constant discount rate $r$ between now (i = 1) and $i = T$ time units into the future. Given that we are looking at the present value of \$1, we can set $CF_{i}$ = 1, which gives:
 
 
 ```{math}
@@ -179,7 +181,7 @@ name: fig-presentvalue-futurepayment
 Present value (PV) of \$1 USD collected T periods in the future. 
 ```
 
-source: [live Pluto notebook](https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks) or [static HTML](https://htmlview.glitch.me/?https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks/blob/main/pluto-notebooks/html/Example-PresentValue.jl.html)
+__source__: [live Pluto notebook](https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks) or [static HTML](https://htmlview.glitch.me/?https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks/blob/main/pluto-notebooks/html/Example-PresentValue.jl.html)
 
 ````
 
@@ -229,7 +231,7 @@ name: fig-futurevalue-1-dollar
 Future value (FV) of \$1 USD (today) T-years in the future using a continuous discont factor. 
 ```
 
-source: [live Pluto notebook](https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks) or [static HTML](https://htmlview.glitch.me/?https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks/blob/main/pluto-notebooks/html/Example-CDF.jl.html)
+__source__: [live Pluto notebook](https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks) or [static HTML](https://htmlview.glitch.me/?https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks/blob/main/pluto-notebooks/html/Example-CDF.jl.html)
 ````
 
 (content:references:npv-defn)=
@@ -248,7 +250,7 @@ Now that we have tools to account for the time value of money, we can return to 
 CF_{k} = \sum_{s\in\mathcal{S}^{t=k}}\nu_{s}\dot{C}_{s}
 ```
 
-where $\nu_{s}$ denotes a direction parameter; $\nu_{s}=+1$ is stream $s$ enters node $t=k$, $\nu_{s}=-1$ is stream $s$ exists node $t=k$. Finally, to value an asset, we could imagine adding up all the current and future cash flows, converted to some shared basis, e.g., current dollars. This sum is called the Net Present Value (NPV); NPV is a widespread method for asset valuation. As well shall see, NPV is also a widely used tool for financial decision-making.   
+where $\nu_{s}$ denotes a direction parameter; $\nu_{s}=+1$ if stream $s$ enters node $t=k$, $\nu_{s}=-1$ if stream $s$ exists node $t=k$. Finally, to value an asset, we could imagine adding up all the current and future cash flows, converted to some shared basis, e.g., current dollars. This sum is called the [Net Present Value (NPV)](https://en.wikipedia.org/wiki/Net_present_value); NPV is a widespread method for asset valuation. As well shall see, NPV is also a widely used tool for financial decision-making.   
 
 ````{prf:definition} Discrete Net Present Value
 :label: net-present-value-defn
@@ -280,11 +282,34 @@ The discount rates $r_{t+1,t}$, i.e., the rates of return between time periods $
 
 We can setup the following criteria to deciced between a possible asset or project and a hypothetical alternative investment:
 
-* $\text{NPV}<0$: A negative NPV indicates the proposed project will generate less income than the alternative investment e.g., zero-coupon bond at the same discount rate and time-to- maturity as the project
+* $\text{NPV}<0$: A negative NPV indicates the proposed project will generate less income than the alternative investment e.g., zero-coupon bond at the same discount rate and time-to- maturity as the project.
 
-* $\text{NPV}=0$: A zero NPV indicates the proposed project will generate the same income as the alternative investment e.g., zero-coupon bond at the same discount rate and time-to- maturity as the project
+* $\text{NPV}=0$: A zero NPV indicates the proposed project will generate the same income as the alternative investment e.g., zero-coupon bond at the same discount rate and time-to- maturity as the project.
 
-* $\text{NPV}>0$: A negative NPV indicates the proposed project will generate less income than the alternative investment e.g., zero-coupon bond at the same discount rate and time-to- maturity as the project
+* $\text{NPV}>0$: A postive NPV indicates the proposed project will generate more income than a hypothetical alternative investment e.g., zero-coupon bond at the same discount rate and time-to- maturity as the project.
+
+Let's do a net present value example:
+
+````{prf:example} Install an upgraded lighting system?
+:label: example-net-present-value-discrete
+
+Should we install a new computer-controlled lighting system (or not)? Johnson Controls offers to install a new computer-controlled lighting system that will reduce electric bills by 90,000 USD each of the next three years. Is this a good investment if the system costs 230,000 USD fully installed?
+
+The discount rate is constant over the lifetime of the project, but unkown; thus, $\bar{r}$ is a parameter in the problem.
+
+```{figure} ./figs/Fig-JControls-NPV.pdf
+---
+height: 380px
+name: example-jcontrols-npv-fig
+---
+Net Present Value (NPV) as a function of the discount rate $\bar{r}$ for the proposed Johnson Controls lighting upgrade. The alternative investment is a perfectly priced zero-coupon bond with the same $\bar{r}$ and time-to-maturity as the lighting project. 
+```
+
+The installation of the computer-controlled lighting system from Johnson Controls had a positive net present value (NPV) for discount rates less than 8.5%. However, the alternative investment would be the preferred choice beyond this discount rate.
+
+__source__: The Johnson Controls example was modified from [MIT 15.401](https://ocw.mit.edu/courses/sloan-school-of-management/15-401-finance-theory-i-fall-2008/). Donwload [the live Pluto notebook](https://htmlview.glitch.me/?https://github.com/varnerlab/ENGRI-1120-IntroToChemE-Example-Notebooks/blob/main/notebooks-pluto/html/Example-ENGRI-1120-NetPresentValue.jl.html) or [a static html version](https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks/blob/main/pluto-notebooks/html/Example-NetPresentValue.jl.html) of this example.
+
+````
 
 ### The Internal Rate of Return (IRR)
 The NPV decision rule above relies on computing the sum of discounted future cash flows. However, in these calculations, what discount rate should we use? This is not an easy question; the correct discount rate varies between applications and industries.  Thus, let's think of the discount rate as a variable. If the net present value of an investment or project is positive, the project earns more than the discount rate used to discount the future cash amounts. On the other hand, if the net present value of a project is negative, the project earns less than the discount rate used to discount the future cash amounts.
@@ -295,7 +320,7 @@ This special discount rate is called the Internal Rate of Return (IRR):
 ````{prf:definition} Internal Rate of Return
 :label: defn-internal-rate-of-return
 
-Assume the discount rate is constant between time periods, denote this rate as $\bar{r}$. The internal rate of rerturn (IRR) is the discount rate that satifies the following condition:
+Assume the discount rate is constant between time periods, denote this rate as $\bar{r}$. Then, the internal rate of rerturn (IRR) is the discount rate that satifies the following condition:
 
 ```{math}
 \sum_{t=1}^{T}{\mathcal{D}_{t,1}^{-1}}\cdot{CF_{t}} = 0
@@ -304,9 +329,6 @@ Assume the discount rate is constant between time periods, denote this rate as $
 Discount rates greater than the IRR favor the alternative investment.
 
 ````
-
-## Example notebooks
-* Johnson Controls Example taken from [MIT 15.401](https://ocw.mit.edu/courses/sloan-school-of-management/15-401-finance-theory-i-fall-2008/). Donwload [the live Pluto notebook](https://htmlview.glitch.me/?https://github.com/varnerlab/ENGRI-1120-IntroToChemE-Example-Notebooks/blob/main/notebooks-pluto/html/Example-ENGRI-1120-NetPresentValue.jl.html) or [a static html version](https://htmlview.glitch.me/?https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks/blob/main/pluto-notebooks/html/Example-NetPresentValue.jl.html) of this example.
 
 ---
 
