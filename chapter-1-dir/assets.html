@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Financial Balances &#8212; CHEME 5660</title>
+    <title>Financial Balances and Abstract Assets &#8212; CHEME 5660</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -162,7 +162,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     Financial Balances
+     Financial Balances and Abstract Assets
     </a>
    </li>
    <li class="toctree-l2">
@@ -211,7 +211,7 @@ const thebe_selector_output = ".output, .cell_output"
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../chapter-3-dir/bonds.html">
-     Fixed Income Securities
+     Fixed Income Debt Securities
     </a>
    </li>
    <li class="toctree-l2">
@@ -475,11 +475,6 @@ title="Print to PDF"
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#example-notebooks">
-   Example notebooks
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#summary">
    Summary
   </a>
@@ -493,7 +488,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Financial Balances</h1>
+                <h1>Financial Balances and Abstract Assets</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -560,11 +555,6 @@ title="Print to PDF"
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#example-notebooks">
-   Example notebooks
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#summary">
    Summary
   </a>
@@ -579,13 +569,12 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="financial-balances">
-<h1>Financial Balances<a class="headerlink" href="#financial-balances" title="Permalink to this headline">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="financial-balances-and-abstract-assets">
+<h1>Financial Balances and Abstract Assets<a class="headerlink" href="#financial-balances-and-abstract-assets" title="Permalink to this headline">#</a></h1>
 <section id="introduction">
 <h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">#</a></h2>
 <p>The development of processes or products does not occur inside a mythical universe that is free
-from market forces. Instead, processes and products must be, at a minimum, financially neutral to be viable.
-Processes and products that are not financially viable, while perhaps being technically
+from market forces. Instead, processes and products must be, at a minimum, financially neutral to be viable. Processes and products that are not financially viable, while perhaps being technically
 innovative or otherwise advantageous, will not survive in the marketplace without external support e.g., local, state or federal government subsities.</p>
 <p>In this lecture we will:</p>
 <ul class="simple">
@@ -627,8 +616,12 @@ However, there is a critical and fundamental challenge to this intuition.</p>
 <p>Hypothetically, suppose a <em>risk-free</em> investment was guaranteed to return <span class="math notranslate nohighlight">\(i&gt;0\)</span> in some period. If we invested <span class="math notranslate nohighlight">\(P\)</span> dollars today in this risk-free investment, then at the end of the investment period, we are <em>guaranteed</em> to get <span class="math notranslate nohighlight">\(F\)</span> dollars back (because the investment is risk-free) where <span class="math notranslate nohighlight">\(F\)</span> is given by:</p>
 <div class="math notranslate nohighlight">
 \[F = (1+i)\cdot{P}\]</div>
-<p>Thus, if given a choice between <span class="math notranslate nohighlight">\(P\)</span> dollars today, or the same <span class="math notranslate nohighlight">\(P\)</span> dollars one investment period in the future, you would <em>always</em> choose (assuming you were a rational investor) to take the <span class="math notranslate nohighlight">\(P\)</span> now; you could invest those <span class="math notranslate nohighlight">\(P\)</span> dollars now in a risk-free product and get <span class="math notranslate nohighlight">\(F = (1+i)\cdot{C}\)</span> back, where <span class="math notranslate nohighlight">\(F&gt;C\)</span>. The only case where it makes sense to take the future money is if <span class="math notranslate nohighlight">\(i=0\)</span>, i.e., <span class="math notranslate nohighlight">\(F = P\)</span> (which is forbidden by the condition <span class="math notranslate nohighlight">\(i&gt;0\)</span>).</p>
-<p>This explanation assumes that a <em>risk-free</em> investment exists that always returns <span class="math notranslate nohighlight">\(i&gt;0\)</span>. Does such an investment exist? <a class="reference external" href="https://www.investopedia.com/terms/r/risk-freerate.asp">Unfortunately no, the <em>risk-free</em> investment is only a theoretical concept</a>. However, the <em>risk-free rate of return</em> <span class="math notranslate nohighlight">\(i\)</span> is often approximated by the <a class="reference external" href="https://www.bloomberg.com/markets/rates-bonds/government-bonds/us">yield on 10-year US Treasury bonds</a>.</p>
+<p>Thus, if given a choice between <span class="math notranslate nohighlight">\(P\)</span> dollars today, or the same <span class="math notranslate nohighlight">\(P\)</span> dollars one investment period in the future, you would <em>always</em> choose (assuming you were a rational investor) to take the <span class="math notranslate nohighlight">\(P\)</span> dollars now.</p>
+<p><strong>Why?</strong></p>
+<ul class="simple">
+<li><p>By taking <span class="math notranslate nohighlight">\(P\)</span> dollars today, you could invest those <span class="math notranslate nohighlight">\(P\)</span> dollars now in a risk-free product and get <span class="math notranslate nohighlight">\(F = (1+i)\cdot{P}\)</span> back, where <span class="math notranslate nohighlight">\(F&gt;P\)</span>. Thus, the only case where it makes sense to take the future money is if <span class="math notranslate nohighlight">\(i=0\)</span>, i.e., <span class="math notranslate nohighlight">\(F = P\)</span> (which is forbidden by the condition <span class="math notranslate nohighlight">\(i&gt;0\)</span>).</p></li>
+<li><p>This hypothetical scenario assumes that a <em>risk-free</em> investment exists that always returns <span class="math notranslate nohighlight">\(i&gt;0\)</span>. Does such an investment exist? <a class="reference external" href="https://www.investopedia.com/terms/r/risk-freerate.asp">Unfortunately, the <em>risk-free</em> investment is only a theoretical concept</a>. However, the <em>risk-free rate of return</em> <span class="math notranslate nohighlight">\(i\)</span> is often approximated by the <a class="reference external" href="https://www.bloomberg.com/markets/rates-bonds/government-bonds/us">yield on 10-year US Treasury bonds</a> or some other US Treasury debt security.</p></li>
+</ul>
 </section>
 </div><p>Unfortunately, our intuitive valuation operator (net cash flows) does not consider (yet) the time of value of money. Let’s develop some tools to address this issue.</p>
 </section>
@@ -698,8 +691,7 @@ for <span class="math notranslate nohighlight">\(CF_{1}\)</span> in terms of the
 <p>where <span class="math notranslate nohighlight">\(\mathcal{D}_{i1}^{-1}\)</span> is given by:</p>
 <div class="math notranslate nohighlight">
 \[\mathcal{D}_{i1}^{-1} = \frac{1}{(1+\bar{r})^{i-1}}\qquad{i=2,3,\dots,T}\]</div>
-<p>We have assumed a constant discount rate <span class="math notranslate nohighlight">\(r\)</span> between now (i = 1) and <span class="math notranslate nohighlight">\(i = T\)</span> time units into the future.
-Given that we are looking at the present value of $1, we can set <span class="math notranslate nohighlight">\(CF_{i}\)</span> = 1, which gives:</p>
+<p>We have assumed a constant discount rate <span class="math notranslate nohighlight">\(r\)</span> between now (i = 1) and <span class="math notranslate nohighlight">\(i = T\)</span> time units into the future. Given that we are looking at the present value of $1, we can set <span class="math notranslate nohighlight">\(CF_{i}\)</span> = 1, which gives:</p>
 <div class="math notranslate nohighlight">
 \[CF_{1} = \frac{1}{(1+\bar{r})^{i-1}}\qquad{i=2,3,\dots,T}\]</div>
 <figure class="align-default" id="fig-presentvalue-futurepayment">
@@ -708,7 +700,7 @@ Given that we are looking at the present value of $1, we can set <span class="ma
 <p><span class="caption-number">Fig. 9 </span><span class="caption-text">Present value (PV) of $1 USD collected T periods in the future.</span><a class="headerlink" href="#fig-presentvalue-futurepayment" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<p>source: <a class="reference external" href="https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks">live Pluto notebook</a> or <a class="reference external" href="https://htmlview.glitch.me/?https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks/blob/main/pluto-notebooks/html/Example-PresentValue.jl.html">static HTML</a></p>
+<p><strong>source</strong>: <a class="reference external" href="https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks">live Pluto notebook</a> or <a class="reference external" href="https://htmlview.glitch.me/?https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks/blob/main/pluto-notebooks/html/Example-PresentValue.jl.html">static HTML</a></p>
 </section>
 </div></section>
 <section id="continuous-discounting">
@@ -740,7 +732,7 @@ Given that we are looking at the present value of $1, we can set <span class="ma
 <p><span class="caption-number">Fig. 10 </span><span class="caption-text">Future value (FV) of $1 USD (today) T-years in the future using a continuous discont factor.</span><a class="headerlink" href="#fig-futurevalue-1-dollar" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<p>source: <a class="reference external" href="https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks">live Pluto notebook</a> or <a class="reference external" href="https://htmlview.glitch.me/?https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks/blob/main/pluto-notebooks/html/Example-CDF.jl.html">static HTML</a></p>
+<p><strong>source</strong>: <a class="reference external" href="https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks">live Pluto notebook</a> or <a class="reference external" href="https://htmlview.glitch.me/?https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks/blob/main/pluto-notebooks/html/Example-CDF.jl.html">static HTML</a></p>
 </section>
 </div></section>
 </section>
@@ -756,7 +748,7 @@ Given that we are looking at the present value of $1, we can set <span class="ma
 <p>Now that we have tools to account for the time value of money, we can return to the question of how to value an asset. The most intuitive aproach is to compute the net cash flow at every node. Imagine at node <span class="math notranslate nohighlight">\(t=k\)</span> we have <span class="math notranslate nohighlight">\(\mathcal{S}^{t=k}\)</span> cash streams, denoted as <span class="math notranslate nohighlight">\(\dot{C}_{s}\)</span>, entering (or exiting) the asset node. Then, the net cash would at node <span class="math notranslate nohighlight">\(t=k\)</span> is given by:</p>
 <div class="math notranslate nohighlight">
 \[CF_{k} = \sum_{s\in\mathcal{S}^{t=k}}\nu_{s}\dot{C}_{s}\]</div>
-<p>where <span class="math notranslate nohighlight">\(\nu_{s}\)</span> denotes a direction parameter; <span class="math notranslate nohighlight">\(\nu_{s}=+1\)</span> is stream <span class="math notranslate nohighlight">\(s\)</span> enters node <span class="math notranslate nohighlight">\(t=k\)</span>, <span class="math notranslate nohighlight">\(\nu_{s}=-1\)</span> is stream <span class="math notranslate nohighlight">\(s\)</span> exists node <span class="math notranslate nohighlight">\(t=k\)</span>. Finally, to value an asset, we could imagine adding up all the current and future cash flows, converted to some shared basis, e.g., current dollars. This sum is called the Net Present Value (NPV); NPV is a widespread method for asset valuation. As well shall see, NPV is also a widely used tool for financial decision-making.</p>
+<p>where <span class="math notranslate nohighlight">\(\nu_{s}\)</span> denotes a direction parameter; <span class="math notranslate nohighlight">\(\nu_{s}=+1\)</span> if stream <span class="math notranslate nohighlight">\(s\)</span> enters node <span class="math notranslate nohighlight">\(t=k\)</span>, <span class="math notranslate nohighlight">\(\nu_{s}=-1\)</span> if stream <span class="math notranslate nohighlight">\(s\)</span> exists node <span class="math notranslate nohighlight">\(t=k\)</span>. Finally, to value an asset, we could imagine adding up all the current and future cash flows, converted to some shared basis, e.g., current dollars. This sum is called the <a class="reference external" href="https://en.wikipedia.org/wiki/Net_present_value">Net Present Value (NPV)</a>; NPV is a widespread method for asset valuation. As well shall see, NPV is also a widely used tool for financial decision-making.</p>
 <div class="proof definition admonition" id="net-present-value-defn">
 <p class="admonition-title"><span class="caption-number">Definition 3 </span> (Discrete Net Present Value)</p>
 <section class="definition-content" id="proof-content">
@@ -777,11 +769,26 @@ Given that we are looking at the present value of $1, we can set <span class="ma
 <p>The discount rates <span class="math notranslate nohighlight">\(r_{t+1,t}\)</span>, i.e., the rates of return between time periods <span class="math notranslate nohighlight">\(t\rightarrow{t+1}\)</span> appearing in the discount factors, have an exciting interpretation within the context of net present value calculations. These rates can be <em>specified</em> by the decision maker as the minumn accetable rate of return that could be earned by some hypothetical <em>alternative</em> investment.</p>
 <p>We can setup the following criteria to deciced between a possible asset or project and a hypothetical alternative investment:</p>
 <ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(\text{NPV}&lt;0\)</span>: A negative NPV indicates the proposed project will generate less income than the alternative investment e.g., zero-coupon bond at the same discount rate and time-to- maturity as the project</p></li>
-<li><p><span class="math notranslate nohighlight">\(\text{NPV}=0\)</span>: A zero NPV indicates the proposed project will generate the same income as the alternative investment e.g., zero-coupon bond at the same discount rate and time-to- maturity as the project</p></li>
-<li><p><span class="math notranslate nohighlight">\(\text{NPV}&gt;0\)</span>: A negative NPV indicates the proposed project will generate less income than the alternative investment e.g., zero-coupon bond at the same discount rate and time-to- maturity as the project</p></li>
+<li><p><span class="math notranslate nohighlight">\(\text{NPV}&lt;0\)</span>: A negative NPV indicates the proposed project will generate less income than the alternative investment e.g., zero-coupon bond at the same discount rate and time-to- maturity as the project.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\text{NPV}=0\)</span>: A zero NPV indicates the proposed project will generate the same income as the alternative investment e.g., zero-coupon bond at the same discount rate and time-to- maturity as the project.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\text{NPV}&gt;0\)</span>: A postive NPV indicates the proposed project will generate more income than a hypothetical alternative investment e.g., zero-coupon bond at the same discount rate and time-to- maturity as the project.</p></li>
 </ul>
-<section id="the-internal-rate-of-return-irr">
+<p>Let’s do a net present value example:</p>
+<div class="proof example admonition" id="example-net-present-value-discrete">
+<p class="admonition-title"><span class="caption-number">Example 4 </span> (Install an upgraded lighting system?)</p>
+<section class="example-content" id="proof-content">
+<p>Should we install a new computer-controlled lighting system (or not)? Johnson Controls offers to install a new computer-controlled lighting system that will reduce electric bills by 90,000 USD each of the next three years. Is this a good investment if the system costs 230,000 USD fully installed?</p>
+<p>The discount rate is constant over the lifetime of the project, but unkown; thus, <span class="math notranslate nohighlight">\(\bar{r}\)</span> is a parameter in the problem.</p>
+<figure class="align-default" id="example-jcontrols-npv-fig">
+<a class="reference internal image-reference" href="../_images/Fig-JControls-NPV.pdf"><img alt="../_images/Fig-JControls-NPV.pdf" src="../_images/Fig-JControls-NPV.pdf" style="height: 380px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 12 </span><span class="caption-text">Net Present Value (NPV) as a function of the discount rate <span class="math notranslate nohighlight">\(\bar{r}\)</span> for the proposed Johnson Controls lighting upgrade. The alternative investment is a perfectly priced zero-coupon bond with the same <span class="math notranslate nohighlight">\(\bar{r}\)</span> and time-to-maturity as the lighting project.</span><a class="headerlink" href="#example-jcontrols-npv-fig" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>The installation of the computer-controlled lighting system from Johnson Controls had a positive net present value (NPV) for discount rates less than 8.5%. However, the alternative investment would be the preferred choice beyond this discount rate.</p>
+<p><strong>source</strong>: The Johnson Controls example was modified from <a class="reference external" href="https://ocw.mit.edu/courses/sloan-school-of-management/15-401-finance-theory-i-fall-2008/">MIT 15.401</a>. Donwload <a class="reference external" href="https://htmlview.glitch.me/?https://github.com/varnerlab/ENGRI-1120-IntroToChemE-Example-Notebooks/blob/main/notebooks-pluto/html/Example-ENGRI-1120-NetPresentValue.jl.html">the live Pluto notebook</a> or <a class="reference external" href="https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks/blob/main/pluto-notebooks/html/Example-NetPresentValue.jl.html">a static html version</a> of this example.</p>
+</section>
+</div><section id="the-internal-rate-of-return-irr">
 <h3>The Internal Rate of Return (IRR)<a class="headerlink" href="#the-internal-rate-of-return-irr" title="Permalink to this headline">#</a></h3>
 <p>The NPV decision rule above relies on computing the sum of discounted future cash flows. However, in these calculations, what discount rate should we use? This is not an easy question; the correct discount rate varies between applications and industries.  Thus, let’s think of the discount rate as a variable. If the net present value of an investment or project is positive, the project earns more than the discount rate used to discount the future cash amounts. On the other hand, if the net present value of a project is negative, the project earns less than the discount rate used to discount the future cash amounts.
 Thus, if the present value of a project of investment is exactly $0, the project is earning exactly the discount rate used to discount the future cash amounts.</p>
@@ -789,18 +796,12 @@ Thus, if the present value of a project of investment is exactly $0, the project
 <div class="proof definition admonition" id="defn-internal-rate-of-return">
 <p class="admonition-title"><span class="caption-number">Definition 4 </span> (Internal Rate of Return)</p>
 <section class="definition-content" id="proof-content">
-<p>Assume the discount rate is constant between time periods, denote this rate as <span class="math notranslate nohighlight">\(\bar{r}\)</span>. The internal rate of rerturn (IRR) is the discount rate that satifies the following condition:</p>
+<p>Assume the discount rate is constant between time periods, denote this rate as <span class="math notranslate nohighlight">\(\bar{r}\)</span>. Then, the internal rate of rerturn (IRR) is the discount rate that satifies the following condition:</p>
 <div class="math notranslate nohighlight">
 \[\sum_{t=1}^{T}{\mathcal{D}_{t,1}^{-1}}\cdot{CF_{t}} = 0\]</div>
 <p>Discount rates greater than the IRR favor the alternative investment.</p>
 </section>
 </div></section>
-</section>
-<section id="example-notebooks">
-<h2>Example notebooks<a class="headerlink" href="#example-notebooks" title="Permalink to this headline">#</a></h2>
-<ul class="simple">
-<li><p>Johnson Controls Example taken from <a class="reference external" href="https://ocw.mit.edu/courses/sloan-school-of-management/15-401-finance-theory-i-fall-2008/">MIT 15.401</a>. Donwload <a class="reference external" href="https://htmlview.glitch.me/?https://github.com/varnerlab/ENGRI-1120-IntroToChemE-Example-Notebooks/blob/main/notebooks-pluto/html/Example-ENGRI-1120-NetPresentValue.jl.html">the live Pluto notebook</a> or <a class="reference external" href="https://htmlview.glitch.me/?https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks/blob/main/pluto-notebooks/html/Example-NetPresentValue.jl.html">a static html version</a> of this example.</p></li>
-</ul>
 </section>
 <hr class="docutils" />
 <section id="summary">
