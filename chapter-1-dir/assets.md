@@ -275,7 +275,7 @@ CF_{\star} = \sum_{s\in\mathcal{S}^{t=\star}}\nu_{s}\dot{C}_{s}
 ````
 
 (content:references:npv-decision-tool)=
-## NPV as a Decision Tool
+### NPV as a Decision Tool
 The net present value is a widely used tool for financial decision-making. However, to understand the basis of the approach, we must first answer a technical question: What discount rate should we use? 
 
 The discount rates $r_{t+1,t}$, i.e., the rates of return between time periods $t\rightarrow{t+1}$ appearing in the discount factors, have an exciting interpretation within the context of net present value calculations. These rates can be _specified_ by the decision maker as the minumn accetable rate of return that could be earned by some hypothetical _alternative_ investment. 
@@ -312,10 +312,13 @@ __source__: The Johnson Controls example was modified from [MIT 15.401](https://
 ````
 
 ### The Internal Rate of Return (IRR)
-The NPV decision rule above relies on computing the sum of discounted future cash flows. However, in these calculations, what discount rate should we use? This is not an easy question; the correct discount rate varies between applications and industries.  Thus, let's think of the discount rate as a variable. If the net present value of an investment or project is positive, the project earns more than the discount rate used to discount the future cash amounts. On the other hand, if the net present value of a project is negative, the project earns less than the discount rate used to discount the future cash amounts.
-Thus, if the present value of a project of investment is exactly $0, the project is earning exactly the discount rate used to discount the future cash amounts. 
+The NPV decision rule above relies on computing the sum of discounted future cash flows. However, in these calculations, what discount rate should we use? This is not an easy question; the correct discount rate varies between applications and industries.  Thus, let's think of the discount rate as a variable. 
 
-This special discount rate is called the Internal Rate of Return (IRR):
+* If the net present value of an investment or project is positive, the project earns more than a zero-coupon bond with a yield equal to the discount rate used to discount future cash flows. 
+* If the net present value of a project is negative, the project earns less than a zero-coupon bond with a yield equal to the discount rate used to discount future cash flows. 
+* If the net present value of a project or investment is precisely $0, the project earns the same as a zero-coupon bond with a yield equal to the discount rate used to discount future cash flows.
+
+The special discount rate where the net present value is zero is called the Internal Rate of Return (IRR):
 
 ````{prf:definition} Internal Rate of Return
 :label: defn-internal-rate-of-return
@@ -329,6 +332,8 @@ Assume the discount rate is constant between time periods, denote this rate as $
 Discount rates greater than the IRR favor the alternative investment.
 
 ````
+
+Thus, IRR can thought of as a decision boundary of sorts; the IRR is the discount rate where the project manager or investor is indifferent to the project. 
 
 ---
 
