@@ -26,13 +26,23 @@ In this lecture, we will:
 (content:references:ddm)=
 
 ## Dividend Discount Model (DDM)
+The [dividend discount model (DDM)](https://en.wikipedia.org/wiki/Dividend_discount_model), developed initially by [Myron J. Gordon](https://en.wikipedia.org/wiki/Myron_J._Gordon) and Eli Shapiro {cite}`Gordon1959`, is a method of estimating the share price of the firm `XYZ,` based on the net present value of future dividends of the firm. Thus, the DDM is only applicable to dividend-granting firms.
 
-The [dividend discount model (DDM)](https://en.wikipedia.org/wiki/Dividend_discount_model) is a method of estimating the share price of firm `XYZ` based on the net present value of the future dividends of the firm. Thus, the DDM is only applicable to dividend granting firms.
+````{prf:definition} Dividend discount model (DDM)
+The dividend discount model estimates of the current share price of `XYZ`, denoted by $P$, as:
+
+```{math}
+:label: eqn-general-ddm
+P = \sum_{t=1}^{\infty}D_{o}\frac{\left(1+g\right)^{t}}{\left(1+r\right)^{t}}
+```
+
+where $D_{o}$ denotes the value of the dividend payment, $g$ denotes the rate of growth of the dividend payment and $r$ denotes the discount rate.
+
+
+````
 
 (content:references:wiener-process)=
-
 ## Brownian Motion
-
 A [Wiener Process](https://en.wikipedia.org/wiki/Wiener_process) (also often referred to as a [standard Brownian motion](https://en.wikipedia.org/wiki/Brownian_motion)) is a real-valued continuous-time stochastic process named after the [Norbert Wiener](https://en.wikipedia.org/wiki/Norbert_Wiener) for the study of one-dimensional Brownian motion:
 
 ````{prf:definition} One-dimensional Wiener Process
