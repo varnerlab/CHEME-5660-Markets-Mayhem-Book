@@ -12,14 +12,18 @@ dueling perspectives on the randomness of stock prices in the finance and econom
 [Malkiel](https://en.wikipedia.org/wiki/Burton_Malkiel), in his book [A Random Walk Down Wall Street](https://en.wikipedia.org/wiki/A_Random_Walk_Down_Wall_Street), argues that asset prices typically exhibit signs of a random walk and that investors cannot consistently outperform market averages. On the other hand, in their book [A Non-Random Walk Down Wall Street, Lo and MacKinlay present](https://www.jstor.org/stable/j.ctt7tccx), several studies that suggest there are stock market pricing trends are somewhat predictable. 
 
 To better understand these arguments and build mathematical models that can be used to simulate market 
-dynamics, we need to introduce analytical and numerical tools to solve SDEs. Our development will follow the previous work of Glasserman {cite}`Glasserman:2004ua`; in particular, chapters 3, 6, and Appendix B.
+dynamics, we introduce analytical and numerical tools to solve SDEs. Our development follows the previous work of Glasserman {cite}`Glasserman:2004ua`; in particular, chapters 3, 6, and Appendix B.
 
-__Topics:__
+In this lecture, we will:
 
-* Scalar and vector {ref}`content:references:wiener-process` 
-* Introduction to {ref}`content:references:ito-calculus`
-* {ref}`content:references:discretization` to solve stochastic differential equations
+* Introduce the {ref}`content:references:ddm`, a fundamental method of valuing the price of a firm's stock
+* Introduce {ref}`content:references:wiener-process`, {ref}`content:references:ito-calculus`, {ref}`content:references:ordinary-brownian-motion`, and {ref}`content:references:geometric-brownian-motion` 
+* Introduce {ref}`content:references:discretization` to approximate the solutin of stochastic differential equation models of asset price.
 ---
+
+(content:references:ddm)=
+## Dividend Discount Model (DDM)
+Fill me in.
 
 (content:references:wiener-process)=
 ## Brownian Motion
@@ -78,7 +82,7 @@ dY = \left(\frac{\partial{Y}}{\partial{t}}+a\frac{\partial{Y}}{\partial{X}}+\fra
 ```
 ````
 
-
+(content:references:ordinary-brownian-motion)=
 ### Ordinary Brownian Motion
 Ordinary Brownian Motion (OBM) is a general class of problems involving constant volatility fluctuations around a constant deterministic drift term, i.e., both $a = \mu$ and $b = \sigma>0$ are constants. 
 
@@ -135,6 +139,7 @@ X_{k+1} = X_{k} + \mu\left(t_{k+1}-t_{k}\right)+\sigma\sqrt{t_{k+1}-t_{k}}\cdot{
 #### Example
 * [Simulation of ordinary Brownian motion analytical solution](https://htmlview.glitch.me/?https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks/blob/main/pluto-notebooks/html/Example-OrdinaryBrownianMotion-Simulation.jl.html)
 
+(content:references:geometric-brownian-motion)=
 ### Geometric Brownian Motion
 Unfortunately, ordinary Brownian motion has a critical flaw; its solutions can be negative. 
 Thus, it is not widely used to model the price of a risky asset because asset prices are non-negative. Instead, we often model asset prices using a [Geometric Brownian Motion (GBM) model](https://en.wikipedia.org/wiki/Geometric_Brownian_motion):
