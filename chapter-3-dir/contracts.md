@@ -100,7 +100,7 @@ name: fig-call-contract-payout-schematic
 Payoff and profit diagrams for an AMD call option.  Solid lines denote the payout (profit) from the perspective of the contract buyer. Dashed lines denote the payout (profit) from the perspective of the contract seller
 ```
 
-source: [live Pluto notebook](https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks) or [static HTML](https://htmlview.glitch.me/?https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks/blob/main/pluto-notebooks/html/Example-CallPutContract-Payoff.jl.html)
+__source__: [live Pluto notebook](https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks) or [static HTML](https://htmlview.glitch.me/?https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks/blob/main/pluto-notebooks/html/Example-CallPutContract-Payoff.jl.html)
 
 ````
 
@@ -165,7 +165,7 @@ name: fig-put-contract-payout-schematic
 Payoff and profit diagrams for an AMD put option. Solid lines denote the payout (profit) from the perspective of the contract buyer. Dashed lines denote the payout (profit) from the perspective of the contract seller.
 ```
 
-source: [live Pluto notebook](https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks) or [static HTML](https://htmlview.glitch.me/?https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks/blob/main/pluto-notebooks/html/Example-CallPutContract-Payoff.jl.html)
+__source__: [live Pluto notebook](https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks) or [static HTML](https://htmlview.glitch.me/?https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks/blob/main/pluto-notebooks/html/Example-CallPutContract-Payoff.jl.html)
 
 ````
 
@@ -241,7 +241,7 @@ name: fig-amd-profit-put-vertical-spread
 Example profit and loss diagram at expiration for a [AMD](https://finance.yahoo.com/quote/AMD/) put vertical debit spread. Parameters: $K_{1}$ = \$90 USD/share (short strike), $K_{2}$ = \$105 USD/share (long strike), $\mathcal{P}_{1}$ = \$4.70 USD/share and $\mathcal{P}_{2}$ = \$13.35 USD/share
 ```
 
-source: [live Pluto notebook](https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks) or [static HTML](https://htmlview.glitch.me/?https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks/blob/main/pluto-notebooks/html/Example-SPY-VericalSpread-Contract-Payoff.jl.html)
+__source__: [live Pluto notebook](https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks) or [static HTML](https://htmlview.glitch.me/?https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks/blob/main/pluto-notebooks/html/Example-SPY-VericalSpread-Contract-Payoff.jl.html)
 
 ````
 
@@ -331,7 +331,7 @@ Example profit and loss diagram at expiration for an [AMD](https://finance.yahoo
 Parameters: $K$ = \$100 USD/share, $\mathcal{P}_{1}$ = \$9.95 USD/share and $\mathcal{P}_{2}$ = \$7.45 USD/share
 ```
 
-source: [live Pluto notebook](https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks) or [static HTML view](https://htmlview.glitch.me/?https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks/blob/main/pluto-notebooks/html/Example-Straddle-Profit.jl.html) 
+__source__: [live Pluto notebook](https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks) or [static HTML view](https://htmlview.glitch.me/?https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks/blob/main/pluto-notebooks/html/Example-Straddle-Profit.jl.html) 
 
 ````
 
@@ -466,14 +466,14 @@ name: fig-mu-iron-condor
 Example profit and loss diagram at expiration for an [MU](https://finance.yahoo.com/quote/MU/) iron condor. Parameters: $K_{1}$ = \$50 USD/share, $K_{2}$ = \$70 USD/share, $K_{3}$ = \$45 USD/share, $K_{4}$ = \$75 USD/share, $\mathcal{P}_{1}$ = \$1.09 USD/share $\mathcal{P}_{2}$ = \$2.00 USD/share, $\mathcal{P}_{3}$ = \$0.60 USD/share and $\mathcal{P}_{4}$ = \$1.03 USD/share. $S_{o}$ = \$62.46 USD/share.
 ```
 
-source: [live Pluto notebook](https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks) or [static HTML view](https://htmlview.glitch.me/?https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks/blob/main/pluto-notebooks/html/Example-IronCondor-Profit.jl.html)
+__source__: [live Pluto notebook](https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks) or [static HTML view](https://htmlview.glitch.me/?https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks/blob/main/pluto-notebooks/html/Example-IronCondor-Profit.jl.html)
 ````
 
 (content:references:option-probability-of-profit-algorithms)=
-## Probability of profit at expiration
+## Probability of Profit (POP) at Expiration
 The Probability of Profit (POP) at expiration is the probability that your option position will make at least $0.01 at expiration. The probability of profit can be a helpful decision metric, e.g., investors engage in transactions with a _large_ POP and avoid low probability trades. However, the exact meaning of _large_ or _small_ depends upon the investor’s risk tolerance. 
 
-### Monte-Carlo simulation
+### Computing the POP using Monte-Carlo simulation
 Using Monte-Carlo simulation, we can estimate the option position’s probability of Profit (POP) at expiration. 
 First, we can develop a simulation of the price of the underlying asset `XYZ,` e.g., using a geometric Brownian motion model developed from historical data, and then use that model to project the underlying price into the future until expiration. Finally, we can compute the cumulative probability curve to determine the probability that a profit condition is satisfied.
 
@@ -509,7 +509,7 @@ Estimated [cumulative distribution curve](https://en.wikipedia.org/wiki/Cumulati
 | AMD closes between break-even points (profit) | $P(S^{-}<X\leq{S^{+}})$ | 0.59
 
 
-source: [live Pluto notebook](https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks) or [static HTML view](https://htmlview.glitch.me/?https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks/blob/main/pluto-notebooks/html/Example-POP-Short-AMD-Strangle.jl.html)
+__source__: [live Pluto notebook](https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks) or [static HTML view](https://htmlview.glitch.me/?https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks/blob/main/pluto-notebooks/html/Example-POP-Short-AMD-Strangle.jl.html)
 ````
 
 ### Implied Volatility
