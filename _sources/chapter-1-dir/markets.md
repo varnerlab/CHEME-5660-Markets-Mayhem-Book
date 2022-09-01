@@ -1,4 +1,4 @@
-# Markets and Exchanges
+# Markets, Exchanges and Investment Instruments
 
 ## Introduction
 Markets are _places_ (perhaps physical locations such as a retail store or virtual sites on the internet) where parties exchange (trade) goods and services. In a physical market, buyers and sellers meet face-to-face, while there is no physical contact between buyers and sellers in a virtual market. Thus, a market is any _place_ where two or more parties engage in an economic transaction, i.e., the exchange of goods, services, information, currency, or any combination that passes from one party to another. While only two parties are needed to make a trade, an efficient market is characterized by many active buyers and sellers. 

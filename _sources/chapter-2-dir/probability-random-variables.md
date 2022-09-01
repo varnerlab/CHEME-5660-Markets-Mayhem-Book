@@ -13,17 +13,16 @@ kernelspec:
 # Probability, Random Variables and Stochastic Processes
 
 ## Introduction
-Frequentists argue that probability is the relative frequency of an outcome. For example, if you flip a fair coin infinitely times, you expect to get heads half the time. On the other hand, Bayesians argue that probability is a subjective belief. For example, the probability of getting an A in a class is subjective because no one can take a class infinitely many times to obtain the relative frequency. 
-The context of your problem will typically suggest which perspective to use.
-For example, when you have a shortage of data, a Bayesian approach allows you to use prior knowledge. In contrast, frequentists tell us how to compute the confidence interval of an estimate, if we have a latge data set. 
+Probability is many things to many people. 
+[Frequentists](https://en.wikipedia.org/wiki/Frequentist_probability) argue that probability is the relative frequency or propensity of a particular outcome in the set of all possible outcomes. For example, if you flip a fair coin infinitely many times, you expect to get heads about half the time (assuming a fair coin). On the other hand, [Bayesians](https://en.wikipedia.org/wiki/Bayesian_probability) argue that probability is a subjective belief. For example, the probability of getting an A in a class is subjective because no one can take a class infinitely many times to obtain the relative frequency. The context of your problem will typically suggest which perspective to use. For example, when you have a shortage of data, a Bayesian approach allows you to use prior knowledge or belief. On the other hand, when in a data-rich environment, a [frequentist](https://en.wikipedia.org/wiki/Frequentist_probability) approach calculates the probability of an event directly from the data, along with confidence intervals on your estimate. 
 
-Whether you prefer the frequentist’s or the Bayesian view, there is a more fundamental notion of probability thanks to [Andrey Kolmogorov](https://en.wikipedia.org/wiki/Andrey_Kolmogorov), namely, probability is a measure of the size of a set.
+However, whether you prefer the [frequentist’s](https://en.wikipedia.org/wiki/Frequentist_probability) or the [Bayesian view](https://en.wikipedia.org/wiki/Bayesian_probability), there is a more fundamental notion of probability thanks to [Andrey Kolmogorov](https://en.wikipedia.org/wiki/Andrey_Kolmogorov), namely, the probability is a measure of the size of a set. 
 
-In this lecture:
+Thus, we'll begin this lecture by reviewing some of the basic tenants of [Set Theory](https://en.wikipedia.org/wiki/Set_theory) and then progress to probability and random variables. In particular, we will:
 
-* We introduce {ref}`content:references:set-theory` and the {ref}`content:references:union-intersection` of sets
-* We introduce {ref}`content:references:probability` the Axioms of Probablity ({prf:ref}`axiom-probability`)
-* We introduce {ref}`content:references:random-variables`
+* Introduce {ref}`content:references:set-theory` and operations on sets such as {ref}`content:references:union-intersection` of sets.
+* Introduce {ref}`content:references:probability` the Axioms of Probablity ({prf:ref}`axiom-probability`)
+* Introduce {ref}`content:references:random-variables`, {ref}`content:references:prob-mass-functions` for discrete random variables, and {ref}`content:references:prob-distribution-functions` for continuous random variables.
 
 ---
 
@@ -317,8 +316,7 @@ $$P(B) = \sum_{i=1}^{n}P\left(B\,\vert{A_{i}}\right)P\left(A_{i}\right)$$
 
 (content:references:random-variables)=
 ## Random Variables and Stochastic Processes
-The sample space and the event space are all based on statements, for example, getting a head when flipping a coin, winning the game, or drawing a card, etc. These statements are not numbers; how do we convert a statement to a number? 
-The answer is a random variable; random variables are mappings from events to numbers, these numbers are probabilities.
+The sample space and the event space are all based on statements, for example, getting a head when flipping a coin, winning the game, or drawing a card, etc. These statements are not numbers; how do we convert a statement to a number? The answer is a random variable; random variables are mappings from events to numbers, these numbers are probabilities.
 
 ### Moments of discrete random variables
 
@@ -424,6 +422,7 @@ Large $\kappa(X)$ values arise when most $X$ values are near the mean, but a few
 when $X$ is concentrated in the tails of the distribution. -->
 ---
 
+(content:references:prob-mass-functions)=
 ## Probability mass functions
 In the case of discrete random variables, for example, dice roles, coin flips etc, this is done using a concept called a [probability mass function (PMF)](https://en.wikipedia.org/wiki/Probability_mass_function). 
 
@@ -562,6 +561,10 @@ while the variance $\text{Var}(X)$ is given by:
 \text{Var}\left[X\right] = \lambda
 ```
 ````
+
+(content:references:prob-distribution-functions)=
+## Probility distribution functions
+Fill me in.
 
 ---
 

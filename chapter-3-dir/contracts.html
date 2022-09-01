@@ -157,7 +157,7 @@ const thebe_selector_output = ".output, .cell_output"
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../chapter-1-dir/global.html">
-     The Global Financial System and Blah Blah
+     Personal Finance Basics
     </a>
    </li>
    <li class="toctree-l2">
@@ -167,7 +167,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../chapter-1-dir/markets.html">
-     Markets and Exchanges
+     Markets, Exchanges and Investment Instruments
     </a>
    </li>
   </ul>
@@ -482,13 +482,13 @@ title="Print to PDF"
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#probability-of-profit-at-expiration">
-   Probability of profit at expiration
+  <a class="reference internal nav-link" href="#probability-of-profit-pop-at-expiration">
+   Probability of Profit (POP) at Expiration
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#monte-carlo-simulation">
-     Monte-Carlo simulation
+    <a class="reference internal nav-link" href="#computing-the-pop-using-monte-carlo-simulation">
+     Computing the POP using Monte-Carlo simulation
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
@@ -627,13 +627,13 @@ title="Print to PDF"
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#probability-of-profit-at-expiration">
-   Probability of profit at expiration
+  <a class="reference internal nav-link" href="#probability-of-profit-pop-at-expiration">
+   Probability of Profit (POP) at Expiration
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#monte-carlo-simulation">
-     Monte-Carlo simulation
+    <a class="reference internal nav-link" href="#computing-the-pop-using-monte-carlo-simulation">
+     Computing the POP using Monte-Carlo simulation
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
@@ -714,7 +714,7 @@ In European-style contracts, the transaction codified in CALL or PUT options can
 <p>In this lecture, we will:</p>
 <ul class="simple">
 <li><p>Discuss the two types, and two styles of <a class="reference internal" href="#content-references-option-contracts"><span class="std std-ref">Option Contracts</span></a></p></li>
-<li><p>Discuss the <a class="reference internal" href="#content-references-option-probability-of-profit-algorithms"><span class="std std-ref">Probability of profit at expiration</span></a></p></li>
+<li><p>Discuss the <a class="reference internal" href="#content-references-option-probability-of-profit-algorithms"><span class="std std-ref">Probability of Profit (POP) at Expiration</span></a></p></li>
 <li><p>Discuss several <a class="reference internal" href="#content-references-option-pricing-algorithms"><span class="std std-ref">Options Pricing Algorithms</span></a></p></li>
 </ul>
 <hr class="docutils" />
@@ -771,7 +771,7 @@ There are two types of contracts, a <a class="reference external" href="https://
 <p><span class="caption-number">Fig. 19 </span><span class="caption-text">Payoff and profit diagrams for an AMD call option.  Solid lines denote the payout (profit) from the perspective of the contract buyer. Dashed lines denote the payout (profit) from the perspective of the contract seller</span><a class="headerlink" href="#fig-call-contract-payout-schematic" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<p>source: <a class="reference external" href="https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks">live Pluto notebook</a> or <a class="reference external" href="https://htmlview.glitch.me/?https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks/blob/main/pluto-notebooks/html/Example-CallPutContract-Payoff.jl.html">static HTML</a></p>
+<p><strong>source</strong>: <a class="reference external" href="https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks">live Pluto notebook</a> or <a class="reference external" href="https://htmlview.glitch.me/?https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks/blob/main/pluto-notebooks/html/Example-CallPutContract-Payoff.jl.html">static HTML</a></p>
 </section>
 </div><p>The business case for buying (or selling) a call contract:</p>
 <ul class="simple">
@@ -820,7 +820,7 @@ The contract seller experiences a profit (or loss) of <span class="math notransl
 <p><span class="caption-number">Fig. 20 </span><span class="caption-text">Payoff and profit diagrams for an AMD put option. Solid lines denote the payout (profit) from the perspective of the contract buyer. Dashed lines denote the payout (profit) from the perspective of the contract seller.</span><a class="headerlink" href="#fig-put-contract-payout-schematic" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<p>source: <a class="reference external" href="https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks">live Pluto notebook</a> or <a class="reference external" href="https://htmlview.glitch.me/?https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks/blob/main/pluto-notebooks/html/Example-CallPutContract-Payoff.jl.html">static HTML</a></p>
+<p><strong>source</strong>: <a class="reference external" href="https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks">live Pluto notebook</a> or <a class="reference external" href="https://htmlview.glitch.me/?https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks/blob/main/pluto-notebooks/html/Example-CallPutContract-Payoff.jl.html">static HTML</a></p>
 </section>
 </div><p>The business case for buying (or selling) put contracts:</p>
 <ul class="simple">
@@ -883,7 +883,7 @@ the required number of shares of <code class="docutils literal notranslate"><spa
 <p><span class="caption-number">Fig. 22 </span><span class="caption-text">Example profit and loss diagram at expiration for a <a class="reference external" href="https://finance.yahoo.com/quote/AMD/">AMD</a> put vertical debit spread. Parameters: <span class="math notranslate nohighlight">\(K_{1}\)</span> = $90 USD/share (short strike), <span class="math notranslate nohighlight">\(K_{2}\)</span> = $105 USD/share (long strike), <span class="math notranslate nohighlight">\(\mathcal{P}_{1}\)</span> = $4.70 USD/share and <span class="math notranslate nohighlight">\(\mathcal{P}_{2}\)</span> = $13.35 USD/share</span><a class="headerlink" href="#fig-amd-profit-put-vertical-spread" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<p>source: <a class="reference external" href="https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks">live Pluto notebook</a> or <a class="reference external" href="https://htmlview.glitch.me/?https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks/blob/main/pluto-notebooks/html/Example-SPY-VericalSpread-Contract-Payoff.jl.html">static HTML</a></p>
+<p><strong>source</strong>: <a class="reference external" href="https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks">live Pluto notebook</a> or <a class="reference external" href="https://htmlview.glitch.me/?https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks/blob/main/pluto-notebooks/html/Example-SPY-VericalSpread-Contract-Payoff.jl.html">static HTML</a></p>
 </section>
 </div><p>Although not shown here, <a class="reference external" href="https://www.investopedia.com/terms/v/verticalspread.asp">Vertical spreads</a> can also be constructed using <a class="reference external" href="https://www.investopedia.com/terms/c/calloption.asp">call contracts</a>.</p>
 </section>
@@ -960,7 +960,7 @@ the overall profit <span class="math notranslate nohighlight">\(\hat{P}\)</span>
 Parameters: <span class="math notranslate nohighlight">\(K\)</span> = $100 USD/share, <span class="math notranslate nohighlight">\(\mathcal{P}_{1}\)</span> = $9.95 USD/share and <span class="math notranslate nohighlight">\(\mathcal{P}_{2}\)</span> = $7.45 USD/share</span><a class="headerlink" href="#fig-amd-profit-long-straddle" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<p>source: <a class="reference external" href="https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks">live Pluto notebook</a> or <a class="reference external" href="https://htmlview.glitch.me/?https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks/blob/main/pluto-notebooks/html/Example-Straddle-Profit.jl.html">static HTML view</a></p>
+<p><strong>source</strong>: <a class="reference external" href="https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks">live Pluto notebook</a> or <a class="reference external" href="https://htmlview.glitch.me/?https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks/blob/main/pluto-notebooks/html/Example-Straddle-Profit.jl.html">static HTML view</a></p>
 </section>
 </div></section>
 <section id="strangles">
@@ -1060,16 +1060,16 @@ the overall profit <span class="math notranslate nohighlight">\(\hat{P}\)</span>
 <p><span class="caption-number">Fig. 27 </span><span class="caption-text">Example profit and loss diagram at expiration for an <a class="reference external" href="https://finance.yahoo.com/quote/MU/">MU</a> iron condor. Parameters: <span class="math notranslate nohighlight">\(K_{1}\)</span> = $50 USD/share, <span class="math notranslate nohighlight">\(K_{2}\)</span> = $70 USD/share, <span class="math notranslate nohighlight">\(K_{3}\)</span> = $45 USD/share, <span class="math notranslate nohighlight">\(K_{4}\)</span> = $75 USD/share, <span class="math notranslate nohighlight">\(\mathcal{P}_{1}\)</span> = $1.09 USD/share <span class="math notranslate nohighlight">\(\mathcal{P}_{2}\)</span> = $2.00 USD/share, <span class="math notranslate nohighlight">\(\mathcal{P}_{3}\)</span> = $0.60 USD/share and <span class="math notranslate nohighlight">\(\mathcal{P}_{4}\)</span> = $1.03 USD/share. <span class="math notranslate nohighlight">\(S_{o}\)</span> = $62.46 USD/share.</span><a class="headerlink" href="#fig-mu-iron-condor" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<p>source: <a class="reference external" href="https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks">live Pluto notebook</a> or <a class="reference external" href="https://htmlview.glitch.me/?https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks/blob/main/pluto-notebooks/html/Example-IronCondor-Profit.jl.html">static HTML view</a></p>
+<p><strong>source</strong>: <a class="reference external" href="https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks">live Pluto notebook</a> or <a class="reference external" href="https://htmlview.glitch.me/?https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks/blob/main/pluto-notebooks/html/Example-IronCondor-Profit.jl.html">static HTML view</a></p>
 </section>
 </div></section>
 </section>
 </section>
-<section id="probability-of-profit-at-expiration">
-<span id="content-references-option-probability-of-profit-algorithms"></span><h2>Probability of profit at expiration<a class="headerlink" href="#probability-of-profit-at-expiration" title="Permalink to this headline">#</a></h2>
+<section id="probability-of-profit-pop-at-expiration">
+<span id="content-references-option-probability-of-profit-algorithms"></span><h2>Probability of Profit (POP) at Expiration<a class="headerlink" href="#probability-of-profit-pop-at-expiration" title="Permalink to this headline">#</a></h2>
 <p>The Probability of Profit (POP) at expiration is the probability that your option position will make at least $0.01 at expiration. The probability of profit can be a helpful decision metric, e.g., investors engage in transactions with a <em>large</em> POP and avoid low probability trades. However, the exact meaning of <em>large</em> or <em>small</em> depends upon the investor’s risk tolerance.</p>
-<section id="monte-carlo-simulation">
-<h3>Monte-Carlo simulation<a class="headerlink" href="#monte-carlo-simulation" title="Permalink to this headline">#</a></h3>
+<section id="computing-the-pop-using-monte-carlo-simulation">
+<h3>Computing the POP using Monte-Carlo simulation<a class="headerlink" href="#computing-the-pop-using-monte-carlo-simulation" title="Permalink to this headline">#</a></h3>
 <p>Using Monte-Carlo simulation, we can estimate the option position’s probability of Profit (POP) at expiration.
 First, we can develop a simulation of the price of the underlying asset <code class="docutils literal notranslate"><span class="pre">XYZ,</span></code> e.g., using a geometric Brownian motion model developed from historical data, and then use that model to project the underlying price into the future until expiration. Finally, we can compute the cumulative probability curve to determine the probability that a profit condition is satisfied.</p>
 <p>To explore this idea, let’s compute the probability of profit of a <a class="reference external" href="https://www.investopedia.com/terms/s/strangle.asp">short strangle</a> position in <a class="reference external" href="https://finance.yahoo.com/quote/AMD/">AMD</a> in <a class="reference internal" href="#pop-amd-strange-expiration">Example 19</a>:</p>
@@ -1124,7 +1124,7 @@ First, we can develop a simulation of the price of the underlying asset <code cl
 </tr>
 </tbody>
 </table>
-<p>source: <a class="reference external" href="https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks">live Pluto notebook</a> or <a class="reference external" href="https://htmlview.glitch.me/?https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks/blob/main/pluto-notebooks/html/Example-POP-Short-AMD-Strangle.jl.html">static HTML view</a></p>
+<p><strong>source</strong>: <a class="reference external" href="https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks">live Pluto notebook</a> or <a class="reference external" href="https://htmlview.glitch.me/?https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks/blob/main/pluto-notebooks/html/Example-POP-Short-AMD-Strangle.jl.html">static HTML view</a></p>
 </section>
 </div></section>
 <section id="implied-volatility">
@@ -1198,7 +1198,7 @@ First, we can develop a simulation of the price of the underlying asset <code cl
 <p>In this lecture, we:</p>
 <ul class="simple">
 <li><p>Discussed the two types, and two styles of <a class="reference internal" href="#content-references-option-contracts"><span class="std std-ref">Option Contracts</span></a>. A put option gives the option buyer the right, but not the obligation, to sell shares of the underlying asset <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> at the strike price of $<span class="math notranslate nohighlight">\(K\)</span> per share. On the other hand, call options give the option buyer the right, but not the obligation, to purchase shares of the underlying asset <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> at a strike price of $<span class="math notranslate nohighlight">\(K\)</span> per share. American-style call (put) contracts can be exercised anytime before the option contract expires, while European call (put) contracts can only be exercised on the expiration date. Each call and put option contract controls 100 shares of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code>.</p></li>
-<li><p>Discussed the profit conditions for option contracts and how you, an investor, can compute <a class="reference internal" href="#content-references-option-probability-of-profit-algorithms"><span class="std std-ref">Probability of profit at expiration</span></a>.</p></li>
+<li><p>Discussed the profit conditions for option contracts and how you, an investor, can compute <a class="reference internal" href="#content-references-option-probability-of-profit-algorithms"><span class="std std-ref">Probability of Profit (POP) at Expiration</span></a>.</p></li>
 <li><p>Discussed several <a class="reference internal" href="#content-references-option-pricing-algorithms"><span class="std std-ref">Options Pricing Algorithms</span></a>, which are used to calculate the price of European and American call (put) option contracts as a function of market parameters.</p></li>
 </ul>
 <!-- ## Cox-Ross-Rubinstein (CRR) binomial pricing model

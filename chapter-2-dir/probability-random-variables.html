@@ -157,7 +157,7 @@ const thebe_selector_output = ".output, .cell_output"
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../chapter-1-dir/global.html">
-     The Global Financial System and Blah Blah
+     Personal Finance Basics
     </a>
    </li>
    <li class="toctree-l2">
@@ -167,7 +167,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../chapter-1-dir/markets.html">
-     Markets and Exchanges
+     Markets, Exchanges and Investment Instruments
     </a>
    </li>
   </ul>
@@ -601,6 +601,11 @@ title="Print to PDF"
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#probility-distribution-functions">
+   Probility distribution functions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#summary">
    Summary
   </a>
@@ -761,6 +766,11 @@ title="Print to PDF"
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#probility-distribution-functions">
+   Probility distribution functions
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#summary">
    Summary
   </a>
@@ -779,15 +789,14 @@ title="Print to PDF"
 <h1>Probability, Random Variables and Stochastic Processes<a class="headerlink" href="#probability-random-variables-and-stochastic-processes" title="Permalink to this headline">#</a></h1>
 <section id="introduction">
 <h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">#</a></h2>
-<p>Frequentists argue that probability is the relative frequency of an outcome. For example, if you flip a fair coin infinitely times, you expect to get heads half the time. On the other hand, Bayesians argue that probability is a subjective belief. For example, the probability of getting an A in a class is subjective because no one can take a class infinitely many times to obtain the relative frequency.
-The context of your problem will typically suggest which perspective to use.
-For example, when you have a shortage of data, a Bayesian approach allows you to use prior knowledge. In contrast, frequentists tell us how to compute the confidence interval of an estimate, if we have a latge data set.</p>
-<p>Whether you prefer the frequentist’s or the Bayesian view, there is a more fundamental notion of probability thanks to <a class="reference external" href="https://en.wikipedia.org/wiki/Andrey_Kolmogorov">Andrey Kolmogorov</a>, namely, probability is a measure of the size of a set.</p>
-<p>In this lecture:</p>
+<p>Probability is many things to many people.
+<a class="reference external" href="https://en.wikipedia.org/wiki/Frequentist_probability">Frequentists</a> argue that probability is the relative frequency or propensity of a particular outcome in the set of all possible outcomes. For example, if you flip a fair coin infinitely many times, you expect to get heads about half the time (assuming a fair coin). On the other hand, <a class="reference external" href="https://en.wikipedia.org/wiki/Bayesian_probability">Bayesians</a> argue that probability is a subjective belief. For example, the probability of getting an A in a class is subjective because no one can take a class infinitely many times to obtain the relative frequency. The context of your problem will typically suggest which perspective to use. For example, when you have a shortage of data, a Bayesian approach allows you to use prior knowledge or belief. On the other hand, when in a data-rich environment, a <a class="reference external" href="https://en.wikipedia.org/wiki/Frequentist_probability">frequentist</a> approach calculates the probability of an event directly from the data, along with confidence intervals on your estimate.</p>
+<p>However, whether you prefer the <a class="reference external" href="https://en.wikipedia.org/wiki/Frequentist_probability">frequentist’s</a> or the <a class="reference external" href="https://en.wikipedia.org/wiki/Bayesian_probability">Bayesian view</a>, there is a more fundamental notion of probability thanks to <a class="reference external" href="https://en.wikipedia.org/wiki/Andrey_Kolmogorov">Andrey Kolmogorov</a>, namely, the probability is a measure of the size of a set.</p>
+<p>Thus, we’ll begin this lecture by reviewing some of the basic tenants of <a class="reference external" href="https://en.wikipedia.org/wiki/Set_theory">Set Theory</a> and then progress to probability and random variables. In particular, we will:</p>
 <ul class="simple">
-<li><p>We introduce <a class="reference internal" href="#content-references-set-theory"><span class="std std-ref">Set theory</span></a> and the <a class="reference internal" href="#content-references-union-intersection"><span class="std std-ref">Union and Intersection</span></a> of sets</p></li>
-<li><p>We introduce <a class="reference internal" href="#content-references-probability"><span class="std std-ref">Probability Space</span></a> the Axioms of Probablity (<a class="reference internal" href="#axiom-probability">Axiom 1</a>)</p></li>
-<li><p>We introduce <a class="reference internal" href="#content-references-random-variables"><span class="std std-ref">Random Variables and Stochastic Processes</span></a></p></li>
+<li><p>Introduce <a class="reference internal" href="#content-references-set-theory"><span class="std std-ref">Set theory</span></a> and operations on sets such as <a class="reference internal" href="#content-references-union-intersection"><span class="std std-ref">Union and Intersection</span></a> of sets.</p></li>
+<li><p>Introduce <a class="reference internal" href="#content-references-probability"><span class="std std-ref">Probability Space</span></a> the Axioms of Probablity (<a class="reference internal" href="#axiom-probability">Axiom 1</a>)</p></li>
+<li><p>Introduce <a class="reference internal" href="#content-references-random-variables"><span class="std std-ref">Random Variables and Stochastic Processes</span></a>, <a class="reference internal" href="#content-references-prob-mass-functions"><span class="std std-ref">Probability mass functions</span></a> for discrete random variables, and <a class="reference internal" href="#content-references-prob-distribution-functions"><span class="std std-ref">Probility distribution functions</span></a> for continuous random variables.</p></li>
 </ul>
 <hr class="docutils" />
 </section>
@@ -1066,8 +1075,7 @@ Then for <span class="math notranslate nohighlight">\(B\subseteq\Omega\)</span>:
 </section>
 <section id="random-variables-and-stochastic-processes">
 <span id="content-references-random-variables"></span><h2>Random Variables and Stochastic Processes<a class="headerlink" href="#random-variables-and-stochastic-processes" title="Permalink to this headline">#</a></h2>
-<p>The sample space and the event space are all based on statements, for example, getting a head when flipping a coin, winning the game, or drawing a card, etc. These statements are not numbers; how do we convert a statement to a number?
-The answer is a random variable; random variables are mappings from events to numbers, these numbers are probabilities.</p>
+<p>The sample space and the event space are all based on statements, for example, getting a head when flipping a coin, winning the game, or drawing a card, etc. These statements are not numbers; how do we convert a statement to a number? The answer is a random variable; random variables are mappings from events to numbers, these numbers are probabilities.</p>
 <section id="moments-of-discrete-random-variables">
 <h3>Moments of discrete random variables<a class="headerlink" href="#moments-of-discrete-random-variables" title="Permalink to this headline">#</a></h3>
 <p>It is often helpful to extract characteristics such as the mean, standard deviation, or other quantities of interest from financial data sets.  However, markets (and hence asset prices) are random; thus, we compute these parameters of interest from random market data using
@@ -1141,12 +1149,12 @@ The <a class="reference external" href="https://en.wikipedia.org/wiki/Kurtosis">
 <p>Large <span class="math notranslate nohighlight">\(\kappa(X)\)</span> values arise when most <span class="math notranslate nohighlight">\(X\)</span> values are near the mean, but a few values are very far away from the mean. Additionally, <span class="math notranslate nohighlight">\(\kappa(X)\)</span> can arise from the majority of <span class="math notranslate nohighlight">\(X\)</span> being near the tail of the distribution.</p>
 <!-- High values of  arise when $X$ is concentrated around the mean and the data-generating process produces occasional values very far away from the mean, or
 when $X$ is concentrated in the tails of the distribution. -->
-</section>
-</section>
-</section>
 <hr class="docutils" />
+</section>
+</section>
+</section>
 <section id="probability-mass-functions">
-<h2>Probability mass functions<a class="headerlink" href="#probability-mass-functions" title="Permalink to this headline">#</a></h2>
+<span id="content-references-prob-mass-functions"></span><h2>Probability mass functions<a class="headerlink" href="#probability-mass-functions" title="Permalink to this headline">#</a></h2>
 <p>In the case of discrete random variables, for example, dice roles, coin flips etc, this is done using a concept called a <a class="reference external" href="https://en.wikipedia.org/wiki/Probability_mass_function">probability mass function (PMF)</a>.</p>
 <div class="proof definition admonition" id="defn-pmf">
 <p class="admonition-title"><span class="caption-number">Definition 14 </span> (Probability Mass Function)</p>
@@ -1247,6 +1255,10 @@ a geometric random variable describes the number of failures obtained before fin
 \[\text{Var}\left[X\right] = \lambda\]</div>
 </section>
 </div></section>
+</section>
+<section id="probility-distribution-functions">
+<span id="content-references-prob-distribution-functions"></span><h2>Probility distribution functions<a class="headerlink" href="#probility-distribution-functions" title="Permalink to this headline">#</a></h2>
+<p>Fill me in.</p>
 </section>
 <hr class="docutils" />
 <section id="summary">
