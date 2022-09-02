@@ -646,7 +646,7 @@ For United States treasury debt instruments, the borrower is the U.S. government
 <figure class="align-default" id="fig-bill-payout-schematic">
 <a class="reference internal image-reference" href="../_images/Fig-Bill-Asset-Timeline-Schematic.pdf"><img alt="../_images/Fig-Bill-Asset-Timeline-Schematic.pdf" src="../_images/Fig-Bill-Asset-Timeline-Schematic.pdf" style="height: 260px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 14 </span><span class="caption-text">Sensitivity of bond price to changes in the market interest rate.</span><a class="headerlink" href="#fig-bill-payout-schematic" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 15 </span><span class="caption-text">Sensitivity of bond price to changes in the market interest rate.</span><a class="headerlink" href="#fig-bill-payout-schematic" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Treasury bills (also called T-bills) are short-term debt instruments sold in terms ranging from a few days to 52 weeks. T-bills are typically sold at a discount from the par amount; rarely are they sold at a price equal to the par amount. When a T-bill matures, you the bill holder is paid the par amount.</p>
@@ -655,7 +655,7 @@ For United States treasury debt instruments, the borrower is the U.S. government
 <h4>Pricing of U.S. Treasury Bills<a class="headerlink" href="#pricing-of-u-s-treasury-bills" title="Permalink to this headline">#</a></h4>
 <p>T-bills are an example of a zero-coupon fixed-income instrument; thus, T-bills do not make coupon payments during the bond term. Instead, T-bills are priced such that the bondholder receives the par value at the term of the bond:</p>
 <div class="proof definition admonition" id="defn-zero-coupon-bond-pricing">
-<p class="admonition-title"><span class="caption-number">Definition 22 </span> (Zero Coupon Rate Bond Pricing)</p>
+<p class="admonition-title"><span class="caption-number">Definition 23 </span> (Zero Coupon Rate Bond Pricing)</p>
 <section class="definition-content" id="proof-content">
 <p>Let a zero-coupon T-bill have a term of <span class="math notranslate nohighlight">\(T\)</span>-years with an annual market interest rate of <span class="math notranslate nohighlight">\(\bar{r}\)</span>. Then, the <em>fair price</em> for a zero-coupon T-bill, denoted by <span class="math notranslate nohighlight">\(V_{B}\)</span>, is the future par value <span class="math notranslate nohighlight">\(V_{P}\)</span> of the bond discounted to the time of the purchase:</p>
 <div class="math notranslate nohighlight">
@@ -664,7 +664,7 @@ For United States treasury debt instruments, the borrower is the U.S. government
 </div><section id="example">
 <h5>Example<a class="headerlink" href="#example" title="Permalink to this headline">#</a></h5>
 <ul class="simple">
-<li><p>Let’s do an example illustrating the pricing of a zero-coupon T-bill (<a class="reference internal" href="#defn-zero-coupon-bond-pricing">Definition 22</a>). Sources: <a class="reference external" href="https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks">Live Pluto notebook</a> or <a class="reference external" href="https://htmlview.glitch.me/?https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks/blob/main/pluto-notebooks/html/Example-Price-ZeroCoupon-TreasuryBill.jl.html">static HTML</a>.</p></li>
+<li><p>Let’s do an example illustrating the pricing of a zero-coupon T-bill (<a class="reference internal" href="#defn-zero-coupon-bond-pricing">Definition 23</a>). Sources: <a class="reference external" href="https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks">Live Pluto notebook</a> or <a class="reference external" href="https://htmlview.glitch.me/?https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks/blob/main/pluto-notebooks/html/Example-Price-ZeroCoupon-TreasuryBill.jl.html">static HTML</a>.</p></li>
 </ul>
 </section>
 </section>
@@ -679,7 +679,7 @@ For United States treasury debt instruments, the borrower is the U.S. government
 <figure class="align-default" id="fig-bond-payout-schematic">
 <a class="reference internal image-reference" href="../_images/Fig-Bond-Asset-Timeline-Schematic.pdf"><img alt="../_images/Fig-Bond-Asset-Timeline-Schematic.pdf" src="../_images/Fig-Bond-Asset-Timeline-Schematic.pdf" style="height: 280px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 15 </span><span class="caption-text">Sensitivity of bond price to changes in the market interest rate.</span><a class="headerlink" href="#fig-bond-payout-schematic" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 16 </span><span class="caption-text">Sensitivity of bond price to changes in the market interest rate.</span><a class="headerlink" href="#fig-bond-payout-schematic" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Treasury Bonds are long-term U.S Treasury debt instruments. Treasury bonds pay a fixed rate of interest (the coupon rate) every six months until the bond’s maturity. The U.S. Treasury issues bonds with terms of 20 or 30 years. When a bond matures, the bondholder receives the face value of the bond. Bonds can be held until maturity or sold before maturity.</p>
@@ -688,7 +688,7 @@ For United States treasury debt instruments, the borrower is the U.S. government
 <h4>Pricing of U.S. Treasury Bonds<a class="headerlink" href="#pricing-of-u-s-treasury-bonds" title="Permalink to this headline">#</a></h4>
 <p>A bond’s coupon payments, and the eventual repayment of the face value, occurs many years in the future. Thus, the price an investor is willing to pay for a claim to those payments depends on the future value of the dollars that will be received versus the present value of the face value of the bond.</p>
 <div class="proof definition admonition" id="defn-fixed-r-bond-pricing">
-<p class="admonition-title"><span class="caption-number">Definition 23 </span> (Fixed Coupon Rate Bond Pricing)</p>
+<p class="admonition-title"><span class="caption-number">Definition 24 </span> (Fixed Coupon Rate Bond Pricing)</p>
 <section class="definition-content" id="proof-content">
 <p>Let the term of a bond be T-years with semi-annual coupon payments (2T coupon payments over the term of the bond), with an annual coupon rate of <span class="math notranslate nohighlight">\(\bar{c}\)</span>, and an annual market interest rate of <span class="math notranslate nohighlight">\(\bar{r}\)</span>.</p>
 <p>Then, the <em>fair price</em> for the bond, denoted by <span class="math notranslate nohighlight">\(V_{B}\)</span>, is the present value of coupon payments <span class="math notranslate nohighlight">\(C\)</span> plus the discounted par value <span class="math notranslate nohighlight">\(V_{P}\)</span> of the bond:</p>
@@ -699,7 +699,7 @@ For United States treasury debt instruments, the borrower is the U.S. government
 </div><section id="id1">
 <h5>Example<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h5>
 <ul class="simple">
-<li><p>Let’s do an example illustrating bond pricing (<a class="reference internal" href="#defn-fixed-r-bond-pricing">Definition 23</a>). Sources: <a class="reference external" href="https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks">Live Pluto notebook</a> or <a class="reference external" href="https://htmlview.glitch.me/?https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks/blob/main/pluto-notebooks/html/Example-Price-TreasuryBond.jl.html">static HTML</a>.</p></li>
+<li><p>Let’s do an example illustrating bond pricing (<a class="reference internal" href="#defn-fixed-r-bond-pricing">Definition 24</a>). Sources: <a class="reference external" href="https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks">Live Pluto notebook</a> or <a class="reference external" href="https://htmlview.glitch.me/?https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks/blob/main/pluto-notebooks/html/Example-Price-TreasuryBond.jl.html">static HTML</a>.</p></li>
 </ul>
 </section>
 </section>
@@ -710,7 +710,7 @@ For United States treasury debt instruments, the borrower is the U.S. government
 <p>Typically, investors purchasing U.S. Treasury bonds are not quoted an overall rate of return. Instead,
 investors must calculate this value from the bond price, maturity date, and coupon payments. The yield to maturity (YTM) is defined as the interest rate that makes the present value of a bond’s payments equal to its price:</p>
 <div class="proof definition admonition" id="defn-yield-to-maturity">
-<p class="admonition-title"><span class="caption-number">Definition 24 </span> (Yield to Maturity )</p>
+<p class="admonition-title"><span class="caption-number">Definition 25 </span> (Yield to Maturity )</p>
 <section class="definition-content" id="proof-content">
 <p>Let the term of a bond be T-years with semi-annual coupon payments (2T coupon payments over the term of the bond), with an annual coupon rate of <span class="math notranslate nohighlight">\(\bar{c}\)</span>. Further, suppose the U.S. Treasury bond was purchased for <span class="math notranslate nohighlight">\(\hat{V}_{B}\)</span> (which may be different that the <em>fair price</em>).</p>
 <p>The yield to maturity (YTM) value is the interest rate <span class="math notranslate nohighlight">\(\bar{r}\)</span> that makes <span class="math notranslate nohighlight">\(V_{B}=\hat{V}_{B}\)</span>:</p>
@@ -721,7 +721,7 @@ investors must calculate this value from the bond price, maturity date, and coup
 </div><section id="id2">
 <h5>Example<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h5>
 <ul class="simple">
-<li><p>Let’s do an example illustrating the Yield to Maturity (YTM) calculation (<a class="reference internal" href="#defn-yield-to-maturity">Definition 24</a>). Sources: <a class="reference external" href="https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks">Live Pluto notebook</a> or <a class="reference external" href="https://htmlview.glitch.me/?https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks/blob/main/pluto-notebooks/html/Example-YieldToMaturity-TreasuryBond.jl.html">static HTML</a>.</p></li>
+<li><p>Let’s do an example illustrating the Yield to Maturity (YTM) calculation (<a class="reference internal" href="#defn-yield-to-maturity">Definition 25</a>). Sources: <a class="reference external" href="https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks">Live Pluto notebook</a> or <a class="reference external" href="https://htmlview.glitch.me/?https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks/blob/main/pluto-notebooks/html/Example-YieldToMaturity-TreasuryBond.jl.html">static HTML</a>.</p></li>
 </ul>
 </section>
 </section>
@@ -732,19 +732,19 @@ investors must calculate this value from the bond price, maturity date, and coup
 <figure class="align-default" id="fig-bond-price-sensitivity">
 <a class="reference internal image-reference" href="../_images/Fig-Sensitivity-Bond-Price-Interest-Rate.pdf"><img alt="../_images/Fig-Sensitivity-Bond-Price-Interest-Rate.pdf" src="../_images/Fig-Sensitivity-Bond-Price-Interest-Rate.pdf" style="height: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 16 </span><span class="caption-text">Sensitivity of bond price to changes in the market interest rate.</span><a class="headerlink" href="#fig-bond-price-sensitivity" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 17 </span><span class="caption-text">Sensitivity of bond price to changes in the market interest rate.</span><a class="headerlink" href="#fig-bond-price-sensitivity" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <section id="malkiels-bond-pricing-rules">
 <span id="content-references-bond-pricing-relationships"></span><h4>Malkiel’s bond-pricing rules<a class="headerlink" href="#malkiels-bond-pricing-rules" title="Permalink to this headline">#</a></h4>
 <p>The relationship between the price of a bond, and the yeild (i.e., the market interest rate <span class="math notranslate nohighlight">\(\bar{r}\)</span>) was previously
-studied by Malkiel <span id="id3">[<a class="reference internal" href="../References.html#id3" title="Burton G. Malkiel. Expectations, Bond Prices, and the Term Structure of Interest Rates*. The Quarterly Journal of Economics, 76(2):197-218, 05 1962. URL: https://doi.org/10.2307/1880816, arXiv:https://academic.oup.com/qje/article-pdf/76/2/197/5374920/76-2-197.pdf, doi:10.2307/1880816.">Malkiel, 1962</a>]</span>. The so-called Malkiel’s bond-pricing rules are demonstrated by the simulations shown in (<a class="reference internal" href="#fig-bond-price-sensitivity"><span class="std std-numref">Fig. 16</span></a>):</p>
+studied by Malkiel <span id="id3">[<a class="reference internal" href="../References.html#id4" title="Burton G. Malkiel. Expectations, Bond Prices, and the Term Structure of Interest Rates*. The Quarterly Journal of Economics, 76(2):197-218, 05 1962. URL: https://doi.org/10.2307/1880816, arXiv:https://academic.oup.com/qje/article-pdf/76/2/197/5374920/76-2-197.pdf, doi:10.2307/1880816.">Malkiel, 1962</a>]</span>. The so-called Malkiel’s bond-pricing rules are demonstrated by the simulations shown in (<a class="reference internal" href="#fig-bond-price-sensitivity"><span class="std std-numref">Fig. 17</span></a>):</p>
 <ol class="simple">
 <li><p>The price of a U.S. Treasury Bond <em>increases</em> as the market interest rate <span class="math notranslate nohighlight">\(\bar{r}\)</span> <em>decreases</em>; thus, there is an <em>inverse</em> relationship between the bond yield to maturity (i.e., the market rate <span class="math notranslate nohighlight">\(\bar{r}\)</span>) and the price of the bond <span class="math notranslate nohighlight">\(V_{B}\)</span>.</p></li>
 <li><p>Changes in price as a function of changes in the interest rate are not symmetric;
-an increase in a bond’s interest rate <span class="math notranslate nohighlight">\(\bar{r}\)</span> results in a <em>smaller price change</em> than a decrease in <span class="math notranslate nohighlight">\(\bar{r}\)</span> of equal magnitude. For example, consider Case II in (<a class="reference internal" href="#fig-bond-price-sensitivity"><span class="std std-numref">Fig. 16</span></a>); a 50% decrease in <span class="math notranslate nohighlight">\(\bar{r}\)</span> increases the price of this bond by approximately 75%, while a 50% increase in <span class="math notranslate nohighlight">\(\bar{r}\)</span> decreases the bond price approximately 30%.</p></li>
-<li><p>Prices of long-term bonds are more sensitive to interest rate changes than short-term bonds. For example, consider Case I and Case II in (<a class="reference internal" href="#fig-bond-price-sensitivity"><span class="std std-numref">Fig. 16</span></a>); Case I (short-term bond) is <em>less sensitive</em> to the same magnitude change in <span class="math notranslate nohighlight">\(\bar{r}\)</span> compared with Case II (long-term bond).</p></li>
-<li><p>Interest rate risk is inversely related to a bond’s coupon rate. Prices of low coupon-rate bonds are more sensitive to changes in interest rates than prices of high-rate coupon bonds. For example, compare Case II and III in (<a class="reference internal" href="#fig-bond-price-sensitivity"><span class="std std-numref">Fig. 16</span></a>); case III (the low coupon-rate bond) is significanly more sensitive to decreases in interest rate compared with case II (the high coupon-rate bond). A similar, albeit less pronounced, trend is visible for increased
+an increase in a bond’s interest rate <span class="math notranslate nohighlight">\(\bar{r}\)</span> results in a <em>smaller price change</em> than a decrease in <span class="math notranslate nohighlight">\(\bar{r}\)</span> of equal magnitude. For example, consider Case II in (<a class="reference internal" href="#fig-bond-price-sensitivity"><span class="std std-numref">Fig. 17</span></a>); a 50% decrease in <span class="math notranslate nohighlight">\(\bar{r}\)</span> increases the price of this bond by approximately 75%, while a 50% increase in <span class="math notranslate nohighlight">\(\bar{r}\)</span> decreases the bond price approximately 30%.</p></li>
+<li><p>Prices of long-term bonds are more sensitive to interest rate changes than short-term bonds. For example, consider Case I and Case II in (<a class="reference internal" href="#fig-bond-price-sensitivity"><span class="std std-numref">Fig. 17</span></a>); Case I (short-term bond) is <em>less sensitive</em> to the same magnitude change in <span class="math notranslate nohighlight">\(\bar{r}\)</span> compared with Case II (long-term bond).</p></li>
+<li><p>Interest rate risk is inversely related to a bond’s coupon rate. Prices of low coupon-rate bonds are more sensitive to changes in interest rates than prices of high-rate coupon bonds. For example, compare Case II and III in (<a class="reference internal" href="#fig-bond-price-sensitivity"><span class="std std-numref">Fig. 17</span></a>); case III (the low coupon-rate bond) is significanly more sensitive to decreases in interest rate compared with case II (the high coupon-rate bond). A similar, albeit less pronounced, trend is visible for increased
 interest rate.</p></li>
 </ol>
 <!-- 

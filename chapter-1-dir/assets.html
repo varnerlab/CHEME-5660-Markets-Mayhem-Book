@@ -619,7 +619,7 @@ However, there is a critical and fundamental challenge to this intuition.</p>
 <p>Thus, if given a choice between <span class="math notranslate nohighlight">\(P\)</span> dollars today, or the same <span class="math notranslate nohighlight">\(P\)</span> dollars one investment period in the future, you would <em>always</em> choose (assuming you were a rational investor) to take the <span class="math notranslate nohighlight">\(P\)</span> dollars now.</p>
 <p><strong>Why?</strong></p>
 <ul class="simple">
-<li><p>By taking <span class="math notranslate nohighlight">\(P\)</span> dollars today, you could invest those <span class="math notranslate nohighlight">\(P\)</span> dollars now in a risk-free product and get <span class="math notranslate nohighlight">\(F = (1+i)\cdot{P}\)</span> back, where <span class="math notranslate nohighlight">\(F&gt;P\)</span>. Thus, the only case where it makes sense to take the future money is if <span class="math notranslate nohighlight">\(i=0\)</span>, i.e., <span class="math notranslate nohighlight">\(F = P\)</span> (which is forbidden by the condition <span class="math notranslate nohighlight">\(i&gt;0\)</span>).</p></li>
+<li><p>By taking <span class="math notranslate nohighlight">\(P\)</span> dollars today, you could invest those <span class="math notranslate nohighlight">\(P\)</span> dollars in a risk-free product and get <span class="math notranslate nohighlight">\(F = (1+i)\cdot{P}\)</span> back, where <span class="math notranslate nohighlight">\(F&gt;P\)</span>. Thus, the only case where it makes sense to take the future money is if <span class="math notranslate nohighlight">\(i=0\)</span>, i.e., <span class="math notranslate nohighlight">\(F = P\)</span>; which is forbidden by the condition <span class="math notranslate nohighlight">\(i&gt;0\)</span>.</p></li>
 <li><p>This hypothetical scenario assumes that a <em>risk-free</em> investment exists that always returns <span class="math notranslate nohighlight">\(i&gt;0\)</span>. Does such an investment exist? <a class="reference external" href="https://www.investopedia.com/terms/r/risk-freerate.asp">Unfortunately, the <em>risk-free</em> investment is only a theoretical concept</a>. However, the <em>risk-free rate of return</em> <span class="math notranslate nohighlight">\(i\)</span> is often approximated by the <a class="reference external" href="https://www.bloomberg.com/markets/rates-bonds/government-bonds/us">yield on 10-year US Treasury bonds</a> or some other US Treasury debt security.</p></li>
 </ul>
 </section>
@@ -676,8 +676,8 @@ into today’s dollars (or vice-versa, we want to compute the value of a future 
 <div class="math notranslate nohighlight">
 \[	CF_{t} = \mathcal{D}_{t,1}\cdot{CF_{1}}\qquad{t=2,3,\dots,T}\]</div>
 <p>In the particular case where the rates of return <span class="math notranslate nohighlight">\(r_{\star}\)</span> are equal in each period (let’s call this value <span class="math notranslate nohighlight">\(\bar{r}\)</span>), the <em>multi-period discount factor</em> is given by:</p>
-<div class="math notranslate nohighlight">
-\[\mathcal{D}_{t,1} = (1+\bar{r})^{t-1}\qquad{t=2,3,\dots,T}\]</div>
+<div class="math notranslate nohighlight" id="equation-eqn-discrete-discount-factor-constant-r">
+<span class="eqno">(4)<a class="headerlink" href="#equation-eqn-discrete-discount-factor-constant-r" title="Permalink to this equation">#</a></span>\[\mathcal{D}_{t,1} = (1+\bar{r})^{t-1}\qquad{t=2,3,\dots,T}\]</div>
 <p>Let’s do some multi-period discounting examples to better understand <a class="reference internal" href="#defn-multi-perod-discrete-conversion">Definition 2</a>.</p>
 <div class="proof example admonition" id="ex-future-value-discrete">
 <p class="admonition-title"><span class="caption-number">Example 2 </span> (What is $1 collected T time periods in the future worth today? )</p>
@@ -710,7 +710,7 @@ for <span class="math notranslate nohighlight">\(CF_{1}\)</span> in terms of the
 \[\mathcal{D}(r,t) = \exp\left(rt\right)\]</div>
 <p>A continuous discount factor gives a future value expression of the form:</p>
 <div class="math notranslate nohighlight" id="equation-eq-cont-exchange-tvm">
-<span class="eqno">(4)<a class="headerlink" href="#equation-eq-cont-exchange-tvm" title="Permalink to this equation">#</a></span>\[CF(t) = \exp\left(rt\right)CF(t_{o})\]</div>
+<span class="eqno">(5)<a class="headerlink" href="#equation-eq-cont-exchange-tvm" title="Permalink to this equation">#</a></span>\[CF(t) = \exp\left(rt\right)CF(t_{o})\]</div>
 <p>where <span class="math notranslate nohighlight">\(r\)</span> denotes the <em>instantaneous</em> discount rate, <span class="math notranslate nohighlight">\(t\)</span> denotes the current time, <span class="math notranslate nohighlight">\(t_{o}\)</span> denotes the initial time.</p>
 <div class="proof observation admonition" id="continuous-compounding">
 <p class="admonition-title"><span class="caption-number">Observation 2 </span> (Discrete and continuous discount factor)</p>

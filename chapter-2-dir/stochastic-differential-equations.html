@@ -424,6 +424,11 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#dividend-discount-model-ddm">
+   Dividend Discount Model (DDM)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#brownian-motion">
    Brownian Motion
   </a>
@@ -513,6 +518,11 @@ title="Print to PDF"
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#introduction">
    Introduction
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#dividend-discount-model-ddm">
+   Dividend Discount Model (DDM)
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -606,20 +616,55 @@ They are a top-down approach to simulating market behavior, where markers are tr
 dueling perspectives on the randomness of stock prices in the finance and economics community.
 <a class="reference external" href="https://en.wikipedia.org/wiki/Burton_Malkiel">Malkiel</a>, in his book <a class="reference external" href="https://en.wikipedia.org/wiki/A_Random_Walk_Down_Wall_Street">A Random Walk Down Wall Street</a>, argues that asset prices typically exhibit signs of a random walk and that investors cannot consistently outperform market averages. On the other hand, in their book <a class="reference external" href="https://www.jstor.org/stable/j.ctt7tccx">A Non-Random Walk Down Wall Street, Lo and MacKinlay present</a>, several studies that suggest there are stock market pricing trends are somewhat predictable.</p>
 <p>To better understand these arguments and build mathematical models that can be used to simulate market
-dynamics, we need to introduce analytical and numerical tools to solve SDEs. Our development will follow the previous work of Glasserman <span id="id1">[<a class="reference internal" href="../References.html#id9" title="Paul Glasserman. Monte Carlo methods in financial engineering. Volume 53. Springer, New York, 2004. ISBN 0387004513 (alk. paper). URL: http://www.loc.gov/catdir/enhancements/fy0813/2003050499-d.html.">Glasserman, 2004</a>]</span>; in particular, chapters 3, 6, and Appendix B.</p>
-<p><strong>Topics:</strong></p>
+dynamics, we introduce analytical and numerical tools to solve SDEs. Our development follows the previous work of Glasserman <span id="id1">[<a class="reference internal" href="../References.html#id10" title="Paul Glasserman. Monte Carlo methods in financial engineering. Volume 53. Springer, New York, 2004. ISBN 0387004513 (alk. paper). URL: http://www.loc.gov/catdir/enhancements/fy0813/2003050499-d.html.">Glasserman, 2004</a>]</span>; in particular, chapters 3, 6, and Appendix B.</p>
+<p>In this lecture, we will:</p>
 <ul class="simple">
-<li><p>Scalar and vector <a class="reference internal" href="#content-references-wiener-process"><span class="std std-ref">Brownian Motion</span></a></p></li>
-<li><p>Introduction to <a class="reference internal" href="#content-references-ito-calculus"><span class="std std-ref">Ito Processes</span></a></p></li>
-<li><p><a class="reference internal" href="#content-references-discretization"><span class="std std-ref">Discretization Approaches</span></a> to solve stochastic differential equations</p></li>
+<li><p>Introduce the <a class="reference internal" href="#content-references-ddm"><span class="std std-ref">Dividend Discount Model (DDM)</span></a>, a fundamental method of valuing the price of a firm’s stock</p></li>
+<li><p>Introduce <a class="reference internal" href="#content-references-wiener-process"><span class="std std-ref">Brownian Motion</span></a>, <a class="reference internal" href="#content-references-ito-calculus"><span class="std std-ref">Ito Processes</span></a>, <a class="reference internal" href="#content-references-ordinary-brownian-motion"><span class="std std-ref">Ordinary Brownian Motion</span></a>, and <a class="reference internal" href="#content-references-geometric-brownian-motion"><span class="std std-ref">Geometric Brownian Motion</span></a></p></li>
+<li><p>Introduce <a class="reference internal" href="#content-references-discretization"><span class="std std-ref">Discretization Approaches</span></a> to approximate the solutin of stochastic differential equation models of asset price.</p></li>
 </ul>
 <hr class="docutils" />
 </section>
+<section id="dividend-discount-model-ddm">
+<span id="content-references-ddm"></span><h2>Dividend Discount Model (DDM)<a class="headerlink" href="#dividend-discount-model-ddm" title="Permalink to this headline">#</a></h2>
+<p>The <a class="reference external" href="https://en.wikipedia.org/wiki/Dividend_discount_model">dividend discount model (DDM)</a>, developed by <a class="reference external" href="https://en.wikipedia.org/wiki/Myron_J._Gordon">Myron J. Gordon</a> and Eli Shapiro <span id="id2">[<a class="reference internal" href="../References.html#id2" title="M. J. Gordon. Dividends, earnings, and stock prices. The Review of Economics and Statistics, 41(2):99–105, 1959. URL: http://www.jstor.org/stable/1927792 (visited on 2022-09-01).">Gordon, 1959</a>]</span>, is a method of estimating the share price of the firm <code class="docutils literal notranslate"><span class="pre">XYZ,</span></code> based on the net present value of future dividends of the firm (<a class="reference internal" href="#fig-ddm-introduction"><span class="std std-numref">Fig. 13</span></a>). Thus, the DDM is only applicable to dividend-granting firms.</p>
+<figure class="align-default" id="fig-ddm-introduction">
+<a class="reference internal image-reference" href="../_images/Fig-DDM-Introduction.pdf"><img alt="../_images/Fig-DDM-Introduction.pdf" src="../_images/Fig-DDM-Introduction.pdf" style="height: 280px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 13 </span><span class="caption-text">Schematic of the dividend discount model (DDM) for the share price of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code>. The current value of the share price <span class="math notranslate nohighlight">\(P_{1}\)</span> is modeled as the sum of the future dividend payments <span class="math notranslate nohighlight">\(D_{j}, j=2,3,\dots,{T}\)</span> and the future share price <span class="math notranslate nohighlight">\(P_{T}\)</span> discounted to the current value.</span><a class="headerlink" href="#fig-ddm-introduction" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Suppose an investor buys a share of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> and holds this share for one year. From the perspective of the dividend discount model, the expected current share price of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code>, denoted by <span class="math notranslate nohighlight">\(\mathbb{E}(P)\)</span>, is the present value of the expected dividend payment <span class="math notranslate nohighlight">\(\mathbb{E}(D_{2})\)</span> plus the expected future share price <span class="math notranslate nohighlight">\(\mathbb{E}(P_{2})\)</span> during the one year period:</p>
+<div class="math notranslate nohighlight" id="equation-eqn-ddm-1-period">
+<span class="eqno">(11)<a class="headerlink" href="#equation-eqn-ddm-1-period" title="Permalink to this equation">#</a></span>\[\mathbb{E}(P) = \frac{\mathbb{E}(D_{2})+\mathbb{E}(P_{2})}{1+\bar{r}}\]</div>
+<p>If the investor holds the share of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> for additional year, the current expected share price is given by:</p>
+<div class="math notranslate nohighlight" id="equation-eqn-ddm-2-period">
+<span class="eqno">(12)<a class="headerlink" href="#equation-eqn-ddm-2-period" title="Permalink to this equation">#</a></span>\[P = \frac{D_{2}}{1+\bar{r}} + \frac{D_{3}+P_{3}}{\left(1+\bar{r}\right)^2}\]</div>
+<p>where we have dropped the expectation <span class="math notranslate nohighlight">\(\mathbb{E}(\star)\)</span> notation for clarity. If the investor holds the share of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> for T-years, we get the expression:</p>
+<div class="math notranslate nohighlight" id="equation-eqn-ddm-t-period">
+<span class="eqno">(13)<a class="headerlink" href="#equation-eqn-ddm-t-period" title="Permalink to this equation">#</a></span>\[P = \sum_{t=2}^{T-1}\frac{D_{t}}{\left(1+\bar{r}\right)^{t-1}}+\frac{D_{T}+P_{T}}{\left(1+\bar{r}\right)^{T-1}}\]</div>
+<p>There are two interesting questions with Eqn. <a class="reference internal" href="#equation-eqn-ddm-t-period">(13)</a>. First, we don’t know the share price of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> at the final time point <span class="math notranslate nohighlight">\(T\)</span>; it is unclear how to estimate this value. Second, similarly, we don’t know the values for the dividend payments over the course of the investment.</p>
+<p>To address these questions, two key simplifications are made to Eqn. <a class="reference internal" href="#equation-eqn-ddm-t-period">(13)</a>:</p>
+<ul class="simple">
+<li><p>As the number of periods increases <span class="math notranslate nohighlight">\(T\rightarrow\infty\)</span>, the final term goes to zero faster than the summation; thus, we neglect it.</p></li>
+<li><p>To describe the dividend payments over the lifetime of the investment, we use propose a constant dividend growth model <span class="math notranslate nohighlight">\(D_{j} = D_{1}\left(1+g\right)^{j-1}, ~j=2,3,\dots\)</span> where <span class="math notranslate nohighlight">\(D_{1}\)</span> denotes the current dividend payment, and <span class="math notranslate nohighlight">\(g\)</span> denotes the rate of growth of dividend payments.</p></li>
+</ul>
+<!-- where $\mathcal{D}^{-1}_{2,1}$ denotes the discrete discount factor between now, and one period in the future assuming a constant discount factor $\bar{r}$. The discrete discount factor is defined previously, see Eqn. {eq}`eqn-discrete-discount-factor-constant-r` in the [Financial Balances and Abstract Assets](../chapter-1-dir/assets.md) chapter. -->
+<p>Putting these ideas together gives the Dividend discount model (DDM), shown in <a class="reference internal" href="#defn-ddm-final">Definition 19</a>:</p>
+<div class="proof definition admonition" id="defn-ddm-final">
+<p class="admonition-title"><span class="caption-number">Definition 19 </span> (Dividend discount model)</p>
+<section class="definition-content" id="proof-content">
+<p>The dividend discount model estimate of the current share price of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code>, denoted by <span class="math notranslate nohighlight">\(P\)</span>, is given by:</p>
+<div class="math notranslate nohighlight" id="equation-eqn-general-ddm">
+<span class="eqno">(14)<a class="headerlink" href="#equation-eqn-general-ddm" title="Permalink to this equation">#</a></span>\[P = D_{1}\left(\sum_{t=2}^{\infty}\frac{\left(1+g\right)^{t-1}}{\left(1+r\right)^{t-1}}\right)\]</div>
+<p>where <span class="math notranslate nohighlight">\(D_{1}\)</span> denotes the current value of the dividend payment, <span class="math notranslate nohighlight">\(g\)</span> denotes the rate of growth of the dividend payment, which is assumed to be constant, and <span class="math notranslate nohighlight">\(\bar{r}\)</span> denotes the discount rate, also assumed constant across the lifetime of the investment.</p>
+</section>
+</div></section>
 <section id="brownian-motion">
 <span id="content-references-wiener-process"></span><h2>Brownian Motion<a class="headerlink" href="#brownian-motion" title="Permalink to this headline">#</a></h2>
 <p>A <a class="reference external" href="https://en.wikipedia.org/wiki/Wiener_process">Wiener Process</a> (also often referred to as a <a class="reference external" href="https://en.wikipedia.org/wiki/Brownian_motion">standard Brownian motion</a>) is a real-valued continuous-time stochastic process named after the <a class="reference external" href="https://en.wikipedia.org/wiki/Norbert_Wiener">Norbert Wiener</a> for the study of one-dimensional Brownian motion:</p>
 <div class="proof definition admonition" id="defn-wiener-process">
-<p class="admonition-title"><span class="caption-number">Definition 19 </span> (One-dimensional Wiener Process)</p>
+<p class="admonition-title"><span class="caption-number">Definition 20 </span> (One-dimensional Wiener Process)</p>
 <section class="definition-content" id="proof-content">
 <p>A Wiener process is a continuous one-dimensional stochastic process <span class="math notranslate nohighlight">\(\left\{W\left(t\right), 0\leq{t}\leq{T}\right\}\)</span> with the following properties:</p>
 <ul class="simple">
@@ -633,16 +678,16 @@ dynamics, we need to introduce analytical and numerical tools to solve SDEs. Our
 <span id="content-references-ito-calculus"></span><h2>Ito Processes<a class="headerlink" href="#ito-processes" title="Permalink to this headline">#</a></h2>
 <p>We are interested in random variables <span class="math notranslate nohighlight">\(X(t)\)</span> whose time evolution is governed by stochastic differential equations of the form (<a class="reference external" href="https://en.wikipedia.org/wiki/It%C3%B4_diffusion">Ito Process or Ito Diffusion</a>):</p>
 <div class="math notranslate nohighlight" id="equation-eq-ito-process">
-<span class="eqno">(10)<a class="headerlink" href="#equation-eq-ito-process" title="Permalink to this equation">#</a></span>\[dX = a(X(t),t)dt + b(X(t),t)dW(t)\]</div>
+<span class="eqno">(15)<a class="headerlink" href="#equation-eq-ito-process" title="Permalink to this equation">#</a></span>\[dX = a(X(t),t)dt + b(X(t),t)dW(t)\]</div>
 <p>subject to the (known) constant initial condition <span class="math notranslate nohighlight">\(X(0)\)</span>.
-Eqn. <a class="reference internal" href="#equation-eq-ito-process">(10)</a> is called an <a class="reference external" href="https://en.wikipedia.org/wiki/It%C3%B4_diffusion">Ito Process or Ito Diffusion</a>. The random variable <span class="math notranslate nohighlight">\(X\in\mathbb{R}^{d}\)</span>, while the functions
+Eqn. <a class="reference internal" href="#equation-eq-ito-process">(15)</a> is called an <a class="reference external" href="https://en.wikipedia.org/wiki/It%C3%B4_diffusion">Ito Process or Ito Diffusion</a>. The random variable <span class="math notranslate nohighlight">\(X\in\mathbb{R}^{d}\)</span>, while the functions
 <span class="math notranslate nohighlight">\(a:\mathbb{R}^{d}\times\mathbb{R}\rightarrow\mathbb{R}^{d}\)</span>
 and <span class="math notranslate nohighlight">\(b:\mathbb{R}^{d}\times\mathbb{R}\rightarrow\mathbb{R}^{d\times{m}}\)</span>,
 and <span class="math notranslate nohighlight">\(W\)</span> denotes an m-dimensional noise process. There are some additional conditions on
 <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> that we will talk about later.</p>
-<p>Depending upon the form of <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span>, Eqn <a class="reference internal" href="#equation-eq-ito-process">(10)</a> can sometimes be solved
-analytically. However, in the general case, we’ll need to solve Eqn <a class="reference internal" href="#equation-eq-ito-process">(10)</a>
-numerically. Numerical approximations to the solution of Eqn <a class="reference internal" href="#equation-eq-ito-process">(10)</a> can be
+<p>Depending upon the form of <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span>, Eqn <a class="reference internal" href="#equation-eq-ito-process">(15)</a> can sometimes be solved
+analytically. However, in the general case, we’ll need to solve Eqn <a class="reference internal" href="#equation-eq-ito-process">(15)</a>
+numerically. Numerical approximations to the solution of Eqn <a class="reference internal" href="#equation-eq-ito-process">(15)</a> can be
 developed quickly; however, they have different levels of error depending upon the solution approach.</p>
 <section id="ito-s-lemma">
 <h3>Ito’s Lemma<a class="headerlink" href="#ito-s-lemma" title="Permalink to this headline">#</a></h3>
@@ -656,28 +701,28 @@ developed quickly; however, they have different levels of error depending upon t
 <p>where <span class="math notranslate nohighlight">\(dW(t)\)</span> is a one-dimensional Wiener process and <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> are functions of <span class="math notranslate nohighlight">\(X(t)\)</span> and <span class="math notranslate nohighlight">\(t\)</span>.</p>
 <p>Let <span class="math notranslate nohighlight">\(Y(t) = \phi\left(t,X(t)\right)\)</span> be another process that is a function of <span class="math notranslate nohighlight">\(X(t)\)</span> and time <span class="math notranslate nohighlight">\(t\)</span>, where <span class="math notranslate nohighlight">\(\phi\left(t,X(t)\right)\)</span> is twice differentiable with respect to <span class="math notranslate nohighlight">\(X(t)\)</span>, and singly differentiable with respect to <span class="math notranslate nohighlight">\(t\)</span>. Then, the process <span class="math notranslate nohighlight">\(Y(t)\)</span> is governed by the equation:</p>
 <div class="math notranslate nohighlight" id="equation-eq-ito-lemma">
-<span class="eqno">(11)<a class="headerlink" href="#equation-eq-ito-lemma" title="Permalink to this equation">#</a></span>\[dY = \left(\frac{\partial{Y}}{\partial{t}}+a\frac{\partial{Y}}{\partial{X}}+\frac{b^{2}}{2}\frac{\partial^{2}{Y}}{\partial{X}^{2}}\right)dt+b\left(\frac{\partial{Y}}{\partial{X}}\right)dW(t)\]</div>
+<span class="eqno">(16)<a class="headerlink" href="#equation-eq-ito-lemma" title="Permalink to this equation">#</a></span>\[dY = \left(\frac{\partial{Y}}{\partial{t}}+a\frac{\partial{Y}}{\partial{X}}+\frac{b^{2}}{2}\frac{\partial^{2}{Y}}{\partial{X}^{2}}\right)dt+b\left(\frac{\partial{Y}}{\partial{X}}\right)dW(t)\]</div>
 </section>
 </div></section>
 <section id="ordinary-brownian-motion">
-<h3>Ordinary Brownian Motion<a class="headerlink" href="#ordinary-brownian-motion" title="Permalink to this headline">#</a></h3>
+<span id="content-references-ordinary-brownian-motion"></span><h3>Ordinary Brownian Motion<a class="headerlink" href="#ordinary-brownian-motion" title="Permalink to this headline">#</a></h3>
 <p>Ordinary Brownian Motion (OBM) is a general class of problems involving constant volatility fluctuations around a constant deterministic drift term, i.e., both <span class="math notranslate nohighlight">\(a = \mu\)</span> and <span class="math notranslate nohighlight">\(b = \sigma&gt;0\)</span> are constants.</p>
-<div class="proof definition admonition" id="definition-2">
-<p class="admonition-title"><span class="caption-number">Definition 20 </span> (Scalar Ordinary Brownian Motion)</p>
+<div class="proof definition admonition" id="definition-3">
+<p class="admonition-title"><span class="caption-number">Definition 21 </span> (Scalar Ordinary Brownian Motion)</p>
 <section class="definition-content" id="proof-content">
 <p>There exists constants <span class="math notranslate nohighlight">\(\mu\)</span> and <span class="math notranslate nohighlight">\(\sigma&gt;0\)</span>.
 Then a random process <span class="math notranslate nohighlight">\(X(t)\)</span> follows an Ordinary Brownian Motion (Wiener) process with drift <span class="math notranslate nohighlight">\(\mu\)</span> and diffusion <span class="math notranslate nohighlight">\(\sigma^{2}\)</span> if <span class="math notranslate nohighlight">\(X(t)\)</span> is a solution to the Stochastic Differential Equation (SDE):</p>
 <div class="math notranslate nohighlight" id="equation-eq-sde-standardbm">
-<span class="eqno">(12)<a class="headerlink" href="#equation-eq-sde-standardbm" title="Permalink to this equation">#</a></span>\[dX\left(t\right) = \mu{dt}+\sigma{dW(t)}\]</div>
+<span class="eqno">(17)<a class="headerlink" href="#equation-eq-sde-standardbm" title="Permalink to this equation">#</a></span>\[dX\left(t\right) = \mu{dt}+\sigma{dW(t)}\]</div>
 <p>where <span class="math notranslate nohighlight">\(dW(t)\)</span> is a one-dimensional Wiener Process.</p>
 </section>
 </div><section id="analytical-solution-ordinary-brownian-motion">
 <h4>Analytical solution: Ordinary Brownian Motion<a class="headerlink" href="#analytical-solution-ordinary-brownian-motion" title="Permalink to this headline">#</a></h4>
-<p>The ordinary Brownian motion described by Eqn. <a class="reference internal" href="#equation-eq-sde-standardbm">(12)</a>
+<p>The ordinary Brownian motion described by Eqn. <a class="reference internal" href="#equation-eq-sde-standardbm">(17)</a>
 has an analytical solution. To develop this solution, let’s use <a class="reference external" href="https://en.wikipedia.org/wiki/It%C3%B4%27s_lemma">Ito’s Lemma</a>.</p>
 <div class="admonition-derivation-analytical-solution-scalar-ordinary-brownian-motion admonition">
 <p class="admonition-title">Derivation: Analytical Solution Scalar Ordinary Brownian Motion</p>
-<p>For Eqn <a class="reference internal" href="#equation-eq-sde-standardbm">(12)</a>, <span class="math notranslate nohighlight">\(a=\mu\)</span> and <span class="math notranslate nohighlight">\(b=\sigma&gt;0\)</span>.
+<p>For Eqn <a class="reference internal" href="#equation-eq-sde-standardbm">(17)</a>, <span class="math notranslate nohighlight">\(a=\mu\)</span> and <span class="math notranslate nohighlight">\(b=\sigma&gt;0\)</span>.
 If we assume <span class="math notranslate nohighlight">\(Y(t) = X(t)\)</span>, then <a class="reference external" href="https://en.wikipedia.org/wiki/It%C3%B4%27s_lemma">Ito’s Lemma</a> gives:</p>
 <div class="math notranslate nohighlight">
 \[dY = {\mu}dt + {\sigma}dW\]</div>
@@ -687,13 +732,13 @@ If we assume <span class="math notranslate nohighlight">\(Y(t) = X(t)\)</span>, 
 <p>where <span class="math notranslate nohighlight">\(Y_{\star}\)</span> and <span class="math notranslate nohighlight">\(W_{\star}\)</span> denote the <span class="math notranslate nohighlight">\(Y\)</span> (or <span class="math notranslate nohighlight">\(W\)</span>) evaluated at time <span class="math notranslate nohighlight">\(\star\)</span>.
 However, <span class="math notranslate nohighlight">\(Y(t) = X(t)\)</span>, and the noise is a Wiener process; <span class="math notranslate nohighlight">\(W_{2}-W_{1}\sim{N\left(0,t_{2}-t_{1}\right)}\)</span>:</p>
 <div class="math notranslate nohighlight" id="equation-eq-sbm-soln">
-<span class="eqno">(13)<a class="headerlink" href="#equation-eq-sbm-soln" title="Permalink to this equation">#</a></span>\[X_{2} - X_{1} = \mu\left(t_{2}-t_{1}\right)+\sigma\sqrt{t_2-t_1}\cdot{Z(0,1)}\]</div>
+<span class="eqno">(18)<a class="headerlink" href="#equation-eq-sbm-soln" title="Permalink to this equation">#</a></span>\[X_{2} - X_{1} = \mu\left(t_{2}-t_{1}\right)+\sigma\sqrt{t_2-t_1}\cdot{Z(0,1)}\]</div>
 <p>where <span class="math notranslate nohighlight">\(Z(0,1)\)</span> is a standard normal random variable with mean <span class="math notranslate nohighlight">\(0\)</span> and a variance of <span class="math notranslate nohighlight">\(1\)</span>.</p>
 <p>Finally, imagine that we are simulating an ordinary Brownian motion from <span class="math notranslate nohighlight">\(t = 0\rightarrow{T}\)</span>.
 Let’s break this interval into <span class="math notranslate nohighlight">\(n\)</span> time steps of fixed length <span class="math notranslate nohighlight">\(t_{k+1} - t_{k}, k = 1,2,\dots, n\)</span> where <span class="math notranslate nohighlight">\(t_1 = 0\)</span>.
-Then, we can re-write Eqn. <a class="reference internal" href="#equation-eq-sbm-soln">(13)</a> as:</p>
+Then, we can re-write Eqn. <a class="reference internal" href="#equation-eq-sbm-soln">(18)</a> as:</p>
 <div class="math notranslate nohighlight" id="equation-eq-sbm-soln-arb-rime">
-<span class="eqno">(14)<a class="headerlink" href="#equation-eq-sbm-soln-arb-rime" title="Permalink to this equation">#</a></span>\[X_{k+1} = X_{k} + \mu\left(t_{k+1}-t_{k}\right)+\sigma\sqrt{t_{k+1}-t_{k}}\cdot{Z(0,1)}\qquad{k=1,2,\dots,n}\]</div>
+<span class="eqno">(19)<a class="headerlink" href="#equation-eq-sbm-soln-arb-rime" title="Permalink to this equation">#</a></span>\[X_{k+1} = X_{k} + \mu\left(t_{k+1}-t_{k}\right)+\sigma\sqrt{t_{k+1}-t_{k}}\cdot{Z(0,1)}\qquad{k=1,2,\dots,n}\]</div>
 </div>
 </section>
 <section id="example">
@@ -704,54 +749,54 @@ Then, we can re-write Eqn. <a class="reference internal" href="#equation-eq-sbm-
 </section>
 </section>
 <section id="geometric-brownian-motion">
-<h3>Geometric Brownian Motion<a class="headerlink" href="#geometric-brownian-motion" title="Permalink to this headline">#</a></h3>
+<span id="content-references-geometric-brownian-motion"></span><h3>Geometric Brownian Motion<a class="headerlink" href="#geometric-brownian-motion" title="Permalink to this headline">#</a></h3>
 <p>Unfortunately, ordinary Brownian motion has a critical flaw; its solutions can be negative.
 Thus, it is not widely used to model the price of a risky asset because asset prices are non-negative. Instead, we often model asset prices using a <a class="reference external" href="https://en.wikipedia.org/wiki/Geometric_Brownian_motion">Geometric Brownian Motion (GBM) model</a>:</p>
-<div class="proof definition admonition" id="definition-3">
-<p class="admonition-title"><span class="caption-number">Definition 21 </span> (Scalar Geometric Brownian Motion)</p>
+<div class="proof definition admonition" id="definition-4">
+<p class="admonition-title"><span class="caption-number">Definition 22 </span> (Scalar Geometric Brownian Motion)</p>
 <section class="definition-content" id="proof-content">
 <p>There exists constants <span class="math notranslate nohighlight">\(\mu\)</span> and <span class="math notranslate nohighlight">\(\sigma&gt;0\)</span>.
 Then a random process <span class="math notranslate nohighlight">\(X(t)\)</span> follows a Geometric Brownian Motion (Wiener) process with drift <span class="math notranslate nohighlight">\(\mu\)</span> and diffusion <span class="math notranslate nohighlight">\(\sigma^{2}\)</span> if <span class="math notranslate nohighlight">\(X(t)\)</span> is a solution to the Stochastic Differential Equation (SDE):</p>
 <div class="math notranslate nohighlight" id="equation-eq-sde-gbm">
-<span class="eqno">(15)<a class="headerlink" href="#equation-eq-sde-gbm" title="Permalink to this equation">#</a></span>\[\frac{dX\left(t\right)}{X(t)} = \mu{dt}+\sigma{dW(t)}\]</div>
+<span class="eqno">(20)<a class="headerlink" href="#equation-eq-sde-gbm" title="Permalink to this equation">#</a></span>\[\frac{dX\left(t\right)}{X(t)} = \mu{dt}+\sigma{dW(t)}\]</div>
 <p>where <span class="math notranslate nohighlight">\(dW(t)\)</span> is a one-dimensional Wiener Process.</p>
 </section>
-</div><p>The use of geometric Brownian motion as a financial model is primarily due to the work of Samuelson in the 1950s and 1960s <span id="id2">[<a class="reference internal" href="../References.html#id11" title="Robert C. Merton. Paul samuelson and financial economics. The American Economist, 50(2):9–31, 2006. URL: http://www.jstor.org/stable/40657651 (visited on 2022-05-16).">Merton, 2006</a>]</span>. However, today Geometric Brownian Motion is more often associated with the Black–Scholes options pricing model (which we’ll describe later) <span id="id3">[<a class="reference internal" href="../References.html#id10" title="Fischer Black and Myron Scholes. The pricing of options and corporate liabilities. Journal of Political Economy, 81(3):637–654, 1973. URL: http://www.jstor.org/stable/1831029 (visited on 2022-05-16).">Black and Scholes, 1973</a>]</span>.</p>
+</div><p>The use of geometric Brownian motion as a financial model is primarily due to the work of Samuelson in the 1950s and 1960s <span id="id3">[<a class="reference internal" href="../References.html#id12" title="Robert C. Merton. Paul samuelson and financial economics. The American Economist, 50(2):9–31, 2006. URL: http://www.jstor.org/stable/40657651 (visited on 2022-05-16).">Merton, 2006</a>]</span>. However, today Geometric Brownian Motion is more often associated with the Black–Scholes options pricing model (which we’ll describe later) <span id="id4">[<a class="reference internal" href="../References.html#id11" title="Fischer Black and Myron Scholes. The pricing of options and corporate liabilities. Journal of Political Economy, 81(3):637–654, 1973. URL: http://www.jstor.org/stable/1831029 (visited on 2022-05-16).">Black and Scholes, 1973</a>]</span>.</p>
 <section id="analytical-solution-geometric-brownian-motion">
 <h4>Analytical solution: Geometric Brownian Motion<a class="headerlink" href="#analytical-solution-geometric-brownian-motion" title="Permalink to this headline">#</a></h4>
-<p>The geometric Brownian motion described by Eqn. <a class="reference internal" href="#equation-eq-sde-gbm">(15)</a> also has an analytical solution.
+<p>The geometric Brownian motion described by Eqn. <a class="reference internal" href="#equation-eq-sde-gbm">(20)</a> also has an analytical solution.
 To develop this solution, let’s use <a class="reference external" href="https://en.wikipedia.org/wiki/It%C3%B4%27s_lemma">Ito’s Lemma</a>.</p>
 <div class="admonition-derivation-analytical-solution-scalar-geometric-brownian-motion admonition">
 <p class="admonition-title">Derivation: Analytical Solution Scalar Geometric Brownian Motion</p>
 <p>There exists constants <span class="math notranslate nohighlight">\(\mu\)</span> and <span class="math notranslate nohighlight">\(\sigma&gt;0\)</span>. Let <span class="math notranslate nohighlight">\(Y(t) = \ln{X(t)}\)</span>.
 Then <a class="reference external" href="https://en.wikipedia.org/wiki/It%C3%B4%27s_lemma">Ito’s Lemma</a> gives:</p>
 <div class="math notranslate nohighlight" id="equation-eq-gdm-soln-anal-almost-1">
-<span class="eqno">(16)<a class="headerlink" href="#equation-eq-gdm-soln-anal-almost-1" title="Permalink to this equation">#</a></span>\[dY = \left(\mu-\frac{\sigma^{2}}{2}\right)dt+\sigma{dW}\]</div>
-<p>Integrating both sides of Eqn <a class="reference internal" href="#equation-eq-gdm-soln-anal-almost-1">(16)</a> from <span class="math notranslate nohighlight">\(t_{1}\rightarrow{t_{2}}\)</span> gives:</p>
+<span class="eqno">(21)<a class="headerlink" href="#equation-eq-gdm-soln-anal-almost-1" title="Permalink to this equation">#</a></span>\[dY = \left(\mu-\frac{\sigma^{2}}{2}\right)dt+\sigma{dW}\]</div>
+<p>Integrating both sides of Eqn <a class="reference internal" href="#equation-eq-gdm-soln-anal-almost-1">(21)</a> from <span class="math notranslate nohighlight">\(t_{1}\rightarrow{t_{2}}\)</span> gives:</p>
 <div class="math notranslate nohighlight" id="equation-eq-gdm-soln-anal-almost-2">
-<span class="eqno">(17)<a class="headerlink" href="#equation-eq-gdm-soln-anal-almost-2" title="Permalink to this equation">#</a></span>\[Y_{2} - Y_{1} = \left(\mu-\frac{\sigma^{2}}{2}\right)\left(t_{2} - t_{1}\right)+\sigma\left(W_{2} - W_{1}\right)\]</div>
+<span class="eqno">(22)<a class="headerlink" href="#equation-eq-gdm-soln-anal-almost-2" title="Permalink to this equation">#</a></span>\[Y_{2} - Y_{1} = \left(\mu-\frac{\sigma^{2}}{2}\right)\left(t_{2} - t_{1}\right)+\sigma\left(W_{2} - W_{1}\right)\]</div>
 <p>However, <span class="math notranslate nohighlight">\(Y(t) = \ln{X(t)}\)</span> and the noise is a Wiener process <span class="math notranslate nohighlight">\(W_{2}-W_{1}\sim{N\left(0,t_{2}-t_{1}\right)}\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[\ln\left(\frac{X_{2}}{X_{1}}\right) = \left(\mu-\frac{\sigma^{2}}{2}\right)\left(t_{2} - t_{1}\right) + \sigma\sqrt{t_2-t_1}\cdot{Z(0,1)}\]</div>
 <p>or:</p>
 <div class="math notranslate nohighlight" id="equation-eq-gdm-soln-anal-almost-3">
-<span class="eqno">(18)<a class="headerlink" href="#equation-eq-gdm-soln-anal-almost-3" title="Permalink to this equation">#</a></span>\[X_{2} = X_{1}\exp\Biggl[\left(\mu-\frac{\sigma^{2}}{2}\right)\left(t_{2} - t_{1}\right) + \sigma\sqrt{t_2-t_1}\cdot{Z(0,1)}\Biggr]\]</div>
+<span class="eqno">(23)<a class="headerlink" href="#equation-eq-gdm-soln-anal-almost-3" title="Permalink to this equation">#</a></span>\[X_{2} = X_{1}\exp\Biggl[\left(\mu-\frac{\sigma^{2}}{2}\right)\left(t_{2} - t_{1}\right) + \sigma\sqrt{t_2-t_1}\cdot{Z(0,1)}\Biggr]\]</div>
 <p>Finally, imagine that we are simulating a geometric Brownian motion from <span class="math notranslate nohighlight">\(t = 0\rightarrow{T}\)</span>.
 Let’s break this interval into <span class="math notranslate nohighlight">\(n\)</span> time steps of fixed length <span class="math notranslate nohighlight">\(t_{k+1} - t_{k}, k = 1,2, \dots, n\)</span> where <span class="math notranslate nohighlight">\(t_1 = 0\)</span>.
-Then, we can re-write Eqn <a class="reference internal" href="#equation-eq-gdm-soln-anal-almost-3">(18)</a> as:</p>
+Then, we can re-write Eqn <a class="reference internal" href="#equation-eq-gdm-soln-anal-almost-3">(23)</a> as:</p>
 <div class="math notranslate nohighlight" id="equation-eq-gdm-soln-anal-4">
-<span class="eqno">(19)<a class="headerlink" href="#equation-eq-gdm-soln-anal-4" title="Permalink to this equation">#</a></span>\[X_{k+1} = X_{k}\exp\Biggl[\left(\mu-\frac{\sigma^{2}}{2}\right)\left(t_{k+1} - t_{k}\right) + \sigma\sqrt{t_{k+1}-t_{k}}\cdot{Z(0,1)}\Biggr]\]</div>
+<span class="eqno">(24)<a class="headerlink" href="#equation-eq-gdm-soln-anal-4" title="Permalink to this equation">#</a></span>\[X_{k+1} = X_{k}\exp\Biggl[\left(\mu-\frac{\sigma^{2}}{2}\right)\left(t_{k+1} - t_{k}\right) + \sigma\sqrt{t_{k+1}-t_{k}}\cdot{Z(0,1)}\Biggr]\]</div>
 <p>where <span class="math notranslate nohighlight">\(k=1,2,\dots,n\)</span>.</p>
 </div>
 <div class="proof example admonition" id="scalar-gbm-soln">
-<p class="admonition-title"><span class="caption-number">Example 8 </span> (Scalar Geometric Brownian Motion )</p>
+<p class="admonition-title"><span class="caption-number">Example 8 </span> (Scalar Geometric Brownian Motion)</p>
 <section class="example-content" id="proof-content">
-<p>Let’s simulate the daily close price of <code class="docutils literal notranslate"><span class="pre">AMD</span></code> using the analytical solution of the scalar geometric brownian motion (<a class="reference internal" href="#fig-gbm-sim-amd-scalar"><span class="std std-numref">Fig. 13</span></a>).</p>
-<p>The scalar gbm analytical solution was used to generate N = 200 sample paths for a 46-day period (light blue lines in <a class="reference internal" href="#fig-gbm-sim-amd-scalar"><span class="std std-numref">Fig. 13</span></a>); the first 36 days of data were used to estimate the mean return <span class="math notranslate nohighlight">\(\mu\)</span> and the volatility of the return <span class="math notranslate nohighlight">\(\sigma\)</span> which appear in the gbm solution. These model parameters were assumed to be fixed. An additional two trading weeks (10 days) was then simulated (out of sample prediction).</p>
+<p>Let’s simulate the daily close price of <code class="docutils literal notranslate"><span class="pre">AMD</span></code> using the analytical solution of the scalar geometric brownian motion (<a class="reference internal" href="#fig-gbm-sim-amd-scalar"><span class="std std-numref">Fig. 14</span></a>).</p>
+<p>The scalar gbm analytical solution was used to generate N = 200 sample paths for a 46-day period (light blue lines in <a class="reference internal" href="#fig-gbm-sim-amd-scalar"><span class="std std-numref">Fig. 14</span></a>); the first 36 days of data were used to estimate the mean return <span class="math notranslate nohighlight">\(\mu\)</span> and the volatility of the return <span class="math notranslate nohighlight">\(\sigma\)</span> which appear in the gbm solution. These model parameters were assumed to be fixed. An additional two trading weeks (10 days) was then simulated (out of sample prediction).</p>
 <figure class="align-default" id="fig-gbm-sim-amd-scalar">
 <a class="reference internal image-reference" href="../_images/Fig-AMD-GBM-Sim-N200-IS36-OS10.pdf"><img alt="../_images/Fig-AMD-GBM-Sim-N200-IS36-OS10.pdf" src="../_images/Fig-AMD-GBM-Sim-N200-IS36-OS10.pdf" style="height: 420px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 13 </span><span class="caption-text">Scalar Geometric Brownian Motion (GBM) simulation of the daily close price of <code class="docutils literal notranslate"><span class="pre">AMD</span></code>. Data for the first m = 36 days was used to estimate the mean and volatility of the log return. The solid black line denotes the mean close price, while the shaded blue region denotes <span class="math notranslate nohighlight">\(\pm\)</span> one standard-deviation from the mean close price. The red-line denotes the actual <code class="docutils literal notranslate"><span class="pre">AMD</span></code> close price.</span><a class="headerlink" href="#fig-gbm-sim-amd-scalar" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 14 </span><span class="caption-text">Scalar Geometric Brownian Motion (GBM) simulation of the daily close price of <code class="docutils literal notranslate"><span class="pre">AMD</span></code>. Data for the first m = 36 days was used to estimate the mean and volatility of the log return. The solid black line denotes the mean close price, while the shaded blue region denotes <span class="math notranslate nohighlight">\(\pm\)</span> one standard-deviation from the mean close price. The red-line denotes the actual <code class="docutils literal notranslate"><span class="pre">AMD</span></code> close price.</span><a class="headerlink" href="#fig-gbm-sim-amd-scalar" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>The GDM model <em>predicts</em> (out of sample) the close price of <code class="docutils literal notranslate"><span class="pre">AMD</span></code> too within one standard deviation. However, the difference between the actual close price and the mean predicted close price changes over time.</p>
@@ -762,7 +807,7 @@ Then, we can re-write Eqn <a class="reference internal" href="#equation-eq-gdm-s
 </section>
 <section id="discretization-approaches">
 <span id="content-references-discretization"></span><h2>Discretization Approaches<a class="headerlink" href="#discretization-approaches" title="Permalink to this headline">#</a></h2>
-<p>In general, we cannot develop an analytical solution to Eqn. <a class="reference internal" href="#equation-eq-ito-process">(10)</a>; however, we can create an approximate numerical solution by discretization. This is an issue because sometimes we may want to use more sophisticated models for the price of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code>, for example, a stochastic volatility model that better captures changes in market conditions.</p>
+<p>In general, we cannot develop an analytical solution to Eqn. <a class="reference internal" href="#equation-eq-ito-process">(15)</a>; however, we can create an approximate numerical solution by discretization. This is an issue because sometimes we may want to use more sophisticated models for the price of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code>, for example, a stochastic volatility model that better captures changes in market conditions.</p>
 <section id="stochastic-volatility-models">
 <h3>Stochastic Volatility Models<a class="headerlink" href="#stochastic-volatility-models" title="Permalink to this headline">#</a></h3>
 <p>For both the standard Brownian motion and the geometric Brownian motion equations, we have assumed that the drift coefficient <span class="math notranslate nohighlight">\(\mu\)</span> and the diffusion coefficient <span class="math notranslate nohighlight">\(\sigma^{2}\)</span> are constant. There are situations where both <span class="math notranslate nohighlight">\(\mu\)</span> and <span class="math notranslate nohighlight">\(\sigma\)</span> can reasonably be assumed to be constants, but in many practical cases, this is not true, particularly in the case of <span class="math notranslate nohighlight">\(\sigma\)</span>.</p>

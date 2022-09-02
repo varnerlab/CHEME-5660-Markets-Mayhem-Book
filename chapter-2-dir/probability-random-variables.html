@@ -912,7 +912,7 @@ For example, suppose the collection of sets <span class="math notranslate nohigh
 Then, for any set <span class="math notranslate nohighlight">\(B\subseteq\Omega\)</span> we can decompose <span class="math notranslate nohighlight">\(B\)</span> into smaller disjoint components <span class="math notranslate nohighlight">\(B\cap{A_{i}}\)</span>
 (the elements of <span class="math notranslate nohighlight">\(B\)</span> that are in <span class="math notranslate nohighlight">\(A_{i}\)</span>):</p>
 <div class="math notranslate nohighlight" id="equation-eqn-decomp-partition">
-<span class="eqno">(5)<a class="headerlink" href="#equation-eqn-decomp-partition" title="Permalink to this equation">#</a></span>\[\bigcup_{i=1}^{n}B\cap{A_{i}} = B\]</div>
+<span class="eqno">(6)<a class="headerlink" href="#equation-eqn-decomp-partition" title="Permalink to this equation">#</a></span>\[\bigcup_{i=1}^{n}B\cap{A_{i}} = B\]</div>
 </section>
 </section>
 <section id="probability-space">
@@ -1105,7 +1105,7 @@ and <span class="math notranslate nohighlight">\(b\geq{1}\)</span> are constants
 <h4>Expectation<a class="headerlink" href="#expectation" title="Permalink to this headline">#</a></h4>
 <p>The <a class="reference external" href="https://en.wikipedia.org/wiki/Expected_value">expectation</a> (or mean), which measures the central tendency of a random variable <span class="math notranslate nohighlight">\(X\)</span>, is given by (discrete <span class="math notranslate nohighlight">\(X\)</span>):</p>
 <div class="math notranslate nohighlight" id="equation-eqn-expectation">
-<span class="eqno">(6)<a class="headerlink" href="#equation-eqn-expectation" title="Permalink to this equation">#</a></span>\[\mathbb{E}\left[X\right] = \sum_{x\in{X}(\Omega)}xp_{X}(x)\]</div>
+<span class="eqno">(7)<a class="headerlink" href="#equation-eqn-expectation" title="Permalink to this equation">#</a></span>\[\mathbb{E}\left[X\right] = \sum_{x\in{X}(\Omega)}xp_{X}(x)\]</div>
 <p>The expectation of a random variable <span class="math notranslate nohighlight">\(X\)</span> (discrete or continuous) has several useful (and important) properties:</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(\mathbb{E}\left(c\right) = c\)</span> for any constant <span class="math notranslate nohighlight">\(c\)</span></p></li>
@@ -1120,7 +1120,7 @@ and <span class="math notranslate nohighlight">\(b\geq{1}\)</span> are constants
 <p>The <a class="reference external" href="https://en.wikipedia.org/wiki/Variance">variance</a> measures the expected dispersion for
 individual values of <span class="math notranslate nohighlight">\(X\)</span>, i.e., the average distance that values of <span class="math notranslate nohighlight">\(X\)</span> are spread out from their expected value (mean). The <a class="reference external" href="https://en.wikipedia.org/wiki/Variance">variance</a> is given by:</p>
 <div class="math notranslate nohighlight" id="equation-eqn-variance">
-<span class="eqno">(7)<a class="headerlink" href="#equation-eqn-variance" title="Permalink to this equation">#</a></span>\[\text{Var}(X) = \mathbb{E}\Bigl[(X-\mu)^{2}\Bigr]\]</div>
+<span class="eqno">(8)<a class="headerlink" href="#equation-eqn-variance" title="Permalink to this equation">#</a></span>\[\text{Var}(X) = \mathbb{E}\Bigl[(X-\mu)^{2}\Bigr]\]</div>
 <p>where <span class="math notranslate nohighlight">\(\mu = \mathbb{E}(X)\)</span> denotes the expected value (mean) of the random variable <span class="math notranslate nohighlight">\(X\)</span>.
 Like the mean, the variance <span class="math notranslate nohighlight">\(\text{Var}(X)\)</span> has a few interesting (and important) properties:</p>
 <ul class="simple">
@@ -1135,7 +1135,7 @@ is related to the variance: <span class="math notranslate nohighlight">\(\sigma_
 <h4>Skewness<a class="headerlink" href="#skewness" title="Permalink to this headline">#</a></h4>
 <p>The <a class="reference external" href="https://en.wikipedia.org/wiki/Skewness">skewness</a> measures the expected asymmetry of a random variable about its mean (expected value):</p>
 <div class="math notranslate nohighlight" id="equation-eqn-skewness">
-<span class="eqno">(8)<a class="headerlink" href="#equation-eqn-skewness" title="Permalink to this equation">#</a></span>\[\gamma(X) = \mathbb{E}\Biggl[\left(\frac{X - \mu}{\sigma}\right)^3\Biggr]\]</div>
+<span class="eqno">(9)<a class="headerlink" href="#equation-eqn-skewness" title="Permalink to this equation">#</a></span>\[\gamma(X) = \mathbb{E}\Biggl[\left(\frac{X - \mu}{\sigma}\right)^3\Biggr]\]</div>
 <p>where <span class="math notranslate nohighlight">\(\mu\)</span> denotes the mean (expected value), and <span class="math notranslate nohighlight">\(\sigma\)</span> denotes the standard deviation.
 The skewness parameter <span class="math notranslate nohighlight">\(\gamma(X)\)</span> can be positive, zero, negative, or undefined.</p>
 </section>
@@ -1145,7 +1145,7 @@ The skewness parameter <span class="math notranslate nohighlight">\(\gamma(X)\)<
 The <a class="reference external" href="https://en.wikipedia.org/wiki/Kurtosis">kurtosis</a> of a random variable <span class="math notranslate nohighlight">\(X\)</span>, denoted as
 <span class="math notranslate nohighlight">\(\text{Kurt}(X)\)</span>, is defined as:</p>
 <div class="math notranslate nohighlight" id="equation-eqn-kurtosis">
-<span class="eqno">(9)<a class="headerlink" href="#equation-eqn-kurtosis" title="Permalink to this equation">#</a></span>\[\kappa(X) = \mathbb{E}\Biggl[\left(\frac{X - \mu}{\sigma}\right)^4\Biggr]\]</div>
+<span class="eqno">(10)<a class="headerlink" href="#equation-eqn-kurtosis" title="Permalink to this equation">#</a></span>\[\kappa(X) = \mathbb{E}\Biggl[\left(\frac{X - \mu}{\sigma}\right)^4\Biggr]\]</div>
 <p>Large <span class="math notranslate nohighlight">\(\kappa(X)\)</span> values arise when most <span class="math notranslate nohighlight">\(X\)</span> values are near the mean, but a few values are very far away from the mean. Additionally, <span class="math notranslate nohighlight">\(\kappa(X)\)</span> can arise from the majority of <span class="math notranslate nohighlight">\(X\)</span> being near the tail of the distribution.</p>
 <!-- High values of  arise when $X$ is concentrated around the mean and the data-generating process produces occasional values very far away from the mean, or
 when $X$ is concentrated in the tails of the distribution. -->
