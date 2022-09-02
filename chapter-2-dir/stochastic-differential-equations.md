@@ -24,9 +24,41 @@ In this lecture, we will:
 ---
 
 (content:references:ddm)=
-
 ## Dividend Discount Model (DDM)
-The [dividend discount model (DDM)](https://en.wikipedia.org/wiki/Dividend_discount_model), developed initially by [Myron J. Gordon](https://en.wikipedia.org/wiki/Myron_J._Gordon) and Eli Shapiro {cite}`Gordon1959`, is a method of estimating the share price of the firm `XYZ,` based on the net present value of future dividends of the firm. Thus, the DDM is only applicable to dividend-granting firms.
+The [dividend discount model (DDM)](https://en.wikipedia.org/wiki/Dividend_discount_model), developed by [Myron J. Gordon](https://en.wikipedia.org/wiki/Myron_J._Gordon) and Eli Shapiro {cite}`Gordon1959`, is a method of estimating the share price of the firm `XYZ,` based on the net present value of future dividends of the firm ({numref}`fig-ddm-introduction`). Thus, the DDM is only applicable to dividend-granting firms.
+
+```{figure} ./figs/Fig-DDM-Introduction.pdf
+---
+height: 280px
+name: fig-ddm-introduction
+---
+Schematic of the dividend discount model (DDM) for the share price of `XYZ`. The current value of the share price $P_{1}$ is modeled as the sum of the future dividend payments $D_{j}, j=2,3,\dots,{T}$ and the future share price $P_{T}$ discounted to the current value.  
+```
+
+Suppose an investor buys a share of `XYZ` and holds this share for one year. From the perspective of the dividend discount model, the expected current share price of `XYZ`, denoted by $\mathbb{E}(P)$, is the present value of the expected dividend payment $\mathbb{E}(D_{2})$ plus the expected future share price $\mathbb{E}(P_{2})$ during the one year period:
+
+```{math}
+:label: eqn-ddm-1-period
+\mathbb{E}(P) = \frac{\mathbb{E}(D_{2})+\mathbb{E}(P_{2})}{1+\bar{r}}
+```
+
+If the investor holds the share of `XYZ` for additional year, the current expected share price is given by:
+
+```{math}
+:label: eqn-ddm-2-period
+P = \frac{D_{2}}{1+\bar{r}} + \frac{D_{3}+P_{3}}{\left(1+\bar{r}\right)^2}
+```
+
+where we have dropped the expectation $\mathbb{E}(\star)$ notation for clarity. If the investor holds the share of `XYZ` for $T$-years, we get the expression:
+
+```{math}
+:label: eqn-ddm-T-period
+P = \sum_{t=2}^{T-1}\frac{D_{t}}{\left(1+\bar{r}\right)^{t-1}}+\frac{D_{T}+P_{T}}{\left(1+\bar{r}\right)^{T-1}}
+```
+
+
+
+<!-- where $\mathcal{D}^{-1}_{2,1}$ denotes the discrete discount factor between now, and one period in the future assuming a constant discount factor $\bar{r}$. The discrete discount factor is defined previously, see Eqn. {eq}`eqn-discrete-discount-factor-constant-r` in the [Financial Balances and Abstract Assets](../chapter-1-dir/assets.md) chapter. -->
 
 ````{prf:definition} Dividend discount model (DDM)
 The dividend discount model estimates of the current share price of `XYZ`, denoted by $P$, as:

@@ -142,6 +142,7 @@ The product term (the $\prod\star$ in the brackets) in Eqn. {eq}`eq-cash-flow-mu
 In the particular case where the rates of return $r_{\star}$ are equal in each period (let's call this value $\bar{r}$), the _multi-period discount factor_ is given by:
 
 ```{math}
+:label: eqn-discrete-discount-factor-constant-r
 \mathcal{D}_{t,1} = (1+\bar{r})^{t-1}\qquad{t=2,3,\dots,T}
 ```
 
