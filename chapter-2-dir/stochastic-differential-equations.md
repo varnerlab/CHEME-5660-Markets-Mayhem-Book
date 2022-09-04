@@ -35,33 +35,33 @@ name: fig-ddm-introduction
 Schematic of the dividend discount model (DDM) for the share price of `XYZ`. The current value of the share price $P_{1}$ is modeled as the sum of the future dividend payments $D_{j}, j=2,3,\dots,{T}$ and the future share price $P_{T}$ discounted to the current value.  
 ```
 
-Suppose an investor buys a share of `XYZ` and holds this share for one year. From the perspective of the dividend discount model, the expected current share price of `XYZ`, denoted by $\mathbb{E}(P)$, is the present value of the expected dividend payment $\mathbb{E}(D_{2})$ plus the expected future share price $\mathbb{E}(P_{2})$ during the one year period:
+Suppose an investor buys a share of `XYZ` now (t = 0) and holds this share for one year (t = 1). From the perspective of the dividend discount model, the expected current share price of `XYZ`, denoted by $\mathbb{E}(P)$, is the present value of the expected dividend payment $\mathbb{E}(D_{1})$ plus the expected future share price $\mathbb{E}(P_{1})$ during the one year period:
 
 ```{math}
 :label: eqn-ddm-1-period
-\mathbb{E}(P) = \frac{\mathbb{E}(D_{2})+\mathbb{E}(P_{2})}{1+\bar{r}}
+\mathbb{E}(P) = \frac{\mathbb{E}(D_{1})+\mathbb{E}(P_{1})}{1+\bar{r}}
 ```
 
 If the investor holds the share of `XYZ` for additional year, the current expected share price is given by:
 
 ```{math}
 :label: eqn-ddm-2-period
-P = \frac{D_{2}}{1+\bar{r}} + \frac{D_{3}+P_{3}}{\left(1+\bar{r}\right)^2}
+P = \frac{D_{1}}{\left(1+\bar{r}\right)} + \frac{D_{2}+P_{2}}{\left(1+\bar{r}\right)^2}
 ```
 
 where we have dropped the expectation $\mathbb{E}(\star)$ notation for clarity. If the investor holds the share of `XYZ` for T-years, we get the expression:
 
 ```{math}
 :label: eqn-ddm-T-period
-P = \sum_{t=2}^{T-1}\frac{D_{t}}{\left(1+\bar{r}\right)^{t-1}}+\frac{D_{T}+P_{T}}{\left(1+\bar{r}\right)^{T-1}}
+P = \sum_{t=1}^{T-1}\frac{D_{t}}{\left(1+\bar{r}\right)^{t}}+\frac{D_{T}+P_{T}}{\left(1+\bar{r}\right)^{T}}
 ```
 
-There are two interesting questions with Eqn. {eq}`eqn-ddm-T-period`. First, we don't know the share price of `XYZ` at the final time point $T$; it is unclear how to estimate this value. Second, similarly, we don't know the values for the dividend payments over the course of the investment. 
+There are a few interesting questions with Eqn. {eq}`eqn-ddm-T-period`. First, we don't know the share price of `XYZ` at the final time point $T$; thus, it is unclear how to estimate this value. Further, investors may have different lengths of time they wish to hold the shares. Finally, we don't know the values for the dividend payments over the course of the investment. 
 
 To address these questions, two key simplifications are made to Eqn. {eq}`eqn-ddm-T-period`:
 * As the number of periods increases $T\rightarrow\infty$, the final term goes to zero faster than the overall summation. Further, an investor may choose to hold a share of `XYZ` for an indefinate period. Thus, the DDM replaces the finite sum of discounted dividend payments with an infinite sum.
 
-* To describe the dividend payments over the lifetime of the investment, we use propose a constant dividend growth model of the form $D_{j} = D_{o}\left(1+g\right)^{j}, ~j=1,2,3,\dots$ where $D_{o}$ denotes the current value of the dividend payment, and $(1+g)$ denotes the rate of growth of future dividend payments, where $g$ denotes the divdend growth rate.
+* To describe the dividend payments over the lifetime of the investment, we use propose a constant dividend growth model of the form $D_{j} = D_{o}\left(1+\bar{g}\right)^{j}, ~j=1,2,3,\dots$ where $D_{o}$ denotes the current value of the dividend payment, and $(1+\bar{g})$ denotes the rate of growth of future dividend payments, where $g$ denotes the divdend growth rate.
 
 <!-- where $\mathcal{D}^{-1}_{2,1}$ denotes the discrete discount factor between now, and one period in the future assuming a constant discount factor $\bar{r}$. The discrete discount factor is defined previously, see Eqn. {eq}`eqn-discrete-discount-factor-constant-r` in the [Financial Balances and Abstract Assets](../chapter-1-dir/assets.md) chapter. -->
 
@@ -69,15 +69,19 @@ Putting these ideas together gives the Dividend discount model (DDM), shown in {
 
 ````{prf:definition} Dividend discount model
 :label: defn-ddm-final
-The dividend discount model estimate of the current share price of `XYZ`, denoted by $P$, is given by:
+The dividend discount model, developed by Shapiro and Gordon  {cite}`Gordon1959`, estimates of the current share price of `XYZ`, denoted by $P$, as the discounted sum of future divedent payments:
 
 ```{math}
-:label: eqn-general-ddm
-P = D_{o}\left(\sum_{t=2}^{\infty}\frac{\left(1+g\right)^{t-1}}{\left(1+r\right)^{t-1}}\right)
+:label: eqn-general-ddm-almost
+P = D_{o}\left(\sum_{t=1}^{\infty}\frac{\left(1+\bar{g}\right)^{t}}{\left(1+\bar{r}\right)^{t}}\right)
 ```
 
-where $D_{1}$ denotes the current value of the dividend payment, $g$ denotes the rate of growth of the dividend payment, which is assumed to be constant, and $\bar{r}$ denotes the discount rate, also assumed constant across the lifetime of the investment.
+where $D_{o}$ denotes the current value of the dividend payment, $\bar{g}$ denotes the rate of growth of the dividend payment, which is assumed to be constant, and $\bar{r}$ denotes the discount rate, also assumed constant across the lifetime of the investment. However, Eqn. {eq}`eqn-general-ddm-almost` is difficult to use in practice because of the infinite sum. Thus, Eqn {eq}`eqn-general-ddm-almost` is simplified to arrive at the form of the DDM used in practice:
 
+```{math}
+:label: eqn-dd-practice
+P = \frac{D_{o}\left(1+\bar{g}\right)}{\left(\bar{r} - \bar{g}\right)}
+```
 
 ````
 

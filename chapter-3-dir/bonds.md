@@ -59,24 +59,22 @@ V_{B} = \frac{V_{P}}{\left(1+\bar{r}\right)^{T}}
 ##### Example
 * Let's do an example illustrating the pricing of a zero-coupon T-bill ({prf:ref}`defn-zero-coupon-bond-pricing`). Sources: [Live Pluto notebook](https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks) or [static HTML](https://htmlview.glitch.me/?https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks/blob/main/pluto-notebooks/html/Example-Price-ZeroCoupon-TreasuryBill.jl.html).
 
-### Treasury Notes
+### Treasury Notes and Bonds
 Treasury notes, sometimes called T-notes, are a medium-term debt instrument that earns a fixed rate of interest every six months until maturity. T-notes are issued in terms of 2, 3, 5, 7, and 10 years. The price of a T-note can be greater than, less than, or equal to the T-note's par value. However, at maturity, the par value of the T-note is paid to the owner of the T-note (lender). 
 
-T-notes are an example of a non-zero coupon debt instrument; thus, the lender receives periodic interest payments (proportional to the coupon rate) over the term of the T-note.
-
-### Treasury Bonds
+T-notes are an example of a non-zero coupon debt instrument; thus, the lender receives periodic interest payments, called coupon payments which are proportional to the coupon rate, over the lifetime of the T-note.
 
 ```{figure} ./figs/Fig-Bond-Asset-Timeline-Schematic.pdf
 ---
-height: 280px
+height: 320px
 name: fig-bond-payout-schematic
 ---
-Sensitivity of bond price to changes in the market interest rate.   
+Schematic of the lifetime of a Treasury Bond with semiannual coupon payments. The bond is purchased now (t=0). The bondholder receives semi-annual coupon payments until the maturity of the bond T years in the future. At maturity (t = T), the bondholder receives a final coupon payment plus the face value of the bond.   
 ```
 
-Treasury Bonds are long-term U.S Treasury debt instruments. Treasury bonds pay a fixed rate of interest (the coupon rate) every six months until the bond's maturity. The U.S. Treasury issues bonds with terms of 20 or 30 years. When a bond matures, the bondholder receives the face value of the bond. Bonds can be held until maturity or sold before maturity. 
+Similar to T-notes, treasury bonds are also a coupon debt instrument. However, treasury bonds are long-term U.S Treasury debt instruments. Treasury bonds pay a fixed rate of interest (the coupon rate) every six months until the bond's maturity ({numref}`fig-bond-payout-schematic`). The U.S. Treasury issues bonds with terms of 20 or 30 years. When a bond matures, the bondholder receives the face value of the bond. Bonds can be held until maturity or sold before maturity. 
 
-When a U.S. Treasury bond matures, the U.S government repays the debt by paying the bond's par value. The bond's coupon rate determines the interest payment: the annual payment is the coupon rate times the bond's par value. The coupon rate, maturity date, and par value of the bond are part of the contract between the issuer, the U.S. government, and the bondholder (you).
+When a U.S. Treasury bond matures, the U.S government repays the debt by paying the bond's par (or face) value. The bond's coupon rate determines the interest payment: the annual payment is the coupon rate times the bond's par value. The coupon rate, maturity date, and par value of the bond are part of the contract between the issuer, the U.S. government, and the bondholder (you).
 
 #### Pricing of U.S. Treasury Bonds
 A bond’s coupon payments, and the eventual repayment of the face value, occurs many years in the future. Thus, the price an investor is willing to pay for a claim to those payments depends on the future value of the dollars that will be received versus the present value of the face value of the bond. 
