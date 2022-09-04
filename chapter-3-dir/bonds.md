@@ -93,8 +93,28 @@ V_{B} = \frac{V_{P}}{\left(1+i\right)^{2T}}+\sum_{t=1}^{2T}\frac{C}{\left(1+i\ri
 where $i=\bar{r}/2$ is set by the market at the time when the bond is purchased, and $C=\left(\bar{c}/2\right)\cdot{V_{P}}$. If $\bar{c}=\bar{r}$, the fair price equals the par value i.e., $V_{B} = V_{P}$.
 ````
 
-##### Example
-* Let's do an example illustrating bond pricing ({prf:ref}`defn-fixed-r-bond-pricing`). Sources: [Live Pluto notebook](https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks) or [static HTML](https://htmlview.glitch.me/?https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks/blob/main/pluto-notebooks/html/Example-Price-TreasuryBond.jl.html).
+Let's do an example illustrating bond pricing ({prf:ref}`defn-fixed-r-bond-pricing`).
+
+````{prf:example} Pricing T = 30 year Treasury Bond
+:label: example-treaury-bond-price
+
+Compute the price of a bond with a T = 30-year term, a par value of $V_{P}$ = \$1000 for different combinations of the interest rate $\bar{r}$ and coupon rate $\bar{c}$ of the bond. In particular, 
+1. The interest rate $\bar{r}$ equals to the coupon rate $\bar{c}$; let $\bar{c}=8\%$ and $\bar{r}=8\%$
+1. The interest rate $\bar{r}$ is larger than the coupon rate $\bar{c}$; let $\bar{c}=8\%$ and $\bar{r}=10\%$
+1. The interest rate $\bar{r}$ is smaller than the coupon rate $\bar{c}$; let $\bar{c}=8\%$ and $\bar{r}=6\%$
+
+The price of the bond is given by {prf:ref}`defn-fixed-r-bond-pricing`. A 30-year term gives 60 semi-annual coupon payments. Substituting the values for $\bar{r}$, $\bar{c}$ and the number of payements into the pricing equation gives:
+
+| Case | $\bar{r}$ | $\bar{c}$ | $V_{P}$ | $V_{B}$ |
+| ---- | --------- | --------- | ------- | ------- |
+| 1    | 8\%       | 8\%       | 1000    | 1000    |
+| 2    | 10\%      | 8\%       | 1000    | 810.71  |
+| 3    | 6\%       | 8\%       | 1000    | 1276.76 |
+
+
+__source__: [Live Pluto notebook](https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks) or [a static HTML view](https://htmlview.glitch.me/?https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks/blob/main/pluto-notebooks/html/Example-Price-TreasuryBond.jl.html).
+````
+
 
 #### Yield to Maturity of U.S. Treasury Bonds
 U.S. Treasury bonds often do not sell for their par value i.e., the market interest rate $\bar{r}\neq\bar{c}$. However, assuming the U.S. government does not default on its debt obligations, U.S Treasury bonds will eventually mature to the par value over the bond term. 
