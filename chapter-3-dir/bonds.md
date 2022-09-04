@@ -105,11 +105,11 @@ Compute the price of a bond with a T = 30-year term, a par value of $V_{P}$ = \$
 
 The price of the bond is given by {prf:ref}`defn-fixed-r-bond-pricing`. A 30-year term gives 60 semi-annual coupon payments. Substituting the values for $\bar{r}$, $\bar{c}$ and the number of payements into the pricing equation gives:
 
-| Case | $\bar{r}$ | $\bar{c}$ | $V_{P}$ | $V_{B}$ |
+| Case | $\bar{r}$ (\%) | $\bar{c}$ (\%) | $V_{P}$ (USD) | $V_{B}$ (USD) |
 | ---- | --------- | --------- | ------- | ------- |
-| 1    | 8\%       | 8\%       | 1000    | 1000    |
-| 2    | 10\%      | 8\%       | 1000    | 810.71  |
-| 3    | 6\%       | 8\%       | 1000    | 1276.76 |
+| 1    | 8       | 8       | 1000    | 1000    |
+| 2    | 10      | 8       | 1000    | 810.71  |
+| 3    | 6       | 8       | 1000    | 1276.76 |
 
 
 __source__: [Live Pluto notebook](https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks) or [a static HTML view](https://htmlview.glitch.me/?https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks/blob/main/pluto-notebooks/html/Example-Price-TreasuryBond.jl.html).
