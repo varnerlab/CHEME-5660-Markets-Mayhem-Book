@@ -32,33 +32,35 @@ In this course, we consider both risk-free and risky asset classes. In particula
 
 * [Derivative securities](../chapter-3-dir/contracts.md) are the last of the three primary financial instrument categories: derivatives, equity (i.e., shares of stock), and debt (i.e., bonds and mortgages) that we will consider. Derivatives provide payoffs that depend on the value of other assets, such as commodities, bonds, stocks, or market indexes. Thus, the value of a derivative is based mainly on the price movements of an underlying asset, e.g., stocks, commodities, currencies, etc. In this lecture, we will focus exclusively on options, a type of derivative product that uses stock as its underlying asset. Like bonds, options are contractural agreements between buyers and sellers to conduct a particular transaction at some later date. Options, derivatives that use equity, i.e., shares of a stock or an exchange-traded fund, as their underlying asset, are structured agreements between a buyer and a seller that give the option buyer the right, but not the obligation, to execute the transaction described in the contract, i.e., to buy (or sell) an underlying asset in some predetermined way in a specified time frame.  
 
-Fixed-income debt securities, particularly United States Treasury instruments, are defacto risk-free investments; these instruments are backed by the full faith and credit of the United States government.  [The U.S. government has never defaulted on its debt obligations (at least in recent memory)](https://thehill.com/opinion/finance/575722-the-us-has-never-defaulted-on-its-debt-except-the-four-times-it-did/). However, equity and derivative securities are risky, meaning, there is a chance for an investor to lose their initial investment (or potentially more) in the case of derivatives.
+Fixed-income debt securities, particularly United States Treasury instruments, are defacto risk-free investments; these instruments are backed by the full faith and credit of the United States government.  [The U.S. government has never defaulted on its debt obligations (at least in recent memory)](https://thehill.com/opinion/finance/575722-the-us-has-never-defaulted-on-its-debt-except-the-four-times-it-did/). However, equity and derivative securities are risky, meaning, there is a chance that an investor can lose their initial investment (or potentially more).
+
+## Market Mechanics
 
 (content:references:double-auctions)=
-## Continuous Double Auctions
+### Continuous Double Auctions
 A [continuous double auction](https://en.wikipedia.org/wiki/Double_auction) is a process where potential buyers submit _bids_ which specify the quantity and price the buyer wishes to buy the good or service at, while potential sellers submit _asks_ which describe the amount and price of the good or service they want to sell. Then a _market institution_ chooses some price $p>0$ that clears the market, i.e., all the sellers who asked less than or equal to $p$ sell while all buyers who bid greater than or equal to $p$ buy at a price $p$. 
 
 The interesting question of a [double auction](https://en.wikipedia.org/wiki/Double_auction) is how the _market institution_ chooses the clearing price $p$. First, what is a _market institution_? A _market institution_ is a set of rules specifying the structure of messages on the exchange. 
 
 (content:references:order-matching)=
-## Order Matching Systems
+### Order Matching Systems
 An [order matching system](https://en.wikipedia.org/wiki/Order_matching_system) matches buy and sell orders for an electronic exchange. Thus, the order matching system is at the core of an electronic exchange as it executes orders from the traders in the exchange. 
 
 The matching algorithms used on electronic exchanges are important components that have a great impact on the efficiency, [liquidity](https://en.wikipedia.org/wiki/Market_liquidity) and prices of the instruments being traded on the market. Thus, there are a variety of algorithms for order matching. The most common matching algorithms are the Pro-Rata and Price/Time matching algorithms. Underlying each of these algorithms is a data structure called an [order book](https://en.wikipedia.org/wiki/Order_book), which collates the different types of orders that an excahnge can accept and allows matching to occur. 
 
-### Orders and the Order Book
+#### Orders and the Order Book
 An order book holds list of orders on electronic exchange stock. Thus, it is a record of the the interest that buyers and sellers have in a particular financial instrument. A matching engine uses the order book to determine which orders can be fully or partially executed. 
 
-#### Types of orders
+##### Types of orders
 Many types of orders can be placed in the order book. However, consider the four classes of orders, a market order, a limit order, stop orders and cancel orders.
 
-##### Market orders
+###### Market orders
 A market order is a buy or sell order executed immediately, regardless of the current market prices. As long as willing sellers and buyers are present in the exchange, market orders are always executed (filled). Market orders are used when the certainty of execution is more important than the execution price. Thus, a market order is the simplest of the order types as it forgoes control over the execution price. A market order is filled at the best price available at execution. In fast-moving markets, the price paid or received may differ significantly from the price quoted when the order was entered. Further, a market order may be split across multiple participants on the other side of the transaction, resulting in different prices for some of the instruments involved in the trade.   
 
-##### Limit orders
+###### Limit orders
 A limit order is an order to buy a financial instrument at no more than a specific price or sell a security at no less than a particular price. This gives the trader control over the price at which the trade is executed. However, unlike a market order which is guaranteed to be executed (filled), a limit order may never be executed if the price conditions are not met. Thus, limit orders are used when the trader wishes to control price rather than the certainty of being filled.
 
-##### Stop orders
+###### Stop orders
 A stop order is an order to buy or sell a financial instrument once the price of that instrument reaches a specified price, the stop price. 
 
 * A [buy-stop order](https://en.wikipedia.org/wiki/Order_(exchange)#Buy-stop_order) is entered at a stop price above the current market price. Traders use buy-stop orders to limit a loss or protect a profit on a stock they have sold short. * 
@@ -67,16 +69,23 @@ A stop order is an order to buy or sell a financial instrument once the price of
 
 * A [stop-limit order](https://en.wikipedia.org/wiki/Order_(exchange)#Stop-limit_order) is an order to buy or sell a stock that combines features of a stop order and a limit order. Once the stop price is reached, a stop-limit order becomes a limit order executed at a specified price (or better). As with all limit orders, a stop-limit order doesn't get filled if the security's price never reaches the specified limit price.
 
-##### Cancel orders
+###### Cancel orders
 Finally, a cancel order allows an investor to remove a current order from the exchange. If an order
 has not already executed, it can be cancelled at any time. Moreover, if a limit order has not executed by the end of the trading day (or some specified time period) it is automatically cancelled. 
 
 ### Pro-Rata matching algorithm
+Fill me in.
 
 ### Price/Time matching algorithm
+Fill me in.
+
+---
 
 ## Summary
 
-
+In this lecture, we:
+* Introduced the various {ref}`content:references:investment-types` that can be used for wealth generation.  In particular, we introduced fixed income debt securities, equity and derivative securities.
+* Introduced the mechanics {ref}`content:references:double-auctions` and order flow. Orders start from the investor and eventually find their way to a matching system, in which buy orders and matched with sell orders. 
+* Introduced the dynamics of {ref}`content:references:order-matching`.
 
 
