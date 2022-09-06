@@ -24,7 +24,13 @@ In this lecture, we will:
 
 (content:references:investment-types)=
 ## Investment Types
-Fill me in.
+In this course, we consider both risk-free and risky asset classes. In particular, in the coming lectures we will disucss:
+
+* [Fixed-income debt securities](../chapter-3-dir/bonds.md) are financial instruments with predefined cashflows at selected dates over the lifetime of the instrument. While there are several types of fixed-income securities, we'll focus on an archetypal category: [United States Treasury Debt Securities](https://www.investor.gov/introduction-investing/investing-basics/glossary/treasury-securities). Treasury debt securities, e.g., [Treasury bills, notes, and bonds](https://www.treasurydirect.gov/indiv/products/prod_tbonds_glance.htm), are debt obligations issued by the United States Department of the Treasury to holder of the security. U.S. Treasury debt securities are a mechanism used by the United States government to borrow money, from bondholders, with a fixed set of repayment terms. 
+
+* [Equity securities](../chapter-3-dir/Single-Index-Models.md) represent ownership shares in a corporation. Each share of common stock entitles its owner to one vote on any matters of corporate governance that are put to a vote at the corporation’s annual meeting and to a share in the financial benefits of ownership. The corporation is controlled by a board of directors elected by the shareholders. The board, which meets a few times per year, selects the management team that runs the corporation on a day-to-day basis. Managers have the authority to make most business decisions without the board’s specific approval. The board’s mandate is to oversee the management to ensure that it acts in the best interests of shareholders.  
+
+* [Derivative securities](../chapter-3-dir/contracts.md) are the last of the three primary financial instrument categories: derivatives, equity (i.e., shares of stock), and debt (i.e., bonds and mortgages) that we will consider. Derivatives provide payoffs that depend on the value of other assets, such as commodities, bonds, stocks, or market indexes. Thus, the value of a derivative is based mainly on the price movements of an underlying asset, e.g., stocks, commodities, currencies, etc. In this lecture, we will focus exclusively on options, a type of derivative product that uses stock as its underlying asset. Like bonds, options are contractural agreements between buyers and sellers to conduct a particular transaction at some later date. Options, derivatives that use equity, i.e., shares of a stock or an exchange-traded fund, as their underlying asset, are structured agreements between a buyer and a seller that give the option buyer the right, but not the obligation, to execute the transaction described in the contract, i.e., to buy (or sell) an underlying asset in some predetermined way in a specified time frame.  
 
 (content:references:double-auctions)=
 ## Continuous Double Auctions
