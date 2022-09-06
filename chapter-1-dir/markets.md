@@ -74,10 +74,22 @@ Finally, a cancel order allows an investor to remove a current order from the ex
 has not already executed, it can be cancelled at any time. Moreover, if a limit order has not executed by the end of the trading day (or some specified time period) it is automatically cancelled. 
 
 ### Pro-Rata matching algorithm
-Fill me in.
+A system using the Pro-Rata algorithm also gives priority to the highest-priced buy order. However, buy orders with the same highest price are matched in proportion to each order size.
+
+````{prf:example} Pro-Rata mathching
+For example, buy orders of 300 shares and 100 shares of the same security are active in the system. At the same time, a compatible sell order of 300 shares becomes active. The sell order will not be able to fulfill both the buy orders.
+
+The Pro-Rata algorithm will match 225 shares to the 300-share buy order and 75 shares to the 100-share buy order. Hence, both buy orders are partially filled. Here, the Pro-Rata algorithm fills 75% of both buy orders.
+````
 
 ### Price/Time matching algorithm
-Fill me in.
+The price-time algorithm, also known as the First-in-First-Out (FIFO) algorithm, buy orders take priority in the order of price and time. Then, buy orders with the same maximum price are prioritized based on the time of bid, and priority is given to the first buy order. It is automatically prioritized over the buy orders at lower prices.
+
+````{prf:example} Price/Time mathching
+For example, a buy order for 300 shares of a security at $50 per share is followed by another buy order of 100 shares of the same security at a similar price. 
+
+According to the FIFO algorithm, the total 300 shares buy order will be matched to sell orders. There can be more than one sell order. After the 300 shares buy order is matched, the 100 shares buy order matching will start.
+````
 
 ---
 
