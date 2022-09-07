@@ -429,23 +429,23 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#continuous-double-auctions">
-   Continuous Double Auctions
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#order-matching-systems">
-   Order Matching Systems
+  <a class="reference internal nav-link" href="#market-microstructure-and-mechanics">
+   Market Microstructure and Mechanics
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#orders-and-the-order-book">
-     Orders and the Order Book
+    <a class="reference internal nav-link" href="#continuous-double-auctions">
+     Continuous Double Auctions
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#orders-the-order-book-and-matching-systems">
+     Orders, the Order Book and Matching Systems
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#types-of-orders">
-       Types of orders
+      <a class="reference internal nav-link" href="#orders-and-the-order-book">
+       Orders and the Order Book
       </a>
       <ul class="nav section-nav flex-column">
        <li class="toc-h5 nav-item toc-entry">
@@ -473,14 +473,21 @@ title="Print to PDF"
     </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#pro-rata-matching-algorithm">
-     Pro-Rata matching algorithm
+    <a class="reference internal nav-link" href="#matching-algorithms">
+     Matching Algorithms
     </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#price-time-matching-algorithm">
-     Price/Time matching algorithm
-    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#price-time-matching-algorithm">
+       Price/Time matching algorithm
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#pro-rata-matching-algorithm">
+       Pro-Rata matching algorithm
+      </a>
+     </li>
+    </ul>
    </li>
   </ul>
  </li>
@@ -519,23 +526,23 @@ title="Print to PDF"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#continuous-double-auctions">
-   Continuous Double Auctions
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#order-matching-systems">
-   Order Matching Systems
+  <a class="reference internal nav-link" href="#market-microstructure-and-mechanics">
+   Market Microstructure and Mechanics
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#orders-and-the-order-book">
-     Orders and the Order Book
+    <a class="reference internal nav-link" href="#continuous-double-auctions">
+     Continuous Double Auctions
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#orders-the-order-book-and-matching-systems">
+     Orders, the Order Book and Matching Systems
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#types-of-orders">
-       Types of orders
+      <a class="reference internal nav-link" href="#orders-and-the-order-book">
+       Orders and the Order Book
       </a>
       <ul class="nav section-nav flex-column">
        <li class="toc-h5 nav-item toc-entry">
@@ -563,14 +570,21 @@ title="Print to PDF"
     </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#pro-rata-matching-algorithm">
-     Pro-Rata matching algorithm
+    <a class="reference internal nav-link" href="#matching-algorithms">
+     Matching Algorithms
     </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#price-time-matching-algorithm">
-     Price/Time matching algorithm
-    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#price-time-matching-algorithm">
+       Price/Time matching algorithm
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#pro-rata-matching-algorithm">
+       Pro-Rata matching algorithm
+      </a>
+     </li>
+    </ul>
    </li>
   </ul>
  </li>
@@ -598,37 +612,42 @@ title="Print to PDF"
 For example, for <a class="reference external" href="https://www.investopedia.com/terms/s/security.asp">securities</a>, there are <a class="reference external" href="https://en.wikipedia.org/wiki/List_of_stock_exchanges">sixteen exchanges in the world</a> that have a market capitalization of over US $1 trillion each. These exchanges account for approximately 87% of global market capitalization. On the other hand, <a class="reference external" href="https://www.investopedia.com/ask/answers/12/derivative.asp">derivatives</a> are traded on option exchanges such as the <a class="reference external" href="https://www.cboe.com">Chicago Board Options Exchange (CBOE)</a>.</p>
 <p>Exchanges can be organized in a variety of ways. Before the widespread adaption of electronic exchanges,
 <a class="reference external" href="https://en.wikipedia.org/wiki/Open_outcry">the open outcry system</a> was used where professionals on the exchange shouted and used hand signals to communicate information about buy and sell orders; the trading floor where this took place was called <em>the pit</em>. However, since the 1980s, open outcry systems have been mainly replaced by electronic trading systems
-such as the <a class="reference external" href="https://en.wikipedia.org/wiki/CATS_(trading_system)">Computer Assisted Trading System (CATS)</a> or the
-<a class="reference external" href="https://en.wikipedia.org/wiki/Globex_Trading_System">Globex trading system</a>. In electronic trading systems, buyers and sellers may be separated by thousands of miles. Thus, electronic trading platforms are computer software that allows users to place orders for financial products over a network from mobile devices, websites, or even Application Programming Interfaces (APIs).</p>
+such as the <a class="reference external" href="https://en.wikipedia.org/wiki/CATS_(trading_system)">Computer Assisted Trading System (CATS)</a> or the <a class="reference external" href="https://en.wikipedia.org/wiki/Globex_Trading_System">Globex trading system</a>. In electronic trading systems, buyers and sellers may be separated by thousands of miles. Thus, electronic trading platforms are computer software that allows users to place orders for financial products over a network from mobile devices, websites, or even Application Programming Interfaces (APIs).</p>
 <p>At the center of electronic exchanges are pieces of software called <a class="reference external" href="https://www.nasdaq.com/solutions/trading-and-matching-technology">matching engines</a>. Matching engines match the buyers of a financial instrument with the sellers of that instrument. Thus, matching engines play an essential role in defining the price dynamics of the various financial instruments traded on an exchange.</p>
 <p>In this lecture, we will:</p>
 <ul class="simple">
 <li><p>Introduce the various <a class="reference internal" href="#content-references-investment-types"><span class="std std-ref">Investment Types</span></a> that can be used for wealth generation</p></li>
-<li><p>Introduce the mechanics <a class="reference internal" href="#content-references-double-auctions"><span class="std std-ref">Continuous Double Auctions</span></a> and order flow</p></li>
-<li><p>Introduction to the dynamics of <a class="reference internal" href="#content-references-order-matching"><span class="std std-ref">Order Matching Systems</span></a></p></li>
+<li><p>Introduce the components that underly <a class="reference internal" href="#content-references-double-auctions-market-mech"><span class="std std-ref">Market Microstructure and Mechanics</span></a></p></li>
 </ul>
 <!-- The market establishes the prices for goods and other services. These rates are determined by supply and demand. Supply is created by the sellers, while demand is generated by buyers. Markets try to find some balance in price when supply and demand are themselves in balance. But that balance can in itself be disrupted by factors other than price including incomes, expectations, technology, the cost of production, and the number of buyers and sellers participating. -->
 <hr class="docutils" />
 </section>
 <section id="investment-types">
 <span id="content-references-investment-types"></span><h2>Investment Types<a class="headerlink" href="#investment-types" title="Permalink to this headline">#</a></h2>
-<p>Fill me in.</p>
+<p>A wide variety of investment products can be used for wealth creation. However, In this course, we will discuss three primary <a class="reference external" href="https://www.investopedia.com/terms/s/security.asp">financial security categories</a>: debt (i.e., bonds and mortgages), equity (i.e., shares of stock), and derivatives:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="../chapter-3-dir/bonds.html"><span class="doc std std-doc">Fixed-income debt securities</span></a> are financial instruments with predefined cashflows at selected dates over the lifetime of the instrument. While there are several types of fixed-income securities, we’ll focus on an archetypal category: <a class="reference external" href="https://www.investor.gov/introduction-investing/investing-basics/glossary/treasury-securities">United States Treasury Debt Securities</a>. Treasury debt securities, e.g., <a class="reference external" href="https://www.treasurydirect.gov/indiv/products/prod_tbonds_glance.htm">Treasury bills, notes, and bonds</a>, are debt obligations issued by the United States Department of the Treasury to the holder of the security. U.S. Treasury debt securities are a mechanism used by the United States government to borrow money, from bondholders, with a fixed set of repayment terms.</p></li>
+<li><p><a class="reference internal" href="../chapter-3-dir/Single-Index-Models.html"><span class="doc std std-doc">Equity securities</span></a> represent ownership shares in a publicly traded corporation. Each share of common stock entitles its owner to one vote on any matters of corporate governance that are put to the vote at the corporation’s annual meeting and a share in the financial benefits of ownership. The corporation is controlled by a board of directors elected by the shareholders. The board meets a few times per year and selects the management team that runs the corporation daily. Managers have the authority to make most business decisions without the board’s specific approval. The board’s mandate is to oversee the management to ensure that it acts in the best interests of shareholders.</p></li>
+<li><p><a class="reference internal" href="../chapter-3-dir/contracts.html"><span class="doc std std-doc">Derivative securities</span></a> provide payoffs that depend on the value of other assets, such as commodities, bonds, stocks, or market indexes. Thus, the value of a derivative is based mainly on the price movements of an underlying asset, e.g., stocks, commodities, currencies, etc. In this lecture, we will focus exclusively on options, a type of derivative product that uses stock as its underlying asset. Like bonds, options are contractural agreements between buyers and sellers to conduct a particular transaction at some later date. Options, derivatives that use equity, i.e., shares of a stock or an exchange-traded fund, as their underlying asset, are structured agreements between a buyer and a seller that give the option buyer the right, but not the obligation, to execute the transaction described in the contract, i.e., to buy (or sell) an underlying asset in some predetermined way in a specified time frame.</p></li>
+</ul>
+<p>Fixed-income debt securities, particularly United States Treasury instruments, are defacto risk-free investments; these instruments are backed by the full faith and credit of the United States government.  <a class="reference external" href="https://thehill.com/opinion/finance/575722-the-us-has-never-defaulted-on-its-debt-except-the-four-times-it-did/">The U.S. government has never defaulted on its debt obligations (at least in recent memory)</a>. However, equity and derivative securities are risky, meaning, there is a chance that an investor can lose their initial investment (or potentially more).</p>
 </section>
+<section id="market-microstructure-and-mechanics">
+<span id="content-references-double-auctions-market-mech"></span><h2>Market Microstructure and Mechanics<a class="headerlink" href="#market-microstructure-and-mechanics" title="Permalink to this headline">#</a></h2>
+<p>The various financial instruments we consider can be purchased (or sold) in a marketplace, typically virtual, with processes and procedures influencing the efficiency and price of the assets being traded. Let’s review the major components of exchanges, auctions, orders, and matching.</p>
 <section id="continuous-double-auctions">
-<span id="content-references-double-auctions"></span><h2>Continuous Double Auctions<a class="headerlink" href="#continuous-double-auctions" title="Permalink to this headline">#</a></h2>
+<h3>Continuous Double Auctions<a class="headerlink" href="#continuous-double-auctions" title="Permalink to this headline">#</a></h3>
 <p>A <a class="reference external" href="https://en.wikipedia.org/wiki/Double_auction">continuous double auction</a> is a process where potential buyers submit <em>bids</em> which specify the quantity and price the buyer wishes to buy the good or service at, while potential sellers submit <em>asks</em> which describe the amount and price of the good or service they want to sell. Then a <em>market institution</em> chooses some price <span class="math notranslate nohighlight">\(p&gt;0\)</span> that clears the market, i.e., all the sellers who asked less than or equal to <span class="math notranslate nohighlight">\(p\)</span> sell while all buyers who bid greater than or equal to <span class="math notranslate nohighlight">\(p\)</span> buy at a price <span class="math notranslate nohighlight">\(p\)</span>.</p>
 <p>The interesting question of a <a class="reference external" href="https://en.wikipedia.org/wiki/Double_auction">double auction</a> is how the <em>market institution</em> chooses the clearing price <span class="math notranslate nohighlight">\(p\)</span>. First, what is a <em>market institution</em>? A <em>market institution</em> is a set of rules specifying the structure of messages on the exchange.</p>
 </section>
-<section id="order-matching-systems">
-<span id="content-references-order-matching"></span><h2>Order Matching Systems<a class="headerlink" href="#order-matching-systems" title="Permalink to this headline">#</a></h2>
+<section id="orders-the-order-book-and-matching-systems">
+<span id="content-references-order-matching"></span><h3>Orders, the Order Book and Matching Systems<a class="headerlink" href="#orders-the-order-book-and-matching-systems" title="Permalink to this headline">#</a></h3>
 <p>An <a class="reference external" href="https://en.wikipedia.org/wiki/Order_matching_system">order matching system</a> matches buy and sell orders for an electronic exchange. Thus, the order matching system is at the core of an electronic exchange as it executes orders from the traders in the exchange.</p>
 <p>The matching algorithms used on electronic exchanges are important components that have a great impact on the efficiency, <a class="reference external" href="https://en.wikipedia.org/wiki/Market_liquidity">liquidity</a> and prices of the instruments being traded on the market. Thus, there are a variety of algorithms for order matching. The most common matching algorithms are the Pro-Rata and Price/Time matching algorithms. Underlying each of these algorithms is a data structure called an <a class="reference external" href="https://en.wikipedia.org/wiki/Order_book">order book</a>, which collates the different types of orders that an excahnge can accept and allows matching to occur.</p>
 <section id="orders-and-the-order-book">
-<h3>Orders and the Order Book<a class="headerlink" href="#orders-and-the-order-book" title="Permalink to this headline">#</a></h3>
-<p>An order book holds list of orders on electronic exchange stock. Thus, it is a record of the the interest that buyers and sellers have in a particular financial instrument. A matching engine uses the order book to determine which orders can be fully or partially executed.</p>
-<section id="types-of-orders">
-<h4>Types of orders<a class="headerlink" href="#types-of-orders" title="Permalink to this headline">#</a></h4>
-<p>Many types of orders can be placed in the order book. However, consider the four classes of orders, a market order, a limit order, stop orders and cancel orders.</p>
+<h4>Orders and the Order Book<a class="headerlink" href="#orders-and-the-order-book" title="Permalink to this headline">#</a></h4>
+<p>An order book holds a list of orders on an electronic exchange. Thus, it is a record of the interest buyers and sellers have in a particular financial instrument. A matching engine uses the order book to determine which orders can be fully or partially executed.</p>
+<p>Many types of orders can be placed in the order book. However, we consider only the four classes of orders, a market order, a limit order, stop orders and cancel orders.</p>
 <section id="market-orders">
 <h5>Market orders<a class="headerlink" href="#market-orders" title="Permalink to this headline">#</a></h5>
 <p>A market order is a buy or sell order executed immediately, regardless of the current market prices. As long as willing sellers and buyers are present in the exchange, market orders are always executed (filled). Market orders are used when the certainty of execution is more important than the execution price. Thus, a market order is the simplest of the order types as it forgoes control over the execution price. A market order is filled at the best price available at execution. In fast-moving markets, the price paid or received may differ significantly from the price quoted when the order was entered. Further, a market order may be split across multiple participants on the other side of the transaction, resulting in different prices for some of the instruments involved in the trade.</p>
@@ -653,15 +672,39 @@ has not already executed, it can be cancelled at any time. Moreover, if a limit 
 </section>
 </section>
 </section>
-<section id="pro-rata-matching-algorithm">
-<h3>Pro-Rata matching algorithm<a class="headerlink" href="#pro-rata-matching-algorithm" title="Permalink to this headline">#</a></h3>
-</section>
+<section id="matching-algorithms">
+<h3>Matching Algorithms<a class="headerlink" href="#matching-algorithms" title="Permalink to this headline">#</a></h3>
 <section id="price-time-matching-algorithm">
-<h3>Price/Time matching algorithm<a class="headerlink" href="#price-time-matching-algorithm" title="Permalink to this headline">#</a></h3>
+<h4>Price/Time matching algorithm<a class="headerlink" href="#price-time-matching-algorithm" title="Permalink to this headline">#</a></h4>
+<p>The price-time algorithm, also known as the First-in-First-Out (FIFO) algorithm, is the most straightforward order book matching algorithm. In the price-time algorithm, the order matching priority is price and then time. For example, buy orders with higher prices are automatically prioritized over buy orders at lower prices.
+However, buy orders arriving in the order book with the same maximum price are prioritized based on the bid time, where priority is given to the first buy order.</p>
+<div class="proof example admonition" id="example-0">
+<p class="admonition-title"><span class="caption-number">Example 5 </span> (Price/Time mathching)</p>
+<section class="example-content" id="proof-content">
+<p>For example, a buy order for 300 shares of a security at $50 per share is followed by another buy order of 100 shares of the same security at a similar price.</p>
+<p>According to the FIFO algorithm, the total 300 shares buy order will be matched to sell orders. There can be more than one sell order. After the 300 shares buy order is matched, the 100 shares buy order matching will start.</p>
+</section>
+</div></section>
+<section id="pro-rata-matching-algorithm">
+<h4>Pro-Rata matching algorithm<a class="headerlink" href="#pro-rata-matching-algorithm" title="Permalink to this headline">#</a></h4>
+<p>A system using the Pro-Rata algorithm also gives priority to the highest-priced buy order. However, buy orders with the same highest price are matched in proportion to each order size.</p>
+<div class="proof example admonition" id="example-1">
+<p class="admonition-title"><span class="caption-number">Example 6 </span> (Pro-Rata mathching)</p>
+<section class="example-content" id="proof-content">
+<p>For example, buy orders of 300 shares and 100 shares of the same security are active in the system. At the same time, a compatible sell order of 300 shares becomes active. The sell order will not be able to fulfill both the buy orders.</p>
+<p>The Pro-Rata algorithm will match 225 shares to the 300-share buy order and 75 shares to the 100-share buy order. Hence, both buy orders are partially filled. Here, the Pro-Rata algorithm fills 75% of both buy orders.</p>
+</section>
+</div></section>
 </section>
 </section>
+<hr class="docutils" />
 <section id="summary">
 <h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">#</a></h2>
+<p>In this lecture, we:</p>
+<ul class="simple">
+<li><p>Introduced the various classes of <a class="reference internal" href="#content-references-investment-types"><span class="std std-ref">Investment Types</span></a> that can be used for wealth generation, namely fixed income securities, equity, and derivative securities. Fixed income are financial instruments with predefined cashflows at selected dates over the lifetime of the instrument, while equity and derivative securities are investments either directly, or derived from, shares of a publicly traded company.</p></li>
+<li><p>Introduced the components of <a class="reference internal" href="#content-references-double-auctions-market-mech"><span class="std std-ref">Market Microstructure and Mechanics</span></a>. Buy and sell orders (or other orders) originate from an investor using one of many trading platforms. These orders eventually find their way to an order book running a matching system, in which buy orders and matched with sell orders.</p></li>
+</ul>
 </section>
 </section>
 

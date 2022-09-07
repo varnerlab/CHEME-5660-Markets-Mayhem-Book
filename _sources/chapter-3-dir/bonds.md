@@ -59,24 +59,22 @@ V_{B} = \frac{V_{P}}{\left(1+\bar{r}\right)^{T}}
 ##### Example
 * Let's do an example illustrating the pricing of a zero-coupon T-bill ({prf:ref}`defn-zero-coupon-bond-pricing`). Sources: [Live Pluto notebook](https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks) or [static HTML](https://htmlview.glitch.me/?https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks/blob/main/pluto-notebooks/html/Example-Price-ZeroCoupon-TreasuryBill.jl.html).
 
-### Treasury Notes
+### Treasury Notes and Bonds
 Treasury notes, sometimes called T-notes, are a medium-term debt instrument that earns a fixed rate of interest every six months until maturity. T-notes are issued in terms of 2, 3, 5, 7, and 10 years. The price of a T-note can be greater than, less than, or equal to the T-note's par value. However, at maturity, the par value of the T-note is paid to the owner of the T-note (lender). 
 
-T-notes are an example of a non-zero coupon debt instrument; thus, the lender receives periodic interest payments (proportional to the coupon rate) over the term of the T-note.
-
-### Treasury Bonds
+T-notes are an example of a non-zero coupon debt instrument; thus, the lender receives periodic interest payments, called coupon payments which are proportional to the coupon rate, over the lifetime of the T-note.
 
 ```{figure} ./figs/Fig-Bond-Asset-Timeline-Schematic.pdf
 ---
-height: 280px
+height: 320px
 name: fig-bond-payout-schematic
 ---
-Sensitivity of bond price to changes in the market interest rate.   
+Schematic of the lifetime of a Treasury Bond with semiannual coupon payments. The bond is purchased now (t=0). The bondholder receives semi-annual coupon payments until the maturity of the bond T years in the future. At maturity (t = T), the bondholder receives a final coupon payment plus the face value of the bond.   
 ```
 
-Treasury Bonds are long-term U.S Treasury debt instruments. Treasury bonds pay a fixed rate of interest (the coupon rate) every six months until the bond's maturity. The U.S. Treasury issues bonds with terms of 20 or 30 years. When a bond matures, the bondholder receives the face value of the bond. Bonds can be held until maturity or sold before maturity. 
+Similar to T-notes, treasury bonds are also a coupon debt instrument. However, treasury bonds are long-term U.S Treasury debt instruments. Treasury bonds pay a fixed rate of interest (the coupon rate) every six months until the bond's maturity ({numref}`fig-bond-payout-schematic`). The U.S. Treasury issues bonds with terms of 20 or 30 years. When a bond matures, the bondholder receives the face value of the bond. Bonds can be held until maturity or sold before maturity. 
 
-When a U.S. Treasury bond matures, the U.S government repays the debt by paying the bond's par value. The bond's coupon rate determines the interest payment: the annual payment is the coupon rate times the bond's par value. The coupon rate, maturity date, and par value of the bond are part of the contract between the issuer, the U.S. government, and the bondholder (you).
+When a U.S. Treasury bond matures, the U.S government repays the debt by paying the bond's par (or face) value. The bond's coupon rate determines the interest payment: the annual payment is the coupon rate times the bond's par value. The coupon rate, maturity date, and par value of the bond are part of the contract between the issuer, the U.S. government, and the bondholder (you).
 
 #### Pricing of U.S. Treasury Bonds
 A bond’s coupon payments, and the eventual repayment of the face value, occurs many years in the future. Thus, the price an investor is willing to pay for a claim to those payments depends on the future value of the dollars that will be received versus the present value of the face value of the bond. 
@@ -95,8 +93,28 @@ V_{B} = \frac{V_{P}}{\left(1+i\right)^{2T}}+\sum_{t=1}^{2T}\frac{C}{\left(1+i\ri
 where $i=\bar{r}/2$ is set by the market at the time when the bond is purchased, and $C=\left(\bar{c}/2\right)\cdot{V_{P}}$. If $\bar{c}=\bar{r}$, the fair price equals the par value i.e., $V_{B} = V_{P}$.
 ````
 
-##### Example
-* Let's do an example illustrating bond pricing ({prf:ref}`defn-fixed-r-bond-pricing`). Sources: [Live Pluto notebook](https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks) or [static HTML](https://htmlview.glitch.me/?https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks/blob/main/pluto-notebooks/html/Example-Price-TreasuryBond.jl.html).
+Let's do an example illustrating bond pricing ({prf:ref}`defn-fixed-r-bond-pricing`).
+
+````{prf:example} Pricing T = 30 year Treasury Bond
+:label: example-treaury-bond-price
+
+Compute the price of a bond with a T = 30-year term and a par value of $V_{P}$ = \$1000 for different combinations of the interest rate $\bar{r}$ and coupon rate $\bar{c}$ of the bond. In particular, 
+1. The interest rate $\bar{r}$ equals to the coupon rate $\bar{c}$; let $\bar{c}=8\%$ and $\bar{r}=8\%$
+1. The interest rate $\bar{r}$ is larger than the coupon rate $\bar{c}$; let $\bar{c}=8\%$ and $\bar{r}=10\%$
+1. The interest rate $\bar{r}$ is smaller than the coupon rate $\bar{c}$; let $\bar{c}=8\%$ and $\bar{r}=6\%$
+
+The price of the bond is given by {prf:ref}`defn-fixed-r-bond-pricing`. A 30-year term gives 60 semi-annual coupon payments. Substituting the values for $\bar{r}$, $\bar{c}$ and the number of payements into the pricing equation gives:
+
+| Case | $\bar{r}$ (\%) | $\bar{c}$ (\%) | $V_{P}$ (USD) | $V_{B}$ (USD) |
+| :----: | :---------: | :---------: | :-------: | :-------: |
+| 1    | 8       | 8       | 1000    | 1000    |
+| 2    | 10      | 8       | 1000    | 810.71  |
+| 3    | 6       | 8       | 1000    | 1276.76 |
+
+
+__source__: [Live Pluto notebook](https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks) or [a static HTML view](https://htmlview.glitch.me/?https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks/blob/main/pluto-notebooks/html/Example-Price-TreasuryBond.jl.html).
+````
+
 
 #### Yield to Maturity of U.S. Treasury Bonds
 U.S. Treasury bonds often do not sell for their par value i.e., the market interest rate $\bar{r}\neq\bar{c}$. However, assuming the U.S. government does not default on its debt obligations, U.S Treasury bonds will eventually mature to the par value over the bond term. 
