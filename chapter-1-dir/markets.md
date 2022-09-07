@@ -34,31 +34,23 @@ Fixed-income debt securities, particularly United States Treasury instruments, a
 
 (content:references:double-auctions-market-mech)=
 ## Market Microstructure and Mechanics
-The various financial instruments we consider can be purchased (or sold) in a marketplace, typically virtual, with processes and procedures influencing the efficiency and price of the assets being traded. Let's review the major components of exchanges, auctions, orders, and matching. 
+The various financial instruments we consider can be purchased (or sold) on an exchange, typically virtual, with processes and procedures influencing the efficiency and price of the assets being traded. 
 
-### Continuous Double Auctions
-A [continuous double auction](https://en.wikipedia.org/wiki/Double_auction) is a process where potential buyers submit _bids_ which specify the quantity and price the buyer wishes to buy the good or service at, while potential sellers submit _asks_ which describe the amount and price of the good or service they want to sell. Then a _market institution_ chooses some price $p>0$ that clears the market, i.e., all the sellers who asked less than or equal to $p$ sell while all buyers who bid greater than or equal to $p$ buy at a price $p$. 
-
-The interesting question of a [double auction](https://en.wikipedia.org/wiki/Double_auction) is how the _market institution_ chooses the clearing price $p$. First, what is a _market institution_? A _market institution_ is a set of rules specifying the structure of messages on the exchange. 
+The exchanges in which invesotors buy (or sell) securities are examples of [continuous double auctions](https://en.wikipedia.org/wiki/Double_auction). A [continuous double auction](https://en.wikipedia.org/wiki/Double_auction) is a process where potential buyers submit bids, to a market institution, which specify the quantity and price the buyer wishes to buy the good or service at, while potential sellers submit asks, to the same market institution, which describe the amount and price of the good or service they want to sell. The interesting questions of a [double auction](https://en.wikipedia.org/wiki/Double_auction) is how orders coming into the market institution are tracked, and how bids are matched with with asks. 
 
 (content:references:order-matching)=
 ### Orders, the Order Book and Matching Systems
-An [order matching system](https://en.wikipedia.org/wiki/Order_matching_system) matches buy and sell orders for an electronic exchange. Thus, the order matching system is at the core of an electronic exchange as it executes orders from the traders in the exchange. 
+At the center of an electronic exchange (and a [continuous double auction](https://en.wikipedia.org/wiki/Double_auction)) are [orders](https://en.wikipedia.org/wiki/Order_(exchange)) and [order books](https://en.wikipedia.org/wiki/Order_book). An [order book](https://en.wikipedia.org/wiki/Order_book) holds a list of [orders](https://en.wikipedia.org/wiki/Order_(exchange)) for a particular security or financial instrument listed on the exchange; thus, it is a tick-by-tick record of the interest buyers and sellers have for a particular security or financial instrument on the exchange. 
 
-The matching algorithms used on electronic exchanges are important components that have a great impact on the efficiency, [liquidity](https://en.wikipedia.org/wiki/Market_liquidity) and prices of the instruments being traded on the market. Thus, there are a variety of algorithms for order matching. The most common matching algorithms are the Pro-Rata and Price/Time matching algorithms. Underlying each of these algorithms is a data structure called an [order book](https://en.wikipedia.org/wiki/Order_book), which collates the different types of orders that an excahnge can accept and allows matching to occur. 
+Many types of [orders](https://en.wikipedia.org/wiki/Order_(exchange)) can be initiated by traders and stored in the [order book](https://en.wikipedia.org/wiki/Order_book). However, let's consider only the four basic classes of orders, a market order, a limit order, stop orders and cancel orders.
 
-#### Orders and the Order Book
-An order book holds a list of orders on an electronic exchange. Thus, it is a record of the interest buyers and sellers have in a particular financial instrument. A matching engine uses the order book to determine which orders can be fully or partially executed. 
-
-Many types of orders can be placed in the order book. However, we consider only the four classes of orders, a market order, a limit order, stop orders and cancel orders.
-
-##### Market orders
+#### Market orders
 A market order is a buy or sell order executed immediately, regardless of the current market prices. As long as willing sellers and buyers are present in the exchange, market orders are always executed (filled). Market orders are used when the certainty of execution is more important than the execution price. Thus, a market order is the simplest of the order types as it forgoes control over the execution price. A market order is filled at the best price available at execution. In fast-moving markets, the price paid or received may differ significantly from the price quoted when the order was entered. Further, a market order may be split across multiple participants on the other side of the transaction, resulting in different prices for some of the instruments involved in the trade.   
 
-##### Limit orders
+#### Limit orders
 A limit order is an order to buy a financial instrument at no more than a specific price or sell a security at no less than a particular price. This gives the trader control over the price at which the trade is executed. However, unlike a market order which is guaranteed to be executed (filled), a limit order may never be executed if the price conditions are not met. Thus, limit orders are used when the trader wishes to control price rather than the certainty of being filled.
 
-##### Stop orders
+#### Stop orders
 A stop order is an order to buy or sell a financial instrument once the price of that instrument reaches a specified price, the stop price. 
 
 * A [buy-stop order](https://en.wikipedia.org/wiki/Order_(exchange)#Buy-stop_order) is entered at a stop price above the current market price. Traders use buy-stop orders to limit a loss or protect a profit on a stock they have sold short. * 
@@ -67,12 +59,18 @@ A stop order is an order to buy or sell a financial instrument once the price of
 
 * A [stop-limit order](https://en.wikipedia.org/wiki/Order_(exchange)#Stop-limit_order) is an order to buy or sell a stock that combines features of a stop order and a limit order. Once the stop price is reached, a stop-limit order becomes a limit order executed at a specified price (or better). As with all limit orders, a stop-limit order doesn't get filled if the security's price never reaches the specified limit price.
 
-##### Cancel orders
+#### Cancel orders
 Finally, a cancel order allows an investor to remove a current order from the exchange. If an order
 has not already executed, it can be cancelled at any time. Moreover, if a limit order has not executed by the end of the trading day (or some specified time period) it is automatically cancelled. 
 
-### Matching Algorithms
+### Order Books and Matching Algorithms
+An [order matching system](https://en.wikipedia.org/wiki/Order_matching_system) matches buy and sell orders held in the  of an electronic exchange. [Order books](https://www.investopedia.com/terms/o/order-book.asp) are data structure which collate the different types of orders that an excahnge can accept and allows matching to occur; [order books](https://www.investopedia.com/terms/o/order-book.asp) are essentially electronic lists of buy and sell orders for a specific security or financial instrument organized by price level. [Order mathching algorithms](https://en.wikipedia.org/wiki/Order_matching_system) 
 
+Thus, the order matching system is at the core of an electronic exchange as it executes orders from the traders in the exchange. 
+
+The matching algorithms used on electronic exchanges are important components that have a great impact on the efficiency, [liquidity](https://en.wikipedia.org/wiki/Market_liquidity) and prices of the instruments being traded in the market. There are a variety of algorithms for order matching. The most common matching algorithms are the Pro-Rata and Price/Time matching algorithms. Underlying each of these algorithms is a 
+
+(content:references:price-time-algo)=
 #### Price/Time matching algorithm
 The price-time algorithm, also known as the First-in-First-Out (FIFO) algorithm, is the most straightforward order book matching algorithm. In the price-time algorithm, the order matching priority is price and then time. For example, buy orders with higher prices are automatically prioritized over buy orders at lower prices.
 However, buy orders arriving in the order book with the same maximum price are prioritized based on the bid time, where priority is given to the first buy order. 
@@ -83,6 +81,7 @@ For example, a buy order for 300 shares of a security at $50 per share is follow
 According to the FIFO algorithm, the total 300 shares buy order will be matched to sell orders. There can be more than one sell order. After the 300 shares buy order is matched, the 100 shares buy order matching will start.
 ````
 
+(content:references:pro-rata-algo)=
 #### Pro-Rata matching algorithm
 A system using the Pro-Rata algorithm also gives priority to the highest-priced buy order. However, buy orders with the same highest price are matched in proportion to each order size.
 
