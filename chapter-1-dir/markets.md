@@ -68,7 +68,9 @@ Finally, a cancel order allows an investor to remove a current order from the ex
 has not already executed, it can be cancelled at any time. Moreover, if a limit order has not executed by the end of the trading day (or some specified time period) it is automatically cancelled. 
 
 ### Order Books and Matching Algorithms
-An [order book](https://en.wikipedia.org/wiki/Order_book) holds a list of [orders](https://en.wikipedia.org/wiki/Order_(exchange)) for a particular security or financial instrument listed on the exchange. Order book data gives insight into the direction of price movement and the market sentiment of an asset. For example, if the number of sell orders is much larger than the number of buy orders, you expect a price decrease (negative sentiment). Order book data is available for viewing and electronically, for equity and derivative securities ({numref}`example-cboe-order-book-data`).
+An [order book](https://en.wikipedia.org/wiki/Order_book) holds a list of [orders](https://en.wikipedia.org/wiki/Order_(exchange)) for a particular security or financial instrument listed on the exchange. Order book data gives insight into the direction of price movement and the market sentiment of an asset. For example, if the number of sell orders is much larger than the number of buy orders, you expect a price decrease (negative sentiment). 
+
+Order book data is available for viewing and electronically, for equity and derivative securities. For example, the [Chicago Board Options Exchange (CBOE)](https://www.cboe.com) has a free order-book viewer  ({numref}`example-cboe-order-book-data`).
 
 
 ```{figure} ./figs/Fig-CBOE-OrderBook-QQQ-9-8-22.png
@@ -76,9 +78,10 @@ An [order book](https://en.wikipedia.org/wiki/Order_book) holds a list of [order
 height: 380px
 name: example-cboe-order-book-data
 ---
-Caption goes here.
+Order book snapshot for [QQQ](https://www.google.com/finance/quote/QQQ:NASDAQ?sa=X&ved=2ahUKEwjoqKOL0oX6AhUrkIkEHbrKBaMQ3ecFegQIFxAg) taken from the [Chicago Board Options Exchange (CBOE)](https://www.cboe.com). The top of the order book is shown on the left, while the last ten trades are shown on the right. The total volume is the number of share exchanged (bought or sold) while the number of orders accepted describes the number of matched orders. __source__: [CBOE Book Viewer](https://www.cboe.com/us/equities/market_statistics/book_viewer/).
 ```
 
+Market data providers such as [Polygon.io](https://polygon.io) have a [RESTful Application Programming Interface (API)](https://polygon.io/docs/stocks/getting-started) for electronic access to market data with a nanosecond resolution.
 
 #### Bid/Ask Spread
 Fill me in.
