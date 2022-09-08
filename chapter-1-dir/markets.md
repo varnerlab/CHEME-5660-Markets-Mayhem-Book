@@ -24,7 +24,7 @@ In this lecture, we will:
 ## Investment Types
 A wide variety of investment products can be used for wealth creation. However, In this course, we will discuss three primary [financial security categories](https://www.investopedia.com/terms/s/security.asp): debt (i.e., bonds and mortgages), equity (i.e., shares of stock), and derivatives:
 
-* [Fixed-income debt securities](../chapter-3-dir/bonds.md) are financial instruments with predefined cashflows at selected dates over the lifetime of the instrument. While there are several types of fixed-income securities, we'll focus on an archetypal category: [United States Treasury Debt Securities](https://www.investor.gov/introduction-investing/investing-basics/glossary/treasury-securities). Treasury debt securities, e.g., [Treasury bills, notes, and bonds](https://www.treasurydirect.gov/indiv/products/prod_tbonds_glance.htm), are debt obligations issued by the United States Department of the Treasury to the holder of the security. U.S. Treasury debt securities are a mechanism used by the United States government to borrow money, from bondholders, with a fixed set of repayment terms. 
+* [Fixed-income securities](../chapter-3-dir/bonds.md) are financial instruments with predefined cashflows at selected dates over the lifetime of the instrument. While there are several types of fixed-income securities, we'll focus on an archetypal category: [United States Treasury Debt Securities](https://www.investor.gov/introduction-investing/investing-basics/glossary/treasury-securities). Treasury debt securities, e.g., [Treasury bills, notes, and bonds](https://www.treasurydirect.gov/indiv/products/prod_tbonds_glance.htm), are debt obligations issued by the United States Department of the Treasury to the holder of the security. U.S. Treasury debt securities are a mechanism used by the United States government to borrow money, from bondholders, with a fixed set of repayment terms. 
 
 * [Equity securities](../chapter-3-dir/Single-Index-Models.md) represent ownership shares in a publicly traded corporation. Each share of common stock entitles its owner to one vote on any matters of corporate governance that are put to the vote at the corporation’s annual meeting and a share in the financial benefits of ownership. The corporation is controlled by a board of directors elected by the shareholders. The board meets a few times per year and selects the management team that runs the corporation daily. Managers have the authority to make most business decisions without the board’s specific approval. The board’s mandate is to oversee the management to ensure that it acts in the best interests of shareholders. 
 
@@ -34,15 +34,19 @@ Fixed-income debt securities, particularly United States Treasury instruments, a
 
 (content:references:double-auctions-market-mech)=
 ## Market Microstructure and Mechanics
-The various financial instruments we consider can be purchased (or sold) on an exchange, typically virtual, with processes and procedures influencing the efficiency and price of the assets being traded. 
+The various financial instruments we consider can be purchased (or sold) on an electronic exchange (typically), with processes and procedures influencing the efficiency and price of the assets being traded. Electronic exchanges in which investors buy (or sell) securities are examples of [continuous double auctions](https://en.wikipedia.org/wiki/Double_auction). 
 
-The exchanges in which invesotors buy (or sell) securities are examples of [continuous double auctions](https://en.wikipedia.org/wiki/Double_auction). A [continuous double auction](https://en.wikipedia.org/wiki/Double_auction) is a process where potential buyers submit bids, to a market institution, which specify the quantity and price the buyer wishes to buy the good or service at, while potential sellers submit asks, to the same market institution, which describe the amount and price of the good or service they want to sell. The interesting questions of a [double auction](https://en.wikipedia.org/wiki/Double_auction) is how orders coming into the market institution are tracked, and how bids are matched with with asks. 
+A [continuous double auction](https://en.wikipedia.org/wiki/Double_auction) is a process where:
+* potential buyers submit bids to a market institution; bids specify the quantity and price the buyer wishes to buy the good or service. 
+* potential sellers submit asks to the same market institution; asks describe the amount and price of the good or service they want to sell. 
+
+On a modern electronic exchange, bids and asks are arriving (or being canceled), and deals are being made between parties (a seller sells or a buyer buys) continuously. Thus, a [double auction](https://en.wikipedia.org/wiki/Double_auction) must have tools and strategies to track orders coming into the market and match buyers and sellers. 
 
 (content:references:order-matching)=
 ### Orders, the Order Book and Matching Systems
 At the center of an electronic exchange (and a [continuous double auction](https://en.wikipedia.org/wiki/Double_auction)) are [orders](https://en.wikipedia.org/wiki/Order_(exchange)) and [order books](https://en.wikipedia.org/wiki/Order_book). An [order book](https://en.wikipedia.org/wiki/Order_book) holds a list of [orders](https://en.wikipedia.org/wiki/Order_(exchange)) for a particular security or financial instrument listed on the exchange; thus, it is a tick-by-tick record of the interest buyers and sellers have for a particular security or financial instrument on the exchange. 
 
-Many types of [orders](https://en.wikipedia.org/wiki/Order_(exchange)) can be initiated by traders and stored in the [order book](https://en.wikipedia.org/wiki/Order_book). However, let's consider only the four basic classes of orders, a market order, a limit order, stop orders and cancel orders.
+Many types of [orders](https://en.wikipedia.org/wiki/Order_(exchange)) can be initiated by traders. However, let's consider only four basic classes of orders, a market order, a limit order, a stop order and a cancel order.
 
 #### Market orders
 A market order is a buy or sell order executed immediately, regardless of the current market prices. As long as willing sellers and buyers are present in the exchange, market orders are always executed (filled). Market orders are used when the certainty of execution is more important than the execution price. Thus, a market order is the simplest of the order types as it forgoes control over the execution price. A market order is filled at the best price available at execution. In fast-moving markets, the price paid or received may differ significantly from the price quoted when the order was entered. Further, a market order may be split across multiple participants on the other side of the transaction, resulting in different prices for some of the instruments involved in the trade.   
@@ -64,14 +68,18 @@ Finally, a cancel order allows an investor to remove a current order from the ex
 has not already executed, it can be cancelled at any time. Moreover, if a limit order has not executed by the end of the trading day (or some specified time period) it is automatically cancelled. 
 
 ### Order Books and Matching Algorithms
-An [order matching system](https://en.wikipedia.org/wiki/Order_matching_system) matches buy and sell orders held in the  of an electronic exchange. [Order books](https://www.investopedia.com/terms/o/order-book.asp) are data structure which collate the different types of orders that an excahnge can accept and allows matching to occur; [order books](https://www.investopedia.com/terms/o/order-book.asp) are essentially electronic lists of buy and sell orders for a specific security or financial instrument organized by price level. [Order mathching algorithms](https://en.wikipedia.org/wiki/Order_matching_system) 
+An [order book](https://en.wikipedia.org/wiki/Order_book) holds a list of [orders](https://en.wikipedia.org/wiki/Order_(exchange)) for a particular security or financial instrument listed on the exchange. Order book data gives insight into the direction of price movement and the market sentiment of an asset. For example, if the number of sell orders is much larger than the number of buy orders, you expect a price decrease (negative sentiment). Electronic access to order book data is available for equity and derivative securities. 
 
-Thus, the order matching system is at the core of an electronic exchange as it executes orders from the traders in the exchange. 
+#### Bid/Ask Spread
+Fill me in.
 
-The matching algorithms used on electronic exchanges are important components that have a great impact on the efficiency, [liquidity](https://en.wikipedia.org/wiki/Market_liquidity) and prices of the instruments being traded in the market. There are a variety of algorithms for order matching. The most common matching algorithms are the Pro-Rata and Price/Time matching algorithms. Underlying each of these algorithms is a 
+#### Order Matching
+An [order matching system](https://en.wikipedia.org/wiki/Order_matching_system) matches buy and sell orders held in the [order books](https://www.investopedia.com/terms/o/order-book.asp) of an electronic exchange. [Order books](https://www.investopedia.com/terms/o/order-book.asp) are a data structure that organizes the orders that exchange can accept and allows matching to occur; [order books](https://www.investopedia.com/terms/o/order-book.asp) are essentially electronic lists of buy and sell orders for a specific security or financial instrument organized by price level. 
+
+[Order matching algorithms](https://en.wikipedia.org/wiki/Order_matching_system) find matches between buyers and sellers by analyzing the data stored in the [order books](https://www.investopedia.com/terms/o/order-book.asp). The matching algorithms used on electronic exchanges are essential components that significantly impact efficiency, [liquidity](https://en.wikipedia.org/wiki/Market_liquidity) and prices of the instruments being traded in the market. There are a variety of algorithms for order matching. The Pro-Rata and Price/Time matching algorithms are the most common. 
 
 (content:references:price-time-algo)=
-#### Price/Time matching algorithm
+##### Price/Time matching algorithm
 The price-time algorithm, also known as the First-in-First-Out (FIFO) algorithm, is the most straightforward order book matching algorithm. In the price-time algorithm, the order matching priority is price and then time. For example, buy orders with higher prices are automatically prioritized over buy orders at lower prices.
 However, buy orders arriving in the order book with the same maximum price are prioritized based on the bid time, where priority is given to the first buy order. 
 
@@ -82,7 +90,7 @@ According to the FIFO algorithm, the total 300 shares buy order will be matched 
 ````
 
 (content:references:pro-rata-algo)=
-#### Pro-Rata matching algorithm
+##### Pro-Rata matching algorithm
 A system using the Pro-Rata algorithm also gives priority to the highest-priced buy order. However, buy orders with the same highest price are matched in proportion to each order size.
 
 ````{prf:example} Pro-Rata mathching
