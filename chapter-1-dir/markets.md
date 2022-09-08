@@ -68,7 +68,17 @@ Finally, a cancel order allows an investor to remove a current order from the ex
 has not already executed, it can be cancelled at any time. Moreover, if a limit order has not executed by the end of the trading day (or some specified time period) it is automatically cancelled. 
 
 ### Order Books and Matching Algorithms
-An [order book](https://en.wikipedia.org/wiki/Order_book) holds a list of [orders](https://en.wikipedia.org/wiki/Order_(exchange)) for a particular security or financial instrument listed on the exchange. Order book data gives insight into the direction of price movement and the market sentiment of an asset. For example, if the number of sell orders is much larger than the number of buy orders, you expect a price decrease (negative sentiment). Electronic access to order book data is available for equity and derivative securities. 
+An [order book](https://en.wikipedia.org/wiki/Order_book) holds a list of [orders](https://en.wikipedia.org/wiki/Order_(exchange)) for a particular security or financial instrument listed on the exchange. Order book data gives insight into the direction of price movement and the market sentiment of an asset. For example, if the number of sell orders is much larger than the number of buy orders, you expect a price decrease (negative sentiment). Order book data is available for viewing and electronically, for equity and derivative securities ({numref}`example-cboe-order-book-data`).
+
+
+```{figure} ./figs/Fig-CBOE-OrderBook-QQQ-9-8-22.png
+---
+height: 380px
+name: example-cboe-order-book-data
+---
+Caption goes here.
+```
+
 
 #### Bid/Ask Spread
 Fill me in.
