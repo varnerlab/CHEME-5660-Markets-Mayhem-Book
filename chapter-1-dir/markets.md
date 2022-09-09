@@ -78,10 +78,10 @@ Order book data is available for viewing and electronically, for equity and deri
 height: 380px
 name: example-cboe-order-book-data
 ---
-Order book snapshot for [QQQ](https://www.google.com/finance/quote/QQQ:NASDAQ?sa=X&ved=2ahUKEwjoqKOL0oX6AhUrkIkEHbrKBaMQ3ecFegQIFxAg) taken from the [Chicago Board Options Exchange (CBOE)](https://www.cboe.com). The top of the order book is shown on the left, while the last ten trades are shown on the right. The total volume is the number of share exchanged (bought or sold) while the number of orders accepted describes the number of matched orders. __source__: [CBOE Book Viewer](https://www.cboe.com/us/equities/market_statistics/book_viewer/).
+Snapshot for the [QQQ](https://www.google.com/finance/quote/QQQ:NASDAQ?sa=X&ved=2ahUKEwjoqKOL0oX6AhUrkIkEHbrKBaMQ3ecFegQIFxAg) order book taken from the [Chicago Board Options Exchange (CBOE)](https://www.cboe.com). The ``top`` of the order book is shown on the left, while the last ten trades are shown on the right. The total volume (the number of share exchanged, bought or sold) and the number of orders accepted (number of matched orders) is also shown. __source__: [CBOE Book Viewer](https://www.cboe.com/us/equities/market_statistics/book_viewer/).
 ```
 
-Market data providers such as [Polygon.io](https://polygon.io) have a [RESTful Application Programming Interface (API)](https://polygon.io/docs/stocks/getting-started) for electronic access to market data with a nanosecond resolution.
+Financial data providers such as [Polygon.io](https://polygon.io) have [RESTful Application Programming Interface (APIs)](https://polygon.io/docs/stocks/getting-started) that enable programmatic access to market data of all sorts, including data about the buy and sell orders in the [order book](https://en.wikipedia.org/wiki/Order_book) for equities and derivatives, with a nanosecond resolution.
 
 #### Bid/Ask Spread
 Fill me in.
