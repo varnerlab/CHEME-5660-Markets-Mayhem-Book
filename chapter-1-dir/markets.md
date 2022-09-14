@@ -22,7 +22,16 @@ In this lecture, we will:
 
 (content:references:investment-types)=
 ## Investment Types
-A wide variety of investment products can be used for wealth creation. However, In this course, we will discuss three primary [financial security categories](https://www.investopedia.com/terms/s/security.asp): debt (i.e., bonds and mortgages), equity (i.e., shares of stock), and derivatives:
+
+```{figure} ./figs/Fig-AssetCategory.pdf
+---
+height: 380px
+name: fig-asset-class-category
+---
+Asset categories that we consider in the subsequent chapters. Fixed income securities, particularly United States Treasury debt securities, have low risk but low reward. Equity securities, i.e., individual or baskets of stocks, have a higher risk and increased potential reward. Derivative securities, e.g., equity options, are perceived to have the highest risk and potential reward.  
+```
+
+A wide variety of investment products can be used for wealth creation. However, In this course, we will discuss three primary [financial security categories](https://www.investopedia.com/terms/s/security.asp): debt (i.e., bonds and mortgages), equity (i.e., shares of stock), and derivatives ({numref}`fig-asset-class-category`):
 
 * [Fixed-income securities](../chapter-3-dir/bonds.md) are financial instruments with predefined cashflows at selected dates over the lifetime of the instrument. While there are several types of fixed-income securities, we'll focus on an archetypal category: [United States Treasury Debt Securities](https://www.investor.gov/introduction-investing/investing-basics/glossary/treasury-securities). Treasury debt securities, e.g., [Treasury bills, notes, and bonds](https://www.treasurydirect.gov/indiv/products/prod_tbonds_glance.htm), are debt obligations issued by the United States Department of the Treasury to the holder of the security. U.S. Treasury debt securities are a mechanism used by the United States government to borrow money, from bondholders, with a fixed set of repayment terms. 
 
@@ -40,14 +49,11 @@ A [continuous double auction](https://en.wikipedia.org/wiki/Double_auction) is a
 * potential buyers submit bids to a market institution; bids specify the quantity and price the buyer wishes to buy the good or service. 
 * potential sellers submit asks to the same market institution; asks describe the amount and price of the good or service they want to sell. 
 
-On a modern electronic exchange, bids and asks are arriving (or being canceled), and deals are being made between parties (a seller sells and a buyer buys) continuously. Thus, a [double auction](https://en.wikipedia.org/wiki/Double_auction) must have tools and strategies to track orders coming into the market and match buyers and sellers, as well as entities that keep the market transaction flow moving, i.e., these entities are [core](https://www.investopedia.com/terms/c/coreliquidityprovider.asp) and [supplemental liquidity providers](https://www.investopedia.com/terms/s/supplemental-liquidity-provider.asp)  
-
-### Order Routing and Market Makers
-In a classical face to face auction, the identity of a the buyer and seller, or at least their represenatives, is typcially known. However, determining who a buyer and seller are on an electronic exchange is not possible. Large [liqudidty providers called Market Makers](https://www.investopedia.com/terms/m/marketmaker.asp). Their function is to facilitate trading in securities and other financial instruments by providing a pool of shares, (which they own), so that buyers and sellers can trade easily without having to locate and deal with other individual traders. In other words, they make securities "liquid" or easily converted to cash.
+On a modern electronic exchange, bids and asks are arriving (or being canceled), and deals are being made between parties (a seller sells and a buyer buys) continuously. Thus, a [double auction](https://en.wikipedia.org/wiki/Double_auction) must have tools and strategies to track orders coming into the market and match buyers and sellers, as well as methods to keep market transactions flowing. 
 
 (content:references:order-matching)=
 ### Orders, the Order Book and Matching Systems
-At the center of an electronic exchange (and a [continuous double auction](https://en.wikipedia.org/wiki/Double_auction)) are [orders](https://en.wikipedia.org/wiki/Order_(exchange)) and [order books](https://en.wikipedia.org/wiki/Order_book). An [order book](https://en.wikipedia.org/wiki/Order_book) holds a list of [orders](https://en.wikipedia.org/wiki/Order_(exchange)) for a particular security or financial instrument listed on the exchange; thus, it is a tick-by-tick record of the interest buyers and sellers have for a particular security or financial instrument on the exchange. 
+At the center of an electronic exchange are [orders](https://en.wikipedia.org/wiki/Order_(exchange)) and [order books](https://en.wikipedia.org/wiki/Order_book). An [order book](https://en.wikipedia.org/wiki/Order_book) holds a list of [orders](https://en.wikipedia.org/wiki/Order_(exchange)) for a particular security or financial instrument listed on the exchange; thus, it is a tick-by-tick record of the interest buyers and sellers have for a particular security or financial instrument on the exchange. 
 
 Many types of [orders](https://en.wikipedia.org/wiki/Order_(exchange)) can be initiated by traders. However, let's consider only four basic classes of orders, a market order, a limit order, a stop order and a cancel order.
 
@@ -60,7 +66,7 @@ A limit order is an order to buy a financial instrument at no more than a specif
 #### Stop orders
 A stop order is an order to buy or sell a financial instrument once the price of that instrument reaches a specified price, the stop price. 
 
-* A [buy-stop order](https://en.wikipedia.org/wiki/Order_(exchange)#Buy-stop_order) is entered at a stop price above the current market price. Traders use buy-stop orders to limit a loss or protect a profit on a stock they have sold short. * 
+* A [buy-stop order](https://en.wikipedia.org/wiki/Order_(exchange)#Buy-stop_order) is entered at a stop price above the current market price. Traders use buy-stop orders to limit a loss or protect a profit on a stock they have sold short. 
 
 * A [sell-stop order](https://en.wikipedia.org/wiki/Order_(exchange)#Sell-stop_order) is entered at a stop price below the current market price. Traders use sell-stop orders to limit a loss or protect a profit on a stock they already own. For either a [buy-stop order](https://en.wikipedia.org/wiki/Order_(exchange)#Buy-stop_order) or a [sell-stop order](https://en.wikipedia.org/wiki/Order_(exchange)#Sell-stop_order), when the stop price is reached, the stop order becomes a market order. Thus, a stop trade will be executed if the stop price is reached, but not necessarily at or near the stop price, particularly in a fast-moving market, or if there is insufficient liquidity available relative to the size of the order. 
 
@@ -114,6 +120,10 @@ For example, buy orders of 300 shares and 100 shares of the same security are ac
 
 The Pro-Rata algorithm will match 225 shares to the 300-share buy order and 75 shares to the 100-share buy order. Hence, both buy orders are partially filled. Here, the Pro-Rata algorithm fills 75% of both buy orders.
 ````
+
+### Order Routing and Market Makers
+In a classical face-to-face auction, the identity of the buyer and seller, or at least their representatives, is typically known. However, determining who the buyers and sellers are on an electronic exchange is impossible; you will (likely) never _know_ your counterparty. Instead, 
+[Core](https://www.investopedia.com/terms/c/coreliquidityprovider.asp) and [supplemental liquidity providers](https://www.investopedia.com/terms/s/supplemental-liquidity-provider.asp), also called market makers, facilitate securities trading by providing a pool of shares, (which they own), so that buyers and sellers trade without having to locate and deal with each other individually. 
 
 ---
 
