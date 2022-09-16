@@ -64,17 +64,47 @@ where $V_{B}$ denotes the price of the treasury bill, and $V_{P}$ represents the
 Let's do an example illustrating the pricing of a zero-coupon treasury bill ({prf:ref}`defn-zero-coupon-bond-pricing`).
 
 
-````{prf:example} Pricing T = 30 year Treasury Bond
+````{prf:example} Pricing of a Treasury Bill
 :label: example-zero-coupon-t-bill
 
-Fill me in.
+Compute the fair price for a zero-coupon treasury bill with a par value of \$1,000 and T = 26-week and T = 52-week duration as a function of annualized market interest rate $\bar{r}$. 
 
+The fair price for a zero-coupon treasury bill, denoted by $V_{B}$, is the future par value $V_{P}$ of the bill discounted to the time of the purchase:
 
-__source__: [Live Pluto notebook](https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks) or [static HTML](https://htmlview.glitch.me/?https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks/blob/main/pluto-notebooks/html/Example-Price-ZeroCoupon-TreasuryBill.jl.html).
+$$V_{B} = \frac{V_{P}}{\left(1+\bar{r}\right)^{T}}$$
+
+```{figure} ./figs/Fig-Price-Zero-Coupon-Bill.pdf
+---
+height: 400px
+name: fig-zcbill-price
+---
+Price of a zero coupon treasury bill for a term of 0.5 (dark blue) and 1 year (light blue) as a function of the market interest rate. Face value $V_{P}$ = 1000 USD.
+```
+
+__source__: [Live Pluto notebook](https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks) or [a static HTML view](https://htmlview.glitch.me/?https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks/blob/main/pluto-notebooks/html/Example-Price-ZeroCoupon-TreasuryBill.jl.html).
 ````
 
-##### Example
 
+The treasury bill pricing calculations shown in {prf:ref}`example-zero-coupon-t-bill` have some interesting findings:
+* There is an _inverse_ relationship between the current price of a zero-coupon bill and the market interest rate; this must be true as the par value (which is in future dollars) is fixed. Thus, higher market interest rates imply lower T-bill prices. 
+
+* The relationship between Vᵦ and r̄ is _not_ linear (red dashed versus blue line); even though it may appear to be the case from the parameters used in the example, different parameters show the convex nature of the relationship between price and interest rate
+
+Thus, the duraration of the treasury and the risk-free interest rate are critical to the pricing of the treasury bill. However, what is the risk-free market interest rate?
+
+````{prf:remark} What is the Risk-free Market Interest Rate?
+:label: remark-market-interest-rate
+
+The present value calculation for a treasury bond depends upon the discount rate, which we assume is the risk-free market interest rate, denoted by $\bar{r}$. However, what is the risk free market interest rate for a bond?
+
+ The risk-free market interest rate is the sum of (at least) two terms: the real risk-free rate of return $\bar{r}^{\circ}_{f}$ and a premium paid above the real rate to compensate for expected inflation $\bar{r}_{I}$: 
+
+```{math}
+\bar{r} = \bar{r}^{\circ}_{f}+\bar{r}_{I}+\dots
+```
+
+where $\bar{r}^{\circ}_{f}$ denotes the real risk-free rate and $r_{I}$ denotes a premium above the real-risk free rate, which accounts for inflation risk; the $\bar{\star}$ notation represents the assumption of a constant rate over the bond term. In addition to inflation risk, there can (potentially) be additional terms to compensate the bond buyer for other expected risks. 
+````
 
 ### Treasury Notes and Bonds
 Treasury notes, sometimes called T-notes, are a medium-term debt instrument that earns a fixed rate of interest every six months until maturity. T-notes are issued in terms of 2, 3, 5, 7, and 10 years. The price of a T-note can be greater than, less than, or equal to the T-note's par value. However, at maturity, the par value of the T-note is paid to the owner of the T-note (lender). 
@@ -95,20 +125,6 @@ When a U.S. Treasury bond matures, the U.S government repays the debt by paying 
 
 #### Pricing of U.S. Treasury Bonds
 A bond’s coupon payments, and the eventual repayment of the face value, occurs many years in the future. Thus, the price an investor is willing to pay for a claim to those payments depends on the future value of the dollars that will be received versus the present value of the face value of the bond. 
-
-````{prf:remark} Risk-free Interest Rate
-:label: remark-market-interest-rate
-
-The present value calculation for a treasury bond depends upon the discount rate, which we assume is the risk-free market interest rate, denoted by $\bar{r}$. However, what is the risk free market interest rate for a bond?
-
- The risk-free market interest rate is the sum of (at least) two terms: the real risk-free rate of return $\bar{r}^{\circ}_{f}$ and a premium paid above the real rate to compensate for expected inflation $\bar{r}_{I}$: 
-
-```{math}
-\bar{r} = \bar{r}^{\circ}_{f}+\bar{r}_{I}+\dots
-```
-
-where $\bar{r}^{\circ}_{f}$ denotes the real risk-free rate and $r_{I}$ denotes a premium above the real-risk free rate, which accounts for inflation risk; the $\bar{\star}$ notation represents the assumption of a constant rate over the bond term. In addition to inflation risk, there can (potentially) be additional terms to compensate the bond buyer for other expected risks. 
-````
 
 ````{prf:definition} Fixed Coupon Rate Bond Pricing
 :label: defn-fixed-r-bond-pricing
@@ -197,14 +213,8 @@ an increase in a bond’s interest rate $\bar{r}$ results in a _smaller price ch
 1. Interest rate risk is inversely related to a bond’s coupon rate. Prices of low coupon-rate bonds are more sensitive to changes in interest rates than prices of high-rate coupon bonds. For example, compare Case II and III in ({numref}`fig-bond-price-sensitivity`); case III (the low coupon-rate bond) is significanly more sensitive to decreases in interest rate compared with case II (the high coupon-rate bond). A similar, albeit less pronounced, trend is visible for increased
 interest rate.
 
-<!-- 
-````{prf:example} U.S. Treasury Bond Maturity Calculation
-:label: example-30-year-bond
-
-Consider a U.S. Treasury bond with a par value of B = \$1,000, a coupon rate of 8%, and T = 30-year maturity. 
-
-a) Coupon payments: The coupon rate is quoted as an _annual_ percentage. Thus, the bondholder can expect 0.08$\times$B = \$80 per year (or \$40 per coupon payment) every year for 30-years. 
-```` -->
+## Are United States Treasury Bills, Notes or Bonds really risk free?
+Fill me in.
 
 ---
  
