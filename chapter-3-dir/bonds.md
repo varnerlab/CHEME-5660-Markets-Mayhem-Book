@@ -49,15 +49,32 @@ T-bills are an example of a zero-coupon fixed-income instrument; thus, T-bills d
 ````{prf:definition} Zero Coupon Rate Bond Pricing
 :label: defn-zero-coupon-bond-pricing
 
-Let a zero-coupon T-bill have a term of $T$-years with an annual market interest rate of $\bar{r}$. Then, the _fair price_ for a zero-coupon T-bill, denoted by $V_{B}$, is the future par value $V_{P}$ of the bond discounted to the time of the purchase:
+Let a zero-coupon treasury bill (T-bill) have a term of T-years with an annual market interest rate of $\bar{r}$; the interest rate $\bar{r}$ is assumed constant over the lifetime of the bill. 
+
+Then, the _fair price_ for a zero-coupon treasury bill is the future face (par) value of the bill discounted to the time of the purchase:
 
 ```{math}
+:label: eqn-zero-coupon-bill-bond
 V_{B} = \frac{V_{P}}{\left(1+\bar{r}\right)^{T}}
 ```
+
+where $V_{B}$ denotes the price of the treasury bill, and $V_{P}$ represents the face (par) value of the treasury bill.
+````
+
+Let's do an example illustrating the pricing of a zero-coupon treasury bill ({prf:ref}`defn-zero-coupon-bond-pricing`).
+
+
+````{prf:example} Pricing T = 30 year Treasury Bond
+:label: example-zero-coupon-t-bill
+
+Fill me in.
+
+
+__source__: [Live Pluto notebook](https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks) or [static HTML](https://htmlview.glitch.me/?https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks/blob/main/pluto-notebooks/html/Example-Price-ZeroCoupon-TreasuryBill.jl.html).
 ````
 
 ##### Example
-* Let's do an example illustrating the pricing of a zero-coupon T-bill ({prf:ref}`defn-zero-coupon-bond-pricing`). Sources: [Live Pluto notebook](https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks) or [static HTML](https://htmlview.glitch.me/?https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks/blob/main/pluto-notebooks/html/Example-Price-ZeroCoupon-TreasuryBill.jl.html).
+
 
 ### Treasury Notes and Bonds
 Treasury notes, sometimes called T-notes, are a medium-term debt instrument that earns a fixed rate of interest every six months until maturity. T-notes are issued in terms of 2, 3, 5, 7, and 10 years. The price of a T-note can be greater than, less than, or equal to the T-note's par value. However, at maturity, the par value of the T-note is paid to the owner of the T-note (lender). 
@@ -79,15 +96,29 @@ When a U.S. Treasury bond matures, the U.S government repays the debt by paying 
 #### Pricing of U.S. Treasury Bonds
 A bond’s coupon payments, and the eventual repayment of the face value, occurs many years in the future. Thus, the price an investor is willing to pay for a claim to those payments depends on the future value of the dollars that will be received versus the present value of the face value of the bond. 
 
+````{prf:remark} Risk-free Interest Rate
+:label: remark-market-interest-rate
+
+The present value calculation for a treasury bond depends upon the discount rate, which we assume is the risk-free market interest rate, denoted by $\bar{r}$. However, what is the risk free market interest rate for a bond?
+
+ The risk-free market interest rate is the sum of (at least) two terms: the real risk-free rate of return $\bar{r}^{\circ}_{f}$ and a premium paid above the real rate to compensate for expected inflation $\bar{r}_{I}$: 
+
+```{math}
+\bar{r} = \bar{r}^{\circ}_{f}+\bar{r}_{I}+\dots
+```
+
+where $\bar{r}^{\circ}_{f}$ denotes the real risk-free rate and $r_{I}$ denotes a premium above the real-risk free rate, which accounts for inflation risk; the $\bar{\star}$ notation represents the assumption of a constant rate over the bond term. In addition to inflation risk, there can (potentially) be additional terms to compensate the bond buyer for other expected risks. 
+````
+
 ````{prf:definition} Fixed Coupon Rate Bond Pricing
 :label: defn-fixed-r-bond-pricing
 
-Let the term of a bond be T-years with semi-annual coupon payments (2T coupon payments over the term of the bond), with an annual coupon rate of $\bar{c}$, and an annual market interest rate of $\bar{r}$. 
+Let the term of a bond be T-years with semi-annual coupon payments (N = 2T coupon payments over the term of the bond), with an annual coupon rate of $\bar{c}$, and an annual market interest rate of $\bar{r}$. 
 
 Then, the _fair price_ for the bond, denoted by $V_{B}$, is the present value of coupon payments $C$ plus the discounted par value $V_{P}$ of the bond:
 
 ```{math}
-V_{B} = \frac{V_{P}}{\left(1+i\right)^{2T}}+\sum_{t=1}^{2T}\frac{C}{\left(1+i\right)^{t}}
+V_{B} = \frac{V_{P}}{\left(1+i\right)^{N}}+\sum_{j=1}^{N}\frac{C}{\left(1+i\right)^{j}}
 ```
 
 where $i=\bar{r}/2$ is set by the market at the time when the bond is purchased, and $C=\left(\bar{c}/2\right)\cdot{V_{P}}$. If $\bar{c}=\bar{r}$, the fair price equals the par value i.e., $V_{B} = V_{P}$.
@@ -127,15 +158,15 @@ investors must calculate this value from the bond price, maturity date, and coup
 ````{prf:definition} Yield to Maturity 
 :label: defn-yield-to-maturity
 
-Let the term of a bond be T-years with semi-annual coupon payments (2T coupon payments over the term of the bond), with an annual coupon rate of $\bar{c}$. Further, suppose the U.S. Treasury bond was purchased for $\hat{V}_{B}$ (which may be different that the _fair price_).
+Let the term of a bond be T-years with semi-annual coupon payments (N = 2T coupon payments over the term of the bond), with an annual coupon rate of $\bar{c}$. Further, suppose the U.S. Treasury bond was purchased for $\hat{V}_{B}$ (which may be different that the _fair price_).
 
 The yield to maturity (YTM) value is the interest rate $\bar{r}$ that makes $V_{B}=\hat{V}_{B}$:
 
 ```{math}
-\hat{V}_{B} - \frac{V_{P}}{\left(1+i\right)^{2T}}-\sum_{t=1}^{2T}\frac{C}{\left(1+i\right)^{t}} = 0
+\hat{V}_{B} - \frac{V_{P}}{\left(1+i\right)^{N}}-\sum_{j=1}^{2T}\frac{C}{\left(1+i\right)^{j}} = 0
 ```
 
-where $i=\bar{r}/2$ is set by the market at the time of purchase of the bond, and $C=\left(\bar{c}/2\right)\cdot{V_{P}}$
+where $i=\bar{r}/2$ is set by the market at the time of purchase of the bond, and $C=\left(\bar{c}/2\right)\cdot{V_{P}}$.
 
 ````
 
