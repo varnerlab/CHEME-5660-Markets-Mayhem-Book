@@ -73,6 +73,8 @@ The fair price for a zero-coupon treasury bill, denoted by $V_{B}$, is the futur
 
 $$V_{B} = \frac{V_{P}}{\left(1+\bar{r}\right)^{T}}$$
 
+Solving this expression as a function of $\bar{r}$ for different values of the bill term parameter $T$ gives the results shown in {numref}`fig-zcbill-price`:
+
 ```{figure} ./figs/Fig-Price-Zero-Coupon-Bill.pdf
 ---
 height: 400px
@@ -85,12 +87,15 @@ __source__: [Live Pluto notebook](https://github.com/varnerlab/CHEME-5660-Market
 ````
 
 
-The treasury bill pricing calculations shown in {prf:ref}`example-zero-coupon-t-bill` have some interesting findings:
-* There is an _inverse_ relationship between the current price of a zero-coupon bill and the market interest rate; this must be true as the par value (which is in future dollars) is fixed. Thus, higher market interest rates imply lower T-bill prices. 
+The treasury bill pricing calculations shown in {prf:ref}`example-zero-coupon-t-bill` have some interesting properties:
 
-* The relationship between Vᵦ and r̄ is _not_ linear (red dashed versus blue line); even though it may appear to be the case from the parameters used in the example, different parameters show the convex nature of the relationship between price and interest rate
+* There is an _inverse_ relationship between the current price of a zero-coupon bill and the market interest rate $\bar{r}$; this must be true as the par value (which is in future dollars) is fixed. Thus, higher market interest rates imply lower initial T-bill prices. 
 
-Thus, the duraration of the treasury and the risk-free interest rate are critical to the pricing of the treasury bill. However, what is the risk-free market interest rate?
+* The relationship between $V_{B}$ and $\bar{r}$ is _not_ linear (dashed versus solid lines); even though it may appear to be the case from the parameters used in the example, the relationship between price and interest rate is convex
+
+* Finally, the longer duration treasury bills are more sensitive to interest rate changes; the T = 1-year slope is larger than the T = 0.5-year case.
+
+Thus, the duration and the risk-free interest rate are critical to the pricing of the treasury bill. However, what is the risk-free market interest rate?
 
 ````{prf:remark} What is the Risk-free Market Interest Rate?
 :label: remark-market-interest-rate
