@@ -15,9 +15,7 @@ In this lecture, we will discuss:
 
 (content:references:treasury-bonds)=
 ## Treasury Bills, Notes and Bonds
-A fixed-income debt security is a contract between a borrower and a lender. In the context of this lecture, 
-we'll focus on U.S. Treasury Bills, Notes, and Bonds, examples of government debt securities. 
-For United States treasury debt instruments, the borrower is the U.S. government; the government issues (i.e., sells) a bond to a lender (you) for some cash. This arrangement obligates the U.S. Treasury to make specified payments to the bondholder (you) on specified dates.
+A fixed-income debt security is a contract between a borrower and a lender. In the context of this lecture, we'll focus on U.S. Treasury Bills, Notes, and Bonds, examples of government debt securities. For United States treasury debt instruments, the borrower is the U.S. government; the government issues (i.e., sells) a bond to a lender (you) for some cash. This arrangement obligates the U.S. Treasury to make specified payments to the bondholder (you) on specified dates.
 
 There are several types of U.S. government debt securities. However, they share several similarities:
 
@@ -31,9 +29,9 @@ There are several types of U.S. government debt securities. However, they share 
 ### Treasury Bills
 
 
-```{figure} ./figs/Fig-Bill-Asset-Timeline-Schematic.pdf
+```{figure} ./figs/Fig-Zero-Coupon-Schematic.pdf
 ---
-height: 260px
+height: 360px
 name: fig-bill-payout-schematic
 ---
 Sensitivity of bond price to changes in the market interest rate.   
