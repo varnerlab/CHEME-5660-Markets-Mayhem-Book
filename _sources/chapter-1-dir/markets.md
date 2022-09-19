@@ -4,7 +4,7 @@
 Markets are _places_ (perhaps physical locations such as a retail store or virtual sites on the internet) where parties exchange (trade) goods and services. In a physical market, buyers and sellers meet face-to-face, while there is no physical contact between buyers and sellers in a virtual market. Thus, a market is any _place_ where two or more parties engage in an economic transaction, i.e., the exchange of goods, services, information, currency, or any combination that passes from one party to another. While only two parties are needed to make a trade, an efficient market is characterized by many active buyers and sellers. 
 
 An exchange is a market where financial instruments such as [securities](https://www.investopedia.com/terms/s/security.asp), [commodities](https://www.investopedia.com/terms/c/commodity.asp), or [derivatives](https://www.investopedia.com/ask/answers/12/derivative.asp) are traded. An exchange ensures fair and orderly trading and the efficient dissemination of price information for securities traded on that exchange. Thus, exchanges give companies, governments, and other groups a platform to sell securities to the investing public (you!). Different products can be traded on different exchanges.
-For example, for [securities](https://www.investopedia.com/terms/s/security.asp), there are [sixteen exchanges in the world](https://en.wikipedia.org/wiki/List_of_stock_exchanges) that have a market capitalization of over US $1 trillion each. These exchanges account for approximately 87\% of global market capitalization. On the other hand, [derivatives](https://www.investopedia.com/ask/answers/12/derivative.asp) are traded on option exchanges such as the [Chicago Board Options Exchange (CBOE)](https://www.cboe.com).
+For example, for [securities](https://www.investopedia.com/terms/s/security.asp), there are [sixteen exchanges in the world](https://en.wikipedia.org/wiki/List_of_stock_exchanges) that have a market capitalization of over US $1 trillion each. These exchanges account for approximately 87\% of global market capitalization. The two largest exchanges in the world, the [New York Stock Exchange (NYSE)](https://en.wikipedia.org/wiki/New_York_Stock_Exchange) and the [National Association of Securities Dealers Automated Quotations Stock Market (NASDAQ)](https://en.wikipedia.org/wiki/Nasdaq) are both in the United States; surprisingly the [United States has 13 stock exchanges](https://www.reuters.com/article/us-usa-exchanges/u-s-stock-exchange-competition-to-heat-up-in-2020-with-new-entrants-idUSKBN1W42Y6).  On the other hand, [derivative contracts](https://www.investopedia.com/ask/answers/12/derivative.asp), and particularly [equity options](https://en.wikipedia.org/wiki/Equity_derivative) are traded on options exchanges such as the [Chicago Board Options Exchange (CBOE)](https://www.cboe.com); even more surprising there are [14 option exchanges in the United States](https://en.wikipedia.org/wiki/Category:Options_exchanges_in_the_United_States). 
 
 Exchanges can be organized in a variety of ways. Before the widespread adaption of electronic exchanges, 
 [the open outcry system](https://en.wikipedia.org/wiki/Open_outcry) was used where professionals on the exchange shouted and used hand signals to communicate information about buy and sell orders; the trading floor where this took place was called _the pit_. However, since the 1980s, open outcry systems have been mainly replaced by electronic trading systems 
@@ -22,9 +22,18 @@ In this lecture, we will:
 
 (content:references:investment-types)=
 ## Investment Types
-A wide variety of investment products can be used for wealth creation. However, In this course, we will discuss three primary [financial security categories](https://www.investopedia.com/terms/s/security.asp): debt (i.e., bonds and mortgages), equity (i.e., shares of stock), and derivatives:
 
-* [Fixed-income debt securities](../chapter-3-dir/bonds.md) are financial instruments with predefined cashflows at selected dates over the lifetime of the instrument. While there are several types of fixed-income securities, we'll focus on an archetypal category: [United States Treasury Debt Securities](https://www.investor.gov/introduction-investing/investing-basics/glossary/treasury-securities). Treasury debt securities, e.g., [Treasury bills, notes, and bonds](https://www.treasurydirect.gov/indiv/products/prod_tbonds_glance.htm), are debt obligations issued by the United States Department of the Treasury to the holder of the security. U.S. Treasury debt securities are a mechanism used by the United States government to borrow money, from bondholders, with a fixed set of repayment terms. 
+```{figure} ./figs/Fig-AssetCategory.pdf
+---
+height: 380px
+name: fig-asset-class-category
+---
+Asset categories that we consider in the subsequent chapters. Fixed income securities, particularly United States Treasury debt securities, have low risk but low reward. Equity securities, i.e., individual or baskets of stocks, have a higher risk and increased potential reward. Derivative securities, e.g., equity options, are perceived to have the highest risk and potential reward.  
+```
+
+A wide variety of investment products can be used for wealth creation. However, In this course, we will discuss three primary [financial security categories](https://www.investopedia.com/terms/s/security.asp): debt (i.e., bonds and mortgages), equity (i.e., shares of stock), and derivatives ({numref}`fig-asset-class-category`):
+
+* [Fixed-income securities](../chapter-3-dir/bonds.md) are financial instruments with predefined cashflows at selected dates over the lifetime of the instrument. While there are several types of fixed-income securities, we'll focus on an archetypal category: [United States Treasury Debt Securities](https://www.investor.gov/introduction-investing/investing-basics/glossary/treasury-securities). Treasury debt securities, e.g., [Treasury bills, notes, and bonds](https://www.treasurydirect.gov/indiv/products/prod_tbonds_glance.htm), are debt obligations issued by the United States Department of the Treasury to the holder of the security. U.S. Treasury debt securities are a mechanism used by the United States government to borrow money, from bondholders, with a fixed set of repayment terms. 
 
 * [Equity securities](../chapter-3-dir/Single-Index-Models.md) represent ownership shares in a publicly traded corporation. Each share of common stock entitles its owner to one vote on any matters of corporate governance that are put to the vote at the corporation’s annual meeting and a share in the financial benefits of ownership. The corporation is controlled by a board of directors elected by the shareholders. The board meets a few times per year and selects the management team that runs the corporation daily. Managers have the authority to make most business decisions without the board’s specific approval. The board’s mandate is to oversee the management to ensure that it acts in the best interests of shareholders. 
 
@@ -34,46 +43,65 @@ Fixed-income debt securities, particularly United States Treasury instruments, a
 
 (content:references:double-auctions-market-mech)=
 ## Market Microstructure and Mechanics
-The various financial instruments we consider can be purchased (or sold) in a marketplace, typically virtual, with processes and procedures influencing the efficiency and price of the assets being traded. Let's review the major components of exchanges, auctions, orders, and matching. 
+The various financial instruments we consider can be purchased (or sold) on an electronic exchange (typically), with processes and procedures influencing the efficiency and price of the assets being traded. Electronic exchanges in which investors buy (or sell) securities are examples of [continuous double auctions](https://en.wikipedia.org/wiki/Double_auction). 
 
-### Continuous Double Auctions
-A [continuous double auction](https://en.wikipedia.org/wiki/Double_auction) is a process where potential buyers submit _bids_ which specify the quantity and price the buyer wishes to buy the good or service at, while potential sellers submit _asks_ which describe the amount and price of the good or service they want to sell. Then a _market institution_ chooses some price $p>0$ that clears the market, i.e., all the sellers who asked less than or equal to $p$ sell while all buyers who bid greater than or equal to $p$ buy at a price $p$. 
+A [continuous double auction](https://en.wikipedia.org/wiki/Double_auction) is a process where:
+* potential buyers submit bids to a market institution; bids specify the quantity and price the buyer wishes to buy the good or service. 
+* potential sellers submit asks to the same market institution; asks describe the amount and price of the good or service they want to sell. 
 
-The interesting question of a [double auction](https://en.wikipedia.org/wiki/Double_auction) is how the _market institution_ chooses the clearing price $p$. First, what is a _market institution_? A _market institution_ is a set of rules specifying the structure of messages on the exchange. 
+On a modern electronic exchange, bids and asks are arriving (or being canceled), and deals are being made between parties (a seller sells and a buyer buys) continuously. Thus, a [double auction](https://en.wikipedia.org/wiki/Double_auction) must have tools and strategies to track orders coming into the market and match buyers and sellers, as well as methods to keep market transactions flowing. 
 
 (content:references:order-matching)=
 ### Orders, the Order Book and Matching Systems
-An [order matching system](https://en.wikipedia.org/wiki/Order_matching_system) matches buy and sell orders for an electronic exchange. Thus, the order matching system is at the core of an electronic exchange as it executes orders from the traders in the exchange. 
+At the center of an electronic exchange are [orders](https://en.wikipedia.org/wiki/Order_(exchange)) and [order books](https://en.wikipedia.org/wiki/Order_book). An [order book](https://en.wikipedia.org/wiki/Order_book) holds a list of [orders](https://en.wikipedia.org/wiki/Order_(exchange)) for a particular security or financial instrument listed on the exchange; thus, it is a tick-by-tick record of the interest buyers and sellers have for a particular security or financial instrument on the exchange. 
 
-The matching algorithms used on electronic exchanges are important components that have a great impact on the efficiency, [liquidity](https://en.wikipedia.org/wiki/Market_liquidity) and prices of the instruments being traded on the market. Thus, there are a variety of algorithms for order matching. The most common matching algorithms are the Pro-Rata and Price/Time matching algorithms. Underlying each of these algorithms is a data structure called an [order book](https://en.wikipedia.org/wiki/Order_book), which collates the different types of orders that an excahnge can accept and allows matching to occur. 
+Many types of [orders](https://en.wikipedia.org/wiki/Order_(exchange)) can be initiated by traders. However, let's consider only four basic classes of orders, a market order, a limit order, a stop order and a cancel order.
 
-#### Orders and the Order Book
-An order book holds a list of orders on an electronic exchange. Thus, it is a record of the interest buyers and sellers have in a particular financial instrument. A matching engine uses the order book to determine which orders can be fully or partially executed. 
-
-Many types of orders can be placed in the order book. However, we consider only the four classes of orders, a market order, a limit order, stop orders and cancel orders.
-
-##### Market orders
+#### Market orders
 A market order is a buy or sell order executed immediately, regardless of the current market prices. As long as willing sellers and buyers are present in the exchange, market orders are always executed (filled). Market orders are used when the certainty of execution is more important than the execution price. Thus, a market order is the simplest of the order types as it forgoes control over the execution price. A market order is filled at the best price available at execution. In fast-moving markets, the price paid or received may differ significantly from the price quoted when the order was entered. Further, a market order may be split across multiple participants on the other side of the transaction, resulting in different prices for some of the instruments involved in the trade.   
 
-##### Limit orders
+#### Limit orders
 A limit order is an order to buy a financial instrument at no more than a specific price or sell a security at no less than a particular price. This gives the trader control over the price at which the trade is executed. However, unlike a market order which is guaranteed to be executed (filled), a limit order may never be executed if the price conditions are not met. Thus, limit orders are used when the trader wishes to control price rather than the certainty of being filled.
 
-##### Stop orders
+#### Stop orders
 A stop order is an order to buy or sell a financial instrument once the price of that instrument reaches a specified price, the stop price. 
 
-* A [buy-stop order](https://en.wikipedia.org/wiki/Order_(exchange)#Buy-stop_order) is entered at a stop price above the current market price. Traders use buy-stop orders to limit a loss or protect a profit on a stock they have sold short. * 
+* A [buy-stop order](https://en.wikipedia.org/wiki/Order_(exchange)#Buy-stop_order) is entered at a stop price above the current market price. Traders use buy-stop orders to limit a loss or protect a profit on a stock they have sold short. 
 
 * A [sell-stop order](https://en.wikipedia.org/wiki/Order_(exchange)#Sell-stop_order) is entered at a stop price below the current market price. Traders use sell-stop orders to limit a loss or protect a profit on a stock they already own. For either a [buy-stop order](https://en.wikipedia.org/wiki/Order_(exchange)#Buy-stop_order) or a [sell-stop order](https://en.wikipedia.org/wiki/Order_(exchange)#Sell-stop_order), when the stop price is reached, the stop order becomes a market order. Thus, a stop trade will be executed if the stop price is reached, but not necessarily at or near the stop price, particularly in a fast-moving market, or if there is insufficient liquidity available relative to the size of the order. 
 
 * A [stop-limit order](https://en.wikipedia.org/wiki/Order_(exchange)#Stop-limit_order) is an order to buy or sell a stock that combines features of a stop order and a limit order. Once the stop price is reached, a stop-limit order becomes a limit order executed at a specified price (or better). As with all limit orders, a stop-limit order doesn't get filled if the security's price never reaches the specified limit price.
 
-##### Cancel orders
+#### Cancel orders
 Finally, a cancel order allows an investor to remove a current order from the exchange. If an order
 has not already executed, it can be cancelled at any time. Moreover, if a limit order has not executed by the end of the trading day (or some specified time period) it is automatically cancelled. 
 
-### Matching Algorithms
+### Order Books and Matching Algorithms
+An [order book](https://en.wikipedia.org/wiki/Order_book) holds a list of [orders](https://en.wikipedia.org/wiki/Order_(exchange)) for a particular security or financial instrument listed on the exchange. Order book data gives insight into the direction of price movement and the market sentiment of an asset. For example, if the number of sell orders is much larger than the number of buy orders, you expect a price decrease (negative sentiment). 
 
-#### Price/Time matching algorithm
+Order book data is available for viewing and electronically, for equity and derivative securities. For example, the [Chicago Board Options Exchange (CBOE)](https://www.cboe.com) has a free order-book viewer  ({numref}`example-cboe-order-book-data`).
+
+
+```{figure} ./figs/Fig-CBOE-OrderBook-QQQ-9-8-22.png
+---
+height: 380px
+name: example-cboe-order-book-data
+---
+Snapshot for the [QQQ](https://www.google.com/finance/quote/QQQ:NASDAQ?sa=X&ved=2ahUKEwjoqKOL0oX6AhUrkIkEHbrKBaMQ3ecFegQIFxAg) order book taken from the [Chicago Board Options Exchange (CBOE)](https://www.cboe.com). The ``top`` of the order book is shown on the left, while the last ten trades are shown on the right. The total volume (the number of share exchanged, bought or sold) and the number of orders accepted (number of matched orders) is also shown. __source__: [CBOE Book Viewer](https://www.cboe.com/us/equities/market_statistics/book_viewer/).
+```
+
+Financial data providers such as [Polygon.io](https://polygon.io) have [RESTful Application Programming Interface (APIs)](https://polygon.io/docs/stocks/getting-started) that enable programmatic access to market data of all sorts, including data about the buy and sell orders in the [order book](https://en.wikipedia.org/wiki/Order_book) for equities and derivatives, with a nanosecond resolution.
+
+#### Bid/Ask Spread
+Fill me in.
+
+#### Order Matching
+An [order matching system](https://en.wikipedia.org/wiki/Order_matching_system) matches buy and sell orders held in the [order books](https://www.investopedia.com/terms/o/order-book.asp) of an electronic exchange. [Order books](https://www.investopedia.com/terms/o/order-book.asp) are a data structure that organizes the orders that exchange can accept and allows matching to occur; [order books](https://www.investopedia.com/terms/o/order-book.asp) are essentially electronic lists of buy and sell orders for a specific security or financial instrument organized by price level. 
+
+[Order matching algorithms](https://en.wikipedia.org/wiki/Order_matching_system) find matches between buyers and sellers by analyzing the data stored in the [order books](https://www.investopedia.com/terms/o/order-book.asp). The matching algorithms used on electronic exchanges are essential components that significantly impact efficiency, [liquidity](https://en.wikipedia.org/wiki/Market_liquidity) and prices of the instruments being traded in the market. There are a variety of algorithms for order matching. The Pro-Rata and Price/Time matching algorithms are the most common. 
+
+(content:references:price-time-algo)=
+##### Price/Time matching algorithm
 The price-time algorithm, also known as the First-in-First-Out (FIFO) algorithm, is the most straightforward order book matching algorithm. In the price-time algorithm, the order matching priority is price and then time. For example, buy orders with higher prices are automatically prioritized over buy orders at lower prices.
 However, buy orders arriving in the order book with the same maximum price are prioritized based on the bid time, where priority is given to the first buy order. 
 
@@ -83,7 +111,8 @@ For example, a buy order for 300 shares of a security at $50 per share is follow
 According to the FIFO algorithm, the total 300 shares buy order will be matched to sell orders. There can be more than one sell order. After the 300 shares buy order is matched, the 100 shares buy order matching will start.
 ````
 
-#### Pro-Rata matching algorithm
+(content:references:pro-rata-algo)=
+##### Pro-Rata matching algorithm
 A system using the Pro-Rata algorithm also gives priority to the highest-priced buy order. However, buy orders with the same highest price are matched in proportion to each order size.
 
 ````{prf:example} Pro-Rata mathching
@@ -91,6 +120,10 @@ For example, buy orders of 300 shares and 100 shares of the same security are ac
 
 The Pro-Rata algorithm will match 225 shares to the 300-share buy order and 75 shares to the 100-share buy order. Hence, both buy orders are partially filled. Here, the Pro-Rata algorithm fills 75% of both buy orders.
 ````
+
+### Order Routing and Market Makers
+In a classical face-to-face auction, the identity of the buyer and seller, or at least their representatives, is typically known. However, determining who the buyers and sellers are on an electronic exchange is impossible; you will (likely) never _know_ your counterparty. Instead, 
+[Core](https://www.investopedia.com/terms/c/coreliquidityprovider.asp) and [supplemental liquidity providers](https://www.investopedia.com/terms/s/supplemental-liquidity-provider.asp), also called market makers, facilitate securities trading by providing a pool of shares, (which they own), so that buyers and sellers trade without having to locate and deal with each other individually. 
 
 ---
 

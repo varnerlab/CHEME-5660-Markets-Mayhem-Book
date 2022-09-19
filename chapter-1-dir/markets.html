@@ -51,8 +51,6 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <link rel="canonical" href="https://varnerlab.github.io/CHEME-5660-Markets-Mayhem-Book/infrastructure.html/chapter-1-dir/markets.html" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -434,38 +432,55 @@ title="Print to PDF"
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#continuous-double-auctions">
-     Continuous Double Auctions
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#orders-the-order-book-and-matching-systems">
      Orders, the Order Book and Matching Systems
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#orders-and-the-order-book">
-       Orders and the Order Book
+      <a class="reference internal nav-link" href="#market-orders">
+       Market orders
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#limit-orders">
+       Limit orders
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#stop-orders">
+       Stop orders
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#cancel-orders">
+       Cancel orders
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#order-books-and-matching-algorithms">
+     Order Books and Matching Algorithms
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#bid-ask-spread">
+       Bid/Ask Spread
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#order-matching">
+       Order Matching
       </a>
       <ul class="nav section-nav flex-column">
        <li class="toc-h5 nav-item toc-entry">
-        <a class="reference internal nav-link" href="#market-orders">
-         Market orders
+        <a class="reference internal nav-link" href="#price-time-matching-algorithm">
+         Price/Time matching algorithm
         </a>
        </li>
        <li class="toc-h5 nav-item toc-entry">
-        <a class="reference internal nav-link" href="#limit-orders">
-         Limit orders
-        </a>
-       </li>
-       <li class="toc-h5 nav-item toc-entry">
-        <a class="reference internal nav-link" href="#stop-orders">
-         Stop orders
-        </a>
-       </li>
-       <li class="toc-h5 nav-item toc-entry">
-        <a class="reference internal nav-link" href="#cancel-orders">
-         Cancel orders
+        <a class="reference internal nav-link" href="#pro-rata-matching-algorithm">
+         Pro-Rata matching algorithm
         </a>
        </li>
       </ul>
@@ -473,21 +488,9 @@ title="Print to PDF"
     </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#matching-algorithms">
-     Matching Algorithms
+    <a class="reference internal nav-link" href="#order-routing-and-market-makers">
+     Order Routing and Market Makers
     </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#price-time-matching-algorithm">
-       Price/Time matching algorithm
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#pro-rata-matching-algorithm">
-       Pro-Rata matching algorithm
-      </a>
-     </li>
-    </ul>
    </li>
   </ul>
  </li>
@@ -531,38 +534,55 @@ title="Print to PDF"
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#continuous-double-auctions">
-     Continuous Double Auctions
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#orders-the-order-book-and-matching-systems">
      Orders, the Order Book and Matching Systems
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#orders-and-the-order-book">
-       Orders and the Order Book
+      <a class="reference internal nav-link" href="#market-orders">
+       Market orders
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#limit-orders">
+       Limit orders
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#stop-orders">
+       Stop orders
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#cancel-orders">
+       Cancel orders
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#order-books-and-matching-algorithms">
+     Order Books and Matching Algorithms
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#bid-ask-spread">
+       Bid/Ask Spread
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#order-matching">
+       Order Matching
       </a>
       <ul class="nav section-nav flex-column">
        <li class="toc-h5 nav-item toc-entry">
-        <a class="reference internal nav-link" href="#market-orders">
-         Market orders
+        <a class="reference internal nav-link" href="#price-time-matching-algorithm">
+         Price/Time matching algorithm
         </a>
        </li>
        <li class="toc-h5 nav-item toc-entry">
-        <a class="reference internal nav-link" href="#limit-orders">
-         Limit orders
-        </a>
-       </li>
-       <li class="toc-h5 nav-item toc-entry">
-        <a class="reference internal nav-link" href="#stop-orders">
-         Stop orders
-        </a>
-       </li>
-       <li class="toc-h5 nav-item toc-entry">
-        <a class="reference internal nav-link" href="#cancel-orders">
-         Cancel orders
+        <a class="reference internal nav-link" href="#pro-rata-matching-algorithm">
+         Pro-Rata matching algorithm
         </a>
        </li>
       </ul>
@@ -570,21 +590,9 @@ title="Print to PDF"
     </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#matching-algorithms">
-     Matching Algorithms
+    <a class="reference internal nav-link" href="#order-routing-and-market-makers">
+     Order Routing and Market Makers
     </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#price-time-matching-algorithm">
-       Price/Time matching algorithm
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#pro-rata-matching-algorithm">
-       Pro-Rata matching algorithm
-      </a>
-     </li>
-    </ul>
    </li>
   </ul>
  </li>
@@ -609,7 +617,7 @@ title="Print to PDF"
 <h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">#</a></h2>
 <p>Markets are <em>places</em> (perhaps physical locations such as a retail store or virtual sites on the internet) where parties exchange (trade) goods and services. In a physical market, buyers and sellers meet face-to-face, while there is no physical contact between buyers and sellers in a virtual market. Thus, a market is any <em>place</em> where two or more parties engage in an economic transaction, i.e., the exchange of goods, services, information, currency, or any combination that passes from one party to another. While only two parties are needed to make a trade, an efficient market is characterized by many active buyers and sellers.</p>
 <p>An exchange is a market where financial instruments such as <a class="reference external" href="https://www.investopedia.com/terms/s/security.asp">securities</a>, <a class="reference external" href="https://www.investopedia.com/terms/c/commodity.asp">commodities</a>, or <a class="reference external" href="https://www.investopedia.com/ask/answers/12/derivative.asp">derivatives</a> are traded. An exchange ensures fair and orderly trading and the efficient dissemination of price information for securities traded on that exchange. Thus, exchanges give companies, governments, and other groups a platform to sell securities to the investing public (you!). Different products can be traded on different exchanges.
-For example, for <a class="reference external" href="https://www.investopedia.com/terms/s/security.asp">securities</a>, there are <a class="reference external" href="https://en.wikipedia.org/wiki/List_of_stock_exchanges">sixteen exchanges in the world</a> that have a market capitalization of over US $1 trillion each. These exchanges account for approximately 87% of global market capitalization. On the other hand, <a class="reference external" href="https://www.investopedia.com/ask/answers/12/derivative.asp">derivatives</a> are traded on option exchanges such as the <a class="reference external" href="https://www.cboe.com">Chicago Board Options Exchange (CBOE)</a>.</p>
+For example, for <a class="reference external" href="https://www.investopedia.com/terms/s/security.asp">securities</a>, there are <a class="reference external" href="https://en.wikipedia.org/wiki/List_of_stock_exchanges">sixteen exchanges in the world</a> that have a market capitalization of over US $1 trillion each. These exchanges account for approximately 87% of global market capitalization. The two largest exchanges in the world, the <a class="reference external" href="https://en.wikipedia.org/wiki/New_York_Stock_Exchange">New York Stock Exchange (NYSE)</a> and the <a class="reference external" href="https://en.wikipedia.org/wiki/Nasdaq">National Association of Securities Dealers Automated Quotations Stock Market (NASDAQ)</a> are both in the United States; surprisingly the <a class="reference external" href="https://www.reuters.com/article/us-usa-exchanges/u-s-stock-exchange-competition-to-heat-up-in-2020-with-new-entrants-idUSKBN1W42Y6">United States has 13 stock exchanges</a>.  On the other hand, <a class="reference external" href="https://www.investopedia.com/ask/answers/12/derivative.asp">derivative contracts</a>, and particularly <a class="reference external" href="https://en.wikipedia.org/wiki/Equity_derivative">equity options</a> are traded on options exchanges such as the <a class="reference external" href="https://www.cboe.com">Chicago Board Options Exchange (CBOE)</a>; even more surprising there are <a class="reference external" href="https://en.wikipedia.org/wiki/Category:Options_exchanges_in_the_United_States">14 option exchanges in the United States</a>.</p>
 <p>Exchanges can be organized in a variety of ways. Before the widespread adaption of electronic exchanges,
 <a class="reference external" href="https://en.wikipedia.org/wiki/Open_outcry">the open outcry system</a> was used where professionals on the exchange shouted and used hand signals to communicate information about buy and sell orders; the trading floor where this took place was called <em>the pit</em>. However, since the 1980s, open outcry systems have been mainly replaced by electronic trading systems
 such as the <a class="reference external" href="https://en.wikipedia.org/wiki/CATS_(trading_system)">Computer Assisted Trading System (CATS)</a> or the <a class="reference external" href="https://en.wikipedia.org/wiki/Globex_Trading_System">Globex trading system</a>. In electronic trading systems, buyers and sellers may be separated by thousands of miles. Thus, electronic trading platforms are computer software that allows users to place orders for financial products over a network from mobile devices, websites, or even Application Programming Interfaces (APIs).</p>
@@ -624,9 +632,15 @@ such as the <a class="reference external" href="https://en.wikipedia.org/wiki/CA
 </section>
 <section id="investment-types">
 <span id="content-references-investment-types"></span><h2>Investment Types<a class="headerlink" href="#investment-types" title="Permalink to this headline">#</a></h2>
-<p>A wide variety of investment products can be used for wealth creation. However, In this course, we will discuss three primary <a class="reference external" href="https://www.investopedia.com/terms/s/security.asp">financial security categories</a>: debt (i.e., bonds and mortgages), equity (i.e., shares of stock), and derivatives:</p>
+<figure class="align-default" id="fig-asset-class-category">
+<a class="reference internal image-reference" href="../_images/Fig-AssetCategory.pdf"><img alt="../_images/Fig-AssetCategory.pdf" src="../_images/Fig-AssetCategory.pdf" style="height: 380px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 13 </span><span class="caption-text">Asset categories that we consider in the subsequent chapters. Fixed income securities, particularly United States Treasury debt securities, have low risk but low reward. Equity securities, i.e., individual or baskets of stocks, have a higher risk and increased potential reward. Derivative securities, e.g., equity options, are perceived to have the highest risk and potential reward.</span><a class="headerlink" href="#fig-asset-class-category" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>A wide variety of investment products can be used for wealth creation. However, In this course, we will discuss three primary <a class="reference external" href="https://www.investopedia.com/terms/s/security.asp">financial security categories</a>: debt (i.e., bonds and mortgages), equity (i.e., shares of stock), and derivatives (<a class="reference internal" href="#fig-asset-class-category"><span class="std std-numref">Fig. 13</span></a>):</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="../chapter-3-dir/bonds.html"><span class="doc std std-doc">Fixed-income debt securities</span></a> are financial instruments with predefined cashflows at selected dates over the lifetime of the instrument. While there are several types of fixed-income securities, we’ll focus on an archetypal category: <a class="reference external" href="https://www.investor.gov/introduction-investing/investing-basics/glossary/treasury-securities">United States Treasury Debt Securities</a>. Treasury debt securities, e.g., <a class="reference external" href="https://www.treasurydirect.gov/indiv/products/prod_tbonds_glance.htm">Treasury bills, notes, and bonds</a>, are debt obligations issued by the United States Department of the Treasury to the holder of the security. U.S. Treasury debt securities are a mechanism used by the United States government to borrow money, from bondholders, with a fixed set of repayment terms.</p></li>
+<li><p><a class="reference internal" href="../chapter-3-dir/bonds.html"><span class="doc std std-doc">Fixed-income securities</span></a> are financial instruments with predefined cashflows at selected dates over the lifetime of the instrument. While there are several types of fixed-income securities, we’ll focus on an archetypal category: <a class="reference external" href="https://www.investor.gov/introduction-investing/investing-basics/glossary/treasury-securities">United States Treasury Debt Securities</a>. Treasury debt securities, e.g., <a class="reference external" href="https://www.treasurydirect.gov/indiv/products/prod_tbonds_glance.htm">Treasury bills, notes, and bonds</a>, are debt obligations issued by the United States Department of the Treasury to the holder of the security. U.S. Treasury debt securities are a mechanism used by the United States government to borrow money, from bondholders, with a fixed set of repayment terms.</p></li>
 <li><p><a class="reference internal" href="../chapter-3-dir/Single-Index-Models.html"><span class="doc std std-doc">Equity securities</span></a> represent ownership shares in a publicly traded corporation. Each share of common stock entitles its owner to one vote on any matters of corporate governance that are put to the vote at the corporation’s annual meeting and a share in the financial benefits of ownership. The corporation is controlled by a board of directors elected by the shareholders. The board meets a few times per year and selects the management team that runs the corporation daily. Managers have the authority to make most business decisions without the board’s specific approval. The board’s mandate is to oversee the management to ensure that it acts in the best interests of shareholders.</p></li>
 <li><p><a class="reference internal" href="../chapter-3-dir/contracts.html"><span class="doc std std-doc">Derivative securities</span></a> provide payoffs that depend on the value of other assets, such as commodities, bonds, stocks, or market indexes. Thus, the value of a derivative is based mainly on the price movements of an underlying asset, e.g., stocks, commodities, currencies, etc. In this lecture, we will focus exclusively on options, a type of derivative product that uses stock as its underlying asset. Like bonds, options are contractural agreements between buyers and sellers to conduct a particular transaction at some later date. Options, derivatives that use equity, i.e., shares of a stock or an exchange-traded fund, as their underlying asset, are structured agreements between a buyer and a seller that give the option buyer the right, but not the obligation, to execute the transaction described in the contract, i.e., to buy (or sell) an underlying asset in some predetermined way in a specified time frame.</p></li>
 </ul>
@@ -634,48 +648,61 @@ such as the <a class="reference external" href="https://en.wikipedia.org/wiki/CA
 </section>
 <section id="market-microstructure-and-mechanics">
 <span id="content-references-double-auctions-market-mech"></span><h2>Market Microstructure and Mechanics<a class="headerlink" href="#market-microstructure-and-mechanics" title="Permalink to this headline">#</a></h2>
-<p>The various financial instruments we consider can be purchased (or sold) in a marketplace, typically virtual, with processes and procedures influencing the efficiency and price of the assets being traded. Let’s review the major components of exchanges, auctions, orders, and matching.</p>
-<section id="continuous-double-auctions">
-<h3>Continuous Double Auctions<a class="headerlink" href="#continuous-double-auctions" title="Permalink to this headline">#</a></h3>
-<p>A <a class="reference external" href="https://en.wikipedia.org/wiki/Double_auction">continuous double auction</a> is a process where potential buyers submit <em>bids</em> which specify the quantity and price the buyer wishes to buy the good or service at, while potential sellers submit <em>asks</em> which describe the amount and price of the good or service they want to sell. Then a <em>market institution</em> chooses some price <span class="math notranslate nohighlight">\(p&gt;0\)</span> that clears the market, i.e., all the sellers who asked less than or equal to <span class="math notranslate nohighlight">\(p\)</span> sell while all buyers who bid greater than or equal to <span class="math notranslate nohighlight">\(p\)</span> buy at a price <span class="math notranslate nohighlight">\(p\)</span>.</p>
-<p>The interesting question of a <a class="reference external" href="https://en.wikipedia.org/wiki/Double_auction">double auction</a> is how the <em>market institution</em> chooses the clearing price <span class="math notranslate nohighlight">\(p\)</span>. First, what is a <em>market institution</em>? A <em>market institution</em> is a set of rules specifying the structure of messages on the exchange.</p>
-</section>
+<p>The various financial instruments we consider can be purchased (or sold) on an electronic exchange (typically), with processes and procedures influencing the efficiency and price of the assets being traded. Electronic exchanges in which investors buy (or sell) securities are examples of <a class="reference external" href="https://en.wikipedia.org/wiki/Double_auction">continuous double auctions</a>.</p>
+<p>A <a class="reference external" href="https://en.wikipedia.org/wiki/Double_auction">continuous double auction</a> is a process where:</p>
+<ul class="simple">
+<li><p>potential buyers submit bids to a market institution; bids specify the quantity and price the buyer wishes to buy the good or service.</p></li>
+<li><p>potential sellers submit asks to the same market institution; asks describe the amount and price of the good or service they want to sell.</p></li>
+</ul>
+<p>On a modern electronic exchange, bids and asks are arriving (or being canceled), and deals are being made between parties (a seller sells and a buyer buys) continuously. Thus, a <a class="reference external" href="https://en.wikipedia.org/wiki/Double_auction">double auction</a> must have tools and strategies to track orders coming into the market and match buyers and sellers, as well as methods to keep market transactions flowing.</p>
 <section id="orders-the-order-book-and-matching-systems">
 <span id="content-references-order-matching"></span><h3>Orders, the Order Book and Matching Systems<a class="headerlink" href="#orders-the-order-book-and-matching-systems" title="Permalink to this headline">#</a></h3>
-<p>An <a class="reference external" href="https://en.wikipedia.org/wiki/Order_matching_system">order matching system</a> matches buy and sell orders for an electronic exchange. Thus, the order matching system is at the core of an electronic exchange as it executes orders from the traders in the exchange.</p>
-<p>The matching algorithms used on electronic exchanges are important components that have a great impact on the efficiency, <a class="reference external" href="https://en.wikipedia.org/wiki/Market_liquidity">liquidity</a> and prices of the instruments being traded on the market. Thus, there are a variety of algorithms for order matching. The most common matching algorithms are the Pro-Rata and Price/Time matching algorithms. Underlying each of these algorithms is a data structure called an <a class="reference external" href="https://en.wikipedia.org/wiki/Order_book">order book</a>, which collates the different types of orders that an excahnge can accept and allows matching to occur.</p>
-<section id="orders-and-the-order-book">
-<h4>Orders and the Order Book<a class="headerlink" href="#orders-and-the-order-book" title="Permalink to this headline">#</a></h4>
-<p>An order book holds a list of orders on an electronic exchange. Thus, it is a record of the interest buyers and sellers have in a particular financial instrument. A matching engine uses the order book to determine which orders can be fully or partially executed.</p>
-<p>Many types of orders can be placed in the order book. However, we consider only the four classes of orders, a market order, a limit order, stop orders and cancel orders.</p>
+<p>At the center of an electronic exchange are <a class="reference external" href="https://en.wikipedia.org/wiki/Order_(exchange)">orders</a> and <a class="reference external" href="https://en.wikipedia.org/wiki/Order_book">order books</a>. An <a class="reference external" href="https://en.wikipedia.org/wiki/Order_book">order book</a> holds a list of <a class="reference external" href="https://en.wikipedia.org/wiki/Order_(exchange)">orders</a> for a particular security or financial instrument listed on the exchange; thus, it is a tick-by-tick record of the interest buyers and sellers have for a particular security or financial instrument on the exchange.</p>
+<p>Many types of <a class="reference external" href="https://en.wikipedia.org/wiki/Order_(exchange)">orders</a> can be initiated by traders. However, let’s consider only four basic classes of orders, a market order, a limit order, a stop order and a cancel order.</p>
 <section id="market-orders">
-<h5>Market orders<a class="headerlink" href="#market-orders" title="Permalink to this headline">#</a></h5>
+<h4>Market orders<a class="headerlink" href="#market-orders" title="Permalink to this headline">#</a></h4>
 <p>A market order is a buy or sell order executed immediately, regardless of the current market prices. As long as willing sellers and buyers are present in the exchange, market orders are always executed (filled). Market orders are used when the certainty of execution is more important than the execution price. Thus, a market order is the simplest of the order types as it forgoes control over the execution price. A market order is filled at the best price available at execution. In fast-moving markets, the price paid or received may differ significantly from the price quoted when the order was entered. Further, a market order may be split across multiple participants on the other side of the transaction, resulting in different prices for some of the instruments involved in the trade.</p>
 </section>
 <section id="limit-orders">
-<h5>Limit orders<a class="headerlink" href="#limit-orders" title="Permalink to this headline">#</a></h5>
+<h4>Limit orders<a class="headerlink" href="#limit-orders" title="Permalink to this headline">#</a></h4>
 <p>A limit order is an order to buy a financial instrument at no more than a specific price or sell a security at no less than a particular price. This gives the trader control over the price at which the trade is executed. However, unlike a market order which is guaranteed to be executed (filled), a limit order may never be executed if the price conditions are not met. Thus, limit orders are used when the trader wishes to control price rather than the certainty of being filled.</p>
 </section>
 <section id="stop-orders">
-<h5>Stop orders<a class="headerlink" href="#stop-orders" title="Permalink to this headline">#</a></h5>
+<h4>Stop orders<a class="headerlink" href="#stop-orders" title="Permalink to this headline">#</a></h4>
 <p>A stop order is an order to buy or sell a financial instrument once the price of that instrument reaches a specified price, the stop price.</p>
 <ul class="simple">
-<li><p>A <a class="reference external" href="https://en.wikipedia.org/wiki/Order_(exchange)#Buy-stop_order">buy-stop order</a> is entered at a stop price above the current market price. Traders use buy-stop orders to limit a loss or protect a profit on a stock they have sold short. *</p></li>
+<li><p>A <a class="reference external" href="https://en.wikipedia.org/wiki/Order_(exchange)#Buy-stop_order">buy-stop order</a> is entered at a stop price above the current market price. Traders use buy-stop orders to limit a loss or protect a profit on a stock they have sold short.</p></li>
 <li><p>A <a class="reference external" href="https://en.wikipedia.org/wiki/Order_(exchange)#Sell-stop_order">sell-stop order</a> is entered at a stop price below the current market price. Traders use sell-stop orders to limit a loss or protect a profit on a stock they already own. For either a <a class="reference external" href="https://en.wikipedia.org/wiki/Order_(exchange)#Buy-stop_order">buy-stop order</a> or a <a class="reference external" href="https://en.wikipedia.org/wiki/Order_(exchange)#Sell-stop_order">sell-stop order</a>, when the stop price is reached, the stop order becomes a market order. Thus, a stop trade will be executed if the stop price is reached, but not necessarily at or near the stop price, particularly in a fast-moving market, or if there is insufficient liquidity available relative to the size of the order.</p></li>
 <li><p>A <a class="reference external" href="https://en.wikipedia.org/wiki/Order_(exchange)#Stop-limit_order">stop-limit order</a> is an order to buy or sell a stock that combines features of a stop order and a limit order. Once the stop price is reached, a stop-limit order becomes a limit order executed at a specified price (or better). As with all limit orders, a stop-limit order doesn’t get filled if the security’s price never reaches the specified limit price.</p></li>
 </ul>
 </section>
 <section id="cancel-orders">
-<h5>Cancel orders<a class="headerlink" href="#cancel-orders" title="Permalink to this headline">#</a></h5>
+<h4>Cancel orders<a class="headerlink" href="#cancel-orders" title="Permalink to this headline">#</a></h4>
 <p>Finally, a cancel order allows an investor to remove a current order from the exchange. If an order
 has not already executed, it can be cancelled at any time. Moreover, if a limit order has not executed by the end of the trading day (or some specified time period) it is automatically cancelled.</p>
 </section>
 </section>
+<section id="order-books-and-matching-algorithms">
+<h3>Order Books and Matching Algorithms<a class="headerlink" href="#order-books-and-matching-algorithms" title="Permalink to this headline">#</a></h3>
+<p>An <a class="reference external" href="https://en.wikipedia.org/wiki/Order_book">order book</a> holds a list of <a class="reference external" href="https://en.wikipedia.org/wiki/Order_(exchange)">orders</a> for a particular security or financial instrument listed on the exchange. Order book data gives insight into the direction of price movement and the market sentiment of an asset. For example, if the number of sell orders is much larger than the number of buy orders, you expect a price decrease (negative sentiment).</p>
+<p>Order book data is available for viewing and electronically, for equity and derivative securities. For example, the <a class="reference external" href="https://www.cboe.com">Chicago Board Options Exchange (CBOE)</a> has a free order-book viewer  (<a class="reference internal" href="#example-cboe-order-book-data"><span class="std std-numref">Fig. 14</span></a>).</p>
+<figure class="align-default" id="example-cboe-order-book-data">
+<a class="reference internal image-reference" href="../_images/Fig-CBOE-OrderBook-QQQ-9-8-22.png"><img alt="../_images/Fig-CBOE-OrderBook-QQQ-9-8-22.png" src="../_images/Fig-CBOE-OrderBook-QQQ-9-8-22.png" style="height: 380px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 14 </span><span class="caption-text">Snapshot for the <a class="reference external" href="https://www.google.com/finance/quote/QQQ:NASDAQ?sa=X&amp;ved=2ahUKEwjoqKOL0oX6AhUrkIkEHbrKBaMQ3ecFegQIFxAg">QQQ</a> order book taken from the <a class="reference external" href="https://www.cboe.com">Chicago Board Options Exchange (CBOE)</a>. The <code class="docutils literal notranslate"><span class="pre">top</span></code> of the order book is shown on the left, while the last ten trades are shown on the right. The total volume (the number of share exchanged, bought or sold) and the number of orders accepted (number of matched orders) is also shown. <strong>source</strong>: <a class="reference external" href="https://www.cboe.com/us/equities/market_statistics/book_viewer/">CBOE Book Viewer</a>.</span><a class="headerlink" href="#example-cboe-order-book-data" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Financial data providers such as <a class="reference external" href="https://polygon.io">Polygon.io</a> have <a class="reference external" href="https://polygon.io/docs/stocks/getting-started">RESTful Application Programming Interface (APIs)</a> that enable programmatic access to market data of all sorts, including data about the buy and sell orders in the <a class="reference external" href="https://en.wikipedia.org/wiki/Order_book">order book</a> for equities and derivatives, with a nanosecond resolution.</p>
+<section id="bid-ask-spread">
+<h4>Bid/Ask Spread<a class="headerlink" href="#bid-ask-spread" title="Permalink to this headline">#</a></h4>
+<p>Fill me in.</p>
 </section>
-<section id="matching-algorithms">
-<h3>Matching Algorithms<a class="headerlink" href="#matching-algorithms" title="Permalink to this headline">#</a></h3>
+<section id="order-matching">
+<h4>Order Matching<a class="headerlink" href="#order-matching" title="Permalink to this headline">#</a></h4>
+<p>An <a class="reference external" href="https://en.wikipedia.org/wiki/Order_matching_system">order matching system</a> matches buy and sell orders held in the <a class="reference external" href="https://www.investopedia.com/terms/o/order-book.asp">order books</a> of an electronic exchange. <a class="reference external" href="https://www.investopedia.com/terms/o/order-book.asp">Order books</a> are a data structure that organizes the orders that exchange can accept and allows matching to occur; <a class="reference external" href="https://www.investopedia.com/terms/o/order-book.asp">order books</a> are essentially electronic lists of buy and sell orders for a specific security or financial instrument organized by price level.</p>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/Order_matching_system">Order matching algorithms</a> find matches between buyers and sellers by analyzing the data stored in the <a class="reference external" href="https://www.investopedia.com/terms/o/order-book.asp">order books</a>. The matching algorithms used on electronic exchanges are essential components that significantly impact efficiency, <a class="reference external" href="https://en.wikipedia.org/wiki/Market_liquidity">liquidity</a> and prices of the instruments being traded in the market. There are a variety of algorithms for order matching. The Pro-Rata and Price/Time matching algorithms are the most common.</p>
 <section id="price-time-matching-algorithm">
-<h4>Price/Time matching algorithm<a class="headerlink" href="#price-time-matching-algorithm" title="Permalink to this headline">#</a></h4>
+<span id="content-references-price-time-algo"></span><h5>Price/Time matching algorithm<a class="headerlink" href="#price-time-matching-algorithm" title="Permalink to this headline">#</a></h5>
 <p>The price-time algorithm, also known as the First-in-First-Out (FIFO) algorithm, is the most straightforward order book matching algorithm. In the price-time algorithm, the order matching priority is price and then time. For example, buy orders with higher prices are automatically prioritized over buy orders at lower prices.
 However, buy orders arriving in the order book with the same maximum price are prioritized based on the bid time, where priority is given to the first buy order.</p>
 <div class="proof example admonition" id="example-0">
@@ -686,7 +713,7 @@ However, buy orders arriving in the order book with the same maximum price are p
 </section>
 </div></section>
 <section id="pro-rata-matching-algorithm">
-<h4>Pro-Rata matching algorithm<a class="headerlink" href="#pro-rata-matching-algorithm" title="Permalink to this headline">#</a></h4>
+<span id="content-references-pro-rata-algo"></span><h5>Pro-Rata matching algorithm<a class="headerlink" href="#pro-rata-matching-algorithm" title="Permalink to this headline">#</a></h5>
 <p>A system using the Pro-Rata algorithm also gives priority to the highest-priced buy order. However, buy orders with the same highest price are matched in proportion to each order size.</p>
 <div class="proof example admonition" id="example-1">
 <p class="admonition-title"><span class="caption-number">Example 6 </span> (Pro-Rata mathching)</p>
@@ -695,6 +722,12 @@ However, buy orders arriving in the order book with the same maximum price are p
 <p>The Pro-Rata algorithm will match 225 shares to the 300-share buy order and 75 shares to the 100-share buy order. Hence, both buy orders are partially filled. Here, the Pro-Rata algorithm fills 75% of both buy orders.</p>
 </section>
 </div></section>
+</section>
+</section>
+<section id="order-routing-and-market-makers">
+<h3>Order Routing and Market Makers<a class="headerlink" href="#order-routing-and-market-makers" title="Permalink to this headline">#</a></h3>
+<p>In a classical face-to-face auction, the identity of the buyer and seller, or at least their representatives, is typically known. However, determining who the buyers and sellers are on an electronic exchange is impossible; you will (likely) never <em>know</em> your counterparty. Instead,
+<a class="reference external" href="https://www.investopedia.com/terms/c/coreliquidityprovider.asp">Core</a> and <a class="reference external" href="https://www.investopedia.com/terms/s/supplemental-liquidity-provider.asp">supplemental liquidity providers</a>, also called market makers, facilitate securities trading by providing a pool of shares, (which they own), so that buyers and sellers trade without having to locate and deal with each other individually.</p>
 </section>
 </section>
 <hr class="docutils" />
