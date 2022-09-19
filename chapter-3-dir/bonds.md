@@ -13,11 +13,19 @@ In this lecture, we will discuss:
 
 ---
 
+```{figure} ./figs/Fig-Govt-Debt-Schematic.pdf
+---
+height: 340px
+name: fig-bill-notes-bonds-schematic
+---
+Schematic of United States Treasury debt instruments. The treasury borrows money from bondholders by selling treasury bills, notes, and bonds. Each debt instrument has a particular repayment plan, e.g., a specified duration and payment schedule.   
+```
+
 (content:references:treasury-bonds)=
 ## Treasury Bills, Notes and Bonds
-A fixed-income debt security is a contract between a borrower and a lender. In the context of this lecture, we'll focus on U.S. Treasury Bills, Notes, and Bonds, examples of government debt securities. For United States treasury debt instruments, the borrower is the U.S. government; the government issues (i.e., sells) a bond to a lender (you) for some cash. This arrangement obligates the U.S. Treasury to make specified payments to the bondholder (you) on specified dates.
+A fixed-income debt security is a contract between a borrower and a lender. In the context of this lecture, we'll focus on U.S. Treasury Bills, Notes, and Bonds, examples of government debt securities. For United States treasury debt instruments, the borrower is the U.S. government; the government issues (i.e., sells) a bond to a lender (you) for some cash. This arrangement obligates the U.S. Treasury to make specified payments to the bondholder (you) on specified dates over the lifetime of the instrument ({numref}`fig-bill-notes-bonds-schematic`).
 
-There are several types of U.S. government debt securities. However, they share several similarities:
+There are many types of U.S. government debt securities. However, the various debt instruments share several similarities:
 
 * U.S. Treasury debt securities have specified term lengths, meaning the duration of the borrowing contract between the borrower and the lender is fixed. 
 * U.S. Treasury debt securities have a par value, i.e., the face value of the instrument, a price (which may not be the same as the par value), and an interest rate paid to the lender.
@@ -26,40 +34,35 @@ There are several types of U.S. government debt securities. However, they share 
 * You can buy U.S Treasury debt (meaning lend money to the U.S. government) directly from the [United States Treasury via TreasuryDirect](https://www.treasurydirect.gov/indiv/products/prod_tbonds_glance.htm) or through a bank or broker.
 
 
-### Treasury Bills
-
 
 ```{figure} ./figs/Fig-Zero-Coupon-Schematic.pdf
 ---
 height: 360px
 name: fig-bill-payout-schematic
 ---
-Sensitivity of bond price to changes in the market interest rate.   
+Schematic of a zero-coupon United States Treasury Bill (T-bill). The bondholder purchases the T-bill for $V_{B}$ USD (current). At the term of the T-bill, the treasury pays the bondholder the face (par) value of the T-bill.    
 ```
 
-Treasury bills (also called T-bills) are short-term debt instruments sold in terms ranging from a few days to 52 weeks. T-bills are typically sold at a discount from the par amount; rarely are they sold at a price equal to the par amount. When a T-bill matures, you the bill holder is paid the par amount. 
-
-Treasury bills are issued for terms of 4, 8, 13, 26, and 52 weeks; 4-week, 8-week, 13-week, 26-week, and 52-week T-bills are auctioned on a regular schedule.  
+### Treasury Bills
+Treasury bills (also called T-bills) are short-term debt instruments sold in terms ranging from a few days to 52 weeks ({numref}`fig-bill-payout-schematic`). Treasury bills are issued for terms of 4, 8, 13, 26, and 52 weeks; 4-week, 8-week, 13-week, 26-week, and 52-week T-bills are auctioned on a regular schedule. 
 
 #### Pricing of U.S. Treasury Bills
-T-bills are an example of a zero-coupon fixed-income instrument; thus, T-bills do not make coupon payments during the bond term. Instead, T-bills are priced such that the bondholder receives the par value at the term of the bond:
+T-bills are an example of a zero-coupon fixed-income instrument; thus, T-bills do not make coupon payments during the bill term. Instead, T-bills are priced, so the bondholder receives the par value at the bond’s duration. T-bills are typically sold at a discount from the par amount; rarely are they sold at a price equal to the par amount:
 
 ````{prf:definition} Zero Coupon Rate Bond Pricing
 :label: defn-zero-coupon-bond-pricing
 
-Let a zero-coupon treasury bill (T-bill) have a term of T-years with an annual market interest rate of $\bar{r}$; the interest rate $\bar{r}$ is assumed constant over the lifetime of the bill. 
-
-Then, the _fair price_ for a zero-coupon treasury bill is the future face (par) value of the bill discounted to the time of the purchase:
+Let a zero-coupon treasury bill (T-bill) have a T-year term with an annual market interest rate of $\bar{r}$. Then, the _fair price_ for a zero-coupon treasury bill is the future face (par) value of the bill discounted to today by the market interest rate $\bar{r}$:
 
 ```{math}
 :label: eqn-zero-coupon-bill-bond
 V_{B} = \frac{V_{P}}{\left(1+\bar{r}\right)^{T}}
 ```
 
-where $V_{B}$ denotes the price of the treasury bill, and $V_{P}$ represents the face (par) value of the treasury bill.
+where $V_{B}$ denotes the price of the treasury bill, and $V_{P}$ represents the face (par) value of the treasury bill. 
 ````
 
-Let's do an example illustrating the pricing of a zero-coupon treasury bill ({prf:ref}`defn-zero-coupon-bond-pricing`).
+The price of the bill $V_{B}$ is computed with respect to a particular value of the market interest rate $\bar{r}$ on the day the T-bill is purchased. However, the market interest rate $\bar{r}$ may vary over the T-bill term; hence, the market price of the T-bill can change over its term. Let's do an example illustrating the pricing of a zero-coupon treasury bill ({prf:ref}`defn-zero-coupon-bond-pricing`).
 
 
 ````{prf:example} Pricing of a Treasury Bill
