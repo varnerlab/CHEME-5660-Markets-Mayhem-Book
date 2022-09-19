@@ -70,18 +70,18 @@ The price of the bill $V_{B}$ is computed with respect to a particular value of 
 
 Compute the fair price for a zero-coupon treasury bill with a par value of \$1,000 and T = 26-week and T = 52-week duration as a function of annualized market interest rate $\bar{r}$. 
 
-The fair price for a zero-coupon treasury bill, denoted by $V_{B}$, is the future par value $V_{P}$ of the bill discounted to the time of the purchase:
+The fair price for a zero-coupon treasury bill, denoted by $V_{B}$, is the future face (par) value $V_{P}$ of the bill discounted at $\bar{r}$ to the time of the purchase (current dollars):
 
 $$V_{B} = \frac{V_{P}}{\left(1+\bar{r}\right)^{T}}$$
 
-Solving this expression as a function of $\bar{r}$ for different values of the bill term parameter $T$ gives the results shown in {numref}`fig-zcbill-price`:
+Solving this expression as a function of $\bar{r}$ for different values of the T-bill term $T$ gives the results shown in {numref}`fig-zcbill-price`:
 
 ```{figure} ./figs/Fig-Price-Zero-Coupon-Bill.pdf
 ---
 height: 400px
 name: fig-zcbill-price
 ---
-Price of a zero coupon treasury bill for a term of 0.5 (dark blue) and 1 year (light blue) as a function of the market interest rate. Face value $V_{P}$ = 1000 USD.
+Price of a zero coupon treasury bill for a term of 0.5 (dark blue) and one year (light blue) as a function of the market interest rate. Face value $V_{P}$ = 1000 USD.
 ```
 
 __source__: [Live Pluto notebook](https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks) or [a static HTML view](https://htmlview.glitch.me/?https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks/blob/main/pluto-notebooks/html/Example-Price-ZeroCoupon-TreasuryBill.jl.html).
@@ -135,7 +135,7 @@ A bond’s coupon payments, and the eventual repayment of the face value, occurs
 ````{prf:definition} Fixed Coupon Rate Bond Pricing
 :label: defn-fixed-r-bond-pricing
 
-Let the term of a bond be T-years with semi-annual coupon payments (N = 2T coupon payments over the term of the bond), with an annual coupon rate of $\bar{c}$, and an annual market interest rate of $\bar{r}$. 
+Let the term of a bond be T-years with $\lambda$ coupon payments per year; $N = \lambda{T}$ coupon payments over the term of the bond. Further, let $\bar{c}$ denote the annual coupon rate, and $\bar{r}$ denote the annual market interest rate.
 
 Then, the _fair price_ for the bond, denoted by $V_{B}$, is the present value of coupon payments $C$ plus the discounted par value $V_{P}$ of the bond:
 
@@ -143,7 +143,7 @@ Then, the _fair price_ for the bond, denoted by $V_{B}$, is the present value of
 V_{B} = \frac{V_{P}}{\left(1+i\right)^{N}}+\sum_{j=1}^{N}\frac{C}{\left(1+i\right)^{j}}
 ```
 
-where $i=\bar{r}/2$ is set by the market at the time when the bond is purchased, and $C=\left(\bar{c}/2\right)\cdot{V_{P}}$. If $\bar{c}=\bar{r}$, the fair price equals the par value i.e., $V_{B} = V_{P}$.
+where $i=\bar{r}/\lambda$ is set by the market at the time when the bond is purchased, and $C=\left(\bar{c}/\lambda\right)\cdot{V_{P}}$. If $\bar{c}=\bar{r}$, the fair price equals the par value i.e., $V_{B} = V_{P}$.
 ````
 
 Let's do an example illustrating bond pricing ({prf:ref}`defn-fixed-r-bond-pricing`).
