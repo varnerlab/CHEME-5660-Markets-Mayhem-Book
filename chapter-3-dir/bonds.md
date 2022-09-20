@@ -208,8 +208,7 @@ Sensitivity of bond price to changes in the market interest rate.
 
 (content:references:bond-pricing-relationships)=
 #### Malkiel’s bond-pricing rules
-The relationship between the price of a bond, and the yeild (i.e., the market interest rate $\bar{r}$) was previously
-studied by Malkiel {cite}`Malkiel1962`. The so-called Malkiel’s bond-pricing rules are demonstrated by the simulations shown in ({numref}`fig-bond-price-sensitivity`):
+The relationship between the price of a bond, and the yeild (i.e., the market interest rate $\bar{r}$) was previously studied by Malkiel {cite}`Malkiel1962`. The so-called Malkiel’s bond-pricing rules are demonstrated by the simulations shown in ({numref}`fig-bond-price-sensitivity`):
 
 1. The price of a U.S. Treasury Bond _increases_ as the market interest rate $\bar{r}$ _decreases_; thus, there is an _inverse_ relationship between the bond yield to maturity (i.e., the market rate $\bar{r}$) and the price of the bond $V_{B}$. 
 1. Changes in price as a function of changes in the interest rate are not symmetric;
