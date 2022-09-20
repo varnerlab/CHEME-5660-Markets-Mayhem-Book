@@ -70,18 +70,18 @@ The price of the bill $V_{B}$ is computed with respect to a particular value of 
 
 Compute the fair price for a zero-coupon treasury bill with a par value of \$1,000 and T = 26-week and T = 52-week duration as a function of annualized market interest rate $\bar{r}$. 
 
-The fair price for a zero-coupon treasury bill, denoted by $V_{B}$, is the future par value $V_{P}$ of the bill discounted to the time of the purchase:
+The fair price for a zero-coupon treasury bill, denoted by $V_{B}$, is the future face (par) value $V_{P}$ of the bill discounted at $\bar{r}$ to the time of the purchase (current dollars):
 
 $$V_{B} = \frac{V_{P}}{\left(1+\bar{r}\right)^{T}}$$
 
-Solving this expression as a function of $\bar{r}$ for different values of the bill term parameter $T$ gives the results shown in {numref}`fig-zcbill-price`:
+Solving this expression as a function of $\bar{r}$ for different values of the T-bill term $T$ gives the results shown in {numref}`fig-zcbill-price`:
 
 ```{figure} ./figs/Fig-Price-Zero-Coupon-Bill.pdf
 ---
 height: 400px
 name: fig-zcbill-price
 ---
-Price of a zero coupon treasury bill for a term of 0.5 (dark blue) and 1 year (light blue) as a function of the market interest rate. Face value $V_{P}$ = 1000 USD.
+Price of a zero coupon treasury bill for a term of 0.5 (dark blue) and one year (light blue) as a function of the market interest rate. Face value $V_{P}$ = 1000 USD.
 ```
 
 __source__: [Live Pluto notebook](https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks) or [a static HTML view](https://htmlview.glitch.me/?https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks/blob/main/pluto-notebooks/html/Example-Price-ZeroCoupon-TreasuryBill.jl.html).
@@ -135,7 +135,7 @@ A bond’s coupon payments, and the eventual repayment of the face value, occurs
 ````{prf:definition} Fixed Coupon Rate Bond Pricing
 :label: defn-fixed-r-bond-pricing
 
-Let the term of a bond be T-years with semi-annual coupon payments (N = 2T coupon payments over the term of the bond), with an annual coupon rate of $\bar{c}$, and an annual market interest rate of $\bar{r}$. 
+Let the term of a bond be T-years with $\lambda$ coupon payments per year; $N = \lambda{T}$ coupon payments over the term of the bond. Further, let $\bar{c}$ denote the annual coupon rate, and $\bar{r}$ denote the annual market interest rate.
 
 Then, the _fair price_ for the bond, denoted by $V_{B}$, is the present value of coupon payments $C$ plus the discounted par value $V_{P}$ of the bond:
 
@@ -143,7 +143,7 @@ Then, the _fair price_ for the bond, denoted by $V_{B}$, is the present value of
 V_{B} = \frac{V_{P}}{\left(1+i\right)^{N}}+\sum_{j=1}^{N}\frac{C}{\left(1+i\right)^{j}}
 ```
 
-where $i=\bar{r}/2$ is set by the market at the time when the bond is purchased, and $C=\left(\bar{c}/2\right)\cdot{V_{P}}$. If $\bar{c}=\bar{r}$, the fair price equals the par value i.e., $V_{B} = V_{P}$.
+where the coupon payment $C=\left(\bar{c}/\lambda\right)\cdot{V_{P}}$ is set when the bond is purchased, and the market interest rate $i=\bar{r}/\lambda$ varies with the market. 
 ````
 
 Let's do an example illustrating bond pricing ({prf:ref}`defn-fixed-r-bond-pricing`).
@@ -156,14 +156,13 @@ Compute the price of a bond with a T = 30-year term and a par value of $V_{P}$ =
 1. The interest rate $\bar{r}$ is larger than the coupon rate $\bar{c}$; let $\bar{c}=8\%$ and $\bar{r}=10\%$
 1. The interest rate $\bar{r}$ is smaller than the coupon rate $\bar{c}$; let $\bar{c}=8\%$ and $\bar{r}=6\%$
 
-The price of the bond is given by {prf:ref}`defn-fixed-r-bond-pricing`. A 30-year term gives 60 semi-annual coupon payments. Substituting the values for $\bar{r}$, $\bar{c}$ and the number of payements into the pricing equation gives:
+The bond price is given by {prf:ref}`defn-fixed-r-bond-pricing`. A 30-year term gives 60 semi-annual coupon payments. Substituting the values for $\bar{r}$, $\bar{c}$ and the number of payments into the pricing equation gives:
 
 | Case | $\bar{r}$ (\%) | $\bar{c}$ (\%) | $V_{P}$ (USD) | $V_{B}$ (USD) |
 | :----: | :---------: | :---------: | :-------: | :-------: |
 | 1    | 8       | 8       | 1000    | 1000    |
 | 2    | 10      | 8       | 1000    | 810.71  |
 | 3    | 6       | 8       | 1000    | 1276.76 |
-
 
 __source__: [Live Pluto notebook](https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks) or [a static HTML view](https://htmlview.glitch.me/?https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks/blob/main/pluto-notebooks/html/Example-Price-TreasuryBond.jl.html).
 ````
@@ -193,7 +192,7 @@ where $i=\bar{r}/2$ is set by the market at the time of purchase of the bond, an
 ````
 
 ##### Example
-* Let's do an example illustrating the Yield to Maturity (YTM) calculation ({prf:ref}`defn-yield-to-maturity`). Sources: [Live Pluto notebook](https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks) or [static HTML](https://htmlview.glitch.me/?https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks/blob/main/pluto-notebooks/html/Example-YieldToMaturity-TreasuryBond.jl.html).
+* Let's do an example illustrating the Yield to Maturity (YTM) calculation ({prf:ref}`defn-yield-to-maturity`). Sources: [Live Pluto notebook](https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks) or [a static HTML view](https://htmlview.glitch.me/?https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks/blob/main/pluto-notebooks/html/Example-YieldToMaturity-TreasuryBond.jl.html).
 
 
 ### Sensitivity of Bond Prices to Interest Rate Changes
@@ -201,7 +200,7 @@ Bond investors have two actions open to them: hold the bond until maturity (and 
 
 ```{figure} ./figs/Fig-Sensitivity-Bond-Price-Interest-Rate.pdf
 ---
-height: 400px
+height: 420px
 name: fig-bond-price-sensitivity
 ---
 Sensitivity of bond price to changes in the market interest rate.   
@@ -219,14 +218,11 @@ an increase in a bond’s interest rate $\bar{r}$ results in a _smaller price ch
 1. Interest rate risk is inversely related to a bond’s coupon rate. Prices of low coupon-rate bonds are more sensitive to changes in interest rates than prices of high-rate coupon bonds. For example, compare Case II and III in ({numref}`fig-bond-price-sensitivity`); case III (the low coupon-rate bond) is significanly more sensitive to decreases in interest rate compared with case II (the high coupon-rate bond). A similar, albeit less pronounced, trend is visible for increased
 interest rate.
 
-## Are United States Treasury Bills, Notes or Bonds really risk free?
-Fill me in.
-
 ---
  
 ## Summary
 In this lecture, we introduced fixed-income debt securities. Fixed-income debt securities are contracts between a borrower and a lender that regulate the repayment of a debt. Here we focused on an archetypal category of fixed-income debt security: [United States Treasury Securities](https://www.investor.gov/introduction-investing/investing-basics/glossary/treasury-securities). In particular, we:
 
 * Introduced the definition of {ref}`content:references:treasury-bonds`
-* Developed tools to compute the fair price of an N-coupon Treasury Bills/Notes/Bonds as a function of the par-value, market interest rate, coupon rate and instrument term.
+* Developed tools to compute the fair price of Treasury Bills/Notes/Bonds as a function of the par value, market interest rate, and coupon rate.
 * Introduced {ref}`content:references:bond-pricing-relationships`; Malkiel’s rules describe the sensitivity of bond price to changes in market interest rates as a function of other bond parameters such as coupon rate and term. 

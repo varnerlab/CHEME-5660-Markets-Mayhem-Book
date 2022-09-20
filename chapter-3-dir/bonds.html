@@ -479,11 +479,6 @@ title="Print to PDF"
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#are-united-states-treasury-bills-notes-or-bonds-really-risk-free">
-   Are United States Treasury Bills, Notes or Bonds really risk free?
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#summary">
    Summary
   </a>
@@ -568,11 +563,6 @@ title="Print to PDF"
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#are-united-states-treasury-bills-notes-or-bonds-really-risk-free">
-   Are United States Treasury Bills, Notes or Bonds really risk free?
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#summary">
    Summary
   </a>
@@ -642,14 +632,14 @@ title="Print to PDF"
 <p class="admonition-title"><span class="caption-number">Example 11 </span> (Pricing of a Treasury Bill)</p>
 <section class="example-content" id="proof-content">
 <p>Compute the fair price for a zero-coupon treasury bill with a par value of $1,000 and T = 26-week and T = 52-week duration as a function of annualized market interest rate <span class="math notranslate nohighlight">\(\bar{r}\)</span>.</p>
-<p>The fair price for a zero-coupon treasury bill, denoted by <span class="math notranslate nohighlight">\(V_{B}\)</span>, is the future par value <span class="math notranslate nohighlight">\(V_{P}\)</span> of the bill discounted to the time of the purchase:</p>
+<p>The fair price for a zero-coupon treasury bill, denoted by <span class="math notranslate nohighlight">\(V_{B}\)</span>, is the future face (par) value <span class="math notranslate nohighlight">\(V_{P}\)</span> of the bill discounted at <span class="math notranslate nohighlight">\(\bar{r}\)</span> to the time of the purchase (current dollars):</p>
 <div class="math notranslate nohighlight">
 \[V_{B} = \frac{V_{P}}{\left(1+\bar{r}\right)^{T}}\]</div>
-<p>Solving this expression as a function of <span class="math notranslate nohighlight">\(\bar{r}\)</span> for different values of the bill term parameter <span class="math notranslate nohighlight">\(T\)</span> gives the results shown in <a class="reference internal" href="#fig-zcbill-price"><span class="std std-numref">Fig. 19</span></a>:</p>
+<p>Solving this expression as a function of <span class="math notranslate nohighlight">\(\bar{r}\)</span> for different values of the T-bill term <span class="math notranslate nohighlight">\(T\)</span> gives the results shown in <a class="reference internal" href="#fig-zcbill-price"><span class="std std-numref">Fig. 19</span></a>:</p>
 <figure class="align-default" id="fig-zcbill-price">
 <a class="reference internal image-reference" href="../_images/Fig-Price-Zero-Coupon-Bill.pdf"><img alt="../_images/Fig-Price-Zero-Coupon-Bill.pdf" src="../_images/Fig-Price-Zero-Coupon-Bill.pdf" style="height: 400px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 19 </span><span class="caption-text">Price of a zero coupon treasury bill for a term of 0.5 (dark blue) and 1 year (light blue) as a function of the market interest rate. Face value <span class="math notranslate nohighlight">\(V_{P}\)</span> = 1000 USD.</span><a class="headerlink" href="#fig-zcbill-price" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 19 </span><span class="caption-text">Price of a zero coupon treasury bill for a term of 0.5 (dark blue) and one year (light blue) as a function of the market interest rate. Face value <span class="math notranslate nohighlight">\(V_{P}\)</span> = 1000 USD.</span><a class="headerlink" href="#fig-zcbill-price" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p><strong>source</strong>: <a class="reference external" href="https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks">Live Pluto notebook</a> or <a class="reference external" href="https://htmlview.glitch.me/?https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks/blob/main/pluto-notebooks/html/Example-Price-ZeroCoupon-TreasuryBill.jl.html">a static HTML view</a>.</p>
@@ -690,11 +680,11 @@ title="Print to PDF"
 <div class="proof definition admonition" id="defn-fixed-r-bond-pricing">
 <p class="admonition-title"><span class="caption-number">Definition 24 </span> (Fixed Coupon Rate Bond Pricing)</p>
 <section class="definition-content" id="proof-content">
-<p>Let the term of a bond be T-years with semi-annual coupon payments (N = 2T coupon payments over the term of the bond), with an annual coupon rate of <span class="math notranslate nohighlight">\(\bar{c}\)</span>, and an annual market interest rate of <span class="math notranslate nohighlight">\(\bar{r}\)</span>.</p>
+<p>Let the term of a bond be T-years with <span class="math notranslate nohighlight">\(\lambda\)</span> coupon payments per year; <span class="math notranslate nohighlight">\(N = \lambda{T}\)</span> coupon payments over the term of the bond. Further, let <span class="math notranslate nohighlight">\(\bar{c}\)</span> denote the annual coupon rate, and <span class="math notranslate nohighlight">\(\bar{r}\)</span> denote the annual market interest rate.</p>
 <p>Then, the <em>fair price</em> for the bond, denoted by <span class="math notranslate nohighlight">\(V_{B}\)</span>, is the present value of coupon payments <span class="math notranslate nohighlight">\(C\)</span> plus the discounted par value <span class="math notranslate nohighlight">\(V_{P}\)</span> of the bond:</p>
 <div class="math notranslate nohighlight">
 \[V_{B} = \frac{V_{P}}{\left(1+i\right)^{N}}+\sum_{j=1}^{N}\frac{C}{\left(1+i\right)^{j}}\]</div>
-<p>where <span class="math notranslate nohighlight">\(i=\bar{r}/2\)</span> is set by the market at the time when the bond is purchased, and <span class="math notranslate nohighlight">\(C=\left(\bar{c}/2\right)\cdot{V_{P}}\)</span>. If <span class="math notranslate nohighlight">\(\bar{c}=\bar{r}\)</span>, the fair price equals the par value i.e., <span class="math notranslate nohighlight">\(V_{B} = V_{P}\)</span>.</p>
+<p>where the coupon payment <span class="math notranslate nohighlight">\(C=\left(\bar{c}/\lambda\right)\cdot{V_{P}}\)</span> is set when the bond is purchased, and the market interest rate <span class="math notranslate nohighlight">\(i=\bar{r}/\lambda\)</span> varies with the market.</p>
 </section>
 </div><p>Let’s do an example illustrating bond pricing (<a class="reference internal" href="#defn-fixed-r-bond-pricing">Definition 24</a>).</p>
 <div class="proof example admonition" id="example-treaury-bond-price">
@@ -706,7 +696,7 @@ title="Print to PDF"
 <li><p>The interest rate <span class="math notranslate nohighlight">\(\bar{r}\)</span> is larger than the coupon rate <span class="math notranslate nohighlight">\(\bar{c}\)</span>; let <span class="math notranslate nohighlight">\(\bar{c}=8\%\)</span> and <span class="math notranslate nohighlight">\(\bar{r}=10\%\)</span></p></li>
 <li><p>The interest rate <span class="math notranslate nohighlight">\(\bar{r}\)</span> is smaller than the coupon rate <span class="math notranslate nohighlight">\(\bar{c}\)</span>; let <span class="math notranslate nohighlight">\(\bar{c}=8\%\)</span> and <span class="math notranslate nohighlight">\(\bar{r}=6\%\)</span></p></li>
 </ol>
-<p>The price of the bond is given by <a class="reference internal" href="#defn-fixed-r-bond-pricing">Definition 24</a>. A 30-year term gives 60 semi-annual coupon payments. Substituting the values for <span class="math notranslate nohighlight">\(\bar{r}\)</span>, <span class="math notranslate nohighlight">\(\bar{c}\)</span> and the number of payements into the pricing equation gives:</p>
+<p>The bond price is given by <a class="reference internal" href="#defn-fixed-r-bond-pricing">Definition 24</a>. A 30-year term gives 60 semi-annual coupon payments. Substituting the values for <span class="math notranslate nohighlight">\(\bar{r}\)</span>, <span class="math notranslate nohighlight">\(\bar{c}\)</span> and the number of payments into the pricing equation gives:</p>
 <table class="colwidths-auto table">
 <thead>
 <tr class="row-odd"><th class="text-align:center head"><p>Case</p></th>
@@ -758,7 +748,7 @@ investors must calculate this value from the bond price, maturity date, and coup
 </div><section id="example">
 <h5>Example<a class="headerlink" href="#example" title="Permalink to this headline">#</a></h5>
 <ul class="simple">
-<li><p>Let’s do an example illustrating the Yield to Maturity (YTM) calculation (<a class="reference internal" href="#defn-yield-to-maturity">Definition 25</a>). Sources: <a class="reference external" href="https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks">Live Pluto notebook</a> or <a class="reference external" href="https://htmlview.glitch.me/?https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks/blob/main/pluto-notebooks/html/Example-YieldToMaturity-TreasuryBond.jl.html">static HTML</a>.</p></li>
+<li><p>Let’s do an example illustrating the Yield to Maturity (YTM) calculation (<a class="reference internal" href="#defn-yield-to-maturity">Definition 25</a>). Sources: <a class="reference external" href="https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks">Live Pluto notebook</a> or <a class="reference external" href="https://htmlview.glitch.me/?https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks/blob/main/pluto-notebooks/html/Example-YieldToMaturity-TreasuryBond.jl.html">a static HTML view</a>.</p></li>
 </ul>
 </section>
 </section>
@@ -767,7 +757,7 @@ investors must calculate this value from the bond price, maturity date, and coup
 <h3>Sensitivity of Bond Prices to Interest Rate Changes<a class="headerlink" href="#sensitivity-of-bond-prices-to-interest-rate-changes" title="Permalink to this headline">#</a></h3>
 <p>Bond investors have two actions open to them: hold the bond until maturity (and collect the coupon payments along the way), or resell the bond (and potentially benefit from a change in the bond price). The latter is possible because after the bonds are issued, bondholders may buy or resell bonds in secondary bond markets. In these markets, bond prices fluctuate inversely with the market interest rate <span class="math notranslate nohighlight">\(\bar{r}\)</span>. Thus, interest rate fluctuations are the main source of risk to the bondholder if they are not holding the bound to maturity.</p>
 <figure class="align-default" id="fig-bond-price-sensitivity">
-<a class="reference internal image-reference" href="../_images/Fig-Sensitivity-Bond-Price-Interest-Rate.pdf"><img alt="../_images/Fig-Sensitivity-Bond-Price-Interest-Rate.pdf" src="../_images/Fig-Sensitivity-Bond-Price-Interest-Rate.pdf" style="height: 400px;" /></a>
+<a class="reference internal image-reference" href="../_images/Fig-Sensitivity-Bond-Price-Interest-Rate.pdf"><img alt="../_images/Fig-Sensitivity-Bond-Price-Interest-Rate.pdf" src="../_images/Fig-Sensitivity-Bond-Price-Interest-Rate.pdf" style="height: 420px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 21 </span><span class="caption-text">Sensitivity of bond price to changes in the market interest rate.</span><a class="headerlink" href="#fig-bond-price-sensitivity" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -787,17 +777,13 @@ interest rate.</p></li>
 </section>
 </section>
 </section>
-<section id="are-united-states-treasury-bills-notes-or-bonds-really-risk-free">
-<h2>Are United States Treasury Bills, Notes or Bonds really risk free?<a class="headerlink" href="#are-united-states-treasury-bills-notes-or-bonds-really-risk-free" title="Permalink to this headline">#</a></h2>
-<p>Fill me in.</p>
-</section>
 <hr class="docutils" />
 <section id="summary">
 <h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">#</a></h2>
 <p>In this lecture, we introduced fixed-income debt securities. Fixed-income debt securities are contracts between a borrower and a lender that regulate the repayment of a debt. Here we focused on an archetypal category of fixed-income debt security: <a class="reference external" href="https://www.investor.gov/introduction-investing/investing-basics/glossary/treasury-securities">United States Treasury Securities</a>. In particular, we:</p>
 <ul class="simple">
 <li><p>Introduced the definition of <a class="reference internal" href="#content-references-treasury-bonds"><span class="std std-ref">Treasury Bills, Notes and Bonds</span></a></p></li>
-<li><p>Developed tools to compute the fair price of an N-coupon Treasury Bills/Notes/Bonds as a function of the par-value, market interest rate, coupon rate and instrument term.</p></li>
+<li><p>Developed tools to compute the fair price of Treasury Bills/Notes/Bonds as a function of the par value, market interest rate, and coupon rate.</p></li>
 <li><p>Introduced <a class="reference internal" href="#content-references-bond-pricing-relationships"><span class="std std-ref">Malkiel’s bond-pricing rules</span></a>; Malkiel’s rules describe the sensitivity of bond price to changes in market interest rates as a function of other bond parameters such as coupon rate and term.</p></li>
 </ul>
 </section>
