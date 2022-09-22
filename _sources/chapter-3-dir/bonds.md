@@ -184,7 +184,7 @@ The yield to maturity (YTM) is defined as the market interest rate that makes th
 Let the term of a bond be T-years with $\lambda$ coupon payments per year; $N = \lambda{T}$ coupon payments over the bond duration. The yield to maturity (YTM) is defined as the market interest rate that makes the present value of a bond’s payments equal to its price, $V_{B}$:
 
 ```{math}
-\hat{V}_{B} - \frac{V_{P}}{\left(1+i\right)^{N}}-\sum_{j=1}^{N}\frac{C}{\left(1+i\right)^{j}} = 0
+V_{B} - \frac{V_{P}}{\left(1+i\right)^{N}}-\sum_{j=1}^{N}\frac{C}{\left(1+i\right)^{j}} = 0
 ```
 
 where $C=\left(\bar{c}/\lambda\right)\cdot{V_{P}}$ denotes the value of the coupon payment which is set at the time the bond is purchased, and $i=\bar{r}/\lambda$ denotes the market interest rate (spot rate), which can fluctuate over time.
