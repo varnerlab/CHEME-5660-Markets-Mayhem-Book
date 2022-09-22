@@ -179,15 +179,15 @@ investors must calculate this value from the bond price, maturity date, and coup
 ````{prf:definition} Yield to Maturity 
 :label: defn-yield-to-maturity
 
-Let the term of a bond be T-years with semi-annual coupon payments (N = 2T coupon payments over the term of the bond), with an annual coupon rate of $\bar{c}$. Further, suppose the U.S. Treasury bond was purchased for $\hat{V}_{B}$ (which may be different that the _fair price_).
+The yield to maturity (YTM) is defined as the market interest rate that makes the present value of a bond’s payments equal to its price, $V_{B}$.
 
-The yield to maturity (YTM) value is the interest rate $\bar{r}$ that makes $V_{B}=\hat{V}_{B}$:
+Let the term of a bond be T-years with $\lambda$ coupon payments per year; $N = \lambda{T}$ coupon payments over the bond duration. The yield to maturity (YTM) is defined as the market interest rate that makes the present value of a bond’s payments equal to its price, $V_{B}$:
 
 ```{math}
-\hat{V}_{B} - \frac{V_{P}}{\left(1+i\right)^{N}}-\sum_{j=1}^{2T}\frac{C}{\left(1+i\right)^{j}} = 0
+V_{B} - \frac{V_{P}}{\left(1+i\right)^{N}}-\sum_{j=1}^{N}\frac{C}{\left(1+i\right)^{j}} = 0
 ```
 
-where $i=\bar{r}/2$ is set by the market at the time of purchase of the bond, and $C=\left(\bar{c}/2\right)\cdot{V_{P}}$.
+where $C=\left(\bar{c}/\lambda\right)\cdot{V_{P}}$ denotes the value of the coupon payment which is set at the time the bond is purchased, and $i=\bar{r}/\lambda$ denotes the market interest rate (spot rate), which can fluctuate over time.
 
 ````
 
