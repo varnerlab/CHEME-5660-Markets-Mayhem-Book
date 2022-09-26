@@ -563,7 +563,7 @@ while the variance $\text{Var}(X)$ is given by:
 ````
 
 (content:references:prob-distribution-functions)=
-## Probility distribution functions
+## Probability distribution functions
 Fill me in.
 
 ---
