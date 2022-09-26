@@ -430,12 +430,12 @@ In the case of discrete random variables, for example, dice roles, coin flips et
 ````{prf:definition} Probability Mass Function
 :label: defn-pmf
 
-The probability mass function (PMF) of a random variable $X$ is a function which specifies the probability of 
+The probability mass function (PMF) of a discrete random variable $X$ is a function that specifies the probability of 
 obtaining $X = x$, where $x$ is a particular event outcome:
 
 $$p_{X}(x) = P\left(X=x\right)$$
 
-The set of all possible outcomes of for a random variable $X$ is denoted as $X\left(\Omega\right)$. A PMF should satisfy the condition:
+The set of all possible outcomes for a discrete random variable $X$ is denoted as $X\left(\Omega\right)$. A PMF must satisfy the condition:
 
 $$\sum_{x\in{X(\Omega)}}p_{X}(x)=1$$
 ````
@@ -455,10 +455,10 @@ $$\Omega = \left\{(HH),(HT),(TH),(TT)\right\}$$
 A Bernoulli random variable, the simplest random variable, models a coin-flip or some other type of binary
 outcome. Bernoulli random variable have two states: either 1 or 0. The probability of getting 1 is $p$, while the probability of getting a value of 0 is $1 − p$. Bernoulli random variables model many binary events: coin flips (H or T), binary bits (1 or 0), true or false, yes or no, present or absent, etc.
 
-````{prf:definition} Bionomial Random Variable
+````{prf:definition} Bernoulli Random Variable
 :label: defn-pmf-bernouli
 
-Let $X$ be a Bernoulli random variable. Then, the probability mass function of $X$ is:
+Let $X$ be a Bernoulli random variable. Then, the probability mass function of the Bernoulli random variable $X$ is:
 
 ```{math}
 p_{X}(x) =
@@ -484,19 +484,19 @@ while the variance $\text{Var}(X)$ is given by:
 ````
 
 ### Binomial random variable
-The binomial distribution is the probability of getting exactly $k$ successes in $n$ independent Bernoulli trials. For example, the probability of getting 4 heads in 6 coin tosses. 
+The binomial distribution is the probability of getting exactly $k$ successes in $n$ independent Bernoulli trials. For example, the chance of getting four heads in 6 coin tosses. 
 
-````{prf:definition} Bionomial Random Variable
+````{prf:definition} Binomial Random Variable
 :label: defn-pmf-binomial
 
-Let $X$ be a binomial random variable. The probability mass function for a binomial random variable is given by:
+Let $X$ be a binomial random variable. The probability mass function for a binomial random variable $X$ is given by:
 
 $$p_{X}(k) = \binom{n}{k}p^{k}\left(1-p\right)^{n-k}\qquad{k=0,1,\dots,n}$$
 
 where $n$ denotes the number of experiments, and the binomial parameter $0<p<1$ is the probability 
-that each experiment yeilds a successful result. 
+that each experiment yields a successful result. 
 
-For a Bernoulli random variable $X(\Omega) \in [0,1]^n$, i.e., $n$ Bernoulli trials.
+For a binomial random variable $X(\Omega) \in [0,1]^n$, i.e., $n$ trials.
 The expectation of a binomial random variable $X$ is given by:
 
 ```{math}
