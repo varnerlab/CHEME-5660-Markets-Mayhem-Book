@@ -431,7 +431,7 @@ In the case of discrete random variables, for example, dice roles, coin flips et
 :label: defn-pmf
 
 The probability mass function (PMF) of a discrete random variable $X$ is a function that specifies the probability of 
-obtaining $X = x$, where $x$ is a particular event outcome:
+obtaining $X = x$, where $x$ is a particular event:
 
 $$p_{X}(x) = P\left(X=x\right)$$
 
