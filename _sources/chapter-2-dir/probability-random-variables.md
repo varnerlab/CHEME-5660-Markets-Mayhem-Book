@@ -489,15 +489,17 @@ The binomial distribution is the probability of getting exactly $k$ successes in
 ````{prf:definition} Binomial Random Variable
 :label: defn-pmf-binomial
 
-Let $X$ be a binomial random variable. The probability mass function for a binomial random variable $X$ is given by:
+Suppose we do repeated Bernoulli trials $X(\Omega) \in [0,1]^n$, i.e., $n$ trials of an independent binary experiment.
+The probability of getting exactly $k$ successes in $n$ independent Bernoulli trials is governed by the binomial probability mass function:
 
 $$p_{X}(k) = \binom{n}{k}p^{k}\left(1-p\right)^{n-k}\qquad{k=0,1,\dots,n}$$
 
-where $n$ denotes the number of experiments, and the binomial parameter $0<p<1$ is the probability 
-that each experiment yields a successful result. 
+where $k$ denotes the number of successes in $n$ independent experiments, the binomial parameter $0<p<1$ is the probability 
+of a successful trial and:
 
-For a binomial random variable $X(\Omega) \in [0,1]^n$, i.e., $n$ trials.
-The expectation of a binomial random variable $X$ is given by:
+$$\binom{n}{k} = \frac{n!}{k!\left(n-k\right)!}$$
+
+The expectation of a binomial random variable is given by:
 
 ```{math}
 \mathbb{E}\left[X\right] = np

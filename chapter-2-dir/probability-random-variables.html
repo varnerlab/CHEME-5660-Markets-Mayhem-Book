@@ -1204,13 +1204,15 @@ The expectation of a Bernoulli random variable <span class="math notranslate noh
 <div class="proof definition admonition" id="defn-pmf-binomial">
 <p class="admonition-title"><span class="caption-number">Definition 16 </span> (Binomial Random Variable)</p>
 <section class="definition-content" id="proof-content">
-<p>Let <span class="math notranslate nohighlight">\(X\)</span> be a binomial random variable. The probability mass function for a binomial random variable <span class="math notranslate nohighlight">\(X\)</span> is given by:</p>
+<p>Suppose we do repeated Bernoulli trials <span class="math notranslate nohighlight">\(X(\Omega) \in [0,1]^n\)</span>, i.e., <span class="math notranslate nohighlight">\(n\)</span> trials of an independent binary experiment.
+The probability of getting exactly <span class="math notranslate nohighlight">\(k\)</span> successes in <span class="math notranslate nohighlight">\(n\)</span> independent Bernoulli trials is governed by the binomial probability mass function:</p>
 <div class="math notranslate nohighlight">
 \[p_{X}(k) = \binom{n}{k}p^{k}\left(1-p\right)^{n-k}\qquad{k=0,1,\dots,n}\]</div>
-<p>where <span class="math notranslate nohighlight">\(n\)</span> denotes the number of experiments, and the binomial parameter <span class="math notranslate nohighlight">\(0&lt;p&lt;1\)</span> is the probability
-that each experiment yields a successful result.</p>
-<p>For a binomial random variable <span class="math notranslate nohighlight">\(X(\Omega) \in [0,1]^n\)</span>, i.e., <span class="math notranslate nohighlight">\(n\)</span> trials.
-The expectation of a binomial random variable <span class="math notranslate nohighlight">\(X\)</span> is given by:</p>
+<p>where <span class="math notranslate nohighlight">\(k\)</span> denotes the number of successes in <span class="math notranslate nohighlight">\(n\)</span> independent experiments, the binomial parameter <span class="math notranslate nohighlight">\(0&lt;p&lt;1\)</span> is the probability
+of a successful trial and:</p>
+<div class="math notranslate nohighlight">
+\[\binom{n}{k} = \frac{n!}{k!\left(n-k\right)!}\]</div>
+<p>The expectation of a binomial random variable is given by:</p>
 <div class="math notranslate nohighlight">
 \[\mathbb{E}\left[X\right] = np\]</div>
 <p>while the variance <span class="math notranslate nohighlight">\(\text{Var}(X)\)</span> is given by:</p>
