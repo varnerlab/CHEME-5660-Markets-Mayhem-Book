@@ -153,14 +153,14 @@ Ordinary Brownian Motion (OBM) is a general class of problems involving constant
 
 ````{prf:definition} Scalar Ordinary Brownian Motion
 
-There exists constants $\mu$ and $\sigma>0$.
-Then a random process $X(t)$ follows an Ordinary Brownian Motion (Wiener) process with drift $\mu$ and diffusion $\sigma^{2}$ if $X(t)$ is a solution to the Stochastic Differential Equation (SDE):
+There exists scalar constants $\mu$ and $\sigma>0$.
+Then a scalar random process $X(t)$ follows an ordinary Brownian motion (Wiener) process with drift $\mu$ and diffusion $\sigma^{2}$ if $X(t)$ is a solution to the stochastic differential equation (SDE):
 
 ```{math}
 :label: eq-SDE-StandardBM
 dX\left(t\right) = \mu{dt}+\sigma{dW(t)}
 ```
-where $dW(t)$ is a one-dimensional Wiener Process.
+where $dW(t)$ is a one-dimensional Wiener process.
 ````
 
 #### Analytical solution: Ordinary Brownian Motion

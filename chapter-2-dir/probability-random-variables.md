@@ -238,7 +238,7 @@ the bitstring `1111`, which corresponds to $i=15$, corresponds to $\left\{\clubs
 ````
 
 ### Probability law $P$
-A probability law $P$ is a function $P$ : $\Omega\rightarrow\left[0, 1\right]$;
+A probability law $P$ is a function $P$ : $\mathcal{F}\rightarrow\left[0, 1\right]$;
 the function $P$ maps an event (set) $E\subseteq\Omega$ to a real number in $\left[0, 1\right]$.
 The definition above does not specify how an event $E\subseteq\Omega$ is being mapped to a number. 
 However, since probability is a measure of the size of a set, a meaningful probability law $P$ should be consistent for all $E\subseteq\Omega$. This requires rules, known as the axioms of probability, when we define the probability law $P$. 
@@ -246,10 +246,10 @@ However, since probability is a measure of the size of a set, a meaningful proba
 ```{prf:axiom} Axioms of Probability
 :label: axiom-probability 
 
-A probability law $P$ is a function $P:\Omega\rightarrow\left[0, 1\right]$ that maps an event $E\subseteq\Omega$
-to a real number in $\left[0, 1\right]$. The function must satisfy the three axioms of probability:
+A probability law $P$ is a function $P:\mathcal{F}\rightarrow\left[0, 1\right]$ that maps an event $E\subseteq\Omega$
+to a real number on the interval $\left[0, 1\right]$. The function $P$ must satisfy the three axioms of probability:
 
-* Non-negativity: $P(E)\geq{0}$, for any $E\subseteq\Omega$
+* Non-negativity: $P(E)\geq{0}$, for any $E\in\mathcal{F}$
 * Normalization: $P(\Omega)=1$
 * Additivity: For any disjoint event sets $\left\{E_{1}, E_{2}, \dots, E_{n}\right\}$ then $P\left(\bigcup_{i=1}^{n}E_{i}\right) = 
 \sum_{i=1}^{n}P(E_{i})$
@@ -431,7 +431,7 @@ In the case of discrete random variables, for example, dice roles, coin flips et
 :label: defn-pmf
 
 The probability mass function (PMF) of a discrete random variable $X$ is a function that specifies the probability of 
-obtaining $X = x$, where $x$ is a particular event outcome:
+obtaining $X = x$, where $x$ is a particular event:
 
 $$p_{X}(x) = P\left(X=x\right)$$
 
@@ -468,8 +468,7 @@ p_{X}(x) =
 \end{cases}
 ```
 
-where $0<p<1$ is called the Bernoulli parameter. For a Bernoulli random variable $X(\Omega) \in [0,1]$.
-The expectation of a Bernoulli random variable $X$ is given by:
+where $0<p<1$ is called the Bernoulli parameter. For a Bernoulli random variable $X(\Omega) \in [0,1]$ the expectation is given by:
 
 ```{math}
 \mathbb{E}\left[X\right] = p
@@ -489,15 +488,17 @@ The binomial distribution is the probability of getting exactly $k$ successes in
 ````{prf:definition} Binomial Random Variable
 :label: defn-pmf-binomial
 
-Let $X$ be a binomial random variable. The probability mass function for a binomial random variable $X$ is given by:
+Suppose we do repeated Bernoulli trials $X(\Omega) \in [0,1]^n$, i.e., $n$ trials of an independent binary experiment.
+The probability of getting exactly $k$ successes in $n$ independent Bernoulli trials is governed by the binomial probability mass function:
 
 $$p_{X}(k) = \binom{n}{k}p^{k}\left(1-p\right)^{n-k}\qquad{k=0,1,\dots,n}$$
 
-where $n$ denotes the number of experiments, and the binomial parameter $0<p<1$ is the probability 
-that each experiment yields a successful result. 
+where $k$ denotes the number of successes in $n$ independent experiments, the binomial parameter $0<p<1$ is the probability 
+of a successful trial and:
 
-For a binomial random variable $X(\Omega) \in [0,1]^n$, i.e., $n$ trials.
-The expectation of a binomial random variable $X$ is given by:
+$$\binom{n}{k} = \frac{n!}{k!\left(n-k\right)!}$$
+
+The expectation of a binomial random variable is given by:
 
 ```{math}
 \mathbb{E}\left[X\right] = np
