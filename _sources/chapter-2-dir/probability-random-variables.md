@@ -247,7 +247,7 @@ However, since probability is a measure of the size of a set, a meaningful proba
 :label: axiom-probability 
 
 A probability law $P$ is a function $P:\mathcal{F}\rightarrow\left[0, 1\right]$ that maps an event $E\subseteq\Omega$
-to a real number in the interval $\left[0, 1\right]$. The function $P$ must satisfy the three axioms of probability:
+to a real number on the interval $\left[0, 1\right]$. The function $P$ must satisfy the three axioms of probability:
 
 * Non-negativity: $P(E)\geq{0}$, for any $E\in\mathcal{F}$
 * Normalization: $P(\Omega)=1$
