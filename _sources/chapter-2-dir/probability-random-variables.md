@@ -468,8 +468,7 @@ p_{X}(x) =
 \end{cases}
 ```
 
-where $0<p<1$ is called the Bernoulli parameter. For a Bernoulli random variable $X(\Omega) \in [0,1]$.
-The expectation of a Bernoulli random variable $X$ is given by:
+where $0<p<1$ is called the Bernoulli parameter. For a Bernoulli random variable $X(\Omega) \in [0,1]$ the expectation is given by:
 
 ```{math}
 \mathbb{E}\left[X\right] = p
