@@ -238,7 +238,7 @@ the bitstring `1111`, which corresponds to $i=15$, corresponds to $\left\{\clubs
 ````
 
 ### Probability law $P$
-A probability law $P$ is a function $P$ : $\Omega\rightarrow\left[0, 1\right]$;
+A probability law $P$ is a function $P$ : $\mathcal{F}\rightarrow\left[0, 1\right]$;
 the function $P$ maps an event (set) $E\subseteq\Omega$ to a real number in $\left[0, 1\right]$.
 The definition above does not specify how an event $E\subseteq\Omega$ is being mapped to a number. 
 However, since probability is a measure of the size of a set, a meaningful probability law $P$ should be consistent for all $E\subseteq\Omega$. This requires rules, known as the axioms of probability, when we define the probability law $P$. 
