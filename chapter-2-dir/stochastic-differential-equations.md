@@ -211,12 +211,12 @@ X_{k+1} = X_{k} + \mu\left(t_{k+1}-t_{k}\right)+\sigma\sqrt{t_{k+1}-t_{k}}\cdot{
 ### Geometric Brownian Motion
 
 Unfortunately, ordinary Brownian motion has a critical flaw; its solutions can be negative.
-Thus, it is not widely used to model the price of a risky asset because asset prices are non-negative. Instead, we often model asset prices using a [Geometric Brownian Motion (GBM) model](https://en.wikipedia.org/wiki/Geometric_Brownian_motion):
+Thus, it is not widely used to model the price of a risky asset because asset prices are non-negative. Instead, we often model asset prices using the [Geometric Brownian Motion (GBM) model](https://en.wikipedia.org/wiki/Geometric_Brownian_motion):
 
 ````{prf:definition} Scalar Geometric Brownian Motion
 
 There exists constants $\mu$ and $\sigma>0$.
-Then a random process $X(t)$ follows a Geometric Brownian Motion (Wiener) process with drift $\mu$ and diffusion $\sigma^{2}$ if $X(t)$ is a solution to the Stochastic Differential Equation (SDE):
+Then a random process $X(t)$ follows a geometric Brownian motion (Wiener) process with drift $\mu$ and diffusion $\sigma^{2}$ if $X(t)$ is a solution of the stochastic differential equation (SDE):
 
 ```{math}
 :label: eq-SDE-GBM
