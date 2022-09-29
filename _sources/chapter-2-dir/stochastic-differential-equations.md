@@ -168,9 +168,8 @@ where $dW(t)$ is a one-dimensional Wiener process.
 The ordinary Brownian motion described by Eqn. {eq}`eq-SDE-StandardBM`
 has an analytical solution. To develop this solution, let's use [Ito's Lemma](https://en.wikipedia.org/wiki/Itô%27s_lemma).
 
-````{admonition} Derivation: Analytical Solution Scalar Ordinary Brownian Motion
-For Eqn {eq}`eq-SDE-StandardBM`, $a=\mu$ and $b=\sigma>0$. 
-If we assume $Y(t) = X(t)$, then [Ito's Lemma](https://en.wikipedia.org/wiki/Itô%27s_lemma) gives:
+````{prf:observation} Analytical Solution Scalar Ordinary Brownian Motion
+For Eqn {eq}`eq-SDE-StandardBM`, $a=\mu$ and $b=\sigma>0$.  If we assume $Y(t) = X(t)$, then [Ito's Lemma](https://en.wikipedia.org/wiki/Itô%27s_lemma) gives:
 
 ```{math}
 dY = {\mu}dt + {\sigma}dW
@@ -182,19 +181,15 @@ which can be integrated between the time-step $t_{1}\rightarrow{t_{2}}$:
 Y_{2} - Y_{1} = \mu\left(t_{2}-t_{1}\right)+\sigma\left(W_{2}-W_{1}\right)
 ```
 
-where $Y_{\star}$ and $W_{\star}$ denote the $Y$ (or $W$) evaluated at time $\star$. 
-However, $Y(t) = X(t)$, and the noise is a Wiener process; $W_{2}-W_{1}\sim{N\left(0,t_{2}-t_{1}\right)}$:
+ However, $Y(t) = X(t)$, and the noise is a Wiener process; thus, $W_{2}-W_{1}\sim{N\left(0,t_{2}-t_{1}\right)}$:
 
 ```{math}
 :label: eq-sbm-soln
 X_{2} - X_{1} = \mu\left(t_{2}-t_{1}\right)+\sigma\sqrt{t_2-t_1}\cdot{Z(0,1)}
 ```
 
-where $Z(0,1)$ is a standard normal random variable with mean $0$ and a variance of $1$. 
-
-Finally, imagine that we are simulating an ordinary Brownian motion from $t = 0\rightarrow{T}$. 
-Let's break this interval into $n$ time steps of fixed length $t_{k+1} - t_{k}, k = 1,2,\dots, n$ where $t_1 = 0$. 
-Then, we can re-write Eqn. {eq}`eq-sbm-soln` as:
+where $Z(0,1)$ is a standard normal random variable with a mean of $0$ and a variance of $1$. Finally, imagine we are simulating an ordinary Brownian motion process from $t = 0\rightarrow{T}$. Let's break this interval into $n$ time steps of fixed length $h\equiv{t_{k+1} - t_{k}}, k = 1,2,\dots, n$ where $t_1 = 0$. 
+Then, we can rewrite Eqn. {eq}`eq-sbm-soln` as:
 
 ```{math}
 :label: eq-sbm-soln-arb-rime
@@ -202,21 +197,36 @@ X_{k+1} = X_{k} + \mu\left(t_{k+1}-t_{k}\right)+\sigma\sqrt{t_{k+1}-t_{k}}\cdot{
 ```
 ````
 
-#### Example
+````{prf:example} Scalar Geometric Brownian Motion
+Let's simulate the time evolution of the random variable $X(t)$, which is governed by ordinary Brownian motion:
 
-* [Simulation of ordinary Brownian motion analytical solution](https://htmlview.glitch.me/?https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks/blob/main/pluto-notebooks/html/Example-OrdinaryBrownianMotion-Simulation.jl.html)
+$$X_{k+1} = X_{k} + \mu\left(t_{k+1}-t_{k}\right)+\sigma\sqrt{t_{k+1}-t_{k}}\cdot{Z(0,1)}\qquad{k=1,2,\dots,n}$$
+
+Let the parameters $\mu$ = 0.1, $\sigma$ = 0.75 and the initial condition $X_{1}$ = 10.0. The analytical solution was simulated for n = 200 time steps; 100 sample paths were generated. 
+
+```{figure} ./figs/Fig-OBM-Simulation.pdf
+---
+height: 420px
+name: fig-obm-sim-scalar
+---
+Scalar Ordinary Brownian Motion (OBM) simulation. Several of the sample paths exhibited the pathology of this model, namely solutions that can become negative.
+
+```
+
+__source__: [live Pluto notebook](https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks) or a [static HTML view](https://htmlview.glitch.me/?https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks/blob/main/pluto-notebooks/html/Example-OrdinaryBrownianMotion-Simulation.jl.html)
+
+````
 
 (content:references:geometric-brownian-motion)=
-
 ### Geometric Brownian Motion
 
 Unfortunately, ordinary Brownian motion has a critical flaw; its solutions can be negative.
-Thus, it is not widely used to model the price of a risky asset because asset prices are non-negative. Instead, we often model asset prices using a [Geometric Brownian Motion (GBM) model](https://en.wikipedia.org/wiki/Geometric_Brownian_motion):
+Thus, it is not widely used to model the price of a risky asset because asset prices are non-negative. Instead, we often model asset prices using the [Geometric Brownian Motion (GBM) model](https://en.wikipedia.org/wiki/Geometric_Brownian_motion):
 
 ````{prf:definition} Scalar Geometric Brownian Motion
 
 There exists constants $\mu$ and $\sigma>0$.
-Then a random process $X(t)$ follows a Geometric Brownian Motion (Wiener) process with drift $\mu$ and diffusion $\sigma^{2}$ if $X(t)$ is a solution to the Stochastic Differential Equation (SDE):
+Then a random process $X(t)$ follows a geometric Brownian motion (Wiener) process with drift $\mu$ and diffusion $\sigma^{2}$ if $X(t)$ is a solution of the stochastic differential equation (SDE):
 
 ```{math}
 :label: eq-SDE-GBM
@@ -232,7 +242,7 @@ The use of geometric Brownian motion as a financial model is primarily due to th
 The geometric Brownian motion described by Eqn. {eq}`eq-SDE-GBM` also has an analytical solution.
 To develop this solution, let's use [Ito's Lemma](https://en.wikipedia.org/wiki/Itô%27s_lemma).
 
-````{admonition} Derivation: Analytical Solution Scalar Geometric Brownian Motion
+````{prf:observation} Analytical Solution Scalar Geometric Brownian Motion
 There exists constants $\mu$ and $\sigma>0$. Let $Y(t) = \ln{X(t)}$. 
 Then [Ito's Lemma](https://en.wikipedia.org/wiki/Itô%27s_lemma) gives:
 
@@ -291,7 +301,7 @@ Scalar Geometric Brownian Motion (GBM) simulation of the daily close price of `A
 
 The GDM model _predicts_ (out of sample) the close price of `AMD` too within one standard deviation. However, the difference between the actual close price and the mean predicted close price changes over time. 
 
-source: [live Pluto notebook](https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks) or [static HTML](https://htmlview.glitch.me/?https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks/blob/main/pluto-notebooks/html/Example-CallPutContract-Payoff.jl.html)
+__source__: [live Pluto notebook](https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks) or [static HTML](https://htmlview.glitch.me/?https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks/blob/main/pluto-notebooks/html/Example-CallPutContract-Payoff.jl.html)
 
 ````
 
