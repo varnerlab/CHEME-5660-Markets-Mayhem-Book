@@ -305,19 +305,25 @@ __source__: [live Pluto notebook](https://github.com/varnerlab/CHEME-5660-Market
 
 ````
 
-(content:references:discretization)=
+## Extension to multiple simultaneous assets
 
+Fill me in.
+
+(content:references:discretization)=
 ## Discretization Approaches
 
 In general, we cannot develop an analytical solution to Eqn. {eq}`eq-ito-process`; however, we can create an approximate numerical solution by discretization. This is an issue because sometimes we may want to use more sophisticated models for the price of `XYZ`, for example, a stochastic volatility model that better captures changes in market conditions.
 
-### Stochastic Volatility Models
+## Stochastic Volatility Models
 
-For both the standard Brownian motion and the geometric Brownian motion equations, we have assumed that the drift coefficient $\mu$ and the diffusion coefficient $\sigma^{2}$ are constant. There are situations where both $\mu$ and $\sigma$ can reasonably be assumed to be constants, but in many practical cases, this is not true, particularly in the case of $\sigma$.
+For both the standard Brownian motion and the geometric Brownian motion equations, the drift coefficient $\mu$ and the diffusion coefficient $\sigma^{2}$ are assumed constant. There are situations where both $\mu$ and $\sigma$ can reasonably be assumed to be constants. However, but in many practical cases, this is not true, particularly the diffusion coefficient $\sigma$. Thus, one could imagine constructing a seperate model that accounts for the movment of $\mu$ or $\sigma$ as a function of time. The [Heston model](https://en.wikipedia.org/wiki/Heston_model) is one such example {cite}`HESTON1993`.
 
-## Extension to multiple simultaneous assets
+The [Heston model](https://en.wikipedia.org/wiki/Heston_model) model is an example of a stochastic volatility model in which the volatility parameter $\sigma$ is modeled as a random variable whose value is governed by a seperate stochastic differential equation:
 
-Fill me in.
+\begin{eqnarray}
+a &=& x + y \\
+b &=& z
+\end{eqnarray}
 
 ---
 
