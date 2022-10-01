@@ -286,16 +286,16 @@ where $k=1,2,\dots,n$.
 ````{prf:example} Scalar Geometric Brownian Motion
 :label: scalar-gbm-soln
 
-Let's simulate the daily close price of `AMD` using the analytical solution of the scalar geometric brownian motion ({numref}`fig-gbm-sim-AMD-scalar`). 
+Let's simulate the daily close price of `AMD` using the analytical solution of the scalar geometric Brownian motion ({numref}`fig-gbm-sim-AMD-scalar`). 
 
-The scalar gbm analytical solution was used to generate N = 200 sample paths for a 46-day period (light blue lines in {numref}`fig-gbm-sim-AMD-scalar`); the first 36 days of data were used to estimate the mean return $\mu$ and the volatility of the return $\sigma$ which appear in the gbm solution. These model parameters were assumed to be fixed. An additional two trading weeks (10 days) was then simulated (out of sample prediction). 
+The scalar gbm analytical solution was used to generate N = 200 sample paths for 46 days (light blue lines in {numref}`fig-gbm-sim-AMD-scalar`); the first 36 days of data were used to estimate the mean return $\mu$ and the volatility of the return $\sigma$ which appear in the gbm solution. These model parameters were assumed to be fixed. An additional two trading weeks (10 days) were then simulated (out of sample prediction). 
 
 ```{figure} ./figs/Fig-AMD-GBM-Sim-N200-IS36-OS10.pdf
 ---
 height: 420px
 name: fig-gbm-sim-AMD-scalar
 ---
-Scalar Geometric Brownian Motion (GBM) simulation of the daily close price of `AMD`. Data for the first m = 36 days was used to estimate the mean and volatility of the log return. The solid black line denotes the mean close price, while the shaded blue region denotes $\pm$ one standard-deviation from the mean close price. The red-line denotes the actual `AMD` close price.
+Scalar Geometric Brownian Motion (GBM) simulation of the daily close price of `AMD`. Data for the first m = 36 days was used to estimate the mean and volatility of the log return. The solid black line denotes the mean close price, while the shaded blue region denotes $\pm$, one standard deviation from the mean close price. The red line represents the actual `AMD` close price.
 
 ```
 
@@ -305,8 +305,70 @@ __source__: [live Pluto notebook](https://github.com/varnerlab/CHEME-5660-Market
 
 ````
 
-## Extension to multiple simultaneous assets
+### GBM model calibration using market data
 
+#### Approach 1: Price data
+Let's start from the analytical solution of the geometric Brownian motion equation between two points in time (Eqn. {eq}`eq-gdm-soln-anal-almost-3`). We know that the time points $t_{\star}$ are arbitrary. Thus, we can define $t_{1}=0$ as a starting point and $t_{2}=t$ as some arbitrary point in the future:
+
+```{math}
+:label: eqn-gbm-estimate-sigma
+X_{t} = X_{\circ}\exp\left[\left(\mu-\frac{\sigma^{2}}{2}\right)t + \sigma\sqrt{t}\cdot{Z(0,1)}\right]
+```
+
+where $X_{\circ}$ denotes an initial price, and $X_{t}$ denotes the asset price at time $t$. Taking the expectation of both sides of Eqn {eq}`eqn-gbm-estimate-sigma`, and using the properties of the expectation for an exponential:
+
+```{math}
+\mathbb{E}\left[\exp(a+bZ)\right]=\exp(a+\frac{b^2}{2})
+```
+
+gives the expected future price of $X_{t}$:
+
+```{math}
+:label: eqn-log-expected-gbm-price
+\mathbb{E}\left(X_{t}\right) = X_{o}\exp\left(\mu\cdot{t}\right)
+```
+
+However, $\mathbb{E}\left(X_{t}\right)$ is just $X_{t}$; thus, we can take the log of both sides of Eqn. {eq}`eqn-log-expected-gbm-price` to arrive at a linear expression for the growth rate parameter $\mu$:
+
+```{math}
+\ln{X_{t}} = \ln{X_{\circ}} + \mu\cdot{t}
+```
+
+The parameter $\mu$ is the slope of a linear equation in the natural log of price, where the log of the initial price is the y-intercept. Now that we have an estimate of $\mu$, we can estimate a value for $\sigma$. In particular, the variance of the future price $X_{t}$ is given by:
+
+```{math}
+:label: eqn-var-gbm
+\text{Var}\left(X_{t}\right) = X_{\circ}^{2}e^{2\mu{t}}\left[e^{\sigma^{2}{t}} - 1\right]
+```
+
+While Eqn. {eq}`eqn-var-gbm` is non-linear in $\sigma$, we can estimate this parameter as an optimization problem, e.g., a least-squares or maximum likelihood approach using the variance of historical price measurements, and our estimate of $\mu$.
+
+````{prf:example} Calibration of Scalar Geometric Brownian Motion using Price Data
+:label: example-approach-1-calibration-gbm
+
+Fill me in.
+````
+
+
+#### Approach 2: Return data
+We can rearrange the recursion relationship for the analytical solution of the geometric brownian motion equation to give:
+
+$$\frac{X_{k+1}}{X_{k}} = \exp\Biggl[\left(\mu-\frac{\sigma^{2}}{2}\right)\left(t_{k+1} - t_{k}\right) + \sigma\sqrt{t_{k+1}-t_{k}}\cdot{Z(0,1)}\Biggr]$$
+
+However, after taking the natural log of both sides we arrive at en expression for the log-return:
+
+```{math}
+:label: eqn-log-return-gbm
+r_{k+1,k} = \left(\mu-\frac{\sigma^{2}}{2}\right)h + \sigma\sqrt{h}\cdot{Z(0,1)}
+```
+
+where $h=t_{k+1} - t_{k}$ denotes the time step, and the log return $r_{k+1,k}$ is given by:
+
+$$r_{k+1,k} = \ln\left(\frac{X_{k+1}}{X_{k}}\right)$$
+
+Thus, if we had the return values $r_{k+1,k}$ computed from price data, we could those values to estimate the $\mu$ and $\sigma$ parameters. However, the return is a random variable, thus, the parameters $\mu$ and $\sigma$ are parameters in a return distribution. 
+
+### Extension to multiple simultaneous assets
 Fill me in.
 
 (content:references:discretization)=
@@ -318,12 +380,8 @@ In general, we cannot develop an analytical solution to Eqn. {eq}`eq-ito-process
 
 For both the standard Brownian motion and the geometric Brownian motion equations, the drift coefficient $\mu$ and the diffusion coefficient $\sigma^{2}$ are assumed constant. There are situations where both $\mu$ and $\sigma$ can reasonably be assumed to be constants. However, but in many practical cases, this is not true, particularly the diffusion coefficient $\sigma$. Thus, one could imagine constructing a seperate model that accounts for the movment of $\mu$ or $\sigma$ as a function of time. The [Heston model](https://en.wikipedia.org/wiki/Heston_model) is one such example {cite}`HESTON1993`.
 
-The [Heston model](https://en.wikipedia.org/wiki/Heston_model) model is an example of a stochastic volatility model in which the volatility parameter $\sigma$ is modeled as a random variable whose value is governed by a seperate stochastic differential equation:
+The [Heston model](https://en.wikipedia.org/wiki/Heston_model) model is an example of a stochastic volatility model in which the volatility parameter $\sigma$ is modeled as a random variable whose value is governed by a seperate stochastic differential equation
 
-\begin{eqnarray}
-a &=& x + y \\
-b &=& z
-\end{eqnarray}
 
 ---
 
