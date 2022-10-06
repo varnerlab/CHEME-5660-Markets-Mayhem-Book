@@ -467,24 +467,55 @@ title="Print to PDF"
      </li>
     </ul>
    </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#discretization-approaches">
-   Discretization Approaches
-  </a>
-  <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#stochastic-volatility-models">
-     Stochastic Volatility Models
+    <a class="reference internal nav-link" href="#gbm-model-calibration-using-market-data">
+     GBM model calibration using market data
     </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#approach-1-price-data">
+       Approach 1: Price data
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#approach-2-return-data">
+       Approach 2: Return data
+      </a>
+     </li>
+    </ul>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#extension-to-multiple-simultaneous-assets">
-   Extension to multiple simultaneous assets
+  <a class="reference internal nav-link" href="#stochastic-volatility-and-mean-reversion-models">
+   Stochastic Volatility and Mean Reversion Models
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ornsteinuhlenbeck-model-of-mean-reversion">
+     Ornstein–Uhlenbeck model of mean reversion
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#numerical-solution-ornsteinuhlenbeck-model">
+       Numerical solution: Ornstein–Uhlenbeck model
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#heston-model-of-stochastic-volatility">
+     Heston model of stochastic volatility
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#numerical-solution-heston-model">
+       Numerical solution: Heston model
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#summary">
@@ -559,24 +590,55 @@ title="Print to PDF"
      </li>
     </ul>
    </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#discretization-approaches">
-   Discretization Approaches
-  </a>
-  <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#stochastic-volatility-models">
-     Stochastic Volatility Models
+    <a class="reference internal nav-link" href="#gbm-model-calibration-using-market-data">
+     GBM model calibration using market data
     </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#approach-1-price-data">
+       Approach 1: Price data
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#approach-2-return-data">
+       Approach 2: Return data
+      </a>
+     </li>
+    </ul>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#extension-to-multiple-simultaneous-assets">
-   Extension to multiple simultaneous assets
+  <a class="reference internal nav-link" href="#stochastic-volatility-and-mean-reversion-models">
+   Stochastic Volatility and Mean Reversion Models
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ornsteinuhlenbeck-model-of-mean-reversion">
+     Ornstein–Uhlenbeck model of mean reversion
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#numerical-solution-ornsteinuhlenbeck-model">
+       Numerical solution: Ornstein–Uhlenbeck model
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#heston-model-of-stochastic-volatility">
+     Heston model of stochastic volatility
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#numerical-solution-heston-model">
+       Numerical solution: Heston model
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#summary">
@@ -606,18 +668,18 @@ They are a top-down approach to simulating market behavior, where markers are tr
 dueling perspectives on the randomness of stock prices in the finance and economics community.
 <a class="reference external" href="https://en.wikipedia.org/wiki/Burton_Malkiel">Malkiel</a>, in his book <a class="reference external" href="https://en.wikipedia.org/wiki/A_Random_Walk_Down_Wall_Street">A Random Walk Down Wall Street</a>, argues that asset prices typically exhibit signs of a random walk and that investors cannot consistently outperform market averages. On the other hand, in their book <a class="reference external" href="https://www.jstor.org/stable/j.ctt7tccx">A Non-Random Walk Down Wall Street, Lo and MacKinlay present</a>, several studies that suggest there are stock market pricing trends are somewhat predictable.</p>
 <p>To better understand these arguments and build mathematical models that can be used to simulate market
-dynamics, we introduce analytical and numerical tools to solve SDEs. Our development follows the previous work of Glasserman <span id="id1">[<a class="reference internal" href="../References.html#id10" title="Paul Glasserman. Monte Carlo methods in financial engineering. Volume 53. Springer, New York, 2004. ISBN 0387004513 (alk. paper). URL: http://www.loc.gov/catdir/enhancements/fy0813/2003050499-d.html.">Glasserman, 2004</a>]</span>; in particular, chapters 3, 6, and Appendix B.</p>
+dynamics, we introduce analytical and numerical tools to solve SDEs. Our development follows the previous work of Glasserman <span id="id1">[<a class="reference internal" href="../References.html#id12" title="Paul Glasserman. Monte Carlo methods in financial engineering. Volume 53. Springer, New York, 2004. ISBN 0387004513 (alk. paper). URL: http://www.loc.gov/catdir/enhancements/fy0813/2003050499-d.html.">Glasserman, 2004</a>]</span>; in particular, chapters 3, 6, and Appendix B.</p>
 <p>In this lecture, we will:</p>
 <ul class="simple">
 <li><p>Introduce the <a class="reference internal" href="#content-references-ddm"><span class="std std-ref">Dividend Discount Model (DDM)</span></a>, a fundamental method of valuing the price of a firm’s stock</p></li>
 <li><p>Introduce <a class="reference internal" href="#content-references-wiener-process"><span class="std std-ref">Brownian Motion</span></a>, <a class="reference internal" href="#content-references-ito-calculus"><span class="std std-ref">Ito Processes</span></a>, <a class="reference internal" href="#content-references-ordinary-brownian-motion"><span class="std std-ref">Ordinary Brownian Motion</span></a>, and <a class="reference internal" href="#content-references-geometric-brownian-motion"><span class="std std-ref">Geometric Brownian Motion</span></a></p></li>
-<li><p>Introduce <a class="reference internal" href="#content-references-discretization"><span class="std std-ref">Discretization Approaches</span></a> to approximate the solutin of stochastic differential equation models of asset price.</p></li>
+<li><p>Introduce <a class="reference internal" href="#content-references-discretization"><span class="std std-ref">Stochastic Volatility and Mean Reversion Models</span></a> which can describe more complex asset price trends</p></li>
 </ul>
 <hr class="docutils" />
 </section>
 <section id="dividend-discount-model-ddm">
 <span id="content-references-ddm"></span><h2>Dividend Discount Model (DDM)<a class="headerlink" href="#dividend-discount-model-ddm" title="Permalink to this headline">#</a></h2>
-<p>The <a class="reference external" href="https://en.wikipedia.org/wiki/Dividend_discount_model">dividend discount model (DDM)</a>, developed by <a class="reference external" href="https://en.wikipedia.org/wiki/Myron_J._Gordon">Myron J. Gordon</a> and Eli Shapiro <span id="id2">[<a class="reference internal" href="../References.html#id2" title="M. J. Gordon. Dividends, earnings, and stock prices. The Review of Economics and Statistics, 41(2):99–105, 1959. URL: http://www.jstor.org/stable/1927792 (visited on 2022-09-01).">Gordon, 1959</a>]</span>, is a method of estimating the share price of the firm <code class="docutils literal notranslate"><span class="pre">XYZ,</span></code> based on the net present value of future dividends of the firm (<a class="reference internal" href="#fig-ddm-introduction"><span class="std std-numref">Fig. 15</span></a>). Thus, the DDM is only applicable to dividend-granting firms.</p>
+<p>The <a class="reference external" href="https://en.wikipedia.org/wiki/Dividend_discount_model">dividend discount model (DDM)</a>, developed by <a class="reference external" href="https://en.wikipedia.org/wiki/Myron_J._Gordon">Myron J. Gordon</a> and Eli Shapiro <span id="id2">[<a class="reference internal" href="../References.html#id4" title="M. J. Gordon. Dividends, earnings, and stock prices. The Review of Economics and Statistics, 41(2):99–105, 1959. URL: http://www.jstor.org/stable/1927792 (visited on 2022-09-01).">Gordon, 1959</a>]</span>, is a method of estimating the share price of the firm <code class="docutils literal notranslate"><span class="pre">XYZ,</span></code> based on the net present value of future dividends of the firm (<a class="reference internal" href="#fig-ddm-introduction"><span class="std std-numref">Fig. 15</span></a>). Thus, the DDM is only applicable to dividend-granting firms.</p>
 <figure class="align-default" id="fig-ddm-introduction">
 <a class="reference internal image-reference" href="../_images/Fig-DDM-Introduction.pdf"><img alt="../_images/Fig-DDM-Introduction.pdf" src="../_images/Fig-DDM-Introduction.pdf" style="height: 280px;" /></a>
 <figcaption>
@@ -644,7 +706,7 @@ dynamics, we introduce analytical and numerical tools to solve SDEs. Our develop
 <div class="proof definition admonition" id="defn-ddm-final">
 <p class="admonition-title"><span class="caption-number">Definition 19 </span> (Dividend discount model)</p>
 <section class="definition-content" id="proof-content">
-<p>The dividend discount model, developed by Shapiro and Gordon  <span id="id3">[<a class="reference internal" href="../References.html#id2" title="M. J. Gordon. Dividends, earnings, and stock prices. The Review of Economics and Statistics, 41(2):99–105, 1959. URL: http://www.jstor.org/stable/1927792 (visited on 2022-09-01).">Gordon, 1959</a>]</span>, estimates of the current share price of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code>, denoted by <span class="math notranslate nohighlight">\(P\)</span>, as the discounted sum of future divedent payments:</p>
+<p>The dividend discount model, developed by Shapiro and Gordon  <span id="id3">[<a class="reference internal" href="../References.html#id4" title="M. J. Gordon. Dividends, earnings, and stock prices. The Review of Economics and Statistics, 41(2):99–105, 1959. URL: http://www.jstor.org/stable/1927792 (visited on 2022-09-01).">Gordon, 1959</a>]</span>, estimates of the current share price of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code>, denoted by <span class="math notranslate nohighlight">\(P\)</span>, as the discounted sum of future divedent payments:</p>
 <div class="math notranslate nohighlight" id="equation-eqn-general-ddm-almost">
 <span class="eqno">(14)<a class="headerlink" href="#equation-eqn-general-ddm-almost" title="Permalink to this equation">#</a></span>\[P = D_{o}\left(\sum_{t=1}^{\infty}\frac{\left(1+\bar{g}\right)^{t}}{\left(1+\bar{r}\right)^{t}}\right)\]</div>
 <p>where <span class="math notranslate nohighlight">\(D_{o}\)</span> denotes the current value of the dividend payment, <span class="math notranslate nohighlight">\(\bar{g}\)</span> denotes the rate of growth of the dividend payment, which is assumed to be constant, and <span class="math notranslate nohighlight">\(\bar{r}\)</span> denotes the discount rate, also assumed constant across the lifetime of the investment. However, Eqn. <a class="reference internal" href="#equation-eqn-general-ddm-almost">(14)</a> is difficult to use in practice because of the infinite sum. Thus, Eqn <a class="reference internal" href="#equation-eqn-general-ddm-almost">(14)</a> is simplified to arrive at the form of the DDM used in practice:</p>
@@ -759,7 +821,7 @@ Then a random process <span class="math notranslate nohighlight">\(X(t)\)</span>
 <span class="eqno">(21)<a class="headerlink" href="#equation-eq-sde-gbm" title="Permalink to this equation">#</a></span>\[\frac{dX\left(t\right)}{X(t)} = \mu{dt}+\sigma{dW(t)}\]</div>
 <p>where <span class="math notranslate nohighlight">\(dW(t)\)</span> is a one-dimensional Wiener Process.</p>
 </section>
-</div><p>The use of geometric Brownian motion as a financial model is primarily due to the work of Samuelson in the 1950s and 1960s <span id="id4">[<a class="reference internal" href="../References.html#id12" title="Robert C. Merton. Paul samuelson and financial economics. The American Economist, 50(2):9–31, 2006. URL: http://www.jstor.org/stable/40657651 (visited on 2022-05-16).">Merton, 2006</a>]</span>. However, today Geometric Brownian Motion is more often associated with the Black–Scholes options pricing model (which we’ll describe later) <span id="id5">[<a class="reference internal" href="../References.html#id11" title="Fischer Black and Myron Scholes. The pricing of options and corporate liabilities. Journal of Political Economy, 81(3):637–654, 1973. URL: http://www.jstor.org/stable/1831029 (visited on 2022-05-16).">Black and Scholes, 1973</a>]</span>.</p>
+</div><p>The use of geometric Brownian motion as a financial model is primarily due to the work of Samuelson in the 1950s and 1960s <span id="id4">[<a class="reference internal" href="../References.html#id14" title="Robert C. Merton. Paul samuelson and financial economics. The American Economist, 50(2):9–31, 2006. URL: http://www.jstor.org/stable/40657651 (visited on 2022-05-16).">Merton, 2006</a>]</span>. However, today Geometric Brownian Motion is more often associated with the Black–Scholes options pricing model (which we’ll describe later) <span id="id5">[<a class="reference internal" href="../References.html#id13" title="Fischer Black and Myron Scholes. The pricing of options and corporate liabilities. Journal of Political Economy, 81(3):637–654, 1973. URL: http://www.jstor.org/stable/1831029 (visited on 2022-05-16).">Black and Scholes, 1973</a>]</span>.</p>
 <section id="analytical-solution-geometric-brownian-motion">
 <h4>Analytical solution: Geometric Brownian Motion<a class="headerlink" href="#analytical-solution-geometric-brownian-motion" title="Permalink to this headline">#</a></h4>
 <p>The geometric Brownian motion described by Eqn. <a class="reference internal" href="#equation-eq-sde-gbm">(21)</a> also has an analytical solution.
@@ -790,12 +852,12 @@ Then, we can re-write Eqn <a class="reference internal" href="#equation-eq-gdm-s
 </div><div class="proof example admonition" id="scalar-gbm-soln">
 <p class="admonition-title"><span class="caption-number">Example 11 </span> (Scalar Geometric Brownian Motion)</p>
 <section class="example-content" id="proof-content">
-<p>Let’s simulate the daily close price of <code class="docutils literal notranslate"><span class="pre">AMD</span></code> using the analytical solution of the scalar geometric brownian motion (<a class="reference internal" href="#fig-gbm-sim-amd-scalar"><span class="std std-numref">Fig. 17</span></a>).</p>
-<p>The scalar gbm analytical solution was used to generate N = 200 sample paths for a 46-day period (light blue lines in <a class="reference internal" href="#fig-gbm-sim-amd-scalar"><span class="std std-numref">Fig. 17</span></a>); the first 36 days of data were used to estimate the mean return <span class="math notranslate nohighlight">\(\mu\)</span> and the volatility of the return <span class="math notranslate nohighlight">\(\sigma\)</span> which appear in the gbm solution. These model parameters were assumed to be fixed. An additional two trading weeks (10 days) was then simulated (out of sample prediction).</p>
+<p>Let’s simulate the daily close price of <code class="docutils literal notranslate"><span class="pre">AMD</span></code> using the analytical solution of the scalar geometric Brownian motion (<a class="reference internal" href="#fig-gbm-sim-amd-scalar"><span class="std std-numref">Fig. 17</span></a>).</p>
+<p>The scalar gbm analytical solution was used to generate N = 200 sample paths for 46 days (light blue lines in <a class="reference internal" href="#fig-gbm-sim-amd-scalar"><span class="std std-numref">Fig. 17</span></a>); the first 36 days of data were used to estimate the mean return <span class="math notranslate nohighlight">\(\mu\)</span> and the volatility of the return <span class="math notranslate nohighlight">\(\sigma\)</span> which appear in the gbm solution. These model parameters were assumed to be fixed. An additional two trading weeks (10 days) were then simulated (out of sample prediction).</p>
 <figure class="align-default" id="fig-gbm-sim-amd-scalar">
 <a class="reference internal image-reference" href="../_images/Fig-AMD-GBM-Sim-N200-IS36-OS10.pdf"><img alt="../_images/Fig-AMD-GBM-Sim-N200-IS36-OS10.pdf" src="../_images/Fig-AMD-GBM-Sim-N200-IS36-OS10.pdf" style="height: 420px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 17 </span><span class="caption-text">Scalar Geometric Brownian Motion (GBM) simulation of the daily close price of <code class="docutils literal notranslate"><span class="pre">AMD</span></code>. Data for the first m = 36 days was used to estimate the mean and volatility of the log return. The solid black line denotes the mean close price, while the shaded blue region denotes <span class="math notranslate nohighlight">\(\pm\)</span> one standard-deviation from the mean close price. The red-line denotes the actual <code class="docutils literal notranslate"><span class="pre">AMD</span></code> close price.</span><a class="headerlink" href="#fig-gbm-sim-amd-scalar" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 17 </span><span class="caption-text">Scalar Geometric Brownian Motion (GBM) simulation of the daily close price of <code class="docutils literal notranslate"><span class="pre">AMD</span></code>. Data for the first m = 36 days was used to estimate the mean and volatility of the log return. The solid black line denotes the mean close price, while the shaded blue region denotes <span class="math notranslate nohighlight">\(\pm\)</span>, one standard deviation from the mean close price. The red line represents the actual <code class="docutils literal notranslate"><span class="pre">AMD</span></code> close price.</span><a class="headerlink" href="#fig-gbm-sim-amd-scalar" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>The GDM model <em>predicts</em> (out of sample) the close price of <code class="docutils literal notranslate"><span class="pre">AMD</span></code> too within one standard deviation. However, the difference between the actual close price and the mean predicted close price changes over time.</p>
@@ -803,18 +865,79 @@ Then, we can re-write Eqn <a class="reference internal" href="#equation-eq-gdm-s
 </section>
 </div></section>
 </section>
-</section>
-<section id="discretization-approaches">
-<span id="content-references-discretization"></span><h2>Discretization Approaches<a class="headerlink" href="#discretization-approaches" title="Permalink to this headline">#</a></h2>
-<p>In general, we cannot develop an analytical solution to Eqn. <a class="reference internal" href="#equation-eq-ito-process">(16)</a>; however, we can create an approximate numerical solution by discretization. This is an issue because sometimes we may want to use more sophisticated models for the price of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code>, for example, a stochastic volatility model that better captures changes in market conditions.</p>
-<section id="stochastic-volatility-models">
-<h3>Stochastic Volatility Models<a class="headerlink" href="#stochastic-volatility-models" title="Permalink to this headline">#</a></h3>
-<p>For both the standard Brownian motion and the geometric Brownian motion equations, we have assumed that the drift coefficient <span class="math notranslate nohighlight">\(\mu\)</span> and the diffusion coefficient <span class="math notranslate nohighlight">\(\sigma^{2}\)</span> are constant. There are situations where both <span class="math notranslate nohighlight">\(\mu\)</span> and <span class="math notranslate nohighlight">\(\sigma\)</span> can reasonably be assumed to be constants, but in many practical cases, this is not true, particularly in the case of <span class="math notranslate nohighlight">\(\sigma\)</span>.</p>
-</section>
-</section>
-<section id="extension-to-multiple-simultaneous-assets">
-<h2>Extension to multiple simultaneous assets<a class="headerlink" href="#extension-to-multiple-simultaneous-assets" title="Permalink to this headline">#</a></h2>
+<section id="gbm-model-calibration-using-market-data">
+<h3>GBM model calibration using market data<a class="headerlink" href="#gbm-model-calibration-using-market-data" title="Permalink to this headline">#</a></h3>
+<section id="approach-1-price-data">
+<h4>Approach 1: Price data<a class="headerlink" href="#approach-1-price-data" title="Permalink to this headline">#</a></h4>
+<p>Let’s start from the analytical solution of the geometric Brownian motion equation between two points in time (Eqn. <a class="reference internal" href="#equation-eq-gdm-soln-anal-almost-3">(24)</a>). We know that the time points <span class="math notranslate nohighlight">\(t_{\star}\)</span> are arbitrary. Thus, we can define <span class="math notranslate nohighlight">\(t_{1}=0\)</span> as a starting point and <span class="math notranslate nohighlight">\(t_{2}=t\)</span> as some arbitrary point in the future:</p>
+<div class="math notranslate nohighlight" id="equation-eqn-gbm-estimate-sigma">
+<span class="eqno">(26)<a class="headerlink" href="#equation-eqn-gbm-estimate-sigma" title="Permalink to this equation">#</a></span>\[X_{t} = X_{\circ}\exp\left[\left(\mu-\frac{\sigma^{2}}{2}\right)t + \sigma\sqrt{t}\cdot{Z(0,1)}\right]\]</div>
+<p>where <span class="math notranslate nohighlight">\(X_{\circ}\)</span> denotes an initial price, and <span class="math notranslate nohighlight">\(X_{t}\)</span> denotes the asset price at time <span class="math notranslate nohighlight">\(t\)</span>. Taking the expectation of both sides of Eqn <a class="reference internal" href="#equation-eqn-gbm-estimate-sigma">(26)</a>, and using the properties of the expectation for an exponential:</p>
+<div class="math notranslate nohighlight">
+\[\mathbb{E}\left[\exp(a+bZ)\right]=\exp(a+\frac{b^2}{2})\]</div>
+<p>gives the expected future price of <span class="math notranslate nohighlight">\(X_{t}\)</span>:</p>
+<div class="math notranslate nohighlight" id="equation-eqn-log-expected-gbm-price">
+<span class="eqno">(27)<a class="headerlink" href="#equation-eqn-log-expected-gbm-price" title="Permalink to this equation">#</a></span>\[\mathbb{E}\left(X_{t}\right) = X_{o}\exp\left(\mu\cdot{t}\right)\]</div>
+<p>However, <span class="math notranslate nohighlight">\(\mathbb{E}\left(X_{t}\right)\)</span> is just <span class="math notranslate nohighlight">\(X_{t}\)</span>; thus, we can take the log of both sides of Eqn. <a class="reference internal" href="#equation-eqn-log-expected-gbm-price">(27)</a> to arrive at a linear expression for the growth rate parameter <span class="math notranslate nohighlight">\(\mu\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\ln{X_{t}} = \ln{X_{\circ}} + \mu\cdot{t}\]</div>
+<p>The parameter <span class="math notranslate nohighlight">\(\mu\)</span> is the slope of a linear equation in the natural log of price, where the log of the initial price is the y-intercept. Now that we have an estimate of <span class="math notranslate nohighlight">\(\mu\)</span>, we can estimate a value for <span class="math notranslate nohighlight">\(\sigma\)</span>. In particular, the variance of the future price <span class="math notranslate nohighlight">\(X_{t}\)</span> is given by:</p>
+<div class="math notranslate nohighlight" id="equation-eqn-var-gbm">
+<span class="eqno">(28)<a class="headerlink" href="#equation-eqn-var-gbm" title="Permalink to this equation">#</a></span>\[\text{Var}\left(X_{t}\right) = X_{\circ}^{2}e^{2\mu{t}}\left[e^{\sigma^{2}{t}} - 1\right]\]</div>
+<p>While Eqn. <a class="reference internal" href="#equation-eqn-var-gbm">(28)</a> is non-linear in <span class="math notranslate nohighlight">\(\sigma\)</span>, we can estimate this parameter as an optimization problem, e.g., a least-squares or maximum likelihood approach using the variance of historical price measurements, and our estimate of <span class="math notranslate nohighlight">\(\mu\)</span>.</p>
+<div class="proof example admonition" id="example-approach-1-calibration-gbm">
+<p class="admonition-title"><span class="caption-number">Example 12 </span> (Calibration of Scalar Geometric Brownian Motion using Price Data)</p>
+<section class="example-content" id="proof-content">
 <p>Fill me in.</p>
+</section>
+</div></section>
+<section id="approach-2-return-data">
+<h4>Approach 2: Return data<a class="headerlink" href="#approach-2-return-data" title="Permalink to this headline">#</a></h4>
+<p>We can rearrange the recursion relationship for the analytical solution of the geometric brownian motion equation to give:</p>
+<div class="math notranslate nohighlight">
+\[\frac{X_{k+1}}{X_{k}} = \exp\Biggl[\left(\mu-\frac{\sigma^{2}}{2}\right)\left(t_{k+1} - t_{k}\right) + \sigma\sqrt{t_{k+1}-t_{k}}\cdot{Z(0,1)}\Biggr]\]</div>
+<p>However, after taking the natural log of both sides we arrive at en expression for the log-return:</p>
+<div class="math notranslate nohighlight" id="equation-eqn-log-return-gbm">
+<span class="eqno">(29)<a class="headerlink" href="#equation-eqn-log-return-gbm" title="Permalink to this equation">#</a></span>\[r_{k+1,k} = \left(\mu-\frac{\sigma^{2}}{2}\right)h + \sigma\sqrt{h}\cdot{Z(0,1)}\]</div>
+<p>where <span class="math notranslate nohighlight">\(h=t_{k+1} - t_{k}\)</span> denotes the time step, and the log return <span class="math notranslate nohighlight">\(r_{k+1,k}\)</span> is given by:</p>
+<div class="math notranslate nohighlight">
+\[r_{k+1,k} = \ln\left(\frac{X_{k+1}}{X_{k}}\right)\]</div>
+<p>Thus, if we had the return values <span class="math notranslate nohighlight">\(r_{k+1,k}\)</span> computed from price data, we could those values to estimate the <span class="math notranslate nohighlight">\(\mu\)</span> and <span class="math notranslate nohighlight">\(\sigma\)</span> parameters. However, the return is a random variable, thus, the parameters <span class="math notranslate nohighlight">\(\mu\)</span> and <span class="math notranslate nohighlight">\(\sigma\)</span> are parameters in a return distribution.</p>
+<!-- ### Extension to multiple simultaneous assets
+Fill me in. -->
+<!-- ## Discretization Approaches
+
+In general, we cannot develop an analytical solution to Eqn. {eq}`eq-ito-process`; however, we can create an approximate numerical solution by discretization. This is an issue because sometimes we may want to use more sophisticated models for the price of `XYZ`, for example, a stochastic volatility model that better captures changes in market conditions. -->
+</section>
+</section>
+</section>
+<section id="stochastic-volatility-and-mean-reversion-models">
+<span id="content-references-discretization"></span><h2>Stochastic Volatility and Mean Reversion Models<a class="headerlink" href="#stochastic-volatility-and-mean-reversion-models" title="Permalink to this headline">#</a></h2>
+<p>For both the standard Brownian motion and the geometric Brownian motion equations, the drift coefficient <span class="math notranslate nohighlight">\(\mu\)</span> and the diffusion coefficient <span class="math notranslate nohighlight">\(\sigma^{2}\)</span> are assumed constant. However, in many practical cases, this may not be true, i.e., the drift rate <span class="math notranslate nohighlight">\(\mu\)</span> or the the diffusion coefficient <span class="math notranslate nohighlight">\(\sigma\)</span> many change as a function of time. For example, macroeconomic conditions may change leading to different price dynamics. Thus, one could imagine modifying the geometric Brownian motion model to capture mean reversion (such as that observed  in <a class="reference internal" href="#example-approach-1-calibration-gbm">Example 12</a>) or even constructing a seperate model that accounts for the movment of <span class="math notranslate nohighlight">\(\sigma\)</span> as a function of time.</p>
+<section id="ornsteinuhlenbeck-model-of-mean-reversion">
+<h3>Ornstein–Uhlenbeck model of mean reversion<a class="headerlink" href="#ornsteinuhlenbeck-model-of-mean-reversion" title="Permalink to this headline">#</a></h3>
+<p>The <a class="reference external" href="https://en.wikipedia.org/wiki/Ornstein%E2%80%93Uhlenbeck_process">Ornstein–Uhlenbeck model</a> model is a type of Ordinary Brownian motion model with a modified drift term that encodes mean reversion:</p>
+<div class="math notranslate nohighlight" id="equation-eqn-ou-model">
+<span class="eqno">(30)<a class="headerlink" href="#equation-eqn-ou-model" title="Permalink to this equation">#</a></span>\[dX = \theta\left(\mu-X\right)dt + {\sigma}dW\]</div>
+<p>where <span class="math notranslate nohighlight">\(\theta&gt;0\)</span> controls the rate of mean reversion, <span class="math notranslate nohighlight">\(\mu\)</span> is the long-term growth rate, and <span class="math notranslate nohighlight">\(\sigma&gt;0\)</span> denotes the volatility parameter <span id="id6">[<a class="reference internal" href="../References.html#id2" title="G. E. Uhlenbeck and L. S. Ornstein. On the Theory of the Brownian Motion. Physical Review, 36(5):823-841, September 1930. doi:10.1103/PhysRev.36.823.">Uhlenbeck and Ornstein, 1930</a>]</span>.</p>
+<section id="numerical-solution-ornsteinuhlenbeck-model">
+<h4>Numerical solution: Ornstein–Uhlenbeck model<a class="headerlink" href="#numerical-solution-ornsteinuhlenbeck-model" title="Permalink to this headline">#</a></h4>
+<p>Fill me in.</p>
+</section>
+</section>
+<section id="heston-model-of-stochastic-volatility">
+<h3>Heston model of stochastic volatility<a class="headerlink" href="#heston-model-of-stochastic-volatility" title="Permalink to this headline">#</a></h3>
+<p>On the other hand, the <a class="reference external" href="https://en.wikipedia.org/wiki/Heston_model">Heston model</a> is an example of a stochastic volatility model in which the volatility parameter <span class="math notranslate nohighlight">\(\sigma\)</span> is modeled as a random variable whose value is governed by a seperate stochastic differential equation <span id="id7">[<a class="reference internal" href="../References.html#id3" title="S. Heston. A Closed-form Solution for Options with Stochastic Volatility with Applications to Bond and Currency Options. Rev. Fin. Studies, 6:327-343, 1993.">Heston, 1993</a>]</span>. In the <a class="reference external" href="https://en.wikipedia.org/wiki/Heston_model">Heston model</a>, the price <span class="math notranslate nohighlight">\(X(t)\)</span> is governed by:</p>
+<div class="math notranslate nohighlight" id="equation-eqn-price-heston-model">
+<span class="eqno">(31)<a class="headerlink" href="#equation-eqn-price-heston-model" title="Permalink to this equation">#</a></span>\[dX = \mu{X}dt + \sqrt{\nu}X{dW}_{1}\]</div>
+<p>where the volatility <span class="math notranslate nohighlight">\(\nu\)</span> is governed by a seperate random process:</p>
+<div class="math notranslate nohighlight" id="equation-eqn-vol-cir-process">
+<span class="eqno">(32)<a class="headerlink" href="#equation-eqn-vol-cir-process" title="Permalink to this equation">#</a></span>\[d\nu = \kappa\left(\theta - \nu\right)dt + \xi\sqrt{\nu}dW_{2}\]</div>
+<section id="numerical-solution-heston-model">
+<h4>Numerical solution: Heston model<a class="headerlink" href="#numerical-solution-heston-model" title="Permalink to this headline">#</a></h4>
+<p>Fill me in.</p>
+</section>
+</section>
 </section>
 <hr class="docutils" />
 <section id="summary">

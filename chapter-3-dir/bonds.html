@@ -624,12 +624,12 @@ title="Print to PDF"
 <section class="definition-content" id="proof-content">
 <p>Let a zero-coupon treasury bill (T-bill) have a T-year term with an annual market interest rate of <span class="math notranslate nohighlight">\(\bar{r}\)</span>. Then, the <em>fair price</em> for a zero-coupon treasury bill is the future face (par) value of the bill discounted to today by the market interest rate <span class="math notranslate nohighlight">\(\bar{r}\)</span>:</p>
 <div class="math notranslate nohighlight" id="equation-eqn-zero-coupon-bill-bond">
-<span class="eqno">(26)<a class="headerlink" href="#equation-eqn-zero-coupon-bill-bond" title="Permalink to this equation">#</a></span>\[V_{B} = \frac{V_{P}}{\left(1+\bar{r}\right)^{T}}\]</div>
+<span class="eqno">(33)<a class="headerlink" href="#equation-eqn-zero-coupon-bill-bond" title="Permalink to this equation">#</a></span>\[V_{B} = \frac{V_{P}}{\left(1+\bar{r}\right)^{T}}\]</div>
 <p>where <span class="math notranslate nohighlight">\(V_{B}\)</span> denotes the price of the treasury bill, and <span class="math notranslate nohighlight">\(V_{P}\)</span> represents the face (par) value of the treasury bill.</p>
 </section>
 </div><p>The price of the bill <span class="math notranslate nohighlight">\(V_{B}\)</span> is computed with respect to a particular value of the market interest rate <span class="math notranslate nohighlight">\(\bar{r}\)</span> on the day the T-bill is purchased. However, the market interest rate <span class="math notranslate nohighlight">\(\bar{r}\)</span> may vary over the T-bill term; hence, the market price of the T-bill can change over its term. Let’s do an example illustrating the pricing of a zero-coupon treasury bill (<a class="reference internal" href="#defn-zero-coupon-bond-pricing">Definition 23</a>).</p>
 <div class="proof example admonition" id="example-zero-coupon-t-bill">
-<p class="admonition-title"><span class="caption-number">Example 12 </span> (Pricing of a Treasury Bill)</p>
+<p class="admonition-title"><span class="caption-number">Example 13 </span> (Pricing of a Treasury Bill)</p>
 <section class="example-content" id="proof-content">
 <p>Compute the fair price for a zero-coupon treasury bill with a par value of $1,000 and T = 26-week and T = 52-week duration as a function of annualized market interest rate <span class="math notranslate nohighlight">\(\bar{r}\)</span>.</p>
 <p>The fair price for a zero-coupon treasury bill, denoted by <span class="math notranslate nohighlight">\(V_{B}\)</span>, is the future face (par) value <span class="math notranslate nohighlight">\(V_{P}\)</span> of the bill discounted at <span class="math notranslate nohighlight">\(\bar{r}\)</span> to the time of the purchase (current dollars):</p>
@@ -644,7 +644,7 @@ title="Print to PDF"
 </figure>
 <p><strong>source</strong>: <a class="reference external" href="https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks">Live Pluto notebook</a> or <a class="reference external" href="https://htmlview.glitch.me/?https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks/blob/main/pluto-notebooks/html/Example-Price-ZeroCoupon-TreasuryBill.jl.html">a static HTML view</a>.</p>
 </section>
-</div><p>The treasury bill pricing calculations shown in <a class="reference internal" href="#example-zero-coupon-t-bill">Example 12</a> have some interesting properties:</p>
+</div><p>The treasury bill pricing calculations shown in <a class="reference internal" href="#example-zero-coupon-t-bill">Example 13</a> have some interesting properties:</p>
 <ul class="simple">
 <li><p>There is an <em>inverse</em> relationship between the current price of a zero-coupon bill and the market interest rate <span class="math notranslate nohighlight">\(\bar{r}\)</span>; this must be true as the par value (which is in future dollars) is fixed. Thus, higher market interest rates imply lower initial T-bill prices.</p></li>
 <li><p>The relationship between <span class="math notranslate nohighlight">\(V_{B}\)</span> and <span class="math notranslate nohighlight">\(\bar{r}\)</span> is <em>not</em> linear (dashed versus solid lines); even though it may appear to be the case from the parameters used in the example, the relationship between price and interest rate is convex</p></li>
@@ -688,7 +688,7 @@ title="Print to PDF"
 </section>
 </div><p>Let’s do an example illustrating bond pricing (<a class="reference internal" href="#defn-fixed-r-bond-pricing">Definition 24</a>).</p>
 <div class="proof example admonition" id="example-treaury-bond-price">
-<p class="admonition-title"><span class="caption-number">Example 13 </span> (Pricing T = 30 year Treasury Bond)</p>
+<p class="admonition-title"><span class="caption-number">Example 14 </span> (Pricing T = 30 year Treasury Bond)</p>
 <section class="example-content" id="proof-content">
 <p>Compute the price of a bond with a T = 30-year term and a par value of <span class="math notranslate nohighlight">\(V_{P}\)</span> = $1000 for different combinations of the interest rate <span class="math notranslate nohighlight">\(\bar{r}\)</span> and coupon rate <span class="math notranslate nohighlight">\(\bar{c}\)</span> of the bond. In particular,</p>
 <ol class="simple">
@@ -764,7 +764,7 @@ investors must calculate this value from the bond price, maturity date, and coup
 </figure>
 <section id="malkiels-bond-pricing-rules">
 <span id="content-references-bond-pricing-relationships"></span><h4>Malkiel’s bond-pricing rules<a class="headerlink" href="#malkiels-bond-pricing-rules" title="Permalink to this headline">#</a></h4>
-<p>The relationship between the price of a bond, and the yeild (i.e., the market interest rate <span class="math notranslate nohighlight">\(\bar{r}\)</span>) was previously studied by Malkiel <span id="id1">[<a class="reference internal" href="../References.html#id4" title="Burton G. Malkiel. Expectations, Bond Prices, and the Term Structure of Interest Rates*. The Quarterly Journal of Economics, 76(2):197-218, 05 1962. URL: https://doi.org/10.2307/1880816, arXiv:https://academic.oup.com/qje/article-pdf/76/2/197/5374920/76-2-197.pdf, doi:10.2307/1880816.">Malkiel, 1962</a>]</span>. The so-called Malkiel’s bond-pricing rules are demonstrated by the simulations shown in (<a class="reference internal" href="#fig-bond-price-sensitivity"><span class="std std-numref">Fig. 22</span></a>):</p>
+<p>The relationship between the price of a bond, and the yeild (i.e., the market interest rate <span class="math notranslate nohighlight">\(\bar{r}\)</span>) was previously studied by Malkiel <span id="id1">[<a class="reference internal" href="../References.html#id6" title="Burton G. Malkiel. Expectations, Bond Prices, and the Term Structure of Interest Rates*. The Quarterly Journal of Economics, 76(2):197-218, 05 1962. URL: https://doi.org/10.2307/1880816, arXiv:https://academic.oup.com/qje/article-pdf/76/2/197/5374920/76-2-197.pdf, doi:10.2307/1880816.">Malkiel, 1962</a>]</span>. The so-called Malkiel’s bond-pricing rules are demonstrated by the simulations shown in (<a class="reference internal" href="#fig-bond-price-sensitivity"><span class="std std-numref">Fig. 22</span></a>):</p>
 <ol class="simple">
 <li><p>The price of a U.S. Treasury Bond <em>increases</em> as the market interest rate <span class="math notranslate nohighlight">\(\bar{r}\)</span> <em>decreases</em>; thus, there is an <em>inverse</em> relationship between the bond yield to maturity (i.e., the market rate <span class="math notranslate nohighlight">\(\bar{r}\)</span>) and the price of the bond <span class="math notranslate nohighlight">\(V_{B}\)</span>.</p></li>
 <li><p>Changes in price as a function of changes in the interest rate are not symmetric;
