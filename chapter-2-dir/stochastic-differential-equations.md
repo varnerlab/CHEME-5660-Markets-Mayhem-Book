@@ -391,7 +391,7 @@ dX = \theta\left(\mu-X\right)dt + {\sigma}dW
 
 where $\theta>0$ controls the rate of mean reversion, $\mu$ is the long-term growth rate, and $\sigma>0$ denotes the volatility parameter {cite}`Uhlenbeck1930`. 
 
-#### Analytical solution: Ornstein–Uhlenbeck model
+#### Numerical solution: Ornstein–Uhlenbeck model
 Fill me in.
 
 ### Heston model of stochastic volatility
@@ -408,6 +408,9 @@ where the volatility $\nu$ is governed by a seperate random process:
 :label: eqn-vol-cir-process
 d\nu = \kappa\left(\theta - \nu\right)dt + \xi\sqrt{\nu}dW_{2}
 ```
+
+#### Numerical solution: Heston model
+Fill me in.
 
 ---
 
