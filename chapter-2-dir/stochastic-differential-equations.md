@@ -392,7 +392,24 @@ dX = \theta\left(\mu-X\right)dt + {\sigma}dW
 where $\theta>0$ controls the rate of mean reversion, $\mu$ is the long-term growth rate, and $\sigma>0$ denotes the volatility parameter {cite}`Uhlenbeck1930`. 
 
 #### Numerical solution: Ornstein–Uhlenbeck model
-Fill me in.
+Let's use the [Euler-Maruyuma (EM) method](https://en.wikipedia.org/wiki/Euler–Maruyama_method) to discretize the Ornstein–Uhlenbeck model. 
+The [Euler-Maruyuma (EM) method](https://en.wikipedia.org/wiki/Euler–Maruyama_method) is an extension of the Euler method for ordinary differential equations to stochastic differential equations; thus, it is easy to implement but not accurate unless we use small step-sizes. The EM discretized solution to the Ornstein–Uhlenbeck model is given by:
+
+```{math}
+X_{k+1} = X_{k} + \theta\left(\mu-X_{k}\right)h + \sigma\sqrt{h}Z(0,1)
+```
+
+where $Z(0,1)$ denotes a standard normally distributed random variable, and $h = t_{k+1} - t_{k}$ denotes the fixed time step size, where the subsscript $k$ denotes the time index.
+
+
+````{prf:example} Approximate Solution to the Ornstein–Uhlenbeck model
+:label: example-OU-model-EM-discrete
+
+Solve the [Ornstein–Uhlenbeck model](https://en.wikipedia.org/wiki/Ornstein–Uhlenbeck_process) model using the [Euler-Maruyuma (EM) method](https://en.wikipedia.org/wiki/Euler–Maruyama_method). 
+
+
+
+````
 
 ### Heston model of stochastic volatility
 On the other hand, the [Heston model](https://en.wikipedia.org/wiki/Heston_model) is an example of a stochastic volatility model in which the volatility parameter $\sigma$ is modeled as a random variable whose value is governed by a seperate stochastic differential equation {cite}`HESTON1993`. In the [Heston model](https://en.wikipedia.org/wiki/Heston_model), the price $X(t)$ is governed by:
