@@ -19,7 +19,7 @@ In this lecture, we will:
 
 * Introduce the {ref}`content:references:ddm`, a fundamental method of valuing the price of a firm's stock
 * Introduce {ref}`content:references:wiener-process`, {ref}`content:references:ito-calculus`, {ref}`content:references:ordinary-brownian-motion`, and {ref}`content:references:geometric-brownian-motion`
-* Introduce {ref}`content:references:discretization` to approximate the solutin of stochastic differential equation models of asset price.
+* Introduce {ref}`content:references:discretization` which can describe more complex asset price trends
 
 ---
 
@@ -368,20 +368,46 @@ $$r_{k+1,k} = \ln\left(\frac{X_{k+1}}{X_{k}}\right)$$
 
 Thus, if we had the return values $r_{k+1,k}$ computed from price data, we could those values to estimate the $\mu$ and $\sigma$ parameters. However, the return is a random variable, thus, the parameters $\mu$ and $\sigma$ are parameters in a return distribution. 
 
-### Extension to multiple simultaneous assets
-Fill me in.
+<!-- ### Extension to multiple simultaneous assets
+Fill me in. -->
+
+
+<!-- ## Discretization Approaches
+
+In general, we cannot develop an analytical solution to Eqn. {eq}`eq-ito-process`; however, we can create an approximate numerical solution by discretization. This is an issue because sometimes we may want to use more sophisticated models for the price of `XYZ`, for example, a stochastic volatility model that better captures changes in market conditions. -->
 
 (content:references:discretization)=
-## Discretization Approaches
+## Stochastic Volatility and Mean Reversion Models
 
-In general, we cannot develop an analytical solution to Eqn. {eq}`eq-ito-process`; however, we can create an approximate numerical solution by discretization. This is an issue because sometimes we may want to use more sophisticated models for the price of `XYZ`, for example, a stochastic volatility model that better captures changes in market conditions.
+For both the standard Brownian motion and the geometric Brownian motion equations, the drift coefficient $\mu$ and the diffusion coefficient $\sigma^{2}$ are assumed constant. However, in many practical cases, this may not be true, i.e., the drift rate $\mu$ or the the diffusion coefficient $\sigma$ many change as a function of time. For example, macroeconomic conditions may change leading to different price dynamics. Thus, one could imagine modifying the geometric Brownian motion model to capture mean reversion (such as that observed  in {prf:ref}`example-approach-1-calibration-gbm`) or even constructing a seperate model that accounts for the movment of $\sigma$ as a function of time. 
 
-## Stochastic Volatility Models
+### Ornstein–Uhlenbeck model of mean reversion
+The [Ornstein–Uhlenbeck model](https://en.wikipedia.org/wiki/Ornstein–Uhlenbeck_process) model is a type of Ordinary Brownian motion model with a modified drift term that encodes mean reversion:
 
-For both the standard Brownian motion and the geometric Brownian motion equations, the drift coefficient $\mu$ and the diffusion coefficient $\sigma^{2}$ are assumed constant. There are situations where both $\mu$ and $\sigma$ can reasonably be assumed to be constants. However, but in many practical cases, this is not true, particularly the diffusion coefficient $\sigma$. Thus, one could imagine constructing a seperate model that accounts for the movment of $\mu$ or $\sigma$ as a function of time. The [Heston model](https://en.wikipedia.org/wiki/Heston_model) is one such example {cite}`HESTON1993`.
+```{math}
+:label: eqn-ou-model
+dX = \theta\left(\mu-X\right)dt + {\sigma}dW
+```
 
-The [Heston model](https://en.wikipedia.org/wiki/Heston_model) model is an example of a stochastic volatility model in which the volatility parameter $\sigma$ is modeled as a random variable whose value is governed by a seperate stochastic differential equation
+where $\theta>0$ controls the rate of mean reversion, $\mu$ is the long-term growth rate, and $\sigma>0$ denotes the volatility parameter {cite}`Uhlenbeck1930`. 
 
+#### Analytical solution: Ornstein–Uhlenbeck model
+Fill me in.
+
+### Heston model of stochastic volatility
+On the other hand, the [Heston model](https://en.wikipedia.org/wiki/Heston_model) is an example of a stochastic volatility model in which the volatility parameter $\sigma$ is modeled as a random variable whose value is governed by a seperate stochastic differential equation {cite}`HESTON1993`. In the [Heston model](https://en.wikipedia.org/wiki/Heston_model), the price $X(t)$ is governed by:
+
+```{math}
+:label: eqn-price-heston-model
+dX = \mu{X}dt + \sqrt{\nu}X{dW}_{1}
+```
+
+where the volatility $\nu$ is governed by a seperate random process:
+
+```{math}
+:label: eqn-vol-cir-process
+d\nu = \kappa\left(\theta - \nu\right)dt + \xi\sqrt{\nu}dW_{2}
+```
 
 ---
 
