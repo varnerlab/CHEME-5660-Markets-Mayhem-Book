@@ -470,10 +470,10 @@ __source__: [live Pluto notebook](https://github.com/varnerlab/CHEME-5660-Market
 ````
 
 (content:references:option-probability-of-profit-algorithms)=
-## Probability of Profit (POP) at Expiration
+## Probability of Profit
 The Probability of Profit (POP) at expiration is the probability that your option position will make at least $0.01 at expiration. The probability of profit can be a helpful decision metric, e.g., investors engage in transactions with a _large_ POP and avoid low probability trades. However, the exact meaning of _large_ or _small_ depends upon the investor’s risk tolerance. 
 
-### Computing the POP using Monte-Carlo simulation
+### Computing the Probability of Profit
 Using Monte-Carlo simulation, we can estimate the option position’s probability of Profit (POP) at expiration. 
 First, we can develop a simulation of the price of the underlying asset `XYZ,` e.g., using a geometric Brownian motion model developed from historical data, and then use that model to project the underlying price into the future until expiration. Finally, we can compute the cumulative probability curve to determine the probability that a profit condition is satisfied.
 
@@ -531,15 +531,12 @@ where $\Delta{T}$ denotes the number of days into the future for which we wish t
 
 Unfortunately, knowing a value for the standard deviation estimated from the [implied volatility (IV)](https://www.investopedia.com/terms/i/iv.asp) is only half of what we need to compute the probability of profit for an options position at expiration. In addition, we need a model of how the share price is distributed. 
 
-#### Normal distribution
-Fill me in.
 
 #### Log-Normal distribution
 
 A fundamental assumption in the mathematical finance community is that share prices are [Log-normally distributed](https://www.investopedia.com/articles/investing/102014/lognormal-and-normal-distribution.asp). Given the premise of [Log-normal distributed](https://www.investopedia.com/articles/investing/102014/lognormal-and-normal-distribution.asp) share prices of `XYZ` and the IV model of the volatility ({prf:ref}`defn-iv-std-model`) we postulate:
 
 ````{prf:conjecture} IV-Projected price distribution
-:label: 
 
 The share price of `XYZ` is [log-normally distributed](https://www.investopedia.com/articles/investing/102014/lognormal-and-normal-distribution.asp) distributed. Further, let $S_{o}$ denote the current share price of `XYZ`.
 
@@ -584,8 +581,8 @@ The Black-Scholes model makes several assumptions when pricing [European](https:
 * No early excercise of the option contract is possible
 
 
-### Binomial pricing model
-Fill me in.
+### Binomial lattice pricing model
+The [Cox-Ross-Rubinstein (CRR) binomial lattice model](https://en.wikipedia.org/wiki/Binomial_options_pricing_model) 
 
 ### Monte-carlo pricing model
 Fill me in.
