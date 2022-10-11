@@ -485,7 +485,7 @@ To explore this idea, let's compute the probability of profit of a [short strang
 
 Let's compute the probability of profit at expiration for a short strangle for  [AMD](https://finance.yahoo.com/quote/AMD/) with the following data: short put strike $K_{1}$ = \$80.0 USD/share, short call srtike $K_{1}$ = \$120.0 USD/share, $\mathcal{P}_{1}$ = \$1.69 USD/share and $\mathcal{P}_{2}$ = \$2.97 USD/share. The current share price of [AMD](https://finance.yahoo.com/quote/AMD/) is $S_{o}$ = 102.53 USD/share.
 
-* The first step is to _estimate_ the future close price of the underlying asset in this case [AMD](https://finance.yahoo.com/quote/AMD/) at expiration. The close price was _predicted_ by building a GBM model based on the previous 45-days of AMD close price data; close price data was downloaded from the [Polygon.io application programming interface (API)](https://polygon.io). The GBM analytical solution developed previously was used to generate N = 10,000 sample paths from which the cumulative probability was calculated ({numref}`fig-cumulative-d-AMD-10K`).
+* First, estimate the future close price of the underlying asset in this case [AMD](https://finance.yahoo.com/quote/AMD/) at expiration. The close price was _predicted_ by building a GBM model based on the previous 45-days of AMD close price data; close price data was downloaded from the [Polygon.io application programming interface (API)](https://polygon.io). The GBM analytical solution developed previously was used to generate N = 10,000 sample paths from which the cumulative probability was calculated ({numref}`fig-cumulative-d-AMD-10K`).
 
 ```{figure} ./figs/Fig-CumulativeDistribution-C-AMD-D-10-21-22-N10K.pdf
 ---
@@ -565,12 +565,12 @@ where $\text{erf}$ denotes the [error function](https://en.wikipedia.org/wiki/Er
 
 
 (content:references:option-pricing-algorithms)=
-## Options Pricing Algorithms
+## Option Pricing Algorithms
+Options pricing is a rich area of study, given the complexity of options. Finish me.
 
 ### Black-Scholes-Merton (BSM)
 The Black-Scholes-Merton (BSM) model is a partial differential equation widely used to price [European](https://www.investopedia.com/terms/e/europeanoption.asp) style options contracts; thus, the BSM model does not condsider the possibility of early excercise that is possible with [American](https://www.investopedia.com/terms/a/americanoption.asp) option contracts. In 1997, Scholes and Merton were awarded the [Nobel Memorial Prize in Economic Sciences](https://www.nobelprize.org/prizes/economic-sciences/1997/press-release/) for their work in finding "a new method to determine the value of derivatives." Black had passed away two years earlier; thus could not share in the prize.
 
-#### Assumptions of the BSM model
 The Black-Scholes model makes several assumptions when pricing [European](https://www.investopedia.com/terms/e/europeanoption.asp) style options contracts:
 
 * No dividends are paid by the underlying asset `XYZ` during the life of the option contract.
@@ -580,9 +580,111 @@ The Black-Scholes model makes several assumptions when pricing [European](https:
 * The returns of the underlying stock `XYZ` are normally distributed.
 * No early excercise of the option contract is possible
 
+### Binomial lattice pricing models
 
-### Binomial lattice pricing model
-The [Cox-Ross-Rubinstein (CRR) binomial lattice model](https://en.wikipedia.org/wiki/Binomial_options_pricing_model) 
+```{figure} ./figs/Fig-Binomial-Lattice-Schematic.pdf
+---
+height: 420px
+name: fig-binomial-lattice-schematic
+---
+Schematic of a binomial lattice pricing model. At each node, the price of the underlying asset increases by a factor $u$ with probability $p$ or decreases by a factor $d$ with probability $(1-p)$. Each node is treated as an independent Bernoulli trial.
+```
+
+A binomial lattice model assumes that each discrete time increment, the state of the system, e.g., the `XYZ` share price, the spot rate, etc., can either increase by a factor $u$ with probability $p$ or decrease by a factor $d$ with probability $(1-p)$ ({numref}`fig-binomial-lattice-schematic`). Different models can be developed for the specific values of the tuple $(u,d,p)$.
+
+#### Cox, Ross and Rubinstein (CRR) model
+One widely used bionomial model for options pricing is the Cox, Ross, and Rubinstein (CRR) model {cite}`COX1979229`. [The Cox-Ross-Rubinstein (CRR) binomial lattice model](https://en.wikipedia.org/wiki/Binomial_options_pricing_model) proposes forms for the probability of an up move $p$, the up-factor $u$ and the symmetry condition between up and down factors: $ud=1$ such that the price distribution predicted by the CRR model approximates geometric Brownian motion. In particular, the magnitude of an `up` move $u$ is given by:
+
+$$u = \exp(\sigma\sqrt{\Delta{t}})$$
+
+The quantity $\sigma$ denotes a _volatility parameter_, and $\Delta{t}$ represents the time step. The probability $p$ of an `up` move in a [CRR model](https://en.wikipedia.org/wiki/Binomial_options_pricing_model) is given by:
+
+$$p = \frac{\exp(\mu\Delta{t}) - d}{u - d}$$
+
+where $\mu$ denotes a _return parameter_ or _growth rate_. In the [CRR model](https://en.wikipedia.org/wiki/Binomial_options_pricing_model) model paradigm, the return parameter $\mu$ and the volatility parameter $\sigma$ take on specific values:
+* The return parameter $\mu$ is a _risk-free_ rate of return; the _risk-free_ rate $\bar{r}$ can be approximated by the [yield on T = 10-year United States Treasury debt security](https://ycharts.com/indicators/10_year_treasury_rate). 
+* The volatility parameter $\sigma$ is the [implied volatility](https://www.investopedia.com/terms/i/iv.asp); the implied volatility is the market's view of the likelihood of changes in a given security's price.
+
+````{prf:observation} Where do $u$ and $p$ come from?
+
+The probability of an `up` move $p$, and the magnitude of the `up` factor $u$ can be derived by matching the expectation and variance of the Geometric Brownian motion analytical solution for $X(t)$:
+
+$$X(t) = X_{\circ}\exp\Biggl[\left(\mu-\frac{\sigma^{2}}{2}\right)\left(t - t_{\circ}\right) + (\sigma\sqrt{t-t_{\circ}})Z(0,1)\Biggr]$$
+
+The expectation of the share price $X(t)$ is given by:
+
+```{math}
+:label: eqn-expectation-GBM
+\mathbb{E}\left(X_{t}\right) = X_{\circ}e^{\mu\Delta{t}} 
+```
+
+while the variance of the share price of $X(t)$ is given by:
+
+```{math}
+:label: eqn-variance-GBM
+\text{Var}\left(X_{t}\right) = X_{\circ}^{2}e^{2\mu\Delta{t}}\left[e^{\sigma^{2}\Delta{t}} - 1\right]
+```
+
+where $\Delta{t} = t - t_{\circ}$.
+
+__Probability $p$__: The probability $p$ in the CRR model can be estimated from a 1-step Bernouli trial starting from $X_{\circ}$. In particular, the expected value of the price $X_{t}$ from the binomial lattice must match Eqn. {eq}`eqn-expectation-GBM`:
+
+```{math}
+:label: eqn-expectation-matching
+puX_{\circ}+(1-p)dX_{\circ} = \mathbb{E}\left(X_{t}\right)
+```
+
+where the left-hand side is the expectation of the lattice price, while the right-hand side is the expectation of the geometric Brownian motion solution. Substituting Eqn. {eq}`eqn-expectation-GBM` into Eqn. {eq}`eqn-expectation-matching` and simplfying gives:
+
+```{math}
+pu + (1-p)d = e^{\mu\Delta{t}}
+```
+
+which can be solved for the probability $p$:
+
+```{math}
+p = \frac{ e^{\mu\Delta{t}} - d}{u-d}
+```
+
+__Up factor $u$__: The `up` factor $u$ can be estimated by matching the variance of the bionomial lattice price with the variance of the geometric Brownian motion solution. In the limit of $\Delta{t}\rightarrow{0}$, Eqn. {eq}`eqn-variance-GBM` becomes:
+
+```{math}
+\text{Var}\left(X_{t}\right)\simeq{X_{\circ}^{2}\sigma^{2}\Delta{t}}\qquad{\Delta{t}\rightarrow{0}}
+```
+
+We know that variance of any random variable $X$ can be expressed as:
+
+```{math}
+\text{Var}\left(X\right) = \mathbb{E}\left(X^{2}\right) - \mathbb{E}\left(X\right)^{2}
+```
+
+For the CRR lattice, these expectations are given by:
+
+```{math}
+\mathbb{E}\left(X_{t}^{2}\right) = pu^{2}X^{2}_{\circ} + (1-p)d^{2}X^{2}_{\circ}
+```
+
+and
+
+```{math}
+ \mathbb{E}\left(X_{t}\right)^{2} = \left(puX_{\circ}+(1-p)dX_{\circ}\right)^2
+```
+
+which when matched gives the expression:
+
+```{math}
+:label: eqn-crr-var-mathching
+X_{\circ}^{2}\sigma^{2}\Delta{t} = pu^{2}X^{2}_{\circ} + (1-p)d^{2}X^{2}_{\circ} - \left(puX_{\circ}+(1-p)dX_{\circ}\right)^2
+```
+
+Expanding the right-hand side of Eqn. {eq}`eqn-crr-var-mathching`, invoking the symmetry condition $ud=1$, and solving for $u$ gives:
+
+```{math}
+u = e^{\sigma\sqrt{\Delta{t}}}\qquad\Delta{t}\rightarrow{0}
+```
+
+
+````
 
 ### Monte-carlo pricing model
 Fill me in.
