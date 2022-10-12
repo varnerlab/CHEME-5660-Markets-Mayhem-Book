@@ -563,8 +563,7 @@ where $\text{erf}$ denotes the [error function](https://en.wikipedia.org/wiki/Er
 
 ````
 
-Let's explore the ideas outlined in {prf:ref}`conj-IV-projected-price-distribution` with some data.
-
+Let's explore the ideas outlined in {prf:ref}`conj-IV-projected-price-distribution` with some simulations. 
 
 
 
@@ -588,7 +587,7 @@ Then, the price of the option contract $V$ as a function of time is the solution
 \frac{\partial{V}}{\partial{t}} + \frac{1}{2}\sigma^{2}X^{2}\frac{\partial^{2}{V}}{\partial{X}^{2}}+\mu{X}\frac{\partial{V}}{\partial{X}} -\mu{V} = 0
 ```
 
-__Call contract__: Equation {eq}`eqn-bsm-pde` has an analytical solution describing the price of a European Call contract $C(X_{t},t)$ with strike price $K$, expiration date $T$ and $\Delta{T}=T-t$ days until expiration:
+__Call contract__: Equation {eq}`eqn-bsm-pde` has an analytical solution describing the price of a `European Call` contract $C(X_{t},t)$ with strike price $K$, expiration date $T$ and $\Delta{T}=T-t$ days until expiration:
 
 ```{math}
 :label: eqn-euro-call-bsm-analytical-soln
@@ -609,7 +608,7 @@ and
 d_{2} = d_{1} - \sigma\sqrt\Delta{T}
 ```
 
-__Put contract__: Equation {eq}`eqn-bsm-pde` has an analytical solution describing the price of a European Put contract $P(X_{t},t)$ with strike price $K$, expiration date $T$ and $\Delta{T}=T-t$ days until expiration:
+__Put contract__: Equation {eq}`eqn-bsm-pde` has an analytical solution describing the price of a `European Put` contract $P(X_{t},t)$ with strike price $K$, expiration date $T$ and $\Delta{T}=T-t$ days until expiration:
 
 ```{math}
 :label: eqn-euro-put-bsm-analytical-soln
@@ -620,9 +619,38 @@ P(X_{t},t) = N(-d_{2})Ke^{-\mu\Delta{T}} - N(-d_{1})X_{t}
 where $d_{1}$ and $d_{2}$ are given by Eqn. {eq}`eqn-d1-bsm-soln` and Eqn. {eq}`eqn-d2-bsm-soln`, respectively.
 ````
 
-Let's look at an example of the pricing of [European](https://www.investopedia.com/terms/e/europeanoption.asp) Call and Put contracts to better understand what factors influnce their prices.
+Let's look at simulations of the pricing of [European](https://www.investopedia.com/terms/e/europeanoption.asp) Call and Put contracts to better understand what factors influnce their prices. 
+
+````{prf:example} Price of a European Call contract
+:label: example-european-call-contract
+Consider a `European Call` contract on `XYZ` with a strike price of $K$ = 100.0 USD/share for different times to expiration. Let the implied volatility (IV) of `XYZ` be equal to IV = 35%. Assume the implied volatility is not a function of the time to expiration.  
+
+```{figure} ./figs/Fig-BSM-Call-Price-K100.pdf
+---
+height: 420px
+name: fig-call-price-bsm
+---
+Price of a `European Call` contract as a function of the share price of the underlying asset `XYZ` for different times to expiration. 
+```
+
+__source__: Fill me in.
+````
 
 
+````{prf:example} Price of a European Put contract
+:label: example-european-put-contract
+Consider a `European Put` contract on `XYZ` with a strike price of $K$ = 100.0 USD/share for different times to expiration. Let the implied volatility (IV) of `XYZ` be equal to IV = 35%. Assume the implied volatility is not a function of the time to expiration.  
+
+```{figure} ./figs/Fig-BSM-Put-Price-K100.pdf
+---
+height: 420px
+name: fig-put-price-bsm
+---
+Price of a `European Put` contract as a function of the share price of the underlying asset `XYZ` for different times to expiration. 
+```
+
+__source__: Fill me in.
+````
 
 ### Binomial lattice pricing models
 
