@@ -54,16 +54,17 @@ The profit at expiration that a call contract buyer experiences depends upon the
 
 An investor purchases a call contract for the underlying stock `XYZ` for $\mathcal{P}$ USD/contract, where the contract controls 100 shares of `XYZ`. 
 
-Let the strike price of the call contract be $K$ USD/share, and the share price of `XYZ` at expiration be $S$ USD/share. Then, at expiration, the call contract has the payoff $V_{c}$ USD/share:
+Let the strike price of the call contract be $K$ USD/share, and the share price of `XYZ` at expiration be $S$ USD/share. Then, at expiration, the call contract has the payoff $\hat{V}_{c}$ USD/share:
 
 ```{math}
-V_{c} = \max\left(S-K,0\right)
+:label: eqn-call-option-payoff
+\hat{V}_{c} = \max\left(S-K,0\right)
 ```
 
 and a profit (loss) for the buyer of:
 
 ```{math}
-P_{c} = V_{c} -  \mathcal{P}
+P_{c} = \hat{V}_{c} -  \mathcal{P}
 ```
 
 where $P_{c}$ denotes the profit (or loss) per contract per share of `XYZ`. The contract seller experiences a profit (or loss) of $\bar{P}_{c}$ where
@@ -118,16 +119,17 @@ The profit that a put contract buyer experiences, denoted by $V_{p}$, depends up
 
 An investor purchases a put contract for the underlying stock `XYZ` for $\mathcal{P}$ USD/contract, where the contract controls 100 shares of `XYZ`. 
 
-Let the strike price of the put contract be $K$ USD/share, and the share price of `XYZ` be $S$ USD/share. Then, at expiration, the put contract has the payoff $V_{p}$ USD/share:
+Let the strike price of the put contract be $K$ USD/share, and the share price of `XYZ` be $S$ USD/share. Then, at expiration, the put contract has the payoff $\hat{V}_{p}$ USD/share:
 
 ```{math}
-V_{p} = \max\left(K - S,0\right)
+:label: eqn-put-option-payoff
+\hat{V}_{p} = \max\left(K - S,0\right)
 ```
 
 and a profit (loss) for the buyer of:
 
 ```{math}
-P_{p} = V_{p} -  \mathcal{P}
+P_{p} = \hat{V}_{p} -  \mathcal{P}
 ```
 
 where $P_{p}$ denotes the profit (or loss) per contract per share of `XYZ`. 
@@ -636,6 +638,8 @@ Price of a `European Call` contract as a function of the share price of the unde
 __source__: Fill me in.
 ````
 
+{prf:ref}`example-european-call-contract` demonstrates a key idea underyling the price of options, namely, intrinsic versus extrinsic value.
+The intrinsic value is the payoff of the option now; for a `Call` option the payoff is given by Eqn. {eq}`eqn-call-option-payoff`
 
 ````{prf:example} Price of a European Put contract
 :label: example-european-put-contract
