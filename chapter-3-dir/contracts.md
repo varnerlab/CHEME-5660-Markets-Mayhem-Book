@@ -537,6 +537,7 @@ Unfortunately, knowing a value for the standard deviation estimated from the [im
 A fundamental assumption in the mathematical finance community is that share prices are [Log-normally distributed](https://www.investopedia.com/articles/investing/102014/lognormal-and-normal-distribution.asp). Given the premise of [Log-normal distributed](https://www.investopedia.com/articles/investing/102014/lognormal-and-normal-distribution.asp) share prices of `XYZ` and the IV model of the volatility ({prf:ref}`defn-iv-std-model`) we postulate:
 
 ````{prf:conjecture} IV-Projected price distribution
+:label: conj-IV-projected-price-distribution
 
 The share price of `XYZ` is [log-normally distributed](https://www.investopedia.com/articles/investing/102014/lognormal-and-normal-distribution.asp) distributed. Further, let $S_{o}$ denote the current share price of `XYZ`.
 
@@ -562,6 +563,9 @@ where $\text{erf}$ denotes the [error function](https://en.wikipedia.org/wiki/Er
 
 ````
 
+Let's explore the ideas outlined in {prf:ref}`conj-IV-projected-price-distribution` with some data.
+
+
 
 
 (content:references:option-pricing-algorithms)=
@@ -569,34 +573,26 @@ where $\text{erf}$ denotes the [error function](https://en.wikipedia.org/wiki/Er
 Options pricing is a rich area of study, given the complexity of options. Finish me.
 
 ### Black-Scholes-Merton (BSM)
-The [Black-Scholes-Merton (BSM) model](https://en.wikipedia.org/wiki/Black–Scholes_model) is a partial differential equation widely used to price [European](https://www.investopedia.com/terms/e/europeanoption.asp) style options contracts; thus, the BSM model does not condsider the possibility of early excercise that is possible with [American](https://www.investopedia.com/terms/a/americanoption.asp) option contracts. 
-
-In 1997, Scholes and Merton were awarded the [Nobel Memorial Prize in Economic Sciences](https://www.nobelprize.org/prizes/economic-sciences/1997/press-release/) for their work in finding "a new method to determine the value of derivatives." Black had passed away two years earlier; thus could not share in the prize. The Black-Scholes model makes several assumptions when pricing [European](https://www.investopedia.com/terms/e/europeanoption.asp) style options contracts:
-
-* No dividends are paid by the underlying asset `XYZ` during the life of the option contract.
-* Markets are random (i.e., market movements cannot be predicted).
-* There are no transaction costs when buying (or selling) an option contract.
-* The risk-free rate and volatility of the underlying stock `XYZ` are known and constant.
-* The returns of the underlying stock `XYZ` are normally distributed.
-* No early excercise of the option contract is possible
+The [Black-Scholes-Merton (BSM) model](https://en.wikipedia.org/wiki/Black–Scholes_model) is a partial differential equation describing the price of [European](https://www.investopedia.com/terms/e/europeanoption.asp) option contracts {cite}`BlackScholes1973`; thus, the BSM model does not consider the possibility of early exercise that is possible with [American](https://www.investopedia.com/terms/a/americanoption.asp) style contracts. In 1997, Scholes and Merton were awarded the [Nobel Memorial Prize in Economic Sciences](https://www.nobelprize.org/prizes/economic-sciences/1997/press-release/) for their work in finding "a new method to determine the value of derivatives." Unfortunately, Black had passed away two years earlier; thus he could not share in the prize. 
 
 ````{prf:definition} Black-Scholes-Merton (BSM) model
 :label: defn-black-scholes-merton
 
-Let $V$ denote the price of a [European](https://www.investopedia.com/terms/e/europeanoption.asp) option contract written with respect to shares of an underlying security with ticker `XYZ`. Further, let the share price of `XYZ`, denoted by $X(t)$, be governed by geometric Brownian motion. 
+Let $V$ denote the price of a [European](https://www.investopedia.com/terms/e/europeanoption.asp) option contract written with respect to shares of an underlying stock `XYZ`. Further, let the share price of `XYZ`, denoted by $X(t)$, be governed by a geometric Brownian motion with a 
+constant growth rate $\mu$ and volatility $\sigma$. Finally, the firm `XYZ` does not pay dividends during the life of the option contract. 
 
 Then, the price of the option contract $V$ as a function of time is the solution of the parabolic partial differential equation:
 
 ```{math}
 :label: eqn-bsm-pde
-\frac{\partial{V}}{\partial{t}} + \frac{1}{2}\sigma^{2}X^{2}\frac{\partial^{2}{V}}{\partial{X}^{2}}+\mu{X}\frac{\partial{V}}{\partial{X}} -\mu{V}
+\frac{\partial{V}}{\partial{t}} + \frac{1}{2}\sigma^{2}X^{2}\frac{\partial^{2}{V}}{\partial{X}^{2}}+\mu{X}\frac{\partial{V}}{\partial{X}} -\mu{V} = 0
 ```
 
-__Call contract__: Equation {eq}`eqn-bsm-pde` has an analytical solution describing the price of a European Call contract $C(X_{t},t)$ with strike price $K$ and $\Delta{T}$ days until expiration:
+__Call contract__: Equation {eq}`eqn-bsm-pde` has an analytical solution describing the price of a European Call contract $C(X_{t},t)$ with strike price $K$, expiration date $T$ and $\Delta{T}=T-t$ days until expiration:
 
 ```{math}
 :label: eqn-euro-call-bsm-analytical-soln
-C(X_{t},T) = N(d_{1})X_{t} - N(d_{2})Ke^{-\mu\Delta{T}}
+C(X_{t},t) = N(d_{1})X_{t} - N(d_{2})Ke^{-\mu\Delta{T}}
 ```
 
 The quantity $N(\star)$ denotes the standard normal cumulative distribution function, the parameters $d_{1}$ is given by:
@@ -611,12 +607,22 @@ and
 ```{math}
 :label: eqn-d2-bsm-soln
 d_{2} = d_{1} - \sigma\sqrt\Delta{T}
-
-
 ```
 
+__Put contract__: Equation {eq}`eqn-bsm-pde` has an analytical solution describing the price of a European Put contract $P(X_{t},t)$ with strike price $K$, expiration date $T$ and $\Delta{T}=T-t$ days until expiration:
 
+```{math}
+:label: eqn-euro-put-bsm-analytical-soln
+
+P(X_{t},t) = N(-d_{2})Ke^{-\mu\Delta{T}} - N(-d_{1})X_{t}
+```
+
+where $d_{1}$ and $d_{2}$ are given by Eqn. {eq}`eqn-d1-bsm-soln` and Eqn. {eq}`eqn-d2-bsm-soln`, respectively.
 ````
+
+Let's look at an example of the pricing of [European](https://www.investopedia.com/terms/e/europeanoption.asp) Call and Put contracts to better understand what factors influnce their prices.
+
+
 
 ### Binomial lattice pricing models
 
