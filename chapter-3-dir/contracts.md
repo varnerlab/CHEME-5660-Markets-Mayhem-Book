@@ -569,9 +569,9 @@ where $\text{erf}$ denotes the [error function](https://en.wikipedia.org/wiki/Er
 Options pricing is a rich area of study, given the complexity of options. Finish me.
 
 ### Black-Scholes-Merton (BSM)
-The Black-Scholes-Merton (BSM) model is a partial differential equation widely used to price [European](https://www.investopedia.com/terms/e/europeanoption.asp) style options contracts; thus, the BSM model does not condsider the possibility of early excercise that is possible with [American](https://www.investopedia.com/terms/a/americanoption.asp) option contracts. In 1997, Scholes and Merton were awarded the [Nobel Memorial Prize in Economic Sciences](https://www.nobelprize.org/prizes/economic-sciences/1997/press-release/) for their work in finding "a new method to determine the value of derivatives." Black had passed away two years earlier; thus could not share in the prize.
+The [Black-Scholes-Merton (BSM) model](https://en.wikipedia.org/wiki/Black–Scholes_model) is a partial differential equation widely used to price [European](https://www.investopedia.com/terms/e/europeanoption.asp) style options contracts; thus, the BSM model does not condsider the possibility of early excercise that is possible with [American](https://www.investopedia.com/terms/a/americanoption.asp) option contracts. 
 
-The Black-Scholes model makes several assumptions when pricing [European](https://www.investopedia.com/terms/e/europeanoption.asp) style options contracts:
+In 1997, Scholes and Merton were awarded the [Nobel Memorial Prize in Economic Sciences](https://www.nobelprize.org/prizes/economic-sciences/1997/press-release/) for their work in finding "a new method to determine the value of derivatives." Black had passed away two years earlier; thus could not share in the prize. The Black-Scholes model makes several assumptions when pricing [European](https://www.investopedia.com/terms/e/europeanoption.asp) style options contracts:
 
 * No dividends are paid by the underlying asset `XYZ` during the life of the option contract.
 * Markets are random (i.e., market movements cannot be predicted).
@@ -579,6 +579,42 @@ The Black-Scholes model makes several assumptions when pricing [European](https:
 * The risk-free rate and volatility of the underlying stock `XYZ` are known and constant.
 * The returns of the underlying stock `XYZ` are normally distributed.
 * No early excercise of the option contract is possible
+
+````{prf:definition} Black-Scholes-Merton (BSM) model
+:label: defn-black-scholes-merton
+
+Let $V$ denote the price of a [European](https://www.investopedia.com/terms/e/europeanoption.asp) option contract written with respect to shares of an underlying security with ticker `XYZ`. Further, let the share price of `XYZ`, denoted by $X(t)$, be governed by geometric Brownian motion. 
+
+Then, the price of the option contract $V$ as a function of time is the solution of the parabolic partial differential equation:
+
+```{math}
+:label: eqn-bsm-pde
+\frac{\partial{V}}{\partial{t}} + \frac{1}{2}\sigma^{2}X^{2}\frac{\partial^{2}{V}}{\partial{X}^{2}}+\mu{X}\frac{\partial{V}}{\partial{X}} -\mu{V}
+```
+
+__Call contract__: Equation {eq}`eqn-bsm-pde` has an analytical solution describing the price of a European Call contract $C(X_{t},t)$:
+
+```{math}
+:label: eqn-euro-call-bsm-analytical-soln
+C(X_{t},t) = N(d_{1})X_{t} - N(d_{2})Ke^{-\mu\Delta{t}}
+```
+
+The quantity $N(\star)$ denotes the standard normal cumulative distribution function, the parameters $d_{1}$ is given by:
+
+```{math}
+:label: eqn-d1-bsm-soln
+d_{1} = \frac{1}{\sigma\sqrt{\Delta{t}}}\left[\ln\frac{X_{t}}{K}+(\mu+\frac{\sigma^{2}}{2})\Delta{t}\right]
+```
+
+and 
+
+```{math}
+:label: eqn-d2-bsm-soln
+d_{2} = d_{1} - \sigma\sqrt\Delta{t}
+```
+
+
+````
 
 ### Binomial lattice pricing models
 
@@ -595,19 +631,18 @@ A binomial lattice model assumes that each discrete time increment, the state of
 #### Cox, Ross and Rubinstein (CRR) model
 One widely used bionomial model for options pricing is the Cox, Ross, and Rubinstein (CRR) model {cite}`COX1979229`. [The Cox-Ross-Rubinstein (CRR) binomial lattice model](https://en.wikipedia.org/wiki/Binomial_options_pricing_model) proposes forms for the probability of an up move $p$, the up-factor $u$ and the symmetry condition between up and down factors: $ud=1$ such that the price distribution predicted by the CRR model approximates geometric Brownian motion. In particular, the magnitude of an `up` move $u$ is given by:
 
-$$u = \exp(\sigma\sqrt{\Delta{t}})$$
+$$u = e^{\sigma\sqrt{\Delta{t}}}$$
 
 The quantity $\sigma$ denotes a _volatility parameter_, and $\Delta{t}$ represents the time step. The probability $p$ of an `up` move in a [CRR model](https://en.wikipedia.org/wiki/Binomial_options_pricing_model) is given by:
 
-$$p = \frac{\exp(\mu\Delta{t}) - d}{u - d}$$
+$$p = \frac{e^{\mu\Delta{t}} - d}{u - d}$$
 
 where $\mu$ denotes a _return parameter_ or _growth rate_. In the [CRR model](https://en.wikipedia.org/wiki/Binomial_options_pricing_model) model paradigm, the return parameter $\mu$ and the volatility parameter $\sigma$ take on specific values:
 * The return parameter $\mu$ is a _risk-free_ rate of return; the _risk-free_ rate $\bar{r}$ can be approximated by the [yield on T = 10-year United States Treasury debt security](https://ycharts.com/indicators/10_year_treasury_rate). 
 * The volatility parameter $\sigma$ is the [implied volatility](https://www.investopedia.com/terms/i/iv.asp); the implied volatility is the market's view of the likelihood of changes in a given security's price.
 
 ````{prf:observation} Where do $u$ and $p$ come from?
-
-The probability of an `up` move $p$, and the magnitude of the `up` factor $u$ can be derived by matching the expectation and variance of the Geometric Brownian motion analytical solution for $X(t)$:
+The probability of an `up` move $p$ and the magnitude of the `up` factor $u$ can be derived by matching the expectation and variance of the Geometric Brownian motion analytical solution for $X(t)$:
 
 $$X(t) = X_{\circ}\exp\Biggl[\left(\mu-\frac{\sigma^{2}}{2}\right)\left(t - t_{\circ}\right) + (\sigma\sqrt{t-t_{\circ}})Z(0,1)\Biggr]$$
 
@@ -627,32 +662,26 @@ while the variance of the share price of $X(t)$ is given by:
 
 where $\Delta{t} = t - t_{\circ}$.
 
-__Probability $p$__: The probability $p$ in the CRR model can be estimated from a 1-step Bernouli trial starting from $X_{\circ}$. In particular, the expected value of the price $X_{t}$ from the binomial lattice must match Eqn. {eq}`eqn-expectation-GBM`:
+__Probability $p$__: The probability $p$ in the CRR model can be estimated from a 1-step Bernoulli trial starting from $X_{\circ}$. In particular, the expected value of the price $X_{t}$ from the binomial lattice must match Eqn. {eq}`eqn-expectation-GBM`:
 
 ```{math}
 :label: eqn-expectation-matching
-puX_{\circ}+(1-p)dX_{\circ} = \mathbb{E}\left(X_{t}\right)
+puX_{\circ}+(1-p)dX_{\circ} = X_{\circ}e^{\mu\Delta{t}} 
 ```
 
-where the left-hand side is the expectation of the lattice price, while the right-hand side is the expectation of the geometric Brownian motion solution. Substituting Eqn. {eq}`eqn-expectation-GBM` into Eqn. {eq}`eqn-expectation-matching` and simplfying gives:
-
-```{math}
-pu + (1-p)d = e^{\mu\Delta{t}}
-```
-
-which can be solved for the probability $p$:
+where the left-hand side is the expectation of the lattice price, while the right-hand side is the expectation of the geometric Brownian motion solution. Equation {eq}`eqn-expectation-matching` can be solved for the probability $p$ expression:
 
 ```{math}
 p = \frac{ e^{\mu\Delta{t}} - d}{u-d}
 ```
 
-__Up factor $u$__: The `up` factor $u$ can be estimated by matching the variance of the bionomial lattice price with the variance of the geometric Brownian motion solution. In the limit of $\Delta{t}\rightarrow{0}$, Eqn. {eq}`eqn-variance-GBM` becomes:
+__Up factor $u$__: The `up` factor $u$ can be estimated by matching the variance of the binomial lattice price with the variance of the geometric Brownian motion solution. In the limit of $\Delta{t}\rightarrow{0}$, Eqn. {eq}`eqn-variance-GBM` becomes:
 
 ```{math}
 \text{Var}\left(X_{t}\right)\simeq{X_{\circ}^{2}\sigma^{2}\Delta{t}}\qquad{\Delta{t}\rightarrow{0}}
 ```
 
-We know that variance of any random variable $X$ can be expressed as:
+We know that the variance of any random variable $X$ can be expressed as:
 
 ```{math}
 \text{Var}\left(X\right) = \mathbb{E}\left(X^{2}\right) - \mathbb{E}\left(X\right)^{2}
@@ -670,7 +699,7 @@ and
  \mathbb{E}\left(X_{t}\right)^{2} = \left(puX_{\circ}+(1-p)dX_{\circ}\right)^2
 ```
 
-which when matched gives the expression:
+which, when matched, gives the expression:
 
 ```{math}
 :label: eqn-crr-var-mathching
@@ -682,7 +711,6 @@ Expanding the right-hand side of Eqn. {eq}`eqn-crr-var-mathching`, invoking the 
 ```{math}
 u = e^{\sigma\sqrt{\Delta{t}}}\qquad\Delta{t}\rightarrow{0}
 ```
-
 
 ````
 
