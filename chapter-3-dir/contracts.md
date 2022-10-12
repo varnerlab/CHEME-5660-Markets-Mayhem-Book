@@ -592,25 +592,27 @@ Then, the price of the option contract $V$ as a function of time is the solution
 \frac{\partial{V}}{\partial{t}} + \frac{1}{2}\sigma^{2}X^{2}\frac{\partial^{2}{V}}{\partial{X}^{2}}+\mu{X}\frac{\partial{V}}{\partial{X}} -\mu{V}
 ```
 
-__Call contract__: Equation {eq}`eqn-bsm-pde` has an analytical solution describing the price of a European Call contract $C(X_{t},t)$:
+__Call contract__: Equation {eq}`eqn-bsm-pde` has an analytical solution describing the price of a European Call contract $C(X_{t},t)$ with strike price $K$ and $\Delta{T}$ days until expiration:
 
 ```{math}
 :label: eqn-euro-call-bsm-analytical-soln
-C(X_{t},t) = N(d_{1})X_{t} - N(d_{2})Ke^{-\mu\Delta{t}}
+C(X_{t},T) = N(d_{1})X_{t} - N(d_{2})Ke^{-\mu\Delta{T}}
 ```
 
 The quantity $N(\star)$ denotes the standard normal cumulative distribution function, the parameters $d_{1}$ is given by:
 
 ```{math}
 :label: eqn-d1-bsm-soln
-d_{1} = \frac{1}{\sigma\sqrt{\Delta{t}}}\left[\ln\frac{X_{t}}{K}+(\mu+\frac{\sigma^{2}}{2})\Delta{t}\right]
+d_{1} = \frac{1}{\sigma\sqrt{\Delta{T}}}\left[\ln\frac{X_{t}}{K}+(\mu+\frac{\sigma^{2}}{2})\Delta{T}\right]
 ```
 
 and 
 
 ```{math}
 :label: eqn-d2-bsm-soln
-d_{2} = d_{1} - \sigma\sqrt\Delta{t}
+d_{2} = d_{1} - \sigma\sqrt\Delta{T}
+
+
 ```
 
 
