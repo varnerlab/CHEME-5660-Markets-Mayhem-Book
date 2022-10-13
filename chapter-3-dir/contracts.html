@@ -482,13 +482,13 @@ title="Print to PDF"
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#probability-of-profit-pop-at-expiration">
-   Probability of Profit (POP) at Expiration
+  <a class="reference internal nav-link" href="#probability-of-profit">
+   Probability of Profit
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#computing-the-pop-using-monte-carlo-simulation">
-     Computing the POP using Monte-Carlo simulation
+    <a class="reference internal nav-link" href="#computing-the-probability-of-profit">
+     Computing the Probability of Profit
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
@@ -496,11 +496,6 @@ title="Print to PDF"
      Implied Volatility
     </a>
     <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#normal-distribution">
-       Normal distribution
-      </a>
-     </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#log-normal-distribution">
        Log-Normal distribution
@@ -511,26 +506,26 @@ title="Print to PDF"
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#options-pricing-algorithms">
-   Options Pricing Algorithms
+  <a class="reference internal nav-link" href="#option-pricing-algorithms">
+   Option Pricing Algorithms
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#black-scholes-merton-bsm">
      Black-Scholes-Merton (BSM)
     </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#binomial-lattice-pricing-models">
+     Binomial lattice pricing models
+    </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#assumptions-of-the-bsm-model">
-       Assumptions of the BSM model
+      <a class="reference internal nav-link" href="#cox-ross-and-rubinstein-crr-model">
+       Cox, Ross and Rubinstein (CRR) model
       </a>
      </li>
     </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#binomial-pricing-model">
-     Binomial pricing model
-    </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#monte-carlo-pricing-model">
@@ -627,13 +622,13 @@ title="Print to PDF"
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#probability-of-profit-pop-at-expiration">
-   Probability of Profit (POP) at Expiration
+  <a class="reference internal nav-link" href="#probability-of-profit">
+   Probability of Profit
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#computing-the-pop-using-monte-carlo-simulation">
-     Computing the POP using Monte-Carlo simulation
+    <a class="reference internal nav-link" href="#computing-the-probability-of-profit">
+     Computing the Probability of Profit
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
@@ -641,11 +636,6 @@ title="Print to PDF"
      Implied Volatility
     </a>
     <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#normal-distribution">
-       Normal distribution
-      </a>
-     </li>
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#log-normal-distribution">
        Log-Normal distribution
@@ -656,26 +646,26 @@ title="Print to PDF"
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#options-pricing-algorithms">
-   Options Pricing Algorithms
+  <a class="reference internal nav-link" href="#option-pricing-algorithms">
+   Option Pricing Algorithms
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#black-scholes-merton-bsm">
      Black-Scholes-Merton (BSM)
     </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#binomial-lattice-pricing-models">
+     Binomial lattice pricing models
+    </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#assumptions-of-the-bsm-model">
-       Assumptions of the BSM model
+      <a class="reference internal nav-link" href="#cox-ross-and-rubinstein-crr-model">
+       Cox, Ross and Rubinstein (CRR) model
       </a>
      </li>
     </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#binomial-pricing-model">
-     Binomial pricing model
-    </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#monte-carlo-pricing-model">
@@ -714,8 +704,8 @@ In European-style contracts, the transaction codified in CALL or PUT options can
 <p>In this lecture, we will:</p>
 <ul class="simple">
 <li><p>Discuss the two types, and two styles of <a class="reference internal" href="#content-references-option-contracts"><span class="std std-ref">Option Contracts</span></a></p></li>
-<li><p>Discuss the <a class="reference internal" href="#content-references-option-probability-of-profit-algorithms"><span class="std std-ref">Probability of Profit (POP) at Expiration</span></a></p></li>
-<li><p>Discuss several <a class="reference internal" href="#content-references-option-pricing-algorithms"><span class="std std-ref">Options Pricing Algorithms</span></a></p></li>
+<li><p>Discuss the <a class="reference internal" href="#content-references-option-probability-of-profit-algorithms"><span class="std std-ref">Probability of Profit</span></a></p></li>
+<li><p>Discuss several <a class="reference internal" href="#content-references-option-pricing-algorithms"><span class="std std-ref">Option Pricing Algorithms</span></a></p></li>
 </ul>
 <hr class="docutils" />
 </section>
@@ -724,11 +714,11 @@ In European-style contracts, the transaction codified in CALL or PUT options can
 <figure class="align-default" id="fig-options-contract-grid">
 <a class="reference internal image-reference" href="../_images/Fig-Options-Grid.pdf"><img alt="../_images/Fig-Options-Grid.pdf" src="../_images/Fig-Options-Grid.pdf" style="height: 280px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 24 </span><span class="caption-text">The rights and responsibilities of the buyer and seller of <a class="reference external" href="https://www.investopedia.com/terms/a/americanoption.asp">American</a>
+<p><span class="caption-number">Fig. 25 </span><span class="caption-text">The rights and responsibilities of the buyer and seller of <a class="reference external" href="https://www.investopedia.com/terms/a/americanoption.asp">American</a>
 style put and call option contracts.</span><a class="headerlink" href="#fig-options-contract-grid" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<p>The types, rights, and responsibilities of options contracts are shown in (<a class="reference internal" href="#fig-options-contract-grid"><span class="std std-numref">Fig. 24</span></a>).
+<p>The types, rights, and responsibilities of options contracts are shown in (<a class="reference internal" href="#fig-options-contract-grid"><span class="std std-numref">Fig. 25</span></a>).
 There are two types of contracts, a <a class="reference external" href="https://www.investopedia.com/terms/c/calloption.asp">call contract</a> and a <a class="reference external" href="https://www.investopedia.com/terms/p/putoption.asp">put contract</a>, and many different styles of contracts. However, we’ll consider only <a class="reference external" href="https://www.investopedia.com/terms/a/americanoption.asp">American</a> and <a class="reference external" href="https://www.investopedia.com/terms/e/europeanoption.asp">European</a> style contracts.  Option contract buyers (long positions), regardless of the type of contract, pay a premium to have the right (but not the obligation) to perform an action (buy or sell shares of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code>); <a class="reference external" href="https://www.investopedia.com/terms/a/americanoption.asp">American</a> style contract buyers can act at any time between when the contract was purchased and expiration, while <a class="reference external" href="https://www.investopedia.com/terms/e/europeanoption.asp">European</a> style buyers can only act at expiration.  On the other hand, the option seller (short position), in exchange for the premium paid by the buyer, <em>must</em> buy or sell shares of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> in response to the choice of the contract buyer.</p>
 <p>Like bonds, investors can profit from holding contracts until expiration or by trading the contracts in the options market. Thus, options contracts can be reviewed from two perspectives, at expiration or as stand-alone tradable instruments.</p>
 <p>Let’s begin the discussion of options contracts by exploring their behavior at expiration.</p>
@@ -739,36 +729,35 @@ There are two types of contracts, a <a class="reference external" href="https://
 <div class="proof definition admonition" id="defn-PL-call-contract">
 <p class="admonition-title"><span class="caption-number">Definition 31 </span> (Call Contract Payoff and Profit)</p>
 <section class="definition-content" id="proof-content">
-<p>An investor purchases a call contract for the underlying stock <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> for <span class="math notranslate nohighlight">\(\mathcal{P}\)</span> USD/contract, where the contract controls 100 shares of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code>.</p>
-<p>Let the strike price of the call contract be <span class="math notranslate nohighlight">\(K\)</span> USD/share, and the share price of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> at expiration be <span class="math notranslate nohighlight">\(S\)</span> USD/share. Then, at expiration, the call contract has the payoff <span class="math notranslate nohighlight">\(V_{c}\)</span> USD/share:</p>
-<div class="math notranslate nohighlight">
-\[V_{c} = \max\left(S-K,0\right)\]</div>
+<p>An investor purchases a single American stycle Call contract for the underlying stock <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> for <span class="math notranslate nohighlight">\(\mathcal{P}\)</span> USD/share; the contract controls 100 shares of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code>.</p>
+<p>Let the strike price of the call contract be <span class="math notranslate nohighlight">\(K\)</span> USD/share, and the share price of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> at expiration be <span class="math notranslate nohighlight">\(S\)</span> USD/share. Then, at expiration, the call contract has the payoff <span class="math notranslate nohighlight">\(\hat{V}_{c}\)</span> USD/share:</p>
+<div class="math notranslate nohighlight" id="equation-eqn-call-option-payoff">
+<span class="eqno">(46)<a class="headerlink" href="#equation-eqn-call-option-payoff" title="Permalink to this equation">#</a></span>\[\hat{V}_{c} = \max\left(S-K,0\right)\]</div>
 <p>and a profit (loss) for the buyer of:</p>
 <div class="math notranslate nohighlight">
-\[P_{c} = V_{c} -  \mathcal{P}\]</div>
-<p>where <span class="math notranslate nohighlight">\(P_{c}\)</span> denotes the profit (or loss) per contract per share of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code>. The contract seller experiences a profit (or loss) of <span class="math notranslate nohighlight">\(\bar{P}_{c}\)</span> where</p>
+\[P_{c} = \hat{V}_{c} -  \mathcal{P}\]</div>
+<p>where <span class="math notranslate nohighlight">\(P_{c}\)</span> denotes the profit (or loss) per share of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code>. The contract seller experiences a profit (or loss) of <span class="math notranslate nohighlight">\(\bar{P}_{c}\)</span> at expiration where:</p>
 <div class="math notranslate nohighlight">
 \[P_{c}+\bar{P}_{c} = 0\]</div>
-<p>The cost of a call contract <span class="math notranslate nohighlight">\(\mathcal{P}\)</span> is a non-linear function of many variables including the current share price of the underlying asset <span class="math notranslate nohighlight">\(S\)</span>, the strike price of the contract, the number of days before contract expiration, and an unobservable quantity called the implied volatility.</p>
 </section>
 </div><section id="payoff-profit-and-loss-for-call-contracts">
 <h4>Payoff, Profit and Loss for Call contracts<a class="headerlink" href="#payoff-profit-and-loss-for-call-contracts" title="Permalink to this headline">#</a></h4>
 <p>The payoff (and profit/loss) diagram for a call contract at expiration for Advanced Micro Devices with ticker <a class="reference external" href="https://www.google.com/search?client=safari&amp;rls=en&amp;sxsrf=ALiCzsbTZ3IEA10C9Rgs6Lb7YLN8LAILVQ:1657882036543&amp;q=NASDAQ:+AMD&amp;stick=H4sIAAAAAAAAAONgecRoyi3w8sc9YSmdSWtOXmNU4-IKzsgvd80rySypFJLgYoOy-KR4uLj0c_UNzKuy4ytzeRaxcvs5Brs4BlopOPq6AACfr0n4SAAAAA&amp;sa=X&amp;ved=2ahUKEwjV_ffu2_r4AhUxJUQIHcXZAPkQsRV6BAhVEAM&amp;biw=1594&amp;bih=921&amp;dpr=2">AMD</a> is shown in
-<a class="reference internal" href="#call-contract-expiration">Example 19</a>. The <em>buyer</em> of the <a class="reference external" href="https://www.google.com/search?client=safari&amp;rls=en&amp;sxsrf=ALiCzsbTZ3IEA10C9Rgs6Lb7YLN8LAILVQ:1657882036543&amp;q=NASDAQ:+AMD&amp;stick=H4sIAAAAAAAAAONgecRoyi3w8sc9YSmdSWtOXmNU4-IKzsgvd80rySypFJLgYoOy-KR4uLj0c_UNzKuy4ytzeRaxcvs5Brs4BlopOPq6AACfr0n4SAAAAA&amp;sa=X&amp;ved=2ahUKEwjV_ffu2_r4AhUxJUQIHcXZAPkQsRV6BAhVEAM&amp;biw=1594&amp;bih=921&amp;dpr=2">AMD</a> call contract experiences (at expiration):</p>
+<a class="reference internal" href="#call-contract-expiration">Example 21</a>. The <em>buyer</em> of the <a class="reference external" href="https://www.google.com/search?client=safari&amp;rls=en&amp;sxsrf=ALiCzsbTZ3IEA10C9Rgs6Lb7YLN8LAILVQ:1657882036543&amp;q=NASDAQ:+AMD&amp;stick=H4sIAAAAAAAAAONgecRoyi3w8sc9YSmdSWtOXmNU4-IKzsgvd80rySypFJLgYoOy-KR4uLj0c_UNzKuy4ytzeRaxcvs5Brs4BlopOPq6AACfr0n4SAAAAA&amp;sa=X&amp;ved=2ahUKEwjV_ffu2_r4AhUxJUQIHcXZAPkQsRV6BAhVEAM&amp;biw=1594&amp;bih=921&amp;dpr=2">AMD</a> call contract experiences (at expiration):</p>
 <ul class="simple">
 <li><p>Loss <span class="math notranslate nohighlight">\(S&lt;K+\mathcal{P}\)</span>: the share price is <em>less than</em> the strike price plus the premium paid per share for the contract.</p></li>
 <li><p>Breakeven <span class="math notranslate nohighlight">\(S=K+\mathcal{P}\)</span>: the share price <em>equals</em> the strike price plus the premium paid per share for the contract.</p></li>
 <li><p>Profit <span class="math notranslate nohighlight">\(S&gt;K+\mathcal{P}\)</span>: the share price is <em>greater than</em> the strike price plus the premium paid per share for the contract.</p></li>
 </ul>
 <div class="proof example admonition" id="call-contract-expiration">
-<p class="admonition-title"><span class="caption-number">Example 19 </span> (AMD Call Contract)</p>
+<p class="admonition-title"><span class="caption-number">Example 21 </span> (AMD Call Contract)</p>
 <section class="example-content" id="proof-content">
 <p>We are interested in buying a call contract for Advanced Micro Devices with ticker <a class="reference external" href="https://www.google.com/search?client=safari&amp;rls=en&amp;sxsrf=ALiCzsbTZ3IEA10C9Rgs6Lb7YLN8LAILVQ:1657882036543&amp;q=NASDAQ:+AMD&amp;stick=H4sIAAAAAAAAAONgecRoyi3w8sc9YSmdSWtOXmNU4-IKzsgvd80rySypFJLgYoOy-KR4uLj0c_UNzKuy4ytzeRaxcvs5Brs4BlopOPq6AACfr0n4SAAAAA&amp;sa=X&amp;ved=2ahUKEwjV_ffu2_r4AhUxJUQIHcXZAPkQsRV6BAhVEAM&amp;biw=1594&amp;bih=921&amp;dpr=2">AMD</a>. The current share price of <code class="docutils literal notranslate"><span class="pre">AMD</span></code> is $78.94 per share (around 3:30 PM ITH time on Th 7/14), and we belive the shares will close higher before contract expiration.</p>
 <p>Compute the payoff and profit/loss diagram at expiration for a July 15 <code class="docutils literal notranslate"><span class="pre">AMD</span></code> call contract with a strike <span class="math notranslate nohighlight">\(K\)</span> = 80.0 USD/share. The market price for the July 15 <code class="docutils literal notranslate"><span class="pre">AMD</span></code> call contract is <span class="math notranslate nohighlight">\(\mathcal{P}\)</span> = 0.36 USD/share.</p>
 <figure class="align-default" id="fig-call-contract-payout-schematic">
 <a class="reference internal image-reference" href="../_images/Fig-AMD-Call-Jul15-1DTE.pdf"><img alt="../_images/Fig-AMD-Call-Jul15-1DTE.pdf" src="../_images/Fig-AMD-Call-Jul15-1DTE.pdf" style="height: 420px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 25 </span><span class="caption-text">Payoff and profit diagrams for an AMD call option.  Solid lines denote the payout (profit) from the perspective of the contract buyer. Dashed lines denote the payout (profit) from the perspective of the contract seller</span><a class="headerlink" href="#fig-call-contract-payout-schematic" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 26 </span><span class="caption-text">Payoff and profit diagrams for an AMD call option.  Solid lines denote the payout (profit) from the perspective of the contract buyer. Dashed lines denote the payout (profit) from the perspective of the contract seller</span><a class="headerlink" href="#fig-call-contract-payout-schematic" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p><strong>source</strong>: <a class="reference external" href="https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks">live Pluto notebook</a> or <a class="reference external" href="https://htmlview.glitch.me/?https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks/blob/main/pluto-notebooks/html/Example-CallPutContract-Payoff.jl.html">static HTML</a></p>
@@ -787,37 +776,35 @@ There are two types of contracts, a <a class="reference external" href="https://
 <div class="proof definition admonition" id="defn-PL-put-contract">
 <p class="admonition-title"><span class="caption-number">Definition 32 </span> (Put Contract Payoff and Profit)</p>
 <section class="definition-content" id="proof-content">
-<p>An investor purchases a put contract for the underlying stock <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> for <span class="math notranslate nohighlight">\(\mathcal{P}\)</span> USD/contract, where the contract controls 100 shares of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code>.</p>
-<p>Let the strike price of the put contract be <span class="math notranslate nohighlight">\(K\)</span> USD/share, and the share price of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> be <span class="math notranslate nohighlight">\(S\)</span> USD/share. Then, at expiration, the put contract has the payoff <span class="math notranslate nohighlight">\(V_{p}\)</span> USD/share:</p>
-<div class="math notranslate nohighlight">
-\[V_{p} = \max\left(K - S,0\right)\]</div>
+<p>An investor purchases a single American stycle Put contract for the underlying stock <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> for <span class="math notranslate nohighlight">\(\mathcal{P}\)</span> USD/share; the contract controls 100 shares of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code>.</p>
+<p>Let the strike price of the put contract be <span class="math notranslate nohighlight">\(K\)</span> USD/share, and the share price of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> be <span class="math notranslate nohighlight">\(S\)</span> USD/share. Then, at expiration, the put contract has the payoff <span class="math notranslate nohighlight">\(\hat{V}_{p}\)</span> USD/share:</p>
+<div class="math notranslate nohighlight" id="equation-eqn-put-option-payoff">
+<span class="eqno">(47)<a class="headerlink" href="#equation-eqn-put-option-payoff" title="Permalink to this equation">#</a></span>\[\hat{V}_{p} = \max\left(K - S,0\right)\]</div>
 <p>and a profit (loss) for the buyer of:</p>
 <div class="math notranslate nohighlight">
-\[P_{p} = V_{p} -  \mathcal{P}\]</div>
-<p>where <span class="math notranslate nohighlight">\(P_{p}\)</span> denotes the profit (or loss) per contract per share of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code>.
-The contract seller experiences a profit (or loss) of <span class="math notranslate nohighlight">\(\bar{P}_{p}\)</span> where</p>
+\[P_{p} = \hat{V}_{p} -  \mathcal{P}\]</div>
+<p>where <span class="math notranslate nohighlight">\(P_{p}\)</span> denotes the profit (or loss) per share of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code>. The contract seller experiences a profit (or loss) of <span class="math notranslate nohighlight">\(\bar{P}_{p}\)</span> at expiration where:</p>
 <div class="math notranslate nohighlight">
 \[P_{p}+\bar{P}_{p} = 0\]</div>
-<p>The cost of a put contract leg <span class="math notranslate nohighlight">\(\mathcal{P}\)</span> is a non-linear function of many variables including the current share price of the underlying asset <span class="math notranslate nohighlight">\(S\)</span>, the strike price of the contract, the number of days before contract expiration, and an unobservable quantity called the implied volatility.</p>
 </section>
 </div><section id="payoff-profit-and-loss-for-put-contracts">
 <h4>Payoff, Profit and Loss for Put contracts<a class="headerlink" href="#payoff-profit-and-loss-for-put-contracts" title="Permalink to this headline">#</a></h4>
 <p>The payoff (and profit/loss) diagram for a put contract at expiration for Advanced Micro Devices with ticker <a class="reference external" href="https://www.google.com/search?client=safari&amp;rls=en&amp;sxsrf=ALiCzsbTZ3IEA10C9Rgs6Lb7YLN8LAILVQ:1657882036543&amp;q=NASDAQ:+AMD&amp;stick=H4sIAAAAAAAAAONgecRoyi3w8sc9YSmdSWtOXmNU4-IKzsgvd80rySypFJLgYoOy-KR4uLj0c_UNzKuy4ytzeRaxcvs5Brs4BlopOPq6AACfr0n4SAAAAA&amp;sa=X&amp;ved=2ahUKEwjV_ffu2_r4AhUxJUQIHcXZAPkQsRV6BAhVEAM&amp;biw=1594&amp;bih=921&amp;dpr=2">AMD</a> is shown in
-<a class="reference internal" href="#put-contract-expiration">Example 20</a>. The <em>buyer</em> of the <a class="reference external" href="https://www.google.com/search?client=safari&amp;rls=en&amp;sxsrf=ALiCzsbTZ3IEA10C9Rgs6Lb7YLN8LAILVQ:1657882036543&amp;q=NASDAQ:+AMD&amp;stick=H4sIAAAAAAAAAONgecRoyi3w8sc9YSmdSWtOXmNU4-IKzsgvd80rySypFJLgYoOy-KR4uLj0c_UNzKuy4ytzeRaxcvs5Brs4BlopOPq6AACfr0n4SAAAAA&amp;sa=X&amp;ved=2ahUKEwjV_ffu2_r4AhUxJUQIHcXZAPkQsRV6BAhVEAM&amp;biw=1594&amp;bih=921&amp;dpr=2">AMD</a> put contract experiences (at expiration):</p>
+<a class="reference internal" href="#put-contract-expiration">Example 22</a>. The <em>buyer</em> of the <a class="reference external" href="https://www.google.com/search?client=safari&amp;rls=en&amp;sxsrf=ALiCzsbTZ3IEA10C9Rgs6Lb7YLN8LAILVQ:1657882036543&amp;q=NASDAQ:+AMD&amp;stick=H4sIAAAAAAAAAONgecRoyi3w8sc9YSmdSWtOXmNU4-IKzsgvd80rySypFJLgYoOy-KR4uLj0c_UNzKuy4ytzeRaxcvs5Brs4BlopOPq6AACfr0n4SAAAAA&amp;sa=X&amp;ved=2ahUKEwjV_ffu2_r4AhUxJUQIHcXZAPkQsRV6BAhVEAM&amp;biw=1594&amp;bih=921&amp;dpr=2">AMD</a> put contract experiences (at expiration):</p>
 <ul class="simple">
 <li><p>Loss <span class="math notranslate nohighlight">\(S&gt;K+\mathcal{P}\)</span>: the share price is <em>greater than</em> the strike price plus the premium paid per share for the contract.</p></li>
 <li><p>Breakeven <span class="math notranslate nohighlight">\(S=K+\mathcal{P}\)</span>: the share price <em>equals</em> the strike price plus the premium paid per share for the contract.</p></li>
 <li><p>Profit <span class="math notranslate nohighlight">\(S&lt;K+\mathcal{P}\)</span>: the share price is <em>less than</em> the strike price plus the premium paid per share for the contract.</p></li>
 </ul>
 <div class="proof example admonition" id="put-contract-expiration">
-<p class="admonition-title"><span class="caption-number">Example 20 </span> (AMD Put Contract 1 DTE)</p>
+<p class="admonition-title"><span class="caption-number">Example 22 </span> (AMD Put Contract 1 DTE)</p>
 <section class="example-content" id="proof-content">
 <p>We are interested in buying a call contract for Advanced Micro Devices with ticker <a class="reference external" href="https://www.google.com/search?client=safari&amp;rls=en&amp;sxsrf=ALiCzsbTZ3IEA10C9Rgs6Lb7YLN8LAILVQ:1657882036543&amp;q=NASDAQ:+AMD&amp;stick=H4sIAAAAAAAAAONgecRoyi3w8sc9YSmdSWtOXmNU4-IKzsgvd80rySypFJLgYoOy-KR4uLj0c_UNzKuy4ytzeRaxcvs5Brs4BlopOPq6AACfr0n4SAAAAA&amp;sa=X&amp;ved=2ahUKEwjV_ffu2_r4AhUxJUQIHcXZAPkQsRV6BAhVEAM&amp;biw=1594&amp;bih=921&amp;dpr=2">AMD</a>. The current share price of <code class="docutils literal notranslate"><span class="pre">AMD</span></code> is $78.94 per share (around 3:30 PM ITH time on Th 7/14), and we belive the shares will close lower before contract expiration.</p>
 <p>Compute the payoff and profit/loss diagram at expiration for a July 15 <code class="docutils literal notranslate"><span class="pre">AMD</span></code> put contract with a strike <span class="math notranslate nohighlight">\(K\)</span> = 77.0 USD/share. The market price for the July 15 <code class="docutils literal notranslate"><span class="pre">AMD</span></code> put contract is <span class="math notranslate nohighlight">\(\mathcal{P}\)</span> = 0.50 USD/share.</p>
 <figure class="align-default" id="fig-put-contract-payout-schematic">
 <a class="reference internal image-reference" href="../_images/Fig-AMD-Put-Jul15-1DTE.pdf"><img alt="../_images/Fig-AMD-Put-Jul15-1DTE.pdf" src="../_images/Fig-AMD-Put-Jul15-1DTE.pdf" style="height: 420px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 26 </span><span class="caption-text">Payoff and profit diagrams for an AMD put option. Solid lines denote the payout (profit) from the perspective of the contract buyer. Dashed lines denote the payout (profit) from the perspective of the contract seller.</span><a class="headerlink" href="#fig-put-contract-payout-schematic" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 27 </span><span class="caption-text">Payoff and profit diagrams for an AMD put option. Solid lines denote the payout (profit) from the perspective of the contract buyer. Dashed lines denote the payout (profit) from the perspective of the contract seller.</span><a class="headerlink" href="#fig-put-contract-payout-schematic" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p><strong>source</strong>: <a class="reference external" href="https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks">live Pluto notebook</a> or <a class="reference external" href="https://htmlview.glitch.me/?https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks/blob/main/pluto-notebooks/html/Example-CallPutContract-Payoff.jl.html">static HTML</a></p>
@@ -862,7 +849,7 @@ the required number of shares of <code class="docutils literal notranslate"><spa
 </section>
 </div><p><a class="reference internal" href="#defn-PL-put-contract-vertical-spread">Definition 33</a> has many exciting types of behavior; it is much more complex than it might first appear as the cost of each contract <span class="math notranslate nohighlight">\(\mathcal{P}_{j}\)</span> is a non-linear function of many variables including the current share price of the underlying asset <span class="math notranslate nohighlight">\(S\)</span>, the strike price of the contract, the number of days the contract has before expiration, and the implied volatility.</p>
 <div class="proof example admonition" id="vertical-put-spread-expiration">
-<p class="admonition-title"><span class="caption-number">Example 21 </span> (Vertical Put Spreads)</p>
+<p class="admonition-title"><span class="caption-number">Example 23 </span> (Vertical Put Spreads)</p>
 <section class="example-content" id="proof-content">
 <p>Let the current share price of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> be <span class="math notranslate nohighlight">\(S_{o}\)</span> USD/share, and let <span class="math notranslate nohighlight">\(S\)</span> denote the share price of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> at expiration. Then:</p>
 <ul class="simple">
@@ -871,7 +858,7 @@ the required number of shares of <code class="docutils literal notranslate"><spa
 <figure class="align-default" id="fig-spy-profit-put-vertical-spread">
 <a class="reference internal image-reference" href="../_images/Fig-SPY-Profit-Put-Credit-Spread.pdf"><img alt="../_images/Fig-SPY-Profit-Put-Credit-Spread.pdf" src="../_images/Fig-SPY-Profit-Put-Credit-Spread.pdf" style="height: 420px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 27 </span><span class="caption-text">Example profit and loss diagram at expiration for a <a class="reference external" href="https://finance.yahoo.com/quote/SPY/">SPY</a> put vertical credit spread. Parameters: <span class="math notranslate nohighlight">\(K_{1}\)</span> = $315 USD/share (short strike), <span class="math notranslate nohighlight">\(K_{2}\)</span> = $310 USD/share (long strike), <span class="math notranslate nohighlight">\(\mathcal{P}_{1}\)</span> = $5.25 USD/share and <span class="math notranslate nohighlight">\(\mathcal{P}_{2}\)</span> = $4.31 USD/share.</span><a class="headerlink" href="#fig-spy-profit-put-vertical-spread" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 28 </span><span class="caption-text">Example profit and loss diagram at expiration for a <a class="reference external" href="https://finance.yahoo.com/quote/SPY/">SPY</a> put vertical credit spread. Parameters: <span class="math notranslate nohighlight">\(K_{1}\)</span> = $315 USD/share (short strike), <span class="math notranslate nohighlight">\(K_{2}\)</span> = $310 USD/share (long strike), <span class="math notranslate nohighlight">\(\mathcal{P}_{1}\)</span> = $5.25 USD/share and <span class="math notranslate nohighlight">\(\mathcal{P}_{2}\)</span> = $4.31 USD/share.</span><a class="headerlink" href="#fig-spy-profit-put-vertical-spread" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
@@ -880,7 +867,7 @@ the required number of shares of <code class="docutils literal notranslate"><spa
 <figure class="align-default" id="fig-amd-profit-put-vertical-spread">
 <a class="reference internal image-reference" href="../_images/Fig-AMD-Profit-Put-Debit-Spread.pdf"><img alt="../_images/Fig-AMD-Profit-Put-Debit-Spread.pdf" src="../_images/Fig-AMD-Profit-Put-Debit-Spread.pdf" style="height: 420px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 28 </span><span class="caption-text">Example profit and loss diagram at expiration for a <a class="reference external" href="https://finance.yahoo.com/quote/AMD/">AMD</a> put vertical debit spread. Parameters: <span class="math notranslate nohighlight">\(K_{1}\)</span> = $90 USD/share (short strike), <span class="math notranslate nohighlight">\(K_{2}\)</span> = $105 USD/share (long strike), <span class="math notranslate nohighlight">\(\mathcal{P}_{1}\)</span> = $4.70 USD/share and <span class="math notranslate nohighlight">\(\mathcal{P}_{2}\)</span> = $13.35 USD/share</span><a class="headerlink" href="#fig-amd-profit-put-vertical-spread" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 29 </span><span class="caption-text">Example profit and loss diagram at expiration for a <a class="reference external" href="https://finance.yahoo.com/quote/AMD/">AMD</a> put vertical debit spread. Parameters: <span class="math notranslate nohighlight">\(K_{1}\)</span> = $90 USD/share (short strike), <span class="math notranslate nohighlight">\(K_{2}\)</span> = $105 USD/share (long strike), <span class="math notranslate nohighlight">\(\mathcal{P}_{1}\)</span> = $4.70 USD/share and <span class="math notranslate nohighlight">\(\mathcal{P}_{2}\)</span> = $13.35 USD/share</span><a class="headerlink" href="#fig-amd-profit-put-vertical-spread" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p><strong>source</strong>: <a class="reference external" href="https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks">live Pluto notebook</a> or <a class="reference external" href="https://htmlview.glitch.me/?https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks/blob/main/pluto-notebooks/html/Example-SPY-VericalSpread-Contract-Payoff.jl.html">static HTML</a></p>
@@ -917,11 +904,11 @@ the overall profit <span class="math notranslate nohighlight">\(\hat{P}\)</span>
 <li><p>If <span class="math notranslate nohighlight">\(S&lt;K\)</span>: a straddle will breakeven at <span class="math notranslate nohighlight">\(S^{-} = K - \left(\mathcal{P}_{1}+\mathcal{P}_{2}\right)\)</span>.</p></li>
 </ul>
 </section>
-</div><p><a class="reference internal" href="#defn-PL-put-contract-straddle">Definition 34</a> gives the profit conditions for both long (buy both the call and the put legs) and short (sell both the call and put legs) straddles. Let’s put some numbers into the profit conditions and analyze their behavior (<a class="reference internal" href="#straddle-profit-expiration">Example 22</a>).</p>
+</div><p><a class="reference internal" href="#defn-PL-put-contract-straddle">Definition 34</a> gives the profit conditions for both long (buy both the call and the put legs) and short (sell both the call and put legs) straddles. Let’s put some numbers into the profit conditions and analyze their behavior (<a class="reference internal" href="#straddle-profit-expiration">Example 24</a>).</p>
 <div class="proof example admonition" id="straddle-profit-expiration">
-<p class="admonition-title"><span class="caption-number">Example 22 </span> (Profit of a Straddle)</p>
+<p class="admonition-title"><span class="caption-number">Example 24 </span> (Profit of a Straddle)</p>
 <section class="example-content" id="proof-content">
-<p>A <strong>short straddle</strong> is constructed by simultaneously <em>selling</em> both a put and a call option with the same expiration, strike price, and underlying asset <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> (<a class="reference internal" href="#fig-amd-profit-short-straddle"><span class="std std-numref">Fig. 29</span></a>). When opening a short straddle, an investor receives a <em>credit</em>, i.e., the proceeds from selling the call and put options. For a short straddle, <span class="math notranslate nohighlight">\(\theta=-1\)</span> which gives the profit condtions:</p>
+<p>A <strong>short straddle</strong> is constructed by simultaneously <em>selling</em> both a put and a call option with the same expiration, strike price, and underlying asset <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> (<a class="reference internal" href="#fig-amd-profit-short-straddle"><span class="std std-numref">Fig. 30</span></a>). When opening a short straddle, an investor receives a <em>credit</em>, i.e., the proceeds from selling the call and put options. For a short straddle, <span class="math notranslate nohighlight">\(\theta=-1\)</span> which gives the profit condtions:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\hat{P} = \begin{cases}
   -\Bigl[(S-K)-\left(\mathcal{P}_{1}+\mathcal{P}_{2}\right)\Bigr]  &amp; S&gt;K \\
@@ -937,10 +924,10 @@ the overall profit <span class="math notranslate nohighlight">\(\hat{P}\)</span>
 <figure class="align-default" id="fig-amd-profit-short-straddle">
 <a class="reference internal image-reference" href="../_images/Fig-AMD-Profit-Short-Straddle.pdf"><img alt="../_images/Fig-AMD-Profit-Short-Straddle.pdf" src="../_images/Fig-AMD-Profit-Short-Straddle.pdf" style="height: 420px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 29 </span><span class="caption-text">Example profit and loss diagram at expiration for an <a class="reference external" href="https://finance.yahoo.com/quote/AMD/">AMD</a> short straddle. Parameters: <span class="math notranslate nohighlight">\(K\)</span> = $100 USD/share, <span class="math notranslate nohighlight">\(\mathcal{P}_{1}\)</span> = $9.95 USD/share and <span class="math notranslate nohighlight">\(\mathcal{P}_{2}\)</span> = $7.45 USD/share</span><a class="headerlink" href="#fig-amd-profit-short-straddle" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 30 </span><span class="caption-text">Example profit and loss diagram at expiration for an <a class="reference external" href="https://finance.yahoo.com/quote/AMD/">AMD</a> short straddle. Parameters: <span class="math notranslate nohighlight">\(K\)</span> = $100 USD/share, <span class="math notranslate nohighlight">\(\mathcal{P}_{1}\)</span> = $9.95 USD/share and <span class="math notranslate nohighlight">\(\mathcal{P}_{2}\)</span> = $7.45 USD/share</span><a class="headerlink" href="#fig-amd-profit-short-straddle" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<p>A <strong>long straddle</strong> is constructed by simultaneously <em>buying</em> both a put and a call option with the same expiration, strike price, and underlying asset <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> (<a class="reference internal" href="#fig-amd-profit-long-straddle"><span class="std std-numref">Fig. 30</span></a>). When opening a short strangle, an investor is charged a <em>debit</em> to their account, i.e., the cost of purchasing the call and put options. For a long straddle, <span class="math notranslate nohighlight">\(\theta=1\)</span> which gives the profit condtions:</p>
+<p>A <strong>long straddle</strong> is constructed by simultaneously <em>buying</em> both a put and a call option with the same expiration, strike price, and underlying asset <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> (<a class="reference internal" href="#fig-amd-profit-long-straddle"><span class="std std-numref">Fig. 31</span></a>). When opening a short strangle, an investor is charged a <em>debit</em> to their account, i.e., the cost of purchasing the call and put options. For a long straddle, <span class="math notranslate nohighlight">\(\theta=1\)</span> which gives the profit condtions:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\hat{P} = \begin{cases}
   (S-K)-\left(\mathcal{P}_{1}+\mathcal{P}_{2}\right) &amp; S&gt;K \\
@@ -956,7 +943,7 @@ the overall profit <span class="math notranslate nohighlight">\(\hat{P}\)</span>
 <figure class="align-default" id="fig-amd-profit-long-straddle">
 <a class="reference internal image-reference" href="../_images/Fig-AMD-Profit-Long-Straddle.pdf"><img alt="../_images/Fig-AMD-Profit-Long-Straddle.pdf" src="../_images/Fig-AMD-Profit-Long-Straddle.pdf" style="height: 420px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 30 </span><span class="caption-text">Example profit and loss diagram at expiration for an <a class="reference external" href="https://finance.yahoo.com/quote/AMD/">AMD</a> long straddle.
+<p><span class="caption-number">Fig. 31 </span><span class="caption-text">Example profit and loss diagram at expiration for an <a class="reference external" href="https://finance.yahoo.com/quote/AMD/">AMD</a> long straddle.
 Parameters: <span class="math notranslate nohighlight">\(K\)</span> = $100 USD/share, <span class="math notranslate nohighlight">\(\mathcal{P}_{1}\)</span> = $9.95 USD/share and <span class="math notranslate nohighlight">\(\mathcal{P}_{2}\)</span> = $7.45 USD/share</span><a class="headerlink" href="#fig-amd-profit-long-straddle" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
@@ -994,22 +981,22 @@ the overall profit <span class="math notranslate nohighlight">\(\hat{P}\)</span>
 <div class="math notranslate nohighlight">
 \[S^{+} = K_{2} + \left(\mathcal{P}_{1}+\mathcal{P}_{2}\right)\]</div>
 </section>
-</div><p><a class="reference internal" href="#defn-PL-put-contract-strangle">Definition 35</a> gives the profit conditions for both long (buy both the call and the put legs) and short (sell both the call and put legs) strangles. Let’s put some numbers into the profit conditions and analyze their behavior (<a class="reference internal" href="#strangle-profit-expiration">Example 23</a>).</p>
+</div><p><a class="reference internal" href="#defn-PL-put-contract-strangle">Definition 35</a> gives the profit conditions for both long (buy both the call and the put legs) and short (sell both the call and put legs) strangles. Let’s put some numbers into the profit conditions and analyze their behavior (<a class="reference internal" href="#strangle-profit-expiration">Example 25</a>).</p>
 <div class="proof example admonition" id="strangle-profit-expiration">
-<p class="admonition-title"><span class="caption-number">Example 23 </span> (Profit of a Strangle)</p>
+<p class="admonition-title"><span class="caption-number">Example 25 </span> (Profit of a Strangle)</p>
 <section class="example-content" id="proof-content">
-<p>A <strong>short strangle</strong> is constructed by simultaneously <em>selling</em> both a put and a call option with the same underlying asset <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> and the same expiration, but with different strike prices (<a class="reference internal" href="#fig-amd-profit-short-strangle"><span class="std std-numref">Fig. 31</span></a>). When opening a short strangle, an investor receives a <em>credit</em>, i.e., the proceeds from selling the call and put options. For a short strangle, <span class="math notranslate nohighlight">\(\theta=-1\)</span> which gives the profit condtions:</p>
+<p>A <strong>short strangle</strong> is constructed by simultaneously <em>selling</em> both a put and a call option with the same underlying asset <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> and the same expiration, but with different strike prices (<a class="reference internal" href="#fig-amd-profit-short-strangle"><span class="std std-numref">Fig. 32</span></a>). When opening a short strangle, an investor receives a <em>credit</em>, i.e., the proceeds from selling the call and put options. For a short strangle, <span class="math notranslate nohighlight">\(\theta=-1\)</span> which gives the profit condtions:</p>
 <figure class="align-default" id="fig-amd-profit-short-strangle">
 <a class="reference internal image-reference" href="../_images/Fig-AMD-Profit-Short-Strangle.pdf"><img alt="../_images/Fig-AMD-Profit-Short-Strangle.pdf" src="../_images/Fig-AMD-Profit-Short-Strangle.pdf" style="height: 420px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 31 </span><span class="caption-text">Example profit and loss diagram at expiration for an <a class="reference external" href="https://finance.yahoo.com/quote/AMD/">AMD</a> short strangle. Parameters: <span class="math notranslate nohighlight">\(K_{1}\)</span> = $90 USD/share, <span class="math notranslate nohighlight">\(K_{2}\)</span> = $110 USD/share, <span class="math notranslate nohighlight">\(\mathcal{P}_{1}\)</span> = $4.05 USD/share and <span class="math notranslate nohighlight">\(\mathcal{P}_{2}\)</span> = $5.70 USD/share. <span class="math notranslate nohighlight">\(S_{o}\)</span> = $101.57 USD/share.</span><a class="headerlink" href="#fig-amd-profit-short-strangle" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 32 </span><span class="caption-text">Example profit and loss diagram at expiration for an <a class="reference external" href="https://finance.yahoo.com/quote/AMD/">AMD</a> short strangle. Parameters: <span class="math notranslate nohighlight">\(K_{1}\)</span> = $90 USD/share, <span class="math notranslate nohighlight">\(K_{2}\)</span> = $110 USD/share, <span class="math notranslate nohighlight">\(\mathcal{P}_{1}\)</span> = $4.05 USD/share and <span class="math notranslate nohighlight">\(\mathcal{P}_{2}\)</span> = $5.70 USD/share. <span class="math notranslate nohighlight">\(S_{o}\)</span> = $101.57 USD/share.</span><a class="headerlink" href="#fig-amd-profit-short-strangle" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<p>A <strong>long strangle</strong> is constructed by simultaneously <em>buying</em> both a put and a call option with the same underlying asset <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> and the same expiration, but with different strike prices (<a class="reference internal" href="#fig-amd-profit-long-strangle"><span class="std std-numref">Fig. 32</span></a>). When opening a long strangle, the investor is charged a <em>debit</em> to their account, i.e., the cost of purchasing the call and put options. For a long strangle, <span class="math notranslate nohighlight">\(\theta=1\)</span> which gives the profit condtions::</p>
+<p>A <strong>long strangle</strong> is constructed by simultaneously <em>buying</em> both a put and a call option with the same underlying asset <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> and the same expiration, but with different strike prices (<a class="reference internal" href="#fig-amd-profit-long-strangle"><span class="std std-numref">Fig. 33</span></a>). When opening a long strangle, the investor is charged a <em>debit</em> to their account, i.e., the cost of purchasing the call and put options. For a long strangle, <span class="math notranslate nohighlight">\(\theta=1\)</span> which gives the profit condtions::</p>
 <figure class="align-default" id="fig-amd-profit-long-strangle">
 <a class="reference internal image-reference" href="../_images/Fig-AMD-Profit-Long-Strangle.pdf"><img alt="../_images/Fig-AMD-Profit-Long-Strangle.pdf" src="../_images/Fig-AMD-Profit-Long-Strangle.pdf" style="height: 420px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 32 </span><span class="caption-text">Example profit and loss diagram at expiration for an <a class="reference external" href="https://finance.yahoo.com/quote/AMD/">AMD</a> long strangle. Parameters: <span class="math notranslate nohighlight">\(K_{1}\)</span> = $90 USD/share, <span class="math notranslate nohighlight">\(K_{2}\)</span> = $110 USD/share, <span class="math notranslate nohighlight">\(\mathcal{P}_{1}\)</span> = $4.05 USD/share and <span class="math notranslate nohighlight">\(\mathcal{P}_{2}\)</span> = $5.70 USD/share. <span class="math notranslate nohighlight">\(S_{o}\)</span> = $101.57 USD/share.</span><a class="headerlink" href="#fig-amd-profit-long-strangle" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 33 </span><span class="caption-text">Example profit and loss diagram at expiration for an <a class="reference external" href="https://finance.yahoo.com/quote/AMD/">AMD</a> long strangle. Parameters: <span class="math notranslate nohighlight">\(K_{1}\)</span> = $90 USD/share, <span class="math notranslate nohighlight">\(K_{2}\)</span> = $110 USD/share, <span class="math notranslate nohighlight">\(\mathcal{P}_{1}\)</span> = $4.05 USD/share and <span class="math notranslate nohighlight">\(\mathcal{P}_{2}\)</span> = $5.70 USD/share. <span class="math notranslate nohighlight">\(S_{o}\)</span> = $101.57 USD/share.</span><a class="headerlink" href="#fig-amd-profit-long-strangle" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -1047,17 +1034,17 @@ the overall profit <span class="math notranslate nohighlight">\(\hat{P}\)</span>
 <div class="math notranslate nohighlight">
 \[S^{+} = K_{2} + \Bigl(\mathcal{P}_{1} + \mathcal{P}_{2} - \mathcal{P}_{3}-\mathcal{P}_{4}\Bigr)\]</div>
 </section>
-</div><p><a class="reference internal" href="#defn-PL-iron-condor">Definition 36</a> gives the profit conditions for an <a class="reference external" href="https://www.investopedia.com/terms/i/ironcondor.asp">iron condor</a>. Let’s put some numbers into the profit conditions and analyze their behavior (<a class="reference internal" href="#iron-condor-expiration">Example 24</a>).</p>
+</div><p><a class="reference internal" href="#defn-PL-iron-condor">Definition 36</a> gives the profit conditions for an <a class="reference external" href="https://www.investopedia.com/terms/i/ironcondor.asp">iron condor</a>. Let’s put some numbers into the profit conditions and analyze their behavior (<a class="reference internal" href="#iron-condor-expiration">Example 26</a>).</p>
 <div class="proof example admonition" id="iron-condor-expiration">
-<p class="admonition-title"><span class="caption-number">Example 24 </span> (Profit of an Iron Condor)</p>
+<p class="admonition-title"><span class="caption-number">Example 26 </span> (Profit of an Iron Condor)</p>
 <section class="example-content" id="proof-content">
 <p>An <a class="reference external" href="https://www.investopedia.com/terms/i/ironcondor.asp">iron condor</a> is constructed by <em>selling</em> a put (1) and call (2) options on the underlying asset <code class="docutils literal notranslate"><span class="pre">XYZ</span></code>, while simultaneously <em>buying</em> a put (3) and call (4) options on <code class="docutils literal notranslate"><span class="pre">XYZ</span></code>. All legs have the same expiration, but different strike prices.</p>
 <p>In particular, the short legs of an <a class="reference external" href="https://www.investopedia.com/terms/i/ironcondor.asp">iron condor</a> have strike prices near the share price of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code>, while the two long legs are further out of the money (farther away from the current share price of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code>).</p>
-<p>The profit (or loss) for an <a class="reference external" href="https://www.investopedia.com/terms/i/ironcondor.asp">iron condor</a> on <a class="reference external" href="https://finance.yahoo.com/quote/MU/">MU</a> is shown in <a class="reference internal" href="#fig-mu-iron-condor"><span class="std std-numref">Fig. 33</span></a>. The low break-even point <span class="math notranslate nohighlight">\(S^{-}\)</span> = $48.54 USD/share while the high break-even point <span class="math notranslate nohighlight">\(S^{+}\)</span> = $71.46 USD/share.</p>
+<p>The profit (or loss) for an <a class="reference external" href="https://www.investopedia.com/terms/i/ironcondor.asp">iron condor</a> on <a class="reference external" href="https://finance.yahoo.com/quote/MU/">MU</a> is shown in <a class="reference internal" href="#fig-mu-iron-condor"><span class="std std-numref">Fig. 34</span></a>. The low break-even point <span class="math notranslate nohighlight">\(S^{-}\)</span> = $48.54 USD/share while the high break-even point <span class="math notranslate nohighlight">\(S^{+}\)</span> = $71.46 USD/share.</p>
 <figure class="align-default" id="fig-mu-iron-condor">
 <a class="reference internal image-reference" href="../_images/Fig-MU-Profit-IronCondor.pdf"><img alt="../_images/Fig-MU-Profit-IronCondor.pdf" src="../_images/Fig-MU-Profit-IronCondor.pdf" style="height: 420px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 33 </span><span class="caption-text">Example profit and loss diagram at expiration for an <a class="reference external" href="https://finance.yahoo.com/quote/MU/">MU</a> iron condor. Parameters: <span class="math notranslate nohighlight">\(K_{1}\)</span> = $50 USD/share, <span class="math notranslate nohighlight">\(K_{2}\)</span> = $70 USD/share, <span class="math notranslate nohighlight">\(K_{3}\)</span> = $45 USD/share, <span class="math notranslate nohighlight">\(K_{4}\)</span> = $75 USD/share, <span class="math notranslate nohighlight">\(\mathcal{P}_{1}\)</span> = $1.09 USD/share <span class="math notranslate nohighlight">\(\mathcal{P}_{2}\)</span> = $2.00 USD/share, <span class="math notranslate nohighlight">\(\mathcal{P}_{3}\)</span> = $0.60 USD/share and <span class="math notranslate nohighlight">\(\mathcal{P}_{4}\)</span> = $1.03 USD/share. <span class="math notranslate nohighlight">\(S_{o}\)</span> = $62.46 USD/share.</span><a class="headerlink" href="#fig-mu-iron-condor" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 34 </span><span class="caption-text">Example profit and loss diagram at expiration for an <a class="reference external" href="https://finance.yahoo.com/quote/MU/">MU</a> iron condor. Parameters: <span class="math notranslate nohighlight">\(K_{1}\)</span> = $50 USD/share, <span class="math notranslate nohighlight">\(K_{2}\)</span> = $70 USD/share, <span class="math notranslate nohighlight">\(K_{3}\)</span> = $45 USD/share, <span class="math notranslate nohighlight">\(K_{4}\)</span> = $75 USD/share, <span class="math notranslate nohighlight">\(\mathcal{P}_{1}\)</span> = $1.09 USD/share <span class="math notranslate nohighlight">\(\mathcal{P}_{2}\)</span> = $2.00 USD/share, <span class="math notranslate nohighlight">\(\mathcal{P}_{3}\)</span> = $0.60 USD/share and <span class="math notranslate nohighlight">\(\mathcal{P}_{4}\)</span> = $1.03 USD/share. <span class="math notranslate nohighlight">\(S_{o}\)</span> = $62.46 USD/share.</span><a class="headerlink" href="#fig-mu-iron-condor" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p><strong>source</strong>: <a class="reference external" href="https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks">live Pluto notebook</a> or <a class="reference external" href="https://htmlview.glitch.me/?https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks/blob/main/pluto-notebooks/html/Example-IronCondor-Profit.jl.html">static HTML view</a></p>
@@ -1065,30 +1052,30 @@ the overall profit <span class="math notranslate nohighlight">\(\hat{P}\)</span>
 </div></section>
 </section>
 </section>
-<section id="probability-of-profit-pop-at-expiration">
-<span id="content-references-option-probability-of-profit-algorithms"></span><h2>Probability of Profit (POP) at Expiration<a class="headerlink" href="#probability-of-profit-pop-at-expiration" title="Permalink to this headline">#</a></h2>
+<section id="probability-of-profit">
+<span id="content-references-option-probability-of-profit-algorithms"></span><h2>Probability of Profit<a class="headerlink" href="#probability-of-profit" title="Permalink to this headline">#</a></h2>
 <p>The Probability of Profit (POP) at expiration is the probability that your option position will make at least $0.01 at expiration. The probability of profit can be a helpful decision metric, e.g., investors engage in transactions with a <em>large</em> POP and avoid low probability trades. However, the exact meaning of <em>large</em> or <em>small</em> depends upon the investor’s risk tolerance.</p>
-<section id="computing-the-pop-using-monte-carlo-simulation">
-<h3>Computing the POP using Monte-Carlo simulation<a class="headerlink" href="#computing-the-pop-using-monte-carlo-simulation" title="Permalink to this headline">#</a></h3>
+<section id="computing-the-probability-of-profit">
+<h3>Computing the Probability of Profit<a class="headerlink" href="#computing-the-probability-of-profit" title="Permalink to this headline">#</a></h3>
 <p>Using Monte-Carlo simulation, we can estimate the option position’s probability of Profit (POP) at expiration.
 First, we can develop a simulation of the price of the underlying asset <code class="docutils literal notranslate"><span class="pre">XYZ,</span></code> e.g., using a geometric Brownian motion model developed from historical data, and then use that model to project the underlying price into the future until expiration. Finally, we can compute the cumulative probability curve to determine the probability that a profit condition is satisfied.</p>
-<p>To explore this idea, let’s compute the probability of profit of a <a class="reference external" href="https://www.investopedia.com/terms/s/strangle.asp">short strangle</a> position in <a class="reference external" href="https://finance.yahoo.com/quote/AMD/">AMD</a> in <a class="reference internal" href="#pop-amd-strange-expiration">Example 25</a>:</p>
+<p>To explore this idea, let’s compute the probability of profit of a <a class="reference external" href="https://www.investopedia.com/terms/s/strangle.asp">short strangle</a> position in <a class="reference external" href="https://finance.yahoo.com/quote/AMD/">AMD</a> in <a class="reference internal" href="#pop-amd-strange-expiration">Example 27</a>:</p>
 <div class="proof example admonition" id="pop-amd-strange-expiration">
-<p class="admonition-title"><span class="caption-number">Example 25 </span> (Probability of Profit at Expiration for AMD Strangle)</p>
+<p class="admonition-title"><span class="caption-number">Example 27 </span> (Probability of Profit at Expiration for AMD Strangle)</p>
 <section class="example-content" id="proof-content">
 <p>Let’s compute the probability of profit at expiration for a short strangle for  <a class="reference external" href="https://finance.yahoo.com/quote/AMD/">AMD</a> with the following data: short put strike <span class="math notranslate nohighlight">\(K_{1}\)</span> = $80.0 USD/share, short call srtike <span class="math notranslate nohighlight">\(K_{1}\)</span> = $120.0 USD/share, <span class="math notranslate nohighlight">\(\mathcal{P}_{1}\)</span> = $1.69 USD/share and <span class="math notranslate nohighlight">\(\mathcal{P}_{2}\)</span> = $2.97 USD/share. The current share price of <a class="reference external" href="https://finance.yahoo.com/quote/AMD/">AMD</a> is <span class="math notranslate nohighlight">\(S_{o}\)</span> = 102.53 USD/share.</p>
 <ul class="simple">
-<li><p>The first step is to <em>estimate</em> the future close price of the underlying asset in this case <a class="reference external" href="https://finance.yahoo.com/quote/AMD/">AMD</a> at expiration. The close price was <em>predicted</em> by building a GBM model based on the previous 45-days of AMD close price data; close price data was downloaded from the <a class="reference external" href="https://polygon.io">Polygon.io application programming interface (API)</a>. The GBM analytical solution developed previously was used to generate N = 10,000 sample paths from which the cumulative probability was calculated (<a class="reference internal" href="#fig-cumulative-d-amd-10k"><span class="std std-numref">Fig. 34</span></a>).</p></li>
+<li><p>First, estimate the future close price of the underlying asset in this case <a class="reference external" href="https://finance.yahoo.com/quote/AMD/">AMD</a> at expiration. The close price was <em>predicted</em> by building a GBM model based on the previous 45-days of AMD close price data; close price data was downloaded from the <a class="reference external" href="https://polygon.io">Polygon.io application programming interface (API)</a>. The GBM analytical solution developed previously was used to generate N = 10,000 sample paths from which the cumulative probability was calculated (<a class="reference internal" href="#fig-cumulative-d-amd-10k"><span class="std std-numref">Fig. 35</span></a>).</p></li>
 </ul>
 <figure class="align-default" id="fig-cumulative-d-amd-10k">
 <a class="reference internal image-reference" href="../_images/Fig-CumulativeDistribution-C-AMD-D-10-21-22-N10K.pdf"><img alt="../_images/Fig-CumulativeDistribution-C-AMD-D-10-21-22-N10K.pdf" src="../_images/Fig-CumulativeDistribution-C-AMD-D-10-21-22-N10K.pdf" style="height: 380px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 34 </span><span class="caption-text">Estimated <a class="reference external" href="https://en.wikipedia.org/wiki/Cumulative_distribution_function">cumulative distribution curve</a> for the close price of <a class="reference external" href="https://finance.yahoo.com/quote/AMD/">AMD</a> on 10/21/2022.</span><a class="headerlink" href="#fig-cumulative-d-amd-10k" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 35 </span><span class="caption-text">Estimated <a class="reference external" href="https://en.wikipedia.org/wiki/Cumulative_distribution_function">cumulative distribution curve</a> for the close price of <a class="reference external" href="https://finance.yahoo.com/quote/AMD/">AMD</a> on 10/21/2022.</span><a class="headerlink" href="#fig-cumulative-d-amd-10k" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <ul class="simple">
 <li><p>Next, we calculated the two break even points for an <a class="reference external" href="https://finance.yahoo.com/quote/AMD/">AMD</a> short strangle with expiration on 10/21/2022. From <a class="reference internal" href="#defn-PL-put-contract-strangle">Definition 35</a> and the data for AMD we found: <span class="math notranslate nohighlight">\(S^{-}\)</span> = $75.34 USD/share and <span class="math notranslate nohighlight">\(S^{+}\)</span> = $124.66 USD/share.</p></li>
-<li><p>Finally, we used the <a class="reference external" href="https://en.wikipedia.org/wiki/Cumulative_distribution_function">cumulative probability curve</a> shown in <a class="reference internal" href="#fig-cumulative-d-amd-10k"><span class="std std-numref">Fig. 34</span></a>, estimated from Monte-Carlo simulation, to calculate the probability that <a class="reference external" href="https://finance.yahoo.com/quote/AMD/">AMD</a> will close at various essential price points:</p></li>
+<li><p>Finally, we used the <a class="reference external" href="https://en.wikipedia.org/wiki/Cumulative_distribution_function">cumulative probability curve</a> shown in <a class="reference internal" href="#fig-cumulative-d-amd-10k"><span class="std std-numref">Fig. 35</span></a>, estimated from Monte-Carlo simulation, to calculate the probability that <a class="reference external" href="https://finance.yahoo.com/quote/AMD/">AMD</a> will close at various essential price points:</p></li>
 </ul>
 <table class="colwidths-auto table">
 <thead>
@@ -1140,14 +1127,10 @@ First, we can develop a simulation of the price of the underlying asset <code cl
 <p>where <span class="math notranslate nohighlight">\(\Delta{T}\)</span> denotes the number of days into the future for which we wish to estimate the share price of <code class="docutils literal notranslate"><span class="pre">XYZ,</span></code> and <span class="math notranslate nohighlight">\(\beta\)</span> denotes a conversion factor; <span class="math notranslate nohighlight">\(\beta\)</span> is the inverse of the number of trading days per year, typically 252 days.</p>
 </section>
 </div><p>Unfortunately, knowing a value for the standard deviation estimated from the <a class="reference external" href="https://www.investopedia.com/terms/i/iv.asp">implied volatility (IV)</a> is only half of what we need to compute the probability of profit for an options position at expiration. In addition, we need a model of how the share price is distributed.</p>
-<section id="normal-distribution">
-<h4>Normal distribution<a class="headerlink" href="#normal-distribution" title="Permalink to this headline">#</a></h4>
-<p>Fill me in.</p>
-</section>
 <section id="log-normal-distribution">
 <h4>Log-Normal distribution<a class="headerlink" href="#log-normal-distribution" title="Permalink to this headline">#</a></h4>
 <p>A fundamental assumption in the mathematical finance community is that share prices are <a class="reference external" href="https://www.investopedia.com/articles/investing/102014/lognormal-and-normal-distribution.asp">Log-normally distributed</a>. Given the premise of <a class="reference external" href="https://www.investopedia.com/articles/investing/102014/lognormal-and-normal-distribution.asp">Log-normal distributed</a> share prices of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> and the IV model of the volatility (<a class="reference internal" href="#defn-iv-std-model">Definition 37</a>) we postulate:</p>
-<div class="proof conjecture admonition" id="conjecture-14">
+<div class="proof conjecture admonition" id="conj-IV-projected-price-distribution">
 <p class="admonition-title"><span class="caption-number">Conjecture 1 </span> (IV-Projected price distribution)</p>
 <section class="conjecture-content" id="proof-content">
 <p>The share price of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> is <a class="reference external" href="https://www.investopedia.com/articles/investing/102014/lognormal-and-normal-distribution.asp">log-normally distributed</a> distributed. Further, let <span class="math notranslate nohighlight">\(S_{o}\)</span> denote the current share price of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code>.</p>
@@ -1162,30 +1145,127 @@ First, we can develop a simulation of the price of the underlying asset <code cl
 \[P(X\leq{x}) = \frac{1}{2}\left[1+\text{erf}\left(\frac{\ln{x}-\mu}{\sigma\sqrt{2}}\right)\right]\]</div>
 <p>where <span class="math notranslate nohighlight">\(\text{erf}\)</span> denotes the <a class="reference external" href="https://en.wikipedia.org/wiki/Error_function">error function</a>.</p>
 </section>
-</div></section>
+</div><p>Let’s explore the ideas outlined in <a class="reference internal" href="#conj-IV-projected-price-distribution">Conjecture 1</a> with some simulations.</p>
 </section>
 </section>
-<section id="options-pricing-algorithms">
-<span id="content-references-option-pricing-algorithms"></span><h2>Options Pricing Algorithms<a class="headerlink" href="#options-pricing-algorithms" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="option-pricing-algorithms">
+<span id="content-references-option-pricing-algorithms"></span><h2>Option Pricing Algorithms<a class="headerlink" href="#option-pricing-algorithms" title="Permalink to this headline">#</a></h2>
+<p>Options pricing is a rich area of study, given the complexity of options. Finish me.</p>
 <section id="black-scholes-merton-bsm">
 <h3>Black-Scholes-Merton (BSM)<a class="headerlink" href="#black-scholes-merton-bsm" title="Permalink to this headline">#</a></h3>
-<p>The Black-Scholes-Merton (BSM) model is a partial differential equation widely used to price <a class="reference external" href="https://www.investopedia.com/terms/e/europeanoption.asp">European</a> style options contracts; thus, the BSM model does not condsider the possibility of early excercise that is possible with <a class="reference external" href="https://www.investopedia.com/terms/a/americanoption.asp">American</a> option contracts. In 1997, Scholes and Merton were awarded the <a class="reference external" href="https://www.nobelprize.org/prizes/economic-sciences/1997/press-release/">Nobel Memorial Prize in Economic Sciences</a> for their work in finding “a new method to determine the value of derivatives.” Black had passed away two years earlier; thus could not share in the prize.</p>
-<section id="assumptions-of-the-bsm-model">
-<h4>Assumptions of the BSM model<a class="headerlink" href="#assumptions-of-the-bsm-model" title="Permalink to this headline">#</a></h4>
-<p>The Black-Scholes model makes several assumptions when pricing <a class="reference external" href="https://www.investopedia.com/terms/e/europeanoption.asp">European</a> style options contracts:</p>
+<p>The <a class="reference external" href="https://en.wikipedia.org/wiki/Black%E2%80%93Scholes_model">Black-Scholes-Merton (BSM) model</a> is a partial differential equation describing the price of <a class="reference external" href="https://www.investopedia.com/terms/e/europeanoption.asp">European</a> option contracts <span id="id1">[<a class="reference internal" href="../References.html#id13" title="Fischer Black and Myron Scholes. The pricing of options and corporate liabilities. Journal of Political Economy, 81(3):637–654, 1973. URL: http://www.jstor.org/stable/1831029 (visited on 2022-05-16).">Black and Scholes, 1973</a>]</span>; thus, the BSM model does not consider the possibility of early exercise that is possible with <a class="reference external" href="https://www.investopedia.com/terms/a/americanoption.asp">American</a> style contracts. In 1997, Scholes and Merton were awarded the <a class="reference external" href="https://www.nobelprize.org/prizes/economic-sciences/1997/press-release/">Nobel Memorial Prize in Economic Sciences</a> for their work in finding “a new method to determine the value of derivatives.” Unfortunately, Black had passed away two years earlier; thus he could not share in the prize.</p>
+<div class="proof definition admonition" id="defn-black-scholes-merton">
+<p class="admonition-title"><span class="caption-number">Definition 38 </span> (Black-Scholes-Merton (BSM) model)</p>
+<section class="definition-content" id="proof-content">
+<p>Let <span class="math notranslate nohighlight">\(V\)</span> denote the price of a <a class="reference external" href="https://www.investopedia.com/terms/e/europeanoption.asp">European</a> option contract written with respect to shares of an underlying stock <code class="docutils literal notranslate"><span class="pre">XYZ</span></code>. Further, let the share price of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code>, denoted by <span class="math notranslate nohighlight">\(X(t)\)</span>, be governed by a geometric Brownian motion with a
+constant growth rate <span class="math notranslate nohighlight">\(\mu\)</span> and volatility <span class="math notranslate nohighlight">\(\sigma\)</span>. Finally, the firm <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> does not pay dividends during the life of the option contract.</p>
+<p>Then, the price of the option contract <span class="math notranslate nohighlight">\(V\)</span> as a function of time is the solution of the parabolic partial differential equation:</p>
+<div class="math notranslate nohighlight" id="equation-eqn-bsm-pde">
+<span class="eqno">(48)<a class="headerlink" href="#equation-eqn-bsm-pde" title="Permalink to this equation">#</a></span>\[\frac{\partial{V}}{\partial{t}} + \frac{1}{2}\sigma^{2}X^{2}\frac{\partial^{2}{V}}{\partial{X}^{2}}+\mu{X}\frac{\partial{V}}{\partial{X}} -\mu{V} = 0\]</div>
+<p><strong>Call contract</strong>: Equation <a class="reference internal" href="#equation-eqn-bsm-pde">(48)</a> has an analytical solution describing the price of a <code class="docutils literal notranslate"><span class="pre">European</span> <span class="pre">Call</span></code> contract <span class="math notranslate nohighlight">\(C(X_{t},t)\)</span> with strike price <span class="math notranslate nohighlight">\(K\)</span>, expiration date <span class="math notranslate nohighlight">\(T\)</span> and <span class="math notranslate nohighlight">\(\Delta{T}=T-t\)</span> days until expiration:</p>
+<div class="math notranslate nohighlight" id="equation-eqn-euro-call-bsm-analytical-soln">
+<span class="eqno">(49)<a class="headerlink" href="#equation-eqn-euro-call-bsm-analytical-soln" title="Permalink to this equation">#</a></span>\[C(X_{t},t) = N(d_{1})X_{t} - N(d_{2})Ke^{-\mu\Delta{T}}\]</div>
+<p>The quantity <span class="math notranslate nohighlight">\(N(\star)\)</span> denotes the standard normal cumulative distribution function, the parameters <span class="math notranslate nohighlight">\(d_{1}\)</span> is given by:</p>
+<div class="math notranslate nohighlight" id="equation-eqn-d1-bsm-soln">
+<span class="eqno">(50)<a class="headerlink" href="#equation-eqn-d1-bsm-soln" title="Permalink to this equation">#</a></span>\[d_{1} = \frac{1}{\sigma\sqrt{\Delta{T}}}\left[\ln\frac{X_{t}}{K}+(\mu+\frac{\sigma^{2}}{2})\Delta{T}\right]\]</div>
+<p>and</p>
+<div class="math notranslate nohighlight" id="equation-eqn-d2-bsm-soln">
+<span class="eqno">(51)<a class="headerlink" href="#equation-eqn-d2-bsm-soln" title="Permalink to this equation">#</a></span>\[d_{2} = d_{1} - \sigma\sqrt\Delta{T}\]</div>
+<p><strong>Put contract</strong>: Equation <a class="reference internal" href="#equation-eqn-bsm-pde">(48)</a> has an analytical solution describing the price of a <code class="docutils literal notranslate"><span class="pre">European</span> <span class="pre">Put</span></code> contract <span class="math notranslate nohighlight">\(P(X_{t},t)\)</span> with strike price <span class="math notranslate nohighlight">\(K\)</span>, expiration date <span class="math notranslate nohighlight">\(T\)</span> and <span class="math notranslate nohighlight">\(\Delta{T}=T-t\)</span> days until expiration:</p>
+<div class="math notranslate nohighlight" id="equation-eqn-euro-put-bsm-analytical-soln">
+<span class="eqno">(52)<a class="headerlink" href="#equation-eqn-euro-put-bsm-analytical-soln" title="Permalink to this equation">#</a></span>\[P(X_{t},t) = N(-d_{2})Ke^{-\mu\Delta{T}} - N(-d_{1})X_{t}\]</div>
+<p>where <span class="math notranslate nohighlight">\(d_{1}\)</span> and <span class="math notranslate nohighlight">\(d_{2}\)</span> are given by Eqn. <a class="reference internal" href="#equation-eqn-d1-bsm-soln">(50)</a> and Eqn. <a class="reference internal" href="#equation-eqn-d2-bsm-soln">(51)</a>, respectively.</p>
+</section>
+</div><p>Let’s look at simulations of the pricing of <a class="reference external" href="https://www.investopedia.com/terms/e/europeanoption.asp">European</a> Call and Put contracts to better understand what factors influnce their prices.</p>
+<div class="proof example admonition" id="example-european-call-contract">
+<p class="admonition-title"><span class="caption-number">Example 28 </span> (Price of a European Call contract)</p>
+<section class="example-content" id="proof-content">
+<p>Consider a <code class="docutils literal notranslate"><span class="pre">European</span> <span class="pre">Call</span></code> contract on <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> with a strike price of <span class="math notranslate nohighlight">\(K\)</span> = 100.0 USD/share for different times to expiration. Let the implied volatility (IV) of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> be equal to IV = 35%. Assume the implied volatility is not a function of the time to expiration.</p>
+<figure class="align-default" id="fig-call-price-bsm">
+<a class="reference internal image-reference" href="../_images/Fig-BSM-Call-Price-K100.pdf"><img alt="../_images/Fig-BSM-Call-Price-K100.pdf" src="../_images/Fig-BSM-Call-Price-K100.pdf" style="height: 420px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 36 </span><span class="caption-text">Price of a <code class="docutils literal notranslate"><span class="pre">European</span> <span class="pre">Call</span></code> contract as a function of the share price of the underlying asset <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> for different times to expiration.</span><a class="headerlink" href="#fig-call-price-bsm" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p><strong>source</strong>: Fill me in.</p>
+</section>
+</div><p><a class="reference internal" href="#example-european-call-contract">Example 28</a> demonstrates a key idea underyling the price of options, namely, intrinsic versus extrinsic value.
+The intrinsic value is the payoff of the option now; for a <code class="docutils literal notranslate"><span class="pre">Call</span></code> option the payoff is given by Eqn. <a class="reference internal" href="#equation-eqn-call-option-payoff">(46)</a></p>
+<div class="proof example admonition" id="example-european-put-contract">
+<p class="admonition-title"><span class="caption-number">Example 29 </span> (Price of a European Put contract)</p>
+<section class="example-content" id="proof-content">
+<p>Consider a <code class="docutils literal notranslate"><span class="pre">European</span> <span class="pre">Put</span></code> contract on <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> with a strike price of <span class="math notranslate nohighlight">\(K\)</span> = 100.0 USD/share for different times to expiration. Let the implied volatility (IV) of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> be equal to IV = 35%. Assume the implied volatility is not a function of the time to expiration.</p>
+<figure class="align-default" id="fig-put-price-bsm">
+<a class="reference internal image-reference" href="../_images/Fig-BSM-Put-Price-K100.pdf"><img alt="../_images/Fig-BSM-Put-Price-K100.pdf" src="../_images/Fig-BSM-Put-Price-K100.pdf" style="height: 420px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 37 </span><span class="caption-text">Price of a <code class="docutils literal notranslate"><span class="pre">European</span> <span class="pre">Put</span></code> contract as a function of the share price of the underlying asset <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> for different times to expiration.</span><a class="headerlink" href="#fig-put-price-bsm" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p><strong>source</strong>: Fill me in.</p>
+</section>
+</div></section>
+<section id="binomial-lattice-pricing-models">
+<h3>Binomial lattice pricing models<a class="headerlink" href="#binomial-lattice-pricing-models" title="Permalink to this headline">#</a></h3>
+<figure class="align-default" id="fig-binomial-lattice-schematic">
+<a class="reference internal image-reference" href="../_images/Fig-Binomial-Lattice-Schematic.pdf"><img alt="../_images/Fig-Binomial-Lattice-Schematic.pdf" src="../_images/Fig-Binomial-Lattice-Schematic.pdf" style="height: 420px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 38 </span><span class="caption-text">Schematic of a binomial lattice pricing model. At each node, the price of the underlying asset increases by a factor <span class="math notranslate nohighlight">\(u\)</span> with probability <span class="math notranslate nohighlight">\(p\)</span> or decreases by a factor <span class="math notranslate nohighlight">\(d\)</span> with probability <span class="math notranslate nohighlight">\((1-p)\)</span>. Each node is treated as an independent Bernoulli trial.</span><a class="headerlink" href="#fig-binomial-lattice-schematic" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>A binomial lattice model assumes that each discrete time increment, the state of the system, e.g., the <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> share price, the spot rate, etc., can either increase by a factor <span class="math notranslate nohighlight">\(u\)</span> with probability <span class="math notranslate nohighlight">\(p\)</span> or decrease by a factor <span class="math notranslate nohighlight">\(d\)</span> with probability <span class="math notranslate nohighlight">\((1-p)\)</span> (<a class="reference internal" href="#fig-binomial-lattice-schematic"><span class="std std-numref">Fig. 38</span></a>). Different models can be developed for the specific values of the tuple <span class="math notranslate nohighlight">\((u,d,p)\)</span>.</p>
+<section id="cox-ross-and-rubinstein-crr-model">
+<h4>Cox, Ross and Rubinstein (CRR) model<a class="headerlink" href="#cox-ross-and-rubinstein-crr-model" title="Permalink to this headline">#</a></h4>
+<p>One widely used bionomial model for options pricing is the Cox, Ross, and Rubinstein (CRR) model <span id="id2">[<a class="reference internal" href="../References.html#id18" title="John C. Cox, Stephen A. Ross, and Mark Rubinstein. Option pricing: a simplified approach. Journal of Financial Economics, 7(3):229-263, 1979. URL: https://www.sciencedirect.com/science/article/pii/0304405X79900151, doi:https://doi.org/10.1016/0304-405X(79)90015-1.">Cox <em>et al.</em>, 1979</a>]</span>. <a class="reference external" href="https://en.wikipedia.org/wiki/Binomial_options_pricing_model">The Cox-Ross-Rubinstein (CRR) binomial lattice model</a> proposes forms for the probability of an up move <span class="math notranslate nohighlight">\(p\)</span>, the up-factor <span class="math notranslate nohighlight">\(u\)</span> and the symmetry condition between up and down factors: <span class="math notranslate nohighlight">\(ud=1\)</span> such that the price distribution predicted by the CRR model approximates geometric Brownian motion. In particular, the magnitude of an <code class="docutils literal notranslate"><span class="pre">up</span></code> move <span class="math notranslate nohighlight">\(u\)</span> is given by:</p>
+<div class="math notranslate nohighlight">
+\[u = e^{\sigma\sqrt{\Delta{t}}}\]</div>
+<p>The quantity <span class="math notranslate nohighlight">\(\sigma\)</span> denotes a <em>volatility parameter</em>, and <span class="math notranslate nohighlight">\(\Delta{t}\)</span> represents the time step. The probability <span class="math notranslate nohighlight">\(p\)</span> of an <code class="docutils literal notranslate"><span class="pre">up</span></code> move in a <a class="reference external" href="https://en.wikipedia.org/wiki/Binomial_options_pricing_model">CRR model</a> is given by:</p>
+<div class="math notranslate nohighlight">
+\[p = \frac{e^{\mu\Delta{t}} - d}{u - d}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\mu\)</span> denotes a <em>return parameter</em> or <em>growth rate</em>. In the <a class="reference external" href="https://en.wikipedia.org/wiki/Binomial_options_pricing_model">CRR model</a> model paradigm, the return parameter <span class="math notranslate nohighlight">\(\mu\)</span> and the volatility parameter <span class="math notranslate nohighlight">\(\sigma\)</span> take on specific values:</p>
 <ul class="simple">
-<li><p>No dividends are paid by the underlying asset <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> during the life of the option contract.</p></li>
-<li><p>Markets are random (i.e., market movements cannot be predicted).</p></li>
-<li><p>There are no transaction costs when buying (or selling) an option contract.</p></li>
-<li><p>The risk-free rate and volatility of the underlying stock <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> are known and constant.</p></li>
-<li><p>The returns of the underlying stock <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> are normally distributed.</p></li>
-<li><p>No early excercise of the option contract is possible</p></li>
+<li><p>The return parameter <span class="math notranslate nohighlight">\(\mu\)</span> is a <em>risk-free</em> rate of return; the <em>risk-free</em> rate <span class="math notranslate nohighlight">\(\bar{r}\)</span> can be approximated by the <a class="reference external" href="https://ycharts.com/indicators/10_year_treasury_rate">yield on T = 10-year United States Treasury debt security</a>.</p></li>
+<li><p>The volatility parameter <span class="math notranslate nohighlight">\(\sigma\)</span> is the <a class="reference external" href="https://www.investopedia.com/terms/i/iv.asp">implied volatility</a>; the implied volatility is the market’s view of the likelihood of changes in a given security’s price.</p></li>
 </ul>
+<div class="proof observation admonition" id="observation-18">
+<p class="admonition-title"><span class="caption-number">Observation 6 </span> (Where do <span class="math notranslate nohighlight">\(u\)</span> and <span class="math notranslate nohighlight">\(p\)</span> come from?)</p>
+<section class="observation-content" id="proof-content">
+<p>The probability of an <code class="docutils literal notranslate"><span class="pre">up</span></code> move <span class="math notranslate nohighlight">\(p\)</span> and the magnitude of the <code class="docutils literal notranslate"><span class="pre">up</span></code> factor <span class="math notranslate nohighlight">\(u\)</span> can be derived by matching the expectation and variance of the Geometric Brownian motion analytical solution for <span class="math notranslate nohighlight">\(X(t)\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[X(t) = X_{\circ}\exp\Biggl[\left(\mu-\frac{\sigma^{2}}{2}\right)\left(t - t_{\circ}\right) + (\sigma\sqrt{t-t_{\circ}})Z(0,1)\Biggr]\]</div>
+<p>The expectation of the share price <span class="math notranslate nohighlight">\(X(t)\)</span> is given by:</p>
+<div class="math notranslate nohighlight" id="equation-eqn-expectation-gbm">
+<span class="eqno">(53)<a class="headerlink" href="#equation-eqn-expectation-gbm" title="Permalink to this equation">#</a></span>\[\mathbb{E}\left(X_{t}\right) = X_{\circ}e^{\mu\Delta{t}} \]</div>
+<p>while the variance of the share price of <span class="math notranslate nohighlight">\(X(t)\)</span> is given by:</p>
+<div class="math notranslate nohighlight" id="equation-eqn-variance-gbm">
+<span class="eqno">(54)<a class="headerlink" href="#equation-eqn-variance-gbm" title="Permalink to this equation">#</a></span>\[\text{Var}\left(X_{t}\right) = X_{\circ}^{2}e^{2\mu\Delta{t}}\left[e^{\sigma^{2}\Delta{t}} - 1\right]\]</div>
+<p>where <span class="math notranslate nohighlight">\(\Delta{t} = t - t_{\circ}\)</span>.</p>
+<p><strong>Probability <span class="math notranslate nohighlight">\(p\)</span></strong>: The probability <span class="math notranslate nohighlight">\(p\)</span> in the CRR model can be estimated from a 1-step Bernoulli trial starting from <span class="math notranslate nohighlight">\(X_{\circ}\)</span>. In particular, the expected value of the price <span class="math notranslate nohighlight">\(X_{t}\)</span> from the binomial lattice must match Eqn. <a class="reference internal" href="#equation-eqn-expectation-gbm">(53)</a>:</p>
+<div class="math notranslate nohighlight" id="equation-eqn-expectation-matching">
+<span class="eqno">(55)<a class="headerlink" href="#equation-eqn-expectation-matching" title="Permalink to this equation">#</a></span>\[puX_{\circ}+(1-p)dX_{\circ} = X_{\circ}e^{\mu\Delta{t}} \]</div>
+<p>where the left-hand side is the expectation of the lattice price, while the right-hand side is the expectation of the geometric Brownian motion solution. Equation <a class="reference internal" href="#equation-eqn-expectation-matching">(55)</a> can be solved for the probability <span class="math notranslate nohighlight">\(p\)</span> expression:</p>
+<div class="math notranslate nohighlight">
+\[p = \frac{ e^{\mu\Delta{t}} - d}{u-d}\]</div>
+<p><strong>Up factor <span class="math notranslate nohighlight">\(u\)</span></strong>: The <code class="docutils literal notranslate"><span class="pre">up</span></code> factor <span class="math notranslate nohighlight">\(u\)</span> can be estimated by matching the variance of the binomial lattice price with the variance of the geometric Brownian motion solution. In the limit of <span class="math notranslate nohighlight">\(\Delta{t}\rightarrow{0}\)</span>, Eqn. <a class="reference internal" href="#equation-eqn-variance-gbm">(54)</a> becomes:</p>
+<div class="math notranslate nohighlight">
+\[\text{Var}\left(X_{t}\right)\simeq{X_{\circ}^{2}\sigma^{2}\Delta{t}}\qquad{\Delta{t}\rightarrow{0}}\]</div>
+<p>We know that the variance of any random variable <span class="math notranslate nohighlight">\(X\)</span> can be expressed as:</p>
+<div class="math notranslate nohighlight">
+\[\text{Var}\left(X\right) = \mathbb{E}\left(X^{2}\right) - \mathbb{E}\left(X\right)^{2}\]</div>
+<p>For the CRR lattice, these expectations are given by:</p>
+<div class="math notranslate nohighlight">
+\[\mathbb{E}\left(X_{t}^{2}\right) = pu^{2}X^{2}_{\circ} + (1-p)d^{2}X^{2}_{\circ}\]</div>
+<p>and</p>
+<div class="math notranslate nohighlight">
+\[ \mathbb{E}\left(X_{t}\right)^{2} = \left(puX_{\circ}+(1-p)dX_{\circ}\right)^2\]</div>
+<p>which, when matched, gives the expression:</p>
+<div class="math notranslate nohighlight" id="equation-eqn-crr-var-mathching">
+<span class="eqno">(56)<a class="headerlink" href="#equation-eqn-crr-var-mathching" title="Permalink to this equation">#</a></span>\[X_{\circ}^{2}\sigma^{2}\Delta{t} = pu^{2}X^{2}_{\circ} + (1-p)d^{2}X^{2}_{\circ} - \left(puX_{\circ}+(1-p)dX_{\circ}\right)^2\]</div>
+<p>Expanding the right-hand side of Eqn. <a class="reference internal" href="#equation-eqn-crr-var-mathching">(56)</a>, invoking the symmetry condition <span class="math notranslate nohighlight">\(ud=1\)</span>, and solving for <span class="math notranslate nohighlight">\(u\)</span> gives:</p>
+<div class="math notranslate nohighlight">
+\[u = e^{\sigma\sqrt{\Delta{t}}}\qquad\Delta{t}\rightarrow{0}\]</div>
 </section>
-</section>
-<section id="binomial-pricing-model">
-<h3>Binomial pricing model<a class="headerlink" href="#binomial-pricing-model" title="Permalink to this headline">#</a></h3>
-<p>Fill me in.</p>
+</div></section>
 </section>
 <section id="monte-carlo-pricing-model">
 <h3>Monte-carlo pricing model<a class="headerlink" href="#monte-carlo-pricing-model" title="Permalink to this headline">#</a></h3>
@@ -1198,8 +1278,8 @@ First, we can develop a simulation of the price of the underlying asset <code cl
 <p>In this lecture, we:</p>
 <ul class="simple">
 <li><p>Discussed the two types, and two styles of <a class="reference internal" href="#content-references-option-contracts"><span class="std std-ref">Option Contracts</span></a>. A put option gives the option buyer the right, but not the obligation, to sell shares of the underlying asset <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> at the strike price of $<span class="math notranslate nohighlight">\(K\)</span> per share. On the other hand, call options give the option buyer the right, but not the obligation, to purchase shares of the underlying asset <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> at a strike price of $<span class="math notranslate nohighlight">\(K\)</span> per share. American-style call (put) contracts can be exercised anytime before the option contract expires, while European call (put) contracts can only be exercised on the expiration date. Each call and put option contract controls 100 shares of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code>.</p></li>
-<li><p>Discussed the profit conditions for option contracts and how you, an investor, can compute <a class="reference internal" href="#content-references-option-probability-of-profit-algorithms"><span class="std std-ref">Probability of Profit (POP) at Expiration</span></a>.</p></li>
-<li><p>Discussed several <a class="reference internal" href="#content-references-option-pricing-algorithms"><span class="std std-ref">Options Pricing Algorithms</span></a>, which are used to calculate the price of European and American call (put) option contracts as a function of market parameters.</p></li>
+<li><p>Discussed the profit conditions for option contracts and how you, an investor, can compute <a class="reference internal" href="#content-references-option-probability-of-profit-algorithms"><span class="std std-ref">Probability of Profit</span></a>.</p></li>
+<li><p>Discussed several <a class="reference internal" href="#content-references-option-pricing-algorithms"><span class="std std-ref">Option Pricing Algorithms</span></a>, which are used to calculate the price of European and American call (put) option contracts as a function of market parameters.</p></li>
 </ul>
 <!-- ## Cox-Ross-Rubinstein (CRR) binomial pricing model
 

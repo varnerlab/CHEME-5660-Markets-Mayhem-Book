@@ -492,6 +492,11 @@ title="Print to PDF"
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#euler-maruyama-discretization-method">
+     Euler-Maruyama Discretization Method
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#ornsteinuhlenbeck-model-of-mean-reversion">
      Ornstein–Uhlenbeck model of mean reversion
     </a>
@@ -614,6 +619,11 @@ title="Print to PDF"
    Stochastic Volatility and Mean Reversion Models
   </a>
   <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#euler-maruyama-discretization-method">
+     Euler-Maruyama Discretization Method
+    </a>
+   </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#ornsteinuhlenbeck-model-of-mean-reversion">
      Ornstein–Uhlenbeck model of mean reversion
@@ -913,30 +923,69 @@ In general, we cannot develop an analytical solution to Eqn. {eq}`eq-ito-process
 </section>
 <section id="stochastic-volatility-and-mean-reversion-models">
 <span id="content-references-discretization"></span><h2>Stochastic Volatility and Mean Reversion Models<a class="headerlink" href="#stochastic-volatility-and-mean-reversion-models" title="Permalink to this headline">#</a></h2>
-<p>For both the standard Brownian motion and the geometric Brownian motion equations, the drift coefficient <span class="math notranslate nohighlight">\(\mu\)</span> and the diffusion coefficient <span class="math notranslate nohighlight">\(\sigma^{2}\)</span> are assumed constant. However, in many practical cases, this may not be true, i.e., the drift rate <span class="math notranslate nohighlight">\(\mu\)</span> or the the diffusion coefficient <span class="math notranslate nohighlight">\(\sigma\)</span> many change as a function of time. For example, macroeconomic conditions may change leading to different price dynamics. Thus, one could imagine modifying the geometric Brownian motion model to capture mean reversion (such as that observed  in <a class="reference internal" href="#example-approach-1-calibration-gbm">Example 12</a>) or even constructing a seperate model that accounts for the movment of <span class="math notranslate nohighlight">\(\sigma\)</span> as a function of time.</p>
+<p>For the standard Brownian and the geometric Brownian motion equations, the drift coefficient <span class="math notranslate nohighlight">\(\mu\)</span> and the diffusion coefficient <span class="math notranslate nohighlight">\(\sigma^{2}\)</span> are assumed constant. However, in many practical cases, this may not be true, i.e., the drift rate <span class="math notranslate nohighlight">\(\mu\)</span> or the diffusion coefficient <span class="math notranslate nohighlight">\(\sigma\)</span> may change as a function of time. For example, macroeconomic conditions may change, leading to different price dynamics. Thus, one could imagine modifying the geometric Brownian motion model to capture mean reversion (such as that observed in <a class="reference internal" href="#example-approach-1-calibration-gbm">Example 12</a>) or constructing a separate model that accounts for the movement of <span class="math notranslate nohighlight">\(\sigma\)</span> as a function of time.</p>
+<p>However, these more sophisticated models do not have quickly developed analytical solutions except in rare cases, as was true of ordinary Brownian or Geometric Brownian motions. Thus, we must develop numerical methods to approximate the solutions of these models. There are several approaches to this; however, we’ll consider arguably the simplest and the most accessible approach, namely the Euler-Maruyama (EM) method.</p>
+<section id="euler-maruyama-discretization-method">
+<h3>Euler-Maruyama Discretization Method<a class="headerlink" href="#euler-maruyama-discretization-method" title="Permalink to this headline">#</a></h3>
+<p>The <a class="reference external" href="https://en.wikipedia.org/wiki/Euler%E2%80%93Maruyama_method">Euler-Maruyama (EM) method</a> is an extension to stochastic differential equations (SDEs) of the <a class="reference external" href="https://en.wikipedia.org/wiki/Euler_method">Euler method</a> used for approximating the solution of ordinary differential equations (ODEs). For the general scalar stochastic differential equation (Wiener noise):</p>
+<div class="math notranslate nohighlight">
+\[dX = a(X,t)dt + b(X,t)dW\]</div>
+<p>The EM method gives the approximate solution:</p>
+<div class="math notranslate nohighlight">
+\[X_{k+1} = X_{k} + a(X_{k}, t_{k})h + b(X_{k},t_{k})\sqrt{h}Z\left(0,1\right)\]</div>
+<p>where the step size <span class="math notranslate nohighlight">\(h=t_{k+1} - t_{k}\)</span> and <span class="math notranslate nohighlight">\(Z(0,1)\)</span> denotes a standard normal random variable.  While the EM method is straightforward to implement, it has a poor overall accuracy with error on order <span class="math notranslate nohighlight">\(\sqrt{h}\)</span>; thus, small step sizes are required to get accurate solutions.</p>
+</section>
 <section id="ornsteinuhlenbeck-model-of-mean-reversion">
 <h3>Ornstein–Uhlenbeck model of mean reversion<a class="headerlink" href="#ornsteinuhlenbeck-model-of-mean-reversion" title="Permalink to this headline">#</a></h3>
-<p>The <a class="reference external" href="https://en.wikipedia.org/wiki/Ornstein%E2%80%93Uhlenbeck_process">Ornstein–Uhlenbeck model</a> model is a type of Ordinary Brownian motion model with a modified drift term that encodes mean reversion:</p>
+<p>The <a class="reference external" href="https://en.wikipedia.org/wiki/Ornstein%E2%80%93Uhlenbeck_process">Ornstein–Uhlenbeck model</a> model is a type of Brownian motion model with a modified mean-reverting drift term:</p>
 <div class="math notranslate nohighlight" id="equation-eqn-ou-model">
 <span class="eqno">(30)<a class="headerlink" href="#equation-eqn-ou-model" title="Permalink to this equation">#</a></span>\[dX = \theta\left(\mu-X\right)dt + {\sigma}dW\]</div>
-<p>where <span class="math notranslate nohighlight">\(\theta&gt;0\)</span> controls the rate of mean reversion, <span class="math notranslate nohighlight">\(\mu\)</span> is the long-term growth rate, and <span class="math notranslate nohighlight">\(\sigma&gt;0\)</span> denotes the volatility parameter <span id="id6">[<a class="reference internal" href="../References.html#id2" title="G. E. Uhlenbeck and L. S. Ornstein. On the Theory of the Brownian Motion. Physical Review, 36(5):823-841, September 1930. doi:10.1103/PhysRev.36.823.">Uhlenbeck and Ornstein, 1930</a>]</span>.</p>
+<p>where <span class="math notranslate nohighlight">\(\theta&gt;0\)</span> is the time-constant controlling the mean reversion, <span class="math notranslate nohighlight">\(\mu\)</span> is the long-term price target, and <span class="math notranslate nohighlight">\(\sigma&gt;0\)</span> denotes the volatility parameter <span id="id6">[<a class="reference internal" href="../References.html#id2" title="G. E. Uhlenbeck and L. S. Ornstein. On the Theory of the Brownian Motion. Physical Review, 36(5):823-841, September 1930. doi:10.1103/PhysRev.36.823.">Uhlenbeck and Ornstein, 1930</a>]</span>.</p>
 <section id="numerical-solution-ornsteinuhlenbeck-model">
 <h4>Numerical solution: Ornstein–Uhlenbeck model<a class="headerlink" href="#numerical-solution-ornsteinuhlenbeck-model" title="Permalink to this headline">#</a></h4>
-<p>Fill me in.</p>
+<p>Let’s use the <a class="reference external" href="https://en.wikipedia.org/wiki/Euler%E2%80%93Maruyama_method">Euler-Maruyama (EM) method</a> to discretize the Ornstein–Uhlenbeck model.
+The <a class="reference external" href="https://en.wikipedia.org/wiki/Euler%E2%80%93Maruyama_method">Euler-Maruyama (EM) method</a> is an extension of the Euler method for ordinary differential equations to stochastic differential equations; thus, it is easy to implement but not accurate unless we use small step-sizes. The EM discretized solution to the <a class="reference external" href="https://en.wikipedia.org/wiki/Ornstein%E2%80%93Uhlenbeck_process">Ornstein–Uhlenbeck model</a> is given by:</p>
+<div class="math notranslate nohighlight" id="equation-eqn-em-soln-ou-model">
+<span class="eqno">(31)<a class="headerlink" href="#equation-eqn-em-soln-ou-model" title="Permalink to this equation">#</a></span>\[X_{k+1} = X_{k} + \theta\left(\mu-X_{k}\right)h + \left(\sigma\sqrt{h}\right)Z(0,1)\]</div>
+<p>where <span class="math notranslate nohighlight">\(Z(0,1)\)</span> denotes a standard normally distributed random variable, and <span class="math notranslate nohighlight">\(h = t_{k+1} - t_{k}\)</span> denotes the fixed time step size, where the subsscript <span class="math notranslate nohighlight">\(k\)</span> denotes the time index.</p>
+<div class="proof example admonition" id="example-OU-model-EM-discrete">
+<p class="admonition-title"><span class="caption-number">Example 13 </span> (Approximate Solution to the Ornstein–Uhlenbeck model)</p>
+<section class="example-content" id="proof-content">
+<p>Solve the <a class="reference external" href="https://en.wikipedia.org/wiki/Ornstein%E2%80%93Uhlenbeck_process">Ornstein–Uhlenbeck model</a> model using the <a class="reference external" href="https://en.wikipedia.org/wiki/Euler%E2%80%93Maruyama_method">Euler-Maruyuma (EM) method</a>. The approximate EM solution of the <a class="reference external" href="https://en.wikipedia.org/wiki/Ornstein%E2%80%93Uhlenbeck_process">Ornstein–Uhlenbeck model</a> model is given by Eqn. <a class="reference internal" href="#equation-eqn-em-soln-ou-model">(31)</a>.</p>
+<figure class="align-default" id="fig-ou-em-model-scalar">
+<a class="reference internal image-reference" href="../_images/Fig-Ornstein–Uhlenbeck-EM-solution-N200.pdf"><img alt="../_images/Fig-Ornstein–Uhlenbeck-EM-solution-N200.pdf" src="../_images/Fig-Ornstein–Uhlenbeck-EM-solution-N200.pdf" style="height: 420px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 18 </span><span class="caption-text">Scalar Euler-Maruyama solution to the Ornstein–Uhlenbeck model with step-size h = 1/365 and duration <span class="math notranslate nohighlight">\(\mathcal{D}\)</span> = 800 days. Parameters: <span class="math notranslate nohighlight">\(\mu\)</span> = 200 USD/share-time; <span class="math notranslate nohighlight">\(\theta\)</span> = 4.0; <span class="math notranslate nohighlight">\(\sigma\)</span> = 20.0; <span class="math notranslate nohighlight">\(X_{\circ}\)</span> = 144.0 USD/share.</span><a class="headerlink" href="#fig-ou-em-model-scalar" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p><strong>source</strong>: <a class="reference external" href="https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks">live Pluto notebook</a> or <a class="reference external" href="https://htmlview.glitch.me/?https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks/blob/main/pluto-notebooks/html/Example-Soln-Ornstein%E2%80%93Uhlenbeck-model.jl.html">HTML static view</a></p>
 </section>
+</div></section>
 </section>
 <section id="heston-model-of-stochastic-volatility">
 <h3>Heston model of stochastic volatility<a class="headerlink" href="#heston-model-of-stochastic-volatility" title="Permalink to this headline">#</a></h3>
-<p>On the other hand, the <a class="reference external" href="https://en.wikipedia.org/wiki/Heston_model">Heston model</a> is an example of a stochastic volatility model in which the volatility parameter <span class="math notranslate nohighlight">\(\sigma\)</span> is modeled as a random variable whose value is governed by a seperate stochastic differential equation <span id="id7">[<a class="reference internal" href="../References.html#id3" title="S. Heston. A Closed-form Solution for Options with Stochastic Volatility with Applications to Bond and Currency Options. Rev. Fin. Studies, 6:327-343, 1993.">Heston, 1993</a>]</span>. In the <a class="reference external" href="https://en.wikipedia.org/wiki/Heston_model">Heston model</a>, the price <span class="math notranslate nohighlight">\(X(t)\)</span> is governed by:</p>
+<p>The <a class="reference external" href="https://en.wikipedia.org/wiki/Heston_model">Heston model</a> is an example of a stochastic volatility model in which the volatility parameter controlling the price is described by a random variable whose value is governed by a separate stochastic differential equation <span id="id7">[<a class="reference internal" href="../References.html#id3" title="S. Heston. A Closed-form Solution for Options with Stochastic Volatility with Applications to Bond and Currency Options. Rev. Fin. Studies, 6:327-343, 1993.">Heston, 1993</a>]</span>. In the <a class="reference external" href="https://en.wikipedia.org/wiki/Heston_model">Heston model</a>, the price <span class="math notranslate nohighlight">\(X(t)\)</span> is governed by:</p>
 <div class="math notranslate nohighlight" id="equation-eqn-price-heston-model">
-<span class="eqno">(31)<a class="headerlink" href="#equation-eqn-price-heston-model" title="Permalink to this equation">#</a></span>\[dX = \mu{X}dt + \sqrt{\nu}X{dW}_{1}\]</div>
-<p>where the volatility <span class="math notranslate nohighlight">\(\nu\)</span> is governed by a seperate random process:</p>
+<span class="eqno">(32)<a class="headerlink" href="#equation-eqn-price-heston-model" title="Permalink to this equation">#</a></span>\[dX = \mu{X}dt + \left(\sqrt{\nu}\right)X{dW}^{X}\]</div>
+<p>where the evolution of the volatility <span class="math notranslate nohighlight">\(\nu\)</span> is governed by a separate <a class="reference external" href="https://en.wikipedia.org/wiki/Cox%E2%80%93Ingersoll%E2%80%93Ross_model">Cox–Ingersoll–Ross (CIR)</a> process:</p>
 <div class="math notranslate nohighlight" id="equation-eqn-vol-cir-process">
-<span class="eqno">(32)<a class="headerlink" href="#equation-eqn-vol-cir-process" title="Permalink to this equation">#</a></span>\[d\nu = \kappa\left(\theta - \nu\right)dt + \xi\sqrt{\nu}dW_{2}\]</div>
+<span class="eqno">(33)<a class="headerlink" href="#equation-eqn-vol-cir-process" title="Permalink to this equation">#</a></span>\[d\nu = \kappa\left(\theta - \nu\right)dt +\left(\xi\sqrt{\nu}\right)dW^{\nu}\]</div>
+<p>The <a class="reference external" href="https://en.wikipedia.org/wiki/Heston_model">Heston model</a> model has multiple parameters; the parameter <span class="math notranslate nohighlight">\(\mu\)</span> describes the growth rate in the price equation’s drift term, while <span class="math notranslate nohighlight">\(\kappa\)</span>, <span class="math notranslate nohighlight">\(\theta\)</span> and <span class="math notranslate nohighlight">\(\xi\)</span> are the time-constant governing the rate of volatility mean reversion, the long-term volatility and the volatility of the volatility, respectively.  Finally, each equation of the <a class="reference external" href="https://en.wikipedia.org/wiki/Heston_model">Heston model</a> is driven by a separate potentially correlated Weiner noise process.</p>
 <section id="numerical-solution-heston-model">
 <h4>Numerical solution: Heston model<a class="headerlink" href="#numerical-solution-heston-model" title="Permalink to this headline">#</a></h4>
+<p>The EM discretization of the <a class="reference external" href="https://en.wikipedia.org/wiki/Heston_model">Heston model</a> gives a price equation of the form:</p>
+<div class="math notranslate nohighlight" id="equation-eqn-heston-price-em-discrete">
+<span class="eqno">(34)<a class="headerlink" href="#equation-eqn-heston-price-em-discrete" title="Permalink to this equation">#</a></span>\[X_{k+1} = X_{k} + \mu{X_{k}}h + \left(\sqrt{\nu_{k}h}\right)X_{k}Z^{X}\]</div>
+<p>while the volatility equation is given by:</p>
+<div class="math notranslate nohighlight" id="equation-eqn-heston-vol-em-discrete">
+<span class="eqno">(35)<a class="headerlink" href="#equation-eqn-heston-vol-em-discrete" title="Permalink to this equation">#</a></span>\[\nu_{k+1} = \nu_{k} + \kappa\left(\theta - \nu_{k}\right)h + \left(\xi\sqrt{\nu_{k}h}\right)Z^{\nu}\]</div>
+<p>where the noise processes <span class="math notranslate nohighlight">\(Z^{X}\)</span> and <span class="math notranslate nohighlight">\(Z^{\nu}\)</span> are samples from a multivariate normal distribution with mean zero and a covariance matrix <span class="math notranslate nohighlight">\(\Sigma\)</span> with entries <span class="math notranslate nohighlight">\(\Sigma_{ij}=\sigma_{i}\sigma_{j}\rho_{ij}\)</span>.</p>
+<div class="proof example admonition" id="example-heston-model-EM-discrete">
+<p class="admonition-title"><span class="caption-number">Example 14 </span> (Approximate solution to the Heston model)</p>
+<section class="example-content" id="proof-content">
 <p>Fill me in.</p>
 </section>
+</div></section>
 </section>
 </section>
 <hr class="docutils" />

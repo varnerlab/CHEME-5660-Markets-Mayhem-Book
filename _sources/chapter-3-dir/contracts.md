@@ -52,28 +52,26 @@ The profit at expiration that a call contract buyer experiences depends upon the
 ````{prf:definition} Call Contract Payoff and Profit
 :label: defn-PL-call-contract
 
-An investor purchases a call contract for the underlying stock `XYZ` for $\mathcal{P}$ USD/contract, where the contract controls 100 shares of `XYZ`. 
+An investor purchases a single American stycle Call contract for the underlying stock `XYZ` for $\mathcal{P}$ USD/share; the contract controls 100 shares of `XYZ`. 
 
-Let the strike price of the call contract be $K$ USD/share, and the share price of `XYZ` at expiration be $S$ USD/share. Then, at expiration, the call contract has the payoff $V_{c}$ USD/share:
+Let the strike price of the call contract be $K$ USD/share, and the share price of `XYZ` at expiration be $S$ USD/share. Then, at expiration, the call contract has the payoff $\hat{V}_{c}$ USD/share:
 
 ```{math}
-V_{c} = \max\left(S-K,0\right)
+:label: eqn-call-option-payoff
+\hat{V}_{c} = \max\left(S-K,0\right)
 ```
 
 and a profit (loss) for the buyer of:
 
 ```{math}
-P_{c} = V_{c} -  \mathcal{P}
+P_{c} = \hat{V}_{c} -  \mathcal{P}
 ```
 
-where $P_{c}$ denotes the profit (or loss) per contract per share of `XYZ`. The contract seller experiences a profit (or loss) of $\bar{P}_{c}$ where
+where $P_{c}$ denotes the profit (or loss) per share of `XYZ`. The contract seller experiences a profit (or loss) of $\bar{P}_{c}$ at expiration where:
 
 ```{math}
 P_{c}+\bar{P}_{c} = 0
 ```
-
-The cost of a call contract $\mathcal{P}$ is a non-linear function of many variables including the current share price of the underlying asset $S$, the strike price of the contract, the number of days before contract expiration, and an unobservable quantity called the implied volatility.
-
 ````
 
 #### Payoff, Profit and Loss for Call contracts
@@ -116,29 +114,26 @@ The profit that a put contract buyer experiences, denoted by $V_{p}$, depends up
 ````{prf:definition} Put Contract Payoff and Profit
 :label: defn-PL-put-contract
 
-An investor purchases a put contract for the underlying stock `XYZ` for $\mathcal{P}$ USD/contract, where the contract controls 100 shares of `XYZ`. 
+An investor purchases a single American stycle Put contract for the underlying stock `XYZ` for $\mathcal{P}$ USD/share; the contract controls 100 shares of `XYZ`. 
 
-Let the strike price of the put contract be $K$ USD/share, and the share price of `XYZ` be $S$ USD/share. Then, at expiration, the put contract has the payoff $V_{p}$ USD/share:
+Let the strike price of the put contract be $K$ USD/share, and the share price of `XYZ` be $S$ USD/share. Then, at expiration, the put contract has the payoff $\hat{V}_{p}$ USD/share:
 
 ```{math}
-V_{p} = \max\left(K - S,0\right)
+:label: eqn-put-option-payoff
+\hat{V}_{p} = \max\left(K - S,0\right)
 ```
 
 and a profit (loss) for the buyer of:
 
 ```{math}
-P_{p} = V_{p} -  \mathcal{P}
+P_{p} = \hat{V}_{p} -  \mathcal{P}
 ```
 
-where $P_{p}$ denotes the profit (or loss) per contract per share of `XYZ`. 
-The contract seller experiences a profit (or loss) of $\bar{P}_{p}$ where
+where $P_{p}$ denotes the profit (or loss) per share of `XYZ`. The contract seller experiences a profit (or loss) of $\bar{P}_{p}$ at expiration where:
 
 ```{math}
 P_{p}+\bar{P}_{p} = 0
 ```
-
-The cost of a put contract leg $\mathcal{P}$ is a non-linear function of many variables including the current share price of the underlying asset $S$, the strike price of the contract, the number of days before contract expiration, and an unobservable quantity called the implied volatility. 
-
 ````
 
 #### Payoff, Profit and Loss for Put contracts
@@ -470,10 +465,10 @@ __source__: [live Pluto notebook](https://github.com/varnerlab/CHEME-5660-Market
 ````
 
 (content:references:option-probability-of-profit-algorithms)=
-## Probability of Profit (POP) at Expiration
+## Probability of Profit
 The Probability of Profit (POP) at expiration is the probability that your option position will make at least $0.01 at expiration. The probability of profit can be a helpful decision metric, e.g., investors engage in transactions with a _large_ POP and avoid low probability trades. However, the exact meaning of _large_ or _small_ depends upon the investor’s risk tolerance. 
 
-### Computing the POP using Monte-Carlo simulation
+### Computing the Probability of Profit
 Using Monte-Carlo simulation, we can estimate the option position’s probability of Profit (POP) at expiration. 
 First, we can develop a simulation of the price of the underlying asset `XYZ,` e.g., using a geometric Brownian motion model developed from historical data, and then use that model to project the underlying price into the future until expiration. Finally, we can compute the cumulative probability curve to determine the probability that a profit condition is satisfied.
 
@@ -485,7 +480,7 @@ To explore this idea, let's compute the probability of profit of a [short strang
 
 Let's compute the probability of profit at expiration for a short strangle for  [AMD](https://finance.yahoo.com/quote/AMD/) with the following data: short put strike $K_{1}$ = \$80.0 USD/share, short call srtike $K_{1}$ = \$120.0 USD/share, $\mathcal{P}_{1}$ = \$1.69 USD/share and $\mathcal{P}_{2}$ = \$2.97 USD/share. The current share price of [AMD](https://finance.yahoo.com/quote/AMD/) is $S_{o}$ = 102.53 USD/share.
 
-* The first step is to _estimate_ the future close price of the underlying asset in this case [AMD](https://finance.yahoo.com/quote/AMD/) at expiration. The close price was _predicted_ by building a GBM model based on the previous 45-days of AMD close price data; close price data was downloaded from the [Polygon.io application programming interface (API)](https://polygon.io). The GBM analytical solution developed previously was used to generate N = 10,000 sample paths from which the cumulative probability was calculated ({numref}`fig-cumulative-d-AMD-10K`).
+* First, estimate the future close price of the underlying asset in this case [AMD](https://finance.yahoo.com/quote/AMD/) at expiration. The close price was _predicted_ by building a GBM model based on the previous 45-days of AMD close price data; close price data was downloaded from the [Polygon.io application programming interface (API)](https://polygon.io). The GBM analytical solution developed previously was used to generate N = 10,000 sample paths from which the cumulative probability was calculated ({numref}`fig-cumulative-d-AMD-10K`).
 
 ```{figure} ./figs/Fig-CumulativeDistribution-C-AMD-D-10-21-22-N10K.pdf
 ---
@@ -531,15 +526,13 @@ where $\Delta{T}$ denotes the number of days into the future for which we wish t
 
 Unfortunately, knowing a value for the standard deviation estimated from the [implied volatility (IV)](https://www.investopedia.com/terms/i/iv.asp) is only half of what we need to compute the probability of profit for an options position at expiration. In addition, we need a model of how the share price is distributed. 
 
-#### Normal distribution
-Fill me in.
 
 #### Log-Normal distribution
 
 A fundamental assumption in the mathematical finance community is that share prices are [Log-normally distributed](https://www.investopedia.com/articles/investing/102014/lognormal-and-normal-distribution.asp). Given the premise of [Log-normal distributed](https://www.investopedia.com/articles/investing/102014/lognormal-and-normal-distribution.asp) share prices of `XYZ` and the IV model of the volatility ({prf:ref}`defn-iv-std-model`) we postulate:
 
 ````{prf:conjecture} IV-Projected price distribution
-:label: 
+:label: conj-IV-projected-price-distribution
 
 The share price of `XYZ` is [log-normally distributed](https://www.investopedia.com/articles/investing/102014/lognormal-and-normal-distribution.asp) distributed. Further, let $S_{o}$ denote the current share price of `XYZ`.
 
@@ -565,27 +558,194 @@ where $\text{erf}$ denotes the [error function](https://en.wikipedia.org/wiki/Er
 
 ````
 
+Let's explore the ideas outlined in {prf:ref}`conj-IV-projected-price-distribution` with some simulations. 
+
 
 
 (content:references:option-pricing-algorithms)=
-## Options Pricing Algorithms
+## Option Pricing Algorithms
+Options pricing is a rich area of study, given the complexity of options. Finish me.
 
 ### Black-Scholes-Merton (BSM)
-The Black-Scholes-Merton (BSM) model is a partial differential equation widely used to price [European](https://www.investopedia.com/terms/e/europeanoption.asp) style options contracts; thus, the BSM model does not condsider the possibility of early excercise that is possible with [American](https://www.investopedia.com/terms/a/americanoption.asp) option contracts. In 1997, Scholes and Merton were awarded the [Nobel Memorial Prize in Economic Sciences](https://www.nobelprize.org/prizes/economic-sciences/1997/press-release/) for their work in finding "a new method to determine the value of derivatives." Black had passed away two years earlier; thus could not share in the prize.
+The [Black-Scholes-Merton (BSM) model](https://en.wikipedia.org/wiki/Black–Scholes_model) is a partial differential equation describing the price of [European](https://www.investopedia.com/terms/e/europeanoption.asp) option contracts {cite}`BlackScholes1973`; thus, the BSM model does not consider the possibility of early exercise that is possible with [American](https://www.investopedia.com/terms/a/americanoption.asp) style contracts. In 1997, Scholes and Merton were awarded the [Nobel Memorial Prize in Economic Sciences](https://www.nobelprize.org/prizes/economic-sciences/1997/press-release/) for their work in finding "a new method to determine the value of derivatives." Unfortunately, Black had passed away two years earlier; thus he could not share in the prize. 
 
-#### Assumptions of the BSM model
-The Black-Scholes model makes several assumptions when pricing [European](https://www.investopedia.com/terms/e/europeanoption.asp) style options contracts:
+````{prf:definition} Black-Scholes-Merton (BSM) model
+:label: defn-black-scholes-merton
 
-* No dividends are paid by the underlying asset `XYZ` during the life of the option contract.
-* Markets are random (i.e., market movements cannot be predicted).
-* There are no transaction costs when buying (or selling) an option contract.
-* The risk-free rate and volatility of the underlying stock `XYZ` are known and constant.
-* The returns of the underlying stock `XYZ` are normally distributed.
-* No early excercise of the option contract is possible
+Let $V$ denote the price of a [European](https://www.investopedia.com/terms/e/europeanoption.asp) option contract written with respect to shares of an underlying stock `XYZ`. Further, let the share price of `XYZ`, denoted by $X(t)$, be governed by a geometric Brownian motion with a 
+constant growth rate $\mu$ and volatility $\sigma$. Finally, the firm `XYZ` does not pay dividends during the life of the option contract. 
 
+Then, the price of the option contract $V$ as a function of time is the solution of the parabolic partial differential equation:
 
-### Binomial pricing model
-Fill me in.
+```{math}
+:label: eqn-bsm-pde
+\frac{\partial{V}}{\partial{t}} + \frac{1}{2}\sigma^{2}X^{2}\frac{\partial^{2}{V}}{\partial{X}^{2}}+\mu{X}\frac{\partial{V}}{\partial{X}} -\mu{V} = 0
+```
+
+__Call contract__: Equation {eq}`eqn-bsm-pde` has an analytical solution describing the price of a `European Call` contract $C(X_{t},t)$ with strike price $K$, expiration date $T$ and $\Delta{T}=T-t$ days until expiration:
+
+```{math}
+:label: eqn-euro-call-bsm-analytical-soln
+C(X_{t},t) = N(d_{1})X_{t} - N(d_{2})Ke^{-\mu\Delta{T}}
+```
+
+The quantity $N(\star)$ denotes the standard normal cumulative distribution function, the parameters $d_{1}$ is given by:
+
+```{math}
+:label: eqn-d1-bsm-soln
+d_{1} = \frac{1}{\sigma\sqrt{\Delta{T}}}\left[\ln\frac{X_{t}}{K}+(\mu+\frac{\sigma^{2}}{2})\Delta{T}\right]
+```
+
+and 
+
+```{math}
+:label: eqn-d2-bsm-soln
+d_{2} = d_{1} - \sigma\sqrt\Delta{T}
+```
+
+__Put contract__: Equation {eq}`eqn-bsm-pde` has an analytical solution describing the price of a `European Put` contract $P(X_{t},t)$ with strike price $K$, expiration date $T$ and $\Delta{T}=T-t$ days until expiration:
+
+```{math}
+:label: eqn-euro-put-bsm-analytical-soln
+
+P(X_{t},t) = N(-d_{2})Ke^{-\mu\Delta{T}} - N(-d_{1})X_{t}
+```
+
+where $d_{1}$ and $d_{2}$ are given by Eqn. {eq}`eqn-d1-bsm-soln` and Eqn. {eq}`eqn-d2-bsm-soln`, respectively.
+````
+
+Let's look at simulations of the pricing of [European](https://www.investopedia.com/terms/e/europeanoption.asp) Call and Put contracts to better understand what factors influnce their prices. 
+
+````{prf:example} Price of a European Call contract
+:label: example-european-call-contract
+Consider a `European Call` contract on `XYZ` with a strike price of $K$ = 100.0 USD/share for different times to expiration. Let the implied volatility (IV) of `XYZ` be equal to IV = 35%. Assume the implied volatility is not a function of the time to expiration.  
+
+```{figure} ./figs/Fig-BSM-Call-Price-K100.pdf
+---
+height: 420px
+name: fig-call-price-bsm
+---
+Price of a `European Call` contract as a function of the share price of the underlying asset `XYZ` for different times to expiration. 
+```
+
+__source__: Fill me in.
+````
+
+{prf:ref}`example-european-call-contract` demonstrates a key idea underyling the price of options, namely, intrinsic versus extrinsic value.
+The intrinsic value is the payoff of the option now; for a `Call` option the payoff is given by Eqn. {eq}`eqn-call-option-payoff`
+
+````{prf:example} Price of a European Put contract
+:label: example-european-put-contract
+Consider a `European Put` contract on `XYZ` with a strike price of $K$ = 100.0 USD/share for different times to expiration. Let the implied volatility (IV) of `XYZ` be equal to IV = 35%. Assume the implied volatility is not a function of the time to expiration.  
+
+```{figure} ./figs/Fig-BSM-Put-Price-K100.pdf
+---
+height: 420px
+name: fig-put-price-bsm
+---
+Price of a `European Put` contract as a function of the share price of the underlying asset `XYZ` for different times to expiration. 
+```
+
+__source__: Fill me in.
+````
+
+### Binomial lattice pricing models
+
+```{figure} ./figs/Fig-Binomial-Lattice-Schematic.pdf
+---
+height: 420px
+name: fig-binomial-lattice-schematic
+---
+Schematic of a binomial lattice pricing model. At each node, the price of the underlying asset increases by a factor $u$ with probability $p$ or decreases by a factor $d$ with probability $(1-p)$. Each node is treated as an independent Bernoulli trial.
+```
+
+A binomial lattice model assumes that each discrete time increment, the state of the system, e.g., the `XYZ` share price, the spot rate, etc., can either increase by a factor $u$ with probability $p$ or decrease by a factor $d$ with probability $(1-p)$ ({numref}`fig-binomial-lattice-schematic`). Different models can be developed for the specific values of the tuple $(u,d,p)$.
+
+#### Cox, Ross and Rubinstein (CRR) model
+One widely used bionomial model for options pricing is the Cox, Ross, and Rubinstein (CRR) model {cite}`COX1979229`. [The Cox-Ross-Rubinstein (CRR) binomial lattice model](https://en.wikipedia.org/wiki/Binomial_options_pricing_model) proposes forms for the probability of an up move $p$, the up-factor $u$ and the symmetry condition between up and down factors: $ud=1$ such that the price distribution predicted by the CRR model approximates geometric Brownian motion. In particular, the magnitude of an `up` move $u$ is given by:
+
+$$u = e^{\sigma\sqrt{\Delta{t}}}$$
+
+The quantity $\sigma$ denotes a _volatility parameter_, and $\Delta{t}$ represents the time step. The probability $p$ of an `up` move in a [CRR model](https://en.wikipedia.org/wiki/Binomial_options_pricing_model) is given by:
+
+$$p = \frac{e^{\mu\Delta{t}} - d}{u - d}$$
+
+where $\mu$ denotes a _return parameter_ or _growth rate_. In the [CRR model](https://en.wikipedia.org/wiki/Binomial_options_pricing_model) model paradigm, the return parameter $\mu$ and the volatility parameter $\sigma$ take on specific values:
+* The return parameter $\mu$ is a _risk-free_ rate of return; the _risk-free_ rate $\bar{r}$ can be approximated by the [yield on T = 10-year United States Treasury debt security](https://ycharts.com/indicators/10_year_treasury_rate). 
+* The volatility parameter $\sigma$ is the [implied volatility](https://www.investopedia.com/terms/i/iv.asp); the implied volatility is the market's view of the likelihood of changes in a given security's price.
+
+````{prf:observation} Where do $u$ and $p$ come from?
+The probability of an `up` move $p$ and the magnitude of the `up` factor $u$ can be derived by matching the expectation and variance of the Geometric Brownian motion analytical solution for $X(t)$:
+
+$$X(t) = X_{\circ}\exp\Biggl[\left(\mu-\frac{\sigma^{2}}{2}\right)\left(t - t_{\circ}\right) + (\sigma\sqrt{t-t_{\circ}})Z(0,1)\Biggr]$$
+
+The expectation of the share price $X(t)$ is given by:
+
+```{math}
+:label: eqn-expectation-GBM
+\mathbb{E}\left(X_{t}\right) = X_{\circ}e^{\mu\Delta{t}} 
+```
+
+while the variance of the share price of $X(t)$ is given by:
+
+```{math}
+:label: eqn-variance-GBM
+\text{Var}\left(X_{t}\right) = X_{\circ}^{2}e^{2\mu\Delta{t}}\left[e^{\sigma^{2}\Delta{t}} - 1\right]
+```
+
+where $\Delta{t} = t - t_{\circ}$.
+
+__Probability $p$__: The probability $p$ in the CRR model can be estimated from a 1-step Bernoulli trial starting from $X_{\circ}$. In particular, the expected value of the price $X_{t}$ from the binomial lattice must match Eqn. {eq}`eqn-expectation-GBM`:
+
+```{math}
+:label: eqn-expectation-matching
+puX_{\circ}+(1-p)dX_{\circ} = X_{\circ}e^{\mu\Delta{t}} 
+```
+
+where the left-hand side is the expectation of the lattice price, while the right-hand side is the expectation of the geometric Brownian motion solution. Equation {eq}`eqn-expectation-matching` can be solved for the probability $p$ expression:
+
+```{math}
+p = \frac{ e^{\mu\Delta{t}} - d}{u-d}
+```
+
+__Up factor $u$__: The `up` factor $u$ can be estimated by matching the variance of the binomial lattice price with the variance of the geometric Brownian motion solution. In the limit of $\Delta{t}\rightarrow{0}$, Eqn. {eq}`eqn-variance-GBM` becomes:
+
+```{math}
+\text{Var}\left(X_{t}\right)\simeq{X_{\circ}^{2}\sigma^{2}\Delta{t}}\qquad{\Delta{t}\rightarrow{0}}
+```
+
+We know that the variance of any random variable $X$ can be expressed as:
+
+```{math}
+\text{Var}\left(X\right) = \mathbb{E}\left(X^{2}\right) - \mathbb{E}\left(X\right)^{2}
+```
+
+For the CRR lattice, these expectations are given by:
+
+```{math}
+\mathbb{E}\left(X_{t}^{2}\right) = pu^{2}X^{2}_{\circ} + (1-p)d^{2}X^{2}_{\circ}
+```
+
+and
+
+```{math}
+ \mathbb{E}\left(X_{t}\right)^{2} = \left(puX_{\circ}+(1-p)dX_{\circ}\right)^2
+```
+
+which, when matched, gives the expression:
+
+```{math}
+:label: eqn-crr-var-mathching
+X_{\circ}^{2}\sigma^{2}\Delta{t} = pu^{2}X^{2}_{\circ} + (1-p)d^{2}X^{2}_{\circ} - \left(puX_{\circ}+(1-p)dX_{\circ}\right)^2
+```
+
+Expanding the right-hand side of Eqn. {eq}`eqn-crr-var-mathching`, invoking the symmetry condition $ud=1$, and solving for $u$ gives:
+
+```{math}
+u = e^{\sigma\sqrt{\Delta{t}}}\qquad\Delta{t}\rightarrow{0}
+```
+
+````
 
 ### Monte-carlo pricing model
 Fill me in.

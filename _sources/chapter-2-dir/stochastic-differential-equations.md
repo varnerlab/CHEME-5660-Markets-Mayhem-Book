@@ -378,39 +378,100 @@ In general, we cannot develop an analytical solution to Eqn. {eq}`eq-ito-process
 
 (content:references:discretization)=
 ## Stochastic Volatility and Mean Reversion Models
+For the standard Brownian and the geometric Brownian motion equations, the drift coefficient $\mu$ and the diffusion coefficient $\sigma^{2}$ are assumed constant. However, in many practical cases, this may not be true, i.e., the drift rate $\mu$ or the diffusion coefficient $\sigma$ may change as a function of time. For example, macroeconomic conditions may change, leading to different price dynamics. Thus, one could imagine modifying the geometric Brownian motion model to capture mean reversion (such as that observed in {prf:ref}`example-approach-1-calibration-gbm`) or constructing a separate model that accounts for the movement of $\sigma$ as a function of time. 
 
-For both the standard Brownian motion and the geometric Brownian motion equations, the drift coefficient $\mu$ and the diffusion coefficient $\sigma^{2}$ are assumed constant. However, in many practical cases, this may not be true, i.e., the drift rate $\mu$ or the the diffusion coefficient $\sigma$ many change as a function of time. For example, macroeconomic conditions may change leading to different price dynamics. Thus, one could imagine modifying the geometric Brownian motion model to capture mean reversion (such as that observed  in {prf:ref}`example-approach-1-calibration-gbm`) or even constructing a seperate model that accounts for the movment of $\sigma$ as a function of time. 
+However, these more sophisticated models do not have quickly developed analytical solutions except in rare cases, as was true of ordinary Brownian or Geometric Brownian motions. Thus, we must develop numerical methods to approximate the solutions of these models. There are several approaches to this; however, we'll consider arguably the simplest and the most accessible approach, namely the Euler-Maruyama (EM) method.
+
+### Euler-Maruyama Discretization Method
+The [Euler-Maruyama (EM) method](https://en.wikipedia.org/wiki/Euler–Maruyama_method) is an extension to stochastic differential equations (SDEs) of the [Euler method](https://en.wikipedia.org/wiki/Euler_method) used for approximating the solution of ordinary differential equations (ODEs). For the general scalar stochastic differential equation (Wiener noise):
+
+$$dX = a(X,t)dt + b(X,t)dW$$
+
+The EM method gives the approximate solution:
+
+$$X_{k+1} = X_{k} + a(X_{k}, t_{k})h + b(X_{k},t_{k})\sqrt{h}Z\left(0,1\right)$$
+
+where the step size $h=t_{k+1} - t_{k}$ and $Z(0,1)$ denotes a standard normal random variable.  While the EM method is straightforward to implement, it has a poor overall accuracy with error on order $\sqrt{h}$; thus, small step sizes are required to get accurate solutions.
 
 ### Ornstein–Uhlenbeck model of mean reversion
-The [Ornstein–Uhlenbeck model](https://en.wikipedia.org/wiki/Ornstein–Uhlenbeck_process) model is a type of Ordinary Brownian motion model with a modified drift term that encodes mean reversion:
+The [Ornstein–Uhlenbeck model](https://en.wikipedia.org/wiki/Ornstein–Uhlenbeck_process) model is a type of Brownian motion model with a modified mean-reverting drift term:
 
 ```{math}
 :label: eqn-ou-model
 dX = \theta\left(\mu-X\right)dt + {\sigma}dW
 ```
 
-where $\theta>0$ controls the rate of mean reversion, $\mu$ is the long-term growth rate, and $\sigma>0$ denotes the volatility parameter {cite}`Uhlenbeck1930`. 
+where $\theta>0$ is the time-constant controlling the mean reversion, $\mu$ is the long-term price target, and $\sigma>0$ denotes the volatility parameter {cite}`Uhlenbeck1930`. 
 
 #### Numerical solution: Ornstein–Uhlenbeck model
-Fill me in.
+Let's use the [Euler-Maruyama (EM) method](https://en.wikipedia.org/wiki/Euler–Maruyama_method) to discretize the Ornstein–Uhlenbeck model. 
+The [Euler-Maruyama (EM) method](https://en.wikipedia.org/wiki/Euler–Maruyama_method) is an extension of the Euler method for ordinary differential equations to stochastic differential equations; thus, it is easy to implement but not accurate unless we use small step-sizes. The EM discretized solution to the [Ornstein–Uhlenbeck model](https://en.wikipedia.org/wiki/Ornstein–Uhlenbeck_process) is given by:
+
+```{math}
+:label: eqn-EM-soln-OU-model
+X_{k+1} = X_{k} + \theta\left(\mu-X_{k}\right)h + \left(\sigma\sqrt{h}\right)Z(0,1)
+```
+
+where $Z(0,1)$ denotes a standard normally distributed random variable, and $h = t_{k+1} - t_{k}$ denotes the fixed time step size, where the subsscript $k$ denotes the time index. 
+
+
+````{prf:example} Approximate Solution to the Ornstein–Uhlenbeck model
+:label: example-OU-model-EM-discrete
+
+Solve the [Ornstein–Uhlenbeck model](https://en.wikipedia.org/wiki/Ornstein–Uhlenbeck_process) model using the [Euler-Maruyuma (EM) method](https://en.wikipedia.org/wiki/Euler–Maruyama_method). The approximate EM solution of the [Ornstein–Uhlenbeck model](https://en.wikipedia.org/wiki/Ornstein–Uhlenbeck_process) model is given by Eqn. {eq}`eqn-EM-soln-OU-model`.
+
+```{figure} ./figs/Fig-Ornstein–Uhlenbeck-EM-solution-N200.pdf
+---
+height: 420px
+name: fig-OU-EM-model-scalar
+---
+Scalar Euler-Maruyama solution to the Ornstein–Uhlenbeck model with step-size h = 1/365 and duration $\mathcal{D}$ = 800 days. Parameters: $\mu$ = 200 USD/share-time; $\theta$ = 4.0; $\sigma$ = 20.0; $X_{\circ}$ = 144.0 USD/share. 
+
+```
+
+__source__: [live Pluto notebook](https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks) or [HTML static view](https://htmlview.glitch.me/?https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks/blob/main/pluto-notebooks/html/Example-Soln-Ornstein–Uhlenbeck-model.jl.html)
+
+````
 
 ### Heston model of stochastic volatility
-On the other hand, the [Heston model](https://en.wikipedia.org/wiki/Heston_model) is an example of a stochastic volatility model in which the volatility parameter $\sigma$ is modeled as a random variable whose value is governed by a seperate stochastic differential equation {cite}`HESTON1993`. In the [Heston model](https://en.wikipedia.org/wiki/Heston_model), the price $X(t)$ is governed by:
+The [Heston model](https://en.wikipedia.org/wiki/Heston_model) is an example of a stochastic volatility model in which the volatility parameter controlling the price is described by a random variable whose value is governed by a separate stochastic differential equation {cite}`HESTON1993`. In the [Heston model](https://en.wikipedia.org/wiki/Heston_model), the price $X(t)$ is governed by:
 
 ```{math}
 :label: eqn-price-heston-model
-dX = \mu{X}dt + \sqrt{\nu}X{dW}_{1}
+dX = \mu{X}dt + \left(\sqrt{\nu}\right)X{dW}^{X}
 ```
 
-where the volatility $\nu$ is governed by a seperate random process:
+where the evolution of the volatility $\nu$ is governed by a separate [Cox–Ingersoll–Ross (CIR)](https://en.wikipedia.org/wiki/Cox–Ingersoll–Ross_model) process:
 
 ```{math}
 :label: eqn-vol-cir-process
-d\nu = \kappa\left(\theta - \nu\right)dt + \xi\sqrt{\nu}dW_{2}
+d\nu = \kappa\left(\theta - \nu\right)dt +\left(\xi\sqrt{\nu}\right)dW^{\nu}
 ```
 
+The [Heston model](https://en.wikipedia.org/wiki/Heston_model) model has multiple parameters; the parameter $\mu$ describes the growth rate in the price equation’s drift term, while $\kappa$, $\theta$ and $\xi$ are the time-constant governing the rate of volatility mean reversion, the long-term volatility and the volatility of the volatility, respectively.  Finally, each equation of the [Heston model](https://en.wikipedia.org/wiki/Heston_model) is driven by a separate potentially correlated Weiner noise process. 
+
 #### Numerical solution: Heston model
+The EM discretization of the [Heston model](https://en.wikipedia.org/wiki/Heston_model) gives a price equation of the form:
+
+```{math}
+:label: eqn-heston-price-em-discrete
+X_{k+1} = X_{k} + \mu{X_{k}}h + \left(\sqrt{\nu_{k}h}\right)X_{k}Z^{X}
+```
+
+while the volatility equation is given by:
+
+```{math}
+:label: eqn-heston-vol-em-discrete
+\nu_{k+1} = \nu_{k} + \kappa\left(\theta - \nu_{k}\right)h + \left(\xi\sqrt{\nu_{k}h}\right)Z^{\nu}
+```
+
+where the noise processes $Z^{X}$ and $Z^{\nu}$ are samples from a multivariate normal distribution with mean zero and a covariance matrix $\Sigma$ with entries $\Sigma_{ij}=\sigma_{i}\sigma_{j}\rho_{ij}$. 
+
+````{prf:example} Approximate solution to the Heston model
+:label: example-heston-model-EM-discrete
+
 Fill me in.
+````
 
 ---
 
