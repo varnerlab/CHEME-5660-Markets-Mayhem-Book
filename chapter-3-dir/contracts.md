@@ -52,7 +52,7 @@ The profit at expiration that a call contract buyer experiences depends upon the
 ````{prf:definition} Call Contract Payoff and Profit
 :label: defn-PL-call-contract
 
-An investor purchases a call contract for the underlying stock `XYZ` for $\mathcal{P}$ USD/contract, where the contract controls 100 shares of `XYZ`. 
+An investor purchases a single American stycle Call contract for the underlying stock `XYZ` for $\mathcal{P}$ USD/share; the contract controls 100 shares of `XYZ`. 
 
 Let the strike price of the call contract be $K$ USD/share, and the share price of `XYZ` at expiration be $S$ USD/share. Then, at expiration, the call contract has the payoff $\hat{V}_{c}$ USD/share:
 
@@ -67,14 +67,11 @@ and a profit (loss) for the buyer of:
 P_{c} = \hat{V}_{c} -  \mathcal{P}
 ```
 
-where $P_{c}$ denotes the profit (or loss) per contract per share of `XYZ`. The contract seller experiences a profit (or loss) of $\bar{P}_{c}$ where
+where $P_{c}$ denotes the profit (or loss) per share of `XYZ`. The contract seller experiences a profit (or loss) of $\bar{P}_{c}$ at expiration where:
 
 ```{math}
 P_{c}+\bar{P}_{c} = 0
 ```
-
-The cost of a call contract $\mathcal{P}$ is a non-linear function of many variables including the current share price of the underlying asset $S$, the strike price of the contract, the number of days before contract expiration, and an unobservable quantity called the implied volatility.
-
 ````
 
 #### Payoff, Profit and Loss for Call contracts
@@ -117,7 +114,7 @@ The profit that a put contract buyer experiences, denoted by $V_{p}$, depends up
 ````{prf:definition} Put Contract Payoff and Profit
 :label: defn-PL-put-contract
 
-An investor purchases a put contract for the underlying stock `XYZ` for $\mathcal{P}$ USD/contract, where the contract controls 100 shares of `XYZ`. 
+An investor purchases a single American stycle Put contract for the underlying stock `XYZ` for $\mathcal{P}$ USD/share; the contract controls 100 shares of `XYZ`. 
 
 Let the strike price of the put contract be $K$ USD/share, and the share price of `XYZ` be $S$ USD/share. Then, at expiration, the put contract has the payoff $\hat{V}_{p}$ USD/share:
 
@@ -132,15 +129,11 @@ and a profit (loss) for the buyer of:
 P_{p} = \hat{V}_{p} -  \mathcal{P}
 ```
 
-where $P_{p}$ denotes the profit (or loss) per contract per share of `XYZ`. 
-The contract seller experiences a profit (or loss) of $\bar{P}_{p}$ where
+where $P_{p}$ denotes the profit (or loss) per share of `XYZ`. The contract seller experiences a profit (or loss) of $\bar{P}_{p}$ at expiration where:
 
 ```{math}
 P_{p}+\bar{P}_{p} = 0
 ```
-
-The cost of a put contract leg $\mathcal{P}$ is a non-linear function of many variables including the current share price of the underlying asset $S$, the strike price of the contract, the number of days before contract expiration, and an unobservable quantity called the implied volatility. 
-
 ````
 
 #### Payoff, Profit and Loss for Put contracts
