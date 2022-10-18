@@ -173,37 +173,54 @@ the required number of shares of `XYZ` (known as a [cash secured put position](h
 ### Composite contracts
 Call and put contracts can be combined to develop composite contract structures with interesting payoff diagrams. In this section, we'll limit our focus to contracts that have the same underlying asset and the same expiration date. However, for those interested in more advanced cases, e.g., combining contracts with different expiration dates, check out [calendar spreads](https://www.investopedia.com/terms/c/calendarspread.asp). 
 
-The overall profit $\hat{P}$ for a composite contract structure consiting of $\mathcal{C}$ indiviudal contracts, is the sum of the profits for each the individual contracts (legs) weighted by the number of contracts of type $i$:
+````{prf:definition} Composite contract payoff and profit
+:label: defn-composite-contract-profit
 
-$$\hat{P} = \sum_{i\in\mathcal{C}}\theta_{i}n_{i}P_{i}$$
+Let a composite equity option contract be composed of the set $\mathcal{C}$, which holds the legs (individual contracts) of the overall composite contract. Further, each leg $i\in\mathcal{C}$ is written with respect to the same underlying stock `XYZ` and has the same expiration date. 
 
-where $\theta_{i}$ denotes the direction of contract $i$: if contract $i$ is short (sold), then $\theta_{i}=-1$, otherwise $\theta_{i}=1$. The quanitity $n_{i}$ denotes the copy number of contract $i$. 
+Then, the overall payoff of the composite contract $\hat{V}$ is given by:
+
+```{math}
+:label: eqn-overall-payoff-composite-contract
+\hat{V} = \sum_{i\in\mathcal{C}}\theta_{i}n_{i}\hat{V}_{i}
+```
+
+while the overall profit of the composite contract $\hat{P}$ is given by:
+
+```{math}
+:label: eqn-overall-profit-composite-contract
+\hat{P} = \sum_{i\in\mathcal{C}}\theta_{i}n_{i}P_{i}
+```
+
+where $\theta_{i}$ denotes the direction of contract $i$: if contract $i$ is short (sold), then $\theta_{i}=-1$, otherwise $\theta_{i}=1$, the quanitity $n_{i}$ denotes the copy number of contract $i$, $\hat{V}_{i}$ denotes the payoff of contract $i$, and $P_{i}$ denotes the profit of contract $i$.
+
+````
 
 (content:references:option-contracts-vertical-spread)=
 #### Vertical spreads
 [Vertical spreads](https://www.investopedia.com/terms/v/verticalspread.asp) are a _defined risk directional strategy_ constructed by simultaneously buying (long) and selling (short) the _same type of option_, with the same expiration date but with _different_ strike prices. Thus, [vertical spreads](https://www.investopedia.com/terms/v/verticalspread.asp) have two _legs_: a long leg (the option purchased by the investor) and a short leg (the option sold by the investor). [Vertical spreads](https://www.investopedia.com/terms/v/verticalspread.asp) are a defined risk, directional strategy, i.e., the investor believes the share price of the underlying asset `XYZ` will either increase or decrease, depending upon the type of vertical spread. [Vertical spreads](https://www.investopedia.com/terms/v/verticalspread.asp) are defined risk because the maximum possible gain (or loss) is known when the contract is sold; thus, an investor knows how much they can make or lose at expiration _before_ they enter the trade. However, the future share price of `XYZ` is unknown when the investor opens the trade. 
 
-Two types of vertical spreads can be constructed from put contracts; each has a different directional assumption. A _put bullish credit spread_ assumes the underlying asset `XYZ` share price will increase between now and expiration. In contrast, a _put bearish debit spread_ assumes the underlying asset `XYZ` share price will decrease between now and expiration. When investors open a bullish credit spread, they receive a credit (the maximum profit) upfront. On the other hand, when opening a debit spread, the investor incurs a net debit to their account. The trade becomes profitable over time if the directional assumption is correct.
+Two vertical spreads can be constructed from put contracts; each has a different directional assumption. A _put bullish credit spread_ assumes the underlying asset `XYZ` share price will increase between now and expiration. In contrast, a _put bearish debit spread_ assumes the underlying asset `XYZ` share price will decrease between now and expiration. When investors open a bullish credit spread, they receive a credit (the maximum profit) upfront. On the other hand, when opening a debit spread, the investor incurs a net debit to their account. The trade becomes profitable over time if the directional assumption is correct.
 
 In general, the profit for a put vertical spread is a function of the strike prices, and the cost of each of the legs of the composite contract:
 
 
-````{prf:definition} Profit Put Vertical Spread
+````{prf:definition} Profit Put vertical spread
 :label: defn-PL-put-contract-vertical-spread
 
-Consider a vertical spread constructed from put contracts on the underlying stock `XYZ`. Let $K_{j}$ denote the strike price of put contract $j$. The price of contract $j$ $\mathcal{P}_{j}$. Further, let $S$ denote the share price of `XYZ` at expiration. Finally, let contract 1 be the short leg ($\theta_{1} = -1$, $\theta_{2}=1$), and $n_{1} = n_{2} = 1$.
+Consider a vertical spread constructed from put contracts on the underlying stock `XYZ`. Let $K_{j}$ denote the strike price of put contract $j$, while contract $j$ has the price $\mathcal{P}_{j}$. Further, let $S$ denote the share price of `XYZ` at expiration. Finally, let contract 1 be the short put leg $\theta_{1} = -1$ and contract 2 be the long put leg $\theta_{2} = 1$. Assume the trade consists of a single long and short leg, i.e., $n_{1} = n_{2} = 1$.
 
 Then, the profit for a single Put Vertical spread $P$ at expiration is given by:
 
 $$\hat{P} = -P_{1}+P_{2}$$
 
-which after substitution of the profit functions for a put contract gives:
+which, after substitution of the profit functions for a put contract, gives:
 
 $$\hat{P} = \max\left(K_{2} - S,0\right) - \max\left(K_{1} - S,0\right) + \left(\mathcal{P}_{1} - \mathcal{P}_{2}\right)$$
 
 The first term is the net payout of the two legs of the spread, while the second term is the net cost of the two contracts.
 
-The maximum possible profit, loss and breakeven conditions are given by:
+The maximum possible profit, loss, and breakeven conditions are given by:
 * The maximum possible profit of $\left(\mathcal{P}_{1} - \mathcal{P}_{2}\right)$ will occur when $S\geq{K_{1}}$.
 * The maximum possible loss of $K_{2} - K_{1} + \left(\mathcal{P}_{1} - \mathcal{P}_{2}\right)$ will occur when $S\leq{K_{2}}$.
 * The vertical put spread will breakeven, $\hat{P} = 0$, when $S =  K_{1}+\left(\mathcal{P}_{2} - \mathcal{P}_{1}\right)$.
