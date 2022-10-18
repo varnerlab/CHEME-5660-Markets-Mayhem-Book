@@ -223,7 +223,7 @@ The first term is the net payout of the two legs of the spread, while the second
 The maximum possible profit, loss, and breakeven conditions are given by:
 * The maximum possible profit of $\left(\mathcal{P}_{1} - \mathcal{P}_{2}\right)$ will occur when $S\geq{K_{1}}$.
 * The maximum possible loss of $K_{2} - K_{1} + \left(\mathcal{P}_{1} - \mathcal{P}_{2}\right)$ will occur when $S\leq{K_{2}}$.
-* The vertical put spread will breakeven, $\hat{P} = 0$, when $S =  K_{1}+\left(\mathcal{P}_{2} - \mathcal{P}_{1}\right)$.
+* The vertical put spread will breakeven ($\hat{P} = 0$) when $S =  K_{1}+\left(\mathcal{P}_{2} - \mathcal{P}_{1}\right)$.
 
 ````
 {prf:ref}`defn-PL-put-contract-vertical-spread` has many exciting types of behavior; it is much more complex than it might first appear as the cost of each contract $\mathcal{P}_{j}$ is a non-linear function of many variables including the current share price of the underlying asset $S$, the strike price of the contract, the number of days the contract has before expiration, and the implied volatility.
