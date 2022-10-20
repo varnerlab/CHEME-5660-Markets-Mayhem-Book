@@ -579,6 +579,7 @@ Let's explore the ideas outlined in {prf:ref}`conj-IV-projected-price-distributi
 
 
 
+
 (content:references:option-pricing-algorithms)=
 ## Option Pricing Algorithms
 Options pricing is a rich area of study, given the complexity of options. Finish me.
