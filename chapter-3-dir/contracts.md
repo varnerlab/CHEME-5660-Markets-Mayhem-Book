@@ -784,7 +784,7 @@ The $C_{x}^{(n)}(x_{\circ})$ terms denote the nth partial derivative of the cont
 ````{prf:definition} Greeks
 :label: defn-the-greeks
 
-Let $C(\mathcal{X})$ be the price of a Call option, where $\mathcal{X}$ is a set of market variables that influence the option contract price.
+Let $C(\mathcal{X})$ be the price of a Call option contract, where $\mathcal{X}$ is the set of market variables that influence the contract price.
 Further, let the market factor set be $\mathcal{X}=\left\{S,T,\sigma,\mu\right\}$; $S$ denotes the share price of the underlying asset, $T$ denotes the time left before epiration of the contract, $\mu$ denotes the risk-free rate and $\sigma$ denotes the volatility of the underlying price. 
 Finally, let the current values of these factors be denoted as 
 $\mathcal{X}_{\circ}=\left\{S_{\circ},T_{\circ},\sigma_{\circ},\mu_{\circ}\right\}$;  
@@ -807,9 +807,10 @@ We'll have eight partial derivatives in Eqn. {eq}`eqn-greeks-second-order-series
 * __Rho__: First-order derivative of the option price with respect to the risk-free rate $\mu$, denoted by $\rho = C_{\mu}^{(1)}(\mu_{\circ})$
 * __Gamma__: Second-order derivative of the option the price with respect to the underlying price $S$, denoted by $\gamma = C_{S}^{(2)}(S_{\circ})$
 
-````
 
 While we defined [The Greeks](https://www.investopedia.com/trading/using-the-greeks-to-understand-options/) for a Call option, the same definitions can be applied to Put contracts. 
+
+````
 
 ---
 
