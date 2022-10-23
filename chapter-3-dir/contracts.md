@@ -22,6 +22,7 @@ In this lecture, we will:
 * Discuss the two types, and two styles of {ref}`content:references:option-contracts`
 * Discuss the {ref}`content:references:option-probability-of-profit-algorithms`
 * Discuss several {ref}`content:references:option-pricing-algorithms`
+* Discuiss the {ref}`content:references:option-price-sensitivity-greeks`
 
 ---
 
@@ -577,9 +578,6 @@ where $\text{erf}$ denotes the [error function](https://en.wikipedia.org/wiki/Er
 
 Let's explore the ideas outlined in {prf:ref}`conj-IV-projected-price-distribution` with some simulations. 
 
-
-
-
 (content:references:option-pricing-algorithms)=
 ## Option Pricing Algorithms
 Options pricing is a rich area of study, given the complexity of options. Finish me.
@@ -767,6 +765,21 @@ u = e^{\sigma\sqrt{\Delta{t}}}\qquad\Delta{t}\rightarrow{0}
 
 ### Monte-carlo pricing model
 Fill me in.
+
+
+(content:references:option-price-sensitivity-greeks)=
+## Sensitivity of option contract prices to market condtions
+The price of option contracts depend upon many market factors, e.g., the price of the underlying asset when the option is purchased, the length of time of the contract, the implied volatility, i.e., the market's belief of where the price of the underlying asset could go  in the future, and other factors such as the risk-free rate, which is used in the risk-neutral price of the contract. Thus, there are many possible components of risk associated with an option contract. These components of risk can be quanitied by computing [the Greeks](https://www.investopedia.com/trading/using-the-greeks-to-understand-options/). 
+
+[The Greeks](https://www.investopedia.com/trading/using-the-greeks-to-understand-options/) provide a way to measure the sensitivity of an option's price to quantifiable market factors; thus, they are senstivity coefficents measuring how the price changes when an underlying marketr factor changes. Suppose we represented the price of an American Call option as $C(\mathcal{M})$ where $\mathcal{M}$ is a set of market variables that influence the option contract price, e.g., the share price of the underlying asset $S$, the risk-free rate of return $\mu$ denotes, 
+the volatibity of the underlying asset $\sigma$, and the duration of the option contract $T$. Then, we can [Taylor expand](https://en.wikipedia.org/wiki/Taylor_series) the price of the Call contract around the current values of the market parameter set:
+
+```{math}
+:label: eqn-taylor-expand-call-option
+C(x) = C(x_{\circ})+\sum_{x\in\mathcal{M}}\left(\sum_{n=1}^{\infty}\frac{C_{x}^{(n)}}{n!}\left(x-x_{\circ}\right)^{(n)}\right)
+```
+
+
 
 ---
 
