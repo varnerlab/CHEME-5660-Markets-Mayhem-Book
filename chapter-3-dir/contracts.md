@@ -812,6 +812,21 @@ While we defined [The Greeks](https://www.investopedia.com/trading/using-the-gre
 
 ````
 
+### Delta
+Delta $\delta$ measures how much an option’s price is expected to move because of changes in the underlying asset price. 
+
+### Theta
+Theta $\theta$ tells us how much the price of an option should decrease each day as the contract approaches expiration if all other factors remain constant. This type of price change is called the time decay of the contract.
+
+### Vega
+Vega $v$ measures the rate of change in an option’s price with respect to changes in the implied volatility of the underlying stock. While Vega is not a letter in the Greek alphabet, it tells us how much an option’s price should move when the volatility of the underlying asset or index increases or decreases.
+
+### Rho
+Rho $\rho$ measures the expected change in an option’s price because of a change in interest rates, i.e., the risk-free rate used in the pricing of the option. Thus, $\rho$ tells us how much the price of an option contract should increase or decrease if the risk-free rate changes. 
+
+### Gamma
+Delta $\delta$ tells the magnitude and direction of the price sensitivity of the contract with respect to the underlying share price. However, Gamma $\gamma$ measures the rate of change in an option’s Delta over time. Thus, Delta $\delta$ is the velocity of the price change, while Gamma $\gamma$ is the acceleration of the price change with respect to changes in the underlying asset price.
+
 ---
 
 ## Summary
