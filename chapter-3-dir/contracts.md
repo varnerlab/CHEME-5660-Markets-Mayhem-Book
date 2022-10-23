@@ -822,7 +822,7 @@ Fill me in.
 Fill me in.
 
 ### Theta
-Theta $\theta$ tells us how much the price of an option should decrease each day as the contract approaches expiration if all other factors remain constant. This type of price change is called the time decay of the contract.
+Theta $\theta$ tells us how much the price of an option should change each day as the contract approaches expiration if all other factors remain constant. This type of price change is called the time decay of the contract.
 
 ### Vega
 Vega $v$ measures the rate of change in an option’s price with respect to changes in the implied volatility of the underlying stock. While Vega is not a letter in the Greek alphabet, it tells us how much an option’s price should move when the volatility of the underlying asset or index increases or decreases.
