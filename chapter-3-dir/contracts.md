@@ -813,7 +813,13 @@ While we defined [The Greeks](https://www.investopedia.com/trading/using-the-gre
 ````
 
 ### Delta
-Delta $\delta$ measures how much an option’s price is expected to move because of changes in the underlying asset price. 
+Delta $\delta$ quantifies how the option’s price is expected to move because of changes in the underlying asset price. However, there are two other ways that $\delta$ is used. First, $\delta$ can be thought of as the number of shares of the underlyng stock that the option contract behaves like. Secondly, $\delta$ is approximately the probability that the contract will expire in the money (ITM); the probability of expiring in the money is different than the {ref}`content:references:option-probability-of-profit-algorithms` because the cost of the contract is not considered, i.e., the probability of expiring in the money is the probability the share price closes above (or below) the strike price, not the breal even price. 
+
+#### Delta from the equivalent shares perspective
+Fill me in.
+
+#### Delta from the perspective of the ITM probability
+Fill me in.
 
 ### Theta
 Theta $\theta$ tells us how much the price of an option should decrease each day as the contract approaches expiration if all other factors remain constant. This type of price change is called the time decay of the contract.
