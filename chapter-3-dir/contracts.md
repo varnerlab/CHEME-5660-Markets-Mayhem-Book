@@ -768,18 +768,48 @@ Fill me in.
 
 
 (content:references:option-price-sensitivity-greeks)=
-## Sensitivity of option contract prices to market condtions
-The price of option contracts depend upon many market factors, e.g., the price of the underlying asset when the option is purchased, the length of time of the contract, the implied volatility, i.e., the market's belief of where the price of the underlying asset could go  in the future, and other factors such as the risk-free rate, which is used in the risk-neutral price of the contract. Thus, there are many possible components of risk associated with an option contract. These components of risk can be quanitied by computing [the Greeks](https://www.investopedia.com/trading/using-the-greeks-to-understand-options/). 
+## Sensitivity of option contract price to market condtions
+The price of options contracts depends upon many market factors, e.g., the cost of the underlying asset when the option is purchased, the length of time of the contract, the implied volatility, i.e., the market's belief of where the price of the underlying asset could go in the future, and other factors such as the risk-free rate, which is used in the risk-neutral price of the contract. Thus, many possible components of risk are associated with an option contract. These risk components can be quantified by computing [the Greeks](https://www.investopedia.com/trading/using-the-greeks-to-understand-options/). [The Greeks](https://www.investopedia.com/trading/using-the-greeks-to-understand-options/) provide a way to measure an option’s price sensitivity to quantifiable market factors; thus, they are sensitivity coefficients measuring how the price changes when an underlying market factor changes. 
 
-[The Greeks](https://www.investopedia.com/trading/using-the-greeks-to-understand-options/) provide a way to measure the sensitivity of an option's price to quantifiable market factors; thus, they are senstivity coefficents measuring how the price changes when an underlying marketr factor changes. Suppose we represented the price of an American Call option as $C(\mathcal{M})$ where $\mathcal{M}$ is a set of market variables that influence the option contract price, e.g., the share price of the underlying asset $S$, the risk-free rate of return $\mu$ denotes, 
-the volatibity of the underlying asset $\sigma$, and the duration of the option contract $T$. Then, we can [Taylor expand](https://en.wikipedia.org/wiki/Taylor_series) the price of the Call contract around the current values of the market parameter set:
+Suppose we represented the price of an American Call option as $C(\mathcal{X})$ where $\mathcal{X}$ is a set of market variables that influence the option contract price, e.g., the share price of the underlying asset $S$, the risk-free rate of return $\mu$, the price volatility of the underlying asset $\sigma$, the duration of the option contract $T$, etc. Then, suppose we [Taylor expand](https://en.wikipedia.org/wiki/Taylor_series) the price of the Call (or Put) contract around the current values of the market parameters $\mathcal{X}_{\circ}$:
 
 ```{math}
-:label: eqn-taylor-expand-call-option
-C(x) = C(x_{\circ})+\sum_{x\in\mathcal{M}}\left(\sum_{n=1}^{\infty}\frac{C_{x}^{(n)}}{n!}\left(x-x_{\circ}\right)^{(n)}\right)
+:label: eqn-taylor-expand-call-option-gene5r
+C(\mathcal{X}) = C(\mathcal{X}_{\circ})+\sum_{x\in\mathcal{X}}\left(\sum_{n=1}^{\infty}\frac{C_{x}^{(n)}(x_{\circ})}{n!}\left(x-x_{\circ}\right)^{(n)}\right)
 ```
 
+The $C_{x}^{(n)}(x_{\circ})$ terms denote the nth partial derivative of the contract price with respect to market factor $x$, evaluated at the current value of the market factor $x_{\circ}$; these derivatives have a particular name,  [The Greeks](https://www.investopedia.com/trading/using-the-greeks-to-understand-options/), because we often represent them with Greek letters. 
 
+
+````{prf:definition} Greeks
+:label: defn-the-greeks
+
+Let $C(\mathcal{X})$ be the price of a Call option, where $\mathcal{X}$ is a set of market variables that influence the option contract price.
+Further, let the market factor set be $\mathcal{X}=\left\{S,T,\sigma,\mu\right\}$; $S$ denotes the share price of the underlying asset, $T$ denotes the time left before epiration of the contract, $\mu$ denotes the risk-free rate and $\sigma$ denotes the volatility of the underlying price. 
+Finally, let the current values of these factors be denoted as 
+$\mathcal{X}_{\circ}=\left\{S_{\circ},T_{\circ},\sigma_{\circ},\mu_{\circ}\right\}$;  
+
+Then, the [Taylor series expansion](https://en.wikipedia.org/wiki/Taylor_series) of the option price with respect to market factors is given by (truncating the series after second-order terms):
+```{math}
+:label: eqn-greeks-second-order-series
+C(\mathcal{X}) = C(\mathcal{X}_{\circ})+\sum_{x\in\mathcal{X}}\left(\frac{C^{(1)}_{x}\left(x_{\circ}\right)}{1!}
+\left(x-x_{\circ}\right)+
+\frac{C^{(2)}_{x}\left(x_{\circ}\right)}{2!}\left(x-x_{\circ}\right)^{2}\right)
+```
+
+The $C_{x}^{(n)}(x_{\circ})$ terms denote the nth partial derivative of the contract price with respect to market factor $x\in\mathcal{X}$, evaluated at the current value of the market factor $x_{\circ}\in\mathcal{X}_{\circ}$.
+
+We'll have eight partial derivatives in Eqn. {eq}`eqn-greeks-second-order-series`; however, in practice, we only compute five of these values:
+
+* __Delta__: First-order derivative of the option price with respect to the underlying price $S$, denoted by $\delta = C_{S}^{(1)}(S_{\circ})$.
+* __Theta__: First-order derivative of the option price with respect to the time to expiration $T$, denoted by $\theta = C_{T}^{(1)}(T_{\circ})$
+* __Vega__: First-order derivative of the option price with respect to the volatility $\sigma$, denoted by $v = C_{\sigma}^{(1)}(\sigma_{\circ})$
+* __Rho__: First-order derivative of the option price with respect to the risk-free rate $\mu$, denoted by $\rho = C_{\mu}^{(1)}(\mu_{\circ})$
+* __Gamma__: Second-order derivative of the option the price with respect to the underlying price $S$, denoted by $\gamma = C_{S}^{(2)}(S_{\circ})$
+
+````
+
+While we defined [The Greeks](https://www.investopedia.com/trading/using-the-greeks-to-understand-options/) for a Call option, the same definitions can be applied to Put contracts. 
 
 ---
 
