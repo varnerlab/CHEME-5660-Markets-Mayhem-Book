@@ -781,7 +781,7 @@ C(\mathcal{X}) = C(\mathcal{X}_{\circ})+\sum_{x\in\mathcal{X}}\left(\sum_{n=1}^{
 The $C_{x}^{(n)}(x_{\circ})$ terms denote the nth partial derivative of the contract price with respect to market factor $x$, evaluated at the current value of the market factor $x_{\circ}$; these derivatives have a particular name,  [The Greeks](https://www.investopedia.com/trading/using-the-greeks-to-understand-options/), because we often represent them with Greek letters. 
 
 
-````{prf:definition} Greeks
+````{prf:definition} Definition of The Greeks
 :label: defn-the-greeks
 
 Let $C(\mathcal{X})$ be the price of a Call option contract, where $\mathcal{X}$ is the set of market variables that influence the contract price.
@@ -801,37 +801,93 @@ The $C_{x}^{(n)}(x_{\circ})$ terms denote the nth partial derivative of the cont
 
 We'll have eight partial derivatives in Eqn. {eq}`eqn-greeks-second-order-series`; however, in practice, we only compute five of these values:
 
-* __Delta__: First-order derivative of the option price with respect to the underlying price $S$, denoted by $\delta = C_{S}^{(1)}(S_{\circ})$.
-* __Theta__: First-order derivative of the option price with respect to the time to expiration $T$, denoted by $\theta = C_{T}^{(1)}(T_{\circ})$
-* __Vega__: First-order derivative of the option price with respect to the volatility $\sigma$, denoted by $v = C_{\sigma}^{(1)}(\sigma_{\circ})$
+* __Delta__: First-order derivative of the option price with respect to the underlying price $S$, denoted by $\Delta = C_{S}^{(1)}(S_{\circ})$.
+* __Theta__: First-order derivative of the option price with respect to the time to expiration $T$, denoted by $\Theta = C_{T}^{(1)}(T_{\circ})$
+* __Vega__: First-order derivative of the option price with respect to the volatility $\sigma$, denoted by $\mathcal{V} = C_{\sigma}^{(1)}(\sigma_{\circ})$
 * __Rho__: First-order derivative of the option price with respect to the risk-free rate $\mu$, denoted by $\rho = C_{\mu}^{(1)}(\mu_{\circ})$
-* __Gamma__: Second-order derivative of the option the price with respect to the underlying price $S$, denoted by $\gamma = C_{S}^{(2)}(S_{\circ})$
+* __Gamma__: Second-order derivative of the option the price with respect to the underlying price $S$, denoted by $\Gamma = C_{S}^{(2)}(S_{\circ})$
 
 
 While we defined [The Greeks](https://www.investopedia.com/trading/using-the-greeks-to-understand-options/) for a Call option, the same definitions can be applied to Put contracts. 
 
 ````
 
-### Delta
-Delta $\delta$ quantifies how the option’s price is expected to move because of changes in the underlying asset price. However, there are two other ways that $\delta$ is used. First, $\delta$ can be thought of as the number of shares of the underlyng stock that the option contract behaves like. Secondly, $\delta$ is approximately the probability that the contract will expire in the money (ITM); the probability of expiring in the money is different than the {ref}`content:references:option-probability-of-profit-algorithms` because the cost of the contract is not considered, i.e., the probability of expiring in the money is the probability the share price closes above (or below) the strike price, not the breal even price. 
+<!-- However, there are two other ways that $\delta$ is used. First, $\delta$ can be thought of as the number of shares of the underlyng stock that the option contract behaves like. Secondly, $\delta$ is approximately the probability that the contract will expire in the money (ITM); the probability of expiring in the money is different than the {ref}`content:references:option-probability-of-profit-algorithms` because the cost of the contract is not considered, i.e., the probability of expiring in the money is the probability the share price closes above (or below) the strike price, not the breal even price.  -->
 
-#### Delta from the equivalent shares perspective
-Fill me in.
+### The intuitive meaning of the Greeks
+ * Delta $\Delta$ quantifies how the option’s price is expected to move because of changes in the underlying asset price. 
+* Theta $\Theta$ tells us how much the price of an option should change each day as the contract approaches expiration if all other factors remain constant. This type of price change is called the time decay of the contract.
+* Vega $\mathcal{V}$ measures the rate of change in an option’s price with respect to changes in the implied volatility of the underlying stock. While Vega is not a letter in the Greek alphabet, it tells us how much an option’s price should move when the volatility of the underlying asset or index increases or decreases.
+* Rho $\rho$ measures the expected change in an option’s price because of a change in interest rates, i.e., the risk-free rate used in the pricing of the option. Thus, $\rho$ tells us how much the price of an option contract should increase or decrease if the risk-free rate changes. 
+* Gamma $\Gamma$ measures the rate of change in an option’s Delta over time.  Thus, $\Delta$ is the velocity of the price change, while $\Gamma$ is the acceleration of the price change with respect to changes in the underlying asset price.
 
-#### Delta from the perspective of the ITM probability
-Fill me in.
+### Application: Dynamic delta hedging
+Black, Scholes and Merton suggested that is possible to create a _riskless_ portfolio consisting of an option on some stock `XYZ` combined with shares of `XYZ`. This idea is an example of a [Delta hedging strategy](https://www.investopedia.com/terms/d/deltahedging.asp). 
 
-### Theta
-Theta $\theta$ tells us how much the price of an option should change each day as the contract approaches expiration if all other factors remain constant. This type of price change is called the time decay of the contract.
+````{prf:definition} Delta Hedged Portfolio
+:label: defn-delta-hedge-condition
 
-### Vega
-Vega $v$ measures the rate of change in an option’s price with respect to changes in the implied volatility of the underlying stock. While Vega is not a letter in the Greek alphabet, it tells us how much an option’s price should move when the volatility of the underlying asset or index increases or decreases.
+Suppose we have a composite trade consisting of a combination of risky assets, i.e., shares of `XYZ`, and options contracts on `XYZ`. Let the assets for this trade be described by the set $\mathcal{A}$. 
 
-### Rho
-Rho $\rho$ measures the expected change in an option’s price because of a change in interest rates, i.e., the risk-free rate used in the pricing of the option. Thus, $\rho$ tells us how much the price of an option contract should increase or decrease if the risk-free rate changes. 
+Then, the overall $\Delta$ of the composite trade for asset set $\mathcal{A}$ is given by:
 
-### Gamma
-Delta $\delta$ tells the magnitude and direction of the price sensitivity of the contract with respect to the underlying share price. However, Gamma $\gamma$ measures the rate of change in an option’s Delta over time. Thus, Delta $\delta$ is the velocity of the price change, while Gamma $\gamma$ is the acceleration of the price change with respect to changes in the underlying asset price.
+```{math}
+:label: eqn-delta-portfolio-defn
+\Delta = \sum_{a\in\mathcal{A}}\theta_{a}n_{a}|\hat{\Delta}_{a}|
+```
+
+where $n_{a}$ denotes the asset copy number, i.e., the number of contracts or shares of asset $a$ in the portfolio, $\hat{\Delta}_{a}$ denotes the delta for asset $a$ and $\theta_{a}$ denotes a direction parameter; $\theta_{a} = 1$ if we purchased asset $a$, while $\theta_{a} = -1$ if we sold asset $a$. The $\hat{\Delta}_{a}$ values for different asset classes.
+
+__Option contracts__: If asset $a$ is an option contract, then $\hat{\Delta}_{a}$ takes the value:
+
+```{math}
+:label: eqn-asset-class-option-delta
+\hat{\Delta}_{a} = 100\cdot\Delta_{a}
+```
+
+where $\Delta_{a}$ is the delta value for option $a$. 
+
+__Stock__: If asset $a$ are shares of stock, then $\hat{\Delta}_{a}$ is given by:
+
+```{math}
+:label: eqn-asset-class-stock-delta
+\hat{\Delta}_{a} = 1
+```
+
+__Hedging condition__: Finally, a riskless (delta-hedged) portfolio with respect to the share price of `XYZ` satisfies the condition:
+
+```{math}
+:label: eqn-delta-neutral-condition
+\Delta = 0
+```
+
+````
+
+Now that we have defined a Delta hedged portfolio, let's look at a simple two-asset example to illustrate {prf:ref}`defn-delta-hedge-condition`.
+
+````{prf:example} Delta-hedging example
+:label: example-delta-hedge-two-cases
+
+Suppose we have a portfolio with two assets: asset 1 is a Call option on `XYZ` while asset 2 are shares of `XYZ` Let the Call option on `XYZ` have $\Delta_{1} = 0.454$ USD/share, where `XYZ` has a share price of $S_{\circ}$ = 58.67 USD/share. Let's consider two cases:
+
+__Case 1:__ We sell a single Call option ($\theta_{1}=-1$) and buy an unknown number of shares of `XYZ` ($\theta_{2}=1$). To make this portfolio delta neutral, we solve the delta-hedging condition $\Delta=0$ for this portfolio for the unknown number of shares of asset 2:
+
+```{math}
+-100\cdot|\Delta_{1}| + n_{2} = 0
+```
+
+or $n_{2} = 100\cdot|\Delta_{1}|$.
+
+
+__Case 2:__ We buy a single Call option ($\theta_{1}=1$) and short an unknown number of shares of `XYZ` ($\theta_{2}=-1$). To make this portfolio delta neutral, we solve the delta-hedging condition $\Delta=0$ for this portfolio for the unknown number of shares of asset 2:
+
+```{math}
+100\cdot|\Delta_{1}| - n_{2} = 0
+```
+
+or $n_{2} = 100\cdot|\Delta_{1}|$.
+
+````
 
 ---
 
