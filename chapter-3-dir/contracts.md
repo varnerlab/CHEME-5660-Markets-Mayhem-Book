@@ -836,7 +836,7 @@ Then, the overall $\Delta$ of the composite trade for asset set $\mathcal{A}$ is
 \Delta = \sum_{a\in\mathcal{A}}\theta_{a}n_{a}|\hat{\Delta}_{a}|
 ```
 
-where $n_{a}$ denotes the asset copy number, i.e., the number of contracts or shares of asset $a$ in the portfolio, $\hat{\Delta}_{a}$ denotes the delta for asset $a$ and $\theta_{a}$ denotes a direction parameter; $\theta_{a} = 1$ if we purchased asset $a$, while $\theta_{a} = -1$ if we sold asset $a$. The $\hat{\Delta}_{a}$ values for different asset classes.
+where $n_{a}$ denotes the copy number of asset $a$, i.e., the number of contracts or shares of asset $a$ in the portfolio, $\hat{\Delta}_{a}$ denotes the delta for asset $a$ and $\theta_{a}$ denotes a direction parameter; $\theta_{a} = 1$ if we purchased asset $a$, while $\theta_{a} = -1$ if we sold asset $a$. The $\hat{\Delta}_{a}$ values for different asset classes.
 
 __Option contracts__: If asset $a$ is an option contract, then $\hat{\Delta}_{a}$ takes the value:
 
@@ -868,7 +868,7 @@ Now that we have defined a Delta hedged portfolio, let's look at a simple two-as
 ````{prf:example} Delta-hedging example
 :label: example-delta-hedge-two-cases
 
-Suppose we have a portfolio with two assets: asset 1 is a Call option on `XYZ` while asset 2 are shares of `XYZ` Let the Call option on `XYZ` have $\Delta_{1} = 0.454$ USD/share, where `XYZ` has a share price of $S_{\circ}$ = 58.67 USD/share. Let's consider two cases:
+Suppose we have a portfolio with only two assets: asset 1 is a Call option on `XYZ` while asset 2 are shares of `XYZ` Let the Call option on `XYZ` have $\Delta_{1} = 0.454$ USD/share, where `XYZ` has a share price of $S_{\circ}$ = 58.67 USD/share. Let's consider two cases:
 
 __Case 1:__ We sell a single Call option ($\theta_{1}=-1$) and buy an unknown number of shares of `XYZ` ($\theta_{2}=1$). To make this portfolio delta neutral, we solve the delta-hedging condition $\Delta=0$ for this portfolio for the unknown number of shares of asset 2:
 
@@ -888,6 +888,9 @@ __Case 2:__ We buy a single Call option ($\theta_{1}=1$) and short an unknown nu
 or $n_{2} = 100\cdot|\Delta_{1}|$.
 
 ````
+
+{prf:ref}`example-delta-hedge-two-cases` is interesting because it demonstrates one of the alternative meanings of $\Delta$, namely, options contracts can be thought of as behaving like $\Delta$ number of shares of the underlying asset `XYZ`.
+
 
 ---
 
