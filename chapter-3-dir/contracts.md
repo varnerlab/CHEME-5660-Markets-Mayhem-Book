@@ -785,7 +785,7 @@ The $C_{x}^{(n)}(x_{\circ})$ terms denote the nth partial derivative of the cont
 :label: defn-the-greeks
 
 Let $C(\mathcal{X})$ be the price of a Call option contract, where $\mathcal{X}$ is the set of market variables that influence the contract price.
-Further, let the market factor set be $\mathcal{X}=\left\{S,T,\sigma,\mu\right\}$; $S$ denotes the share price of the underlying asset, $T$ denotes the time left before epiration of the contract, $\mu$ denotes the risk-free rate and $\sigma$ denotes the volatility of the underlying price. 
+Further, let the market factor set be $\mathcal{X}=\left\{S, T,\sigma,\mu\right\}$; $S$ denotes the share price of the underlying asset, $T$ denotes the time left before expiration of the contract, $\mu$ indicates the risk-free rate, and $\sigma$ represents the volatility of the underlying price. 
 Finally, let the current values of these factors be denoted as 
 $\mathcal{X}_{\circ}=\left\{S_{\circ},T_{\circ},\sigma_{\circ},\mu_{\circ}\right\}$;  
 
@@ -797,7 +797,10 @@ C(\mathcal{X}) = C(\mathcal{X}_{\circ})+\sum_{x\in\mathcal{X}}\left(\frac{C^{(1)
 \frac{C^{(2)}_{x}\left(x_{\circ}\right)}{2!}\left(x-x_{\circ}\right)^{2}\right)
 ```
 
-The $C_{x}^{(n)}(x_{\circ})$ terms denote the nth partial derivative of the contract price with respect to market factor $x\in\mathcal{X}$, evaluated at the current value of the market factor $x_{\circ}\in\mathcal{X}_{\circ}$.
+The $C_{x}^{(n)}(x_{\circ})$ terms denote the nth partial derivative of the contract price with respect to market factor $x\in\mathcal{X}$, evaluated at the current value of the market factor $x_{\circ}\in\mathcal{X}_{\circ}$. 
+
+The eight partial derivatives in Eqn. {eq}`eqn-greeks-second-order-series` are collectively called _the Greeks_.
+
 
 We'll have eight partial derivatives in Eqn. {eq}`eqn-greeks-second-order-series`; however, in practice, we only compute five of these values:
 
@@ -808,7 +811,7 @@ We'll have eight partial derivatives in Eqn. {eq}`eqn-greeks-second-order-series
 * __Gamma__: Second-order derivative of the option the price with respect to the underlying price $S$, denoted by $\Gamma = C_{S}^{(2)}(S_{\circ})$
 
 
-While we defined [The Greeks](https://www.investopedia.com/trading/using-the-greeks-to-understand-options/) for a Call option, the same definitions can be applied to Put contracts. 
+While we defined [The Greeks](https://www.investopedia.com/trading/using-the-greeks-to-understand-options/) for a Call option, the same definitions can be applied to Put contracts.
 
 ````
 
@@ -900,6 +903,7 @@ In this lecture, we:
 * Discussed the two types, and two styles of {ref}`content:references:option-contracts`. A put option gives the option buyer the right, but not the obligation, to sell shares of the underlying asset `XYZ` at the strike price of \$$K$ per share. On the other hand, call options give the option buyer the right, but not the obligation, to purchase shares of the underlying asset `XYZ` at a strike price of \$$K$ per share. American-style call (put) contracts can be exercised anytime before the option contract expires, while European call (put) contracts can only be exercised on the expiration date. Each call and put option contract controls 100 shares of `XYZ`. 
 * Discussed the profit conditions for option contracts and how you, an investor, can compute {ref}`content:references:option-probability-of-profit-algorithms`.
 * Discussed several {ref}`content:references:option-pricing-algorithms`, which are used to calculate the price of European and American call (put) option contracts as a function of market parameters.
+* Discuissed the {ref}`content:references:option-price-sensitivity-greeks` and [Delta-hedging](https://www.investopedia.com/terms/d/deltahedging.asp).
 
 <!-- ## Cox-Ross-Rubinstein (CRR) binomial pricing model
 
