@@ -819,6 +819,7 @@ While we defined [The Greeks](https://www.investopedia.com/trading/using-the-gre
 
 ### The intuitive meaning of the Greeks
  * Delta $\Delta$ quantifies how the option’s price is expected to move because of changes in the underlying asset price. 
+ For a long Call option, $0\leq\Delta\leq{1}$. For a long Put option $-1\leq\Delta\leq{0}$.
 * Theta $\Theta$ tells us how much the price of an option should change each day as the contract approaches expiration if all other factors remain constant. This type of price change is called the time decay of the contract.
 * Vega $\mathcal{V}$ measures the rate of change in an option’s price with respect to changes in the implied volatility of the underlying stock. While Vega is not a letter in the Greek alphabet, it tells us how much an option’s price should move when the volatility of the underlying asset or index increases or decreases.
 * Rho $\rho$ measures the expected change in an option’s price because of a change in interest rates, i.e., the risk-free rate used in the pricing of the option. Thus, $\rho$ tells us how much the price of an option contract should increase or decrease if the risk-free rate changes. 
@@ -836,34 +837,20 @@ Then, the overall $\Delta$ of the composite trade for asset set $\mathcal{A}$ is
 
 ```{math}
 :label: eqn-delta-portfolio-defn
-\Delta = \sum_{a\in\mathcal{A}}\theta_{a}n_{a}|\hat{\Delta}_{a}|
+\Delta = \sum_{a\in\mathcal{A}}\theta_{a}n_{a}\hat{\Delta}_{a}
 ```
 
-where $n_{a}$ denotes the copy number of asset $a$, i.e., the number of contracts or shares of asset $a$ in the portfolio, $\hat{\Delta}_{a}$ denotes the delta for asset $a$ and $\theta_{a}$ denotes a direction parameter; $\theta_{a} = 1$ if we purchased asset $a$, while $\theta_{a} = -1$ if we sold asset $a$. The $\hat{\Delta}_{a}$ values for different asset classes.
-
-__Option contracts__: If asset $a$ is an option contract, then $\hat{\Delta}_{a}$ takes the value:
-
-```{math}
-:label: eqn-asset-class-option-delta
-\hat{\Delta}_{a} = 100\cdot\Delta_{a}
-```
-
-where $\Delta_{a}$ is the delta value for option $a$. 
-
-__Stock__: If asset $a$ are shares of stock, then $\hat{\Delta}_{a}$ is given by:
-
-```{math}
-:label: eqn-asset-class-stock-delta
-\hat{\Delta}_{a} = 1
-```
-
-__Hedging condition__: Finally, a riskless (delta-hedged) portfolio with respect to the share price of `XYZ` satisfies the condition:
+where $n_{a}$ denotes the copy number of asset $a$, i.e., the number of contracts or shares of asset $a$ in the portfolio, $\hat{\Delta}_{a}$ denotes the delta for asset $a$ and $\theta_{a}$ denotes a direction parameter; $\theta_{a} = 1$ if we purchased asset $a$, while $\theta_{a} = -1$ if we sold asset $a$. Finally, a riskless (delta-hedged) portfolio with respect to the share price of `XYZ` satisfies the condition:
 
 ```{math}
 :label: eqn-delta-neutral-condition
 \Delta = 0
 ```
 
+The $\hat{\Delta}_{a}$ values for different asset classes:
+
+* If asset $a$ is an option contract, then $\hat{\Delta}_{a}$ takes the value $\hat{\Delta}_{a} = 100\cdot\Delta_{a}$ where $\Delta_{a}$ is the delta value for a _long position_ in option $a$. 
+* If asset $a$ are shares of stock, then $\hat{\Delta}_{a}$ is given by $\hat{\Delta}_{a} = 1$
 ````
 
 Now that we have defined a Delta hedged portfolio, let's look at a simple two-asset example to illustrate {prf:ref}`defn-delta-hedge-condition`.
@@ -876,19 +863,19 @@ Suppose we have a portfolio with only two assets: asset 1 is a Call option on `X
 __Case 1:__ We sell a single Call option ($\theta_{1}=-1$) and buy an unknown number of shares of `XYZ` ($\theta_{2}=1$). To make this portfolio delta neutral, we solve the delta-hedging condition $\Delta=0$ for this portfolio for the unknown number of shares of asset 2:
 
 ```{math}
--100\cdot|\Delta_{1}| + n_{2} = 0
+-100\cdot\Delta_{1} + n_{2} = 0
 ```
 
-or $n_{2} = 100\cdot|\Delta_{1}|$.
+or $n_{2} = 100\cdot\Delta_{1}$.
 
 
 __Case 2:__ We buy a single Call option ($\theta_{1}=1$) and short an unknown number of shares of `XYZ` ($\theta_{2}=-1$). To make this portfolio delta neutral, we solve the delta-hedging condition $\Delta=0$ for this portfolio for the unknown number of shares of asset 2:
 
 ```{math}
-100\cdot|\Delta_{1}| - n_{2} = 0
+100\cdot\Delta_{1} - n_{2} = 0
 ```
 
-or $n_{2} = 100\cdot|\Delta_{1}|$.
+or $n_{2} = 100\cdot\Delta_{1}$.
 
 ````
 
