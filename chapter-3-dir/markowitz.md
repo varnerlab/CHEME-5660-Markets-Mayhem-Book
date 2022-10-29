@@ -99,13 +99,22 @@ Further, the correlation does not appear in the expected portfolio return ({prf:
 
 
 ### Risky assets only
-In the risky asset only case, the asset set $\mathcal{A}$ is composed only of shares of common stock. Common stocks, also known as equity securities or equities, represent ownership shares in a corporation. Each share of common stock entitles its owner to one vote on any matters of corporate governance that are put to the vote at the corporation’s annual meeting and a share in the financial benefits of ownership. The corporation is controlled by a board of directors elected by the shareholders. The board meets a few times per year and selects the management team that runs the corporation daily. Managers have the authority to make most business decisions without the board’s specific approval. The board’s mandate is to oversee the management to ensure that it acts in the best interests of shareholders.
+In the risky asset only case, the asset set $\mathcal{A}$ is composed only of shares of common stock. 
+
+#### Stocks
+Common stocks, also known as equity securities or equities, represent ownership shares in a corporation. Each share of common stock entitles its owner to one vote on any matters of corporate governance that are put to the vote at the corporation’s annual meeting and a share in the financial benefits of ownership. The corporation is controlled by a board of directors elected by the shareholders. The board meets a few times per year and selects the management team that runs the corporation daily. Managers have the authority to make most business decisions without the board’s specific approval. The board’s mandate is to oversee the management to ensure that it acts in the best interests of shareholders.
 
 The two most important characteristics of common stock as an investment are its residual claim and limited liability features:
 
  * Residual claim means that stockholders are the last in line of all those who have a claim on the assets and income of the corporation. In liquidating the firm’s assets, the shareholders have a claim to what is left after all other claimants, such as the tax authorities, employees, suppliers, bondholders, and other creditors, have been paid. For a firm not in liquidation, shareholders have a claim to the part of operating income left over after interest and taxes have been paid. Management can either pay this residual as cash dividends to shareholders or reinvest it in the business to increase the value of the shares. 
 
  * Limited liability means the most shareholders can lose in the event of the corporation’s failure is their original investment. Unlike owners of unincorporated businesses, whose creditors can lay claim to the personal assets of the owner (house, car, furniture), corporate shareholders may, at worst, have worthless stock. They are not personally liable for the firm’s obligations.
+
+#### Markowitz allocation for risk assets only
+ The Markowitz allocation problem for a portfolio of risky assets is defined in {prf:ref}`defn-markowitz-risky-assets-only`.
+
+````{prf:definition} Risky Markowitz Portfolio
+:label: defn-markowitz-risky-assets-only
 
 The Markowitz allocation problem for a portfolio $\mathcal{P}$ composed of __only__ risky assets is the [quadratic program](https://en.wikipedia.org/wiki/Quadratic_programming):
 
@@ -124,17 +133,21 @@ w_{i}&\geq&{0}\qquad{\forall{i}\in\mathcal{P}}
 $$
 
 where $w$ denotes the vector of weights of the assets in portfolio $\mathcal{P}$, $\sigma^{2}_{\mathcal{P}}\left(w\right)$ represents the portfolio variance; the portfolio variance can re-written as $\sigma^{2}_{\mathcal{P}}\left(w\right) = w^{T}\Sigma{w}$  where $\Sigma$ is the [covariance matrix](https://en.wikipedia.org/wiki/Covariance_matrix). The quantity $\mathbb{E}(r_{\mathcal{P}})$ denotes the expected return (or excess return) of the portfolio $\mathcal{P}$; the expected return (or excess return) can be re-writtem as $w^{T}\mathbb{E}(r)$ where $\mathbb{E}(r)$ denotes the vector of expected returns (or excess returns) for each asset in the portfolio. 
+
 The quantity $R^{*}$ denotes the minimal required return for $\mathcal{P}$ and $1^{T}$ denotes a vector of ones (full allocation constraint). The last constraint $w_{i}\geq{0}~\forall{i}\in\mathcal{P}$ says that no short selling (borrowing shares) is allowed; if short selling is allowed, then this constraint can be removed.
+````
+
+A schematic of the solution of risky Markowitz problem defined in {prf:ref}`defn-markowitz-risky-assets-only` is given in {numref}`fig-markowitz-only-risk`.
 
  ```{figure} ./figs/Fig-Markowitz-Only-Risky.pdf
 ---
-height: 420px
+height: 440px
 name: fig-markowitz-only-risk
 ---
-Schematic of a binomial lattice pricing model. At each node, the price of the underlying asset increases by a factor $u$ with probability $p$ or decreases by a factor $d$ with probability $(1-p)$. Each node is treated as an independent Bernoulli trial.
+Schematic of the solution to the Markowitz allocation problem for a collection of risky assets.
 ```
 
-A couple of issues:
+A couple of thoughts:
 * While the problem above is written in terms of absolute return $r_{\star}$, we can also write the portfolio allocation problem using excess returns; the excess return is $R_{\star} = r_{\star} - r_{f}$, where $r_{f}$ denotes the risk free rate of return.
 * The challenge to solving the Markowitz problem is estimating the expected return of assets in the portfolio and the covariance matrix $\Sigma$. These quantities can be calculated from data if available or from models of the return and variance of the assets in the portfolio. Let's consider both approaches. 
 
@@ -143,7 +156,48 @@ Return can be calculated in many ways; two common approaches are the percentage 
 
 
 ### Portfolios of risky and risk-free assets
-Suppose now that the asset set $\mathcal{A}$ contains both risky assets, i.e., shares of stock and risk-free assets, e.g., [debt securities](./bonds.md). In this case we have the guaranteed return associated with the risk-free asset, and return associated with the risky assets in the portfolio.  
+Suppose that our asset set $\mathcal{A}$ now contains both risky assets, i.e., shares of stock and a risk-free asset, e.g., [debt securities](./bonds.md). Thus, we have a guaranteed return associated with the risk-free asset, while the return associated with the risky assets is governed by the risk measure. 
+
+````{prf:definition} Risky and Risk-free Markowitz
+:label: defn-risky-risk-free-markowitz
+
+The Markowitz allocation problem for a portfolio $\mathcal{P}$ composed of both risky and risk-free assets is the [quadratic program](https://en.wikipedia.org/wiki/Quadratic_programming):
+
+```{math}
+\min_{w} \sigma^{2}_{\mathcal{P}}\left(w\right)
+```
+
+subject to the constraints:
+
+$$
+\begin{eqnarray}
+\left(1-\sum_{i\in\mathcal{P}}\omega_{i}\right)r_{f}+\mathbb{E}(r_{\mathcal{P}})&\geq&{R^{*}}\\
+1^{T}w &=& 1\\
+w_{i}&\geq&{0}\qquad{\forall{i}\in\mathcal{P}}
+\end{eqnarray}
+$$
+
+where $w$ denotes the vector of weights of the assets in portfolio $\mathcal{P}$, $\sigma^{2}_{\mathcal{P}}\left(w\right)$ represents the portfolio variance; the portfolio variance can re-written as $\sigma^{2}_{\mathcal{P}}\left(w\right) = w^{T}\Sigma{w}$  where $\Sigma$ is the [covariance matrix](https://en.wikipedia.org/wiki/Covariance_matrix). The quantity $\mathbb{E}(r_{\mathcal{P}})$ denotes the expected return (or excess return) of the portfolio $\mathcal{P}$; the expected return (or excess return) can be re-writtem as $w^{T}\mathbb{E}(r)$ where $\mathbb{E}(r)$ denotes the vector of expected returns (or excess returns) for each asset in the portfolio. 
+
+The quantity $R^{*}$ denotes the minimal required return for $\mathcal{P}$ and $1^{T}$ denotes a vector of ones (full allocation constraint). The last constraint $w_{i}\geq{0}~\forall{i}\in\mathcal{P}$ says that no short selling (borrowing shares) is allowed; if short selling is allowed, then this constraint can be removed.
+````
+
+A schematic of the solution of risky and risk-free Markowitz problem defined in {prf:ref}`defn-risky-risk-free-markowitz` is given in {numref}`fig-markowitz-risky-and-risky-free`.
+
+ ```{figure} ./figs/Fig-Markowitz-Risk-Free-Asset.pdf
+---
+height: 440px
+name: fig-markowitz-risky-and-risky-free
+---
+Schematic of the solution to the Markowitz allocation problem for a combination of risky and a risk-free asset.
+```
+
+A couple of thoughts:
+* While the problem above is written in terms of absolute return $r_{\star}$, we can also write the portfolio allocation problem using excess returns; the excess return is $R_{\star} = r_{\star} - r_{f}$, where $r_{f}$ denotes the risk free rate of return.
+* The challenge to solving the Markowitz problem is estimating the expected return of assets in the portfolio and the covariance matrix $\Sigma$. These quantities can be calculated from data if available or from models of the return and variance of the assets in the portfolio. Let's consider both approaches. 
+
+The return of an asset is a measure of the price difference of that asset between two time periods. 
+Return can be calculated in many ways; two common approaches are the percentage or fractional return and the logarithmic return. 
 
 (content:references:markowitz-solution)=
 ## Data-Driven Markowitz Allocation 
@@ -164,8 +218,6 @@ r_{i,j\rightarrow{k}} \equiv \frac{P_{ik} - P_{ij}}{P_{ij}}
 
 where $r_{i,j\rightarrow{k}}$ denotes the fractional return of asset $i$ over time horizon $j\rightarrow{k},i\neq{k}$.
 
-````
-
 Consider the daily return on stock `XYZ` computed using the close price and the fractional return measure. Let $P_{ij}$ denote the close price today, and $P_{ij-1}$ denote the close price for the previous trading day. Then, the fractional daily return is given by:
 
 ```{math}
@@ -173,6 +225,7 @@ Consider the daily return on stock `XYZ` computed using the close price and the 
 
 r_{i,j-1\rightarrow{j}} = \frac{P_{ij} - P_{i,j-1}}{P_{i,j-1}}
 ```
+````
 
 However, Eqn. {eq}`eq-example-daily-close-price` can be rearranged to give an expression similar to 
 Eqn. {eq}`eq-cash-flow-1-period`:
@@ -199,8 +252,6 @@ on asset $i$ over time horizon $j\rightarrow{k},j\neq{k}$ is defined as:
 
 where $\bar{r}_{i,j\rightarrow{k}}$ denotes the logarithmic return of asset $i$ over time horizon $j\rightarrow{k},i\neq{k}$. The $\log\left(\star\right)$ term denotes the [natural log](https://en.wikipedia.org/wiki/Natural_logarithm). 
 
-````
-
 Consider the daily return on stock `XYZ` computed using the close price and the fractional return measure. Let $P_{ij}$ denote the close price today, and $P_{ij-1}$ denote the close price for the previous trading day. Then, the fractional daily return is given by:
 
 ```{math}
@@ -208,6 +259,7 @@ Consider the daily return on stock `XYZ` computed using the close price and the 
 
 \bar{r}_{i,j-1\rightarrow{j}} = \log\left(\frac{P_{ij}}{P_{i,j-1}}\right)
 ```
+````
 
 However, Eqn. {eq}`eq-example-daily-close-price-log` can be rearranged to give an expression similar to 
 Eqn. {eq}`eq-cont-exchange-tvm`:
@@ -218,7 +270,7 @@ P_{ij} = \exp\left(\bar{r}_{i,j-1\rightarrow{j}}\right)P_{i,j-1}
 
 Thus, the logarithmic daily return (or a logarithmic return computed between any two different dates) is a continuous discount rate that quantifies how the value of an asset, e.g., the share price of ticker `XYZ`, changes because of market forces. Becuase $P_{i,\star}$ is a random variable, the return is also a random variable. 
 
-### Expected Excess Returns from Data
+### Expected Excess Returns from data
 Suppose we had a data set $\mathcal{P}$ that contained the daily close
 price for a share of stock of firm $i$ for the last $T$ days, e.g., $1\rightarrow{T}$. 
 Let the ticker symbol for firm $i$ be given by `XYZ`.
@@ -293,15 +345,78 @@ the unweighted excess return vector $R$, and the probability array $p$
 1. expected return $\mathbb{E}_{B}\left(R\right)$, excess return vector $R$, and probability array $p$
 ```
 
+(content:references:risk-volatility)=
+### Volatility and the Covariance Matrix
+Now that we have defined different types of returns, the rewards of a portfolio, let's define the risk. One measure of risk is volatility, e.g., the standard deviation of the {ref}`content:references:log-return`:
+
+````{prf:definition} Volatility
+:label: defn-volatility
+
+Let the price of asset $i$ at time $j$ be denoted by $P_{ij}>0$. Then the _volatility_ of asset $i$ is
+the standard deviation of the logarithmic returns calculated between time periods 
+$j\rightarrow{j+1}$.
+
+````
+We can estimate the volatility of `XYZ` directly from historical price data; calculating volatility from data
+gives the _historic volatility_, a backward-looking measure of the risk. An unbiased 
+estimate of the variance (which is the square of the _historic volatility_) is given by:
+
+```{math}
+\sigma_{n}^2 = \frac{1}{m-1}\sum_{i=1}^{m}\left(\bar{r}_{n-i}-\hat{\mu}_{r}\right)^2\qquad{n>{m+1}}
+```
+where $\bar{r}_{n-i}$ denotes logarithmic return computed for time $n-i-1\rightarrow{n-i}$ and
+$\hat{\mu}_{r}$ denotes the average logarithmic return, computed using the $m$ most recent values of
+the return:
+
+```{math}
+\hat{\mu}_{r} = \frac{1}{m}\sum_{i=1}^{m}\bar{r}_{n-i}
+```
+
+The choice of $(n,m)$ is up to you and the application you are interested in. A sketch of an algorithm that can be used to calculate the _historic volatility_ is given in {prf:ref}`algo-unbiased-historic-volatility`:
+
+```{prf:algorithm} Unbiased estimate of the return variance
+:label: algo-unbiased-historic-volatility
+
+**Inputs** Ticker `XYZ` price dataset $\bar{\mathcal{P}}$ for time period $1\rightarrow T$, parameters $(n,m)$ where $n>m+1$ and $\texttt{avg}$ a function that computes the average of a vector.
+
+**Outputs** An unbiased estimate of the return variance $\sigma_{n}^{2}$
+
+**Initialize**
+1. sort dataset $\mathcal{P}\leftarrow\bar{\mathcal{P}}$ from newest to oldest prices.
+1. initialize $\bar{R}~\leftarrow$ Array($m$,1)
+1. initialize $\mu_{r}$ = 0
+1. initialize $\text{tmp}$ = 0
+
+**Compute $\bar{R}$**
+1. for i $\in~1:m$
+  
+    1. compute $\bar{r}_{n-i}\leftarrow\log\left(\frac{P_{n-i}}{P_{n-i-1}}\right)$
+    1. store $\bar{R}[i]\leftarrow{\bar{r}_{n-i}}$
+
+**Compute $\mu_{r}$**
+1. compute $\mu_{r}\leftarrow\texttt{avg}\left(\bar{R}\right)$
+
+**Compute $\sigma_{n}^{2}$**
+1. for i $\in~1:m$
+
+    1. compute $\text{tmp}~\leftarrow~\text{tmp}~+ \left( \bar{R}[i] - \mu_{r} \right)^2$
+
+1. compute $\sigma_{n}^{2}\leftarrow\frac{1}{m-1}\cdot\text{tmp}$
+
+**Return**
+1. return $\sigma_{n}^{2}$
+```
+
+### Example
+* [Computation of the unbiased historical volatility using {prf:ref}`algo-unbiased-historic-volatility`](https://htmlview.glitch.me/?https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks/blob/main/pluto-notebooks/html/Example-UnbiasedVolatility-Estimation.jl.html)
+
 (content:references:markowitz-solution-sim)=
 ## Model-Driven Markowitz Allocation
 
 ### Single Index Models
 The application of index models to construct risky portfolios was originally proposed by Treynor and Black {cite}`FB1973`. Single index models are asset pricing models which measure the risk and the return of a stock relative to a risk-free alternative investment, e.g., [government treasury bonds](./bonds.md). A single index model describes the return of a firm’s stock in terms of a firm-specific return and the overall market return. One of the simplest (yet still widely used) single index models was developed by Sharpe {cite}`SHARPE1963`.
 
-The return can be computed from historical data. However, if we do not have access to price data for `XYZ` or want to _predict_ the return of `XYZ,` for example, in an automated trading system, we need a model. One of the simplest (yet still widely used) models is the single index model (SIM) developed by Sharpe {cite}`SHARPE1963`.
-
-The single-index model (SIM) is an asset pricing model which measures both the risk and the return of a stock, relative to a risk free alternative investment e.g., government treasury bounds. The single index model describes the return of the stock of firm $i$ in terms of a firm-specific return, and the overall market return:
+The single-index model developed by developed Sharpe {cite}`SHARPE1963` is an asset pricing model which measures both the risk and the return of a stock, relative to a risk free alternative investment e.g., government treasury bounds. The single index model describes the return of the stock of firm $i$ in terms of a firm-specific return, and an overall market return:
 
 ```{math}
 :label: eq-single-index-model
@@ -314,7 +429,7 @@ $r_{f}$ denotes the risk-free rate i.e., the [interest rate of a riskless invest
 
 The term $R_{i}(t)\equiv\left(r_{i}\left(t\right) - r_{f}\right)$ describes the excess return of specific firm $i$, while $R_{m}(t)\equiv\left(r_{m}\left(t\right)-r_{f}\right)$ describes the excess return of the market portfolio. Replacing the excess returns in Eqn. {eq}`eq-single-index-model` gives the single index model in standard form:
 
-````{prf:definition} Single index model
+````{prf:definition} Single index model of Sharpe
 :label: defn-single-index-model-standard
 
 Let $R_{i}(t)$ and $R_{m}(t)$ denote the firm specific and market excess returns (random variables) 
@@ -328,17 +443,12 @@ R_{i}\left(t\right) = \alpha_{i}+\beta_{i}R_{m}\left(t\right)+\epsilon_{i}
 \left(t\right)\qquad{t=1,2,\dots,T}
 ```
 
-where $\alpha_{i}$ and $\beta_{i}$ are constant (unknown) model paramaters. 
+where $\alpha_{i}$ and $\beta_{i}$ are (unknown) model paramaters: 
+
+* The parameter $\alpha_{i}$ describes the firm specific return not explained by the market; thus, $\alpha_{i}$ is the idiosyncratic return of firm $i$.
+* The parameter $\beta_{i}$ measures the relationship between the excess return of firm $i$ and the excess return of the market; a large $\beta_{i}$ suggests the market returns (or losses) are _amplified_ for firm $i$, while a small $\beta_{i}$ suggests the market returns (or losses) are _damped_ for firm $i$.
+* The parameter $\beta_{i}$ can also be interpreted as a measure of the relative risk of investing in firm $i$ relative to the overall market. 
 ````
-
-The $\alpha_{i}$ parameter in Eqn {eq}`eq-single-index-model-standard` describes the firm specific 
-return that is not explained by the market; thus, $\alpha_{i}$ is the 
-idiosyncratic return of firm $i$.
-
-The $\beta_{i}$ parameter in Eqn {eq}`eq-single-index-model-standard` has several interpretations. 
-First, $\beta_{i}$ measures how the excess return of firm $i$ is related to the overall excess return of the market; a large $\beta_{i}$ suggests the market returns (or losses) are _amplified_ for firm $i$, while
-a small $\beta_{i}$ suggests the market returns (or losses) are _damped_ for firm $i$.
-On the other hand, $\beta_{i}$ can also be interpreted as a measure of the relative risk of investing in firm $i$. 
 
 To understand the various interpretations of $\beta_{i}$, we first must understand that both the firm specific $R_{i}$ and overall market excess returns $R_{m}$ are random variables. Thus, we can compute the expectation and variance of these variables and look at how these quantities depend upon $\beta_{i}$:
 
@@ -447,20 +557,6 @@ source: [live Pluto notebook](https://github.com/varnerlab/CHEME-5660-Markets-Ma
 
 ````
 
-###### Optimization Approaches
-The least-squares formulation to estimate the unknown parameters $\theta = (\alpha_{i},\beta_{i})^{T}$ is given be:
-
-$$\min_{\theta} ||X\theta - Y||_{p}$$
-
-subject (potentially) to constaints on the unknown parameters $\theta$, where $||\star||_{p}$ denotes the [p-vector norm](https://en.wikipedia.org/wiki/Norm_(mathematics)); typically this will be something like the [$l_{2}$-norm](https://en.wikipedia.org/wiki/Norm_(mathematics)#p-norm) but it doesn't have to be. {prf:ref}`example-lsq-single-index-model` explores the least-squares approach for estimating the unknown parameter vector $\theta$:
-
-````{prf:example} Least-squares estimation of $\theta$ 
-:label: example-lsq-single-index-model
-
-Fill me in.
-
-````
-
 ##### Phase 2: Identification of the residual model
 Now that we have estimated $\hat{\theta}$, we can compute the residual model. The residual model $\epsilon_{i}(t)$ describes the unmodeled random component of the return of `XYZ`; thus, it explains all the influences on the excess return that are _not_ associated with the firm or the overall market. 
 
@@ -481,70 +577,7 @@ We implemented the maximum likelihood strategy using routines implemented in the
 
 ````
 
-(content:references:risk-volatility)=
-## Volatility
-Now that we have defined different types of returns, the rewards of a portfolio, let's define the risk. One measure of risk is volatility, e.g., the standard deviation of the {ref}`content:references:log-return`:
 
-````{prf:definition} Volatility
-:label: defn-volatility
-
-Let the price of asset $i$ at time $j$ be denoted by $P_{ij}>0$. Then the _volatility_ of asset $i$ is
-the standard deviation of the logarithmic returns calculated between time periods 
-$j\rightarrow{j+1}$.
-
-````
-We can estimate the volatility of `XYZ` directly from historical price data; calculating volatility from data
-gives the _historic volatility_, a backward-looking measure of the risk. An unbiased 
-estimate of the variance (which is the square of the _historic volatility_) is given by:
-
-```{math}
-\sigma_{n}^2 = \frac{1}{m-1}\sum_{i=1}^{m}\left(\bar{r}_{n-i}-\hat{\mu}_{r}\right)^2\qquad{n>{m+1}}
-```
-where $\bar{r}_{n-i}$ denotes logarithmic return computed for time $n-i-1\rightarrow{n-i}$ and
-$\hat{\mu}_{r}$ denotes the average logarithmic return, computed using the $m$ most recent values of
-the return:
-
-```{math}
-\hat{\mu}_{r} = \frac{1}{m}\sum_{i=1}^{m}\bar{r}_{n-i}
-```
-
-The choice of $(n,m)$ is up to you and the application you are interested in. A sketch of an algorithm that can be used to calculate the _historic volatility_ is given in {prf:ref}`algo-unbiased-historic-volatility`:
-
-```{prf:algorithm} Unbiased estimate of the return variance
-:label: algo-unbiased-historic-volatility
-
-**Inputs** Ticker `XYZ` price dataset $\bar{\mathcal{P}}$ for time period $1\rightarrow T$, parameters $(n,m)$ where $n>m+1$ and $\texttt{avg}$ a function that computes the average of a vector.
-
-**Outputs** An unbiased estimate of the return variance $\sigma_{n}^{2}$
-
-**Initialize**
-1. sort dataset $\mathcal{P}\leftarrow\bar{\mathcal{P}}$ from newest to oldest prices.
-1. initialize $\bar{R}~\leftarrow$ Array($m$,1)
-1. initialize $\mu_{r}$ = 0
-1. initialize $\text{tmp}$ = 0
-
-**Compute $\bar{R}$**
-1. for i $\in~1:m$
-  
-    1. compute $\bar{r}_{n-i}\leftarrow\log\left(\frac{P_{n-i}}{P_{n-i-1}}\right)$
-    1. store $\bar{R}[i]\leftarrow{\bar{r}_{n-i}}$
-
-**Compute $\mu_{r}$**
-1. compute $\mu_{r}\leftarrow\texttt{avg}\left(\bar{R}\right)$
-
-**Compute $\sigma_{n}^{2}$**
-1. for i $\in~1:m$
-
-    1. compute $\text{tmp}~\leftarrow~\text{tmp}~+ \left( \bar{R}[i] - \mu_{r} \right)^2$
-
-1. compute $\sigma_{n}^{2}\leftarrow\frac{1}{m-1}\cdot\text{tmp}$
-
-**Return**
-1. return $\sigma_{n}^{2}$
-```
-
-### Example
-* [Computation of the unbiased historical volatility using {prf:ref}`algo-unbiased-historic-volatility`](https://htmlview.glitch.me/?https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks/blob/main/pluto-notebooks/html/Example-UnbiasedVolatility-Estimation.jl.html)
 
 (content:references:buy-and-hold-strategy)=
 ## Buy and Hold Strategy
