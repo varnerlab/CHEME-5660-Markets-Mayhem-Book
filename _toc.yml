@@ -27,7 +27,6 @@ chapters:
   title: Unit 3. Risk, Portfolios, Derivatives, and Leverage
   sections: 
   - file: chapter-3-dir/bonds
-  - file: chapter-3-dir/Single-Index-Models
   - file: chapter-3-dir/contracts
   - file: chapter-3-dir/markowitz
 
