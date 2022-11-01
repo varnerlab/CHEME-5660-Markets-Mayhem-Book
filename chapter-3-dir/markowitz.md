@@ -146,11 +146,11 @@ Schematic of the solution to the Markowitz allocation problem for a collection o
 ```
 
 A couple of thoughts:
-* While the problem above is written in terms of absolute return $r_{\star}$, we can also write the portfolio allocation problem using excess returns; the excess return is $R_{\star} = r_{\star} - r_{f}$, where $r_{f}$ denotes the risk free rate of return.
-* The challenge to solving the Markowitz problem is estimating the expected return of assets in the portfolio and the covariance matrix $\Sigma$. These quantities can be calculated from data if available or from models of the return and variance of the assets in the portfolio. Let's consider both approaches. 
+* While the problem above is written in terms of absolute return $r_{\star}$, we can also write the portfolio allocation problem using excess returns; the excess return is $R_{\star} = r_{\star} - r_{f}$, where $r_{f}$ denotes the risk-free rate of return.
+* The challenge to solving the Markowitz problem is estimating the expected return of assets in the portfolio and the covariance matrix $\Sigma$. These quantities can be calculated from available data or from models of the return and variance of the assets in the portfolio. We'll consider both approaches.
+* Which portfolio along the efficient frontier in {numref}`fig-markowitz-only-risk` is up to the risk-reward tolerance of the investor; some investors are willing to take the additional risk because they expect to be rewarded with an increased return, others are not. 
+* The minimum variance portfolio represents the maximum reward given the minimum risk. 
 
-The return of an asset is a measure of the price difference of that asset between two time periods. 
-Return can be calculated in many ways; two common approaches are the percentage or fractional return and the logarithmic return. 
 
 
 ### Portfolios of risky and risk-free assets
@@ -190,16 +190,18 @@ name: fig-markowitz-risky-and-risky-free
 Schematic of the solution to the Markowitz allocation problem for a combination of risky and a risk-free asset.
 ```
 
-A couple of thoughts:
-* While the problem above is written in terms of absolute return $r_{\star}$, we can also write the portfolio allocation problem using excess returns; the excess return is $R_{\star} = r_{\star} - r_{f}$, where $r_{f}$ denotes the risk free rate of return.
-* The challenge to solving the Markowitz problem is estimating the expected return of assets in the portfolio and the covariance matrix $\Sigma$. These quantities can be calculated from data if available or from models of the return and variance of the assets in the portfolio. Let's consider both approaches. 
+A couple of thoughts on {numref}`fig-markowitz-risky-and-risky-free`:
+* While the problem above is written in terms of absolute return $r_{\star}$, we can also write the portfolio allocation problem using excess returns; the excess return is $R_{\star} = r_{\star} - r_{f}$, where $r_{f}$ denotes the risk-free rate of return.
+* The challenge to solving the Markowitz problem is estimating the expected return of assets in the portfolio and the covariance matrix $\Sigma$. These quantities can be calculated from available data or from models of the return and variance of the assets in the portfolio. We'll consider both approaches.
+* The tangency point in {numref}`fig-markowitz-risky-and-risky-free` is the optimal portfolio of risky assets.
 
-The return of an asset is a measure of the price difference of that asset between two time periods. 
-Return can be calculated in many ways; two common approaches are the percentage or fractional return and the logarithmic return. 
 
 (content:references:markowitz-solution)=
 ## Data-Driven Markowitz Allocation 
 The objective of Markowitz portfolio allocation problem is to estimate the weights $w=\left(w_{1},w_{2},\dots\right)^{T}$ of the assets in portfolio $\mathcal{P}$  such that overall variance of the portfolio is minimized, for a specified return, subject to some constraints on $w$. 
+
+The return of an asset is a measure of the price difference of that asset between two time periods. 
+Return can be calculated in many ways; two common approaches are the percentage or fractional return and the logarithmic return. 
 
 (content:references:fractional-return)=
 ### Fractional return
@@ -268,7 +270,7 @@ P_{ij} = \exp\left(\bar{r}_{i,j-1\rightarrow{j}}\right)P_{i,j-1}
 
 Thus, the logarithmic daily return (or a logarithmic return computed between any two different dates) is a continuous discount rate that quantifies how the value of an asset, e.g., the share price of ticker `XYZ`, changes because of market forces. Becuase $P_{i,\star}$ is a random variable, the return is also a random variable. 
 
-### Expected Excess Returns from data
+### Expected excess returns from data
 Suppose we had a data set $\mathcal{P}$ that contained the daily close
 price for a share of stock of firm $i$ for the last $T$ days, e.g., $1\rightarrow{T}$. 
 Let the ticker symbol for firm $i$ be given by `XYZ`.
@@ -448,10 +450,12 @@ where $\alpha_{i}$ and $\beta_{i}$ are (unknown) model paramaters:
 * The parameter $\beta_{i}$ can also be interpreted as a measure of the relative risk of investing in firm $i$ relative to the overall market. 
 ````
 
-To understand the various interpretations of $\beta_{i}$, we first must understand that both the firm specific $R_{i}$ and overall market excess returns $R_{m}$ are random variables. Thus, we can compute the expectation and variance of these variables and look at how these quantities depend upon $\beta_{i}$:
+To understand the various interpretations of $\beta_{i}$, we first must understand that both the firm specific $R_{i}$ and overall market excess returns $R_{m}$ are random variables. Thus, we can compute the expectation and variance of these variables and look at how these quantities depend upon $\beta_{i}$. 
 
-````{prf:observation} Risk and Reward intepretations of $\beta_{i}$
-:label: obs-beta-risk-measure
+Let's start by thinking about the reward interpretation of $\beta_{i}$:
+
+````{prf:observation} Reward interpretation of $\beta_{i}$
+:label: obs-beta-return-measure
 
 Taking the expectation of the firm excess return $R_{i}$ gives:
 
@@ -464,6 +468,7 @@ where $\mathbb{E}\left(\epsilon_{i}\left(t\right)\right) = 0$.
 Solving Eqn. {eq}`eq-expected-R-sim` for $\beta_{i}$ gives:
 
 ```{math}
+:label: eqn-beta-return-ratio
 \beta_{i} = \frac{\mathbb{E}\left(R_{i}\right) - \alpha_{i}}{\mathbb{E}\left(R_{m}\right)}
 ```
 Thus, $\beta_{i}$ is a corrected ratio of expected (average) returns:
@@ -472,9 +477,17 @@ Thus, $\beta_{i}$ is a corrected ratio of expected (average) returns:
 * $\beta_{i}\sim{1}$ firm $i$ performs _similar_ to the overall market on average
 * $\beta_{i}<1$ expected excess return of firm $i$ is _less_ than the expected excess market return
 
-The $\beta_{i}$ for asset $i$ can also be thought of as a measure of risk of asset $i$ relative to the market. For example, we can show that:
+````
+
+However, $\beta_{i}$ has another interpretation, namely, the ratio of risks:
+
+````{prf:observation} Risk interpretation of $\beta_{i}$
+:label: obs-beta-risk-measure
+
+The $\beta_{i}$ for asset $i$ can also be considered a measure of the risk of asset $i$ relative to the market. For example, we can show that:
 
 ```{math}
+:label: eqn-beta-risk-ratio
 \beta_{i} = \frac{\text{cov}(R_{i}, R_{m})}{\text{var}(R_{m})}
 ```
 
@@ -482,10 +495,11 @@ where $\text{cov}(R_{i}, R_{m})$ denotes the [covariance](https://en.wikipedia.o
 
 * $\beta_{i}>1$ suggests firm $i$ has _greater risk_ than the overall market
 * $\beta_{i}\sim{1}$ suggests that firm $i$ has the _same risk_ as the overall market on average
-* $\beta_{i}<1$ suggests firm $i$ has _less risk_ compared to overall market
-
-Putting these two regimes together gives fundamental insight into the behavior of markets: __high returns come with high-risk__. 
+* $\beta_{i}<1$ suggests firm $i$ has _less risk_ compared to overall market 
 ````
+
+Putting these two regimes together gives fundamental insight into the behavior of markets: __high returns come with high-risk__.
+
 
 #### Estimating Single Index Models from Data
 Estimating single index models from data reduces to estimating values for the $(\alpha_{i},\beta_{i})$ parameters and developing a residual model $\epsilon_{i}(t)$. Let's decompose this problem into two phases:
