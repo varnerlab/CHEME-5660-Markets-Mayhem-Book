@@ -217,18 +217,13 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="chapter-3-dir/Single-Index-Models.html">
-     Equity Securities
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="chapter-3-dir/contracts.html">
      Derivative Securities
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="chapter-3-dir/markowitz.html">
-     Modern Portfolio Theory
+     Equity, Debt and Modern Portfolio Theory
     </a>
    </li>
   </ul>
@@ -409,6 +404,7 @@ title="Open an issue"
    <a href="#cap-defn-iv-std-model"><strong>defn-iv-std-model</strong></a> | 
    <a href="#cap-defn-law-total-probability"><strong>defn-law-total-probability</strong></a> | 
    <a href="#cap-defn-log-return"><strong>defn-log-return</strong></a> | 
+   <a href="#cap-defn-markowitz-risky-assets-only"><strong>defn-markowitz-risky-assets-only</strong></a> | 
    <a href="#cap-defn-moments"><strong>defn-moments</strong></a> | 
    <a href="#cap-defn-multi-perod-discrete-conversion"><strong>defn-multi-perod-discrete-conversion</strong></a> | 
    <a href="#cap-defn-one-perod-discrete-conversion"><strong>defn-one-perod-discrete-conversion</strong></a> | 
@@ -421,6 +417,7 @@ title="Open an issue"
    <a href="#cap-defn-pmf-poisson"><strong>defn-pmf-poisson</strong></a> | 
    <a href="#cap-defn-portfolio-return"><strong>defn-portfolio-return</strong></a> | 
    <a href="#cap-defn-portfolio-variance"><strong>defn-portfolio-variance</strong></a> | 
+   <a href="#cap-defn-risky-risk-free-markowitz"><strong>defn-risky-risk-free-markowitz</strong></a> | 
    <a href="#cap-defn-sets"><strong>defn-sets</strong></a> | 
    <a href="#cap-defn-single-index-model-standard"><strong>defn-single-index-model-standard</strong></a> | 
    <a href="#cap-defn-subsets"><strong>defn-subsets</strong></a> | 
@@ -447,7 +444,6 @@ title="Open an issue"
    <a href="#cap-example-european-call-contract"><strong>example-european-call-contract</strong></a> | 
    <a href="#cap-example-european-put-contract"><strong>example-european-put-contract</strong></a> | 
    <a href="#cap-example-heston-model-EM-discrete"><strong>example-heston-model-EM-discrete</strong></a> | 
-   <a href="#cap-example-lsq-single-index-model"><strong>example-lsq-single-index-model</strong></a> | 
    <a href="#cap-example-net-present-value-discrete"><strong>example-net-present-value-discrete</strong></a> | 
    <a href="#cap-example-normal-residual-model"><strong>example-normal-residual-model</strong></a> | 
    <a href="#cap-example-treaury-bond-price"><strong>example-treaury-bond-price</strong></a> | 
@@ -460,13 +456,14 @@ title="Open an issue"
    <a href="#cap-obs-single-index-model-p-return"><strong>obs-single-index-model-p-return</strong></a> | 
    <a href="#cap-obs-time-value-of-money"><strong>obs-time-value-of-money</strong></a> | 
    <a href="#cap-observation-19"><strong>observation-19</strong></a> | 
-   <a href="#cap-observation-2"><strong>observation-2</strong></a> | 
+   <a href="#cap-observation-3"><strong>observation-3</strong></a> | 
    <a href="#cap-observation-4"><strong>observation-4</strong></a> | 
    <a href="#cap-observation-7"><strong>observation-7</strong></a> | 
    <a href="#cap-pop-amd-strange-expiration"><strong>pop-amd-strange-expiration</strong></a> | 
    <a href="#cap-put-contract-expiration"><strong>put-contract-expiration</strong></a> | 
    <a href="#cap-remark-0"><strong>remark-0</strong></a> | 
    <a href="#cap-remark-market-interest-rate"><strong>remark-market-interest-rate</strong></a> | 
+   <a href="#cap-remark-markowitz-in-words"><strong>remark-markowitz-in-words</strong></a> | 
    <a href="#cap-scalar-gbm-soln"><strong>scalar-gbm-soln</strong></a> | 
    <a href="#cap-straddle-profit-expiration"><strong>straddle-profit-expiration</strong></a> | 
    <a href="#cap-strangle-profit-expiration"><strong>strangle-profit-expiration</strong></a> | 
@@ -480,7 +477,7 @@ title="Open an issue"
      <tr>
        <td></td>
        <td>
-       <a href="chapter-3-dir/Single-Index-Models.html#algo-expected-boltzmann-return"><code class="xref">algo-expected-boltzmann-return</code></a> <em>(chapter-3-dir/Single-Index-Models)</em></td><td>
+       <a href="chapter-3-dir/markowitz.html#algo-expected-boltzmann-return"><code class="xref">algo-expected-boltzmann-return</code></a> <em>(chapter-3-dir/markowitz)</em></td><td>
        <em>algorithm</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-algo-unbiased-historic-volatility"><td></td><td>
@@ -488,7 +485,7 @@ title="Open an issue"
      <tr>
        <td></td>
        <td>
-       <a href="chapter-3-dir/Single-Index-Models.html#algo-unbiased-historic-volatility"><code class="xref">algo-unbiased-historic-volatility</code></a> <em>(chapter-3-dir/Single-Index-Models)</em></td><td>
+       <a href="chapter-3-dir/markowitz.html#algo-unbiased-historic-volatility"><code class="xref">algo-unbiased-historic-volatility</code></a> <em>(chapter-3-dir/markowitz)</em></td><td>
        <em>algorithm</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-axiom-probability"><td></td><td>
@@ -608,7 +605,7 @@ title="Open an issue"
      <tr>
        <td></td>
        <td>
-       <a href="chapter-3-dir/Single-Index-Models.html#defn-bwer"><code class="xref">defn-bwer</code></a> <em>(chapter-3-dir/Single-Index-Models)</em></td><td>
+       <a href="chapter-3-dir/markowitz.html#defn-bwer"><code class="xref">defn-bwer</code></a> <em>(chapter-3-dir/markowitz)</em></td><td>
        <em>definition</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-defn-complement"><td></td><td>
@@ -704,7 +701,15 @@ title="Open an issue"
      <tr>
        <td></td>
        <td>
-       <a href="chapter-3-dir/Single-Index-Models.html#defn-log-return"><code class="xref">defn-log-return</code></a> <em>(chapter-3-dir/Single-Index-Models)</em></td><td>
+       <a href="chapter-3-dir/markowitz.html#defn-log-return"><code class="xref">defn-log-return</code></a> <em>(chapter-3-dir/markowitz)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-defn-markowitz-risky-assets-only"><td></td><td>
+       <strong>defn-markowitz-risky-assets-only</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="chapter-3-dir/markowitz.html#defn-markowitz-risky-assets-only"><code class="xref">defn-markowitz-risky-assets-only</code></a> <em>(chapter-3-dir/markowitz)</em></td><td>
        <em>definition</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-defn-moments"><td></td><td>
@@ -744,7 +749,7 @@ title="Open an issue"
      <tr>
        <td></td>
        <td>
-       <a href="chapter-3-dir/Single-Index-Models.html#defn-percentage-return"><code class="xref">defn-percentage-return</code></a> <em>(chapter-3-dir/Single-Index-Models)</em></td><td>
+       <a href="chapter-3-dir/markowitz.html#defn-percentage-return"><code class="xref">defn-percentage-return</code></a> <em>(chapter-3-dir/markowitz)</em></td><td>
        <em>definition</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-defn-pmf"><td></td><td>
@@ -803,6 +808,14 @@ title="Open an issue"
        <a href="chapter-3-dir/markowitz.html#defn-portfolio-variance"><code class="xref">defn-portfolio-variance</code></a> <em>(chapter-3-dir/markowitz)</em></td><td>
        <em>definition</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-defn-risky-risk-free-markowitz"><td></td><td>
+       <strong>defn-risky-risk-free-markowitz</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="chapter-3-dir/markowitz.html#defn-risky-risk-free-markowitz"><code class="xref">defn-risky-risk-free-markowitz</code></a> <em>(chapter-3-dir/markowitz)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-defn-sets"><td></td><td>
        <strong>defn-sets</strong></td><td></td></tr>
      <tr>
@@ -816,7 +829,7 @@ title="Open an issue"
      <tr>
        <td></td>
        <td>
-       <a href="chapter-3-dir/Single-Index-Models.html#defn-single-index-model-standard"><code class="xref">defn-single-index-model-standard</code></a> <em>(chapter-3-dir/Single-Index-Models)</em></td><td>
+       <a href="chapter-3-dir/markowitz.html#defn-single-index-model-standard"><code class="xref">defn-single-index-model-standard</code></a> <em>(chapter-3-dir/markowitz)</em></td><td>
        <em>definition</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-defn-subsets"><td></td><td>
@@ -848,7 +861,7 @@ title="Open an issue"
      <tr>
        <td></td>
        <td>
-       <a href="chapter-3-dir/Single-Index-Models.html#defn-volatility"><code class="xref">defn-volatility</code></a> <em>(chapter-3-dir/Single-Index-Models)</em></td><td>
+       <a href="chapter-3-dir/markowitz.html#defn-volatility"><code class="xref">defn-volatility</code></a> <em>(chapter-3-dir/markowitz)</em></td><td>
        <em>definition</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-defn-wiener-process"><td></td><td>
@@ -968,7 +981,7 @@ title="Open an issue"
      <tr>
        <td></td>
        <td>
-       <a href="chapter-3-dir/Single-Index-Models.html#example-average-cost"><code class="xref">example-average-cost</code></a> <em>(chapter-3-dir/Single-Index-Models)</em></td><td>
+       <a href="chapter-3-dir/markowitz.html#example-average-cost"><code class="xref">example-average-cost</code></a> <em>(chapter-3-dir/markowitz)</em></td><td>
        <em>example</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-example-delta-hedge-two-cases"><td></td><td>
@@ -984,7 +997,7 @@ title="Open an issue"
      <tr>
        <td></td>
        <td>
-       <a href="chapter-3-dir/Single-Index-Models.html#example-dmi-single-index-model"><code class="xref">example-dmi-single-index-model</code></a> <em>(chapter-3-dir/Single-Index-Models)</em></td><td>
+       <a href="chapter-3-dir/markowitz.html#example-dmi-single-index-model"><code class="xref">example-dmi-single-index-model</code></a> <em>(chapter-3-dir/markowitz)</em></td><td>
        <em>example</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-example-european-call-contract"><td></td><td>
@@ -1011,14 +1024,6 @@ title="Open an issue"
        <a href="chapter-2-dir/stochastic-differential-equations.html#example-heston-model-EM-discrete"><code class="xref">example-heston-model-EM-discrete</code></a> <em>(chapter-2-dir/stochastic-differential-equations)</em></td><td>
        <em>example</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
-     <tr class="cap" id="cap-example-lsq-single-index-model"><td></td><td>
-       <strong>example-lsq-single-index-model</strong></td><td></td></tr>
-     <tr>
-       <td></td>
-       <td>
-       <a href="chapter-3-dir/Single-Index-Models.html#example-lsq-single-index-model"><code class="xref">example-lsq-single-index-model</code></a> <em>(chapter-3-dir/Single-Index-Models)</em></td><td>
-       <em>example</em></td></tr>
-     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-example-net-present-value-discrete"><td></td><td>
        <strong>example-net-present-value-discrete</strong></td><td></td></tr>
      <tr>
@@ -1032,7 +1037,7 @@ title="Open an issue"
      <tr>
        <td></td>
        <td>
-       <a href="chapter-3-dir/Single-Index-Models.html#example-normal-residual-model"><code class="xref">example-normal-residual-model</code></a> <em>(chapter-3-dir/Single-Index-Models)</em></td><td>
+       <a href="chapter-3-dir/markowitz.html#example-normal-residual-model"><code class="xref">example-normal-residual-model</code></a> <em>(chapter-3-dir/markowitz)</em></td><td>
        <em>example</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-example-treaury-bond-price"><td></td><td>
@@ -1080,7 +1085,7 @@ title="Open an issue"
      <tr>
        <td></td>
        <td>
-       <a href="chapter-3-dir/Single-Index-Models.html#obs-beta-risk-measure"><code class="xref">obs-beta-risk-measure</code></a> <em>(chapter-3-dir/Single-Index-Models)</em></td><td>
+       <a href="chapter-3-dir/markowitz.html#obs-beta-risk-measure"><code class="xref">obs-beta-risk-measure</code></a> <em>(chapter-3-dir/markowitz)</em></td><td>
        <em>observation</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-obs-single-index-model-covariance"><td></td><td>
@@ -1115,12 +1120,12 @@ title="Open an issue"
        <a href="chapter-3-dir/contracts.html#observation-19"><code class="xref">observation-19</code></a> <em>(chapter-3-dir/contracts)</em></td><td>
        <em>observation</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
-     <tr class="cap" id="cap-observation-2"><td></td><td>
-       <strong>observation-2</strong></td><td></td></tr>
+     <tr class="cap" id="cap-observation-3"><td></td><td>
+       <strong>observation-3</strong></td><td></td></tr>
      <tr>
        <td></td>
        <td>
-       <a href="chapter-3-dir/markowitz.html#observation-2"><code class="xref">observation-2</code></a> <em>(chapter-3-dir/markowitz)</em></td><td>
+       <a href="chapter-3-dir/markowitz.html#observation-3"><code class="xref">observation-3</code></a> <em>(chapter-3-dir/markowitz)</em></td><td>
        <em>observation</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-observation-4"><td></td><td>
@@ -1169,6 +1174,14 @@ title="Open an issue"
        <td></td>
        <td>
        <a href="chapter-3-dir/bonds.html#remark-market-interest-rate"><code class="xref">remark-market-interest-rate</code></a> <em>(chapter-3-dir/bonds)</em></td><td>
+       <em>remark</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-remark-markowitz-in-words"><td></td><td>
+       <strong>remark-markowitz-in-words</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="chapter-3-dir/markowitz.html#remark-markowitz-in-words"><code class="xref">remark-markowitz-in-words</code></a> <em>(chapter-3-dir/markowitz)</em></td><td>
        <em>remark</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-scalar-gbm-soln"><td></td><td>

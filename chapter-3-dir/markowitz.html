@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Modern Portfolio Theory &#8212; CHEME 5660</title>
+    <title>Equity, Debt and Modern Portfolio Theory &#8212; CHEME 5660</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -215,18 +215,13 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="Single-Index-Models.html">
-     Equity Securities
-    </a>
-   </li>
-   <li class="toctree-l2">
     <a class="reference internal" href="contracts.html">
      Derivative Securities
     </a>
    </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     Modern Portfolio Theory
+     Equity, Debt and Modern Portfolio Theory
     </a>
    </li>
   </ul>
@@ -429,55 +424,117 @@ title="Print to PDF"
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#portfolio-risk-and-reward">
-     Portfolio Risk and Reward
+    <a class="reference internal nav-link" href="#risky-assets-only">
+     Risky assets only
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#asset-correlation-in-a-portfolio">
-       Asset correlation in a portfolio
+      <a class="reference internal nav-link" href="#stocks">
+       Stocks
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#examples">
-       Examples
+      <a class="reference internal nav-link" href="#markowitz-allocation-for-risk-assets-only">
+       Markowitz allocation for risk assets only
       </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#portfolios-of-risky-and-risk-free-assets">
+     Portfolios of risky and risk-free assets
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#data-driven-markowitz-allocation">
+   Data-Driven Markowitz Allocation
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#fractional-return">
+     Fractional return
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#logarithmic-return">
+     Logarithmic return
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#expected-excess-returns-from-data">
+     Expected Excess Returns from data
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#volatility-and-the-covariance-matrix">
+     Volatility and the Covariance Matrix
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example">
+     Example
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#model-driven-markowitz-allocation">
+   Model-Driven Markowitz Allocation
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#single-index-models">
+     Single Index Models
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#estimating-single-index-models-from-data">
+       Estimating Single Index Models from Data
+      </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#phase-1-estimate-alpha-i-beta-i">
+         Phase 1: Estimate
+         <span class="math notranslate nohighlight">
+          \((\alpha_{i},\beta_{i})\)
+         </span>
+         .
+        </a>
+        <ul class="nav section-nav flex-column">
+         <li class="toc-h6 nav-item toc-entry">
+          <a class="reference internal nav-link" href="#direct-matrix-inversion">
+           Direct Matrix Inversion
+          </a>
+         </li>
+        </ul>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#phase-2-identification-of-the-residual-model">
+         Phase 2: Identification of the residual model
+        </a>
+       </li>
+      </ul>
      </li>
     </ul>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#solution-markowitz-portfolio-allocation">
-   Solution Markowitz Portfolio Allocation
+  <a class="reference internal nav-link" href="#buy-and-hold-strategy">
+   Buy and Hold Strategy
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#risky-assets-only">
-     Risky assets only
+    <a class="reference internal nav-link" href="#portfolio-return-using-single-index-models">
+     Portfolio Return using Single Index Models
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#data-driven-risky-portfolios">
-     Data-driven risky portfolios
+    <a class="reference internal nav-link" href="#portfolio-variance-using-single-index-models">
+     Portfolio Variance using Single Index Models
     </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#single-index-model-portfolios">
-     Single-index model portfolios
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#portfolio-return-using-single-index-models">
-       Portfolio Return using Single Index Models
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#portfolio-variance-using-single-index-models">
-       Portfolio Variance using Single Index Models
-      </a>
-     </li>
-    </ul>
    </li>
   </ul>
  </li>
@@ -500,7 +557,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Modern Portfolio Theory</h1>
+                <h1>Equity, Debt and Modern Portfolio Theory</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -521,55 +578,117 @@ title="Print to PDF"
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#portfolio-risk-and-reward">
-     Portfolio Risk and Reward
+    <a class="reference internal nav-link" href="#risky-assets-only">
+     Risky assets only
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#asset-correlation-in-a-portfolio">
-       Asset correlation in a portfolio
+      <a class="reference internal nav-link" href="#stocks">
+       Stocks
       </a>
      </li>
      <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#examples">
-       Examples
+      <a class="reference internal nav-link" href="#markowitz-allocation-for-risk-assets-only">
+       Markowitz allocation for risk assets only
       </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#portfolios-of-risky-and-risk-free-assets">
+     Portfolios of risky and risk-free assets
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#data-driven-markowitz-allocation">
+   Data-Driven Markowitz Allocation
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#fractional-return">
+     Fractional return
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#logarithmic-return">
+     Logarithmic return
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#expected-excess-returns-from-data">
+     Expected Excess Returns from data
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#volatility-and-the-covariance-matrix">
+     Volatility and the Covariance Matrix
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#example">
+     Example
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#model-driven-markowitz-allocation">
+   Model-Driven Markowitz Allocation
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#single-index-models">
+     Single Index Models
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#estimating-single-index-models-from-data">
+       Estimating Single Index Models from Data
+      </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#phase-1-estimate-alpha-i-beta-i">
+         Phase 1: Estimate
+         <span class="math notranslate nohighlight">
+          \((\alpha_{i},\beta_{i})\)
+         </span>
+         .
+        </a>
+        <ul class="nav section-nav flex-column">
+         <li class="toc-h6 nav-item toc-entry">
+          <a class="reference internal nav-link" href="#direct-matrix-inversion">
+           Direct Matrix Inversion
+          </a>
+         </li>
+        </ul>
+       </li>
+       <li class="toc-h5 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#phase-2-identification-of-the-residual-model">
+         Phase 2: Identification of the residual model
+        </a>
+       </li>
+      </ul>
      </li>
     </ul>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#solution-markowitz-portfolio-allocation">
-   Solution Markowitz Portfolio Allocation
+  <a class="reference internal nav-link" href="#buy-and-hold-strategy">
+   Buy and Hold Strategy
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#risky-assets-only">
-     Risky assets only
+    <a class="reference internal nav-link" href="#portfolio-return-using-single-index-models">
+     Portfolio Return using Single Index Models
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#data-driven-risky-portfolios">
-     Data-driven risky portfolios
+    <a class="reference internal nav-link" href="#portfolio-variance-using-single-index-models">
+     Portfolio Variance using Single Index Models
     </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#single-index-model-portfolios">
-     Single-index model portfolios
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#portfolio-return-using-single-index-models">
-       Portfolio Return using Single Index Models
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#portfolio-variance-using-single-index-models">
-       Portfolio Variance using Single Index Models
-      </a>
-     </li>
-    </ul>
    </li>
   </ul>
  </li>
@@ -593,17 +712,17 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="modern-portfolio-theory">
-<h1>Modern Portfolio Theory<a class="headerlink" href="#modern-portfolio-theory" title="Permalink to this headline">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="equity-debt-and-modern-portfolio-theory">
+<h1>Equity, Debt and Modern Portfolio Theory<a class="headerlink" href="#equity-debt-and-modern-portfolio-theory" title="Permalink to this headline">#</a></h1>
 <section id="introduction">
 <h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">#</a></h2>
 <p>Modern portfolio theory (MPT) is a method for selecting a collection of assets, e.g., stocks or bonds, to maximize the overall reward of the investor within an acceptable level of risk to the investor. Harry Markowitz, who developed the mathematical foundation of MPT <span id="id1">[<a class="reference internal" href="../References.html#id17" title="Harry Markowitz. Portfolio selection. The Journal of Finance, 7(1):77–91, 1952. URL: http://www.jstor.org/stable/2975974 (visited on 2022-04-12).">Markowitz, 1952</a>]</span>, was later awarded a <a class="reference external" href="https://www.nobelprize.org/prizes/economic-sciences/1990/markowitz/facts/">Nobel Prize for his work in 1990</a>.</p>
 <p>The central theme of MPT is the balance between risk and reward, where the reward is measured as the <a class="reference external" href="https://www.investopedia.com/terms/r/return.asp">expected return</a> of a basket of assets (called a portfolio). In contrast, the risk is calculated as the variance of the logarithmic return of the portfolio. Thus, the objective of MPT is to balance the composition of the portfolio such that an investor obtains a desired expected return while minimizing the variance (risk). For a detailed discussion of MPT, see Part II (chapters 5 - 8) of Bodie, Kane, and Marcus <span id="id2">[<a class="reference internal" href="../References.html#id7" title="Zvi Bodie, Alex Kane, and Alan J Marcus. Investments. The McGraw-Hill/Irwin series in finance, insurance and real estate. McGraw-Hill/Irwin, New York, 9th ed edition, 2011. ISBN 9780073530703 (alk. paper).">Bodie <em>et al.</em>, 2011</a>]</span>.</p>
-<p>In this chapter:</p>
+<p>In this chapter, we will:</p>
 <ul class="simple">
-<li><p>We introduce <a class="reference internal" href="#content-references-markowitz"><span class="std std-ref">Markowitz Portfolio Allocation</span></a> for a portfolio of risky and risk-free assets</p></li>
-<li><p>We introduce <a class="reference internal" href="#content-references-markowitz-solution"><span class="std std-ref">Solution Markowitz Portfolio Allocation</span></a> and</p></li>
-<li><p>We we explore the question  <a class="reference internal" href="#content-references-markowitz-solution-test"><span class="std std-ref">Does Markowitz Portfolio Allocation work?</span></a></p></li>
+<li><p>Introduce <a class="reference internal" href="#content-references-markowitz"><span class="std std-ref">Markowitz Portfolio Allocation</span></a> for a portfolio of risky and risk-free assets</p></li>
+<li><p>Introduce <a class="reference internal" href="#content-references-markowitz-solution"><span class="std std-ref">Data-Driven Markowitz Allocation</span></a> and</p></li>
+<li><p>Explore the question <a class="reference internal" href="#content-references-markowitz-solution-test"><span class="std std-ref">Does Markowitz Portfolio Allocation work?</span></a></p></li>
 </ul>
 <hr class="docutils" />
 </section>
@@ -611,28 +730,32 @@ title="Print to PDF"
 <span id="content-references-markowitz"></span><h2>Markowitz Portfolio Allocation<a class="headerlink" href="#markowitz-portfolio-allocation" title="Permalink to this headline">#</a></h2>
 <p>Markowitz portfolio allocation assumes that investors are risk-averse and rational.
 Thus, if an investor chooses between two portfolios that offer <em>the same expected return</em>, a rational risk-averse investor will choose the less risky portfolio. Further, a rational risk-averse investor will incur increased risk only if compensated for this risk by a higher expected return, the so-called high-risk, high-reward paradigm. On the other hand, an investor who wants higher expected returns must accept more risk. However, the acceptable trade-off between risk and reward will differ for each investor; what you may find as an acceptable risk versus reward is not the same for everyone. Thus, a rational risk-averse investor will not invest in a portfolio if a second portfolio exists with a more favorable risk-expected return profile.</p>
-<section id="portfolio-risk-and-reward">
-<h3>Portfolio Risk and Reward<a class="headerlink" href="#portfolio-risk-and-reward" title="Permalink to this headline">#</a></h3>
-<p>To make these ideas more concrete, let’s develop expressions for the risk and reward of a
-portfolio. Denote the set of assets in a portfolio as <span class="math notranslate nohighlight">\(\mathcal{P}\)</span>; where <span class="math notranslate nohighlight">\(\vert\mathcal{P}\vert\)</span> denotes the number of assets in the portfolio set. Then, the expected return (reward) of the portfolio <span class="math notranslate nohighlight">\(\mathcal{P}\)</span> is defined as (<a class="reference internal" href="#defn-portfolio-return">Definition 42</a>):</p>
+<div class="proof remark admonition" id="remark-markowitz-in-words">
+<p class="admonition-title"><span class="caption-number">Remark 3 </span> (Markowitz in Words)</p>
+<section class="remark-content" id="proof-content">
+<p>Suppose we have a set of assets <span class="math notranslate nohighlight">\(\mathcal{A}\)</span> composed of risky, e.g., equities and equity derivatives, and risk-free assets, e.g., treasury debt securities. The Markowitz portfolio allocation problem estimates the weight <span class="math notranslate nohighlight">\(\omega_{a}\)</span> of asset <span class="math notranslate nohighlight">\(a\)</span> for <span class="math notranslate nohighlight">\(\forall{a}\in\omega_{a}\)</span> that minimizes the risk for a user-specified return.</p>
+</section>
+</div><p>To make these ideas more concrete, let’s develop expressions for the risk and reward of a
+portfolio. Denote the set of assets in a portfolio as <span class="math notranslate nohighlight">\(\mathcal{P}\)</span>; where <span class="math notranslate nohighlight">\(\vert\mathcal{P}\vert\)</span> denotes the number of assets in the portfolio set. Then, the expected return (reward) of the portfolio <span class="math notranslate nohighlight">\(\mathcal{P}\)</span> is defined as (<a class="reference internal" href="#defn-portfolio-return">Definition 37</a>):</p>
 <div class="proof definition admonition" id="defn-portfolio-return">
-<p class="admonition-title"><span class="caption-number">Definition 42 </span> (Expected Portfolio Return)</p>
+<p class="admonition-title"><span class="caption-number">Definition 37 </span> (Expected Portfolio Return)</p>
 <section class="definition-content" id="proof-content">
-<p>Denote the return of asset <span class="math notranslate nohighlight">\(i\)</span> in portfolio <span class="math notranslate nohighlight">\(\mathcal{P}\)</span> on some time basis <span class="math notranslate nohighlight">\(\mathcal{B}\)</span> as <span class="math notranslate nohighlight">\(r_{i}\)</span>. Then, the expected return of portfolio <span class="math notranslate nohighlight">\(\mathcal{P}\)</span> denoted by
+<p>Suppose we have a set of assets represented as <span class="math notranslate nohighlight">\(\mathcal{A}\)</span>. We can arrange these assets into a portfolio <span class="math notranslate nohighlight">\(\mathcal{P}\)</span>. Denote the return of asset <span class="math notranslate nohighlight">\(i\)</span> in portfolio <span class="math notranslate nohighlight">\(\mathcal{P}\)</span> on some time basis <span class="math notranslate nohighlight">\(\mathcal{B}\)</span> as <span class="math notranslate nohighlight">\(r_{i}\)</span>.</p>
+<p>Then, the expected return of portfolio <span class="math notranslate nohighlight">\(\mathcal{P}\)</span> denoted by
 <span class="math notranslate nohighlight">\(\mathbb{E}\left(r_{\mathcal{P}}\right)\)</span> is:</p>
 <div class="math notranslate nohighlight" id="equation-eqn-expected-p-rerturn">
-<span class="eqno">(63)<a class="headerlink" href="#equation-eqn-expected-p-rerturn" title="Permalink to this equation">#</a></span>\[\mathbb{E}\left(r_{\mathcal{P}}\right) = \sum_{i\in\mathcal{P}}\omega_{i}\mathbb{E}\left(r_{i}\right)\]</div>
+<span class="eqno">(54)<a class="headerlink" href="#equation-eqn-expected-p-rerturn" title="Permalink to this equation">#</a></span>\[\mathbb{E}\left(r_{\mathcal{P}}\right) = \sum_{i\in\mathcal{P}}\omega_{i}\mathbb{E}\left(r_{i}\right)\]</div>
 <p>where <span class="math notranslate nohighlight">\(w_{i}\)</span> denotes the fraction of asset <span class="math notranslate nohighlight">\(i\)</span> in the portfolio <span class="math notranslate nohighlight">\(\mathcal{P}\)</span>, and
 <span class="math notranslate nohighlight">\(\mathbb{E}\left(r_{i}\right)\)</span> denotes the expected return of asset <span class="math notranslate nohighlight">\(i\)</span> on time basis <span class="math notranslate nohighlight">\(\mathcal{B}\)</span>.</p>
 </section>
-</div><p>while the variance (risk) of the portfolio is defined as (<a class="reference internal" href="#defn-portfolio-variance">Definition 43</a>):</p>
+</div><p>while the variance (risk) of the portfolio is defined as (<a class="reference internal" href="#defn-portfolio-variance">Definition 38</a>):</p>
 <div class="proof definition admonition" id="defn-portfolio-variance">
-<p class="admonition-title"><span class="caption-number">Definition 43 </span> (Portfolio Variance)</p>
+<p class="admonition-title"><span class="caption-number">Definition 38 </span> (Portfolio Variance)</p>
 <section class="definition-content" id="proof-content">
 <p>Denote the return of asset <span class="math notranslate nohighlight">\(i\)</span> in portfolio <span class="math notranslate nohighlight">\(\mathcal{P}\)</span> for some time basis <span class="math notranslate nohighlight">\(\mathcal{B}\)</span>
 as <span class="math notranslate nohighlight">\(r_{i}\)</span>. Then, the variance of a portfolio <span class="math notranslate nohighlight">\(\mathcal{P}\)</span> is given by:</p>
 <div class="math notranslate nohighlight" id="equation-eqn-p-var-general">
-<span class="eqno">(64)<a class="headerlink" href="#equation-eqn-p-var-general" title="Permalink to this equation">#</a></span>\[\sigma_{\mathcal{P}}^2 = 
+<span class="eqno">(55)<a class="headerlink" href="#equation-eqn-p-var-general" title="Permalink to this equation">#</a></span>\[\sigma_{\mathcal{P}}^2 = 
 \sum_{i\in\mathcal{P}}\sum_{j\in\mathcal{P}}w_{i}w_{j}
 \text{cov}\left(r_{i},r_{j}\right)\]</div>
 <p>where <span class="math notranslate nohighlight">\(w_{\star}\)</span> denotes the fraction of asset <span class="math notranslate nohighlight">\(\star\)</span> in the portfolio <span class="math notranslate nohighlight">\(\mathcal{P}\)</span>, and
@@ -644,9 +767,10 @@ The <span class="math notranslate nohighlight">\(\text{cov}\left(r_{i},r_{j}\rig
 <span class="math notranslate nohighlight">\(\rho_{ij}\)</span> denotes the correlation between assets <span class="math notranslate nohighlight">\(i\)</span> and <span class="math notranslate nohighlight">\(j\)</span>.</p>
 </section>
 </div><p>Now that we know how to compute a portfolio’s risk and expected reward let’s think about what we can control as a financial engineer. Of course, we cannot control the return or volatility of asset <span class="math notranslate nohighlight">\(i\)</span>; the market drives those. However, we can control which assets we include in the portfolio and the relative amount of each of these assets. Thus, how we choose which assets to include and their associated weights give insight into the type of investor we are. If we are a Markowitz investor, we minimize the risk required to obtain a specified reward.</p>
-<section id="asset-correlation-in-a-portfolio">
-<h4>Asset correlation in a portfolio<a class="headerlink" href="#asset-correlation-in-a-portfolio" title="Permalink to this headline">#</a></h4>
-<p>An exciting feature of the variance of the portfolio return (<a class="reference internal" href="#defn-portfolio-variance">Definition 43</a>) is the dependence on the <a class="reference external" href="https://en.wikipedia.org/wiki/Correlation">correlation</a> denoted by <span class="math notranslate nohighlight">\(\rho_{ij}\)</span> between assets <span class="math notranslate nohighlight">\(i\)</span> and <span class="math notranslate nohighlight">\(j\)</span>. To see why this is exciting, let’s consider a portfolio <span class="math notranslate nohighlight">\(\mathcal{P}\)</span> consisting of two risky assets; <span class="math notranslate nohighlight">\(\vert\mathcal{P}\vert\)</span> = 2. Then, the variance of the portfolio returns <span class="math notranslate nohighlight">\(\sigma_{\mathcal{P}}^{2}\)</span> is given by:</p>
+<div class="proof observation admonition" id="observation-3">
+<p class="admonition-title"><span class="caption-number">Observation 6 </span> (The role of correlation in <span class="math notranslate nohighlight">\(\mathcal{P}\)</span>)</p>
+<section class="observation-content" id="proof-content">
+<p>An exciting feature of the variance of the portfolio return (<a class="reference internal" href="#defn-portfolio-variance">Definition 38</a>) is the dependence on the <a class="reference external" href="https://en.wikipedia.org/wiki/Correlation">correlation</a> denoted by <span class="math notranslate nohighlight">\(\rho_{ij}\)</span> between assets <span class="math notranslate nohighlight">\(i\)</span> and <span class="math notranslate nohighlight">\(j\)</span>. To see why this is exciting, let’s consider a portfolio <span class="math notranslate nohighlight">\(\mathcal{P}\)</span> consisting of two risky assets; <span class="math notranslate nohighlight">\(\vert\mathcal{P}\vert\)</span> = 2. Then, the variance of the portfolio returns <span class="math notranslate nohighlight">\(\sigma_{\mathcal{P}}^{2}\)</span> is given by:</p>
 <div class="math notranslate nohighlight">
 \[\sigma_{\mathcal{P}}^2 = w_{1}^{2}\sigma_{1}^{2}+w_{2}^{2}\sigma_{2}^{2}+2w_{1}w_{2}\sigma_{1}
 \sigma_{2}\rho_{12}\]</div>
@@ -654,9 +778,6 @@ The <span class="math notranslate nohighlight">\(\text{cov}\left(r_{i},r_{j}\rig
 <span class="math notranslate nohighlight">\(\sigma_{\star}\)</span> denotes the standard deviation of the return of asset <span class="math notranslate nohighlight">\(\star\)</span>.
 Thus, we can influence the overall portfolio variance by choosing the assets
 based upon their correlation.</p>
-<div class="proof observation admonition" id="observation-2">
-<p class="admonition-title"><span class="caption-number">Observation 7 </span> (The role of correlation in <span class="math notranslate nohighlight">\(\mathcal{P}\)</span>)</p>
-<section class="observation-content" id="proof-content">
 <ul class="simple">
 <li><p><strong>Positive correlation</strong>: For two assets that are positively correlated <span class="math notranslate nohighlight">\(p_{12}&gt;{0}\)</span>,
 the variance of the return of the portfolio <span class="math notranslate nohighlight">\(\sigma_{\mathcal{P}}^{2}\)</span> is <em>greater</em> than to the variance of the assets alone (assuming <span class="math notranslate nohighlight">\(w_{\star}\geq{0}\)</span>).</p></li>
@@ -665,21 +786,25 @@ the variance of the return of the portfolio <span class="math notranslate nohigh
 <li><p><strong>Negative correlation</strong>: For two assets that are negatively correlated <span class="math notranslate nohighlight">\(p_{12}&lt;0\)</span>, the variance of the return of the portfolio <span class="math notranslate nohighlight">\(\sigma_{\mathcal{P}}^{2}\)</span> is <em>less</em> than to the variance of the assets alone (assuming <span class="math notranslate nohighlight">\(w_{\star}\geq{0}\)</span>).</p></li>
 </ul>
 </section>
-</div><p>Further, the correlation does not appear in the expected portfolio return (<a class="reference internal" href="#defn-portfolio-return">Definition 42</a>); thus, by carefully selecting assets with low correlation, the overall risk of a portfolio can be reduced without impacting the return (all else being equal).</p>
-</section>
-<section id="examples">
-<h4>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">#</a></h4>
-<ul class="simple">
-<li><p>Example: Computation of the variance of a portofilio for different asset combinations</p></li>
-</ul>
-</section>
-</section>
-</section>
-<section id="solution-markowitz-portfolio-allocation">
-<span id="content-references-markowitz-solution"></span><h2>Solution Markowitz Portfolio Allocation<a class="headerlink" href="#solution-markowitz-portfolio-allocation" title="Permalink to this headline">#</a></h2>
-<p>The objective of Markowitz portfolio allocation problem is to estimate the weights <span class="math notranslate nohighlight">\(w=\left(w_{1},w_{2},\dots\right)^{T}\)</span> of the assets in portfolio <span class="math notranslate nohighlight">\(\mathcal{P}\)</span>  such that overall variance of the portfolio is minimized, for a specified return, subject to some constraints on <span class="math notranslate nohighlight">\(w\)</span>.</p>
+</div><p>Further, the correlation does not appear in the expected portfolio return (<a class="reference internal" href="#defn-portfolio-return">Definition 37</a>); thus, by carefully selecting assets with low correlation, the overall risk of a portfolio can be reduced without impacting the return (all else being equal).</p>
 <section id="risky-assets-only">
 <h3>Risky assets only<a class="headerlink" href="#risky-assets-only" title="Permalink to this headline">#</a></h3>
+<p>In the risky asset only case, the asset set <span class="math notranslate nohighlight">\(\mathcal{A}\)</span> is composed only of shares of common stock.</p>
+<section id="stocks">
+<h4>Stocks<a class="headerlink" href="#stocks" title="Permalink to this headline">#</a></h4>
+<p>Common stocks, also known as equity securities or equities, represent ownership shares in a corporation. Each share of common stock entitles its owner to one vote on any matters of corporate governance that are put to the vote at the corporation’s annual meeting and a share in the financial benefits of ownership. The corporation is controlled by a board of directors elected by the shareholders. The board meets a few times per year and selects the management team that runs the corporation daily. Managers have the authority to make most business decisions without the board’s specific approval. The board’s mandate is to oversee the management to ensure that it acts in the best interests of shareholders.</p>
+<p>The two most important characteristics of common stock as an investment are its residual claim and limited liability features:</p>
+<ul class="simple">
+<li><p>Residual claim means that stockholders are the last in line of all those who have a claim on the assets and income of the corporation. In liquidating the firm’s assets, the shareholders have a claim to what is left after all other claimants, such as the tax authorities, employees, suppliers, bondholders, and other creditors, have been paid. For a firm not in liquidation, shareholders have a claim to the part of operating income left over after interest and taxes have been paid. Management can either pay this residual as cash dividends to shareholders or reinvest it in the business to increase the value of the shares.</p></li>
+<li><p>Limited liability means the most shareholders can lose in the event of the corporation’s failure is their original investment. Unlike owners of unincorporated businesses, whose creditors can lay claim to the personal assets of the owner (house, car, furniture), corporate shareholders may, at worst, have worthless stock. They are not personally liable for the firm’s obligations.</p></li>
+</ul>
+</section>
+<section id="markowitz-allocation-for-risk-assets-only">
+<h4>Markowitz allocation for risk assets only<a class="headerlink" href="#markowitz-allocation-for-risk-assets-only" title="Permalink to this headline">#</a></h4>
+<p>The Markowitz allocation problem for a portfolio of risky assets is defined in <a class="reference internal" href="#defn-markowitz-risky-assets-only">Definition 39</a>.</p>
+<div class="proof definition admonition" id="defn-markowitz-risky-assets-only">
+<p class="admonition-title"><span class="caption-number">Definition 39 </span> (Risky Markowitz Portfolio)</p>
+<section class="definition-content" id="proof-content">
 <p>The Markowitz allocation problem for a portfolio <span class="math notranslate nohighlight">\(\mathcal{P}\)</span> composed of <strong>only</strong> risky assets is the <a class="reference external" href="https://en.wikipedia.org/wiki/Quadratic_programming">quadratic program</a>:</p>
 <div class="math notranslate nohighlight">
 \[\min_{w} \sigma^{2}_{\mathcal{P}}\left(w\right)\]</div>
@@ -692,29 +817,382 @@ the variance of the return of the portfolio <span class="math notranslate nohigh
 w_{i}&amp;\geq&amp;{0}\qquad{\forall{i}\in\mathcal{P}}
 \end{eqnarray}
 \end{split}\]</div>
-<p>where <span class="math notranslate nohighlight">\(w\)</span> denotes the vector of weights of the assets in portfolio <span class="math notranslate nohighlight">\(\mathcal{P}\)</span>, <span class="math notranslate nohighlight">\(\sigma^{2}_{\mathcal{P}}\left(w\right)\)</span> represents the portfolio variance; the portfolio variance can re-written as <span class="math notranslate nohighlight">\(\sigma^{2}_{\mathcal{P}}\left(w\right) = w^{T}\Sigma{w}\)</span>  where <span class="math notranslate nohighlight">\(\Sigma\)</span> is the <a class="reference external" href="https://en.wikipedia.org/wiki/Covariance_matrix">covariance matrix</a>. The quantity <span class="math notranslate nohighlight">\(\mathbb{E}(r_{\mathcal{P}})\)</span> denotes the expected return (or excess return) of the portfolio <span class="math notranslate nohighlight">\(\mathcal{P}\)</span>; the expected return (or excess return) can be re-writtem as <span class="math notranslate nohighlight">\(w^{T}\mathbb{E}(r)\)</span> where <span class="math notranslate nohighlight">\(\mathbb{E}(r)\)</span> denotes the vector of expected returns (or excess returns) for each asset in the portfolio.
-The quantity <span class="math notranslate nohighlight">\(R^{*}\)</span> denotes the minimal required return for <span class="math notranslate nohighlight">\(\mathcal{P}\)</span> and <span class="math notranslate nohighlight">\(1^{T}\)</span> denotes a vector of ones (full allocation constraint). The last constraint <span class="math notranslate nohighlight">\(w_{i}\geq{0}~\forall{i}\in\mathcal{P}\)</span> says that no short selling (borrowing shares) is allowed; if short selling is allowed, then this constraint can be removed.</p>
-<p>A couple of issues:</p>
+<p>where <span class="math notranslate nohighlight">\(w\)</span> denotes the vector of weights of the assets in portfolio <span class="math notranslate nohighlight">\(\mathcal{P}\)</span>, <span class="math notranslate nohighlight">\(\sigma^{2}_{\mathcal{P}}\left(w\right)\)</span> represents the portfolio variance; the portfolio variance can re-written as <span class="math notranslate nohighlight">\(\sigma^{2}_{\mathcal{P}}\left(w\right) = w^{T}\Sigma{w}\)</span>  where <span class="math notranslate nohighlight">\(\Sigma\)</span> is the <a class="reference external" href="https://en.wikipedia.org/wiki/Covariance_matrix">covariance matrix</a>. The quantity <span class="math notranslate nohighlight">\(\mathbb{E}(r_{\mathcal{P}})\)</span> denotes the expected return (or excess return) of the portfolio <span class="math notranslate nohighlight">\(\mathcal{P}\)</span>; the expected return (or excess return) can be re-written as <span class="math notranslate nohighlight">\(w^{T}\mathbb{E}(r)\)</span> where <span class="math notranslate nohighlight">\(\mathbb{E}(r)\)</span> denotes the vector of expected returns (or excess returns) for each asset in the portfolio.</p>
+<p>The quantity <span class="math notranslate nohighlight">\(R^{*}\)</span> denotes the minimal required return for <span class="math notranslate nohighlight">\(\mathcal{P}\)</span>, and <span class="math notranslate nohighlight">\(1^{T}\)</span> represents a vector of ones (total allocation constraint). The last constraint <span class="math notranslate nohighlight">\(w_{i}\geq{0}~\forall{i}\in\mathcal{P}\)</span> says that no short selling (borrowing shares) is allowed; if short selling is allowed, then this constraint can be removed.</p>
+</section>
+</div><p>A schematic of the solution of risky Markowitz problem defined in <a class="reference internal" href="#defn-markowitz-risky-assets-only">Definition 39</a> is given in <a class="reference internal" href="#fig-markowitz-only-risk"><span class="std std-numref">Fig. 38</span></a>.</p>
+<figure class="align-default" id="fig-markowitz-only-risk">
+<a class="reference internal image-reference" href="../_images/Fig-Markowitz-Only-Risky.pdf"><img alt="../_images/Fig-Markowitz-Only-Risky.pdf" src="../_images/Fig-Markowitz-Only-Risky.pdf" style="height: 440px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 38 </span><span class="caption-text">Schematic of the solution to the Markowitz allocation problem for a collection of risky assets.</span><a class="headerlink" href="#fig-markowitz-only-risk" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>A couple of thoughts:</p>
 <ul class="simple">
 <li><p>While the problem above is written in terms of absolute return <span class="math notranslate nohighlight">\(r_{\star}\)</span>, we can also write the portfolio allocation problem using excess returns; the excess return is <span class="math notranslate nohighlight">\(R_{\star} = r_{\star} - r_{f}\)</span>, where <span class="math notranslate nohighlight">\(r_{f}\)</span> denotes the risk free rate of return.</p></li>
 <li><p>The challenge to solving the Markowitz problem is estimating the expected return of assets in the portfolio and the covariance matrix <span class="math notranslate nohighlight">\(\Sigma\)</span>. These quantities can be calculated from data if available or from models of the return and variance of the assets in the portfolio. Let’s consider both approaches.</p></li>
 </ul>
+<p>The return of an asset is a measure of the price difference of that asset between two time periods.
+Return can be calculated in many ways; two common approaches are the percentage or fractional return and the logarithmic return.</p>
 </section>
-<section id="data-driven-risky-portfolios">
-<span id="content-references-markowitz-solution-data"></span><h3>Data-driven risky portfolios<a class="headerlink" href="#data-driven-risky-portfolios" title="Permalink to this headline">#</a></h3>
-<p>Fill me in.</p>
 </section>
-<section id="single-index-model-portfolios">
-<span id="content-references-markowitz-solution-sim"></span><h3>Single-index model portfolios<a class="headerlink" href="#single-index-model-portfolios" title="Permalink to this headline">#</a></h3>
-<p>The application of index models to construct risky portfolios was originally proposed by Treynor and Black <span id="id3">[<a class="reference internal" href="../References.html#id5" title="Jack L Treynor and Fischer Black. How to use security analysis to improve portfolio selection. The Journal of Business, 46(1):66-86, 1973. URL: https://EconPapers.repec.org/RePEc:ucp:jnlbus:v:46:y:1973:i:1:p:66-86.">Treynor and Black, 1973</a>]</span>.</p>
-<p><a class="reference internal" href="Single-Index-Models.html"><span class="doc std std-doc">Single index models (SIMs)</span></a> are asset pricing models which measure the risk and the return of a stock relative to a risk-free alternative investment, e.g., <a class="reference internal" href="bonds.html"><span class="doc std std-doc">government treasury bonds</span></a>. A single index model describes the return of a firm’s stock in terms of a firm-specific return and the overall market return. One of the simplest (yet still widely used) single index models was developed by Sharpe <span id="id4">[<a class="reference internal" href="../References.html#id15" title="William F. Sharpe. A simplified model for portfolio analysis. Management Science, 9(2):277-293, 1963. URL: https://doi.org/10.1287/mnsc.9.2.277, arXiv:https://doi.org/10.1287/mnsc.9.2.277, doi:10.1287/mnsc.9.2.277.">Sharpe, 1963</a>]</span>; see <a class="reference internal" href="Single-Index-Models.html#defn-single-index-model-standard">Definition 29</a>.</p>
-<section id="portfolio-return-using-single-index-models">
-<h4>Portfolio Return using Single Index Models<a class="headerlink" href="#portfolio-return-using-single-index-models" title="Permalink to this headline">#</a></h4>
-<p><a class="reference internal" href="#defn-portfolio-return">Definition 42</a> shows the expected return of portfolio <span class="math notranslate nohighlight">\(\mathcal{P}\)</span> in terms of the expected return of each of the assets in the portfolio. Thus, we must estimate the expected returns for each asset when solving the Markowitz allocation problem from data (as shown in <a class="reference internal" href="#content-references-markowitz-solution-data"><span class="std std-ref">Data-driven risky portfolios</span></a>). However, a single index model can limit this work; instead of estimating the expected return for each asset from data, we only need to calculate the expected excess market return <span class="math notranslate nohighlight">\(\mathbb{E}(R_{m})\)</span> and then use the single index model to predict the firm-specific expected excess returns <span class="math notranslate nohighlight">\(\mathbb{E}(R_{i})\)</span>:</p>
+<section id="portfolios-of-risky-and-risk-free-assets">
+<h3>Portfolios of risky and risk-free assets<a class="headerlink" href="#portfolios-of-risky-and-risk-free-assets" title="Permalink to this headline">#</a></h3>
+<p>Suppose that our asset set <span class="math notranslate nohighlight">\(\mathcal{A}\)</span> now contains both risky assets, i.e., shares of stock and a risk-free asset, e.g., <a class="reference internal" href="bonds.html"><span class="doc std std-doc">debt securities</span></a>. Thus, we have a guaranteed return associated with the risk-free asset, while the return associated with the risky assets is governed by the risk measure.</p>
+<div class="proof definition admonition" id="defn-risky-risk-free-markowitz">
+<p class="admonition-title"><span class="caption-number">Definition 40 </span> (Risky and Risk-free Markowitz)</p>
+<section class="definition-content" id="proof-content">
+<p>The Markowitz allocation problem for a portfolio <span class="math notranslate nohighlight">\(\mathcal{P}\)</span> composed of both risky and risk-free assets is the <a class="reference external" href="https://en.wikipedia.org/wiki/Quadratic_programming">quadratic program</a>:</p>
+<div class="math notranslate nohighlight">
+\[\min_{w} \sigma^{2}_{\mathcal{P}}\left(w\right)\]</div>
+<p>subject to the constraints:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{eqnarray}
+\left(1-\sum_{i\in\mathcal{P}}\omega_{i}\right)r_{f}+\mathbb{E}(r_{\mathcal{P}})&amp;\geq&amp;{R^{*}}\\
+1^{T}w &amp;=&amp; 1\\
+w_{i}&amp;\geq&amp;{0}\qquad{\forall{i}\in\mathcal{P}}
+\end{eqnarray}
+\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(w\)</span> denotes the vector of weights of the assets in portfolio <span class="math notranslate nohighlight">\(\mathcal{P}\)</span>, <span class="math notranslate nohighlight">\(\sigma^{2}_{\mathcal{P}}\left(w\right)\)</span> represents the portfolio variance; the portfolio variance can re-written as <span class="math notranslate nohighlight">\(\sigma^{2}_{\mathcal{P}}\left(w\right) = w^{T}\Sigma{w}\)</span>  where <span class="math notranslate nohighlight">\(\Sigma\)</span> is the <a class="reference external" href="https://en.wikipedia.org/wiki/Covariance_matrix">covariance matrix</a>. The quantity <span class="math notranslate nohighlight">\(\mathbb{E}(r_{\mathcal{P}})\)</span> denotes the expected return (or excess return) of the portfolio <span class="math notranslate nohighlight">\(\mathcal{P}\)</span>; the expected return (or excess return) can be re-written as <span class="math notranslate nohighlight">\(w^{T}\mathbb{E}(r)\)</span> where <span class="math notranslate nohighlight">\(\mathbb{E}(r)\)</span> denotes the vector of expected returns (or excess returns) for each asset in the portfolio.</p>
+<p>The quantity <span class="math notranslate nohighlight">\(R^{*}\)</span> denotes the minimal required return for <span class="math notranslate nohighlight">\(\mathcal{P}\)</span>, and <span class="math notranslate nohighlight">\(1^{T}\)</span> represents a vector of ones (total allocation constraint). The last constraint <span class="math notranslate nohighlight">\(w_{i}\geq{0}~\forall{i}\in\mathcal{P}\)</span> says that no short selling (borrowing shares) is allowed; if short selling is allowed, then this constraint can be removed.</p>
+</section>
+</div><p>A schematic of the solution of risky and risk-free Markowitz problem defined in <a class="reference internal" href="#defn-risky-risk-free-markowitz">Definition 40</a> is given in <a class="reference internal" href="#fig-markowitz-risky-and-risky-free"><span class="std std-numref">Fig. 39</span></a>.</p>
+<figure class="align-default" id="fig-markowitz-risky-and-risky-free">
+<a class="reference internal image-reference" href="../_images/Fig-Markowitz-Risk-Free-Asset.pdf"><img alt="../_images/Fig-Markowitz-Risk-Free-Asset.pdf" src="../_images/Fig-Markowitz-Risk-Free-Asset.pdf" style="height: 440px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 39 </span><span class="caption-text">Schematic of the solution to the Markowitz allocation problem for a combination of risky and a risk-free asset.</span><a class="headerlink" href="#fig-markowitz-risky-and-risky-free" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>A couple of thoughts:</p>
+<ul class="simple">
+<li><p>While the problem above is written in terms of absolute return <span class="math notranslate nohighlight">\(r_{\star}\)</span>, we can also write the portfolio allocation problem using excess returns; the excess return is <span class="math notranslate nohighlight">\(R_{\star} = r_{\star} - r_{f}\)</span>, where <span class="math notranslate nohighlight">\(r_{f}\)</span> denotes the risk free rate of return.</p></li>
+<li><p>The challenge to solving the Markowitz problem is estimating the expected return of assets in the portfolio and the covariance matrix <span class="math notranslate nohighlight">\(\Sigma\)</span>. These quantities can be calculated from data if available or from models of the return and variance of the assets in the portfolio. Let’s consider both approaches.</p></li>
+</ul>
+<p>The return of an asset is a measure of the price difference of that asset between two time periods.
+Return can be calculated in many ways; two common approaches are the percentage or fractional return and the logarithmic return.</p>
+</section>
+</section>
+<section id="data-driven-markowitz-allocation">
+<span id="content-references-markowitz-solution"></span><h2>Data-Driven Markowitz Allocation<a class="headerlink" href="#data-driven-markowitz-allocation" title="Permalink to this headline">#</a></h2>
+<p>The objective of Markowitz portfolio allocation problem is to estimate the weights <span class="math notranslate nohighlight">\(w=\left(w_{1},w_{2},\dots\right)^{T}\)</span> of the assets in portfolio <span class="math notranslate nohighlight">\(\mathcal{P}\)</span>  such that overall variance of the portfolio is minimized, for a specified return, subject to some constraints on <span class="math notranslate nohighlight">\(w\)</span>.</p>
+<section id="fractional-return">
+<span id="content-references-fractional-return"></span><h3>Fractional return<a class="headerlink" href="#fractional-return" title="Permalink to this headline">#</a></h3>
+<div class="proof definition admonition" id="defn-percentage-return">
+<p class="admonition-title"><span class="caption-number">Definition 41 </span> (Fractional return)</p>
+<section class="definition-content" id="proof-content">
+<p>Let the price of asset <span class="math notranslate nohighlight">\(i\)</span> at any time <span class="math notranslate nohighlight">\(j\)</span> be given by <span class="math notranslate nohighlight">\(P_{ij}&gt;0\)</span>. Then the fractional return
+on asset <span class="math notranslate nohighlight">\(i\)</span> over time horizon <span class="math notranslate nohighlight">\(j\rightarrow{k},j\neq{k}\)</span> is defined as:</p>
+<div class="math notranslate nohighlight">
+\[r_{i,j\rightarrow{k}} \equiv \frac{P_{ik} - P_{ij}}{P_{ij}}\]</div>
+<p>where <span class="math notranslate nohighlight">\(r_{i,j\rightarrow{k}}\)</span> denotes the fractional return of asset <span class="math notranslate nohighlight">\(i\)</span> over time horizon <span class="math notranslate nohighlight">\(j\rightarrow{k},i\neq{k}\)</span>.</p>
+<p>Consider the daily return on stock <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> computed using the close price and the fractional return measure. Let <span class="math notranslate nohighlight">\(P_{ij}\)</span> denote the close price today, and <span class="math notranslate nohighlight">\(P_{ij-1}\)</span> denote the close price for the previous trading day. Then, the fractional daily return is given by:</p>
+<div class="math notranslate nohighlight" id="equation-eq-example-daily-close-price">
+<span class="eqno">(56)<a class="headerlink" href="#equation-eq-example-daily-close-price" title="Permalink to this equation">#</a></span>\[r_{i,j-1\rightarrow{j}} = \frac{P_{ij} - P_{i,j-1}}{P_{i,j-1}}\]</div>
+</section>
+</div><p>However, Eqn. <a class="reference internal" href="#equation-eq-example-daily-close-price">(56)</a> can be rearranged to give an expression similar to
+Eqn. <a class="reference internal" href="../chapter-1-dir/assets.html#equation-eq-cash-flow-1-period">(2)</a>:</p>
+<div class="math notranslate nohighlight">
+\[P_{ij} = \left(1+r_{i,j-1\rightarrow{j}}\right)P_{i,j-1}\]</div>
+<p>Thus, the fractional daily return (or a fractional return computed between any two different dates) is a type of discount rate that quantifies how the value of an asset changes, in the case of the share price of ticker <code class="docutils literal notranslate"><span class="pre">XYZ</span></code>, because of market forces.
+Becuase <span class="math notranslate nohighlight">\(P_{i,\star}\)</span> is a random variable, the return is also a random variable.</p>
+</section>
+<section id="logarithmic-return">
+<span id="content-references-log-return"></span><h3>Logarithmic return<a class="headerlink" href="#logarithmic-return" title="Permalink to this headline">#</a></h3>
+<div class="proof definition admonition" id="defn-log-return">
+<p class="admonition-title"><span class="caption-number">Definition 42 </span> (Logarithmic return)</p>
+<section class="definition-content" id="proof-content">
+<p>Let the price of asset <span class="math notranslate nohighlight">\(i\)</span> at any time <span class="math notranslate nohighlight">\(j\)</span> be gievm by <span class="math notranslate nohighlight">\(P_{ij}&gt;0\)</span>. Then the logarithmic return
+on asset <span class="math notranslate nohighlight">\(i\)</span> over time horizon <span class="math notranslate nohighlight">\(j\rightarrow{k},j\neq{k}\)</span> is defined as:</p>
+<div class="math notranslate nohighlight">
+\[\bar{r}_{i,j\rightarrow{k}} \equiv \log\left(\frac{P_{ij}}{P_{ik}}\right)\]</div>
+<p>where <span class="math notranslate nohighlight">\(\bar{r}_{i,j\rightarrow{k}}\)</span> denotes the logarithmic return of asset <span class="math notranslate nohighlight">\(i\)</span> over time horizon <span class="math notranslate nohighlight">\(j\rightarrow{k},i\neq{k}\)</span>. The <span class="math notranslate nohighlight">\(\log\left(\star\right)\)</span> term denotes the <a class="reference external" href="https://en.wikipedia.org/wiki/Natural_logarithm">natural log</a>.</p>
+<p>Consider the daily return on stock <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> computed using the close price and the fractional return measure. Let <span class="math notranslate nohighlight">\(P_{ij}\)</span> denote the close price today, and <span class="math notranslate nohighlight">\(P_{ij-1}\)</span> denote the close price for the previous trading day. Then, the fractional daily return is given by:</p>
+<div class="math notranslate nohighlight" id="equation-eq-example-daily-close-price-log">
+<span class="eqno">(57)<a class="headerlink" href="#equation-eq-example-daily-close-price-log" title="Permalink to this equation">#</a></span>\[\bar{r}_{i,j-1\rightarrow{j}} = \log\left(\frac{P_{ij}}{P_{i,j-1}}\right)\]</div>
+</section>
+</div><p>However, Eqn. <a class="reference internal" href="#equation-eq-example-daily-close-price-log">(57)</a> can be rearranged to give an expression similar to
+Eqn. <a class="reference internal" href="../chapter-1-dir/assets.html#equation-eq-cont-exchange-tvm">(5)</a>:</p>
+<div class="math notranslate nohighlight">
+\[P_{ij} = \exp\left(\bar{r}_{i,j-1\rightarrow{j}}\right)P_{i,j-1}\]</div>
+<p>Thus, the logarithmic daily return (or a logarithmic return computed between any two different dates) is a continuous discount rate that quantifies how the value of an asset, e.g., the share price of ticker <code class="docutils literal notranslate"><span class="pre">XYZ</span></code>, changes because of market forces. Becuase <span class="math notranslate nohighlight">\(P_{i,\star}\)</span> is a random variable, the return is also a random variable.</p>
+</section>
+<section id="expected-excess-returns-from-data">
+<h3>Expected Excess Returns from data<a class="headerlink" href="#expected-excess-returns-from-data" title="Permalink to this headline">#</a></h3>
+<p>Suppose we had a data set <span class="math notranslate nohighlight">\(\mathcal{P}\)</span> that contained the daily close
+price for a share of stock of firm <span class="math notranslate nohighlight">\(i\)</span> for the last <span class="math notranslate nohighlight">\(T\)</span> days, e.g., <span class="math notranslate nohighlight">\(1\rightarrow{T}\)</span>.
+Let the ticker symbol for firm <span class="math notranslate nohighlight">\(i\)</span> be given by <code class="docutils literal notranslate"><span class="pre">XYZ</span></code>.
+Then, from the definition of expectation, we know the expected excess return for <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> is given by:</p>
+<div class="math notranslate nohighlight" id="equation-eq-defn-expected-return">
+<span class="eqno">(58)<a class="headerlink" href="#equation-eq-defn-expected-return" title="Permalink to this equation">#</a></span>\[\mathbb{E}\left(R_{i}\right) = \sum_{t}p(t)R_{i,t}\]</div>
+<p>where the probability terms are subject to <span class="math notranslate nohighlight">\(\sum_{t}p(t) = 1\)</span>. The probability terms in Eqn. <a class="reference internal" href="#equation-eq-defn-expected-return">(58)</a> have several interpretations. First, they could represent the output
+of some (unknown) market process governing the returns. Another actionable interpretation is to think of them as weighting
+factors. Suppose the recent trend in <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> prices is significantly different from long-term historical price trends, e.g., <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> has recently experienced a sustained period of decline. You could weigh the recent data more highly
+to calculate an expected return (or volatility) that is more representative of current trends. Of course, the opposite could also be true; you could also empathize older versus newer data.</p>
+<p>Many weighting schemes could be used; any approach that obeys the axioms of probability will work! However, let’s borrow a strategy from chemical physics, namely, we’ll assume <span class="math notranslate nohighlight">\(p(t)\)</span> follows the <a class="reference external" href="https://en.wikipedia.org/wiki/Boltzmann_distribution">Boltzmann distribution</a>.</p>
+<div class="proof definition admonition" id="defn-bwer">
+<p class="admonition-title"><span class="caption-number">Definition 43 </span> (Boltzmann weighted excess returns)</p>
+<section class="definition-content" id="proof-content">
+<p>The expected excess return for firm <span class="math notranslate nohighlight">\(i\)</span> is given by:</p>
+<div class="math notranslate nohighlight">
+\[\mathbb{E}\left(R_{i}\right) = \sum_{t}p(t)R_{i,t}\]</div>
+<p>where <span class="math notranslate nohighlight">\(R_{i,t}\)</span> denotes the excess return in time period <span class="math notranslate nohighlight">\(t\)</span> for firm <span class="math notranslate nohighlight">\(i\)</span>.
+Further, let the probability factors <span class="math notranslate nohighlight">\(p(t)\)</span> follow a <a class="reference external" href="https://en.wikipedia.org/wiki/Boltzmann_distribution">Boltzmann distribution</a>:</p>
+<div class="math notranslate nohighlight">
+\[p(t) = \frac{1}{Z}\exp(-\lambda\epsilon_{t})\]</div>
+<p>where the partition function <span class="math notranslate nohighlight">\(Z\)</span> is given by <span class="math notranslate nohighlight">\(Z = \sum_{t}\exp(-\lambda\epsilon_{t})\)</span>, <span class="math notranslate nohighlight">\(\lambda\geq{0}\)</span> is an adjustable parameter, and <span class="math notranslate nohighlight">\(\epsilon_{t}&gt;0\)</span> is the pseudo energy of the market at time <span class="math notranslate nohighlight">\(t\)</span>.  Then, the Boltzmann weighted expected excess return <span class="math notranslate nohighlight">\(\mathbb{E}_{B}\left(R_{i}\right)\)</span> is given by:</p>
+<div class="math notranslate nohighlight">
+\[\mathbb{E}_{B}\left(R_{i}\right) = \frac{1}{Z}\sum_{t}\exp\left(-\lambda\epsilon_{t}\right){R}_{i,t}\]</div>
+</section>
+</div><p>Depending upon how we choose <span class="math notranslate nohighlight">\(\lambda\)</span> and the pseudo energies in <a class="reference internal" href="#defn-bwer">Definition 43</a>, we can recover
+equally weighted, past or present exponentially weighted expectations.</p>
+<div class="proof algorithm admonition" id="algo-expected-boltzmann-return">
+<p class="admonition-title"><span class="caption-number">Algorithm 1 </span> (Boltzmann Weighted Expected Return )</p>
+<section class="algorithm-content" id="proof-content">
+<p><strong>Inputs</strong> Ticker <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> price dataset <span class="math notranslate nohighlight">\(\bar{\mathcal{P}}\)</span> for time period <span class="math notranslate nohighlight">\(1\rightarrow T\)</span>,
+annualized risk free rate <span class="math notranslate nohighlight">\(r_{f}\)</span>, time-window <span class="math notranslate nohighlight">\(\mathcal{L}\)</span>, <span class="math notranslate nohighlight">\(\lambda\)</span>, and <span class="math notranslate nohighlight">\(\epsilon_{t}&gt;0\)</span> values</p>
+<p><strong>Outputs</strong> Boltzmann weighted expected return <span class="math notranslate nohighlight">\(\mathbb{E}_{B}\left(R\right)\)</span>,
+the unweighted excess return vector <span class="math notranslate nohighlight">\(R\)</span>, and the probability array <span class="math notranslate nohighlight">\(p\)</span></p>
+<p><strong>Initialize</strong></p>
+<ol class="simple">
+<li><p>sort dataset <span class="math notranslate nohighlight">\(\mathcal{P}\leftarrow\bar{\mathcal{P}}\)</span> from newest to oldest prices.</p></li>
+<li><p>initialize <span class="math notranslate nohighlight">\(R~\leftarrow\)</span> Array(<span class="math notranslate nohighlight">\(\mathcal{L}\)</span>,1)</p></li>
+<li><p>initialize <span class="math notranslate nohighlight">\(W~\leftarrow\)</span> Array(<span class="math notranslate nohighlight">\(\mathcal{L}\)</span>,1)</p></li>
+<li><p>initialize <span class="math notranslate nohighlight">\(\mathcal{R}~\leftarrow\)</span> Array(<span class="math notranslate nohighlight">\(\mathcal{L}\)</span>,1)</p></li>
+</ol>
+<p><strong>Main</strong></p>
+<ol class="simple">
+<li><p>for t <span class="math notranslate nohighlight">\(\in\)</span> 1:<span class="math notranslate nohighlight">\(\mathcal{L}\)</span></p>
+<ol class="simple">
+<li><p>compute excess return <span class="math notranslate nohighlight">\(R[t]\leftarrow \log\left(P[t]/P[t+1]\right) - r_{f}\)</span></p></li>
+<li><p>compute weight factor <span class="math notranslate nohighlight">\(W[t]\leftarrow \exp\left(-\lambda\times\epsilon[t]\right)\)</span></p></li>
+<li><p>compute weighted return factor <span class="math notranslate nohighlight">\(\mathcal{R}[t] \leftarrow R[t]\times~W[t]\)</span></p></li>
+</ol>
+</li>
+</ol>
+<p><strong>Process</strong></p>
+<ol class="simple">
+<li><p>compute normalization constant <span class="math notranslate nohighlight">\(Z\leftarrow \sum~W\)</span></p></li>
+<li><p>compute expectation <span class="math notranslate nohighlight">\(\mathbb{E}_{B}\left(R\right)\leftarrow(1/Z)\times\sum\mathcal{R}\)</span></p></li>
+<li><p>compute probability <span class="math notranslate nohighlight">\(p\leftarrow(1/Z)\times~W\)</span></p></li>
+</ol>
+<p><strong>Return</strong></p>
+<ol class="simple">
+<li><p>expected return <span class="math notranslate nohighlight">\(\mathbb{E}_{B}\left(R\right)\)</span>, excess return vector <span class="math notranslate nohighlight">\(R\)</span>, and probability array <span class="math notranslate nohighlight">\(p\)</span></p></li>
+</ol>
+</section>
+</div></section>
+<section id="volatility-and-the-covariance-matrix">
+<span id="content-references-risk-volatility"></span><h3>Volatility and the Covariance Matrix<a class="headerlink" href="#volatility-and-the-covariance-matrix" title="Permalink to this headline">#</a></h3>
+<p>Now that we have defined different types of returns, the rewards of a portfolio, let’s define the risk. One measure of risk is volatility, e.g., the standard deviation of the <a class="reference internal" href="#content-references-log-return"><span class="std std-ref">Logarithmic return</span></a>:</p>
+<div class="proof definition admonition" id="defn-volatility">
+<p class="admonition-title"><span class="caption-number">Definition 44 </span> (Volatility)</p>
+<section class="definition-content" id="proof-content">
+<p>Let the price of asset <span class="math notranslate nohighlight">\(i\)</span> at time <span class="math notranslate nohighlight">\(j\)</span> be denoted by <span class="math notranslate nohighlight">\(P_{ij}&gt;0\)</span>. Then the <em>volatility</em> of asset <span class="math notranslate nohighlight">\(i\)</span> is
+the standard deviation of the logarithmic returns calculated between time periods
+<span class="math notranslate nohighlight">\(j\rightarrow{j+1}\)</span>.</p>
+</section>
+</div><p>We can estimate the volatility of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> directly from historical price data; calculating volatility from data
+gives the <em>historic volatility</em>, a backward-looking measure of the risk. An unbiased
+estimate of the variance (which is the square of the <em>historic volatility</em>) is given by:</p>
+<div class="math notranslate nohighlight">
+\[\sigma_{n}^2 = \frac{1}{m-1}\sum_{i=1}^{m}\left(\bar{r}_{n-i}-\hat{\mu}_{r}\right)^2\qquad{n&gt;{m+1}}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\bar{r}_{n-i}\)</span> denotes logarithmic return computed for time <span class="math notranslate nohighlight">\(n-i-1\rightarrow{n-i}\)</span> and
+<span class="math notranslate nohighlight">\(\hat{\mu}_{r}\)</span> denotes the average logarithmic return, computed using the <span class="math notranslate nohighlight">\(m\)</span> most recent values of
+the return:</p>
+<div class="math notranslate nohighlight">
+\[\hat{\mu}_{r} = \frac{1}{m}\sum_{i=1}^{m}\bar{r}_{n-i}\]</div>
+<p>The choice of <span class="math notranslate nohighlight">\((n,m)\)</span> is up to you and the application you are interested in. A sketch of an algorithm that can be used to calculate the <em>historic volatility</em> is given in <a class="reference internal" href="#algo-unbiased-historic-volatility">Algorithm 2</a>:</p>
+<div class="proof algorithm admonition" id="algo-unbiased-historic-volatility">
+<p class="admonition-title"><span class="caption-number">Algorithm 2 </span> (Unbiased estimate of the return variance)</p>
+<section class="algorithm-content" id="proof-content">
+<p><strong>Inputs</strong> Ticker <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> price dataset <span class="math notranslate nohighlight">\(\bar{\mathcal{P}}\)</span> for time period <span class="math notranslate nohighlight">\(1\rightarrow T\)</span>, parameters <span class="math notranslate nohighlight">\((n,m)\)</span> where <span class="math notranslate nohighlight">\(n&gt;m+1\)</span> and <span class="math notranslate nohighlight">\(\texttt{avg}\)</span> a function that computes the average of a vector.</p>
+<p><strong>Outputs</strong> An unbiased estimate of the return variance <span class="math notranslate nohighlight">\(\sigma_{n}^{2}\)</span></p>
+<p><strong>Initialize</strong></p>
+<ol class="simple">
+<li><p>sort dataset <span class="math notranslate nohighlight">\(\mathcal{P}\leftarrow\bar{\mathcal{P}}\)</span> from newest to oldest prices.</p></li>
+<li><p>initialize <span class="math notranslate nohighlight">\(\bar{R}~\leftarrow\)</span> Array(<span class="math notranslate nohighlight">\(m\)</span>,1)</p></li>
+<li><p>initialize <span class="math notranslate nohighlight">\(\mu_{r}\)</span> = 0</p></li>
+<li><p>initialize <span class="math notranslate nohighlight">\(\text{tmp}\)</span> = 0</p></li>
+</ol>
+<p><strong>Compute <span class="math notranslate nohighlight">\(\bar{R}\)</span></strong></p>
+<ol class="simple">
+<li><p>for i <span class="math notranslate nohighlight">\(\in~1:m\)</span></p>
+<ol class="simple">
+<li><p>compute <span class="math notranslate nohighlight">\(\bar{r}_{n-i}\leftarrow\log\left(\frac{P_{n-i}}{P_{n-i-1}}\right)\)</span></p></li>
+<li><p>store <span class="math notranslate nohighlight">\(\bar{R}[i]\leftarrow{\bar{r}_{n-i}}\)</span></p></li>
+</ol>
+</li>
+</ol>
+<p><strong>Compute <span class="math notranslate nohighlight">\(\mu_{r}\)</span></strong></p>
+<ol class="simple">
+<li><p>compute <span class="math notranslate nohighlight">\(\mu_{r}\leftarrow\texttt{avg}\left(\bar{R}\right)\)</span></p></li>
+</ol>
+<p><strong>Compute <span class="math notranslate nohighlight">\(\sigma_{n}^{2}\)</span></strong></p>
+<ol class="simple">
+<li><p>for i <span class="math notranslate nohighlight">\(\in~1:m\)</span></p>
+<ol class="simple">
+<li><p>compute <span class="math notranslate nohighlight">\(\text{tmp}~\leftarrow~\text{tmp}~+ \left( \bar{R}[i] - \mu_{r} \right)^2\)</span></p></li>
+</ol>
+</li>
+<li><p>compute <span class="math notranslate nohighlight">\(\sigma_{n}^{2}\leftarrow\frac{1}{m-1}\cdot\text{tmp}\)</span></p></li>
+</ol>
+<p><strong>Return</strong></p>
+<ol class="simple">
+<li><p>return <span class="math notranslate nohighlight">\(\sigma_{n}^{2}\)</span></p></li>
+</ol>
+</section>
+</div></section>
+<section id="example">
+<h3>Example<a class="headerlink" href="#example" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://htmlview.glitch.me/?https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks/blob/main/pluto-notebooks/html/Example-UnbiasedVolatility-Estimation.jl.html">Computation of the unbiased historical volatility using <a class="reference internal" href="#algo-unbiased-historic-volatility">Algorithm 2</a></a></p></li>
+</ul>
+</section>
+</section>
+<section id="model-driven-markowitz-allocation">
+<span id="content-references-markowitz-solution-sim"></span><h2>Model-Driven Markowitz Allocation<a class="headerlink" href="#model-driven-markowitz-allocation" title="Permalink to this headline">#</a></h2>
+<section id="single-index-models">
+<h3>Single Index Models<a class="headerlink" href="#single-index-models" title="Permalink to this headline">#</a></h3>
+<p>The application of index models to construct risky portfolios was originally proposed by Treynor and Black <span id="id3">[<a class="reference internal" href="../References.html#id5" title="Jack L Treynor and Fischer Black. How to use security analysis to improve portfolio selection. The Journal of Business, 46(1):66-86, 1973. URL: https://EconPapers.repec.org/RePEc:ucp:jnlbus:v:46:y:1973:i:1:p:66-86.">Treynor and Black, 1973</a>]</span>. Single index models are asset pricing models which measure the risk and the return of a stock relative to a risk-free alternative investment, e.g., <a class="reference internal" href="bonds.html"><span class="doc std std-doc">government treasury bonds</span></a>. A single index model describes the return of a firm’s stock in terms of a firm-specific return and the overall market return. One of the simplest (yet still widely used) single index models was developed by Sharpe <span id="id4">[<a class="reference internal" href="../References.html#id15" title="William F. Sharpe. A simplified model for portfolio analysis. Management Science, 9(2):277-293, 1963. URL: https://doi.org/10.1287/mnsc.9.2.277, arXiv:https://doi.org/10.1287/mnsc.9.2.277, doi:10.1287/mnsc.9.2.277.">Sharpe, 1963</a>]</span>.</p>
+<p>The single-index model developed by developed Sharpe <span id="id5">[<a class="reference internal" href="../References.html#id15" title="William F. Sharpe. A simplified model for portfolio analysis. Management Science, 9(2):277-293, 1963. URL: https://doi.org/10.1287/mnsc.9.2.277, arXiv:https://doi.org/10.1287/mnsc.9.2.277, doi:10.1287/mnsc.9.2.277.">Sharpe, 1963</a>]</span> is an asset pricing model which measures both the risk and the return of a stock, relative to a risk free alternative investment e.g., government treasury bounds. The single index model describes the return of the stock of firm <span class="math notranslate nohighlight">\(i\)</span> in terms of a firm-specific return, and an overall market return:</p>
+<div class="math notranslate nohighlight" id="equation-eq-single-index-model">
+<span class="eqno">(59)<a class="headerlink" href="#equation-eq-single-index-model" title="Permalink to this equation">#</a></span>\[r_{i}\left(t\right) - r_{f} = \alpha_{i}+\beta_{i}\left(r_{m}\left(t\right)-r_{f}\right)+\epsilon_{i}
+\left(t\right)\qquad{t=1,2,\dots,T}\]</div>
+<p>The term <span class="math notranslate nohighlight">\(r_{i}\left(t\right)\)</span> denotes the return of firm <span class="math notranslate nohighlight">\(i\)</span>, during time period <span class="math notranslate nohighlight">\(t\)</span>,
+<span class="math notranslate nohighlight">\(r_{f}\)</span> denotes the risk-free rate i.e., the <a class="reference external" href="https://fred.stlouisfed.org/series/DTB3">interest rate of a riskless investment such as treasury bills</a>, while <span class="math notranslate nohighlight">\(r_{m}\left(t\right)\)</span> denotes the return on a market portfolio e.g., an index such as the <a class="reference external" href="https://en.wikipedia.org/wiki/S%26P_500">S&amp;P500</a> during time period <span class="math notranslate nohighlight">\(t\)</span>.  The term <span class="math notranslate nohighlight">\(\alpha_{i}\)</span> denotes the firm-specific return, while <span class="math notranslate nohighlight">\(\beta_{i}\)</span> denotes the proportion of the the firm’s return associated with the overall market.</p>
+<p>The term <span class="math notranslate nohighlight">\(R_{i}(t)\equiv\left(r_{i}\left(t\right) - r_{f}\right)\)</span> describes the excess return of specific firm <span class="math notranslate nohighlight">\(i\)</span>, while <span class="math notranslate nohighlight">\(R_{m}(t)\equiv\left(r_{m}\left(t\right)-r_{f}\right)\)</span> describes the excess return of the market portfolio. Replacing the excess returns in Eqn. <a class="reference internal" href="#equation-eq-single-index-model">(59)</a> gives the single index model in standard form:</p>
+<div class="proof definition admonition" id="defn-single-index-model-standard">
+<p class="admonition-title"><span class="caption-number">Definition 45 </span> (Single index model of Sharpe)</p>
+<section class="definition-content" id="proof-content">
+<p>Let <span class="math notranslate nohighlight">\(R_{i}(t)\)</span> and <span class="math notranslate nohighlight">\(R_{m}(t)\)</span> denote the firm specific and market excess returns (random variables)
+for time period <span class="math notranslate nohighlight">\(t\)</span>. Further, let <span class="math notranslate nohighlight">\(\epsilon_{i}\left(t\right)\)</span> denote a <a class="reference external" href="https://en.wikipedia.org/wiki/Normal_distribution">stationary normally distributed random noise process</a> with mean zero and standard deviation <span class="math notranslate nohighlight">\(\sigma_{i}\)</span>.</p>
+<p>Then, the single index model of Sharpe is given by <span id="id6">[<a class="reference internal" href="../References.html#id15" title="William F. Sharpe. A simplified model for portfolio analysis. Management Science, 9(2):277-293, 1963. URL: https://doi.org/10.1287/mnsc.9.2.277, arXiv:https://doi.org/10.1287/mnsc.9.2.277, doi:10.1287/mnsc.9.2.277.">Sharpe, 1963</a>]</span>:</p>
+<div class="math notranslate nohighlight" id="equation-eq-single-index-model-standard">
+<span class="eqno">(60)<a class="headerlink" href="#equation-eq-single-index-model-standard" title="Permalink to this equation">#</a></span>\[R_{i}\left(t\right) = \alpha_{i}+\beta_{i}R_{m}\left(t\right)+\epsilon_{i}
+\left(t\right)\qquad{t=1,2,\dots,T}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\alpha_{i}\)</span> and <span class="math notranslate nohighlight">\(\beta_{i}\)</span> are (unknown) model paramaters:</p>
+<ul class="simple">
+<li><p>The parameter <span class="math notranslate nohighlight">\(\alpha_{i}\)</span> describes the firm specific return not explained by the market; thus, <span class="math notranslate nohighlight">\(\alpha_{i}\)</span> is the idiosyncratic return of firm <span class="math notranslate nohighlight">\(i\)</span>.</p></li>
+<li><p>The parameter <span class="math notranslate nohighlight">\(\beta_{i}\)</span> measures the relationship between the excess return of firm <span class="math notranslate nohighlight">\(i\)</span> and the excess return of the market; a large <span class="math notranslate nohighlight">\(\beta_{i}\)</span> suggests the market returns (or losses) are <em>amplified</em> for firm <span class="math notranslate nohighlight">\(i\)</span>, while a small <span class="math notranslate nohighlight">\(\beta_{i}\)</span> suggests the market returns (or losses) are <em>damped</em> for firm <span class="math notranslate nohighlight">\(i\)</span>.</p></li>
+<li><p>The parameter <span class="math notranslate nohighlight">\(\beta_{i}\)</span> can also be interpreted as a measure of the relative risk of investing in firm <span class="math notranslate nohighlight">\(i\)</span> relative to the overall market.</p></li>
+</ul>
+</section>
+</div><p>To understand the various interpretations of <span class="math notranslate nohighlight">\(\beta_{i}\)</span>, we first must understand that both the firm specific <span class="math notranslate nohighlight">\(R_{i}\)</span> and overall market excess returns <span class="math notranslate nohighlight">\(R_{m}\)</span> are random variables. Thus, we can compute the expectation and variance of these variables and look at how these quantities depend upon <span class="math notranslate nohighlight">\(\beta_{i}\)</span>:</p>
+<div class="proof observation admonition" id="obs-beta-risk-measure">
+<p class="admonition-title"><span class="caption-number">Observation 7 </span> (Risk and Reward intepretations of <span class="math notranslate nohighlight">\(\beta_{i}\)</span>)</p>
+<section class="observation-content" id="proof-content">
+<p>Taking the expectation of the firm excess return <span class="math notranslate nohighlight">\(R_{i}\)</span> gives:</p>
+<div class="math notranslate nohighlight" id="equation-eq-expected-r-sim">
+<span class="eqno">(61)<a class="headerlink" href="#equation-eq-expected-r-sim" title="Permalink to this equation">#</a></span>\[\mathbb{E}\left(R_{i}\right) = \alpha_{i}+\beta_{i}\mathbb{E}\left(R_{m}\right)\]</div>
+<p>where <span class="math notranslate nohighlight">\(\mathbb{E}\left(\epsilon_{i}\left(t\right)\right) = 0\)</span>.
+Solving Eqn. <a class="reference internal" href="#equation-eq-expected-r-sim">(61)</a> for <span class="math notranslate nohighlight">\(\beta_{i}\)</span> gives:</p>
+<div class="math notranslate nohighlight">
+\[\beta_{i} = \frac{\mathbb{E}\left(R_{i}\right) - \alpha_{i}}{\mathbb{E}\left(R_{m}\right)}\]</div>
+<p>Thus, <span class="math notranslate nohighlight">\(\beta_{i}\)</span> is a corrected ratio of expected (average) returns:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\beta_{i}&gt;1\)</span> expected return of firm <span class="math notranslate nohighlight">\(i\)</span> is <em>greater</em> than the expected market return</p></li>
+<li><p><span class="math notranslate nohighlight">\(\beta_{i}\sim{1}\)</span> firm <span class="math notranslate nohighlight">\(i\)</span> performs <em>similar</em> to the overall market on average</p></li>
+<li><p><span class="math notranslate nohighlight">\(\beta_{i}&lt;1\)</span> expected excess return of firm <span class="math notranslate nohighlight">\(i\)</span> is <em>less</em> than the expected excess market return</p></li>
+</ul>
+<p>The <span class="math notranslate nohighlight">\(\beta_{i}\)</span> for asset <span class="math notranslate nohighlight">\(i\)</span> can also be thought of as a measure of risk of asset <span class="math notranslate nohighlight">\(i\)</span> relative to the market. For example, we can show that:</p>
+<div class="math notranslate nohighlight">
+\[\beta_{i} = \frac{\text{cov}(R_{i}, R_{m})}{\text{var}(R_{m})}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\text{cov}(R_{i}, R_{m})\)</span> denotes the <a class="reference external" href="https://en.wikipedia.org/wiki/Covariance">covariance</a> between the excess return of asset <span class="math notranslate nohighlight">\(i\)</span> and the market, and <span class="math notranslate nohighlight">\(\text{var}(R_{m})\)</span> denotes the variance of the market excess return. Thus, in the context of risk, <span class="math notranslate nohighlight">\(\beta_{i}\)</span> has the interpretation:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\beta_{i}&gt;1\)</span> suggests firm <span class="math notranslate nohighlight">\(i\)</span> has <em>greater risk</em> than the overall market</p></li>
+<li><p><span class="math notranslate nohighlight">\(\beta_{i}\sim{1}\)</span> suggests that firm <span class="math notranslate nohighlight">\(i\)</span> has the <em>same risk</em> as the overall market on average</p></li>
+<li><p><span class="math notranslate nohighlight">\(\beta_{i}&lt;1\)</span> suggests firm <span class="math notranslate nohighlight">\(i\)</span> has <em>less risk</em> compared to overall market</p></li>
+</ul>
+<p>Putting these two regimes together gives fundamental insight into the behavior of markets: <strong>high returns come with high-risk</strong>.</p>
+</section>
+</div><section id="estimating-single-index-models-from-data">
+<h4>Estimating Single Index Models from Data<a class="headerlink" href="#estimating-single-index-models-from-data" title="Permalink to this headline">#</a></h4>
+<p>Estimating single index models from data reduces to estimating values for the <span class="math notranslate nohighlight">\((\alpha_{i},\beta_{i})\)</span> parameters and developing a residual model <span class="math notranslate nohighlight">\(\epsilon_{i}(t)\)</span>. Let’s decompose this problem into two phases:</p>
+<ul class="simple">
+<li><p>Phase 1: Estimate values for <span class="math notranslate nohighlight">\((\alpha_{i},\beta_{i})\)</span> using one of many possible approaches, and</p></li>
+<li><p>Phase 2: Estimate the <span class="math notranslate nohighlight">\(\epsilon_{i}(t)\)</span> distribution by computing the residual between the data and the model with parameter values from phase 1.</p></li>
+</ul>
+<section id="phase-1-estimate-alpha-i-beta-i">
+<h5>Phase 1: Estimate <span class="math notranslate nohighlight">\((\alpha_{i},\beta_{i})\)</span>.<a class="headerlink" href="#phase-1-estimate-alpha-i-beta-i" title="Permalink to this headline">#</a></h5>
+<p>Imagine that we have historical data for the excess return of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> and the market over some period of time; say we have <span class="math notranslate nohighlight">\(\mathcal{M}\)</span> measurements for the excess returns. Then, the excess return for <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> can be encoded as a <span class="math notranslate nohighlight">\(\mathcal{M}\times{1}\)</span> column vector <span class="math notranslate nohighlight">\(Y\)</span>, while the excess market return can be encoded as an <span class="math notranslate nohighlight">\(\mathcal{M}\times{2}\)</span> matrix <span class="math notranslate nohighlight">\(X\)</span>, where the first column of <span class="math notranslate nohighlight">\(X\)</span> is all 1’s while the second column holds the excess market return values. Then, the single index model (in the absence of the residual) is the overdetermined (<span class="math notranslate nohighlight">\(\mathcal{M}\gg{2}\)</span>) linear system:</p>
+<div class="math notranslate nohighlight" id="equation-eqn-linear-sys-sim">
+<span class="eqno">(62)<a class="headerlink" href="#equation-eqn-linear-sys-sim" title="Permalink to this equation">#</a></span>\[Y = X\theta\]</div>
+<p>where <span class="math notranslate nohighlight">\(\theta = (\alpha_{i},\beta_{i})^{T}\)</span> is the <span class="math notranslate nohighlight">\(2\times{1}\)</span> column vector of unknown parameters. The task is to estimate the unknown <span class="math notranslate nohighlight">\(\theta\)</span> vector, given <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span>.</p>
+<section id="direct-matrix-inversion">
+<h6>Direct Matrix Inversion<a class="headerlink" href="#direct-matrix-inversion" title="Permalink to this headline">#</a></h6>
+<p>One method to estimate the unknown parameter vector <span class="math notranslate nohighlight">\(\theta\)</span> is to directly invert the data matrix <span class="math notranslate nohighlight">\(X\)</span>. In particular, if we multiply both sides of Eqn. <a class="reference internal" href="#equation-eqn-linear-sys-sim">(62)</a> by the transpose of the data matrix:</p>
+<div class="math notranslate nohighlight" id="equation-eqn-linear-sys-sim-1">
+<span class="eqno">(63)<a class="headerlink" href="#equation-eqn-linear-sys-sim-1" title="Permalink to this equation">#</a></span>\[X^{T}Y = X^{T}X\theta\]</div>
+<p>we get a square matrix <span class="math notranslate nohighlight">\(X^{T}X\)</span> that can be inverted to solve for the unknown parameter vector <span class="math notranslate nohighlight">\(\theta\)</span>:</p>
+<div class="math notranslate nohighlight" id="equation-eqn-linear-sys-sim-2">
+<span class="eqno">(64)<a class="headerlink" href="#equation-eqn-linear-sys-sim-2" title="Permalink to this equation">#</a></span>\[\hat{\theta} = \left(X^{T}X\right)^{-1}X^{T}Y\]</div>
+<p>when we have assumed <span class="math notranslate nohighlight">\(\det(X^{T}X)\neq{0}\)</span>. <a class="reference internal" href="#example-dmi-single-index-model">Example 27</a> explores the direct matrix inversion approach for computing the unknown parameter vector <span class="math notranslate nohighlight">\(\theta\)</span>:</p>
+<div class="proof example admonition" id="example-dmi-single-index-model">
+<p class="admonition-title"><span class="caption-number">Example 27 </span> (Direct matrix inversion to compute <span class="math notranslate nohighlight">\(\theta\)</span>)</p>
+<section class="example-content" id="proof-content">
+<p>Estimate the unknown single index model parameters <span class="math notranslate nohighlight">\(\theta = (\alpha,\beta)^{T}\)</span> for <a class="reference external" href="https://finance.yahoo.com/quote/AMD">AMD</a> using the daily log returns for the last 90 days. The <a class="reference external" href="https://ycharts.com/indicators/3_month_t_bill">three-month T-bill interest rate</a> is r = 2.61%. Finally, assume <a class="reference external" href="https://finance.yahoo.com/quote/SPY">SPY</a> represents the market.</p>
+<p><strong>Compute daily risk-free rate</strong>: Because we are using daily price data to compute the excess return, we must convert the risk-free rate, reported in annual units, to daily units. Let <span class="math notranslate nohighlight">\(r_{f}\)</span> denote the risk-free daily rate, then:</p>
+<div class="math notranslate nohighlight">
+\[r_{f} = (1+r)^{(1/365)} - 1\]</div>
+<p>The value for the daily risk-free rate of return was found to be <span class="math notranslate nohighlight">\(r_{f}\)</span> = 7.06e-5.</p>
+<p><strong>Estimate <span class="math notranslate nohighlight">\(\theta\)</span></strong>:
+The daily log-return for <a class="reference external" href="https://finance.yahoo.com/quote/AMD">AMD</a> and <a class="reference external" href="https://finance.yahoo.com/quote/SPY">SPY</a> was computed using <a class="reference internal" href="#defn-log-return">Definition 42</a>; six-months of daily open high low close (OHLC) data was downloaded from <a class="reference external" href="https://polygon.io">Polygon.io</a>.</p>
+<p>The last 90-days of data were used to calculate the log return and to formulate the <span class="math notranslate nohighlight">\(Y\)</span> vector and <span class="math notranslate nohighlight">\(X\)</span> matrix. The matrix inverse <span class="math notranslate nohighlight">\(\left(X^{T}X\right)^{-1}\)</span> was computed using the <code class="docutils literal notranslate"><span class="pre">inv</span></code> command from the <code class="docutils literal notranslate"><span class="pre">LinearAlgebra</span></code> package:</p>
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">Xᵀ</span> <span class="o">=</span> <span class="n">transpose</span><span class="p">(</span><span class="n">X</span><span class="p">);</span>
+<span class="n">θ̂</span> <span class="o">=</span> <span class="n">inv</span><span class="p">((</span><span class="n">Xᵀ</span><span class="o">*</span><span class="n">X</span><span class="p">))</span><span class="o">*</span><span class="n">Xᵀ</span><span class="o">*</span><span class="n">Y</span>
+</pre></div>
+</div>
+<p>where θ̂ denotes the estimated model parameters; the estimated firm-specific return was <span class="math notranslate nohighlight">\(\hat{\alpha}\)</span> = -0.000432, while <span class="math notranslate nohighlight">\(\hat{\beta}\)</span> = 1.96.</p>
+<figure class="align-default" id="fig-amd-sim-v-data">
+<a class="reference internal image-reference" href="../_images/Fig-AMD-SIM-v-Data.pdf"><img alt="../_images/Fig-AMD-SIM-v-Data.pdf" src="../_images/Fig-AMD-SIM-v-Data.pdf" style="height: 380px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 40 </span><span class="caption-text">Estimated performance of the single index model for <a class="reference external" href="https://finance.yahoo.com/quote/AMD/">AMD</a> computed using direct matrix inversion. Green dots denote prediction data, while gray dots denote training data.</span><a class="headerlink" href="#fig-amd-sim-v-data" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>source: <a class="reference external" href="https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks">live Pluto notebook</a> or <a class="reference external" href="https://htmlview.glitch.me/?https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks/blob/main/pluto-notebooks/html/Example-DirectMatrixInversion-SIM.jl.html">static HTML view</a></p>
+</section>
+</div></section>
+</section>
+<section id="phase-2-identification-of-the-residual-model">
+<h5>Phase 2: Identification of the residual model<a class="headerlink" href="#phase-2-identification-of-the-residual-model" title="Permalink to this headline">#</a></h5>
+<p>Now that we have estimated <span class="math notranslate nohighlight">\(\hat{\theta}\)</span>, we can compute the residual model. The residual model <span class="math notranslate nohighlight">\(\epsilon_{i}(t)\)</span> describes the unmodeled random component of the return of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code>; thus, it explains all the influences on the excess return that are <em>not</em> associated with the firm or the overall market.</p>
+<p>Let’s assume <span class="math notranslate nohighlight">\(\epsilon_{i}(t)\sim{N(0,\sigma_{\epsilon,i}^2)}\)</span>, i.e., the residual is <a class="reference external" href="https://en.wikipedia.org/wiki/Normal_distribution">normally distributed</a> with a zero mean and a variance of <span class="math notranslate nohighlight">\(\sigma_{\epsilon,i}^2\)</span>; we’ll estimate the variance from data. In particular, define the residual (difference) between the model and the data as:</p>
+<div class="math notranslate nohighlight">
+\[\Delta = Y - \hat{Y}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\hat{Y}\)</span> denotes the <em>estimated</em> excess return of firm <span class="math notranslate nohighlight">\(i\)</span> (computed using the single index model), and <span class="math notranslate nohighlight">\(Y\)</span> indicates the <em>actual</em> excess return of firm <span class="math notranslate nohighlight">\(i\)</span> as observed in the market. Then, for each data point, e.g., close price value in our dataset, we’ll have a value for <span class="math notranslate nohighlight">\(\Delta\)</span>, the difference between the predicted and actual excess return; the values of <span class="math notranslate nohighlight">\(\Delta\)</span> can be thought of as samples from the residual distribution <span class="math notranslate nohighlight">\(\epsilon_{i}(t)\)</span>. Thus, we can use <span class="math notranslate nohighlight">\(\Delta\)</span> to estimate <span class="math notranslate nohighlight">\(\sigma_{\epsilon,i}^2\)</span>. <a class="reference internal" href="#example-normal-residual-model">Example 28</a> explores an approach to estimate the variance of the residuals.</p>
+<div class="proof example admonition" id="example-normal-residual-model">
+<p class="admonition-title"><span class="caption-number">Example 28 </span> (Identification of the Residual Model for <a class="reference external" href="https://finance.yahoo.com/quote/AMD">AMD</a>)</p>
+<section class="example-content" id="proof-content">
+<p>Let’s use the data and the estimated single index model parameters <span class="math notranslate nohighlight">\(\hat{\theta}\)</span> for <a class="reference external" href="https://finance.yahoo.com/quote/AMD">AMD</a> from <a class="reference internal" href="#example-dmi-single-index-model">Example 27</a>. Given this data, let’s estimate the variance of the unknown residual distribution, <span class="math notranslate nohighlight">\(\sigma_{\epsilon,i}^2\)</span>, using a maximum likelihood approach.</p>
+<p>We implemented the maximum likelihood strategy using routines implemented in the <a class="reference external" href="https://github.com/JuliaStats/Distributions.jl">Distributions.jl</a> package.</p>
+</section>
+</div></section>
+</section>
+</section>
+</section>
+<section id="buy-and-hold-strategy">
+<span id="content-references-buy-and-hold-strategy"></span><h2>Buy and Hold Strategy<a class="headerlink" href="#buy-and-hold-strategy" title="Permalink to this headline">#</a></h2>
+<p>We have tools to measure the risk and reward of stocks, now, let’s begin the discussion of investment strategies. The <a class="reference external" href="https://www.investopedia.com/terms/b/buyandhold.asp">buy and hold strategy</a> is arguably the most straightforward approach for investing in stocks (or ETFs). In this approach, an investor buys shares of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> on a regular basis and then holds these shares indefinitely, regardless of the short-term price fluctuations in <code class="docutils literal notranslate"><span class="pre">XYZ.</span></code></p>
+<p>The <a class="reference external" href="https://www.investopedia.com/terms/b/buyandhold.asp">buy and hold strategy</a> is a passive investment approach. No consideration is given to unrealized gains (or losses), and no adjustments are made to the fund other than adding new shares. However, while this approach may appear naive, it can be surprisingly successful.</p>
+<p>The keys to the success of the <a class="reference external" href="https://www.investopedia.com/terms/b/buyandhold.asp">buy and hold strategy</a> are:</p>
+<ul class="simple">
+<li><p>The expected return of the market, when viewed over a long time horizon, is positive; thus, stocks (or ETFs) with <span class="math notranslate nohighlight">\(\beta&gt;0\)</span> will (on average) be expected to appreciate.</p></li>
+<li><p>Further, because the investor is periodically adding new shares of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> to their overall portfolio, the average share price of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> held by the investor can reflect short-term price fluctuations.</p></li>
+</ul>
+<p>Let’s explore these two points with an example:</p>
+<div class="proof example admonition" id="example-average-cost">
+<p class="admonition-title"><span class="caption-number">Example 29 </span> (Buy and hold strategy for <a class="reference external" href="https://finance.yahoo.com/quote/SPY/">SPY</a> )</p>
+<section class="example-content" id="proof-content">
+<p>Suppose we purchased $1.00’s worth of <a class="reference external" href="https://finance.yahoo.com/quote/SPY/">SPY</a> shares at the close of every trading day over a five year period.</p>
+</section>
+</div><section id="portfolio-return-using-single-index-models">
+<h3>Portfolio Return using Single Index Models<a class="headerlink" href="#portfolio-return-using-single-index-models" title="Permalink to this headline">#</a></h3>
+<p>Portfolio return shows the expected return of portfolio <span class="math notranslate nohighlight">\(\mathcal{P}\)</span> in terms of the expected return of each of the assets in the portfolio. Thus, we must estimate the expected returns for each asset when solving the Markowitz allocation problem from data. However, a single index model can limit this work; instead of estimating the expected return for each asset from data, we only need to calculate the expected excess market return <span class="math notranslate nohighlight">\(\mathbb{E}(R_{m})\)</span> and then use the single index model to predict the firm-specific expected excess returns <span class="math notranslate nohighlight">\(\mathbb{E}(R_{i})\)</span>:</p>
 <div class="proof observation admonition" id="obs-single-index-model-p-return">
 <p class="admonition-title"><span class="caption-number">Observation 8 </span> (Single Index Model Portfolio Return)</p>
 <section class="observation-content" id="proof-content">
-<p>The single index model of Sharpe <span id="id5">[<a class="reference internal" href="../References.html#id15" title="William F. Sharpe. A simplified model for portfolio analysis. Management Science, 9(2):277-293, 1963. URL: https://doi.org/10.1287/mnsc.9.2.277, arXiv:https://doi.org/10.1287/mnsc.9.2.277, doi:10.1287/mnsc.9.2.277.">Sharpe, 1963</a>]</span> describes the excess return of asset <span class="math notranslate nohighlight">\(i\)</span> in terms of a firm specific contribution, and a contribution from the overall market. Substituting the expected excess return for asset <span class="math notranslate nohighlight">\(i\)</span> into Eqn. <a class="reference internal" href="#equation-eqn-expected-p-rerturn">(63)</a> gives:</p>
+<p>The single index model of Sharpe <span id="id7">[<a class="reference internal" href="../References.html#id15" title="William F. Sharpe. A simplified model for portfolio analysis. Management Science, 9(2):277-293, 1963. URL: https://doi.org/10.1287/mnsc.9.2.277, arXiv:https://doi.org/10.1287/mnsc.9.2.277, doi:10.1287/mnsc.9.2.277.">Sharpe, 1963</a>]</span> describes the excess return of asset <span class="math notranslate nohighlight">\(i\)</span> in terms of a firm specific contribution, and a contribution from the overall market. Substituting the expected excess return for asset <span class="math notranslate nohighlight">\(i\)</span> into Eqn. <a class="reference internal" href="#equation-eqn-expected-p-rerturn">(54)</a> gives:</p>
 <div class="math notranslate nohighlight" id="equation-eqn-almost-sim-portfolio">
 <span class="eqno">(65)<a class="headerlink" href="#equation-eqn-almost-sim-portfolio" title="Permalink to this equation">#</a></span>\[\mathbb{E}(R_{\mathcal{P}}) = w^{T}\mathbb{E}(R) = \sum_{i\in\mathcal{P}}w_{i}\Bigl[\alpha_{i}+\beta_{i}\mathbb{E}(R_{m})\Bigr]\]</div>
 <p>where the constant <span class="math notranslate nohighlight">\(\alpha_{i}\)</span> is the estimated unexplained firm-specific return and <span class="math notranslate nohighlight">\(\mathbb{E}(R_{m})\)</span> denotes the expected excess return of the market. Carrying through the multiplication in Eqn. <a class="reference internal" href="#equation-eqn-almost-sim-portfolio">(65)</a> gives:</p>
@@ -732,8 +1210,8 @@ The quantity <span class="math notranslate nohighlight">\(R^{*}\)</span> denotes
 </section>
 </div></section>
 <section id="portfolio-variance-using-single-index-models">
-<h4>Portfolio Variance using Single Index Models<a class="headerlink" href="#portfolio-variance-using-single-index-models" title="Permalink to this headline">#</a></h4>
-<p>The single index portfolio approach provides a theoretically attractive model for the covariance matrix <span class="math notranslate nohighlight">\(\Sigma\)</span>. In particular, let’s build upon <a class="reference internal" href="#defn-portfolio-variance">Definition 43</a>:</p>
+<h3>Portfolio Variance using Single Index Models<a class="headerlink" href="#portfolio-variance-using-single-index-models" title="Permalink to this headline">#</a></h3>
+<p>The single index portfolio approach provides a theoretically attractive model for the covariance matrix <span class="math notranslate nohighlight">\(\Sigma\)</span>. In particular, let’s build upon <a class="reference internal" href="#defn-portfolio-variance">Definition 38</a>:</p>
 <div class="proof observation admonition" id="obs-single-index-model-covariance">
 <p class="admonition-title"><span class="caption-number">Observation 9 </span> (Single Index Model Portfolio Variance)</p>
 <section class="observation-content" id="proof-content">
@@ -753,10 +1231,9 @@ The quantity <span class="math notranslate nohighlight">\(R^{*}\)</span> denotes
 \end{cases}
 \end{split}\]</div>
 <p>where <span class="math notranslate nohighlight">\(\sigma_{m}^2\)</span> denotes the variance of the excess return of the market portfolio and <span class="math notranslate nohighlight">\(\sigma_{\epsilon_{i}}^{2}\)</span> denotes the variance of the firm-specific error.</p>
-<p>Thus, the covariance matrix <span class="math notranslate nohighlight">\(\Sigma\)</span>, when constructed using the single index model of Sharpe <span id="id6">[<a class="reference internal" href="../References.html#id15" title="William F. Sharpe. A simplified model for portfolio analysis. Management Science, 9(2):277-293, 1963. URL: https://doi.org/10.1287/mnsc.9.2.277, arXiv:https://doi.org/10.1287/mnsc.9.2.277, doi:10.1287/mnsc.9.2.277.">Sharpe, 1963</a>]</span>, has a theoretically attractive structure that reduces to computing the variance of the market, the variance of the error, and the <span class="math notranslate nohighlight">\(\beta_{\star}\)</span> values; <span class="math notranslate nohighlight">\(\beta_{\star}\)</span> are often publicly tabulated (but are also relatively easy to calculate on our own).</p>
+<p>Thus, the covariance matrix <span class="math notranslate nohighlight">\(\Sigma\)</span>, when constructed using the single index model of Sharpe <span id="id8">[<a class="reference internal" href="../References.html#id15" title="William F. Sharpe. A simplified model for portfolio analysis. Management Science, 9(2):277-293, 1963. URL: https://doi.org/10.1287/mnsc.9.2.277, arXiv:https://doi.org/10.1287/mnsc.9.2.277, doi:10.1287/mnsc.9.2.277.">Sharpe, 1963</a>]</span>, has a theoretically attractive structure that reduces to computing the variance of the market, the variance of the error, and the <span class="math notranslate nohighlight">\(\beta_{\star}\)</span> values; <span class="math notranslate nohighlight">\(\beta_{\star}\)</span> are often publicly tabulated (but are also relatively easy to calculate on our own).</p>
 </section>
 </div></section>
-</section>
 </section>
 <section id="does-markowitz-portfolio-allocation-work">
 <span id="content-references-markowitz-solution-test"></span><h2>Does Markowitz Portfolio Allocation work?<a class="headerlink" href="#does-markowitz-portfolio-allocation-work" title="Permalink to this headline">#</a></h2>
