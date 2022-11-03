@@ -170,7 +170,6 @@ subject to the constraints:
 $$
 \begin{eqnarray}
 \left(1-\sum_{i\in\mathcal{P}}\omega_{i}\right)r_{f}+\mathbb{E}(r_{\mathcal{P}})&\geq&{R^{*}}\\
-1^{T}w &=& 1\\
 w_{i}&\geq&{0}\qquad{\forall{i}\in\mathcal{P}}
 \end{eqnarray}
 $$
@@ -585,31 +584,10 @@ Let's use the data and the estimated single index model parameters $\hat{\theta}
 
 We implemented the maximum likelihood strategy using routines implemented in the [Distributions.jl](https://github.com/JuliaStats/Distributions.jl) package.
 
-
-
-````
-
-
-
-(content:references:buy-and-hold-strategy)=
-## Buy and Hold Strategy
-We have tools to measure the risk and reward of stocks, now, let's begin the discussion of investment strategies. The [buy and hold strategy](https://www.investopedia.com/terms/b/buyandhold.asp) is arguably the most straightforward approach for investing in stocks (or ETFs). In this approach, an investor buys shares of `XYZ` on a regular basis and then holds these shares indefinitely, regardless of the short-term price fluctuations in `XYZ.` 
-
-The [buy and hold strategy](https://www.investopedia.com/terms/b/buyandhold.asp) is a passive investment approach. No consideration is given to unrealized gains (or losses), and no adjustments are made to the fund other than adding new shares. However, while this approach may appear naive, it can be surprisingly successful. 
-
-The keys to the success of the [buy and hold strategy](https://www.investopedia.com/terms/b/buyandhold.asp) are:
-
-* The expected return of the market, when viewed over a long time horizon, is positive; thus, stocks (or ETFs) with $\beta>0$ will (on average) be expected to appreciate. 
-* Further, because the investor is periodically adding new shares of `XYZ` to their overall portfolio, the average share price of `XYZ` held by the investor can reflect short-term price fluctuations. 
-
-Let's explore these two points with an example:   
-
-````{prf:example} Buy and hold strategy for [SPY](https://finance.yahoo.com/quote/SPY/) 
-:label: example-average-cost
-
-Suppose we purchased \$1.00's worth of [SPY](https://finance.yahoo.com/quote/SPY/) shares at the close of every trading day over a five year period. 
+Finish me.
 
 ````
+
 
 ### Portfolio Return using Single Index Models
 Portfolio return shows the expected return of portfolio $\mathcal{P}$ in terms of the expected return of each of the assets in the portfolio. Thus, we must estimate the expected returns for each asset when solving the Markowitz allocation problem from data. However, a single index model can limit this work; instead of estimating the expected return for each asset from data, we only need to calculate the expected excess market return $\mathbb{E}(R_{m})$ and then use the single index model to predict the firm-specific expected excess returns $\mathbb{E}(R_{i})$: 
@@ -681,10 +659,34 @@ Thus, the covariance matrix $\Sigma$, when constructed using the single index mo
 
 ````
 
-
 (content:references:markowitz-solution-test)=
 ## Does Markowitz Portfolio Allocation work?
-Fill me in.
+
+Let's try to get a sense of whether Markowitz portfolios work in practice. 
+
+(content:references:buy-and-hold-strategy)=
+### Buy and Hold Strategy
+We have tools to measure the risk and reward of stocks, now, let's begin the discussion of investment strategies. The [buy and hold strategy](https://www.investopedia.com/terms/b/buyandhold.asp) is arguably the most straightforward approach for investing in stocks (or ETFs). In this approach, an investor buys shares of `XYZ` on a regular basis and then holds these shares indefinitely, regardless of the short-term price fluctuations in `XYZ.` 
+
+The [buy and hold strategy](https://www.investopedia.com/terms/b/buyandhold.asp) is a passive investment approach. No consideration is given to unrealized gains (or losses), and no adjustments are made to the fund other than adding new shares. However, while this approach may appear naive, it can be surprisingly successful. 
+
+The keys to the success of the [buy and hold strategy](https://www.investopedia.com/terms/b/buyandhold.asp) are:
+
+* The expected return of the market, when viewed over a long time horizon, is positive; thus, stocks (or ETFs) with $\beta>0$ will (on average) be expected to appreciate. 
+* Further, because the investor is periodically adding new shares of `XYZ` to their overall portfolio, the average share price of `XYZ` held by the investor can reflect short-term price fluctuations. 
+
+Let's explore these two points with an example:   
+
+````{prf:example} Buy and hold strategy for [SPY](https://finance.yahoo.com/quote/SPY/) 
+:label: example-average-cost
+
+Suppose we purchased \$1.00's worth of [SPY](https://finance.yahoo.com/quote/SPY/) shares at the close of every trading day over a five year period. 
+
+Finish me. 
+
+````
+
+
 
 ---
 

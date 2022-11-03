@@ -519,13 +519,6 @@ title="Print to PDF"
      </li>
     </ul>
    </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#buy-and-hold-strategy">
-   Buy and Hold Strategy
-  </a>
-  <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#portfolio-return-using-single-index-models">
      Portfolio Return using Single Index Models
@@ -542,6 +535,13 @@ title="Print to PDF"
   <a class="reference internal nav-link" href="#does-markowitz-portfolio-allocation-work">
    Does Markowitz Portfolio Allocation work?
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#buy-and-hold-strategy">
+     Buy and Hold Strategy
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#summary">
@@ -673,13 +673,6 @@ title="Print to PDF"
      </li>
     </ul>
    </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#buy-and-hold-strategy">
-   Buy and Hold Strategy
-  </a>
-  <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#portfolio-return-using-single-index-models">
      Portfolio Return using Single Index Models
@@ -696,6 +689,13 @@ title="Print to PDF"
   <a class="reference internal nav-link" href="#does-markowitz-portfolio-allocation-work">
    Does Markowitz Portfolio Allocation work?
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#buy-and-hold-strategy">
+     Buy and Hold Strategy
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#summary">
@@ -850,7 +850,6 @@ w_{i}&amp;\geq&amp;{0}\qquad{\forall{i}\in\mathcal{P}}
 \[\begin{split}
 \begin{eqnarray}
 \left(1-\sum_{i\in\mathcal{P}}\omega_{i}\right)r_{f}+\mathbb{E}(r_{\mathcal{P}})&amp;\geq&amp;{R^{*}}\\
-1^{T}w &amp;=&amp; 1\\
 w_{i}&amp;\geq&amp;{0}\qquad{\forall{i}\in\mathcal{P}}
 \end{eqnarray}
 \end{split}\]</div>
@@ -1173,27 +1172,12 @@ The daily log-return for <a class="reference external" href="https://finance.yah
 <section class="example-content" id="proof-content">
 <p>Let’s use the data and the estimated single index model parameters <span class="math notranslate nohighlight">\(\hat{\theta}\)</span> for <a class="reference external" href="https://finance.yahoo.com/quote/AMD">AMD</a> from <a class="reference internal" href="#example-dmi-single-index-model">Example 27</a>. Given this data, let’s estimate the variance of the unknown residual distribution, <span class="math notranslate nohighlight">\(\sigma_{\epsilon,i}^2\)</span>, using a maximum likelihood approach.</p>
 <p>We implemented the maximum likelihood strategy using routines implemented in the <a class="reference external" href="https://github.com/JuliaStats/Distributions.jl">Distributions.jl</a> package.</p>
+<p>Finish me.</p>
 </section>
 </div></section>
 </section>
 </section>
-</section>
-<section id="buy-and-hold-strategy">
-<span id="content-references-buy-and-hold-strategy"></span><h2>Buy and Hold Strategy<a class="headerlink" href="#buy-and-hold-strategy" title="Permalink to this headline">#</a></h2>
-<p>We have tools to measure the risk and reward of stocks, now, let’s begin the discussion of investment strategies. The <a class="reference external" href="https://www.investopedia.com/terms/b/buyandhold.asp">buy and hold strategy</a> is arguably the most straightforward approach for investing in stocks (or ETFs). In this approach, an investor buys shares of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> on a regular basis and then holds these shares indefinitely, regardless of the short-term price fluctuations in <code class="docutils literal notranslate"><span class="pre">XYZ.</span></code></p>
-<p>The <a class="reference external" href="https://www.investopedia.com/terms/b/buyandhold.asp">buy and hold strategy</a> is a passive investment approach. No consideration is given to unrealized gains (or losses), and no adjustments are made to the fund other than adding new shares. However, while this approach may appear naive, it can be surprisingly successful.</p>
-<p>The keys to the success of the <a class="reference external" href="https://www.investopedia.com/terms/b/buyandhold.asp">buy and hold strategy</a> are:</p>
-<ul class="simple">
-<li><p>The expected return of the market, when viewed over a long time horizon, is positive; thus, stocks (or ETFs) with <span class="math notranslate nohighlight">\(\beta&gt;0\)</span> will (on average) be expected to appreciate.</p></li>
-<li><p>Further, because the investor is periodically adding new shares of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> to their overall portfolio, the average share price of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> held by the investor can reflect short-term price fluctuations.</p></li>
-</ul>
-<p>Let’s explore these two points with an example:</p>
-<div class="proof example admonition" id="example-average-cost">
-<p class="admonition-title"><span class="caption-number">Example 29 </span> (Buy and hold strategy for <a class="reference external" href="https://finance.yahoo.com/quote/SPY/">SPY</a> )</p>
-<section class="example-content" id="proof-content">
-<p>Suppose we purchased $1.00’s worth of <a class="reference external" href="https://finance.yahoo.com/quote/SPY/">SPY</a> shares at the close of every trading day over a five year period.</p>
-</section>
-</div><section id="portfolio-return-using-single-index-models">
+<section id="portfolio-return-using-single-index-models">
 <h3>Portfolio Return using Single Index Models<a class="headerlink" href="#portfolio-return-using-single-index-models" title="Permalink to this headline">#</a></h3>
 <p>Portfolio return shows the expected return of portfolio <span class="math notranslate nohighlight">\(\mathcal{P}\)</span> in terms of the expected return of each of the assets in the portfolio. Thus, we must estimate the expected returns for each asset when solving the Markowitz allocation problem from data. However, a single index model can limit this work; instead of estimating the expected return for each asset from data, we only need to calculate the expected excess market return <span class="math notranslate nohighlight">\(\mathbb{E}(R_{m})\)</span> and then use the single index model to predict the firm-specific expected excess returns <span class="math notranslate nohighlight">\(\mathbb{E}(R_{i})\)</span>:</p>
 <div class="proof observation admonition" id="obs-single-index-model-p-return">
@@ -1244,7 +1228,24 @@ The daily log-return for <a class="reference external" href="https://finance.yah
 </section>
 <section id="does-markowitz-portfolio-allocation-work">
 <span id="content-references-markowitz-solution-test"></span><h2>Does Markowitz Portfolio Allocation work?<a class="headerlink" href="#does-markowitz-portfolio-allocation-work" title="Permalink to this headline">#</a></h2>
-<p>Fill me in.</p>
+<p>Let’s try to get a sense of whether Markowitz portfolios work in practice.</p>
+<section id="buy-and-hold-strategy">
+<span id="content-references-buy-and-hold-strategy"></span><h3>Buy and Hold Strategy<a class="headerlink" href="#buy-and-hold-strategy" title="Permalink to this headline">#</a></h3>
+<p>We have tools to measure the risk and reward of stocks, now, let’s begin the discussion of investment strategies. The <a class="reference external" href="https://www.investopedia.com/terms/b/buyandhold.asp">buy and hold strategy</a> is arguably the most straightforward approach for investing in stocks (or ETFs). In this approach, an investor buys shares of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> on a regular basis and then holds these shares indefinitely, regardless of the short-term price fluctuations in <code class="docutils literal notranslate"><span class="pre">XYZ.</span></code></p>
+<p>The <a class="reference external" href="https://www.investopedia.com/terms/b/buyandhold.asp">buy and hold strategy</a> is a passive investment approach. No consideration is given to unrealized gains (or losses), and no adjustments are made to the fund other than adding new shares. However, while this approach may appear naive, it can be surprisingly successful.</p>
+<p>The keys to the success of the <a class="reference external" href="https://www.investopedia.com/terms/b/buyandhold.asp">buy and hold strategy</a> are:</p>
+<ul class="simple">
+<li><p>The expected return of the market, when viewed over a long time horizon, is positive; thus, stocks (or ETFs) with <span class="math notranslate nohighlight">\(\beta&gt;0\)</span> will (on average) be expected to appreciate.</p></li>
+<li><p>Further, because the investor is periodically adding new shares of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> to their overall portfolio, the average share price of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> held by the investor can reflect short-term price fluctuations.</p></li>
+</ul>
+<p>Let’s explore these two points with an example:</p>
+<div class="proof example admonition" id="example-average-cost">
+<p class="admonition-title"><span class="caption-number">Example 29 </span> (Buy and hold strategy for <a class="reference external" href="https://finance.yahoo.com/quote/SPY/">SPY</a> )</p>
+<section class="example-content" id="proof-content">
+<p>Suppose we purchased $1.00’s worth of <a class="reference external" href="https://finance.yahoo.com/quote/SPY/">SPY</a> shares at the close of every trading day over a five year period.</p>
+<p>Finish me.</p>
+</section>
+</div></section>
 </section>
 <hr class="docutils" />
 <section id="summary">
