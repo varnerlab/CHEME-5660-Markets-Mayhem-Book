@@ -584,7 +584,7 @@ Let's use the data and the estimated single index model parameters $\hat{\theta}
 
 We implemented the maximum likelihood strategy using routines implemented in the [Distributions.jl](https://github.com/JuliaStats/Distributions.jl) package.
 
-Finish me.
+Finish me this weekend. 
 
 ````
 
