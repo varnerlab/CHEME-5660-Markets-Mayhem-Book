@@ -354,7 +354,7 @@ the unweighted excess return vector $R$, and the probability array $p$
 ```
 
 #### Example
-* Markowitz portfolio allocation using Boltzmann weighted excess returns. [Live notebook](https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks) or a [static HTML view](). 
+* Markowitz portfolio allocation using Boltzmann weighted excess returns. [Live notebook](https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks) or a [static HTML view](https://htmlview.glitch.me/?https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks/blob/main/jupyter-notebooks/html/Example-SIM-Boltzmann-Markowitz-Allocation.html). 
 
 (content:references:risk-volatility)=
 ### Volatility and the Covariance Matrix
