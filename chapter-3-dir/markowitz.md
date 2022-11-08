@@ -290,10 +290,10 @@ Many weighting schemes could be used; any approach that obeys the axioms of prob
 ````{prf:definition} Boltzmann weighted excess returns
 :label: defn-bwer
 
-The expected excess return for firm $i$ is given by:
+Let the excess return values for firm $i$ at the time intervals $t=1,2,\dots,T$ be represented by $R_{i,t}$; the expected excess return for a firm $i$ is represented by:
 
 ```{math}
-\mathbb{E}\left(R_{i}\right) = \sum_{t}p(t)R_{i,t}
+\mathbb{E}\left(R_{i}\right) = \sum_{t=1}^{T}p(t)R_{i,t}
 ```
 
 where $R_{i,t}$ denotes the excess return in time period $t$ for firm $i$. 
@@ -303,11 +303,22 @@ Further, let the probability factors $p(t)$ follow a [Boltzmann distribution](ht
 p(t) = \frac{1}{Z}\exp(-\lambda\epsilon_{t})
 ```
 
-where the partition function $Z$ is given by $Z = \sum_{t}\exp(-\lambda\epsilon_{t})$, $\lambda\geq{0}$ is an adjustable parameter, and $\epsilon_{t}>0$ is the pseudo energy of the market at time $t$.  Then, the Boltzmann weighted expected excess return $\mathbb{E}_{B}\left(R_{i}\right)$ is given by: 
+where the partition function $Z$ is defined as:
 
 ```{math}
-\mathbb{E}_{B}\left(R_{i}\right) = \frac{1}{Z}\sum_{t}\exp\left(-\lambda\epsilon_{t}\right){R}_{i,t}
+:label: eqn-partition-factor-bw
+Z = \sum_{t=1}^{T}\exp(-\lambda\epsilon_{t})
 ```
+
+The adjustable parameter $\lambda\geq{0}$ controls the rate of decay, while $\epsilon_{t}>0$ is a pseudo energy of the market at time $t$; although more interesting functions may be possible to model the energy of a market, let $\epsilon_{t} = t$.
+
+Then, the Boltzmann weighted expected excess return for $\epsilon_{t} = t$ is given by: 
+
+```{math}
+:label: eqn-boltzmann-weight-expectation
+\mathbb{E}_{B}\left(R_{i}\right) = \frac{1}{Z}\sum_{t=1}^{T}\exp\left(-\lambda{t}\right){R}_{i,t}
+```
+
 ````
 
 Depending upon how we choose $\lambda$ and the pseudo energies in {prf:ref}`defn-bwer`, we can recover 
@@ -341,8 +352,11 @@ the unweighted excess return vector $R$, and the probability array $p$
 1. compute probability $p\leftarrow(1/Z)\times~W$  
 
 **Return**
-1. expected return $\mathbb{E}_{B}\left(R\right)$, excess return vector $R$, and probability array $p$
+1. expected return $\mathbb{E}_{B}\left(R\right)$, unweighted excess return vector $R$,  weighted excess return vector $\mathcal{R}$, and probability array $p$
 ```
+
+#### Example
+* Markowitz portfolio allocation using weighted returns. [Live notebook]() or a [static HTML view](). 
 
 (content:references:risk-volatility)=
 ### Volatility and the Covariance Matrix
