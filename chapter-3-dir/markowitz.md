@@ -270,8 +270,7 @@ P_{ij} = \exp\left(\bar{r}_{i,j-1\rightarrow{j}}\right)P_{i,j-1}
 Thus, the logarithmic daily return (or a logarithmic return computed between any two different dates) is a continuous discount rate that quantifies how the value of an asset, e.g., the share price of ticker `XYZ`, changes because of market forces. Becuase $P_{i,\star}$ is a random variable, the return is also a random variable. 
 
 ### Expected excess returns from data
-Suppose we had a data set $\mathcal{P}$ that contained the daily close
-price for a share of stock of firm $i$ for the last $T$ days, e.g., $1\rightarrow{T}$. 
+Suppose we had a data set $\mathcal{P}$ that contained the daily close price firm $i$ for the last $T$ days, e.g., $1\rightarrow{T}$. 
 Let the ticker symbol for firm $i$ be given by `XYZ`.
 Then, from the definition of expectation, we know the expected excess return for `XYZ` is given by:
 
@@ -280,10 +279,9 @@ Then, from the definition of expectation, we know the expected excess return for
 \mathbb{E}\left(R_{i}\right) = \sum_{t}p(t)R_{i,t}
 ```
 
-where the probability terms are subject to $\sum_{t}p(t) = 1$. The probability terms in Eqn. {eq}`eq-defn-expected-return` have several interpretations. First, they could represent the output
-of some (unknown) market process governing the returns. Another actionable interpretation is to think of them as weighting
-factors. Suppose the recent trend in `XYZ` prices is significantly different from long-term historical price trends, e.g., `XYZ` has recently experienced a sustained period of decline. You could weigh the recent data more highly
-to calculate an expected return (or volatility) that is more representative of current trends. Of course, the opposite could also be true; you could also empathize older versus newer data. 
+where the probability $\sum_{t}p(t) = 1$. The probability terms in Eqn. {eq}`eq-defn-expected-return` have several interpretations. First, they could represent the output of some (unknown) market process governing the returns. Another actionable interpretation is to think of them as weighting factors. 
+
+Suppose the recent trend in `XYZ` prices is significantly different from long-term historical price trends, e.g., `XYZ` has recently experienced a sustained period of decline. You could weigh the recent data more highly to calculate an expected return (or volatility) that is more representative of current trends. Of course, the opposite could also be true; you could also empathize older versus newer data. 
 
 Many weighting schemes could be used; any approach that obeys the axioms of probability will work! However, let's borrow a strategy from chemical physics, namely, we'll assume $p(t)$ follows the [Boltzmann distribution](https://en.wikipedia.org/wiki/Boltzmann_distribution).
 
@@ -342,7 +340,7 @@ the unweighted excess return vector $R$, and the probability array $p$
 **Main**
 1. for t $\in$ 1:$\mathcal{L}$
 
-    1. compute excess return $R[t]\leftarrow \log\left(P[t]/P[t+1]\right) - r_{f}$
+    1. compute excess return $R[t]\leftarrow \log\left(P[t]/P[t-1]\right) - r_{f}$
     1. compute weight factor $W[t]\leftarrow \exp\left(-\lambda\times\epsilon[t]\right)$
     1. compute weighted return factor $\mathcal{R}[t] \leftarrow R[t]\times~W[t]$
 
@@ -356,7 +354,7 @@ the unweighted excess return vector $R$, and the probability array $p$
 ```
 
 #### Example
-* Markowitz portfolio allocation using weighted returns. [Live notebook]() or a [static HTML view](). 
+* Markowitz portfolio allocation using Boltzmann weighted excess returns. [Live notebook](https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks) or a [static HTML view](https://htmlview.glitch.me/?https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks/blob/main/jupyter-notebooks/html/Example-SIM-Boltzmann-Markowitz-Allocation.html). 
 
 (content:references:risk-volatility)=
 ### Volatility and the Covariance Matrix
