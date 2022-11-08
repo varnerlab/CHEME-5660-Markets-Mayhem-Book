@@ -340,7 +340,7 @@ the unweighted excess return vector $R$, and the probability array $p$
 **Main**
 1. for t $\in$ 1:$\mathcal{L}$
 
-    1. compute excess return $R[t]\leftarrow \log\left(P[t]/P[t+1]\right) - r_{f}$
+    1. compute excess return $R[t]\leftarrow \log\left(P[t]/P[t-1]\right) - r_{f}$
     1. compute weight factor $W[t]\leftarrow \exp\left(-\lambda\times\epsilon[t]\right)$
     1. compute weighted return factor $\mathcal{R}[t] \leftarrow R[t]\times~W[t]$
 
