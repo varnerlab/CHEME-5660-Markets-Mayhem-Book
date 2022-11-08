@@ -270,8 +270,7 @@ P_{ij} = \exp\left(\bar{r}_{i,j-1\rightarrow{j}}\right)P_{i,j-1}
 Thus, the logarithmic daily return (or a logarithmic return computed between any two different dates) is a continuous discount rate that quantifies how the value of an asset, e.g., the share price of ticker `XYZ`, changes because of market forces. Becuase $P_{i,\star}$ is a random variable, the return is also a random variable. 
 
 ### Expected excess returns from data
-Suppose we had a data set $\mathcal{P}$ that contained the daily close
-price for a share of stock of firm $i$ for the last $T$ days, e.g., $1\rightarrow{T}$. 
+Suppose we had a data set $\mathcal{P}$ that contained the daily close price firm $i$ for the last $T$ days, e.g., $1\rightarrow{T}$. 
 Let the ticker symbol for firm $i$ be given by `XYZ`.
 Then, from the definition of expectation, we know the expected excess return for `XYZ` is given by:
 
@@ -280,20 +279,19 @@ Then, from the definition of expectation, we know the expected excess return for
 \mathbb{E}\left(R_{i}\right) = \sum_{t}p(t)R_{i,t}
 ```
 
-where the probability terms are subject to $\sum_{t}p(t) = 1$. The probability terms in Eqn. {eq}`eq-defn-expected-return` have several interpretations. First, they could represent the output
-of some (unknown) market process governing the returns. Another actionable interpretation is to think of them as weighting
-factors. Suppose the recent trend in `XYZ` prices is significantly different from long-term historical price trends, e.g., `XYZ` has recently experienced a sustained period of decline. You could weigh the recent data more highly
-to calculate an expected return (or volatility) that is more representative of current trends. Of course, the opposite could also be true; you could also empathize older versus newer data. 
+where the probability $\sum_{t}p(t) = 1$. The probability terms in Eqn. {eq}`eq-defn-expected-return` have several interpretations. First, they could represent the output of some (unknown) market process governing the returns. Another actionable interpretation is to think of them as weighting factors. 
+
+Suppose the recent trend in `XYZ` prices is significantly different from long-term historical price trends, e.g., `XYZ` has recently experienced a sustained period of decline. You could weigh the recent data more highly to calculate an expected return (or volatility) that is more representative of current trends. Of course, the opposite could also be true; you could also empathize older versus newer data. 
 
 Many weighting schemes could be used; any approach that obeys the axioms of probability will work! However, let's borrow a strategy from chemical physics, namely, we'll assume $p(t)$ follows the [Boltzmann distribution](https://en.wikipedia.org/wiki/Boltzmann_distribution).
 
 ````{prf:definition} Boltzmann weighted excess returns
 :label: defn-bwer
 
-The expected excess return for firm $i$ is given by:
+Let the excess return values for firm $i$ at the time intervals $t=1,2,\dots,T$ be represented by $R_{i,t}$; the expected excess return for a firm $i$ is represented by:
 
 ```{math}
-\mathbb{E}\left(R_{i}\right) = \sum_{t}p(t)R_{i,t}
+\mathbb{E}\left(R_{i}\right) = \sum_{t=1}^{T}p(t)R_{i,t}
 ```
 
 where $R_{i,t}$ denotes the excess return in time period $t$ for firm $i$. 
@@ -303,11 +301,22 @@ Further, let the probability factors $p(t)$ follow a [Boltzmann distribution](ht
 p(t) = \frac{1}{Z}\exp(-\lambda\epsilon_{t})
 ```
 
-where the partition function $Z$ is given by $Z = \sum_{t}\exp(-\lambda\epsilon_{t})$, $\lambda\geq{0}$ is an adjustable parameter, and $\epsilon_{t}>0$ is the pseudo energy of the market at time $t$.  Then, the Boltzmann weighted expected excess return $\mathbb{E}_{B}\left(R_{i}\right)$ is given by: 
+where the partition function $Z$ is defined as:
 
 ```{math}
-\mathbb{E}_{B}\left(R_{i}\right) = \frac{1}{Z}\sum_{t}\exp\left(-\lambda\epsilon_{t}\right){R}_{i,t}
+:label: eqn-partition-factor-bw
+Z = \sum_{t=1}^{T}\exp(-\lambda\epsilon_{t})
 ```
+
+The adjustable parameter $\lambda\geq{0}$ controls the rate of decay, while $\epsilon_{t}>0$ is a pseudo energy of the market at time $t$; although more interesting functions may be possible to model the energy of a market, let $\epsilon_{t} = t$.
+
+Then, the Boltzmann weighted expected excess return for $\epsilon_{t} = t$ is given by: 
+
+```{math}
+:label: eqn-boltzmann-weight-expectation
+\mathbb{E}_{B}\left(R_{i}\right) = \frac{1}{Z}\sum_{t=1}^{T}\exp\left(-\lambda{t}\right){R}_{i,t}
+```
+
 ````
 
 Depending upon how we choose $\lambda$ and the pseudo energies in {prf:ref}`defn-bwer`, we can recover 
@@ -341,8 +350,11 @@ the unweighted excess return vector $R$, and the probability array $p$
 1. compute probability $p\leftarrow(1/Z)\times~W$  
 
 **Return**
-1. expected return $\mathbb{E}_{B}\left(R\right)$, excess return vector $R$, and probability array $p$
+1. expected return $\mathbb{E}_{B}\left(R\right)$, unweighted excess return vector $R$,  weighted excess return vector $\mathcal{R}$, and probability array $p$
 ```
+
+#### Example
+* Markowitz portfolio allocation using Boltzmann weighted excess returns. [Live notebook](https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks) or a [static HTML view](). 
 
 (content:references:risk-volatility)=
 ### Volatility and the Covariance Matrix
