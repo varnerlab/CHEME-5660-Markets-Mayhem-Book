@@ -114,8 +114,21 @@ Let's do an example to illustrate the MDP components described in {prf:ref}`defn
 ````{prf:example}
 :label: example-MDP-line
 
-Fill me in.
+ ```{figure} ./figs/Fig-Linear-MDP-Schematic.pdf
+---
+height: 110px
+name: fig-linear-mdp-schematic
+---
+Schematic of a 5-state 2-action Markov decision process. The terminal states 1 and 5 have non-zero rewards, while states 2, 3 and 4 have zero reward.
+```
 
+Consider the Markov decision process schematic shown in {numref}`fig-linear-mdp-schematic`. For this process, the state set is 
+$\mathcal{S} = \left\{1,2,3,4,5\right\}$ while the action set is $\mathcal{A} = \left\{a_{1},a_{2}\right\}$:
+* Action $a_{1}$ moves the decision-maker one state to the right, while action $a_{2}$ moves the decision-maker one state to the left. 
+* The decision-maker recieves a reward of +1 for entering state 1. However, the decision-maker is penalized -10 for entering state 5.  Finally, the decision-maker recieves zero reward for entering or exiting states 2, 3 or 4. 
+
+
+__source__:
 ````
 
 ---
