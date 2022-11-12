@@ -68,6 +68,17 @@ name: fig-discrete-markov-model
 Schematic of a discrete two-state time-invariant Markov model; $p_{ij}$ denotes the time-invariant transition probability between state $i$ and $j$.
 ```
 
+Consider the time-invariant two-state Discrete Markov chain with state transition matrix $\mathbf{P}$:
+
+$$
+\mathbf{P} = \begin{bmatrix}
+p_{11} & p_{12} \\
+p_{21} & p_{22} \\
+\end{bmatrix}
+$$
+
+shown in ({numref}`fig-discrete-markov-model`).
+
 ````
 
 
