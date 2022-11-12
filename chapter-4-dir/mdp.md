@@ -91,24 +91,32 @@ __source__: Fill me in.
 
 (content:references:structure-of-an-mdp)=
 ## Markov decision process (MDP)
-A Markov decision process (MDP) is a mathematical framework for modeling decision-making in situations where outcomes are partly random but also partly under the control of a _decision-maker_ who receives a reward (or penalty) for each decision. Thus, unlike {ref}`content:references:discrete-time-markov-chains`, Markov decision processes (MDPs) involve actions, which allow choice, and rewards that provide motivation. 
+A Markov decision process (MDP) is an approach for modeling decision-making in situations where outcomes are partly random but also partly under the control of a _decision-maker_ who receives a reward (or penalty) for each decision. Thus, unlike {ref}`content:references:discrete-time-markov-chains`, Markov decision processes (MDPs) involve actions, which allow choice, and rewards that provide motivation for the decision maker.
 
 At each time step, let's assume the system in some state $s$ in a set of possible states $s\in\mathcal{S}$ and the decision maker may choose any action $a$ from a set of possible actions $a\in\mathcal{A}$ that are available in state $s$. The system responds at the next time step by _potentially_ moving into a new state $s^{\prime}$ and rewarding the decision maker $R_{a}\left(s, s^{\prime}\right)$. The probability that the system moves into a new state $s^{\prime}$ depends upon the chosen action $a$ and the current state $s$; this probability is governed by a state transition function $P_{a}\left(s,s^{\prime}\right)$.
 
-````{prf:definition}
+````{prf:definition} Markov decision tuple 
 :label: defn-formal-mdp
 
 A Markov decision process is the tuple $\left(\mathcal{S}, \mathcal{A}, R_{a}\left(s, s^{\prime}\right), P_{a}\left(s,s^{\prime}\right)\right)$ where:
 
-* The state space $\mathcal{S}$ is the set of all possible states a system can exist in
-* The action space $\mathcal{A}$ is the set of all possible actions that are available in the system, where $\mathcal{A}_{s} \subseteq \mathcal{A}$ is the subset of the action space $\mathcal{A}$ that is accessible from state $s$.
+* The state space $\mathcal{S}$ is the set of all possible states $s$ that a system can exist in
+* The action space $\mathcal{A}$ is the set of all possible actions $a$ that are available in the system, where $\mathcal{A}_{s} \subseteq \mathcal{A}$ is the subset of the action space $\mathcal{A}$ that is accessible from state $s$.
 * An expected immediate reward $R_{a}\left(s, s^{\prime}\right)$ is recived after transitioning from state $s\rightarrow{s}^{\prime}$ due to action $a$. 
 * The term $P_{a}\left(s,s^{\prime}\right) = P(s_{t+1} = s^{\prime}~|~s_{t}=s,a_{t} = a)$ denotes the probability that action $a$ in state $s$ at time $t$ will result in state $s^{\prime}$ at time $t+1$
 
-Finally, a policy function $\pi$ is a mapping (potentially probabilistic) from states $s\in\mathcal{S}$ to actions $a\in\mathcal{A}$. 
+Finally, a policy function $\pi$ is the (potentially probabilistic) mapping from states $s\in\mathcal{S}$ to actions $a\in\mathcal{A}$ used by a decision maker to recommend an action given the state of the system.
 
 ````
 
+Let's do an example to illustrate the MDP components described in {prf:ref}`defn-formal-mdp`.
+
+````{prf:example}
+:label: example-MDP-line
+
+Fill me in.
+
+````
 
 ---
 
