@@ -14,6 +14,7 @@ In this lecture:
 ## Markov chains
 A Markov chain is a stochastic model describing a sequence of possible events where the probability of each of these events depends only on the current state of the system, and not on past system states. A system's state space and time (much like probability) can be either discrete or continuous; for most of the applications we'll be interested in, we'll focus on discrete time and discrete finite state spaces.
 
+(content:references:discrete-time-markov-chains)=
 ### Discrete time Markov chains
 A discrete-time Markov chain is a sequence of random variables $X_{1}$, $X_{2}$, $X_{3}$, ..., $X_{n}$ that have the [Markov property](https://en.wikipedia.org/wiki/Markov_property), i.e., the probability of moving to the _next state_ depends only on the _present state_ and not on the _previous states_:
 
@@ -90,7 +91,11 @@ __source__: Fill me in.
 
 (content:references:structure-of-an-mdp)=
 ## Structure of an MDP
-Fill me in.
+A Markov decision process (MDP) is a mathematical framework for modeling decision making in situations where outcomes are partly random and partly under the control of a _decision maker_.  Thus, unlike {ref}`content:references:discrete-time-markov-chains`, Markov decision processes (MDPs) involve actions, which allow choice, and rewards which provide motivation. 
+
+At each time step, the system is in some state $s\in\mathcal{S}$ and the decision maker may choose any action $a\in\mathcal{A}$ that is available in state $s$. The process responds at the next time step by randomly moving into a new state $s^{\prime}$ and giving the decision maker a reward $R_{a}\left(s, s^{\prime}\right)$. The probability that a system moves into a new state $s^{\prime}$ depends upon the chosen action $a$, and the current state $s$; it is governed by the state transition function $P_{a}\left(s,s^{\prime}\right)$.
+
+
 
 
 
