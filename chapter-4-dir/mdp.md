@@ -6,7 +6,7 @@ A Markov decision process (MDP) provides a mathematical framework for modeling d
 In this lecture:
 
 * We will discuss {ref}`content:references:markov-chains`, which is an approach for modeling the evolution of a stochastic system as a series of possible events.
-* We will discuss the {ref}`content:references:structure-of-an-mdp`
+* We will discuss {ref}`content:references:structure-of-an-mdp`
 
 ---
 
@@ -90,13 +90,24 @@ __source__: Fill me in.
 
 
 (content:references:structure-of-an-mdp)=
-## Structure of an MDP
-A Markov decision process (MDP) is a mathematical framework for modeling decision making in situations where outcomes are partly random and partly under the control of a _decision maker_.  Thus, unlike {ref}`content:references:discrete-time-markov-chains`, Markov decision processes (MDPs) involve actions, which allow choice, and rewards which provide motivation. 
+## Markov decision process (MDP)
+A Markov decision process (MDP) is a mathematical framework for modeling decision-making in situations where outcomes are partly random but also partly under the control of a _decision-maker_ who receives a reward (or penalty) for each decision. Thus, unlike {ref}`content:references:discrete-time-markov-chains`, Markov decision processes (MDPs) involve actions, which allow choice, and rewards that provide motivation. 
 
-At each time step, the system is in some state $s\in\mathcal{S}$ and the decision maker may choose any action $a\in\mathcal{A}$ that is available in state $s$. The process responds at the next time step by randomly moving into a new state $s^{\prime}$ and giving the decision maker a reward $R_{a}\left(s, s^{\prime}\right)$. The probability that a system moves into a new state $s^{\prime}$ depends upon the chosen action $a$, and the current state $s$; it is governed by the state transition function $P_{a}\left(s,s^{\prime}\right)$.
+At each time step, let's assume the system in some state $s$ in a set of possible states $s\in\mathcal{S}$ and the decision maker may choose any action $a$ from a set of possible actions $a\in\mathcal{A}$ that are available in state $s$. The system responds at the next time step by _potentially_ moving into a new state $s^{\prime}$ and rewarding the decision maker $R_{a}\left(s, s^{\prime}\right)$. The probability that the system moves into a new state $s^{\prime}$ depends upon the chosen action $a$ and the current state $s$; this probability is governed by a state transition function $P_{a}\left(s,s^{\prime}\right)$.
 
+````{prf:definition}
+:label: defn-formal-mdp
 
+A Markov decision process is the tuple $\left(\mathcal{S}, \mathcal{A}, R_{a}\left(s, s^{\prime}\right), P_{a}\left(s,s^{\prime}\right)\right)$ where:
 
+* The state space $\mathcal{S}$ is the set of all possible states a system can exist in
+* The action space $\mathcal{A}$ is the set of all possible actions that are available in the system, where $\mathcal{A}_{s} \subseteq \mathcal{A}$ is the subset of the action space $\mathcal{A}$ that is accessible from state $s$.
+* An expected immediate reward $R_{a}\left(s, s^{\prime}\right)$ is recived after transitioning from state $s\rightarrow{s}^{\prime}$ due to action $a$. 
+* The term $P_{a}\left(s,s^{\prime}\right) = P(s_{t+1} = s^{\prime}~|~s_{t}=s,a_{t} = a)$ denotes the probability that action $a$ in state $s$ at time $t$ will result in state $s^{\prime}$ at time $t+1$
+
+Finally, a policy function $\pi$ is a mapping (potentially probabilistic) from states $s\in\mathcal{S}$ to actions $a\in\mathcal{A}$. 
+
+````
 
 
 ---
