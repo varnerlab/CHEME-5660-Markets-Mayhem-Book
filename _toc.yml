@@ -31,5 +31,7 @@ chapters:
   - file: chapter-3-dir/markowitz
 
 - file: chapter-4-dir/chapter-4
-  title: Unit 4. Process Finance and Decision Making
+  title: Unit 4. Decisions
+  sections:
+  - file: chapter-4-dir/mdp
 - file: References
