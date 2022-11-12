@@ -72,13 +72,18 @@ Consider the time-invariant two-state Discrete Markov chain with state transitio
 
 $$
 \mathbf{P} = \begin{bmatrix}
-p_{11} & p_{12} \\
-p_{21} & p_{22} \\
+0.9 & 0.1 \\
+0.6 & 0.4 \\
 \end{bmatrix}
 $$
 
-shown in ({numref}`fig-discrete-markov-model`).
+shown in ({numref}`fig-discrete-markov-model`). The transition matrix admits a stationary (non-periodic) solution. As the number of iterations $n$ becomes large the system state converges to a stationary distribution $\pi$; for $n>13$ the stationary distribution $\pi$ is given by:
 
+$$\pi = (0.8571, 0.1428)$$
+
+Thus, regardless of the starting state of this Markov chain, the long-term behavior is given by the stationary distribution $\pi$.
+
+__source__: Fill me in.
 ````
 
 
