@@ -98,20 +98,58 @@ At each time step, let's assume the system in some state $s$ in a set of possibl
 ````{prf:definition} Markov decision tuple 
 :label: defn-formal-mdp
 
-A Markov decision process is the tuple $\left(\mathcal{S}, \mathcal{A}, R_{a}\left(s, s^{\prime}\right), P_{a}\left(s,s^{\prime}\right)\right)$ where:
+A Markov decision process is the tuple $\left(\mathcal{S}, \mathcal{A}, R_{a}\left(s, s^{\prime}\right), T_{a}\left(s,s^{\prime}\right), \gamma\right)$ where:
 
 * The state space $\mathcal{S}$ is the set of all possible states $s$ that a system can exist in
 * The action space $\mathcal{A}$ is the set of all possible actions $a$ that are available in the system, where $\mathcal{A}_{s} \subseteq \mathcal{A}$ is the subset of the action space $\mathcal{A}$ that is accessible from state $s$.
 * An expected immediate reward $R_{a}\left(s, s^{\prime}\right)$ is recived after transitioning from state $s\rightarrow{s}^{\prime}$ due to action $a$. 
-* The term $P_{a}\left(s,s^{\prime}\right) = P(s_{t+1} = s^{\prime}~|~s_{t}=s,a_{t} = a)$ denotes the probability that action $a$ in state $s$ at time $t$ will result in state $s^{\prime}$ at time $t+1$
+* The transition $T_{a}\left(s,s^{\prime}\right) = P(s_{t+1} = s^{\prime}~|~s_{t}=s,a_{t} = a)$ denotes the probability that action $a$ in state $s$ at time $t$ will result in state $s^{\prime}$ at time $t+1$
+* The quanity $\gamma$ is a _discount factor_; the discount factor is used as a wieght on past decisions.
 
-Finally, a policy function $\pi$ is the (potentially probabilistic) mapping from states $s\in\mathcal{S}$ to actions $a\in\mathcal{A}$ used by a decision maker to recommend an action given the state of the system.
+Finally, a policy function $\pi$ is the (potentially probabilistic) mapping from states $s\in\mathcal{S}$ to actions $a\in\mathcal{A}$ used by a decision maker to recommend an action given the state of the system. 
 
 ````
 
-Let's do an example to illustrate the MDP components described in {prf:ref}`defn-formal-mdp`.
+### Policy evaluation
+One immediate question that jumps out from {prf:ref}`defn-formal-mdp` is what is a policy function $\pi$, and how do we find the best possible policy for our decision problem? To do this, we need a way to estimate how good (or bad) a particular policy is; the approach we use is called _policy evaluation_.
 
-````{prf:example}
+Let's denote the expected utility gained by executing some policy $\pi(s)$ from state $s$ as $U^{\pi}(s)$. 
+Then, an _optimal policy_ function $\pi^{\star}$ is one that maximizes the expected utility:
+
+```{math}
+\pi^{\star}\left(s\right) = \text{arg max}~U^{\pi}(s)
+```
+
+for all $s\in\mathcal{S}$. We can iteratively compute the utility of a policy $\pi$. If the agent makes a single move, the utility will be the reward the agent receives by implementing policy $\pi$:
+
+```{math}
+U_{1}^{\pi}(s) = R(s,\pi(s))
+```
+
+However, if we let the agent evaluate two, three, or $k$ possible future moves, we get a _lookahead_ equation which relates the value of 
+the utility at iteration $k$ to k+1:
+
+```{math}
+U_{k+1}^{\pi}(s) = R(s,\pi(s)) + \gamma\sum_{s^{\prime}\in\mathcal{S}}T(s^{\prime} | s, \pi(s))U_{k}^{\pi}(s^{\prime})
+```
+
+As $k\rightarrow\infty$ the lookahead utiulity converges to stationary value $U^{\pi}(s)$:
+
+````{prf:definition} Value function
+:label: defn-policy-evalution
+
+Suppose we have a Markov decision process with the tuple $\left(\mathcal{S}, \mathcal{A}, R_{a}\left(s, s^{\prime}\right), T_{a}\left(s,s^{\prime}\right), \gamma\right)$. Then, the utility of then policy function $\pi$ equals:
+
+```{math}
+:label: eqn-converged-policy-eval
+U^{\pi}(s) = R(s,\pi(s)) + \gamma\sum_{s^{\prime}\in\mathcal{S}}T(s^{\prime} | s, \pi(s))U^{\pi}(s^{\prime})
+```
+
+````
+
+Let's do an example to illustrate policy evaluation:
+
+````{prf:example} Tiger problem
 :label: example-MDP-line
 
  ```{figure} ./figs/Fig-Linear-MDP-Schematic.pdf
@@ -119,17 +157,43 @@ Let's do an example to illustrate the MDP components described in {prf:ref}`defn
 height: 110px
 name: fig-linear-mdp-schematic
 ---
-Schematic of a 5-state 2-action Markov decision process. The terminal states 1 and 5 have non-zero rewards, while states 2, 3 and 4 have zero reward.
+Schematic of the Tiger problem modeled as a N-state, two-action Markov decision process. 
 ```
 
-Consider the Markov decision process schematic shown in {numref}`fig-linear-mdp-schematic`. For this process, the state set is 
-$\mathcal{S} = \left\{1,2,3,4,5\right\}$ while the action set is $\mathcal{A} = \left\{a_{1},a_{2}\right\}$:
-* Action $a_{1}$ moves the decision-maker one state to the right, while action $a_{2}$ moves the decision-maker one state to the left. 
-* The decision-maker recieves a reward of +1 for entering state 1. However, the decision-maker is penalized -10 for entering state 5.  Finally, the decision-maker recieves zero reward for entering or exiting states 2, 3 or 4. 
+An agent trapped in a long hallway with two doors at either end ({numref}`fig-linear-mdp-schematic`). Behind one door is a tiger (and certain death), while behind the other door is freedom. If the agent opens the door and finds the tiger, the agent is eaten (and receives a large negative reward). However, if the agent opens the other door, it escapes and gets a positive reward. 
 
+For this problem, the MDP has the tuple components:
+* $\mathcal{S} = \left\{1,2,\dots,N\right\}$ while the action set is $\mathcal{A} = \left\{a_{1},a_{2}\right\}$; action $a_{1}$ moves the agent one state to the right, action $a_{2}$ moves the agent one state to the left.
+* The agent receives a reward of +10 for entering state 1 (escapes). However, the agent is penalized -100 for entering state N (eaten by the tiger).  Finally, the agent is not charged to move to adjacent locations.
+* Let the probability of correctly executing the action $a_{j}$ be $\alpha$
+
+Let's compute $U^{\pi}(s)$ for different choices for the policy function $\pi$.
 
 __source__:
 ````
+
+
+The utility associated with an optimal policy $\pi^{\star}$ is called the optimal utility $U^{\star}$. 
+
+### Value function policies
+Definition {prf:ref}`defn-policy-evalution` gives us a method to compute the utility for a particular policy $U^{\pi}(s)$. 
+However, suppose we are given the utility, and wanted to estimate the policy $\pi$ function from that utility. 
+Given a utility $U$, we can estimate a policy function $\pi$ function using the $Q$-function (action-value function):
+
+```{math}
+:label: eqn-action-value-function
+Q(s,a) = R(s,a) + \gamma\sum_{s^{\prime}\in\mathcal{S}}T(s^{\prime} | s, \pi(s))U^{\pi}(s^{\prime})
+
+```
+
+
+
+### Policy iteration
+Fill me in.
+
+
+
+
 
 ---
 
