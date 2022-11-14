@@ -169,29 +169,46 @@ For this problem, the MDP has the tuple components:
 
 Let's compute $U^{\pi}(s)$ for different choices for the policy function $\pi$.
 
-__source__:
+__source__: Fill me in.
 ````
 
 
 The utility associated with an optimal policy $\pi^{\star}$ is called the optimal utility $U^{\star}$. 
 
 ### Value function policies
-Definition {prf:ref}`defn-policy-evalution` gives us a method to compute the utility for a particular policy $U^{\pi}(s)$. 
-However, suppose we are given the utility, and wanted to estimate the policy $\pi$ function from that utility. 
-Given a utility $U$, we can estimate a policy function $\pi$ function using the $Q$-function (action-value function):
+{prf:ref}`defn-policy-evalution` gives us a method to compute the utility for a particular policy $U^{\pi}(s)$. 
+However, suppose we were given the utility, and wanted to estimate the policy $\pi(s)$ from that utility. 
+Given a utility $U$, we can estimate a policy $\pi(s)$ using the $Q$-function (action-value function):
 
 ```{math}
 :label: eqn-action-value-function
-Q(s,a) = R(s,a) + \gamma\sum_{s^{\prime}\in\mathcal{S}}T(s^{\prime} | s, \pi(s))U^{\pi}(s^{\prime})
+Q(s,a) = R(s,a) + \gamma\sum_{s^{\prime}\in\mathcal{S}}T(s^{\prime} | s, a)U(s^{\prime})
 
 ```
 
+Equation {eq}`eqn-action-value-function` gives a $|\mathcal{S}|\times|\mathcal{A}|$ array, where the utility is given by:
 
+```{math}
+:label: eqn-utility-from-Q
+U(s) = \max_{a} Q(s,a)
+```
 
-### Policy iteration
-Fill me in.
+and the policy $\pi(s)$ is:
 
+```{math}
+:label: eqn-policy-from-Q
+\pi(s) = \text{arg}\max_{a}Q(s,a)
+```
 
+### Value iteration
+In the previous section, we saw how we can develop the policy $\pi(s)$ by looking the values in the $Q$-array. However, this may not be 
+the _optimal policy_. There are two techniques to compute optimal policies, and we'll explore the simplier of the two, namely _value iteration_. 
+
+In _value iteration_ the value function (the vector of utility values) is updated directly using the _Bellman update__ procedure:
+
+```{math}
+U_{k+1}(s) = \max_{a}\left(R(s,a) + \gamma\sum_{s^{\prime}\in\mathcal{S}}T(s^{\prime} | s, a)U_{k}(s^{\prime})\right)
+```
 
 
 
