@@ -5,8 +5,8 @@ A Markov decision process (MDP) provides a mathematical framework for modeling d
 
 In this lecture:
 
-* We will discuss {ref}`content:references:markov-chains`, which is an approach for modeling the evolution of a stochastic system as a series of possible events.
-* We will discuss {ref}`content:references:structure-of-an-mdp`
+* We will discuss {ref}`content:references:markov-chains` and discrete time {ref}`content:references:structure-of-an-hmm`, which are approaches for modeling the evolution of a stochastic system as a series of possible events.
+* We will also discuss {ref}`content:references:structure-of-an-mdp`, which is an approach for making decisions in a probabilistic world. 
 
 ---
 
@@ -87,10 +87,58 @@ Thus, regardless of the starting state of this Markov chain, the long-term behav
 __source__: Fill me in.
 ````
 
+(content:references:structure-of-an-hmm)=
+### Hidden Markov Models (HMMs)
+Hidden Markov models (HMMs) are statistical models in which the system being modeled is assumed to be a Markov process with unobservable states but observable outcomes. HMMs have the same structural components as a standard Markov chain model, but each hidden state can be thought of as sending an observable single. HMMs are widely used in many disciplines to model uncertain systems and situations. 
+
+Let's build upon {prf:ref}`example-dicrete-mchain` and construct an HMM that mimics a [CRR binomial lattice](../chapter-3-dir/contracts.md):
+
+````{prf:example} Stationary hidden Markov model
+:label: example-dicrete-mchain-hmm
+
+ ```{figure} ./figs/Fig-Ex-Discrete-Hidden-Markov-Model.pdf
+---
+height: 280px
+name: fig-discrete-hidden-markov-model
+---
+Schematic of a discrete two-state time-invariant hidden Markov model (HMM); $p_{ij}$ denotes the time-invariant transition probability between state $i$ and $j$.
+```
+
+Consider the time-invariant two-state Discrete Markov chain with state transition matrix $\mathbf{P}$:
+
+$$
+\mathbf{P} = \begin{bmatrix}
+0.9 & 0.1 \\
+0.6 & 0.4 \\
+\end{bmatrix}
+$$
+
+shown in ({numref}`fig-discrete-hidden-markov-model`). Let $Y_{1}$ denote the observable value for state 1, while $Y_{2}$ denotes the observable value of
+state 2. The transition matrix admits a stationary (non-periodic) solution. As the number of iterations $n$ becomes large the system state converges to a stationary distribution $\pi$; for $n>13$ the stationary distribution $\pi$ is given by:
+
+$$\pi = (0.8571, 0.1428)$$
+
+Suppose the unobservable state $X_{1}$ was the `up` state; when the system is in state 1 we observe an up move of size:
+
+```{math}
+u = \exp(\sigma\sqrt{\Delta{t}})
+```
+
+On the other hand, let state 2 denote the `down` state; when the system is in state 2 we observe a down move of size:
+
+```{math}
+d = \exp(-\sigma\sqrt{\Delta{t}})
+```
+
+__source__: fill me in.
+
+````
+
+
 
 
 (content:references:structure-of-an-mdp)=
-## Markov decision process (MDP)
+## Markov decision processes (MDPs)
 A Markov decision process (MDP) is an approach for modeling decision-making in situations where outcomes are partly random but also partly under the control of a _decision-maker_ who receives a reward (or penalty) for each decision. Thus, unlike {ref}`content:references:discrete-time-markov-chains`, Markov decision processes (MDPs) involve actions, which allow choice, and rewards that provide motivation for the decision maker.
 
 At each time step, let's assume the system in some state $s$ in a set of possible states $s\in\mathcal{S}$ and the decision maker may choose any action $a$ from a set of possible actions $a\in\mathcal{A}$ that are available in state $s$. The system responds at the next time step by _potentially_ moving into a new state $s^{\prime}$ and rewarding the decision maker $R_{a}\left(s, s^{\prime}\right)$. The probability that the system moves into a new state $s^{\prime}$ depends upon the chosen action $a$ and the current state $s$; this probability is governed by a state transition function $P_{a}\left(s,s^{\prime}\right)$.
