@@ -270,7 +270,7 @@ U_{k+1}(s) = \max_{a}\left(R(s,a) + \gamma\sum_{s^{\prime}\in\mathcal{S}}T(s^{\p
 This procedure is guaranteed to converge to the optimal utlity vector (value function). 
 Let's modify our original Tiger problem implementation to explore sub-optimal versus optimal policies. 
 
-````{prf:example} Modified tiger problem
+````{prf:example} Modified Tiger problem
 :label: example-MDP-line-mod
 
  ```{figure} ./figs/Fig-Branched-MDP-Schematic.pdf
@@ -291,10 +291,16 @@ However, there is a charge of -1 to move through mildly obstructed locations (li
 
 Let's compute $U^{\pi}(s)$ for different choices for the policy function $\pi$.
 
-__source:__ Fill me in.
+__source:__ [download the live Jupyter notebook from GitHub](https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks)
 ````
 
 ---
 
 # Summary 
-Fill me in.
+A Markov decision process (MDP) provides a mathematical framework for modeling decision-making in situations where outcomes are partly random and partly under the control of a decision-maker. MDPs take their name from the Russian mathematician [Andrey Markov](https://en.wikipedia.org/wiki/Andrey_Markov),  as they are an extension of [Markov chains](https://en.wikipedia.org/wiki/Markov_chain), a stochastic model which describes a sequence of possible events in which the probability of each event depends only on the system state in the previous event.
+
+In this lecture:
+
+* We discussed {ref}`content:references:markov-chains` and discrete time {ref}`content:references:structure-of-an-hmm`, which are approaches for modeling the evolution of a stochastic system as a series of possible events. We developed a hidden Markov model for the nodes in a binomial lattice model. 
+* We also discussed {ref}`content:references:structure-of-an-mdp`, which is an approach for making decisions in a probabilistic world. In particular, we 
+introduced tools to compute the utility of a decision-making policy and the value iteration approach for estimating optimal decision-making policies. 
