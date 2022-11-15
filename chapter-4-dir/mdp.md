@@ -157,10 +157,10 @@ Let's do an example to illustrate policy evaluation:
 height: 110px
 name: fig-linear-mdp-schematic
 ---
-Schematic of the Tiger problem modeled as a N-state, two-action Markov decision process. 
+Schematic of the Tiger problem modeled as an N-state, two-action Markov decision process. A tiger hides behind the red door while freedom awaits behind the green door.
 ```
 
-An agent trapped in a long hallway with two doors at either end ({numref}`fig-linear-mdp-schematic`). Behind one door is a tiger (and certain death), while behind the other door is freedom. If the agent opens the door and finds the tiger, the agent is eaten (and receives a large negative reward). However, if the agent opens the other door, it escapes and gets a positive reward. 
+An agent trapped in a long hallway with two doors at either end ({numref}`fig-linear-mdp-schematic`). Behind the red door is a tiger (and certain death), while behind the green door is freedom. If the agent opens the red door, the agent is eaten (and receives a large negative reward). However, if the agent opens the green door, it escapes and gets a positive reward. 
 
 For this problem, the MDP has the tuple components:
 * $\mathcal{S} = \left\{1,2,\dots,N\right\}$ while the action set is $\mathcal{A} = \left\{a_{1},a_{2}\right\}$; action $a_{1}$ moves the agent one state to the right, action $a_{2}$ moves the agent one state to the left.
@@ -201,16 +201,40 @@ and the policy $\pi(s)$ is:
 ```
 
 ### Value iteration
-In the previous section, we saw how we can develop the policy $\pi(s)$ by looking the values in the $Q$-array. However, this may not be 
-the _optimal policy_. There are two techniques to compute optimal policies, and we'll explore the simplier of the two, namely _value iteration_. 
+In the previous section, we saw how we can develop _a policy_ $\pi(s)$ by looking the values in the $Q$-array. However, this may not be the _optimal policy_. There are two techniques to compute optimal policies, and we'll explore the simplier of the two, namely _value iteration_. 
 
-In _value iteration_ the value function (the vector of utility values) is updated directly using the _Bellman update__ procedure:
+In _value iteration_ the value function (the vector of utility values) is updated iteratively using the _Bellman update__ procedure:
 
 ```{math}
 U_{k+1}(s) = \max_{a}\left(R(s,a) + \gamma\sum_{s^{\prime}\in\mathcal{S}}T(s^{\prime} | s, a)U_{k}(s^{\prime})\right)
 ```
 
+This procedure is guaranteed to converge to the optimal utlity vector (value function). 
+Let's modify our original Tiger problem implementation to explore sub-optimal versus optimal policies. 
 
+````{prf:example} Modified tiger problem
+:label: example-MDP-line-mod
+
+ ```{figure} ./figs/Fig-Branched-MDP-Schematic.pdf
+---
+height: 260px
+name: fig-branched-mdp-schematic-mod
+---
+Schematic of the Tiger problem modeled as an N-state, four-action Markov decision process. A tiger hides behind the red door while freedom awaits behind the green door. The hallway has three types of paths: unobstructed (white), mildly obstructed (light gray), and obstructed (dark gray). 
+```
+
+An agent trapped in a long hallway with two doors at either end ({numref}`fig-branched-mdp-schematic-mod`). Behind the red door is a tiger (and certain death), while behind the green door is freedom. If the agent opens the red door, the agent is eaten (and receives a large negative reward). However, if the agent opens the green door, it escapes and gets a positive reward. 
+
+For this problem, the MDP has the tuple components:
+* $\mathcal{S} = \left\{1,2,\dots,N\right\}$ while the action set is $\mathcal{A} = \left\{a_{1},a_{2}, a_{3}, a_{4}\right\}$; action $a_{1}$ moves the agent one state to the right, action $a_{2}$ moves the agent one state to the left, action $a_{3}$ moves the agent one stop up, and action $a_{4}$ moves the agent one step down.
+* The agent receives a reward of +10 for entering state 1 (escapes). However, the agent is penalized -100 for entering state N (eaten by the tiger).  Finally, the agent is not charged to move to adjacent locations if those locations are unobstructed. 
+However, there is a charge of -1 to move through mildly obstructed locations (light gray circles) and a -10 charge to move through blocked areas (dark gray circles).
+* Let the probability of correctly executing the action $a_{j}$ be $\alpha$.
+
+Let's compute $U^{\pi}(s)$ for different choices for the policy function $\pi$.
+
+__source:__ Fill me in.
+````
 
 ---
 
