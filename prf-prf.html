@@ -228,10 +228,22 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
- <li class="toctree-l1">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="chapter-4-dir/chapter-4.html">
-   Unit 4. Process Finance and Decision Making
+   Unit 4. Decisions
   </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="chapter-4-dir/mdp.html">
+     Markov decision process (MDPs)
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="References.html">
@@ -398,6 +410,7 @@ title="Open an issue"
    <a href="#cap-defn-delta-hedge-condition"><strong>defn-delta-hedge-condition</strong></a> | 
    <a href="#cap-defn-disjoint"><strong>defn-disjoint</strong></a> | 
    <a href="#cap-defn-fixed-r-bond-pricing"><strong>defn-fixed-r-bond-pricing</strong></a> | 
+   <a href="#cap-defn-formal-mdp"><strong>defn-formal-mdp</strong></a> | 
    <a href="#cap-defn-independence"><strong>defn-independence</strong></a> | 
    <a href="#cap-defn-internal-rate-of-return"><strong>defn-internal-rate-of-return</strong></a> | 
    <a href="#cap-defn-intersection"><strong>defn-intersection</strong></a> | 
@@ -415,6 +428,7 @@ title="Open an issue"
    <a href="#cap-defn-pmf-binomial"><strong>defn-pmf-binomial</strong></a> | 
    <a href="#cap-defn-pmf-geometric"><strong>defn-pmf-geometric</strong></a> | 
    <a href="#cap-defn-pmf-poisson"><strong>defn-pmf-poisson</strong></a> | 
+   <a href="#cap-defn-policy-evalution"><strong>defn-policy-evalution</strong></a> | 
    <a href="#cap-defn-portfolio-return"><strong>defn-portfolio-return</strong></a> | 
    <a href="#cap-defn-portfolio-variance"><strong>defn-portfolio-variance</strong></a> | 
    <a href="#cap-defn-risky-risk-free-markowitz"><strong>defn-risky-risk-free-markowitz</strong></a> | 
@@ -436,10 +450,14 @@ title="Open an issue"
    <a href="#cap-example-1"><strong>example-1</strong></a> | 
    <a href="#cap-example-3"><strong>example-3</strong></a> | 
    <a href="#cap-example-5"><strong>example-5</strong></a> | 
+   <a href="#cap-example-MDP-line"><strong>example-MDP-line</strong></a> | 
+   <a href="#cap-example-MDP-line-mod"><strong>example-MDP-line-mod</strong></a> | 
    <a href="#cap-example-OU-model-EM-discrete"><strong>example-OU-model-EM-discrete</strong></a> | 
    <a href="#cap-example-approach-1-calibration-gbm"><strong>example-approach-1-calibration-gbm</strong></a> | 
    <a href="#cap-example-average-cost"><strong>example-average-cost</strong></a> | 
    <a href="#cap-example-delta-hedge-two-cases"><strong>example-delta-hedge-two-cases</strong></a> | 
+   <a href="#cap-example-dicrete-mchain"><strong>example-dicrete-mchain</strong></a> | 
+   <a href="#cap-example-dicrete-mchain-hmm"><strong>example-dicrete-mchain-hmm</strong></a> | 
    <a href="#cap-example-dmi-single-index-model"><strong>example-dmi-single-index-model</strong></a> | 
    <a href="#cap-example-european-call-contract"><strong>example-european-call-contract</strong></a> | 
    <a href="#cap-example-european-put-contract"><strong>example-european-put-contract</strong></a> | 
@@ -453,6 +471,7 @@ title="Open an issue"
    <a href="#cap-net-present-value-defn"><strong>net-present-value-defn</strong></a> | 
    <a href="#cap-obs-beta-return-measure"><strong>obs-beta-return-measure</strong></a> | 
    <a href="#cap-obs-beta-risk-measure"><strong>obs-beta-risk-measure</strong></a> | 
+   <a href="#cap-obs-n-transition"><strong>obs-n-transition</strong></a> | 
    <a href="#cap-obs-single-index-model-covariance"><strong>obs-single-index-model-covariance</strong></a> | 
    <a href="#cap-obs-single-index-model-p-return"><strong>obs-single-index-model-p-return</strong></a> | 
    <a href="#cap-obs-time-value-of-money"><strong>obs-time-value-of-money</strong></a> | 
@@ -657,6 +676,14 @@ title="Open an issue"
        <a href="chapter-3-dir/bonds.html#defn-fixed-r-bond-pricing"><code class="xref">defn-fixed-r-bond-pricing</code></a> <em>(chapter-3-dir/bonds)</em></td><td>
        <em>definition</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-defn-formal-mdp"><td></td><td>
+       <strong>defn-formal-mdp</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="chapter-4-dir/mdp.html#defn-formal-mdp"><code class="xref">defn-formal-mdp</code></a> <em>(chapter-4-dir/mdp)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-defn-independence"><td></td><td>
        <strong>defn-independence</strong></td><td></td></tr>
      <tr>
@@ -791,6 +818,14 @@ title="Open an issue"
        <td></td>
        <td>
        <a href="chapter-2-dir/probability-random-variables.html#defn-pmf-poisson"><code class="xref">defn-pmf-poisson</code></a> <em>(chapter-2-dir/probability-random-variables)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-defn-policy-evalution"><td></td><td>
+       <strong>defn-policy-evalution</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="chapter-4-dir/mdp.html#defn-policy-evalution"><code class="xref">defn-policy-evalution</code></a> <em>(chapter-4-dir/mdp)</em></td><td>
        <em>definition</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-defn-portfolio-return"><td></td><td>
@@ -961,6 +996,22 @@ title="Open an issue"
        <a href="chapter-2-dir/stochastic-differential-equations.html#example-5"><code class="xref">example-5</code></a> <em>(chapter-2-dir/stochastic-differential-equations)</em></td><td>
        <em>example</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-example-MDP-line"><td></td><td>
+       <strong>example-MDP-line</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="chapter-4-dir/mdp.html#example-MDP-line"><code class="xref">example-MDP-line</code></a> <em>(chapter-4-dir/mdp)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-example-MDP-line-mod"><td></td><td>
+       <strong>example-MDP-line-mod</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="chapter-4-dir/mdp.html#example-MDP-line-mod"><code class="xref">example-MDP-line-mod</code></a> <em>(chapter-4-dir/mdp)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-example-OU-model-EM-discrete"><td></td><td>
        <strong>example-OU-model-EM-discrete</strong></td><td></td></tr>
      <tr>
@@ -991,6 +1042,22 @@ title="Open an issue"
        <td></td>
        <td>
        <a href="chapter-3-dir/contracts.html#example-delta-hedge-two-cases"><code class="xref">example-delta-hedge-two-cases</code></a> <em>(chapter-3-dir/contracts)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-example-dicrete-mchain"><td></td><td>
+       <strong>example-dicrete-mchain</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="chapter-4-dir/mdp.html#example-dicrete-mchain"><code class="xref">example-dicrete-mchain</code></a> <em>(chapter-4-dir/mdp)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-example-dicrete-mchain-hmm"><td></td><td>
+       <strong>example-dicrete-mchain-hmm</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="chapter-4-dir/mdp.html#example-dicrete-mchain-hmm"><code class="xref">example-dicrete-mchain-hmm</code></a> <em>(chapter-4-dir/mdp)</em></td><td>
        <em>example</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-example-dmi-single-index-model"><td></td><td>
@@ -1095,6 +1162,14 @@ title="Open an issue"
        <td></td>
        <td>
        <a href="chapter-3-dir/markowitz.html#obs-beta-risk-measure"><code class="xref">obs-beta-risk-measure</code></a> <em>(chapter-3-dir/markowitz)</em></td><td>
+       <em>observation</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-obs-n-transition"><td></td><td>
+       <strong>obs-n-transition</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="chapter-4-dir/mdp.html#obs-n-transition"><code class="xref">obs-n-transition</code></a> <em>(chapter-4-dir/mdp)</em></td><td>
        <em>observation</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-obs-single-index-model-covariance"><td></td><td>
