@@ -108,15 +108,15 @@ Consider the time-invariant two-state Discrete Markov chain with state transitio
 
 $$
 \mathbf{P} = \begin{bmatrix}
-0.9 & 0.1 \\
+0.7 & 0.3 \\
 0.6 & 0.4 \\
 \end{bmatrix}
 $$
 
 shown in ({numref}`fig-discrete-hidden-markov-model`). Let $Y_{1}$ denote the observable value for state 1, while $Y_{2}$ denotes the observable value of
-state 2. The transition matrix admits a stationary (non-periodic) solution. As the number of iterations $n$ becomes large the system state converges to a stationary distribution $\pi$; for $n>13$ the stationary distribution $\pi$ is given by:
+state 2. The transition matrix admits the stationary (non-periodic) stationary distribution $\pi$ given by:
 
-$$\pi = (0.8571, 0.1428)$$
+$$\pi = (0.66, 0.33)$$
 
 Suppose the unobservable state $X_{1}$ was the `up` state; when the system is in state 1 we observe an up move of size:
 
@@ -130,11 +130,21 @@ On the other hand, let state 2 denote the `down` state; when the system is in st
 d = \exp(-\sigma\sqrt{\Delta{t}})
 ```
 
-__source__: fill me in.
+__Simulation__
+
+
+ ```{figure} ./figs/Fig-HMM-up-SRA-N250.pdf
+---
+height: 360px
+name: fig-discrete-hidden-markov-model-sim-up
+---
+Simulation of an asset price governed by $\mathbf{P}$. Solid line denotes the mean predicted price, shaded regions denote the 68% and 95% confidence regions. _parameters_: $S_{o}$ = 100, $\Delta{T}$ = (1/365), $T$ = 45 days and IV = 24.20%. 
+The trajectory was computed by sampling a `Categorical` distribution constructed from the HMM stationary distribution.
+```
+
+__source__: [download the live Jupyter notebook from GitHub](https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks)
 
 ````
-
-
 
 
 (content:references:structure-of-an-mdp)=
@@ -217,7 +227,7 @@ For this problem, the MDP has the tuple components:
 
 Let's compute $U^{\pi}(s)$ for different choices for the policy function $\pi$.
 
-__source__: Fill me in.
+__source__: [download the live Jupyter notebook from GitHub](https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks)
 ````
 
 
@@ -265,7 +275,7 @@ Let's modify our original Tiger problem implementation to explore sub-optimal ve
 
  ```{figure} ./figs/Fig-Branched-MDP-Schematic.pdf
 ---
-height: 260px
+height: 300px
 name: fig-branched-mdp-schematic-mod
 ---
 Schematic of the Tiger problem modeled as an N-state, four-action Markov decision process. A tiger hides behind the red door while freedom awaits behind the green door. The hallway has three types of paths: unobstructed (white), mildly obstructed (light gray), and obstructed (dark gray). 
