@@ -34,4 +34,5 @@ chapters:
   title: Unit 4. Decisions
   sections:
   - file: chapter-4-dir/mdp
+  - file: chapter-4-dir/rl
 - file: References
