@@ -1,14 +1,16 @@
 # Equity, Debt and Modern Portfolio Theory
 
 ## Introduction
-Modern portfolio theory (MPT) is a method for selecting a collection of assets, e.g., stocks or bonds, to maximize the overall reward of the investor within an acceptable level of risk to the investor. Harry Markowitz, who developed the mathematical foundation of MPT {cite}`MPT1952`, was later awarded a [Nobel Prize for his work in 1990](https://www.nobelprize.org/prizes/economic-sciences/1990/markowitz/facts/). 
+Modern portfolio theory (MPT), a method for selecting a portfolio of assets, e.g., a collection of stocks or bonds, maximizes the overall reward an investor recieves, gievn an acceptable level of risk. In particular, we'll explore Markowitz portfolio optimization; Harry Markowitz, who developed the mathematical foundation of MPT {cite}`MPT1952`, was later awarded a [Nobel Prize for his work in 1990](https://www.nobelprize.org/prizes/economic-sciences/1990/markowitz/facts/). 
 
-The central theme of MPT is the balance between risk and reward, where the reward is measured as the [expected return](https://www.investopedia.com/terms/r/return.asp) of a basket of assets (called a portfolio). In contrast, the risk is calculated as the variance of the logarithmic return of the portfolio. Thus, the objective of MPT is to balance the composition of the portfolio such that an investor obtains a desired expected return while minimizing the variance (risk). For a detailed discussion of MPT, see Part II (chapters 5 - 8) of Bodie, Kane, and Marcus {cite}`Bodie:2011ug`.
+The central theme of modern portfolio theory is balancing risk and reward. Reward is measured as the [expected return](https://www.investopedia.com/terms/r/return.asp) of a portfolio of assets, while, the risk is calculated as the variance of the logarithmic or fraction return of the portfolio. Thus, the objective of modern portfolio theory is to balance the composition of the portfolio such that an investor obtains a desired expected return while minimizing the variance (risk). 
+
+For a more detailed discussion of MPT, see Part II (chapters 5 - 8) of Bodie, Kane, and Marcus {cite}`Bodie:2011ug`.
 
 In this chapter, we will:
 
 * Introduce {ref}`content:references:markowitz` for a portfolio of risky and risk-free assets
-* Introduce {ref}`content:references:markowitz-solution` and 
+* Introduce {ref}`content:references:markowitz-solution` and {ref}`content:references:markowitz-solution-sim`
 * Explore the question {ref}`content:references:markowitz-solution-test`
 ---
 
@@ -703,5 +705,12 @@ Finish me.
 ---
 
 ## Summary
-Fill me in.
+In this section, we introduced Modern portfolio theory (MPT), a method for selecting a portfolio of assets, e.g., a collection of stocks or bonds, that maximize the overall reward an investor recieves, gievn an acceptable level of risk. In particular, we explored Markowitz portfolio optimization; Harry Markowitz, who developed the mathematical foundation of MPT {cite}`MPT1952`, was later awarded a [Nobel Prize for his work in 1990](https://www.nobelprize.org/prizes/economic-sciences/1990/markowitz/facts/). 
 
+The central theme of modern portfolio theory is balancing risk and reward. Reward is measured as the [expected return](https://www.investopedia.com/terms/r/return.asp) of a portfolio of assets, while, the risk is calculated as the variance of the logarithmic or fraction return of the portfolio. Thus, the objective of modern portfolio theory is to balance the composition of the portfolio such that an investor obtains a desired expected return while minimizing the variance (risk). 
+
+In this chapter, we:
+
+* Introduced {ref}`content:references:markowitz` for a portfolio of risky and risk-free assets
+* Introduced {ref}`content:references:markowitz-solution` and {ref}`content:references:markowitz-solution-sim`
+* Explored the question {ref}`content:references:markowitz-solution-test`

@@ -12,10 +12,10 @@ In this lecture:
 
 (content:references:markov-chains)=
 ## Markov chains
-A Markov chain is a stochastic model describing a sequence of possible events where the probability of each of these events depends only on the current state of the system, and not on past system states. A system's state space and time (much like probability) can be either discrete or continuous; for most of the applications we'll be interested in, we'll focus on discrete time and discrete finite state spaces.
+A Markov chain is a stochastic model describing a sequence of possible events where the probability of each of these events depends only on the system’s current state and not on past system states. A system's state space and time (much like a probability) can be either discrete or continuous; for most of the applications we'll be interested in, we'll focus on discrete time and discrete finite state spaces.
 
 (content:references:discrete-time-markov-chains)=
-### Discrete time Markov chains
+### Discrete-time Markov chains
 A discrete-time Markov chain is a sequence of random variables $X_{1}$, $X_{2}$, $X_{3}$, ..., $X_{n}$ that have the [Markov property](https://en.wikipedia.org/wiki/Markov_property), i.e., the probability of moving to the _next state_ depends only on the _present state_ and not on the _previous states_:
 
 ```{math}
@@ -23,14 +23,14 @@ A discrete-time Markov chain is a sequence of random variables $X_{1}$, $X_{2}$,
 P(X_{n+1} = x | X_{1}=x_{1}, \dots, X_{n}=x_{n}) = P(X_{n+1} = x | X_{n}=y)
 ```
 
-where _states_ refer to a finite set of discrete values that the system can exist in.  If the state space is finite, the transition probability distribution, i.e., the probability of moving from state(s) $i\rightarrow{j}$, can be encoded in the transition matrix $\mathbf{P}$. Elements of $\mathbf{P}$, denoted as $p_{ij}$, encode the probability of moving from state $i\rightarrow{j}$ during the next time step:
+where _states_ refer to a finite set of discrete values in which the system can exist.  If the state space is finite, the transition probability distribution, i.e., the probability of moving from the state(s) $i\rightarrow{j}$, can be encoded in the transition matrix $\mathbf{P}$. Elements of $\mathbf{P}$, denoted as $p_{ij}$, encode the probability of moving from state $i\rightarrow{j}$ during the next time step:
 
 ```{math}
 :label: eqn-transition-prob-matrix
 p_{ij} = P(X_{n+1}~=~j~|~X_{n}~=~i)
 ```
 
-The transition matrix $\mathbf{P}$ has a few interesting properties. First, the rows of transition matrix $\mathbf{P}$ must sum to unity, i.e., each row encodes the probability of all possible outcomes, thus it must sum to one. Second, if the transition matrix  $\mathbf{P}$ is time invariant, then $\mathbf{P}$ is the same at each step. This leads to {prf:ref}`obs-n-transition`:
+The transition matrix $\mathbf{P}$ has interesting properties. First, the rows of transition matrix $\mathbf{P}$ must sum to unity, i.e., each row encodes the probability of all possible outcomes. Thus, it must sum to one. Second, if the transition matrix  $\mathbf{P}$ is time-invariant, then $\mathbf{P}$ is the same at each step. This leads to {prf:ref}`obs-n-transition`:
 
 ````{prf:observation} Time-invariant state transition
 :label: obs-n-transition
@@ -48,8 +48,7 @@ $$\mathbf{x}_{n+1} = \mathbf{x}_{n}\mathbf{P}^n$$
 where $\mathbf{x}_{n}$ denotes the system state vector at time step $n$. 
 ````
 
-
-Finally, if the Markov chain is both time-invarient and non-periodic, there exists a unique stationary distribution $\pi$ such that $\mathbf{P}^{k}$ converges to a rank-one matrix in which each row is the stationary distribution $\pi$:
+Finally, suppose the Markov chain is both time-invariant and non-periodic. In that case, there exists a unique stationary distribution $\pi$ such that $\mathbf{P}^{k}$ converges to a rank-one matrix in which each row is the stationary distribution $\pi$:
 
 ```{math}
 \lim_{k\rightarrow\infty} \mathbf{P}^{k} = \mathbf{1}\pi
@@ -118,13 +117,13 @@ state 2. The transition matrix admits the stationary (non-periodic) stationary d
 
 $$\pi = (0.66, 0.33)$$
 
-Suppose the unobservable state $X_{1}$ was the `up` state; when the system is in state 1 we observe an up move of size:
+Suppose the unobservable state $X_{1}$ was the `up` state; when the system is in state 1, we observe an up move of size:
 
 ```{math}
 u = \exp(\sigma\sqrt{\Delta{t}})
 ```
 
-On the other hand, let state 2 denote the `down` state; when the system is in state 2 we observe a down move of size:
+On the other hand, let state 2 denote the `down` state; when the system is in state 2, we observe a down move of size:
 
 ```{math}
 d = \exp(-\sigma\sqrt{\Delta{t}})
@@ -138,7 +137,7 @@ __Simulation__
 height: 360px
 name: fig-discrete-hidden-markov-model-sim-up
 ---
-Simulation of an asset price governed by $\mathbf{P}$. Solid line denotes the mean predicted price, shaded regions denote the 68% and 95% confidence regions. _parameters_: $S_{o}$ = 100, $\Delta{T}$ = (1/365), $T$ = 45 days and IV = 24.20%. 
+Simulation of an asset price governed by $\mathbf{P}$. The solid line denotes the mean predicted price; shaded regions denote the 68% and 95% confidence regions. _parameters_: $S_{o}$ = 100, $\Delta{T}$ = (1/365), $T$ = 45 days and IV = 24.20%. 
 The trajectory was computed by sampling a `Categorical` distribution constructed from the HMM stationary distribution.
 ```
 
@@ -149,7 +148,7 @@ __source__: [download the live Jupyter notebook from GitHub](https://github.com/
 
 (content:references:structure-of-an-mdp)=
 ## Markov decision processes (MDPs)
-A Markov decision process (MDP) is an approach for modeling decision-making in situations where outcomes are partly random but also partly under the control of a _decision-maker_ who receives a reward (or penalty) for each decision. Thus, unlike {ref}`content:references:discrete-time-markov-chains`, Markov decision processes (MDPs) involve actions, which allow choice, and rewards that provide motivation for the decision maker.
+A Markov decision process (MDP) is an approach for modeling decision-making in situations where outcomes are partly random but also partly under the control of a _decision-maker_ who receives a reward (or penalty) for each decision. Thus, unlike {ref}`content:references:discrete-time-markov-chains`, Markov decision processes (MDPs) involve actions, which allow choice, and rewards that motivate the decision maker.
 
 At each time step, let's assume the system in some state $s$ in a set of possible states $s\in\mathcal{S}$ and the decision maker may choose any action $a$ from a set of possible actions $a\in\mathcal{A}$ that are available in state $s$. The system responds at the next time step by _potentially_ moving into a new state $s^{\prime}$ and rewarding the decision maker $R_{a}\left(s, s^{\prime}\right)$. The probability that the system moves into a new state $s^{\prime}$ depends upon the chosen action $a$ and the current state $s$; this probability is governed by a state transition function $P_{a}\left(s,s^{\prime}\right)$.
 
@@ -165,7 +164,6 @@ A Markov decision process is the tuple $\left(\mathcal{S}, \mathcal{A}, R_{a}\le
 * The quantity $\gamma$ is a _discount factor_; the discount factor is used to weight the _future expected utility_.
 
 Finally, a policy function $\pi$ is the (potentially probabilistic) mapping from states $s\in\mathcal{S}$ to actions $a\in\mathcal{A}$ used by the agent to solve the decision task. 
-
 ````
 
 ### Policy evaluation
@@ -187,13 +185,12 @@ As $k\rightarrow\infty$ the lookahead utility converges to a stationary value $U
 ````{prf:definition} Value function
 :label: defn-policy-evalution
 
-Suppose we have a Markov decision process with the tuple $\left(\mathcal{S}, \mathcal{A}, R_{a}\left(s, s^{\prime}\right), T_{a}\left(s,s^{\prime}\right), \gamma\right)$. Then, the utility of then policy function $\pi$ equals:
+Suppose we have a Markov decision process with the tuple $\left(\mathcal{S}, \mathcal{A}, R_{a}\left(s, s^{\prime}\right), T_{a}\left(s,s^{\prime}\right), \gamma\right)$. Then, the utility of the policy function $\pi$ equals:
 
 ```{math}
 :label: eqn-converged-policy-eval
 U^{\pi}(s) = R(s,\pi(s)) + \gamma\sum_{s^{\prime}\in\mathcal{S}}T(s^{\prime} | s, \pi(s))U^{\pi}(s^{\prime})
 ```
-
 ````
 
 Let's do an example to illustrate policy evaluation:
@@ -226,13 +223,12 @@ The utility associated with an optimal policy $\pi^{\star}$ is called the optima
 
 ### Value function policies
 {prf:ref}`defn-policy-evalution` gives us a method to compute the utility for a particular policy $U^{\pi}(s)$. 
-However, suppose we were given the utility, and wanted to estimate the policy $\pi(s)$ from that utility. 
+However, suppose we were given the utility and wanted to estimate the policy $\pi(s)$ from that utility. 
 Given a utility $U$, we can estimate a policy $\pi(s)$ using the $Q$-function (action-value function):
 
 ```{math}
 :label: eqn-action-value-function
 Q(s,a) = R(s,a) + \gamma\sum_{s^{\prime}\in\mathcal{S}}T(s^{\prime} | s, a)U(s^{\prime})
-
 ```
 
 Equation {eq}`eqn-action-value-function` gives a $|\mathcal{S}|\times|\mathcal{A}|$ array, where the utility is given by:
@@ -258,7 +254,7 @@ In _value iteration_, the value function (the vector of utility values) is updat
 U_{k+1}(s) = \max_{a}\left(R(s,a) + \gamma\sum_{s^{\prime}\in\mathcal{S}}T(s^{\prime} | s, a)U_{k}(s^{\prime})\right)
 ```
 
-This procedure is guaranteed to converge to the optimal utility vector (value function).  Let's modify our original Tiger problem implementation to explore sub-optimal versus optimal policies. 
+This procedure is guaranteed to converge to the optimal utility vector (value function).  
 
 ````{prf:example} Modified Tiger problem
 :label: example-MDP-line-mod
@@ -275,7 +271,7 @@ An agent is trapped in a long hallway with two doors at either end ({numref}`fig
 
 For this problem, the MDP has the tuple components:
 * $\mathcal{S} = \left\{1,2,\dots,N\right\}$ while the action set is $\mathcal{A} = \left\{a_{1},a_{2}, a_{3}, a_{4}\right\}$; action $a_{1}$ moves the agent one state to the left, action $a_{2}$ moves the agent one state to the right, action $a_{3}$ moves the agent one stop up, and action $a_{4}$ moves the agent one step down.
-* The agent receives a postive reward for entering the red state $N$ (escapes). However, the agent is penalized for entering the green state $1$ (eaten by the tiger).  Finally, the agent is not charged to move to adjacent locations if those locations are unobstructed. However, there is a small charge to move through mildly obstructed locations (light gray circles) and a larger charge to move through obstructed areas (dark gray circles).
+* The agent receives a positive reward for entering the red state $N$ (escapes). However, the agent is penalized for entering the green state $1$ (eaten by the tiger).  Finally, the agent is not charged to move to adjacent locations if those locations are unobstructed. However, there is a small charge to move through mildly obstructed locations (light gray circles) and a larger charge to move through obstructed areas (dark gray circles).
 * Let the probability of correctly executing an action $a_{j}\in\mathcal{A}$ be $\alpha$.
 
 Let's use value iteration to estimate the _optimal policy_ $\pi^{\star}(s)$

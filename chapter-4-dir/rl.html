@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Unit 4: Decisions &#8212; CHEME 5660</title>
+    <title>Reinforcement Learning (RL) &#8212; CHEME 5660</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -51,11 +51,13 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <link rel="canonical" href="https://varnerlab.github.io/CHEME-5660-Markets-Mayhem-Book/infrastructure.html/chapter-4-dir/chapter-4.html" />
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link rel="canonical" href="https://varnerlab.github.io/CHEME-5660-Markets-Mayhem-Book/infrastructure.html/chapter-4-dir/rl.html" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Markov decision process (MDPs)" href="mdp.html" />
-    <link rel="prev" title="Equity, Debt and Modern Portfolio Theory" href="../chapter-3-dir/markowitz.html" />
+    <link rel="next" title="References" href="../References.html" />
+    <link rel="prev" title="Markov decision process (MDPs)" href="mdp.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -225,7 +227,7 @@ const thebe_selector_output = ".output, .cell_output"
   </ul>
  </li>
  <li class="toctree-l1 current active has-children">
-  <a class="current reference internal" href="#">
+  <a class="reference internal" href="chapter-4.html">
    Unit 4. Decisions
   </a>
   <input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
@@ -233,14 +235,14 @@ const thebe_selector_output = ".output, .cell_output"
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul>
+  <ul class="current">
    <li class="toctree-l2">
     <a class="reference internal" href="mdp.html">
      Markov decision process (MDPs)
     </a>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="rl.html">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
      Reinforcement Learning (RL)
     </a>
    </li>
@@ -341,7 +343,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Book/issues/new?title=Issue%20on%20page%20%2Fchapter-4-dir/chapter-4.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Book/issues/new?title=Issue%20on%20page%20%2Fchapter-4-dir/rl.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -369,7 +371,7 @@ title="Open an issue"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../_sources/chapter-4-dir/chapter-4.md"
+        <a href="../_sources/chapter-4-dir/rl.md"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -406,23 +408,142 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Reinforcement Learning (RL)
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#introduction">
+     Introduction
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#model-free-reinforcement-learning">
+     Model-free reinforcement learning
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#basic-q-learning">
+       Basic Q-learning
+      </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h4 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#incremental-q-table-updates">
+         Incremental Q-table updates
+        </a>
+       </li>
+       <li class="toc-h4 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#exploration-versus-exploitation">
+         Exploration versus exploitation
+        </a>
+       </li>
+      </ul>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#model-based-reinforcement-learning">
+     Model-based reinforcement learning
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summary">
+   Summary
+  </a>
+ </li>
+</ul>
+
+    </nav>
 </div>
     </div>
     <div class="article row">
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Unit 4: Decisions</h1>
+                <h1>Reinforcement Learning (RL)</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Reinforcement Learning (RL)
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#introduction">
+     Introduction
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#model-free-reinforcement-learning">
+     Model-free reinforcement learning
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#basic-q-learning">
+       Basic Q-learning
+      </a>
+      <ul class="nav section-nav flex-column">
+       <li class="toc-h4 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#incremental-q-table-updates">
+         Incremental Q-table updates
+        </a>
+       </li>
+       <li class="toc-h4 nav-item toc-entry">
+        <a class="reference internal nav-link" href="#exploration-versus-exploitation">
+         Exploration versus exploitation
+        </a>
+       </li>
+      </ul>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#model-based-reinforcement-learning">
+     Model-based reinforcement learning
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summary">
+   Summary
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -430,12 +551,59 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="unit-4-decisions">
-<h1>Unit 4: Decisions<a class="headerlink" href="#unit-4-decisions" title="Permalink to this headline">#</a></h1>
-<p>The objective of this unit is to give you tools to make quanititave investment decisions, with a particlar emphasis on trade and portfolio management.</p>
-<p>In this unit we will</p>
-<div class="toctree-wrapper compound">
-</div>
+  <section class="tex2jax_ignore mathjax_ignore" id="reinforcement-learning-rl">
+<h1>Reinforcement Learning (RL)<a class="headerlink" href="#reinforcement-learning-rl" title="Permalink to this headline">#</a></h1>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">#</a></h2>
+<p>In our discussion of <a class="reference internal" href="mdp.html"><span class="doc std std-doc">Markov decision process (MDPs)</span></a>, we assumed that the transition and reward models were known precisely. However, in many actual problems, we will encounter, these models have yet to be discovered exactly. In these cases, the agent must learn to act through experience, e.g., by observing the outcomes of its actions. Then the agent chooses actions that maximize its long-term accumulation of reward. Decisions problems where the underlying models are uncertain is explored in a field called <a class="reference external" href="https://en.wikipedia.org/wiki/Reinforcement_learning">Reinforcement Learning (RL)</a>.</p>
+<p>Several challenges must be addressed in cases of uncertain models. First, agents must balance between exploring the world and exploiting knowledge gained through experience. Second, rewards may be received long after decisions have been made. Finally, agents must generalize from limited experience.</p>
+<p>In this lecture, we will explore these three challenges. In particular, we will:
+Fill me in.</p>
+<hr class="docutils" />
+</section>
+<section id="model-free-reinforcement-learning">
+<span id="content-references-model-free-reinforcement-learning"></span><h2>Model-free reinforcement learning<a class="headerlink" href="#model-free-reinforcement-learning" title="Permalink to this headline">#</a></h2>
+<p>Unlike <a class="reference internal" href="#content-references-model-based-reinforcement-learning"><span class="std std-ref">Model-based reinforcement learning</span></a>, model-free reinforcement learning does not require us to construct explicit transition and reward models. Instead, model-free methods compute the action value function <span class="math notranslate nohighlight">\(Q(s,a)\)</span> directly, e.g., by incrementally estimating the action value function <span class="math notranslate nohighlight">\(Q(s,a)\)</span> from samples using the <em>Q-learning</em> approach.</p>
+<section id="basic-q-learning">
+<h3>Basic Q-learning<a class="headerlink" href="#basic-q-learning" title="Permalink to this headline">#</a></h3>
+<p>The Q-learning approach incrementally estimates the action value function <span class="math notranslate nohighlight">\(Q(s,a)\)</span> using the action value form of the <em>Bellman expectation equation</em>.
+From our discussion of <a class="reference internal" href="mdp.html"><span class="doc std std-doc">Markov decision process (MDPs)</span></a>, we know that the action-value function (the <span class="math notranslate nohighlight">\(Q\)</span>-function) is defined as:</p>
+<div class="math notranslate nohighlight">
+\[Q(s,a) = R(s,a) + \gamma\sum_{s^{\prime}\in\mathcal{S}}T(s^{\prime} | s, a)U(s^{\prime})\]</div>
+<p>However, we do know that:</p>
+<div class="math notranslate nohighlight">
+\[U(s) = \max_{a} Q(s,a)\]</div>
+<p>thus:</p>
+<div class="math notranslate nohighlight" id="equation-eqn-bellman-expectation-eqn">
+<span class="eqno">(78)<a class="headerlink" href="#equation-eqn-bellman-expectation-eqn" title="Permalink to this equation">#</a></span>\[Q(s,a) = R(s,a) + \gamma\sum_{s^{\prime}\in\mathcal{S}}T(s^{\prime} | s, a)\left(\max_{a^{\prime}}Q(s^{\prime},a^{\prime})\right)\]</div>
+<p>Here’s the catch: in a model-free universe, we don’t know the rewards or physics of the world, i.e., we don’t know the rewards <span class="math notranslate nohighlight">\(R(s,a)\)</span> or the probability array <span class="math notranslate nohighlight">\(T(s^{\prime} | s, a)\)</span> that appear in Eqn. <a class="reference internal" href="#equation-eqn-bellman-expectation-eqn">(78)</a>. Instead of computing the rewards and transitions from a model we develop, we estimate them from samples received:</p>
+<div class="math notranslate nohighlight">
+\[Q(s,a) = \mathbb{E}_{r,s^{\prime}}\left[r+\gamma\cdot\max_{a^{\prime}}Q(s^{\prime},a^{\prime})\right]\]</div>
+<section id="incremental-q-table-updates">
+<h4>Incremental Q-table updates<a class="headerlink" href="#incremental-q-table-updates" title="Permalink to this headline">#</a></h4>
+<p>Many model-free methods incrementally estimate the action value function <span class="math notranslate nohighlight">\(Q(s, a)\)</span> which is the expectation of reward recieved and the sampled values for the utility. Suppose we are interested in computing the expectation of a single random variable X from <span class="math notranslate nohighlight">\(\mathcal{M}\)</span> samples:</p>
+<div class="math notranslate nohighlight">
+\[\hat{x}_{m} = \frac{1}{|\mathcal{M}|}\sum_{i\in\mathcal{M}}x_{i}\]</div>
+<p>where <span class="math notranslate nohighlight">\(|\mathcal{M}|\)</span> denotes the number of samples in the sample set <span class="math notranslate nohighlight">\(\mathcal{M}\)</span>. However, we can re-write the sum as:</p>
+<div class="math notranslate nohighlight">
+\[\hat{x}_{m} = \frac{1}{|\mathcal{M}|}\left(x_{m}+\sum_{i\in\mathcal{M}^{-}}x_{i}\right)\]</div>
+<p>where <span class="math notranslate nohighlight">\(\mathcal{M}^{-}\)</span> denotes the set of samples with the last sample removed.</p>
+</section>
+<section id="exploration-versus-exploitation">
+<span id="content-references-exploration-versus-exploitation"></span><h4>Exploration versus exploitation<a class="headerlink" href="#exploration-versus-exploitation" title="Permalink to this headline">#</a></h4>
+<p>Fill me in.</p>
+</section>
+</section>
+</section>
+<section id="model-based-reinforcement-learning">
+<span id="content-references-model-based-reinforcement-learning"></span><h2>Model-based reinforcement learning<a class="headerlink" href="#model-based-reinforcement-learning" title="Permalink to this headline">#</a></h2>
+<p>Fill me in.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="summary">
+<h1>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">#</a></h1>
+<p>Fill me in.</p>
 </section>
 
     <script type="text/x-thebe-config">
@@ -465,17 +633,17 @@ title="Print to PDF"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="../chapter-3-dir/markowitz.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="mdp.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Equity, Debt and Modern Portfolio Theory</p>
+            <p class="prev-next-title">Markov decision process (MDPs)</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="mdp.html" title="next page">
+    <a class='right-next' id="next-link" href="../References.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Markov decision process (MDPs)</p>
+        <p class="prev-next-title">References</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
