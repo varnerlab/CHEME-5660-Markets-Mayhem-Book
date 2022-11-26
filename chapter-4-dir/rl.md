@@ -47,6 +47,35 @@ The success probabilities of any action $p_{a_{i}}$, while static over the horiz
 
 There are multiple strategies to solve the Binary Bernoulli bandit problem described in {prf:ref}`defn-multi-arm-bernoulli-bandit-problem`:
 * An obvious (but naive) approach is to allocate a fixed fraction $\epsilon$ of the time steps in the time horizon to explore purely random actions. In contrast, in the remaining periods, only successful actions are chosen (exploitation). This strategy is the $\epsilon$-greedy exploration method. 
+* On the other hand, [Thompson sampling](https://en.wikipedia.org/wiki/Thompson_sampling) which is shown in {prf:ref}`algo-thompson-sampling` consists of choosing the action that maximizes the expected reward with respect to a randomly drawn belief, where the belief distribution follows a [Beta distribution](https://en.wikipedia.org/wiki/Beta_distribution). 
+
+```{prf:algorithm} Thompson-sampling
+:label: algo-thompson-sampling
+
+**Inputs**  number of time periods in the horizon $T$, the dimension of the action space $K = |\mathcal{A}|$, and
+$\alpha_{1},\dots,\alpha_{K}$ and $\beta_{1},\dots,\beta_{K}$ the initial values (prior) for the parameters that appear in the 
+Beta-distribution for each action 
+
+**Outputs** posterior values for the parameters $\alpha_{1},\dots,\alpha_{K}$ and $\beta_{1},\dots,\beta_{K}$ that appear in the Beta-distributions for each action
+
+**Initialize**
+a Beta-distribution for each action using initial values $(\alpha,\beta)$.
+
+**Main**
+1. for t $\in$ 1 to T
+    1. for k $\in$ 1 to K
+        1. sample $\hat{\theta}_{k} \sim \beta(\alpha_{k}, \beta_{k})$
+    
+
+    1. Select action: $a_{t} = \text{arg}\max_{k}\hat{\theta}_{k}$
+    1. Apply $a_{t}$ and observe $r_{t}$.
+    1. Update distribution parameters:
+        1. $(\alpha_{t},\beta_{t})\leftarrow\left(\alpha_{t}+r_{t},\beta_{t}+(1-r_{t})\right)$
+
+**Return**
+$(\alpha_{1},\dots,\alpha_{K})$ and $(\beta_{1},\dots,\beta_{K})$
+```
+
 
 (content:references:model-based-reinforcement-learning)=
 ## Model-based reinforcement learning 
