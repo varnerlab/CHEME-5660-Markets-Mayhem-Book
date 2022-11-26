@@ -7,7 +7,7 @@ Several challenges must be addressed in cases of uncertain models. First, agents
 
 In this lecture, we will explore these three challenges. In particular, we will:
 
-* Introduce the {ref}`content:references:basic-concepts-reinforcement-learning` and contrast reinforcement learning with [Markov Decision Processes](./mdp.md)
+* Introduce the {ref}`content:references:basic-concepts-reinforcement-learning` and contrast reinforcement learning with [Markov Decision Processes](./mdp.md) and other machine learning approaches. 
 * Introduce {ref}`content:references:model-based-reinforcement-learning` in which the decision-making agent iteratively builds a model for the world
 * Introduce {ref}`content:references:model-free-reinforcement-learning` in which an agent builds a policy directly from interacting with the world
 
@@ -15,7 +15,7 @@ In this lecture, we will explore these three challenges. In particular, we will:
 
  ```{figure} ./figs/Fig-Schematic-RL.pdf
 ---
-height: 280px
+height: 260px
 name: fig-rl-schematic
 ---
 Schematic of the reinforcement learning (RL) process. An agent takes action $a$ and then observes reward $r$ and changes in the state of the environment ($s\rightarrow{s^{\prime}}$) following the action $a$. 
@@ -24,15 +24,29 @@ Schematic of the reinforcement learning (RL) process. An agent takes action $a$ 
 
 (content:references:basic-concepts-reinforcement-learning)=
 ## Basic concepts of reinforcement learning
-[Reinforcement Learning (RL)](https://en.wikipedia.org/wiki/Reinforcement_learning) agents learn by performing actions in the world and then analyzing the rewards they receive ({numref}`fig-rl-schematic`). Thus, reinforcement learning differs from other machine learning approaches, e.g., [supervised learning](https://en.wikipedia.org/wiki/Supervised_learning) because labeled input/output pairs, e.g., what actions lead to positive rewards are not presented to the agent _a priori_.  
+[Reinforcement Learning (RL)](https://en.wikipedia.org/wiki/Reinforcement_learning) agents learn by performing actions in the world and then analyzing the rewards they receive ({numref}`fig-rl-schematic`). Thus, reinforcement learning differs from other machine learning approaches, e.g., [supervised learning](https://en.wikipedia.org/wiki/Supervised_learning) because labeled input/output pairs, e.g., what actions lead to positive rewards are not presented to the agent _a priori_.  Instead, reinforcement learning agents learn what is good or bad by trying different actions. 
 
-Instead, reinforcement learning agents learn optimal choices in different situations by balancing the exploration of their environment, e.g., by taking random actions and watching what happens, with the exploitation of the knowledge they have built up so far, i.e., choosing what the agent thinks is an optimal action based upon previous experience.  
+Reinforcement learning agents learn optimal choices in different situations by balancing the exploration of their environment, e.g., by taking random actions and watching what happens, with the exploitation of the knowledge they have built up so far, i.e., choosing what the agent thinks is an optimal action based upon previous experience. The balance between exploration versus exploitation is one of the key concepts in reinforcement learning.
 
 (content:references:exploration-versus-exploitation)=
-### Exploration versus exploitation
+### Exploration, exploitation and bandit problems
 Reinforcement learning agents must balance exploration of the environment, e.g., taking random actions with exploiting knowledge already obtained through interacting with the world. Pure exploration allows agents to construct a comprehensive model of their environment, but likely at the expense of positive reward. On the other hand, pure exploitation has the agent continually choosing the action it thinks best to accumulate reward, but different, better actions could be taken. 
 
+A classic approach to understanding the exploration and exploitation tradeoff, which itself has many real-world applications, is the [multi arm bandit problem](https://en.wikipedia.org/wiki/Multi-armed_bandit). A general bandit problem is a sequential game played between an agent and the environment. The game is played over $n$ rounds called the _horizon_. In each round the agent chooses an action $a\in\mathcal{A}$ and the environment then reveals a reward $r$. 
 
+Let's look at a particular sub-type of multi-arm bandit problem, namely, the Bernoulli bandit problem and Thompson sampling, a particular solution approach to this class of problem {cite}`RUSSO-2017-TS`:
+
+````{prf:definition} Binary Bernoulli bandit problem
+:label: defn-multi-arm-bernoulli-bandit-problem
+
+Suppose an agent has a choice between $K$ possible actions $\mathcal{A}=\left\{a_{1},a_{2},\dots,a_{K}\right\}$. Further, the success or failure of any action $a_{i}\in\mathcal{A}$ is governed by a Bernoulli random variable (see {prf:ref}`defn-pmf-bernouli`); $R_{a_{i}} = 1$ (sucess) with probability $p_{a_{i}}$, and $R_{a_{i}} = 0$ (failure) otherwise. 
+
+The success probabilities of any action $p_{a_{i}}$, while static over the horizon of the game, are unknown to the agent, but they can be learned by experimentation. The agent’s objective is to maximize the cumulative number of successes over the game horizon, e.g., T-periods, where $T\gg{K}$. 
+
+````
+
+There are multiple strategies to solve the Binary Bernoulli bandit problem described in {prf:ref}`defn-multi-arm-bernoulli-bandit-problem`:
+* An obvious (but naive) approach is to allocate a fixed fraction $\epsilon$ of the time steps in the time horizon to explore purely random actions. In contrast, in the remaining periods, only successful actions are chosen (exploitation). This strategy is the $\epsilon$-greedy exploration method. 
 
 (content:references:model-based-reinforcement-learning)=
 ## Model-based reinforcement learning 
