@@ -45,9 +45,9 @@ The success probabilities of any action $p_{a_{i}}$, while static over the horiz
 
 ````
 
-There are multiple strategies to solve the Binary Bernoulli bandit problem described in {prf:ref}`defn-multi-arm-bernoulli-bandit-problem`:
-* An obvious (but naive) approach is to allocate a fixed fraction $\epsilon$ of the time steps in the time horizon to explore purely random actions. In contrast, in the remaining periods, only successful actions are chosen (exploitation). This strategy is the $\epsilon$-greedy exploration method. 
-* On the other hand, [Thompson sampling](https://en.wikipedia.org/wiki/Thompson_sampling) which is shown in {prf:ref}`algo-thompson-sampling` consists of choosing the action that maximizes the expected reward with respect to a randomly drawn belief, where the belief distribution follows a [Beta distribution](https://en.wikipedia.org/wiki/Beta_distribution). 
+There are multiple heuristic strategies to solve the Binary Bernoulli bandit problem described in {prf:ref}`defn-multi-arm-bernoulli-bandit-problem`:
+
+* [Thompson sampling](https://en.wikipedia.org/wiki/Thompson_sampling) which is shown in {prf:ref}`algo-thompson-sampling` consists of choosing the action that maximizes the expected reward with respect to a randomly drawn belief, where the belief distribution follows a [Beta distribution](https://en.wikipedia.org/wiki/Beta_distribution). 
 
 ```{prf:algorithm} Thompson-sampling
 :label: algo-thompson-sampling
@@ -75,6 +75,61 @@ a Beta-distribution for each action using initial values $(\alpha,\beta)$.
 **Return**
 $(\alpha_{1},\dots,\alpha_{K})$ and $(\beta_{1},\dots,\beta_{K})$
 ```
+
+* An obvious (but naive) alternative approach is to allocate a fixed fraction of the time steps in the time horizon, say $\epsilon$, to explore purely random actions. In contrast, in the remaining periods, only successful actions are chosen via [Thompson sampling](https://en.wikipedia.org/wiki/Thompson_sampling) or another exploitation approach. This strategy, called $\epsilon$-greedy exploration, is shown in {prf:ref}`algo-e-greedy` with a [Thompson sampling](https://en.wikipedia.org/wiki/Thompson_sampling) exploitation step:
+
+```{prf:algorithm} $\epsilon$-greedy exploration
+:label: algo-e-greedy
+
+**Inputs**  the pure exploration parameter $\epsilon$, the number of time periods in the horizon $T$, the dimension of the action space $K = |\mathcal{A}|$, and
+$\alpha_{1},\dots,\alpha_{K}$ and $\beta_{1},\dots,\beta_{K}$ the initial values (prior) for the parameters that appear in the 
+Beta-distribution for each action 
+
+**Outputs** posterior values for the parameters $\alpha_{1},\dots,\alpha_{K}$ and $\beta_{1},\dots,\beta_{K}$ that appear in the Beta-distributions for each action
+
+**Initialize**
+a Beta-distribution for each action using initial values $(\alpha,\beta)$.
+
+**Main**
+1. for t $\in$ 1 to T
+    1. if rand() $<\epsilon$
+        1. Select random action: $a_{t}\sim\text{Uniform}(\mathcal{A})$
+    1. else
+        1. for k $\in$ 1 to K
+            1. sample $\hat{\theta}_{k} \sim \beta(\alpha_{k}, \beta_{k})$
+    
+        1. Select action: $a_{t} = \text{arg}\max_{k}\hat{\theta}_{k}$
+    
+    1. Apply $a_{t}$ and observe $r_{t}$.
+    1. Update distribution parameters:
+        1. $(\alpha_{t},\beta_{t})\leftarrow\left(\alpha_{t}+r_{t},\beta_{t}+(1-r_{t})\right)$
+
+**Return**
+$(\alpha_{1},\dots,\alpha_{K})$ and $(\beta_{1},\dots,\beta_{K})$
+```
+
+
+
+Let's consider an example three-arm Binary Bernoulli bandit problem to illustrate the exploration versus explotation trade-off:
+
+````{prf:example} Three-arm binary Bernoulli bandit problem
+:label: ex-bbbp
+
+Consider a three-arm binary Bernoulli bandit problem in which the actual success probability for the arms is given by $\theta=\left(0.90, 0.60, 0.80\right)$. Simulation results for algorithms {prf:ref}`algo-thompson-sampling` and {prf:ref}`algo-e-greedy` for a horizon of T = 250 steps are shown in {numref}`fig-bbbp-sim-example`.
+
+The  $\epsilon$-greedy approach for $\epsilon=0.20$ performs better than Thompson sampling alone; in both cases, the actual best action $a_{1}$ is discovered. However, the overlap between competing actions and action $a_{1}$ is smaller in the $\epsilon$-greedy approach for small $\epsilon$. In contrast, as $\epsilon$ becomes larger, the Thompson sampling-only case performs better.
+
+ ```{figure} ./figs/Fig-BBBP-example.pdf
+---
+height: 380px
+name: fig-bbbp-sim-example
+---
+Simulation results for a three-arm binary Bernoulli bandit problem. A: Results for Thompson sampling only; B: Results for an $\epsilon$-greedy approach in combination with Thompson sampling for $\epsilon = 0.20$; C: Results for an $\epsilon$-greedy approach in combination with Thompson sampling for $\epsilon = 0.40$; D: Results for an $\epsilon$-greedy approach in combination with Thompson sampling for $\epsilon = 0.80$.
+```
+
+
+__source__: Fill me in
+````
 
 
 (content:references:model-based-reinforcement-learning)=
