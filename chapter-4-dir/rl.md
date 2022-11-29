@@ -139,9 +139,24 @@ Fill me in.
 
 (content:references:model-free-reinforcement-learning)=
 ## Model-free reinforcement learning
-Unlike {ref}`content:references:model-based-reinforcement-learning`, model-free reinforcement learning does not require us to construct explicit transition and reward models. Instead, model-free methods compute the action value function $Q(s,a)$ directly, e.g., by incrementally estimating the action value function $Q(s,a)$ from samples using the _Q-learning_ approach. 
+Unlike {ref}`content:references:model-based-reinforcement-learning`, model-free reinforcement learning does not require  transition or reward models. Instead, model-free methods, much like bandit problems, iteratively construct a policy by interacting with the world. However, unlike bandit problems, model-free 
+reinforcement learning constructs the action value function $Q(s,a)$ directly, e.g., by incrementally estimating the action value function $Q(s,a)$ from samples using the _Q-learning_ approach. 
 
-### Basic Q-learning
+### Incremental updates
+Model-free methods incrementally estimate the action value function $Q(s,a)$ by sampling the world. To understand the structure of the update procedures we'll discuss laterm let's take a quick detour and look at how we incrementally estimate the mean of a single variable $X$. Suppose we are interested in computing the expectation of $X$ from $m$ samples; if the samples are qually likley, then the expectation is approximtaed by the mean:
+
+```{math}
+:label: eqn-simple-mean
+\hat{x}_{m} = \frac{1}{m}\sum_{i=1}^{m}x_{i}
+```
+
+However, how does mean value computed by Eqn. {eq}`eqn-simple-mean` change as more data becomes available?
+
+
+### Q-learning
+
+
+
 The Q-learning approach incrementally estimates the action value function $Q(s,a)$ using the action value form of the _Bellman expectation equation_. 
 From our discussion of [Markov decision process (MDPs)](./mdp.md), we know that the action-value function (the $Q$-function) is defined as:
 
