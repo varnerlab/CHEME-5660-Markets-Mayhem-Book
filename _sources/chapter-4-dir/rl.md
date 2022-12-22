@@ -91,7 +91,7 @@ Beta-distribution for each action
 **Outputs** posterior values for the parameters $\alpha_{1},\dots,\alpha_{K}$ and $\beta_{1},\dots,\beta_{K}$ that appear in the Beta-distributions for each action
 
 **Initialize**
-a Beta-distribution for each action using initial values $(\alpha,\beta)$.
+A Beta-distribution for each action using initial values $(\alpha,\beta)$.
 
 **Main**
 1. for t $\in$ 1 to T
