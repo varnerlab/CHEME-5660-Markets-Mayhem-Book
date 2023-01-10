@@ -84,6 +84,7 @@ The payoff (and profit/loss) diagram for a call contract at expiration for Advan
 * Profit $S>K+\mathcal{P}$: the share price is _greater than_ the strike price plus the premium paid per share for the contract. 
 
 ````{prf:example} AMD Call Contract
+:class: dropdown
 :label: call-contract-expiration
 
 We are interested in buying a call contract for Advanced Micro Devices with ticker [AMD](https://www.google.com/search?client=safari&rls=en&sxsrf=ALiCzsbTZ3IEA10C9Rgs6Lb7YLN8LAILVQ:1657882036543&q=NASDAQ:+AMD&stick=H4sIAAAAAAAAAONgecRoyi3w8sc9YSmdSWtOXmNU4-IKzsgvd80rySypFJLgYoOy-KR4uLj0c_UNzKuy4ytzeRaxcvs5Brs4BlopOPq6AACfr0n4SAAAAA&sa=X&ved=2ahUKEwjV_ffu2_r4AhUxJUQIHcXZAPkQsRV6BAhVEAM&biw=1594&bih=921&dpr=2). The current share price of `AMD` is \$78.94 per share (around 3:30 PM ITH time on Th 7/14), and we belive the shares will close higher before contract expiration.
@@ -146,6 +147,7 @@ The payoff (and profit/loss) diagram for a put contract at expiration for Advanc
 * Profit $S<K+\mathcal{P}$: the share price is _less than_ the strike price plus the premium paid per share for the contract. 
 
 ````{prf:example} AMD Put Contract 1 DTE
+:class: dropdown
 :label: put-contract-expiration
 
 We are interested in buying a call contract for Advanced Micro Devices with ticker [AMD](https://www.google.com/search?client=safari&rls=en&sxsrf=ALiCzsbTZ3IEA10C9Rgs6Lb7YLN8LAILVQ:1657882036543&q=NASDAQ:+AMD&stick=H4sIAAAAAAAAAONgecRoyi3w8sc9YSmdSWtOXmNU4-IKzsgvd80rySypFJLgYoOy-KR4uLj0c_UNzKuy4ytzeRaxcvs5Brs4BlopOPq6AACfr0n4SAAAAA&sa=X&ved=2ahUKEwjV_ffu2_r4AhUxJUQIHcXZAPkQsRV6BAhVEAM&biw=1594&bih=921&dpr=2). The current share price of `AMD` is \$78.94 per share (around 3:30 PM ITH time on Th 7/14), and we belive the shares will close lower before contract expiration.
@@ -230,6 +232,7 @@ The maximum possible profit, loss, and breakeven conditions are given by:
 {prf:ref}`defn-PL-put-contract-vertical-spread` has many exciting types of behavior; it is much more complex than it might first appear as the cost of each contract $\mathcal{P}_{j}$ is a non-linear function of many variables including the current share price of the underlying asset $S$, the strike price of the contract, the number of days the contract has before expiration, and the implied volatility.
 
 ````{prf:example} Vertical Put Spreads
+:class: dropdown
 :label: vertical-put-spread-expiration
 
 Let the current share price of `XYZ` be $S_{o}$ USD/share, and let $S$ denote the share price of `XYZ` at expiration. Then:
@@ -299,6 +302,7 @@ Finally, a straddle has _two_ possible breakeven points denoted as $S^{+}$ and $
 
 
 ````{prf:example} Profit of a Straddle
+:class: dropdown
 :label: straddle-profit-expiration
 
 A __short straddle__ is constructed by simultaneously _selling_ both a put and a call option with the same expiration, strike price, and underlying asset `XYZ` ({numref}`fig-amd-profit-short-straddle`). When opening a short straddle, an investor receives a _credit_, i.e., the proceeds from selling the call and put options. For a short straddle, $\theta=-1$ which gives the profit condtions:
@@ -390,6 +394,7 @@ $$S^{+} = K_{2} + \left(\mathcal{P}_{1}+\mathcal{P}_{2}\right)$$
 {prf:ref}`defn-PL-put-contract-strangle` gives the profit conditions for both long (buy both the call and the put legs) and short (sell both the call and put legs) strangles. Let's put some numbers into the profit conditions and analyze their behavior ({prf:ref}`strangle-profit-expiration`).
 
 ````{prf:example} Profit of a Strangle
+:class: dropdown
 :label: strangle-profit-expiration
 
 A __short strangle__ is constructed by simultaneously _selling_ both a put and a call option with the same underlying asset `XYZ` and the same expiration, but with different strike prices ({numref}`fig-amd-profit-short-strangle`). When opening a short strangle, an investor receives a _credit_, i.e., the proceeds from selling the call and put options. For a short strangle, $\theta=-1$ which gives the profit condtions:
@@ -463,6 +468,7 @@ $$S^{+} = K_{2} + \Bigl(\mathcal{P}_{1} + \mathcal{P}_{2} - \mathcal{P}_{3}-\mat
 
 
 ````{prf:example} Profit of an Iron Condor
+:class: dropdown
 :label: iron-condor-expiration
 
 An [iron condor](https://www.investopedia.com/terms/i/ironcondor.asp) is constructed by _selling_ a put (1) and call (2) options on the underlying asset `XYZ`, while simultaneously _buying_ a put (3) and call (4) options on `XYZ`. All legs have the same expiration, but different strike prices. 
@@ -494,6 +500,7 @@ To explore this idea, let's compute the probability of profit of a [short strang
 
 
 ````{prf:example} Probability of Profit at Expiration for AMD Strangle
+:class: dropdown
 :label: pop-amd-strange-expiration
 
 Let's compute the probability of profit at expiration for a short strangle for  [AMD](https://finance.yahoo.com/quote/AMD/) with the following data: short put strike $K_{1}$ = \$80.0 USD/share, short call srtike $K_{1}$ = \$120.0 USD/share, $\mathcal{P}_{1}$ = \$1.69 USD/share and $\mathcal{P}_{2}$ = \$2.97 USD/share. The current share price of [AMD](https://finance.yahoo.com/quote/AMD/) is $S_{o}$ = 102.53 USD/share.
@@ -633,6 +640,7 @@ where $d_{1}$ and $d_{2}$ are given by Eqn. {eq}`eqn-d1-bsm-soln` and Eqn. {eq}`
 Let's look at simulations of the pricing of [European](https://www.investopedia.com/terms/e/europeanoption.asp) Call and Put contracts to better understand what factors influnce their prices. 
 
 ````{prf:example} Price of a European Call contract
+:class: dropdown
 :label: example-european-call-contract
 Consider a `European Call` contract on `XYZ` with a strike price of $K$ = 100.0 USD/share for different times to expiration. Let the implied volatility (IV) of `XYZ` be equal to IV = 35%. Assume the implied volatility is not a function of the time to expiration.  
 
@@ -651,7 +659,9 @@ __source__: Fill me in.
 The intrinsic value is the payoff of the option now; for a `Call` option the payoff is given by Eqn. {eq}`eqn-call-option-payoff`
 
 ````{prf:example} Price of a European Put contract
+:class: dropdown
 :label: example-european-put-contract
+
 Consider a `European Put` contract on `XYZ` with a strike price of $K$ = 100.0 USD/share for different times to expiration. Let the implied volatility (IV) of `XYZ` be equal to IV = 35%. Assume the implied volatility is not a function of the time to expiration.  
 
 ```{figure} ./figs/Fig-BSM-Put-Price-K100.pdf
@@ -856,6 +866,7 @@ The $\hat{\Delta}_{a}$ values for different asset classes:
 Now that we have defined a Delta hedged portfolio, let's look at a simple two-asset example to illustrate {prf:ref}`defn-delta-hedge-condition`.
 
 ````{prf:example} Delta-hedging example
+:class: dropdown
 :label: example-delta-hedge-two-cases
 
 Suppose we have a portfolio with only two assets: asset 1 is a Call option on `XYZ` while asset 2 are shares of `XYZ` Let the Call option on `XYZ` have $\Delta_{1} = 0.454$ USD/share, where `XYZ` has a share price of $S_{\circ}$ = 58.67 USD/share. Let's consider two cases:

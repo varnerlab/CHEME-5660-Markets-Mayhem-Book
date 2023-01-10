@@ -58,6 +58,7 @@ where $\mathbf{1}$ is a column vector of all 1's. Let's consider an example to m
 
 
 ````{prf:example} Discrete Markov chain simulation
+:class: dropdown
 :label: example-dicrete-mchain
 
  ```{figure} ./figs/Fig-Ex-Discrete-Markov-Model.pdf
@@ -93,6 +94,7 @@ Hidden Markov models (HMMs) are statistical models in which the system being mod
 Let's build upon {prf:ref}`example-dicrete-mchain` and construct an HMM that mimics a [CRR binomial lattice](../chapter-3-dir/contracts.md):
 
 ````{prf:example} Stationary hidden Markov model
+:class: dropdown
 :label: example-dicrete-mchain-hmm
 
  ```{figure} ./figs/Fig-Ex-Discrete-Hidden-Markov-Model.pdf
@@ -196,6 +198,7 @@ U^{\pi}(s) = R(s,\pi(s)) + \gamma\sum_{s^{\prime}\in\mathcal{S}}T(s^{\prime} | s
 Let's do an example to illustrate policy evaluation:
 
 ````{prf:example} Tiger problem
+:class: dropdown
 :label: example-MDP-line
 
  ```{figure} ./figs/Fig-Linear-MDP-Schematic.pdf
@@ -257,6 +260,7 @@ U_{k+1}(s) = \max_{a}\left(R(s,a) + \gamma\sum_{s^{\prime}\in\mathcal{S}}T(s^{\p
 This procedure is guaranteed to converge to the optimal utility vector (value function).  
 
 ````{prf:example} Modified Tiger problem
+:class: dropdown
 :label: example-MDP-line-mod
 
  ```{figure} ./figs/Fig-Branched-MDP-Schematic.pdf

@@ -12,7 +12,7 @@ chapters:
 - file: chapter-1-dir/chapter-1
   title: Unit 1. The Financial System
   sections:
-  - file: chapter-1-dir/global
+  - file: chapter-1-dir/pfinance-basics
   - file: chapter-1-dir/assets
   - file: chapter-1-dir/markets
  

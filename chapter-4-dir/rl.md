@@ -53,6 +53,7 @@ There are multiple heuristic strategies to solve the Binary Bernoulli bandit pro
 * [Thompson sampling](https://en.wikipedia.org/wiki/Thompson_sampling) which is shown in {prf:ref}`algo-thompson-sampling` consists of choosing the action that maximizes the expected reward with respect to a randomly drawn belief, where the belief distribution follows a [Beta distribution](https://en.wikipedia.org/wiki/Beta_distribution). 
 
 ```{prf:algorithm} Thompson-sampling
+:class: dropdown
 :label: algo-thompson-sampling
 
 **Inputs**  number of time periods in the horizon $T$, the dimension of the action space $K = |\mathcal{A}|$, and
@@ -82,6 +83,7 @@ $(\alpha_{1},\dots,\alpha_{K})$ and $(\beta_{1},\dots,\beta_{K})$
 * An obvious (but naive) alternative approach is to allocate a fixed fraction of the time steps in the time horizon, say $\epsilon$, to explore purely random actions. In contrast, in the remaining periods, only successful actions are chosen via [Thompson sampling](https://en.wikipedia.org/wiki/Thompson_sampling) or another exploitation approach. This strategy, called $\epsilon$-greedy exploration, is shown in {prf:ref}`algo-e-greedy` with a [Thompson sampling](https://en.wikipedia.org/wiki/Thompson_sampling) exploitation step:
 
 ```{prf:algorithm} $\epsilon$-greedy exploration
+:class: dropdown
 :label: algo-e-greedy
 
 **Inputs**  the pure exploration parameter $\epsilon$, the number of time periods in the horizon $T$, the dimension of the action space $K = |\mathcal{A}|$, and
@@ -116,6 +118,7 @@ $(\alpha_{1},\dots,\alpha_{K})$ and $(\beta_{1},\dots,\beta_{K})$
 Let's consider an example three-arm Binary Bernoulli bandit problem to illustrate the exploration versus explotation trade-off:
 
 ````{prf:example} Three-arm binary Bernoulli bandit problem
+:class: dropdown
 :label: ex-bbbp
 
 Consider a three-arm binary Bernoulli bandit problem in which the actual success probability for the arms is given by $\theta=\left(0.90, 0.60, 0.80\right)$. Simulation results for algorithms {prf:ref}`algo-thompson-sampling` and {prf:ref}`algo-e-greedy` for a horizon of T = 5000 steps are shown in {numref}`fig-bbbp-sim-example`.

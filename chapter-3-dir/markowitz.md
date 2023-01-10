@@ -288,6 +288,7 @@ Suppose the recent trend in `XYZ` prices is significantly different from long-te
 Many weighting schemes could be used; any approach that obeys the axioms of probability will work! However, let's borrow a strategy from chemical physics, namely, we'll assume $p(t)$ follows the [Boltzmann distribution](https://en.wikipedia.org/wiki/Boltzmann_distribution).
 
 ````{prf:definition} Boltzmann weighted excess returns
+:class: dropdown
 :label: defn-bwer
 
 Let the excess return values for firm $i$ at the time intervals $t=1,2,\dots,T$ be represented by $R_{i,t}$; the expected excess return for a firm $i$ is represented by:
@@ -325,6 +326,7 @@ Depending upon how we choose $\lambda$ and the pseudo energies in {prf:ref}`defn
 equally weighted, past or present exponentially weighted expectations.
 
 ```{prf:algorithm} Boltzmann Weighted Expected Return 
+:class: dropdown
 :label: algo-expected-boltzmann-return
 
 **Inputs** Ticker `XYZ` price dataset $\bar{\mathcal{P}}$ for time period $1\rightarrow T$, 
