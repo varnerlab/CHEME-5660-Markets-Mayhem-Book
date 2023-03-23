@@ -447,8 +447,8 @@ The term $R_{i}(t)\equiv\left(r_{i}\left(t\right) - r_{f}\right)$ describes the 
 ````{prf:definition} Single index model of Sharpe
 :label: defn-single-index-model-standard
 
-Let $R_{i}(t)$ and $R_{m}(t)$ denote the firm specific and market excess returns (random variables) 
-for time period $t$. Further, let $\epsilon_{i}\left(t\right)$ denote a [stationary normally distributed random noise process](https://en.wikipedia.org/wiki/Normal_distribution) with mean zero and standard deviation $\sigma_{i}$. 
+Let $R_{i}(t)$ and $R_{m}(t)$ denote the firm-specific and market excess returns (random variables) 
+for period $t$. Further, let $\epsilon_{i}\left(t\right)$ denote a [stationary normally distributed random noise process](https://en.wikipedia.org/wiki/Normal_distribution) with mean zero and standard deviation $\sigma_{i}$. 
 
 Then, the single index model of Sharpe is given by {cite}`SHARPE1963`:
 
@@ -458,11 +458,11 @@ R_{i}\left(t\right) = \alpha_{i}+\beta_{i}R_{m}\left(t\right)+\epsilon_{i}
 \left(t\right)\qquad{t=1,2,\dots,T}
 ```
 
-where $\alpha_{i}$ and $\beta_{i}$ are (unknown) model paramaters: 
+where $\alpha_{i}$ and $\beta_{i}$ are (unknown) model parameters: 
 
 * The parameter $\alpha_{i}$ describes the firm specific return not explained by the market; thus, $\alpha_{i}$ is the idiosyncratic return of firm $i$.
 * The parameter $\beta_{i}$ measures the relationship between the excess return of firm $i$ and the excess return of the market; a large $\beta_{i}$ suggests the market returns (or losses) are _amplified_ for firm $i$, while a small $\beta_{i}$ suggests the market returns (or losses) are _damped_ for firm $i$.
-* The parameter $\beta_{i}$ can also be interpreted as a measure of the relative risk of investing in firm $i$ relative to the overall market. 
+* The parameter $\beta_{i}$ can also be interpreted as a measure of the relative risk of investing in a firm $i$ relative to the overall market. 
 ````
 
 To understand the various interpretations of $\beta_{i}$, we first must understand that both the firm specific $R_{i}$ and overall market excess returns $R_{m}$ are random variables. Thus, we can compute the expectation and variance of these variables and look at how these quantities depend upon $\beta_{i}$. 
