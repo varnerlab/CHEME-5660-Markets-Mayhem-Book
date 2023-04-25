@@ -121,7 +121,7 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="../infrastructure.html">
-                    CHEME 5660 Course Outline and Information
+                    Financial Data, Markets, and Mayhem
                 </a>
             </li>
         </ul>
@@ -164,7 +164,7 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../chapter-1-dir/global.html">
+    <a class="reference internal" href="../chapter-1-dir/pfinance-basics.html">
      Personal Finance Basics
     </a>
    </li>
@@ -967,7 +967,7 @@ Then, from the definition of expectation, we know the expected excess return for
 <p>where the probability <span class="math notranslate nohighlight">\(\sum_{t}p(t) = 1\)</span>. The probability terms in Eqn. <a class="reference internal" href="#equation-eq-defn-expected-return">(58)</a> have several interpretations. First, they could represent the output of some (unknown) market process governing the returns. Another actionable interpretation is to think of them as weighting factors.</p>
 <p>Suppose the recent trend in <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> prices is significantly different from long-term historical price trends, e.g., <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> has recently experienced a sustained period of decline. You could weigh the recent data more highly to calculate an expected return (or volatility) that is more representative of current trends. Of course, the opposite could also be true; you could also empathize older versus newer data.</p>
 <p>Many weighting schemes could be used; any approach that obeys the axioms of probability will work! However, let’s borrow a strategy from chemical physics, namely, we’ll assume <span class="math notranslate nohighlight">\(p(t)\)</span> follows the <a class="reference external" href="https://en.wikipedia.org/wiki/Boltzmann_distribution">Boltzmann distribution</a>.</p>
-<div class="proof definition admonition" id="defn-bwer">
+<div class="proof definition dropdown admonition" id="defn-bwer">
 <p class="admonition-title"><span class="caption-number">Definition 43 </span> (Boltzmann weighted excess returns)</p>
 <section class="definition-content" id="proof-content">
 <p>Let the excess return values for firm <span class="math notranslate nohighlight">\(i\)</span> at the time intervals <span class="math notranslate nohighlight">\(t=1,2,\dots,T\)</span> be represented by <span class="math notranslate nohighlight">\(R_{i,t}\)</span>; the expected excess return for a firm <span class="math notranslate nohighlight">\(i\)</span> is represented by:</p>
@@ -987,7 +987,7 @@ Further, let the probability factors <span class="math notranslate nohighlight">
 </section>
 </div><p>Depending upon how we choose <span class="math notranslate nohighlight">\(\lambda\)</span> and the pseudo energies in <a class="reference internal" href="#defn-bwer">Definition 43</a>, we can recover
 equally weighted, past or present exponentially weighted expectations.</p>
-<div class="proof algorithm admonition" id="algo-expected-boltzmann-return">
+<div class="proof algorithm dropdown admonition" id="algo-expected-boltzmann-return">
 <p class="admonition-title"><span class="caption-number">Algorithm 1 </span> (Boltzmann Weighted Expected Return )</p>
 <section class="algorithm-content" id="proof-content">
 <p><strong>Inputs</strong> Ticker <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> price dataset <span class="math notranslate nohighlight">\(\bar{\mathcal{P}}\)</span> for time period <span class="math notranslate nohighlight">\(1\rightarrow T\)</span>,
@@ -1112,17 +1112,17 @@ the return:</p>
 <div class="proof definition admonition" id="defn-single-index-model-standard">
 <p class="admonition-title"><span class="caption-number">Definition 45 </span> (Single index model of Sharpe)</p>
 <section class="definition-content" id="proof-content">
-<p>Let <span class="math notranslate nohighlight">\(R_{i}(t)\)</span> and <span class="math notranslate nohighlight">\(R_{m}(t)\)</span> denote the firm specific and market excess returns (random variables)
-for time period <span class="math notranslate nohighlight">\(t\)</span>. Further, let <span class="math notranslate nohighlight">\(\epsilon_{i}\left(t\right)\)</span> denote a <a class="reference external" href="https://en.wikipedia.org/wiki/Normal_distribution">stationary normally distributed random noise process</a> with mean zero and standard deviation <span class="math notranslate nohighlight">\(\sigma_{i}\)</span>.</p>
+<p>Let <span class="math notranslate nohighlight">\(R_{i}(t)\)</span> and <span class="math notranslate nohighlight">\(R_{m}(t)\)</span> denote the firm-specific and market excess returns (random variables)
+for period <span class="math notranslate nohighlight">\(t\)</span>. Further, let <span class="math notranslate nohighlight">\(\epsilon_{i}\left(t\right)\)</span> denote a <a class="reference external" href="https://en.wikipedia.org/wiki/Normal_distribution">stationary normally distributed random noise process</a> with mean zero and standard deviation <span class="math notranslate nohighlight">\(\sigma_{i}\)</span>.</p>
 <p>Then, the single index model of Sharpe is given by <span id="id7">[<a class="reference internal" href="../References.html#id16" title="William F. Sharpe. A simplified model for portfolio analysis. Management Science, 9(2):277-293, 1963. URL: https://doi.org/10.1287/mnsc.9.2.277, arXiv:https://doi.org/10.1287/mnsc.9.2.277, doi:10.1287/mnsc.9.2.277.">Sharpe, 1963</a>]</span>:</p>
 <div class="math notranslate nohighlight" id="equation-eq-single-index-model-standard">
 <span class="eqno">(62)<a class="headerlink" href="#equation-eq-single-index-model-standard" title="Permalink to this equation">#</a></span>\[R_{i}\left(t\right) = \alpha_{i}+\beta_{i}R_{m}\left(t\right)+\epsilon_{i}
 \left(t\right)\qquad{t=1,2,\dots,T}\]</div>
-<p>where <span class="math notranslate nohighlight">\(\alpha_{i}\)</span> and <span class="math notranslate nohighlight">\(\beta_{i}\)</span> are (unknown) model paramaters:</p>
+<p>where <span class="math notranslate nohighlight">\(\alpha_{i}\)</span> and <span class="math notranslate nohighlight">\(\beta_{i}\)</span> are (unknown) model parameters:</p>
 <ul class="simple">
 <li><p>The parameter <span class="math notranslate nohighlight">\(\alpha_{i}\)</span> describes the firm specific return not explained by the market; thus, <span class="math notranslate nohighlight">\(\alpha_{i}\)</span> is the idiosyncratic return of firm <span class="math notranslate nohighlight">\(i\)</span>.</p></li>
 <li><p>The parameter <span class="math notranslate nohighlight">\(\beta_{i}\)</span> measures the relationship between the excess return of firm <span class="math notranslate nohighlight">\(i\)</span> and the excess return of the market; a large <span class="math notranslate nohighlight">\(\beta_{i}\)</span> suggests the market returns (or losses) are <em>amplified</em> for firm <span class="math notranslate nohighlight">\(i\)</span>, while a small <span class="math notranslate nohighlight">\(\beta_{i}\)</span> suggests the market returns (or losses) are <em>damped</em> for firm <span class="math notranslate nohighlight">\(i\)</span>.</p></li>
-<li><p>The parameter <span class="math notranslate nohighlight">\(\beta_{i}\)</span> can also be interpreted as a measure of the relative risk of investing in firm <span class="math notranslate nohighlight">\(i\)</span> relative to the overall market.</p></li>
+<li><p>The parameter <span class="math notranslate nohighlight">\(\beta_{i}\)</span> can also be interpreted as a measure of the relative risk of investing in a firm <span class="math notranslate nohighlight">\(i\)</span> relative to the overall market.</p></li>
 </ul>
 </section>
 </div><p>To understand the various interpretations of <span class="math notranslate nohighlight">\(\beta_{i}\)</span>, we first must understand that both the firm specific <span class="math notranslate nohighlight">\(R_{i}\)</span> and overall market excess returns <span class="math notranslate nohighlight">\(R_{m}\)</span> are random variables. Thus, we can compute the expectation and variance of these variables and look at how these quantities depend upon <span class="math notranslate nohighlight">\(\beta_{i}\)</span>.</p>

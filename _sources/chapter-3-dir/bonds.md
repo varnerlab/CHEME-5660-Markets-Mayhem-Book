@@ -66,6 +66,7 @@ The price of the bill $V_{B}$ is computed with respect to a particular value of 
 
 
 ````{prf:example} Pricing of a Treasury Bill
+:class: dropdown
 :label: example-zero-coupon-t-bill
 
 Compute the fair price for a zero-coupon treasury bill with a par value of \$1,000 and T = 26-week and T = 52-week duration as a function of annualized market interest rate $\bar{r}$. 
@@ -149,6 +150,7 @@ where the coupon payment $C=\left(\bar{c}/\lambda\right)\cdot{V_{P}}$ is set whe
 Let's do an example illustrating bond pricing ({prf:ref}`defn-fixed-r-bond-pricing`).
 
 ````{prf:example} Pricing T = 30 year Treasury Bond
+:class: dropdown
 :label: example-treaury-bond-price
 
 Compute the price of a bond with a T = 30-year term and a par value of $V_{P}$ = \$1000 for different combinations of the interest rate $\bar{r}$ and coupon rate $\bar{c}$ of the bond. In particular, 

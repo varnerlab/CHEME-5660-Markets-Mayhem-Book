@@ -121,7 +121,7 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="../infrastructure.html">
-                    CHEME 5660 Course Outline and Information
+                    Financial Data, Markets, and Mayhem
                 </a>
             </li>
         </ul>
@@ -623,7 +623,7 @@ title="Print to PDF"
 <ul class="simple">
 <li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Thompson_sampling">Thompson sampling</a> which is shown in <a class="reference internal" href="#algo-thompson-sampling">Algorithm 3</a> consists of choosing the action that maximizes the expected reward with respect to a randomly drawn belief, where the belief distribution follows a <a class="reference external" href="https://en.wikipedia.org/wiki/Beta_distribution">Beta distribution</a>.</p></li>
 </ul>
-<div class="proof algorithm admonition" id="algo-thompson-sampling">
+<div class="proof algorithm dropdown admonition" id="algo-thompson-sampling">
 <p class="admonition-title"><span class="caption-number">Algorithm 3 </span> (Thompson-sampling)</p>
 <section class="algorithm-content" id="proof-content">
 <p><strong>Inputs</strong>  number of time periods in the horizon <span class="math notranslate nohighlight">\(T\)</span>, the dimension of the action space <span class="math notranslate nohighlight">\(K = |\mathcal{A}|\)</span>, and
@@ -657,7 +657,7 @@ a Beta-distribution for each action using initial values <span class="math notra
 </div><ul class="simple">
 <li><p>An obvious (but naive) alternative approach is to allocate a fixed fraction of the time steps in the time horizon, say <span class="math notranslate nohighlight">\(\epsilon\)</span>, to explore purely random actions. In contrast, in the remaining periods, only successful actions are chosen via <a class="reference external" href="https://en.wikipedia.org/wiki/Thompson_sampling">Thompson sampling</a> or another exploitation approach. This strategy, called <span class="math notranslate nohighlight">\(\epsilon\)</span>-greedy exploration, is shown in <a class="reference internal" href="#algo-e-greedy">Algorithm 4</a> with a <a class="reference external" href="https://en.wikipedia.org/wiki/Thompson_sampling">Thompson sampling</a> exploitation step:</p></li>
 </ul>
-<div class="proof algorithm admonition" id="algo-e-greedy">
+<div class="proof algorithm dropdown admonition" id="algo-e-greedy">
 <p class="admonition-title"><span class="caption-number">Algorithm 4 </span> (<span class="math notranslate nohighlight">\(\epsilon\)</span>-greedy exploration)</p>
 <section class="algorithm-content" id="proof-content">
 <p><strong>Inputs</strong>  the pure exploration parameter <span class="math notranslate nohighlight">\(\epsilon\)</span>, the number of time periods in the horizon <span class="math notranslate nohighlight">\(T\)</span>, the dimension of the action space <span class="math notranslate nohighlight">\(K = |\mathcal{A}|\)</span>, and
@@ -698,7 +698,7 @@ A Beta-distribution for each action using initial values <span class="math notra
 <span class="math notranslate nohighlight">\((\alpha_{1},\dots,\alpha_{K})\)</span> and <span class="math notranslate nohighlight">\((\beta_{1},\dots,\beta_{K})\)</span></p>
 </section>
 </div><p>Let’s consider an example three-arm Binary Bernoulli bandit problem to illustrate the exploration versus explotation trade-off:</p>
-<div class="proof example admonition" id="ex-bbbp">
+<div class="proof example dropdown admonition" id="ex-bbbp">
 <p class="admonition-title"><span class="caption-number">Example 34 </span> (Three-arm binary Bernoulli bandit problem)</p>
 <section class="example-content" id="proof-content">
 <p>Consider a three-arm binary Bernoulli bandit problem in which the actual success probability for the arms is given by <span class="math notranslate nohighlight">\(\theta=\left(0.90, 0.60, 0.80\right)\)</span>. Simulation results for algorithms <a class="reference internal" href="#algo-thompson-sampling">Algorithm 3</a> and <a class="reference internal" href="#algo-e-greedy">Algorithm 4</a> for a horizon of T = 5000 steps are shown in <a class="reference internal" href="#fig-bbbp-sim-example"><span class="std std-numref">Fig. 47</span></a>.</p>

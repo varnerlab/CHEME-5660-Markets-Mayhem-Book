@@ -121,7 +121,7 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="../infrastructure.html">
-                    CHEME 5660 Course Outline and Information
+                    Financial Data, Markets, and Mayhem
                 </a>
             </li>
         </ul>
@@ -711,7 +711,7 @@ dynamics, we introduce analytical and numerical tools to solve SDEs. Our develop
 <span id="content-references-ddm"></span><h2>Dividend Discount Model (DDM)<a class="headerlink" href="#dividend-discount-model-ddm" title="Permalink to this headline">#</a></h2>
 <p>The <a class="reference external" href="https://en.wikipedia.org/wiki/Dividend_discount_model">dividend discount model (DDM)</a>, developed by <a class="reference external" href="https://en.wikipedia.org/wiki/Myron_J._Gordon">Myron J. Gordon</a> and Eli Shapiro <span id="id2">[<a class="reference internal" href="../References.html#id5" title="M. J. Gordon. Dividends, earnings, and stock prices. The Review of Economics and Statistics, 41(2):99–105, 1959. URL: http://www.jstor.org/stable/1927792 (visited on 2022-09-01).">Gordon, 1959</a>]</span>, is a method of estimating the share price of the firm <code class="docutils literal notranslate"><span class="pre">XYZ,</span></code> based on the net present value of future dividends of the firm (<a class="reference internal" href="#fig-ddm-introduction"><span class="std std-numref">Fig. 15</span></a>). Thus, the DDM is only applicable to dividend-granting firms.</p>
 <figure class="align-default" id="fig-ddm-introduction">
-<a class="reference internal image-reference" href="../_images/Fig-DDM-Introduction.pdf"><img alt="../_images/Fig-DDM-Introduction.pdf" src="../_images/Fig-DDM-Introduction.pdf" style="height: 280px;" /></a>
+<a class="reference internal image-reference" href="../_images/Fig-DDM-Introduction.pdf"><img alt="../_images/Fig-DDM-Introduction.pdf" src="../_images/Fig-DDM-Introduction.pdf" style="height: 260px;" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 15 </span><span class="caption-text">Schematic of the dividend discount model (DDM) for the share price of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code>. The current value of the share price <span class="math notranslate nohighlight">\(P_{1}\)</span> is modeled as the sum of the future dividend payments <span class="math notranslate nohighlight">\(D_{j}, j=2,3,\dots,{T}\)</span> and the future share price <span class="math notranslate nohighlight">\(P_{T}\)</span> discounted to the current value.</span><a class="headerlink" href="#fig-ddm-introduction" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -775,7 +775,7 @@ numerically. Numerical approximations to the solution of Eqn <a class="reference
 developed quickly; however, they have different levels of error depending upon the solution approach.</p>
 <section id="ito-s-lemma">
 <h3>Ito’s Lemma<a class="headerlink" href="#ito-s-lemma" title="Permalink to this headline">#</a></h3>
-<p>A critical theoretical result that supports the construction of analytical solutions to stochastic differential equations is <a class="reference external" href="https://en.wikipedia.org/wiki/It%C3%B4%27s_lemma">Ito’s Lemma</a>; Ito’s Lemma,  developed by K. Ito in 1951 [REFHERE], is the analog of the Taylor series for stochastic systems:</p>
+<p>A critical theoretical result that supports the construction of analytical solutions to stochastic differential equations is <a class="reference external" href="https://en.wikipedia.org/wiki/It%C3%B4%27s_lemma">Ito’s Lemma</a>; Ito’s Lemma,  developed by K. Ito in 1951, is the analog of the Taylor series for stochastic systems:</p>
 <div class="proof lemma admonition" id="ito-lemma">
 <p class="admonition-title"><span class="caption-number">Lemma 1 </span> (Scalar Ito’s Lemma)</p>
 <section class="lemma-content" id="proof-content">
@@ -821,8 +821,8 @@ Then, we can rewrite Eqn. <a class="reference internal" href="#equation-eq-sbm-s
 <div class="math notranslate nohighlight" id="equation-eq-sbm-soln-arb-rime">
 <span class="eqno">(20)<a class="headerlink" href="#equation-eq-sbm-soln-arb-rime" title="Permalink to this equation">#</a></span>\[X_{k+1} = X_{k} + \mu\left(t_{k+1}-t_{k}\right)+\sigma\sqrt{t_{k+1}-t_{k}}\cdot{Z(0,1)}\qquad{k=1,2,\dots,n}\]</div>
 </section>
-</div><div class="proof example admonition" id="example-5">
-<p class="admonition-title"><span class="caption-number">Example 10 </span> (Scalar Geometric Brownian Motion)</p>
+</div><div class="proof example dropdown admonition" id="example-scalar-geom-b-motion">
+<p class="admonition-title"><span class="caption-number">Example 10 </span> (Scalar Ordinary Brownian Motion)</p>
 <section class="example-content" id="proof-content">
 <p>Let’s simulate the time evolution of the random variable <span class="math notranslate nohighlight">\(X(t)\)</span>, which is governed by ordinary Brownian motion:</p>
 <div class="math notranslate nohighlight">
@@ -879,7 +879,7 @@ Then, we can re-write Eqn <a class="reference internal" href="#equation-eq-gdm-s
 <span class="eqno">(25)<a class="headerlink" href="#equation-eq-gdm-soln-anal-4" title="Permalink to this equation">#</a></span>\[X_{k+1} = X_{k}\exp\Biggl[\left(\mu-\frac{\sigma^{2}}{2}\right)\left(t_{k+1} - t_{k}\right) + \sigma\sqrt{t_{k+1}-t_{k}}\cdot{Z(0,1)}\Biggr]\]</div>
 <p>where <span class="math notranslate nohighlight">\(k=1,2,\dots,n\)</span>.</p>
 </section>
-</div><div class="proof example admonition" id="scalar-gbm-soln">
+</div><div class="proof example dropdown admonition" id="scalar-gbm-soln">
 <p class="admonition-title"><span class="caption-number">Example 11 </span> (Scalar Geometric Brownian Motion)</p>
 <section class="example-content" id="proof-content">
 <p>Let’s simulate the daily close price of <code class="docutils literal notranslate"><span class="pre">AMD</span></code> using the analytical solution of the scalar geometric Brownian motion (<a class="reference internal" href="#fig-gbm-sim-amd-scalar"><span class="std std-numref">Fig. 17</span></a>).</p>
@@ -968,8 +968,8 @@ The <a class="reference external" href="https://en.wikipedia.org/wiki/Euler%E2%8
 <div class="math notranslate nohighlight" id="equation-eqn-em-soln-ou-model">
 <span class="eqno">(31)<a class="headerlink" href="#equation-eqn-em-soln-ou-model" title="Permalink to this equation">#</a></span>\[X_{k+1} = X_{k} + \theta\left(\mu-X_{k}\right)h + \left(\sigma\sqrt{h}\right)Z(0,1)\]</div>
 <p>where <span class="math notranslate nohighlight">\(Z(0,1)\)</span> denotes a standard normally distributed random variable, and <span class="math notranslate nohighlight">\(h = t_{k+1} - t_{k}\)</span> denotes the fixed time step size, where the subsscript <span class="math notranslate nohighlight">\(k\)</span> denotes the time index.</p>
-<div class="proof example admonition" id="example-OU-model-EM-discrete">
-<p class="admonition-title"><span class="caption-number">Example 13 </span> (Approximate Solution to the Ornstein–Uhlenbeck model)</p>
+<div class="proof example dropdown admonition" id="example-OU-model-EM-discrete">
+<p class="admonition-title"><span class="caption-number">Example 13 </span> (Approximate Solution Ornstein–Uhlenbeck model)</p>
 <section class="example-content" id="proof-content">
 <p>Solve the <a class="reference external" href="https://en.wikipedia.org/wiki/Ornstein%E2%80%93Uhlenbeck_process">Ornstein–Uhlenbeck model</a> model using the <a class="reference external" href="https://en.wikipedia.org/wiki/Euler%E2%80%93Maruyama_method">Euler-Maruyuma (EM) method</a>. The approximate EM solution of the <a class="reference external" href="https://en.wikipedia.org/wiki/Ornstein%E2%80%93Uhlenbeck_process">Ornstein–Uhlenbeck model</a> model is given by Eqn. <a class="reference internal" href="#equation-eqn-em-soln-ou-model">(31)</a>.</p>
 <figure class="align-default" id="fig-ou-em-model-scalar">
@@ -1000,7 +1000,7 @@ The <a class="reference external" href="https://en.wikipedia.org/wiki/Euler%E2%8
 <div class="math notranslate nohighlight" id="equation-eqn-heston-vol-em-discrete">
 <span class="eqno">(35)<a class="headerlink" href="#equation-eqn-heston-vol-em-discrete" title="Permalink to this equation">#</a></span>\[\nu_{k+1} = \nu_{k} + \kappa\left(\theta - \nu_{k}\right)h + \left(\xi\sqrt{\nu_{k}h}\right)Z^{\nu}\]</div>
 <p>where the noise processes <span class="math notranslate nohighlight">\(Z^{X}\)</span> and <span class="math notranslate nohighlight">\(Z^{\nu}\)</span> are samples from a multivariate normal distribution with mean zero and a covariance matrix <span class="math notranslate nohighlight">\(\Sigma\)</span> with entries <span class="math notranslate nohighlight">\(\Sigma_{ij}=\sigma_{i}\sigma_{j}\rho_{ij}\)</span>.</p>
-<div class="proof example admonition" id="example-heston-model-EM-discrete">
+<div class="proof example dropdown admonition" id="example-heston-model-EM-discrete">
 <p class="admonition-title"><span class="caption-number">Example 14 </span> (Approximate solution to the Heston model)</p>
 <section class="example-content" id="proof-content">
 <p>Fill me in.</p>
@@ -1011,7 +1011,12 @@ The <a class="reference external" href="https://en.wikipedia.org/wiki/Euler%E2%8
 <hr class="docutils" />
 <section id="summary">
 <h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">#</a></h2>
-<p>Fill me in.</p>
+<p>In this lecture we developed macroscopic top-down models of risky asset priceses. In particular, we</p>
+<ul class="simple">
+<li><p>Introduced the <a class="reference internal" href="#content-references-ddm"><span class="std std-ref">Dividend Discount Model (DDM)</span></a>, a fundamental method of valuing the price of a firm’s stock</p></li>
+<li><p>Introduced <a class="reference internal" href="#content-references-wiener-process"><span class="std std-ref">Brownian Motion</span></a>, <a class="reference internal" href="#content-references-ito-calculus"><span class="std std-ref">Ito Processes</span></a>, <a class="reference internal" href="#content-references-ordinary-brownian-motion"><span class="std std-ref">Ordinary Brownian Motion</span></a>, and <a class="reference internal" href="#content-references-geometric-brownian-motion"><span class="std std-ref">Geometric Brownian Motion</span></a></p></li>
+<li><p>Introduced <a class="reference internal" href="#content-references-discretization"><span class="std std-ref">Stochastic Volatility and Mean Reversion Models</span></a> which can describe more complex asset price trends</p></li>
+</ul>
 </section>
 </section>
 

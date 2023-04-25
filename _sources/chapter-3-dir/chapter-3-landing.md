@@ -1,7 +1,5 @@
 # Unit 3: The Fantastic but Dangerous World of Derivatives, Futures, Hedging and Leverage
 
-## Summary
-
 There are three primary financial instruments for wealth creation: equity (i.e., shares of stock), debt (i.e., bonds and mortgages), and derivatives. Each of these instruments has a unique risk-reward profile. However, they also share a common trait; at their core, they are just _structured relationships_ between a buyer and a seller. For example, fixed-income debt securities, e.g., Treasury Bills, Notes, and Bonds are just contracts, i.e., a relationship between a borrower and a lender. In the case of United States treasury debt instruments, the borrower is the U.S. government, and the lender is the investor; the government issues (i.e., sells) a bond to a lender (you) for some cash. Then over time, depending upon the stipulations of the debt instrument, the borrower pays back the lender in a specified way. 
 
 Another type of higher-risk (but higher-reward) investment tool is called an option. Option contracts describe the _potential transfer_ of stock shares, e.g., `MSFT`, `AAPL` or `AMD` between a buyer and a seller. Options contracts are traded on exchanges throughout the world; the [Chicago Board Options Exchange](https://www.cboe.com) is the largest options exchange in the United States, responsible for approximately 33\% of the daily options trading volume in the United States (27 million contracts are traded each day in the United States). Worldwide, in 2021, about 33 billion options contracts were traded annually.

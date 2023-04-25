@@ -29,7 +29,7 @@ The [dividend discount model (DDM)](https://en.wikipedia.org/wiki/Dividend_disco
 
 ```{figure} ./figs/Fig-DDM-Introduction.pdf
 ---
-height: 280px
+height: 260px
 name: fig-ddm-introduction
 ---
 Schematic of the dividend discount model (DDM) for the share price of `XYZ`. The current value of the share price $P_{1}$ is modeled as the sum of the future dividend payments $D_{j}, j=2,3,\dots,{T}$ and the future share price $P_{T}$ discounted to the current value.  
@@ -124,7 +124,7 @@ developed quickly; however, they have different levels of error depending upon t
 
 ### Ito's Lemma
 
-A critical theoretical result that supports the construction of analytical solutions to stochastic differential equations is [Ito's Lemma](https://en.wikipedia.org/wiki/Itô%27s_lemma); Ito's Lemma,  developed by K. Ito in 1951 [REFHERE], is the analog of the Taylor series for stochastic systems:
+A critical theoretical result that supports the construction of analytical solutions to stochastic differential equations is [Ito's Lemma](https://en.wikipedia.org/wiki/Itô%27s_lemma); Ito's Lemma,  developed by K. Ito in 1951, is the analog of the Taylor series for stochastic systems:
 
 ````{prf:lemma} Scalar Ito's Lemma
 :label: ito-lemma
@@ -197,7 +197,10 @@ X_{k+1} = X_{k} + \mu\left(t_{k+1}-t_{k}\right)+\sigma\sqrt{t_{k+1}-t_{k}}\cdot{
 ```
 ````
 
-````{prf:example} Scalar Geometric Brownian Motion
+````{prf:example} Scalar Ordinary Brownian Motion
+:class: dropdown
+:label: example-scalar-geom-b-motion
+
 Let's simulate the time evolution of the random variable $X(t)$, which is governed by ordinary Brownian motion:
 
 $$X_{k+1} = X_{k} + \mu\left(t_{k+1}-t_{k}\right)+\sigma\sqrt{t_{k+1}-t_{k}}\cdot{Z(0,1)}\qquad{k=1,2,\dots,n}$$
@@ -284,6 +287,7 @@ where $k=1,2,\dots,n$.
 ````
 
 ````{prf:example} Scalar Geometric Brownian Motion
+:class: dropdown
 :label: scalar-gbm-soln
 
 Let's simulate the daily close price of `AMD` using the analytical solution of the scalar geometric Brownian motion ({numref}`fig-gbm-sim-AMD-scalar`). 
@@ -415,7 +419,8 @@ X_{k+1} = X_{k} + \theta\left(\mu-X_{k}\right)h + \left(\sigma\sqrt{h}\right)Z(0
 where $Z(0,1)$ denotes a standard normally distributed random variable, and $h = t_{k+1} - t_{k}$ denotes the fixed time step size, where the subsscript $k$ denotes the time index. 
 
 
-````{prf:example} Approximate Solution to the Ornstein–Uhlenbeck model
+````{prf:example} Approximate Solution Ornstein–Uhlenbeck model
+:class: dropdown
 :label: example-OU-model-EM-discrete
 
 Solve the [Ornstein–Uhlenbeck model](https://en.wikipedia.org/wiki/Ornstein–Uhlenbeck_process) model using the [Euler-Maruyuma (EM) method](https://en.wikipedia.org/wiki/Euler–Maruyama_method). The approximate EM solution of the [Ornstein–Uhlenbeck model](https://en.wikipedia.org/wiki/Ornstein–Uhlenbeck_process) model is given by Eqn. {eq}`eqn-EM-soln-OU-model`.
@@ -468,7 +473,9 @@ while the volatility equation is given by:
 where the noise processes $Z^{X}$ and $Z^{\nu}$ are samples from a multivariate normal distribution with mean zero and a covariance matrix $\Sigma$ with entries $\Sigma_{ij}=\sigma_{i}\sigma_{j}\rho_{ij}$. 
 
 ````{prf:example} Approximate solution to the Heston model
+:class: dropdown
 :label: example-heston-model-EM-discrete
+
 
 Fill me in.
 ````
@@ -476,5 +483,8 @@ Fill me in.
 ---
 
 ## Summary
+In this lecture we developed macroscopic top-down models of risky asset priceses. In particular, we
 
-Fill me in.
+* Introduced the {ref}`content:references:ddm`, a fundamental method of valuing the price of a firm's stock
+* Introduced {ref}`content:references:wiener-process`, {ref}`content:references:ito-calculus`, {ref}`content:references:ordinary-brownian-motion`, and {ref}`content:references:geometric-brownian-motion`
+* Introduced {ref}`content:references:discretization` which can describe more complex asset price trends

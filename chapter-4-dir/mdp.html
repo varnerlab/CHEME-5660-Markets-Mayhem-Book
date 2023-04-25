@@ -121,7 +121,7 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="../infrastructure.html">
-                    CHEME 5660 Course Outline and Information
+                    Financial Data, Markets, and Mayhem
                 </a>
             </li>
         </ul>
@@ -618,7 +618,7 @@ title="Print to PDF"
 <div class="math notranslate nohighlight">
 \[\lim_{k\rightarrow\infty} \mathbf{P}^{k} = \mathbf{1}\pi\]</div>
 <p>where <span class="math notranslate nohighlight">\(\mathbf{1}\)</span> is a column vector of all 1’s. Let’s consider an example to make these ideas less abstract.</p>
-<div class="proof example admonition" id="example-dicrete-mchain">
+<div class="proof example dropdown admonition" id="example-dicrete-mchain">
 <p class="admonition-title"><span class="caption-number">Example 30 </span> (Discrete Markov chain simulation)</p>
 <section class="example-content" id="proof-content">
 <figure class="align-default" id="fig-discrete-markov-model">
@@ -646,7 +646,7 @@ title="Print to PDF"
 <span id="content-references-structure-of-an-hmm"></span><h3>Hidden Markov Models (HMMs)<a class="headerlink" href="#hidden-markov-models-hmms" title="Permalink to this headline">#</a></h3>
 <p>Hidden Markov models (HMMs) are statistical models in which the system being modeled is assumed to be a Markov process with unobservable states but observable outcomes. HMMs have the same structural components as a standard Markov chain model, but each hidden state can be thought of as sending an observable single. HMMs are widely used in many disciplines to model uncertain systems and situations.</p>
 <p>Let’s build upon <a class="reference internal" href="#example-dicrete-mchain">Example 30</a> and construct an HMM that mimics a <a class="reference internal" href="../chapter-3-dir/contracts.html"><span class="doc std std-doc">CRR binomial lattice</span></a>:</p>
-<div class="proof example admonition" id="example-dicrete-mchain-hmm">
+<div class="proof example dropdown admonition" id="example-dicrete-mchain-hmm">
 <p class="admonition-title"><span class="caption-number">Example 31 </span> (Stationary hidden Markov model)</p>
 <section class="example-content" id="proof-content">
 <figure class="align-default" id="fig-discrete-hidden-markov-model">
@@ -723,7 +723,7 @@ the utility at iteration <span class="math notranslate nohighlight">\(k\)</span>
 <span class="eqno">(74)<a class="headerlink" href="#equation-eqn-converged-policy-eval" title="Permalink to this equation">#</a></span>\[U^{\pi}(s) = R(s,\pi(s)) + \gamma\sum_{s^{\prime}\in\mathcal{S}}T(s^{\prime} | s, \pi(s))U^{\pi}(s^{\prime})\]</div>
 </section>
 </div><p>Let’s do an example to illustrate policy evaluation:</p>
-<div class="proof example admonition" id="example-MDP-line">
+<div class="proof example dropdown admonition" id="example-MDP-line">
 <p class="admonition-title"><span class="caption-number">Example 32 </span> (Tiger problem)</p>
 <section class="example-content" id="proof-content">
 <figure class="align-default" id="fig-linear-mdp-schematic">
@@ -765,7 +765,7 @@ Given a utility <span class="math notranslate nohighlight">\(U\)</span>, we can 
 <div class="math notranslate nohighlight">
 \[U_{k+1}(s) = \max_{a}\left(R(s,a) + \gamma\sum_{s^{\prime}\in\mathcal{S}}T(s^{\prime} | s, a)U_{k}(s^{\prime})\right)\]</div>
 <p>This procedure is guaranteed to converge to the optimal utility vector (value function).</p>
-<div class="proof example admonition" id="example-MDP-line-mod">
+<div class="proof example dropdown admonition" id="example-MDP-line-mod">
 <p class="admonition-title"><span class="caption-number">Example 33 </span> (Modified Tiger problem)</p>
 <section class="example-content" id="proof-content">
 <figure class="align-default" id="fig-branched-mdp-schematic-mod">

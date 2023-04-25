@@ -43,32 +43,30 @@ There are two types of contracts, a [call contract](https://www.investopedia.com
 
 Like bonds, investors can profit from holding contracts until expiration or by trading the contracts in the options market. Thus, options contracts can be reviewed from two perspectives, at expiration or as stand-alone tradable instruments. 
 
-Let's begin the discussion of options contracts by exploring their behavior at expiration.      
-
 ### Call contracts
-A [call contract](https://www.investopedia.com/terms/c/calloption.asp) gives the option contract buyer the right, but not the obligation, to purchase 100 shares of `XYZ` (per contract) from the seller at a particular price per share (called the strike price $K$) at some point in the future (called the expiration date). In the case of [American](https://www.investopedia.com/terms/a/americanoption.asp) style [call contracts](https://www.investopedia.com/terms/c/calloption.asp), the option buyer can exercise their right at any point between when the contract was purchased and the expiration date. On the other hand, buyers of [European](https://www.investopedia.com/terms/e/europeanoption.asp) style contracts can only exercise their right on the expiration date. The right to purchase shares of `XYZ` at $K$ USD/share is not free; the option buyer pays a premium per contract to the option seller for this right. 
+A [call contract](https://www.investopedia.com/terms/c/calloption.asp) gives the option contract buyer the right, but not the obligation, to purchase 100 shares of `XYZ` (per contract) from the seller at a particular price per share (called the strike price $K$) at some point in the future (called the expiration date). The right to purchase shares of `XYZ` at $K$ USD/share is not free; the option buyer pays a premium per contract to the seller for this right. 
 
-The profit at expiration that a call contract buyer experiences depends upon the difference between the share price of `XYZ` and the strike price $K$ of the contract (contract payoff) and how much the call contract costs:
+* The buyer on an American [call contract](https://www.investopedia.com/terms/c/calloption.asp) can exercise their right at any point between when the contract was purchased and the expiration date. On the other hand, buyers of [European](https://www.investopedia.com/terms/e/europeanoption.asp) style contracts can only exercise their right on the expiration date. 
+
+The profit (or loss) at expiration that a call contract buyer experiences is dependent upon the difference between the share price of `XYZ`, the strike price $K$ of the contract (contract payoff), and the contract cost ({prf:ref}`defn-PL-call-contract`):
 
 ````{prf:definition} Call Contract Payoff and Profit
 :label: defn-PL-call-contract
 
-An investor purchases a single American stycle Call contract for the underlying stock `XYZ` for $\mathcal{P}$ USD/share; the contract controls 100 shares of `XYZ`. 
-
-Let the strike price of the call contract be $K$ USD/share, and the share price of `XYZ` at expiration be $S$ USD/share. Then, at expiration, the call contract has the payoff $\hat{V}_{c}$ USD/share:
+An investor purchases an American Call contract for the underlying stock `XYZ` for $\mathcal{P}$ USD/share; each contract controls 100 shares of `XYZ`. Let the strike price be $K$ USD/share, and the share price of `XYZ` at expiration be $S$ USD/share. Then, at expiration, the call contract has the payoff $\hat{V}_{c}$ USD/share:
 
 ```{math}
 :label: eqn-call-option-payoff
 \hat{V}_{c} = \max\left(S-K,0\right)
 ```
 
-and a profit (loss) for the buyer of:
+and a profit (or loss) per share of `XYZ` for the buyer of:
 
 ```{math}
 P_{c} = \hat{V}_{c} -  \mathcal{P}
 ```
 
-where $P_{c}$ denotes the profit (or loss) per share of `XYZ`. The contract seller experiences a profit (or loss) of $\bar{P}_{c}$ at expiration where:
+where $P_{c}$ denotes the profit (or loss) experienced by the buyer. The contract seller experiences a profit (or loss) of $\bar{P}_{c}$ at expiration:
 
 ```{math}
 P_{c}+\bar{P}_{c} = 0
@@ -84,9 +82,10 @@ The payoff (and profit/loss) diagram for a call contract at expiration for Advan
 * Profit $S>K+\mathcal{P}$: the share price is _greater than_ the strike price plus the premium paid per share for the contract. 
 
 ````{prf:example} AMD Call Contract
+:class: dropdown
 :label: call-contract-expiration
 
-We are interested in buying a call contract for Advanced Micro Devices with ticker [AMD](https://www.google.com/search?client=safari&rls=en&sxsrf=ALiCzsbTZ3IEA10C9Rgs6Lb7YLN8LAILVQ:1657882036543&q=NASDAQ:+AMD&stick=H4sIAAAAAAAAAONgecRoyi3w8sc9YSmdSWtOXmNU4-IKzsgvd80rySypFJLgYoOy-KR4uLj0c_UNzKuy4ytzeRaxcvs5Brs4BlopOPq6AACfr0n4SAAAAA&sa=X&ved=2ahUKEwjV_ffu2_r4AhUxJUQIHcXZAPkQsRV6BAhVEAM&biw=1594&bih=921&dpr=2). The current share price of `AMD` is \$78.94 per share (around 3:30 PM ITH time on Th 7/14), and we belive the shares will close higher before contract expiration.
+We are interested in buying a call contract for Advanced Micro Devices with ticker [AMD](https://www.google.com/search?client=safari&rls=en&sxsrf=ALiCzsbTZ3IEA10C9Rgs6Lb7YLN8LAILVQ:1657882036543&q=NASDAQ:+AMD&stick=H4sIAAAAAAAAAONgecRoyi3w8sc9YSmdSWtOXmNU4-IKzsgvd80rySypFJLgYoOy-KR4uLj0c_UNzKuy4ytzeRaxcvs5Brs4BlopOPq6AACfr0n4SAAAAA&sa=X&ved=2ahUKEwjV_ffu2_r4AhUxJUQIHcXZAPkQsRV6BAhVEAM&biw=1594&bih=921&dpr=2). The current share price of `AMD` is \$78.94 per share (around 3:30 PM ITH time on Th 7/14/22), and we belive the shares will close higher before contract expiration.
 
 Compute the payoff and profit/loss diagram at expiration for a July 15 `AMD` call contract with a strike $K$ = 80.0 USD/share. The market price for the July 15 `AMD` call contract is $\mathcal{P}$ = 0.36 USD/share.
 
@@ -108,29 +107,29 @@ The business case for buying (or selling) a call contract:
 * __Seller (short)__: From the seller's perspective, the main objective of selling a call contract is to collect the premium $\mathcal{P}$. Call contracts also allow the seller to benefit from the price movement of `XYZ` to the downside _without_ purchasing `XYZ`. However, for a seller, call options have _unlimted upside_ risk; thus, call options are often only sold by investors who already own the required number of shares of `XYZ` (known as a [covered call position](https://www.investopedia.com/terms/c/coveredcall.asp)). Finally, call options offer the seller the opportunity to sell shares of `XYZ` at the strike price of $K$ instead of the market price of $S$.
 
 ### Put contracts
-A [put contract](https://www.investopedia.com/terms/p/putoption.asp) gives the option contract buyer the right, but not the obligation, to sell 100 shares of `XYZ` (per contract) to the option seller at the strike price $K$, either by or on the expiration date. In the case of [American](https://www.investopedia.com/terms/a/americanoption.asp) style [put contracts](https://www.investopedia.com/terms/p/putoption.asp), the option buyer can exercise their right at any point between when the contract is purchased and the expiration date. On the other hand, buyers of [European](https://www.investopedia.com/terms/e/europeanoption.asp) style contracts can only exercise their right on the expiration date. The right to sell shares of `XYZ` at $K$ USD/share is not free; the option buyer pays a premium per contract to the option seller for this right. 
+A [put contract](https://www.investopedia.com/terms/p/putoption.asp) gives the option contract buyer the right, but not the obligation, to sell 100 shares of `XYZ` (per contract) to the option seller at the strike price $K$, either by or on the expiration date. The right to sell shares of `XYZ` at $K$ USD/share is not free; the option buyer pays a premium per contract to the option seller for this right. 
 
-The profit that a put contract buyer experiences, denoted by $V_{p}$, depends upon the difference between the share price of `XYZ` and the strike price $K$ of the contract:
+* In the case of [American](https://www.investopedia.com/terms/a/americanoption.asp) style [put contracts](https://www.investopedia.com/terms/p/putoption.asp), the option buyer can exercise their right at any point between when the contract is purchased and the expiration date. On the other hand, buyers of [European](https://www.investopedia.com/terms/e/europeanoption.asp) style contracts can only exercise their right on the expiration date. 
+
+The profit that a put contract buyer experiences is dependent upon the difference between the share price of `XYZ` and the strike price $K$ of the contract at expiration ({prf:ref}`defn-PL-put-contract`):
 
 ````{prf:definition} Put Contract Payoff and Profit
 :label: defn-PL-put-contract
 
-An investor purchases a single American stycle Put contract for the underlying stock `XYZ` for $\mathcal{P}$ USD/share; the contract controls 100 shares of `XYZ`. 
-
-Let the strike price of the put contract be $K$ USD/share, and the share price of `XYZ` be $S$ USD/share. Then, at expiration, the put contract has the payoff $\hat{V}_{p}$ USD/share:
+An investor purchases a single American style Put contract for the underlying stock `XYZ` for $\mathcal{P}$ USD/share; the contract controls 100 shares of `XYZ`. Let the strike price of the put contract be $K$ USD/share, and the share price of `XYZ` be $S$ USD/share. Then, at expiration, the put contract has the payoff $\hat{V}_{p}$ USD/share:
 
 ```{math}
 :label: eqn-put-option-payoff
 \hat{V}_{p} = \max\left(K - S,0\right)
 ```
 
-and a profit (loss) for the buyer of:
+and a profit (or loss) per share of `XYZ` for the buyer of:
 
 ```{math}
 P_{p} = \hat{V}_{p} -  \mathcal{P}
 ```
 
-where $P_{p}$ denotes the profit (or loss) per share of `XYZ`. The contract seller experiences a profit (or loss) of $\bar{P}_{p}$ at expiration where:
+where $P_{p}$ denotes the profit (or loss) experienced by the buyer. The contract seller experiences a profit (or loss) of $\bar{P}_{p}$ at expiration:
 
 ```{math}
 P_{p}+\bar{P}_{p} = 0
@@ -146,6 +145,7 @@ The payoff (and profit/loss) diagram for a put contract at expiration for Advanc
 * Profit $S<K+\mathcal{P}$: the share price is _less than_ the strike price plus the premium paid per share for the contract. 
 
 ````{prf:example} AMD Put Contract 1 DTE
+:class: dropdown
 :label: put-contract-expiration
 
 We are interested in buying a call contract for Advanced Micro Devices with ticker [AMD](https://www.google.com/search?client=safari&rls=en&sxsrf=ALiCzsbTZ3IEA10C9Rgs6Lb7YLN8LAILVQ:1657882036543&q=NASDAQ:+AMD&stick=H4sIAAAAAAAAAONgecRoyi3w8sc9YSmdSWtOXmNU4-IKzsgvd80rySypFJLgYoOy-KR4uLj0c_UNzKuy4ytzeRaxcvs5Brs4BlopOPq6AACfr0n4SAAAAA&sa=X&ved=2ahUKEwjV_ffu2_r4AhUxJUQIHcXZAPkQsRV6BAhVEAM&biw=1594&bih=921&dpr=2). The current share price of `AMD` is \$78.94 per share (around 3:30 PM ITH time on Th 7/14), and we belive the shares will close lower before contract expiration.
@@ -172,7 +172,7 @@ the required number of shares of `XYZ` (known as a [cash secured put position](h
 
 
 ### Composite contracts
-Call and put contracts can be combined to develop composite contract structures with interesting payoff diagrams. In this section, we'll limit our focus to contracts that have the same underlying asset and the same expiration date. However, for those interested in more advanced cases, e.g., combining contracts with different expiration dates, check out [calendar spreads](https://www.investopedia.com/terms/c/calendarspread.asp). 
+Call and put contracts can be combined to develop composite contract structures with interesting payoff diagrams. Let's limit our focus to contracts that have the same underlying asset and the same expiration date ({prf:ref}`defn-composite-contract-profit`):
 
 ````{prf:definition} Composite contract payoff and profit
 :label: defn-composite-contract-profit
@@ -197,21 +197,24 @@ where $\theta_{i}$ denotes the direction of contract $i$: if contract $i$ is sho
 
 ````
 
+For those interested in more advanced cases, e.g., combining contracts with different expiration dates, check out [calendar spreads](https://www.investopedia.com/terms/c/calendarspread.asp). 
+
+
 (content:references:option-contracts-vertical-spread)=
 #### Vertical spreads
 [Vertical spreads](https://www.investopedia.com/terms/v/verticalspread.asp) are a _defined risk directional strategy_ constructed by simultaneously buying (long) and selling (short) the _same type of option_, with the same expiration date but with _different_ strike prices. Thus, [vertical spreads](https://www.investopedia.com/terms/v/verticalspread.asp) have two _legs_: a long leg (the option purchased by the investor) and a short leg (the option sold by the investor). [Vertical spreads](https://www.investopedia.com/terms/v/verticalspread.asp) are a defined risk, directional strategy, i.e., the investor believes the share price of the underlying asset `XYZ` will either increase or decrease, depending upon the type of vertical spread. [Vertical spreads](https://www.investopedia.com/terms/v/verticalspread.asp) are defined risk because the maximum possible gain (or loss) is known when the contract is sold; thus, an investor knows how much they can make or lose at expiration _before_ they enter the trade. However, the future share price of `XYZ` is unknown when the investor opens the trade. 
 
 Two vertical spreads can be constructed from put contracts; each has a different directional assumption. A _put bullish credit spread_ assumes the underlying asset `XYZ` share price will increase between now and expiration. In contrast, a _put bearish debit spread_ assumes the underlying asset `XYZ` share price will decrease between now and expiration. When investors open a bullish credit spread, they receive a credit (the maximum profit) upfront. On the other hand, when opening a debit spread, the investor incurs a net debit to their account. The trade becomes profitable over time if the directional assumption is correct.
 
-In general, the profit for a put vertical spread is a function of the strike prices, and the cost of each of the legs of the composite contract:
+In general, the profit for a put vertical spread is a function of the strike prices, and the cost of each of the legs of the composite contract ({prf:ref}`defn-PL-put-contract-vertical-spread`):
 
 
 ````{prf:definition} Profit Put vertical spread
 :label: defn-PL-put-contract-vertical-spread
 
-Consider a vertical spread constructed from put contracts on the underlying stock `XYZ`. Let $K_{j}$ denote the strike price of put contract $j$, while contract $j$ has the price $\mathcal{P}_{j}$. Further, let $S$ denote the share price of `XYZ` at expiration. Finally, let contract 1 be the short put leg $\theta_{1} = -1$ and contract 2 be the long put leg $\theta_{2} = 1$. Assume the trade consists of a single long and short leg, i.e., $n_{1} = n_{2} = 1$.
+Let $K_{j}$ denote the strike price of put contract $j$, where contract $j$ has the price $\mathcal{P}_{j}$. Let $S$ denote the share price of `XYZ` at expiration. Finally, let contract 1 be the short leg $\theta_{1} = -1$ and contract 2 be the long leg $\theta_{2} = 1$. 
 
-Then, the profit for a single Put Vertical spread $P$ at expiration is given by:
+Then, the profit for a single Put vertical spread $P$ at expiration is given by:
 
 $$\hat{P} = -P_{1}+P_{2}$$
 
@@ -219,17 +222,17 @@ which, after substitution of the profit functions for a put contract, gives:
 
 $$\hat{P} = \max\left(K_{2} - S,0\right) - \max\left(K_{1} - S,0\right) + \left(\mathcal{P}_{1} - \mathcal{P}_{2}\right)$$
 
-The first term is the net payout of the two legs of the spread, while the second term is the net cost of the two contracts.
-
-The maximum possible profit, loss, and breakeven conditions are given by:
+The first term is the net payout of the two legs of the spread, while the second term is the net cost of the two contracts. The maximum possible profit, loss, and breakeven conditions are given by:
 * The maximum possible profit of $\left(\mathcal{P}_{1} - \mathcal{P}_{2}\right)$ will occur when $S\geq{K_{1}}$.
 * The maximum possible loss of $K_{2} - K_{1} + \left(\mathcal{P}_{1} - \mathcal{P}_{2}\right)$ will occur when $S\leq{K_{2}}$.
 * The vertical put spread will breakeven ($\hat{P} = 0$) when $S =  K_{1}+\left(\mathcal{P}_{2} - \mathcal{P}_{1}\right)$.
 
 ````
+
 {prf:ref}`defn-PL-put-contract-vertical-spread` has many exciting types of behavior; it is much more complex than it might first appear as the cost of each contract $\mathcal{P}_{j}$ is a non-linear function of many variables including the current share price of the underlying asset $S$, the strike price of the contract, the number of days the contract has before expiration, and the implied volatility.
 
 ````{prf:example} Vertical Put Spreads
+:class: dropdown
 :label: vertical-put-spread-expiration
 
 Let the current share price of `XYZ` be $S_{o}$ USD/share, and let $S$ denote the share price of `XYZ` at expiration. Then:
@@ -261,14 +264,13 @@ __source__: [live Pluto notebook](https://github.com/varnerlab/CHEME-5660-Market
 Although not shown here, [Vertical spreads](https://www.investopedia.com/terms/v/verticalspread.asp) can also be constructed using [call contracts](https://www.investopedia.com/terms/c/calloption.asp).
 
 #### Straddles
-A [straddle](https://www.investopedia.com/terms/s/straddle.asp) is a _neutral strategy_ constructed by simultaneously buying (or selling) a put and a call option on the same underlying asset `XYZ`, with the _same expiration_, and the _same strike price_. Depending upon the choice of the strike prices and whether an investor buys or sells both legs, a [straddle](https://www.investopedia.com/terms/s/straddle.asp) can be initiated as a credit or debit and can potentially have undefined profit or loss. Unlike directional strategies such as {ref}`content:references:option-contracts-vertical-spread`, a [straddle](https://www.investopedia.com/terms/s/straddle.asp) is a _neutral_ position; an investor holding a [straddle](https://www.investopedia.com/terms/s/straddle.asp) profits if the share price of `XYZ` moves up, down or potentially zero depending upon the construction of the straddle.
+A [straddle](https://www.investopedia.com/terms/s/straddle.asp) is a _neutral strategy_ constructed by simultaneously buying (or selling) a put and a call option on the same underlying asset `XYZ`, with the _same expiration_, and the _same strike price_. Depending upon the choice of the strike prices and whether an investor buys or sells both legs, a [straddle](https://www.investopedia.com/terms/s/straddle.asp) can be initiated as a credit or debit and can potentially have undefined profit or loss ({prf:ref}`defn-PL-put-contract-straddle`): 
+
 
 ````{prf:definition} Profit of a Straddle
 :label: defn-PL-put-contract-straddle
 
-A [straddle](https://www.investopedia.com/terms/s/straddle.asp) is a _neutral strategy_ constructed by simultaneously buying (or selling) a put and a call option on the underlying asset `XYZ`, with the _same expiration_, and the _same strike price_. 
-
-Let the current share price of `XYZ` be $S_{o}$ USD/share, and let $S$ denote the share price of `XYZ` at expiration. Further, let $K_{j}$ denote the strike price of contract $j$ (USD/share), where the price of contract $j$ is $\mathcal{P}_{j}$ (USD/share). Finally, let index $j=1$ denote the put contract, $j=2$ denote the call contract, and $K_{1}=K_{2}\equiv{K}$ (both legs have the same strike in a [straddle](https://www.investopedia.com/terms/s/straddle.asp)).
+A [straddle](https://www.investopedia.com/terms/s/straddle.asp) is a _neutral strategy_ constructed by simultaneously buying (or selling) a put and a call option on the underlying asset `XYZ`, with the _same expiration_, and the _same strike price_. Let the current share price of `XYZ` be $S_{o}$ USD/share, and let $S$ denote the share price of `XYZ` at expiration. Further, let $K_{j}$ denote the strike price of contract $j$ (USD/share), where the price of contract $j$ is $\mathcal{P}_{j}$ (USD/share). Finally, let index $j=1$ denote the put contract, $j=2$ denote the call contract, and $K_{1}=K_{2}\equiv{K}$ (both legs have the same strike in a [straddle](https://www.investopedia.com/terms/s/straddle.asp)).
 
 Then, the profit for a single straddle contract $\hat{P}$ at expiration is given by:
 
@@ -295,10 +297,13 @@ Finally, a straddle has _two_ possible breakeven points denoted as $S^{+}$ and $
 
 ````
 
+Unlike directional strategies such as {ref}`content:references:option-contracts-vertical-spread`, a [straddle](https://www.investopedia.com/terms/s/straddle.asp) is a _neutral_ position; an investor holding a [straddle](https://www.investopedia.com/terms/s/straddle.asp) profits if the share price of `XYZ` moves up, down or potentially zero depending upon the construction of the straddle.
+
 {prf:ref}`defn-PL-put-contract-straddle` gives the profit conditions for both long (buy both the call and the put legs) and short (sell both the call and put legs) straddles. Let's put some numbers into the profit conditions and analyze their behavior ({prf:ref}`straddle-profit-expiration`).
 
 
 ````{prf:example} Profit of a Straddle
+:class: dropdown
 :label: straddle-profit-expiration
 
 A __short straddle__ is constructed by simultaneously _selling_ both a put and a call option with the same expiration, strike price, and underlying asset `XYZ` ({numref}`fig-amd-profit-short-straddle`). When opening a short straddle, an investor receives a _credit_, i.e., the proceeds from selling the call and put options. For a short straddle, $\theta=-1$ which gives the profit condtions:
@@ -390,6 +395,7 @@ $$S^{+} = K_{2} + \left(\mathcal{P}_{1}+\mathcal{P}_{2}\right)$$
 {prf:ref}`defn-PL-put-contract-strangle` gives the profit conditions for both long (buy both the call and the put legs) and short (sell both the call and put legs) strangles. Let's put some numbers into the profit conditions and analyze their behavior ({prf:ref}`strangle-profit-expiration`).
 
 ````{prf:example} Profit of a Strangle
+:class: dropdown
 :label: strangle-profit-expiration
 
 A __short strangle__ is constructed by simultaneously _selling_ both a put and a call option with the same underlying asset `XYZ` and the same expiration, but with different strike prices ({numref}`fig-amd-profit-short-strangle`). When opening a short strangle, an investor receives a _credit_, i.e., the proceeds from selling the call and put options. For a short strangle, $\theta=-1$ which gives the profit condtions:
@@ -463,6 +469,7 @@ $$S^{+} = K_{2} + \Bigl(\mathcal{P}_{1} + \mathcal{P}_{2} - \mathcal{P}_{3}-\mat
 
 
 ````{prf:example} Profit of an Iron Condor
+:class: dropdown
 :label: iron-condor-expiration
 
 An [iron condor](https://www.investopedia.com/terms/i/ironcondor.asp) is constructed by _selling_ a put (1) and call (2) options on the underlying asset `XYZ`, while simultaneously _buying_ a put (3) and call (4) options on `XYZ`. All legs have the same expiration, but different strike prices. 
@@ -494,6 +501,7 @@ To explore this idea, let's compute the probability of profit of a [short strang
 
 
 ````{prf:example} Probability of Profit at Expiration for AMD Strangle
+:class: dropdown
 :label: pop-amd-strange-expiration
 
 Let's compute the probability of profit at expiration for a short strangle for  [AMD](https://finance.yahoo.com/quote/AMD/) with the following data: short put strike $K_{1}$ = \$80.0 USD/share, short call srtike $K_{1}$ = \$120.0 USD/share, $\mathcal{P}_{1}$ = \$1.69 USD/share and $\mathcal{P}_{2}$ = \$2.97 USD/share. The current share price of [AMD](https://finance.yahoo.com/quote/AMD/) is $S_{o}$ = 102.53 USD/share.
@@ -633,6 +641,7 @@ where $d_{1}$ and $d_{2}$ are given by Eqn. {eq}`eqn-d1-bsm-soln` and Eqn. {eq}`
 Let's look at simulations of the pricing of [European](https://www.investopedia.com/terms/e/europeanoption.asp) Call and Put contracts to better understand what factors influnce their prices. 
 
 ````{prf:example} Price of a European Call contract
+:class: dropdown
 :label: example-european-call-contract
 Consider a `European Call` contract on `XYZ` with a strike price of $K$ = 100.0 USD/share for different times to expiration. Let the implied volatility (IV) of `XYZ` be equal to IV = 35%. Assume the implied volatility is not a function of the time to expiration.  
 
@@ -651,7 +660,9 @@ __source__: Fill me in.
 The intrinsic value is the payoff of the option now; for a `Call` option the payoff is given by Eqn. {eq}`eqn-call-option-payoff`
 
 ````{prf:example} Price of a European Put contract
+:class: dropdown
 :label: example-european-put-contract
+
 Consider a `European Put` contract on `XYZ` with a strike price of $K$ = 100.0 USD/share for different times to expiration. Let the implied volatility (IV) of `XYZ` be equal to IV = 35%. Assume the implied volatility is not a function of the time to expiration.  
 
 ```{figure} ./figs/Fig-BSM-Put-Price-K100.pdf
@@ -856,6 +867,7 @@ The $\hat{\Delta}_{a}$ values for different asset classes:
 Now that we have defined a Delta hedged portfolio, let's look at a simple two-asset example to illustrate {prf:ref}`defn-delta-hedge-condition`.
 
 ````{prf:example} Delta-hedging example
+:class: dropdown
 :label: example-delta-hedge-two-cases
 
 Suppose we have a portfolio with only two assets: asset 1 is a Call option on `XYZ` while asset 2 are shares of `XYZ` Let the Call option on `XYZ` have $\Delta_{1} = 0.454$ USD/share, where `XYZ` has a share price of $S_{\circ}$ = 58.67 USD/share. Let's consider two cases:
