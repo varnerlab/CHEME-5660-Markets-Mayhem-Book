@@ -1,21 +1,39 @@
 # Financial Data, Markets, and Mayhem
 
-## Course objectives 
+## Description 
 Financial factors are an essential part of technological progress and the personal lives of members of our society. However, finance and economic forecasting, modeling, and decision-making are typically not part of the traditional engineering or physical science curriculum. A growing percentage of engineers and scientists are migrating toward employment opportunities in the financial and consulting industries. Further, despite increased market access, there remains a significant barrier to entry for many individuals in our society to the wealth creation opportunities offered by financial systems. Toward these unmet needs, this course will introduce financial systems, markets, and the tools to analyze economic systems and business operations to engineers and scientists. We’ll use tools from engineering, statistics, data science (DS), and machine learning (ML) to model, analyze, and ultimately optimize financial systems and financial decision-making. The material from this course can be applied to traditional economic and engineering fields and provide a core set of tools for students interested in pursuing an entrepreneurial track of studies.  
 
 We believe there is a compelling opportunity for scientists and engineers to leverage their proficiency in mathematical modeling, optimization, and process control, combined with AI, DS, and ML tools, to optimize financial decision-making, drive value creation within businesses, and ultimately democratize wealth creation. 
 
-## Prerequisites
-There are no formal prerequisites for this course. However, general familiarity with common programming languages such as Python/Matlab/Julia and mathematical and computing topics such as probability, statistics, optimization, and data science tools such as Jupyter notebooks, DataFrames, etc., will be helpful. Course assignments will be completed using LaTeX.
+### Times, places and websites
+* __Credits__: 3-credits
+* __Lectures and discussions__: Lecture at TuTh 1:30 PM - 2:20 PM and Discussion at W 1:30 PM - 2:20 PM
+* __Website__: Canvas and GitHub. Examples, labs, and other codes used throughout the course are available on our [GitHub repository](https://github.com/varnerlab/CHEME-5660-Course-Repository-F23).
+
+### Outcomes
+Outcomes: Upon completion of this course, students will be able to:
+* Analyze financial data sets using tools from data science (DS) and machine learning (ML)/artificial intelligence (AI)
+* Identify quantitative models of asset pricing and process performance using real-time and static financial data sets 
+* Demonstrate mastery of quantitative decision-making and risk management approaches in the context of corporate finance and personal wealth management.
+
+### Schedule
+The lecture, lab and problem set schedule can be viewed at (requires Cornell login): [CHEME 5660 lecture schedule here](https://cornell.box.com/s/xz2ir0k7kimtyzz10k98op5ctihqa2fh)
+
+### Prerequisites
+There are no formal prerequisites for this course. However, general familiarity with common programming languages such as Python/Matlab/Julia and mathematical and computing topics such as probability, statistics, optimization, and data science tools such as Jupyter notebooks, DataFrames, etc., will be helpful.
 
 ## Grading 
+Grades will be computed from 2 take-home prelims (dates/times indicated on the course calendar), a final group project (scheduled by the University), and a participation score. The take-home prelims are collectively worth 60%, while the group project is worth 30% of your final grade. Class participation and other designated assignments will collectively account for 10% of your final grade.  
 
-Grades will be computed from 3 take-home prelims (dates/times indicated on the course calendar), a final group project (scheduled by the University), and a participation score. The take-home prelims are collectively worth 60%, while the group project is worth 30% of your final grade. Class participation, problem set attempts, and other designated assignments will collectively account for 10% of your final grade.  
+| Percentage | Component |
+| ----------: | --------- |
+| 10%	| __Participation__. Course participation (code reviews, questions and TA/course evaluations) will be an important component of the course. Participation opportunities will be identified throughout the semester. |
+| 60%	| __Take-home exams__. Two take-home examinations will be distributed. The distribution date will be announced ahead of time, and once distributed, students will have a specified number of hours (at least 36 hours) to complete the exams. |
+| 30%	| __Final project__. Development of a research project by each student (semester long with additional emphasis during the final 5 weeks of the course). The projects will conclude with a written report and an oral presentation to the class near the end of the semester. The final written reports will be due on the University assigned date for final projects. |
 
 This course will have weekly hands-on case studies completed as teams in the discussion section(s). We expect everyone to attempt every case study and to participate in the discussion section:
 
-* The teaching team reserves the right to collect and grade entire case studies or specific questions of case studies throughout the course. 
-
+* The teaching team reserves the right to collect and grade entire case studies or specific questions of case studies throughout the course.
 * Teamwork is welcome (and encouraged) on case studies and course projects, but the take-home exams must be completed individually. 
 
 ## Course policies 
@@ -39,11 +57,6 @@ If you have a disability-related need for reasonable academic adjustments in thi
 ### Diversity Statement
 We aspire to create an environment for learning, intellectual discourse, and professional and social interactions where every individual feels welcome and valued. We recognize all course participants as responsible adults with differing perspectives based, in part, on their unique experiences. We espouse the broader mission and values of the Smith School as described here: https://www.cheme.cornell.edu/cbe/about/mission.
 
-### Course Content
-Links to CHEME 5660 content:
-
-```{tableofcontents}
-```
 
 ## Disclaimer and Risk Statement
 This content is offered solely for training and informational purposes. No offer or solicitation to buy or sell securities or derivative products, or any investment or trading advice or strategy, is made, given, or endorsed by any member of the teaching team. 
