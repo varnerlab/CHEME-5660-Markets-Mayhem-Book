@@ -69,7 +69,7 @@ Unfortunately, our intuitive valuation operator (net cash flows) does not consid
 
 ### Exchange rate model
 A useful mental model for the time value of money is to think of money from different time periods 
-as being in different currencies (e.g., $\$$ and $\def\euro{\unicode{x20AC}} \euro$) that must be exchanged. Thus, to compare money or cash flows from different time periods we formulate the equivalent of an exchange rate.
+as being in different currencies (e.g., $\$$ and euros) that must be exchanged. Thus, to compare money or cash flows from different time periods we formulate the equivalent of an exchange rate.
 
 #### Discrete one-period conversion
 For example, suppose we wanted to convert the value of a cash flow from one time period in the future 
