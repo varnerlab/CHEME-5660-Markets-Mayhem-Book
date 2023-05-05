@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Unit 3: The Fantastic but Dangerous World of Derivatives, Futures, Hedging and Leverage &#8212; CHEME 5660</title>
+    <title>Unit 3: Portfolio Management &#8212; CHEME 5660</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -54,8 +54,8 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="canonical" href="https://varnerlab.github.io/CHEME-5660-Markets-Mayhem-Book/infrastructure.html/chapter-3-dir/chapter-3-landing.html" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Fixed Income Debt Securities" href="bonds.html" />
-    <link rel="prev" title="Microscopic Market Models" href="../chapter-2-dir/agent-based-market-models.html" />
+    <link rel="next" title="Data-Driven Portfolio Theory" href="data-markowitz.html" />
+    <link rel="prev" title="Derivative Securities" href="../chapter-2-dir/contracts.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -125,38 +125,11 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <ul class="current nav bd-sidenav">
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../julia-dir/julia-landing.html">
-   Getting Started with Julia
+  <a class="reference internal" href="../chapter-1-dir/chapter-1-landing.html">
+   Unit 1. Financial Basics
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
   <label for="toctree-checkbox-1">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../julia-dir/julia-installation.html">
-     Julia Installation
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../julia-dir/julia-basics.html">
-     Introduction to Julia Basics
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../julia-dir/julia-data.html">
-     Working with Data in Julia
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../chapter-1-dir/chapter-1.html">
-   Unit 1. The Financial System
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-  <label for="toctree-checkbox-2">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -171,70 +144,97 @@ const thebe_selector_output = ".output, .cell_output"
      Financial Balances and Abstract Assets
     </a>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../chapter-1-dir/markets.html">
-     Markets, Exchanges and Investment Instruments
-    </a>
-   </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../chapter-2-dir/chapter-2.html">
-   Unit 2. Modeling and Simulation of Asset Price Dynamics
+  <a class="reference internal" href="../chapter-2-dir/chapter-2-landing.html">
+   Unit 2. Wealth Creation
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
-  <label for="toctree-checkbox-3">
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
    <i class="fas fa-chevron-down">
    </i>
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../chapter-2-dir/probability-random-variables.html">
-     Probability, Random Variables and Stochastic Processes
+    <a class="reference internal" href="../chapter-2-dir/bonds.html">
+     Fixed Income Debt Securities
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../chapter-2-dir/stochastic-differential-equations.html">
-     Macroscopic Market Models
+    <a class="reference internal" href="../chapter-2-dir/equity.html">
+     Equity Securities
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../chapter-2-dir/agent-based-market-models.html">
-     Microscopic Market Models
+    <a class="reference internal" href="../chapter-2-dir/contracts.html">
+     Derivative Securities
     </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1 current active has-children">
   <a class="current reference internal" href="#">
-   Unit 3. Risk, Portfolios, Derivatives, and Leverage
+   Unit 3. Portfolio Management
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="data-markowitz.html">
+     Data-Driven Portfolio Theory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="model-markowitz.html">
+     Model-Driven Portfolio Theory
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="hedged-portfolio.html">
+     Hedged Portfolio Theory
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../chapter-4-dir/chapter-4-landing.html">
+   Unit 4. Finanical Decisions
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
   <label for="toctree-checkbox-4">
    <i class="fas fa-chevron-down">
    </i>
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="bonds.html">
-     Fixed Income Debt Securities
+    <a class="reference internal" href="../chapter-4-dir/markov.html">
+     Markov Chains and Hidden Markov Models
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="contracts.html">
-     Derivative Securities
+    <a class="reference internal" href="../chapter-4-dir/bandits.html">
+     Multiarm Bandit Problems
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="markowitz.html">
-     Equity, Debt and Modern Portfolio Theory
+    <a class="reference internal" href="../chapter-4-dir/mdp.html">
+     Markov Decision Process
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../chapter-4-dir/rl.html">
+     Reinforcement Learning
     </a>
    </li>
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../chapter-4-dir/chapter-4.html">
-   Unit 4. Decisions
+  <a class="reference internal" href="../appendix/appendix-landing.html">
+   Appendices
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
   <label for="toctree-checkbox-5">
@@ -243,13 +243,23 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../chapter-4-dir/mdp.html">
-     Markov decision process (MDPs)
+    <a class="reference internal" href="../appendix/random.html">
+     Random variables and probability
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../chapter-4-dir/rl.html">
-     Reinforcement Learning (RL)
+    <a class="reference internal" href="../appendix/julia-installation.html">
+     Julia Installation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../appendix/julia-basics.html">
+     Introduction to Julia Basics
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../appendix/julia-data.html">
+     Working with Data in Julia
     </a>
    </li>
   </ul>
@@ -426,7 +436,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Unit 3: The Fantastic but Dangerous World of Derivatives, Futures, Hedging and Leverage</h1>
+                <h1>Unit 3: Portfolio Management</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -438,18 +448,26 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="unit-3-the-fantastic-but-dangerous-world-of-derivatives-futures-hedging-and-leverage">
-<h1>Unit 3: The Fantastic but Dangerous World of Derivatives, Futures, Hedging and Leverage<a class="headerlink" href="#unit-3-the-fantastic-but-dangerous-world-of-derivatives-futures-hedging-and-leverage" title="Permalink to this headline">#</a></h1>
-<p>There are three primary financial instruments for wealth creation: equity (i.e., shares of stock), debt (i.e., bonds and mortgages), and derivatives. Each of these instruments has a unique risk-reward profile. However, they also share a common trait; at their core, they are just <em>structured relationships</em> between a buyer and a seller. For example, fixed-income debt securities, e.g., Treasury Bills, Notes, and Bonds are just contracts, i.e., a relationship between a borrower and a lender. In the case of United States treasury debt instruments, the borrower is the U.S. government, and the lender is the investor; the government issues (i.e., sells) a bond to a lender (you) for some cash. Then over time, depending upon the stipulations of the debt instrument, the borrower pays back the lender in a specified way.</p>
-<p>Another type of higher-risk (but higher-reward) investment tool is called an option. Option contracts describe the <em>potential transfer</em> of stock shares, e.g., <code class="docutils literal notranslate"><span class="pre">MSFT</span></code>, <code class="docutils literal notranslate"><span class="pre">AAPL</span></code> or <code class="docutils literal notranslate"><span class="pre">AMD</span></code> between a buyer and a seller. Options contracts are traded on exchanges throughout the world; the <a class="reference external" href="https://www.cboe.com">Chicago Board Options Exchange</a> is the largest options exchange in the United States, responsible for approximately 33% of the daily options trading volume in the United States (27 million contracts are traded each day in the United States). Worldwide, in 2021, about 33 billion options contracts were traded annually.</p>
-<p>Futures contracts, much like options, are agreements between a buyer and a seller to buy (or sell) an asset on a specific date in the future. However, unlike options, futures contracts <em>require</em> the buyer to purchase the underlying asset and the contract seller to sell the asset on a specific future date unless the contract holder’s position is closed before the contract’s expiration date. Future contracts can control underlying assets, agricultural products, currencies, and equities.
-Futures contracts are traded on an exchange; the most significant exchange on which futures contracts are sold is the <a class="reference external" href="https://www.cmegroup.com">Chicago Board of Trade (CBOT)</a>. Worldwide, in 2021, about 29 billion futures contracts were traded annually, with an approximately daily volume of 11 million contracts traded on the CBOE.</p>
-<p>At the end of this unit, students should be able to understand:</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="unit-3-portfolio-management">
+<h1>Unit 3: Portfolio Management<a class="headerlink" href="#unit-3-portfolio-management" title="Permalink to this headline">#</a></h1>
+<p>Portfolio management is the process of selecting and managing a group of financial assets to achieve specific investment goals. A portfolio can include a variety of assets such as stocks, bonds, and options and can be managed actively or passively. Successful portfolio management requires a deep understanding of financial markets, risk management techniques, investment strategies, and a thorough analysis of each asset and its place within the portfolio. By creating a well-diversified portfolio and regularly monitoring and adjusting its composition, investors can work towards achieving their investment objectives while managing risk.</p>
+<p>In this unit, we will discuss the following topics:</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="bonds.html"><span class="doc std std-doc">Fixed-income debt securities such United States Treasury Bills, Notes and Bonds</span></a></p></li>
-<li><p><a class="reference internal" href="contracts.html"><span class="doc std std-doc">The basics of options contracts and how to price them</span></a></p></li>
-<li><p><a class="reference internal" href="markowitz.html"><span class="doc std std-doc">The basics of portfolio management using Modern Portfolio Theory</span></a></p></li>
+<li><p><a class="reference internal" href="data-markowitz.html"><span class="doc std std-doc">Data-driven Markowitz portfolio management</span></a> is a portfolio optimization technique that uses statistical methods to identify the optimal combination of assets that maximizes return for a given level of risk. It builds on the classic Markowitz portfolio theory by incorporating machine learning and data analysis techniques to improve the accuracy of expected returns and covariance estimates.</p></li>
+<li><p><a class="reference internal" href="model-markowitz.html"><span class="doc std std-doc">Model-driven Markowitz portfolio management</span></a> is a portfolio optimization technique that uses mathematical models to predict future returns and risks of different assets. It builds on the classic Markowitz portfolio theory by incorporating more sophisticated mathematical models such as stochastic calculus, econometric models, and factor models. This approach can lead to more accurate and efficient portfolio allocations by incorporating more detailed and nuanced market dynamics than traditional methods.</p></li>
+<li><p><a class="reference internal" href="hedged-portfolio.html"><span class="doc std std-doc">Dynamically hedged portfolio management</span></a> is an investment strategy that involves dynamically adjusting the composition of a portfolio in response to changing market conditions. The goal of the strategy is to minimize downside risk while maximizing upside potential. This is achieved by using a combination of hedging techniques, such as options or futures contracts, and active management of the portfolio’s asset allocation. The result is a more resilient and adaptive portfolio that can better navigate market fluctuations and deliver more consistent returns.</p></li>
 </ul>
+<!-- There are three primary financial instruments for wealth creation: equity (i.e., shares of stock), debt (i.e., bonds and mortgages), and derivatives. Each of these instruments has a unique risk-reward profile. However, they also share a common trait; at their core, they are just _structured relationships_ between a buyer and a seller. For example, fixed-income debt securities, e.g., Treasury Bills, Notes, and Bonds are just contracts, i.e., a relationship between a borrower and a lender. In the case of United States treasury debt instruments, the borrower is the U.S. government, and the lender is the investor; the government issues (i.e., sells) a bond to a lender (you) for some cash. Then over time, depending upon the stipulations of the debt instrument, the borrower pays back the lender in a specified way. 
+
+Another type of higher-risk (but higher-reward) investment tool is called an option. Option contracts describe the _potential transfer_ of stock shares, e.g., `MSFT`, `AAPL` or `AMD` between a buyer and a seller. Options contracts are traded on exchanges throughout the world; the [Chicago Board Options Exchange](https://www.cboe.com) is the largest options exchange in the United States, responsible for approximately 33\% of the daily options trading volume in the United States (27 million contracts are traded each day in the United States). Worldwide, in 2021, about 33 billion options contracts were traded annually.
+
+Futures contracts, much like options, are agreements between a buyer and a seller to buy (or sell) an asset on a specific date in the future. However, unlike options, futures contracts _require_ the buyer to purchase the underlying asset and the contract seller to sell the asset on a specific future date unless the contract holder's position is closed before the contract’s expiration date. Future contracts can control underlying assets, agricultural products, currencies, and equities.
+Futures contracts are traded on an exchange; the most significant exchange on which futures contracts are sold is the [Chicago Board of Trade (CBOT)](https://www.cmegroup.com). Worldwide, in 2021, about 29 billion futures contracts were traded annually, with an approximately daily volume of 11 million contracts traded on the CBOE.  -->
+<!-- 
+At the end of this unit, students should be able to understand:
+* [Fixed-income debt securities such United States Treasury Bills, Notes and Bonds](./bonds.md)
+* [The basics of options contracts and how to price them](./contracts.md)
+* [The basics of portfolio management using Modern Portfolio Theory](./markowitz.md)  -->
 <div class="toctree-wrapper compound">
 </div>
 </section>
@@ -481,17 +499,17 @@ Futures contracts are traded on an exchange; the most significant exchange on wh
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="../chapter-2-dir/agent-based-market-models.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="../chapter-2-dir/contracts.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Microscopic Market Models</p>
+            <p class="prev-next-title">Derivative Securities</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="bonds.html" title="next page">
+    <a class='right-next' id="next-link" href="data-markowitz.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Fixed Income Debt Securities</p>
+        <p class="prev-next-title">Data-Driven Portfolio Theory</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

@@ -1,20 +1,29 @@
 # Financial Data, Markets, and Mayhem
 
 ## Description 
-Financial factors are an essential part of technological progress and the personal lives of members of our society. However, finance and economic forecasting, modeling, and decision-making are typically not part of the traditional engineering or physical science curriculum. A growing percentage of engineers and scientists are migrating toward employment opportunities in the financial and consulting industries. Further, despite increased market access, there remains a significant barrier to entry for many individuals in our society to the wealth creation opportunities offered by financial systems. Toward these unmet needs, this course will introduce financial systems, markets, and the tools to analyze economic systems and business operations to engineers and scientists. We’ll use tools from engineering, statistics, data science (DS), and machine learning (ML) to model, analyze, and ultimately optimize financial systems and financial decision-making. The material from this course can be applied to traditional economic and engineering fields and provide a core set of tools for students interested in pursuing an entrepreneurial track of studies.  
+Finance plays a crucial role in both technological advancement and the lives of individuals in our society. However, financial forecasting, modeling, and decision-making are rarely taught in traditional engineering or physical science curriculums. Further, an increasing number of engineers and scientists are turning to careers in finance and consulting. Finally, despite advancements in market access, many individuals still need help accessing the wealth-creation opportunities offered by financial systems. To address these gaps, this course introduces engineers and scientists to financial systems, markets, and analytical tools for economic and business operations. Using engineering, statistics, data science, and machine learning, we will model, analyze, and optimize financial systems and decision-making processes. The course material can be applied to both traditional economic and engineering fields.
 
-We believe there is a compelling opportunity for scientists and engineers to leverage their proficiency in mathematical modeling, optimization, and process control, combined with AI, DS, and ML tools, to optimize financial decision-making, drive value creation within businesses, and ultimately democratize wealth creation. 
+### Outcomes
+Upon completion of this course, students will be able to:
+* Analyze financial data sets using tools from statistics, data science (DS) and machine learning (ML)
+* Identify quantitative models of asset pricing and process performance using historical and real-time financial data sets 
+* Demonstrate mastery of quantitative decision-making and risk management approaches in the context of corporate finance and personal wealth management.
+
+### Topics
+
+We believe there is a compelling opportunity for scientists and engineers to leverage their proficiency in mathematical modeling, optimization, and process control, combined with data science and machine learning tools, to optimize financial decision-making, drive value creation within businesses, and ultimately democratize wealth creation. 
+
+* [Unit 1. Financial Basics](./chapter-1-dir/chapter-1-landing.md)
+* [Unit 2: Wealth Creation](./chapter-2-dir/chapter-2-landing.md)
+* [Unit 3: Portfolio Management](./chapter-3-dir/chapter-3-landing.md)
+* [Unit 4: Finanical Decisions](./chapter-4-dir/chapter-4-landing.md)
 
 ### Times, places and websites
 * __Credits__: 3-credits
 * __Lectures and discussions__: Lecture at TuTh 1:30 PM - 2:20 PM and Discussion at W 1:30 PM - 2:20 PM
 * __Website__: Canvas and GitHub. Examples, labs, and other codes used throughout the course are available on our [GitHub repository](https://github.com/varnerlab/CHEME-5660-Course-Repository-F23).
 
-### Outcomes
-Outcomes: Upon completion of this course, students will be able to:
-* Analyze financial data sets using tools from data science (DS) and machine learning (ML)/artificial intelligence (AI)
-* Identify quantitative models of asset pricing and process performance using real-time and static financial data sets 
-* Demonstrate mastery of quantitative decision-making and risk management approaches in the context of corporate finance and personal wealth management.
+
 
 ### Schedule
 The lecture, lab and problem set schedule can be viewed at (requires Cornell login): [CHEME 5660 lecture schedule here](https://cornell.box.com/s/xz2ir0k7kimtyzz10k98op5ctihqa2fh)
