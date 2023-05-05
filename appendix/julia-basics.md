@@ -319,7 +319,7 @@ S = Set{Int}([2i for i = 1:5])
 println("The number of elements of set S = $(length(S))")
 ```
 
-Finally, there are several set-specific concepts, [which are useful in the context of probability](../chapter-2-dir/probability-random-variables.md), that have been implemented in Julia. For example, the [intersection](https://en.wikipedia.org/wiki/Intersection_(set_theory)) or [union](https://en.wikipedia.org/wiki/Union_(set_theory)) of sets is encoded in the [intersect](https://docs.julialang.org/en/v1/base/collections/#Base.intersect) and [union](https://docs.julialang.org/en/v1/base/collections/#Base.union) functions.
+Finally, there are several set-specific concepts, which are useful in the context of probability, that have been implemented in Julia. For example, the [intersection](https://en.wikipedia.org/wiki/Intersection_(set_theory)) or [union](https://en.wikipedia.org/wiki/Union_(set_theory)) of sets is encoded in the [intersect](https://docs.julialang.org/en/v1/base/collections/#Base.intersect) and [union](https://docs.julialang.org/en/v1/base/collections/#Base.union) functions.
 
 ### Program Control Flow
 Julia provides several tools for [program control flow](https://docs.julialang.org/en/v1/manual/control-flow/#Control-Flow) and [repeated evaluation](https://docs.julialang.org/en/v1/manual/control-flow/#man-loops); let's review a few important examples: `if` statements, `while` loops and `for` loops.

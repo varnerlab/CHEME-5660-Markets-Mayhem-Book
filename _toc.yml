@@ -4,35 +4,40 @@
 format: jb-book
 root: infrastructure
 chapters:
-- file: julia-dir/julia-landing
-  sections:
-  - file: julia-dir/julia-installation
-  - file: julia-dir/julia-basics
-  - file: julia-dir/julia-data
-- file: chapter-1-dir/chapter-1
-  title: Unit 1. The Financial System
+- file: chapter-1-dir/chapter-1-landing
+  title: Unit 1. Financial Basics
   sections:
   - file: chapter-1-dir/pfinance-basics
   - file: chapter-1-dir/assets
-  - file: chapter-1-dir/markets
  
-- file: chapter-2-dir/chapter-2
-  title: Unit 2. Modeling and Simulation of Asset Price Dynamics
+- file: chapter-2-dir/chapter-2-landing
+  title: Unit 2. Wealth Creation
   sections: 
-  - file: chapter-2-dir/probability-random-variables
-  - file: chapter-2-dir/stochastic-differential-equations.md
-  - file: chapter-2-dir/agent-based-market-models.md
+  - file: chapter-2-dir/bonds.md
+  - file: chapter-2-dir/equity.md
+  - file: chapter-2-dir/contracts.md
 
 - file: chapter-3-dir/chapter-3-landing
-  title: Unit 3. Risk, Portfolios, Derivatives, and Leverage
+  title: Unit 3. Portfolio Management
   sections: 
-  - file: chapter-3-dir/bonds
-  - file: chapter-3-dir/contracts
-  - file: chapter-3-dir/markowitz
+  - file: chapter-3-dir/data-markowitz
+  - file: chapter-3-dir/model-markowitz
+  - file: chapter-3-dir/hedged-portfolio
 
-- file: chapter-4-dir/chapter-4
-  title: Unit 4. Decisions
+- file: chapter-4-dir/chapter-4-landing
+  title: Unit 4. Finanical Decisions
   sections:
+  - file: chapter-4-dir/markov
+  - file: chapter-4-dir/bandits
   - file: chapter-4-dir/mdp
   - file: chapter-4-dir/rl
+
+- file: appendix/appendix-landing
+  title: Appendices
+  sections:
+  - file: appendix/random
+  - file: appendix/julia-installation
+  - file: appendix/julia-basics
+  - file: appendix/julia-data
+
 - file: References

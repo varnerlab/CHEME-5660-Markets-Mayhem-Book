@@ -1,4 +1,4 @@
-# Equity, Debt and Modern Portfolio Theory
+# Data-Driven Portfolio Theory
 
 ## Introduction
 Modern portfolio theory (MPT), a method for selecting a portfolio of assets, e.g., a collection of stocks or bonds, maximizes the overall reward an investor recieves, gievn an acceptable level of risk. In particular, we'll explore Markowitz portfolio optimization; Harry Markowitz, who developed the mathematical foundation of MPT {cite}`MPT1952`, was later awarded a [Nobel Prize for his work in 1990](https://www.nobelprize.org/prizes/economic-sciences/1990/markowitz/facts/). 
@@ -98,22 +98,8 @@ the variance of the return of the portfolio $\sigma_{\mathcal{P}}^{2}$ is _simil
 
 Further, the correlation does not appear in the expected portfolio return ({prf:ref}`defn-portfolio-return`); thus, by carefully selecting assets with low correlation, the overall risk of a portfolio can be reduced without impacting the return (all else being equal). 
 
-
-
-### Risky assets only
-In the risky asset only case, the asset set $\mathcal{A}$ is composed only of shares of common stock. 
-
-#### Stocks
-Common stocks, also known as equity securities or equities, represent ownership shares in a corporation. Each share of common stock entitles its owner to one vote on any matters of corporate governance that are put to the vote at the corporation’s annual meeting and a share in the financial benefits of ownership. The corporation is controlled by a board of directors elected by the shareholders. The board meets a few times per year and selects the management team that runs the corporation daily. Managers have the authority to make most business decisions without the board’s specific approval. The board’s mandate is to oversee the management to ensure that it acts in the best interests of shareholders.
-
-The two most important characteristics of common stock as an investment are its residual claim and limited liability features:
-
- * Residual claim means that stockholders are the last in line of all those who have a claim on the assets and income of the corporation. In liquidating the firm’s assets, the shareholders have a claim to what is left after all other claimants, such as the tax authorities, employees, suppliers, bondholders, and other creditors, have been paid. For a firm not in liquidation, shareholders have a claim to the part of operating income left over after interest and taxes have been paid. Management can either pay this residual as cash dividends to shareholders or reinvest it in the business to increase the value of the shares. 
-
- * Limited liability means the most shareholders can lose in the event of the corporation’s failure is their original investment. Unlike owners of unincorporated businesses, whose creditors can lay claim to the personal assets of the owner (house, car, furniture), corporate shareholders may, at worst, have worthless stock. They are not personally liable for the firm’s obligations.
-
-#### Markowitz allocation for risk assets only
- The Markowitz allocation problem for a portfolio of risky assets is defined in {prf:ref}`defn-markowitz-risky-assets-only`.
+### Markowitz allocation for risk assets only
+In the risky asset only case, the asset set $\mathcal{A}$ is composed only of shares of common stock. The Markowitz allocation problem for a portfolio of risky assets is defined in {prf:ref}`defn-markowitz-risky-assets-only`.
 
 ````{prf:definition} Risky Markowitz Portfolio
 :label: defn-markowitz-risky-assets-only
@@ -288,7 +274,6 @@ Suppose the recent trend in `XYZ` prices is significantly different from long-te
 Many weighting schemes could be used; any approach that obeys the axioms of probability will work! However, let's borrow a strategy from chemical physics, namely, we'll assume $p(t)$ follows the [Boltzmann distribution](https://en.wikipedia.org/wiki/Boltzmann_distribution).
 
 ````{prf:definition} Boltzmann weighted excess returns
-:class: dropdown
 :label: defn-bwer
 
 Let the excess return values for firm $i$ at the time intervals $t=1,2,\dots,T$ be represented by $R_{i,t}$; the expected excess return for a firm $i$ is represented by:
