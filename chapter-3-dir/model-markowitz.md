@@ -2,12 +2,16 @@
 
 Model-Driven Portfolio Theory is a portfolio optimization technique that uses mathematical models to predict future returns and risks of different assets. It builds on the classic Markowitz portfolio theory by incorporating more sophisticated mathematical models such as stochastic calculus, econometric models, and factor models. This approach can lead to more accurate and efficient portfolio allocations by incorporating more detailed and nuanced market dynamics than traditional methods.
 
+* {ref}`content:references:single-index-models` are a type of asset pricing model that seeks to explain the returns of a security or portfolio based on a single market index. The model assumes that a security's risk and return can be explained by the broader market movements rather than individual company or sector-specific factors. By estimating the relationship between a security's return and the market index, single index models can be used to make predictions about future returns, manage risk, and evaluate the performance of investment portfolios.
+
 ---
 
+(content:references:single-index-models)=
 ## Single Index Models
 The application of index models to construct risky portfolios was originally proposed by Treynor and Black {cite}`FB1973`. Single index models are asset pricing models which measure the risk and the return of a stock relative to a risk-free alternative investment, e.g., [government treasury bonds](./bonds.md). A single index model describes the return of a firm’s stock in terms of a firm-specific return and the overall market return. One of the simplest (yet still widely used) single index models was developed by Sharpe {cite}`SHARPE1963`.
 
-The single-index model developed by developed Sharpe {cite}`SHARPE1963` is an asset pricing model which measures both the risk and the return of a stock, relative to a risk free alternative investment e.g., government treasury bounds. The single index model describes the return of the stock of firm $i$ in terms of a firm-specific return, and an overall market return:
+### Derivation
+The single-index model measures both the risk and the return of a stock, relative to a risk free alternative investment e.g., government treasury bounds. The single index model describes the return of the stock of firm $i$ in terms of a firm-specific return, and an overall market return:
 
 ```{math}
 :label: eq-single-index-model
@@ -16,17 +20,12 @@ r_{i}\left(t\right) - r_{f} = \alpha_{i}+\beta_{i}\left(r_{m}\left(t\right)-r_{f
 ```
 
 The term $r_{i}\left(t\right)$ denotes the return of firm $i$, during time period $t$, 
-$r_{f}$ denotes the risk-free rate i.e., the [interest rate of a riskless investment such as treasury bills](https://fred.stlouisfed.org/series/DTB3), while $r_{m}\left(t\right)$ denotes the return on a market portfolio e.g., an index such as the [S\&P500](https://en.wikipedia.org/wiki/S%26P_500) during time period $t$.  The term $\alpha_{i}$ denotes the firm-specific return, while $\beta_{i}$ denotes the proportion of the the firm's return associated with the overall market. 
-
-The term $R_{i}(t)\equiv\left(r_{i}\left(t\right) - r_{f}\right)$ describes the excess return of specific firm $i$, while $R_{m}(t)\equiv\left(r_{m}\left(t\right)-r_{f}\right)$ describes the excess return of the market portfolio. Replacing the excess returns in Eqn. {eq}`eq-single-index-model` gives the single index model in standard form:
+$r_{f}$ denotes the risk-free rate i.e., the [interest rate of a riskless investment such as treasury bills](https://fred.stlouisfed.org/series/DTB3), while $r_{m}\left(t\right)$ denotes the return on a market portfolio e.g., an index such as the [S\&P500](https://en.wikipedia.org/wiki/S%26P_500) during time period $t$.  The term $\alpha_{i}$ denotes the firm-specific return, while $\beta_{i}$ denotes the proportion of the the firm's return associated with the overall market ({prf:ref}`defn-single-index-model-standard`): 
 
 ````{prf:definition} Single index model of Sharpe
 :label: defn-single-index-model-standard
 
-Let $R_{i}(t)$ and $R_{m}(t)$ denote the firm-specific and market excess returns (random variables) 
-for period $t$. Further, let $\epsilon_{i}\left(t\right)$ denote a [stationary normally distributed random noise process](https://en.wikipedia.org/wiki/Normal_distribution) with mean zero and standard deviation $\sigma_{i}$. 
-
-Then, the single index model of Sharpe is given by {cite}`SHARPE1963`:
+Let $R_{i}(t)\equiv\left(r_{i}\left(t\right) - r_{f}\right)$ and $R_{m}(t)\equiv\left(r_{m}\left(t\right)-r_{f}\right)$ denote the firm-specific and market excess returns (random variables) for period $t$. Further, let $\epsilon_{i}\left(t\right)$ denote a [stationary normally distributed random noise process](https://en.wikipedia.org/wiki/Normal_distribution) with mean zero and standard deviation $\sigma_{i}$. Then, the single index model of Sharpe is given by {cite}`SHARPE1963`:
 
 ```{math}
 :label: eq-single-index-model-standard
@@ -191,7 +190,7 @@ Finish me this weekend.
 ````
 
 
-## Portfolio Return using Single Index Models
+### Portfolio Return using Single Index Models
 Portfolio return shows the expected return of portfolio $\mathcal{P}$ in terms of the expected return of each of the assets in the portfolio. Thus, we must estimate the expected returns for each asset when solving the Markowitz allocation problem from data. However, a single index model can limit this work; instead of estimating the expected return for each asset from data, we only need to calculate the expected excess market return $\mathbb{E}(R_{m})$ and then use the single index model to predict the firm-specific expected excess returns $\mathbb{E}(R_{i})$: 
 
 ````{prf:observation} Single Index Model Portfolio Return
@@ -223,7 +222,7 @@ Thus, the overall $\beta$ for the portfolio is a sum the individual firm-specifi
 
 ````
 
-## Portfolio Variance using Single Index Models
+### Portfolio Variance using Single Index Models
 The single index portfolio approach provides a theoretically attractive model for the covariance matrix $\Sigma$. In particular, let's build upon {prf:ref}`defn-portfolio-variance`:
 
 ````{prf:observation} Single Index Model Portfolio Variance
