@@ -138,6 +138,7 @@ Stylized facts, on the other hand, are empirical observations about the return f
 * [Mean reversion](https://en.wikipedia.org/wiki/Mean_reversion_(finance)): Over the long run, stock prices tend to revert to their historical mean. This means that if a stock has experienced a period of high returns, it is likely to experience lower returns in the future, and vice versa.
 * [Leverage effect](https://en.wikipedia.org/wiki/Leverage_(finance)): There is a negative relationship between stock returns and volatility. When stock prices fall, volatility tends to increase, exacerbating the decline in stock prices.
 * [Autocorrelation](https://en.wikipedia.org/wiki/Autocorrelation):  Autocorrelation refers to the tendency of stock price returns to correlate with their past returns over time. This suggests some predictability in stock price returns, which traders and investors can exploit. However, autocorrelation is not universal and may not apply to all stocks or periods.
+
 ---
 
 # Summary
