@@ -22,11 +22,7 @@ We believe there is a compelling opportunity for scientists and engineers to lev
 * __Credits__: 3-credits
 * __Lectures and discussions__: Lecture at TuTh 1:30 PM - 2:20 PM and Discussion at W 1:30 PM - 2:20 PM
 * __Website__: Canvas and GitHub. Examples, labs, and other codes used throughout the course are available on our [GitHub repository](https://github.com/varnerlab/CHEME-5660-Course-Repository-F23).
-
-
-
-### Schedule
-The lecture, lab and problem set schedule can be viewed at (requires Cornell login): [CHEME 5660 lecture schedule here](https://cornell.box.com/s/xz2ir0k7kimtyzz10k98op5ctihqa2fh)
+* __Schedule__: The lecture, lab and problem set schedule can be viewed at (requires Cornell login): [CHEME 5660 lecture schedule](https://cornell.box.com/s/xz2ir0k7kimtyzz10k98op5ctihqa2fh).
 
 ### Prerequisites
 There are no formal prerequisites for this course. However, general familiarity with common programming languages such as Python/Matlab/Julia and mathematical and computing topics such as probability, statistics, optimization, and data science tools such as Jupyter notebooks, DataFrames, etc., will be helpful.
