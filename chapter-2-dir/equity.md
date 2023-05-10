@@ -131,13 +131,15 @@ where $r_{i,j\rightarrow{k}}$ denotes the fractional return of asset $i$ over ti
 
 ````
 
-Stylized facts, on the other hand, are empirical observations about the return found to hold across different assets, e.g., stocks and time periods. They are essential for developing and testing economic and financial theories and models. By examining returns and stylized facts, analysts and investors can gain insights into market behavior, risk, and investment opportunities. Several stylized facts have been identified to characterize stock price returns:
+### Stylized facts
+Stylized facts are empirical statistical properties of the return found to hold across different assets and time scales {cite}`Cont-QuantFinance-2001`. They are essential for developing and testing economic and financial theories and models. By examining returns and stylized facts, analysts and investors gain insights into market behavior, risk, and investment opportunities. Several stylized facts have been identified, let's consider four important examples:
 
+* [Absence of Autocorrelation](https://en.wikipedia.org/wiki/Autocorrelation):  Autocorrelation refers to the tendency of stock price returns to correlate with their past returns over time. This suggests some predictability in stock price returns, which traders and investors can exploit. A random walk will not be correlated with itself.
+* [Heavy tails](https://en.wikipedia.org/wiki/Fat-tailed_distribution): Stock price returns often exhibit a distribution with fatter tails than would be expected under a normal distribution. This means that extreme price movements are more likely than would be predicted by a normal distribution.
 * [Volatility clustering](https://en.wikipedia.org/wiki/Volatility_clustering): Stock prices tend to be more volatile during specific periods and less volatile during others. This phenomenon is known as volatility clustering, suggesting that large price movements are more likely to be followed by significant moves in the same direction.
-* [Fat tails](https://en.wikipedia.org/wiki/Fat-tailed_distribution): Stock price returns often exhibit a distribution with fatter tails than would be expected under a normal distribution. This means that extreme price movements are more likely than would be predicted by a normal distribution.
-* [Mean reversion](https://en.wikipedia.org/wiki/Mean_reversion_(finance)): Over the long run, stock prices tend to revert to their historical mean. This means that if a stock has experienced a period of high returns, it is likely to experience lower returns in the future, and vice versa.
-* [Leverage effect](https://en.wikipedia.org/wiki/Leverage_(finance)): There is a negative relationship between stock returns and volatility. When stock prices fall, volatility tends to increase, exacerbating the decline in stock prices.
-* [Autocorrelation](https://en.wikipedia.org/wiki/Autocorrelation):  Autocorrelation refers to the tendency of stock price returns to correlate with their past returns over time. This suggests some predictability in stock price returns, which traders and investors can exploit. However, autocorrelation is not universal and may not apply to all stocks or periods.
+* [Leverage effect](https://en.wikipedia.org/wiki/Leverage_(finance)): There is a negative relationship between stock returns and volatility. When stock prices fall, volatility tends to increase, exacerbating the decline in stock price
+
+
 
 ---
 
