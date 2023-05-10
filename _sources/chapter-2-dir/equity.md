@@ -1,5 +1,4 @@
 # Equity Securities
-
 Common stocks, also known as equity securities or equities, represent ownership shares in a corporation. Each share of common stock entitles its owner to one vote on any matters of corporate governance that are put to the vote at the corporation’s annual meeting and a share in the financial benefits of ownership. The corporation is controlled by a board of directors elected by the shareholders. The board meets a few times per year and selects the management team that runs the corporation daily. Managers have the authority to make most business decisions without the board’s specific approval. The board’s mandate is to oversee the management to ensure that it acts in the best interests of shareholders.
 
 The two most important characteristics of common stock as an investment are its residual claim and limited liability features:
@@ -131,13 +130,56 @@ where $r_{i,j\rightarrow{k}}$ denotes the fractional return of asset $i$ over ti
 
 ````
 
-Stylized facts, on the other hand, are empirical observations about the return found to hold across different assets, e.g., stocks and time periods. They are essential for developing and testing economic and financial theories and models. By examining returns and stylized facts, analysts and investors can gain insights into market behavior, risk, and investment opportunities. Several stylized facts have been identified to characterize stock price returns:
+### Stylized facts
+Stylized facts are empirical statistical properties of return time series {cite}`Cont-QuantFinance-2001`. By examining returns and stylized facts, analysts and investors gain insights into market behavior, risk, and investment opportunities. While several stylized facts have been developed, let's consider four important examples:
 
+* [Absence of Autocorrelation](https://en.wikipedia.org/wiki/Autocorrelation):  Autocorrelation refers to the tendency of stock price returns to correlate with their past returns over time. This suggests some predictability in stock price returns, which traders and investors can exploit. A random walk will not be correlated with itself.
+* [Heavy tails](https://en.wikipedia.org/wiki/Fat-tailed_distribution): Stock price returns often exhibit a distribution with fatter tails than would be expected under a normal distribution. This means that extreme price movements are more likely than would be predicted by a normal distribution.
 * [Volatility clustering](https://en.wikipedia.org/wiki/Volatility_clustering): Stock prices tend to be more volatile during specific periods and less volatile during others. This phenomenon is known as volatility clustering, suggesting that large price movements are more likely to be followed by significant moves in the same direction.
-* [Fat tails](https://en.wikipedia.org/wiki/Fat-tailed_distribution): Stock price returns often exhibit a distribution with fatter tails than would be expected under a normal distribution. This means that extreme price movements are more likely than would be predicted by a normal distribution.
-* [Mean reversion](https://en.wikipedia.org/wiki/Mean_reversion_(finance)): Over the long run, stock prices tend to revert to their historical mean. This means that if a stock has experienced a period of high returns, it is likely to experience lower returns in the future, and vice versa.
-* [Leverage effect](https://en.wikipedia.org/wiki/Leverage_(finance)): There is a negative relationship between stock returns and volatility. When stock prices fall, volatility tends to increase, exacerbating the decline in stock prices.
-* [Autocorrelation](https://en.wikipedia.org/wiki/Autocorrelation):  Autocorrelation refers to the tendency of stock price returns to correlate with their past returns over time. This suggests some predictability in stock price returns, which can be exploited by traders and investors. However, autocorrelation is not universal and may not apply to all stocks or periods.
+* [Leverage effect](https://en.wikipedia.org/wiki/Leverage_(finance)): There is a negative relationship between stock returns and volatility. When stock prices fall, volatility tends to increase, exacerbating the decline in stock price
+
+#### Computation of returns, and stylized facts
+Stock price data from sources such as Polygon.io are usually presented as aggregated datasets containing Open High Low Close (OHLC) values. The Open price refers to the share price at the start of a specific time window, while the Close price represents the share price at the end of that window. The High and Low prices indicate the highest and lowest prices during that window, respectively. Additional data such as the number of shares traded, the number of transactions, and the volume-weighted average price (vwap) are also typically provided.
+
+````{topic} __Code__: Compute log (excess) return
+:class: dropdown 
+
+```julia
+"""
+    logR(data::DataFrame; r::Float64 = 0.045) -> Array{Float64,1}
+
+Computes the log excess return for firm i from the 
+Open High Low Close (OHLC) DataFrame.
+
+See: https://dataframes.juliadata.org/stable/man/getting_started/
+"""
+function logR(data::DataFrame; 
+    r::Float64 = 0.045, key::Symbol=:close)::Array{Float64,1}
+
+    # initialize -
+    number_trading_days = nrow(data);
+    log_excess_return_array = Array{Float64,1}(undef, number_trading_days - 1)
+    r̄ = (1+r)^(1/365) - 1; # convert the annual risk free rate to daily value
+    
+    # main loop - compute the excess returns, store them in an array
+    for i ∈ 2:number_trading_days
+        
+        # grab yesterday's and today's close price
+        P₁ = data[i-1, key]; # yesterday
+        P₂ = data[i, key];   # today
+
+        # compute the excess return -
+        log_excess_return_array[i-1] = log(P₂/P₁) - r̄
+    end
+
+    # return -
+    return log_excess_return_array;
+end
+```
+````
+
+Code {prf:ref}`code-log-excess-return`
+
 ---
 
 # Summary
