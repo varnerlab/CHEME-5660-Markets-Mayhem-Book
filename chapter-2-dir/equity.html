@@ -572,8 +572,8 @@ on asset <span class="math notranslate nohighlight">\(i\)</span> over time horiz
 <section id="computation-of-returns-and-stylized-facts">
 <h4>Computation of returns, and stylized facts<a class="headerlink" href="#computation-of-returns-and-stylized-facts" title="Permalink to this headline">#</a></h4>
 <p>Stock price data from sources such as <a class="reference external" href="http://Polygon.io">Polygon.io</a> are usually presented as aggregated datasets containing Open High Low Close (OHLC) values. The Open price refers to the share price at the start of a specific time window, while the Close price represents the share price at the end of that window. The High and Low prices indicate the highest and lowest prices during that window, respectively. Additional data such as the number of shares traded, the number of transactions, and the volume-weighted average price (vwap) are also typically provided.</p>
-<div class="dropdown topic">
-<p class="topic-title"><strong>Code</strong>: Compute log (excess) return</p>
+<div class="dropdown admonition">
+<p class="admonition-title"><strong>Code</strong>: Compute log (excess) return</p>
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="s">&quot;&quot;&quot;</span>
 <span class="s">    logR(data::DataFrame; r::Float64 = 0.045) -&gt; Array{Float64,1}</span>
 

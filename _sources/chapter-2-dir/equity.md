@@ -141,7 +141,7 @@ Stylized facts are empirical statistical properties of return time series {cite}
 #### Computation of returns, and stylized facts
 Stock price data from sources such as Polygon.io are usually presented as aggregated datasets containing Open High Low Close (OHLC) values. The Open price refers to the share price at the start of a specific time window, while the Close price represents the share price at the end of that window. The High and Low prices indicate the highest and lowest prices during that window, respectively. Additional data such as the number of shares traded, the number of transactions, and the volume-weighted average price (vwap) are also typically provided.
 
-````{topic} __Code__: Compute log (excess) return
+````{admonition} __Code__: Compute log (excess) return
 :class: dropdown 
 
 ```julia
