@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Markov Chains and Hidden Markov Models &#8212; CHEME 5660</title>
+    <title>Markov Chains &#8212; CHEME 5660</title>
   
   
   
@@ -69,11 +69,13 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'chapter-4-dir/markov';</script>
     <link rel="canonical" href="https://varnerlab.github.io/CHEME-5660-Markets-Mayhem-Book/infrastructure.html/chapter-4-dir/markov.html" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Multiarm Bandit Problems" href="bandits.html" />
+    <link rel="next" title="Markov Decision Process" href="mdp.html" />
     <link rel="prev" title="Unit 4: Decisions" href="chapter-4-landing.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="None"/>
@@ -161,7 +163,7 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="../infrastructure.html">
-                    Financial Data, Markets, and Mayhem
+                    CHEME 5660: Financial Data, Markets, and Mayhem
                 </a>
             </li>
         </ul>
@@ -187,11 +189,11 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 </li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="chapter-4-landing.html">Unit 4. Finanical Decisions</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Markov Chains and Hidden Markov Models</a></li>
-
-<li class="toctree-l2"><a class="reference internal" href="bandits.html">Multiarm Bandit Problems</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Markov Chains</a></li>
 
 <li class="toctree-l2"><a class="reference internal" href="mdp.html">Markov Decision Process</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="bandits.html">Multiarm Bandit Problems</a></li>
 
 <li class="toctree-l2"><a class="reference internal" href="rl.html">Reinforcement Learning</a></li>
 
@@ -388,7 +390,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Markov Chains and Hidden Markov Models</h1>
+    <h1>Markov Chains</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -398,7 +400,14 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Markov Chains and Hidden Markov Models</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Markov Chains</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#discrete-time-markov-chains">Discrete-time Markov chains</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sampling-the-stationary-distribution">Sampling the stationary distribution</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hidden-markov-models-hmms">Hidden Markov Models (HMMs)</a></li>
+</ul>
+</li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
 </ul>
 
@@ -412,14 +421,274 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="markov-chains-and-hidden-markov-models">
-<h1>Markov Chains and Hidden Markov Models<a class="headerlink" href="#markov-chains-and-hidden-markov-models" title="Permalink to this headline">#</a></h1>
-<p>Fill me in.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="markov-chains">
+<h1>Markov Chains<a class="headerlink" href="#markov-chains" title="Permalink to this headline">#</a></h1>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/Andrey_Markov">Andrey Markov (1856 - 1922)</a> introduced Markov chains in the early 20th century. These mathematical models have found wide-ranging applications in fields such as finance, physics, biology, engineering, and computer science.</p>
+<p>Markov chains are stochastic processes that model the probability of moving from one state to another in discrete time steps. The model assumes that the probability of transitioning from one state to another depends solely on the current state and not on any past events. Markov chains are particularly useful for modeling complex systems that involve uncertainty and randomness, including predicting weather patterns and the behavior of stock prices.</p>
+<div class="topic">
+<p class="topic-title">Outline</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#content-references-discrete-time-markov-chains"><span class="std std-ref">Discrete-time Markov chains</span></a> are mathematical models that describe the behavior of a system that transitions between a finite set of states at discrete time steps. The evolution of the system depends only on its current state and not on its previous history.</p></li>
+<li><p><a class="reference internal" href="#content-references-structure-of-an-hmm"><span class="std std-ref">Hidden Markov Models (HMMs)</span></a> is a probabilistic model that describes a system where the observations are generated by an underlying Markov process whose states are not directly observable. The goal is to infer the hidden states given only the observations.</p></li>
+</ul>
+</div>
+<hr class="docutils" />
+<section id="discrete-time-markov-chains">
+<span id="content-references-discrete-time-markov-chains"></span><h2>Discrete-time Markov chains<a class="headerlink" href="#discrete-time-markov-chains" title="Permalink to this headline">#</a></h2>
+<figure class="align-default" id="fig-discrete-markov-model">
+<a class="reference internal image-reference" href="../_images/Fig-Discrete-MarkovChain-Schematic.pdf"><img alt="../_images/Fig-Discrete-MarkovChain-Schematic.pdf" src="../_images/Fig-Discrete-MarkovChain-Schematic.pdf" style="height: 120px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 29 </span><span class="caption-text">Schematic of a discrete two-state time-invariant Markov model; <span class="math notranslate nohighlight">\(p_{ij}\)</span> denotes the time-invariant transition probability between state <span class="math notranslate nohighlight">\(i\)</span> and <span class="math notranslate nohighlight">\(j\)</span>.</span><a class="headerlink" href="#fig-discrete-markov-model" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>A discrete-time Markov chain is a sequence of random variables <span class="math notranslate nohighlight">\(X_{1}\)</span>, <span class="math notranslate nohighlight">\(X_{2}\)</span>, <span class="math notranslate nohighlight">\(X_{3}\)</span>, …, <span class="math notranslate nohighlight">\(X_{n}\)</span> that have the <a class="reference external" href="https://en.wikipedia.org/wiki/Markov_property">Markov property</a>, i.e., the probability of moving to the <em>next state</em> depends only on the <em>present state</em> and not on the <em>previous states</em>:</p>
+<div class="math notranslate nohighlight" id="equation-eqn-markov-property">
+<span class="eqno">(41)<a class="headerlink" href="#equation-eqn-markov-property" title="Permalink to this equation">#</a></span>\[P(X_{n+1} = x | X_{1}=x_{1}, \dots, X_{n}=x_{n}) = P(X_{n+1} = x | X_{n}=y)\]</div>
+<p>where <em>states</em> refer to a finite set of discrete values in which the system can exist.  If the state space is finite, the transition probability distribution, i.e., the probability of moving from the state(s) <span class="math notranslate nohighlight">\(i\rightarrow{j}\)</span>, can be encoded in the transition matrix <span class="math notranslate nohighlight">\(\mathbf{P}\)</span>. Elements of <span class="math notranslate nohighlight">\(\mathbf{P}\)</span>, denoted as <span class="math notranslate nohighlight">\(p_{ij}\)</span>, encode the probability of moving from state <span class="math notranslate nohighlight">\(i\rightarrow{j}\)</span> during the next time step:</p>
+<div class="math notranslate nohighlight" id="equation-eqn-transition-prob-matrix">
+<span class="eqno">(42)<a class="headerlink" href="#equation-eqn-transition-prob-matrix" title="Permalink to this equation">#</a></span>\[p_{ij} = P(X_{n+1}~=~j~|~X_{n}~=~i)\]</div>
+<p>The transition matrix <span class="math notranslate nohighlight">\(\mathbf{P}\)</span> has interesting properties:</p>
+<ul class="simple">
+<li><p>First, the rows of transition matrix <span class="math notranslate nohighlight">\(\mathbf{P}\)</span> must sum to unity, i.e., each row encodes the probability of all possible outcomes. Thus, it must sum to one.</p></li>
+<li><p>Second, if the transition matrix  <span class="math notranslate nohighlight">\(\mathbf{P}\)</span> is time-invariant, then <span class="math notranslate nohighlight">\(\mathbf{P}\)</span> is the same at each step, i.e., <span class="math notranslate nohighlight">\(p_{ij}\)</span> doesn’t change as <span class="math notranslate nohighlight">\(n\rightarrow{n+1}~\forall{n}\)</span>.</p></li>
+</ul>
+<p>Putting these ideas together gives (<a class="reference internal" href="#defn-n-transition">Definition 31</a>):</p>
+<div class="proof definition admonition" id="defn-n-transition">
+<p class="admonition-title"><span class="caption-number">Definition 31 </span> (Time-invariant state transition)</p>
+<section class="definition-content" id="proof-content">
+<p>A Markov chain has finite state set <span class="math notranslate nohighlight">\(\mathcal{S}\)</span> and the time-invariant state transition matrix <span class="math notranslate nohighlight">\(\mathbf{P}\)</span>. Let the state vector at time <span class="math notranslate nohighlight">\(j\)</span> be given by <span class="math notranslate nohighlight">\(\mathbf{x}_{j}\)</span>, where <span class="math notranslate nohighlight">\(x_{s,j}\geq{0},\forall{s}\in\mathcal{S}\)</span> and:</p>
+<div class="math notranslate nohighlight">
+\[\sum_{s\in\mathcal{S}}x_{s,j} = 1\qquad\forall{j}\]</div>
+<p>Then, the state of the Markov chain at time step <span class="math notranslate nohighlight">\(n+1\)</span> is given by:</p>
+<div class="math notranslate nohighlight">
+\[\mathbf{x}_{n+1} = \mathbf{x}_{n}\mathbf{P}^n\]</div>
+<p>where <span class="math notranslate nohighlight">\(\mathbf{x}_{n}\)</span> denotes the system state vector at time step <span class="math notranslate nohighlight">\(n\)</span>.</p>
+</section>
+</div><p>Finally, suppose that a Markov chain is both time-invariant and non-periodic. Then, there exists a unique stationary distribution <span class="math notranslate nohighlight">\(\pi\)</span> such that <span class="math notranslate nohighlight">\(\mathbf{P}^{k}\)</span> converges to a rank-one matrix in which each row is the stationary distribution <span class="math notranslate nohighlight">\(\pi\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\lim_{k\rightarrow\infty} \mathbf{P}^{k} = \mathbf{1}\pi\]</div>
+<p>where <span class="math notranslate nohighlight">\(\mathbf{1}\)</span> is a column vector of all 1’s. Let’s consider an example to make these ideas less abstract (<a class="reference internal" href="#example-dicrete-mchain">Example 22</a>):</p>
+<div class="proof example dropdown admonition" id="example-dicrete-mchain">
+<p class="admonition-title"><span class="caption-number">Example 22 </span> (Discrete Markov chain stationary distribution)</p>
+<section class="example-content" id="proof-content">
+<p>Consider the time-invariant two-state Discrete Markov chain with state transition matrix <span class="math notranslate nohighlight">\(\mathbf{P}\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\mathbf{P} = \begin{bmatrix}
+0.9 &amp; 0.1 \\
+0.6 &amp; 0.4 \\
+\end{bmatrix}
+\end{split}\]</div>
+<p>shown in (<a class="reference internal" href="#fig-discrete-markov-model"><span class="std std-numref">Fig. 29</span></a>). This transition matrix admits a stationary (non-periodic) solution. As the number of iterations <span class="math notranslate nohighlight">\(n\)</span> becomes large the system state converges to a stationary distribution <span class="math notranslate nohighlight">\(\pi\)</span>. Thus, regardless of the starting state of this Markov chain, the long-term behavior is given by the stationary distribution <span class="math notranslate nohighlight">\(\pi\)</span>.</p>
+<p>Develop a script to compute the stationary distribution <span class="math notranslate nohighlight">\(\pi\)</span>:</p>
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># load package -</span>
+<span class="k">using</span> <span class="n">LinearAlgebra</span>
+
+<span class="s">&quot;&quot;&quot;</span>
+<span class="s">    iterate(P::Array{Float64,2}, counter::Int; </span>
+<span class="s">        maxcount::Int = 100, ϵ::Float64 = 0.1) -&gt; Array{Float64,2}</span>
+
+<span class="s">Recursively computes a stationary distribution. </span>
+<span class="s">Computation stops if ||P_new - P|| &lt; ϵ or the max number of iterations is hit. </span>
+<span class="s">&quot;&quot;&quot;</span>
+<span class="k">function</span> <span class="n">iterate</span><span class="p">(</span><span class="n">P</span><span class="o">::</span><span class="kt">Array</span><span class="p">{</span><span class="kt">Float64</span><span class="p">,</span><span class="mi">2</span><span class="p">},</span> <span class="n">counter</span><span class="o">::</span><span class="kt">Int</span><span class="p">;</span> <span class="n">maxcount</span><span class="o">::</span><span class="kt">Int</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="n">ϵ</span><span class="o">::</span><span class="kt">Float64</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">)</span><span class="o">::</span><span class="kt">Array</span><span class="p">{</span><span class="kt">Float64</span><span class="p">,</span><span class="mi">2</span><span class="p">}</span>
+
+    <span class="c"># base case -</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">counter</span> <span class="o">==</span> <span class="n">maxcount</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">P</span>
+    <span class="k">else</span>
+        <span class="c"># generate a new P -</span>
+        <span class="n">P_new</span> <span class="o">=</span> <span class="n">P</span><span class="o">^</span><span class="p">(</span><span class="n">counter</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">err</span> <span class="o">=</span> <span class="n">P_new</span> <span class="o">-</span> <span class="n">P</span><span class="p">;</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">norm</span><span class="p">(</span><span class="n">err</span><span class="p">)</span><span class="o">&lt;=</span><span class="n">ϵ</span><span class="p">)</span>
+            <span class="k">return</span> <span class="n">P_new</span>
+        <span class="k">else</span>
+            <span class="c"># we have NOT hit the error target, or the max iterations</span>
+            <span class="n">iterate</span><span class="p">(</span><span class="n">P_new</span><span class="p">,</span> <span class="p">(</span><span class="n">counter</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span> <span class="n">maxcount</span><span class="o">=</span><span class="n">maxcount</span><span class="p">,</span> <span class="n">ϵ</span> <span class="o">=</span> <span class="n">ϵ</span><span class="p">)</span>
+        <span class="k">end</span>
+    <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="c"># Setup the transition probability matrix -</span>
+<span class="n">P</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="mf">0.9</span> <span class="mf">0.1</span><span class="p">;</span>
+    <span class="mf">0.6</span> <span class="mf">0.4</span><span class="p">;</span>
+<span class="p">];</span>
+
+<span class="c"># compute -</span>
+<span class="n">counter</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">P_stationary</span> <span class="o">=</span> <span class="n">iterate</span><span class="p">(</span><span class="n">P</span><span class="p">,</span> <span class="n">counter</span><span class="p">;</span>  <span class="n">maxcount</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="n">ϵ</span> <span class="o">=</span> <span class="mf">0.001</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</div><section id="sampling-the-stationary-distribution">
+<h3>Sampling the stationary distribution<a class="headerlink" href="#sampling-the-stationary-distribution" title="Permalink to this headline">#</a></h3>
+<p>Once the stationary distribution <span class="math notranslate nohighlight">\(\pi\)</span> of the Markov chain has been estimated, we can use it to generate samples from that chain.
+For example, the stationary distribution for the two-state Markov chain in <a class="reference internal" href="#example-dicrete-mchain">Example 22</a> is given by:</p>
+<div class="math notranslate nohighlight">
+\[\pi = (0.857,0.143)\]</div>
+<p>We model this system as a <a class="reference external" href="https://en.wikipedia.org/wiki/Categorical_distribution">Categorical distribution</a>. A categorical distribution is a discrete probability distribution that models the probability of a random variable taking on one of a finite set of possible outcomes:</p>
+<div class="math notranslate nohighlight" id="equation-eqn-categorical-dist">
+<span class="eqno">(43)<a class="headerlink" href="#equation-eqn-categorical-dist" title="Permalink to this equation">#</a></span>\[P(X = k) = \pi\left[k\right]\]</div>
+<p>Sampling a categorical distribution constructed from the stationary distribution <span class="math notranslate nohighlight">\(\pi\)</span> will return the stationary
+distribution (<a class="reference internal" href="#example-categorical-dist">Example 23</a>):</p>
+<div class="proof example dropdown admonition" id="example-categorical-dist">
+<p class="admonition-title"><span class="caption-number">Example 23 </span> (Categorical distribution)</p>
+<section class="example-content" id="proof-content">
+<p>Sample a categorical distribution constructed using the stationary distribution:</p>
+<div class="math notranslate nohighlight">
+\[\pi = (0.857,0.143)\]</div>
+<p>Generate <span class="math notranslate nohighlight">\(N = 1000\)</span> samples and compute the fraction of state <code class="docutils literal notranslate"><span class="pre">1</span></code> and state <code class="docutils literal notranslate"><span class="pre">2</span></code>.</p>
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># include -</span>
+<span class="n">include</span><span class="p">(</span><span class="s">&quot;Include.jl&quot;</span><span class="p">)</span>
+
+<span class="c"># setup -</span>
+<span class="nb">π</span> <span class="o">=</span> <span class="p">[</span> <span class="mf">0.857</span><span class="p">,</span> <span class="mf">0.143</span><span class="p">];</span>
+<span class="n">number_of_samples</span> <span class="o">=</span> <span class="mi">1000</span><span class="p">;</span>
+
+<span class="c"># build a categorical distribution </span>
+<span class="n">d</span> <span class="o">=</span> <span class="n">Categorical</span><span class="p">(</span><span class="nb">π</span><span class="p">);</span>
+
+<span class="c"># sample -</span>
+<span class="n">samples</span> <span class="o">=</span> <span class="n">rand</span><span class="p">(</span><span class="n">d</span><span class="p">,</span> <span class="n">number_of_samples</span><span class="p">)</span>
+
+<span class="c"># how many 1&#39;s -</span>
+<span class="n">number_of_1</span> <span class="o">=</span> <span class="n">findall</span><span class="p">(</span><span class="n">x</span><span class="o">-&gt;</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">1</span><span class="p">,</span> <span class="n">samples</span><span class="p">)</span> <span class="o">|&gt;</span> <span class="n">length</span><span class="p">;</span>
+<span class="n">number_of_2</span> <span class="o">=</span> <span class="n">findall</span><span class="p">(</span><span class="n">x</span><span class="o">-&gt;</span> <span class="n">x</span> <span class="o">==</span> <span class="mi">2</span><span class="p">,</span> <span class="n">samples</span><span class="p">)</span> <span class="o">|&gt;</span> <span class="n">length</span><span class="p">;</span>
+
+<span class="c"># println -</span>
+<span class="n">println</span><span class="p">(</span><span class="s">&quot;Fraction of state 1: </span><span class="si">$</span><span class="p">(</span><span class="n">number_of_1</span><span class="o">/</span><span class="n">number_of_samples</span><span class="p">)</span><span class="s"> and state 2: </span><span class="si">$</span><span class="p">(</span><span class="n">number_of_2</span><span class="o">/</span><span class="n">number_of_samples</span><span class="p">)</span><span class="s">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</div></section>
+</section>
+<section id="hidden-markov-models-hmms">
+<span id="content-references-structure-of-an-hmm"></span><h2>Hidden Markov Models (HMMs)<a class="headerlink" href="#hidden-markov-models-hmms" title="Permalink to this headline">#</a></h2>
+<p>Hidden Markov models (HMMs) are statistical models in which the system being modeled is assumed to be a Markov process with unobservable states <span class="math notranslate nohighlight">\(s\in\mathcal{S}\)</span> but observable outcomes <span class="math notranslate nohighlight">\(o\in\mathcal{O}\)</span>. HMMs have the same structural components as a standard Markov chain model. However, each hidden state can be considered sending an observable single, with the emission probability.</p>
+<figure class="align-default" id="fig-discrete-hidden-markov-model">
+<a class="reference internal image-reference" href="../_images/Fig-HMM-Schematic-23.pdf"><img alt="../_images/Fig-HMM-Schematic-23.pdf" src="../_images/Fig-HMM-Schematic-23.pdf" style="height: 280px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 30 </span><span class="caption-text">Schematic of a discrete two-state time-invariant hidden Markov model (HMM); <span class="math notranslate nohighlight">\(p_{ij}\)</span> denotes the time-invariant transition probability between state <span class="math notranslate nohighlight">\(i\)</span> and <span class="math notranslate nohighlight">\(j\)</span> while <span class="math notranslate nohighlight">\(t_{ij}\)</span> denotes the emission probability for state <span class="math notranslate nohighlight">\(i\)</span> and observation <span class="math notranslate nohighlight">\(j\)</span>.</span><a class="headerlink" href="#fig-discrete-hidden-markov-model" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>The emission probability refers to the likelihood of observing a particular output <span class="math notranslate nohighlight">\(Y = o_{t}\)</span>, given the current state of the Markov chain <span class="math notranslate nohighlight">\(X = s_{t}\)</span>:</p>
+<div class="math notranslate nohighlight" id="equation-eqn-hmm-output">
+<span class="eqno">(44)<a class="headerlink" href="#equation-eqn-hmm-output" title="Permalink to this equation">#</a></span>\[P(Y = o_{t} | X = s_{t})\]</div>
+<p>Similar to the transition probability, the emission probability must sum to unity:</p>
+<div class="math notranslate nohighlight">
+\[\sum_{o\in\mathcal{O}} P(Y = o | X = s) = 1\qquad\forall{s\in\mathcal{S}}\]</div>
+<p>The emission probability plays a crucial role in HMMs, as it is used to calculate the likelihood of a sequence of observed symbols, given the current state of the hidden Markov chain. This likelihood is then used in various applications, including speech recognition, natural language processing, and bioinformatics. The emission probability can be computed using different methods, including maximum likelihood estimation or Bayesian inference.</p>
+<p>Let’s build upon <a class="reference internal" href="#example-dicrete-mchain">Example 22</a> and construct an HMM that mimics a <a class="reference external" href="https://en.wikipedia.org/wiki/Trinomial_tree">trinomial lattice model of Boyle</a> (<a class="reference internal" href="#example-dicrete-mchain-hmm">Example 24</a>):</p>
+<div class="proof example dropdown admonition" id="example-dicrete-mchain-hmm">
+<p class="admonition-title"><span class="caption-number">Example 24 </span> (Stationary hidden Markov model)</p>
+<section class="example-content" id="proof-content">
+<p>Model the share price of a stock <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> using a time-invariant two-state Discrete Markov chain with the state transition matrix <span class="math notranslate nohighlight">\(\mathbf{P}\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\mathbf{P} = \begin{bmatrix}
+0.60 &amp; 0.40 \\
+0.35 &amp; 0.65 \\
+\end{bmatrix}
+\end{split}\]</div>
+<p>and an emission probability matrix <span class="math notranslate nohighlight">\(\mathbf{E}\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\mathbf{E} = \begin{bmatrix}
+0.70 &amp; 0.20 &amp; 0.1 \\
+0.10 &amp; 0.20 &amp; 0.7 \\
+\end{bmatrix}
+\end{split}\]</div>
+<p>Let <span class="math notranslate nohighlight">\(Y_{i}\)</span> denote the observable value for state <span class="math notranslate nohighlight">\(i\)</span>. Assume output state <code class="docutils literal notranslate"><span class="pre">1</span></code> is an up move (a 1% increase), state <code class="docutils literal notranslate"><span class="pre">2</span></code> the price stays the same, and state <code class="docutils literal notranslate"><span class="pre">3</span></code> indicates a price drop (a 1% decrease).</p>
+<p>Simulation script:</p>
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># include the include -</span>
+<span class="n">include</span><span class="p">(</span><span class="s">&quot;Include.jl&quot;</span><span class="p">);</span> <span class="c"># load paths, packages and codes</span>
+
+<span class="c"># PHASE 1: Setup the calculation</span>
+<span class="c"># Setup/initialize</span>
+<span class="n">number_of_hidden_states</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">number_of_output_states</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">number_of_simulation_steps</span> <span class="o">=</span> <span class="mi">480</span>
+<span class="n">emission_probability_dict</span> <span class="o">=</span> <span class="kt">Dict</span><span class="p">{</span><span class="kt">Int</span><span class="p">,</span><span class="kt">Categorical</span><span class="p">}()</span>
+<span class="n">simulation_dict</span> <span class="o">=</span> <span class="kt">Dict</span><span class="p">{</span><span class="kt">Int</span><span class="p">,</span><span class="kt">Int</span><span class="p">}()</span>
+
+<span class="c"># Transition matrix for the MC</span>
+<span class="n">P</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="mf">0.60</span> <span class="mf">0.40</span><span class="p">;</span>
+    <span class="mf">0.35</span> <span class="mf">0.65</span><span class="p">;</span>
+<span class="p">];</span>
+
+<span class="c"># Emission probability matrix -</span>
+<span class="n">EPM</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="mf">0.70</span> <span class="mf">0.20</span> <span class="mf">0.1</span> <span class="p">;</span>
+    <span class="mf">0.10</span> <span class="mf">0.20</span> <span class="mf">0.7</span> <span class="p">;</span>
+<span class="p">]</span>
+
+<span class="c"># compute the stationary distribution for the MC -</span>
+<span class="nb">π</span> <span class="o">=</span> <span class="n">iterate</span><span class="p">(</span><span class="n">P</span><span class="p">,</span> <span class="mi">1</span><span class="p">;</span>  <span class="n">maxcount</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="n">ϵ</span> <span class="o">=</span> <span class="mf">0.001</span><span class="p">)[</span><span class="mi">1</span><span class="p">,</span><span class="o">:</span><span class="p">]</span> <span class="c"># assumption: iterate converges</span>
+<span class="n">mcd</span> <span class="o">=</span> <span class="n">Categorical</span><span class="p">(</span><span class="nb">π</span><span class="p">);</span> <span class="c"># Markov-chain distribution</span>
+
+<span class="c"># construct emission probability dictionary -</span>
+<span class="k">for</span> <span class="n">i</span> <span class="o">∈</span> <span class="mi">1</span><span class="o">:</span><span class="n">number_of_hidden_states</span>
+    <span class="n">emission_probability_dict</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">Categorical</span><span class="p">(</span><span class="n">EPM</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="o">:</span><span class="p">])</span>
+<span class="k">end</span>
+
+<span class="c"># PHASE 2: Simulation </span>
+<span class="k">for</span> <span class="n">i</span> <span class="o">∈</span> <span class="mi">1</span><span class="o">:</span><span class="n">number_of_simulation_steps</span>
+    
+    <span class="c"># which state is the mc in?</span>
+    <span class="n">hidden_state</span> <span class="o">=</span> <span class="n">rand</span><span class="p">(</span><span class="n">mcd</span><span class="p">);</span>
+    
+    <span class="c"># grab the emission probability model from the emission_probability_dict -</span>
+    <span class="n">epd</span> <span class="o">=</span> <span class="n">emission_probability_dict</span><span class="p">[</span><span class="n">hidden_state</span><span class="p">];</span>
+    
+    <span class="c"># role for a random ouput -</span>
+    <span class="n">simulation_dict</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">rand</span><span class="p">(</span><span class="n">epd</span><span class="p">);</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+<p>Plotting script:</p>
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># runme -</span>
+<span class="n">include</span><span class="p">(</span><span class="s">&quot;runme.jl&quot;</span><span class="p">)</span> <span class="c"># loads packages, computes simulation_dict -</span>
+
+<span class="c"># Setup -</span>
+<span class="n">Sₒ</span> <span class="o">=</span> <span class="mf">100.0</span><span class="p">;</span>
+<span class="n">Δ</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.01</span><span class="p">];</span>
+<span class="n">S</span> <span class="o">=</span> <span class="kt">Dict</span><span class="p">{</span><span class="kt">Int</span><span class="p">,</span><span class="kt">Float64</span><span class="p">}()</span>
+<span class="n">S</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">Sₒ</span>
+
+<span class="c"># setup colors -</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="kt">Dict</span><span class="p">{</span><span class="kt">Int</span><span class="p">,</span><span class="kt">RGB</span><span class="p">}();</span>
+<span class="n">colors</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="sa">colorant</span><span class="s">&quot;#0077BB&quot;</span>
+
+<span class="c"># sim loop -</span>
+<span class="k">for</span> <span class="n">i</span> <span class="o">∈</span> <span class="mi">1</span><span class="o">:</span><span class="n">number_of_simulation_steps</span>
+
+    <span class="c"># market state -</span>
+    <span class="n">market_state_index</span> <span class="o">=</span> <span class="n">simulation_dict</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+
+    <span class="c"># get previous price -</span>
+    <span class="n">S_old</span> <span class="o">=</span> <span class="n">S</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">];</span>
+    <span class="n">S</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">S_old</span><span class="o">*</span><span class="n">exp</span><span class="p">(</span><span class="n">Δ</span><span class="p">[</span><span class="n">market_state_index</span><span class="p">]);</span>
+<span class="k">end</span>
+
+<span class="c"># make a plot -</span>
+<span class="n">plot!</span><span class="p">(</span><span class="n">S</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span><span class="n">c</span><span class="o">=</span><span class="n">colors</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">label</span><span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">)</span>
+<span class="n">xlabel!</span><span class="p">(</span><span class="s">&quot;Time index (AU)&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
+<span class="n">ylabel!</span><span class="p">(</span><span class="s">&quot;Share price (USD/share)&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</div></section>
 </section>
 <hr class="docutils" />
 <section class="tex2jax_ignore mathjax_ignore" id="summary">
 <h1>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">#</a></h1>
-<p>Fill me in</p>
+<p>In this lecture, we discussed Markov models:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#content-references-discrete-time-markov-chains"><span class="std std-ref">Discrete-time Markov chains</span></a> are mathematical models that describe the behavior of a system that transitions between a finite set of states at discrete time steps. The evolution of the system depends only on its current state and not on its previous history.</p></li>
+<li><p><a class="reference internal" href="#content-references-structure-of-an-hmm"><span class="std std-ref">Hidden Markov Models (HMMs)</span></a> is a probabilistic model that describes a system where the observations are generated by an underlying Markov process whose states are not directly observable. The goal is to infer the hidden states given only the observations.</p></li>
+</ul>
 </section>
 
     <script type="text/x-thebe-config">
@@ -463,11 +732,11 @@ document.write(`
       </div>
     </a>
     <a class="right-next"
-       href="bandits.html"
+       href="mdp.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Multiarm Bandit Problems</p>
+        <p class="prev-next-title">Markov Decision Process</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -489,7 +758,14 @@ document.write(`
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Markov Chains and Hidden Markov Models</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Markov Chains</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#discrete-time-markov-chains">Discrete-time Markov chains</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sampling-the-stationary-distribution">Sampling the stationary distribution</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hidden-markov-models-hmms">Hidden Markov Models (HMMs)</a></li>
+</ul>
+</li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
 </ul>
 

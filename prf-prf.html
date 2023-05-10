@@ -165,7 +165,7 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="infrastructure.html">
-                    Financial Data, Markets, and Mayhem
+                    CHEME 5660: Financial Data, Markets, and Mayhem
                 </a>
             </li>
         </ul>
@@ -191,11 +191,11 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="chapter-4-dir/chapter-4-landing.html">Unit 4. Finanical Decisions</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="chapter-4-dir/markov.html">Markov Chains and Hidden Markov Models</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chapter-4-dir/markov.html">Markov Chains</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="chapter-4-dir/mdp.html">Stochastic Sequential Decision Making</a></li>
 
 <li class="toctree-l2"><a class="reference internal" href="chapter-4-dir/bandits.html">Multiarm Bandit Problems</a></li>
-
-<li class="toctree-l2"><a class="reference internal" href="chapter-4-dir/mdp.html">Markov Decision Process</a></li>
 
 <li class="toctree-l2"><a class="reference internal" href="chapter-4-dir/rl.html">Reinforcement Learning</a></li>
 
@@ -392,6 +392,7 @@ document.write(`
    <a href="#cap-defn-markowitz-risky-assets-only"><strong>defn-markowitz-risky-assets-only</strong></a> | 
    <a href="#cap-defn-multi-arm-bernoulli-bandit-problem"><strong>defn-multi-arm-bernoulli-bandit-problem</strong></a> | 
    <a href="#cap-defn-multi-perod-discrete-conversion"><strong>defn-multi-perod-discrete-conversion</strong></a> | 
+   <a href="#cap-defn-n-transition"><strong>defn-n-transition</strong></a> | 
    <a href="#cap-defn-normal-eqn-ols"><strong>defn-normal-eqn-ols</strong></a> | 
    <a href="#cap-defn-one-perod-discrete-conversion"><strong>defn-one-perod-discrete-conversion</strong></a> | 
    <a href="#cap-defn-percentage-return"><strong>defn-percentage-return</strong></a> | 
@@ -421,6 +422,7 @@ document.write(`
    <a href="#cap-example-MDP-line"><strong>example-MDP-line</strong></a> | 
    <a href="#cap-example-MDP-line-mod"><strong>example-MDP-line-mod</strong></a> | 
    <a href="#cap-example-average-cost"><strong>example-average-cost</strong></a> | 
+   <a href="#cap-example-categorical-dist"><strong>example-categorical-dist</strong></a> | 
    <a href="#cap-example-delta-hedge-two-cases"><strong>example-delta-hedge-two-cases</strong></a> | 
    <a href="#cap-example-dicrete-mchain"><strong>example-dicrete-mchain</strong></a> | 
    <a href="#cap-example-dicrete-mchain-hmm"><strong>example-dicrete-mchain-hmm</strong></a> | 
@@ -437,7 +439,6 @@ document.write(`
    <a href="#cap-obs-beta-risk-measure"><strong>obs-beta-risk-measure</strong></a> | 
    <a href="#cap-obs-expectation-props"><strong>obs-expectation-props</strong></a> | 
    <a href="#cap-obs-incremental-update-rule"><strong>obs-incremental-update-rule</strong></a> | 
-   <a href="#cap-obs-n-transition"><strong>obs-n-transition</strong></a> | 
    <a href="#cap-obs-single-index-model-covariance"><strong>obs-single-index-model-covariance</strong></a> | 
    <a href="#cap-obs-single-index-model-p-return"><strong>obs-single-index-model-p-return</strong></a> | 
    <a href="#cap-obs-time-value-of-money"><strong>obs-time-value-of-money</strong></a> | 
@@ -712,6 +713,14 @@ document.write(`
        <a href="chapter-1-dir/assets.html#defn-multi-perod-discrete-conversion"><code class="xref">defn-multi-perod-discrete-conversion</code></a> <em>(chapter-1-dir/assets)</em></td><td>
        <em>definition</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-defn-n-transition"><td></td><td>
+       <strong>defn-n-transition</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="chapter-4-dir/markov.html#defn-n-transition"><code class="xref">defn-n-transition</code></a> <em>(chapter-4-dir/markov)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-defn-normal-eqn-ols"><td></td><td>
        <strong>defn-normal-eqn-ols</strong></td><td></td></tr>
      <tr>
@@ -944,6 +953,14 @@ document.write(`
        <a href="chapter-3-dir/data-markowitz.html#example-average-cost"><code class="xref">example-average-cost</code></a> <em>(chapter-3-dir/data-markowitz)</em></td><td>
        <em>example</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-example-categorical-dist"><td></td><td>
+       <strong>example-categorical-dist</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="chapter-4-dir/markov.html#example-categorical-dist"><code class="xref">example-categorical-dist</code></a> <em>(chapter-4-dir/markov)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-example-delta-hedge-two-cases"><td></td><td>
        <strong>example-delta-hedge-two-cases</strong></td><td></td></tr>
      <tr>
@@ -957,7 +974,7 @@ document.write(`
      <tr>
        <td></td>
        <td>
-       <a href="chapter-4-dir/mdp.html#example-dicrete-mchain"><code class="xref">example-dicrete-mchain</code></a> <em>(chapter-4-dir/mdp)</em></td><td>
+       <a href="chapter-4-dir/markov.html#example-dicrete-mchain"><code class="xref">example-dicrete-mchain</code></a> <em>(chapter-4-dir/markov)</em></td><td>
        <em>example</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-example-dicrete-mchain-hmm"><td></td><td>
@@ -965,7 +982,7 @@ document.write(`
      <tr>
        <td></td>
        <td>
-       <a href="chapter-4-dir/mdp.html#example-dicrete-mchain-hmm"><code class="xref">example-dicrete-mchain-hmm</code></a> <em>(chapter-4-dir/mdp)</em></td><td>
+       <a href="chapter-4-dir/markov.html#example-dicrete-mchain-hmm"><code class="xref">example-dicrete-mchain-hmm</code></a> <em>(chapter-4-dir/markov)</em></td><td>
        <em>example</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-example-dmi-single-index-model"><td></td><td>
@@ -1070,14 +1087,6 @@ document.write(`
        <td></td>
        <td>
        <a href="chapter-4-dir/rl.html#obs-incremental-update-rule"><code class="xref">obs-incremental-update-rule</code></a> <em>(chapter-4-dir/rl)</em></td><td>
-       <em>observation</em></td></tr>
-     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
-     <tr class="cap" id="cap-obs-n-transition"><td></td><td>
-       <strong>obs-n-transition</strong></td><td></td></tr>
-     <tr>
-       <td></td>
-       <td>
-       <a href="chapter-4-dir/mdp.html#obs-n-transition"><code class="xref">obs-n-transition</code></a> <em>(chapter-4-dir/mdp)</em></td><td>
        <em>observation</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-obs-single-index-model-covariance"><td></td><td>

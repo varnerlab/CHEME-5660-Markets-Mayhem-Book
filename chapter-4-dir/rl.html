@@ -76,7 +76,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Appendices" href="../appendix/appendix-landing.html" />
-    <link rel="prev" title="Markov Decision Process" href="mdp.html" />
+    <link rel="prev" title="Multiarm Bandit Problems" href="bandits.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="None"/>
   </head>
@@ -163,7 +163,7 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="../infrastructure.html">
-                    Financial Data, Markets, and Mayhem
+                    CHEME 5660: Financial Data, Markets, and Mayhem
                 </a>
             </li>
         </ul>
@@ -189,11 +189,11 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 </li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="chapter-4-landing.html">Unit 4. Finanical Decisions</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="markov.html">Markov Chains and Hidden Markov Models</a></li>
-
-<li class="toctree-l2"><a class="reference internal" href="bandits.html">Multiarm Bandit Problems</a></li>
+<li class="toctree-l2"><a class="reference internal" href="markov.html">Markov Chains</a></li>
 
 <li class="toctree-l2"><a class="reference internal" href="mdp.html">Markov Decision Process</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="bandits.html">Multiarm Bandit Problems</a></li>
 
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Reinforcement Learning</a></li>
 
@@ -440,12 +440,12 @@ document.write(`
 <figure class="align-default" id="fig-rl-schematic">
 <a class="reference internal image-reference" href="../_images/Fig-Schematic-RL.pdf"><img alt="../_images/Fig-Schematic-RL.pdf" src="../_images/Fig-Schematic-RL.pdf" style="height: 260px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 34 </span><span class="caption-text">Schematic of the reinforcement learning (RL) process. An agent takes action <span class="math notranslate nohighlight">\(a\)</span> and then observes reward <span class="math notranslate nohighlight">\(r\)</span> and changes in the state of the environment (<span class="math notranslate nohighlight">\(s\rightarrow{s^{\prime}}\)</span>) following the action <span class="math notranslate nohighlight">\(a\)</span>.</span><a class="headerlink" href="#fig-rl-schematic" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 33 </span><span class="caption-text">Schematic of the reinforcement learning (RL) process. An agent takes action <span class="math notranslate nohighlight">\(a\)</span> and then observes reward <span class="math notranslate nohighlight">\(r\)</span> and changes in the state of the environment (<span class="math notranslate nohighlight">\(s\rightarrow{s^{\prime}}\)</span>) following the action <span class="math notranslate nohighlight">\(a\)</span>.</span><a class="headerlink" href="#fig-rl-schematic" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <section id="basic-concepts-of-reinforcement-learning">
 <span id="content-references-basic-concepts-reinforcement-learning"></span><h2>Basic concepts of reinforcement learning<a class="headerlink" href="#basic-concepts-of-reinforcement-learning" title="Permalink to this headline">#</a></h2>
-<p><a class="reference external" href="https://en.wikipedia.org/wiki/Reinforcement_learning">Reinforcement Learning (RL)</a> agents learn by performing actions in the world and then analyzing the rewards they receive (<a class="reference internal" href="#fig-rl-schematic"><span class="std std-numref">Fig. 34</span></a>). Thus, reinforcement learning differs from other machine learning approaches, e.g., <a class="reference external" href="https://en.wikipedia.org/wiki/Supervised_learning">supervised learning</a> because labeled input/output pairs, e.g., what actions lead to positive rewards are not presented to the agent <em>a priori</em>.  Instead, reinforcement learning agents learn what is good or bad by trying different actions.</p>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/Reinforcement_learning">Reinforcement Learning (RL)</a> agents learn by performing actions in the world and then analyzing the rewards they receive (<a class="reference internal" href="#fig-rl-schematic"><span class="std std-numref">Fig. 33</span></a>). Thus, reinforcement learning differs from other machine learning approaches, e.g., <a class="reference external" href="https://en.wikipedia.org/wiki/Supervised_learning">supervised learning</a> because labeled input/output pairs, e.g., what actions lead to positive rewards are not presented to the agent <em>a priori</em>.  Instead, reinforcement learning agents learn what is good or bad by trying different actions.</p>
 <p>Reinforcement learning agents learn optimal choices in different situations by balancing the exploration of their environment, e.g., by taking random actions and watching what happens, with the exploitation of the knowledge they have built up so far, i.e., choosing what the agent thinks is an optimal action based upon previous experience. The balance between exploration and exploitation is one of the critical concepts in reinforcement learning.</p>
 </section>
 <section id="model-free-reinforcement-learning">
@@ -457,24 +457,24 @@ reinforcement learning builds the action value function <span class="math notran
 <p>Model-free methods incrementally estimate the action value function <span class="math notranslate nohighlight">\(Q(s, a)\)</span> by sampling the world. To understand the structure of the update procedures, which we’ll discuss later, let’s take a quick detour and look at how we incrementally estimate the mean of a single variable <span class="math notranslate nohighlight">\(X\)</span>.</p>
 <p>Suppose we are interested in computing the mean of <span class="math notranslate nohighlight">\(X\)</span> from <span class="math notranslate nohighlight">\(m\)</span> samples:</p>
 <div class="math notranslate nohighlight" id="equation-eqn-simple-mean">
-<span class="eqno">(47)<a class="headerlink" href="#equation-eqn-simple-mean" title="Permalink to this equation">#</a></span>\[\hat{x}_{m} = \frac{1}{m}\sum_{i=1}^{m}x^{(i)}\]</div>
+<span class="eqno">(49)<a class="headerlink" href="#equation-eqn-simple-mean" title="Permalink to this equation">#</a></span>\[\hat{x}_{m} = \frac{1}{m}\sum_{i=1}^{m}x^{(i)}\]</div>
 <p>where <span class="math notranslate nohighlight">\(x^{(i)}\)</span> denotes the ith sample. However, model-free RL incrementally updates <span class="math notranslate nohighlight">\(Q(s,a)\)</span>; thus, we need to develop an incremental estimation calculation.
-Equation <a class="reference internal" href="#equation-eqn-simple-mean">(47)</a> can be re-written as:</p>
+Equation <a class="reference internal" href="#equation-eqn-simple-mean">(49)</a> can be re-written as:</p>
 <div class="math notranslate nohighlight" id="equation-eqn-simple-mean-1">
-<span class="eqno">(48)<a class="headerlink" href="#equation-eqn-simple-mean-1" title="Permalink to this equation">#</a></span>\[\hat{x}_{m} = \frac{1}{m}\left(x^{(m)}+\sum_{i=1}^{m-1}x^{(i)}\right)\]</div>
+<span class="eqno">(50)<a class="headerlink" href="#equation-eqn-simple-mean-1" title="Permalink to this equation">#</a></span>\[\hat{x}_{m} = \frac{1}{m}\left(x^{(m)}+\sum_{i=1}^{m-1}x^{(i)}\right)\]</div>
 <p>but the summation term is mean from <span class="math notranslate nohighlight">\(m-1\)</span> samples or:</p>
 <div class="math notranslate nohighlight" id="equation-eqn-simple-mean-2">
-<span class="eqno">(49)<a class="headerlink" href="#equation-eqn-simple-mean-2" title="Permalink to this equation">#</a></span>\[\hat{x}_{m} = \frac{1}{m}\left(x^{(m)}+(m-1)\hat{x}_{m-1}\right)\]</div>
+<span class="eqno">(51)<a class="headerlink" href="#equation-eqn-simple-mean-2" title="Permalink to this equation">#</a></span>\[\hat{x}_{m} = \frac{1}{m}\left(x^{(m)}+(m-1)\hat{x}_{m-1}\right)\]</div>
 <p>which can be rearranged to give the incremental update expression:</p>
 <div class="math notranslate nohighlight" id="equation-eqn-simple-mean-3">
-<span class="eqno">(50)<a class="headerlink" href="#equation-eqn-simple-mean-3" title="Permalink to this equation">#</a></span>\[\hat{x}_{m} = \hat{x}_{m-1} + \frac{1}{m}\left(x^{(m)}-\hat{x}_{m-1}\right)\]</div>
-<p>Equation <a class="reference internal" href="#equation-eqn-simple-mean-3">(50)</a> can be generalized to give the incremental update rule:</p>
+<span class="eqno">(52)<a class="headerlink" href="#equation-eqn-simple-mean-3" title="Permalink to this equation">#</a></span>\[\hat{x}_{m} = \hat{x}_{m-1} + \frac{1}{m}\left(x^{(m)}-\hat{x}_{m-1}\right)\]</div>
+<p>Equation <a class="reference internal" href="#equation-eqn-simple-mean-3">(52)</a> can be generalized to give the incremental update rule:</p>
 <div class="proof observation admonition" id="obs-incremental-update-rule">
-<p class="admonition-title"><span class="caption-number">Observation 10 </span> (Incremental update rule)</p>
+<p class="admonition-title"><span class="caption-number">Observation 9 </span> (Incremental update rule)</p>
 <section class="observation-content" id="proof-content">
 <p>Let <span class="math notranslate nohighlight">\(\hat{x}_{m-1}\)</span> denote the mean value computed from <span class="math notranslate nohighlight">\(m-1\)</span> samples. The value of <span class="math notranslate nohighlight">\(\hat{x}_{m}\)</span> given the the next sample <span class="math notranslate nohighlight">\(x^{(m)}\)</span> can be written as:</p>
 <div class="math notranslate nohighlight" id="equation-eqn-next-sample-mean">
-<span class="eqno">(51)<a class="headerlink" href="#equation-eqn-next-sample-mean" title="Permalink to this equation">#</a></span>\[\hat{x}_{m} = \hat{x}_{m-1} + \alpha\left(m\right)\left(x^{(m)}-\hat{x}_{m-1}\right)\]</div>
+<span class="eqno">(53)<a class="headerlink" href="#equation-eqn-next-sample-mean" title="Permalink to this equation">#</a></span>\[\hat{x}_{m} = \hat{x}_{m-1} + \alpha\left(m\right)\left(x^{(m)}-\hat{x}_{m-1}\right)\]</div>
 <p>where <span class="math notranslate nohighlight">\(\alpha\left(m\right)\)</span> is the <em>learning rate</em> function.</p>
 <p>The learning rate can be any function of <span class="math notranslate nohighlight">\(m\)</span>; however, to ensure convergence
 <span class="math notranslate nohighlight">\(\alpha\left(m\right)\)</span> must have the properties: the sum of <span class="math notranslate nohighlight">\(\alpha\left(m\right)\)</span> as <span class="math notranslate nohighlight">\(m\rightarrow\infty\)</span> can be unbounded, but the sum of <span class="math notranslate nohighlight">\(\alpha\left(m\right)^{2}\)</span> as <span class="math notranslate nohighlight">\(m\rightarrow\infty\)</span> is bounded.</p>
@@ -491,15 +491,15 @@ From our discussion of <a class="reference internal" href="mdp.html"><span class
 \[U(s) = \max_{a} Q(s,a)\]</div>
 <p>thus:</p>
 <div class="math notranslate nohighlight" id="equation-eqn-bellman-expectation-eqn">
-<span class="eqno">(52)<a class="headerlink" href="#equation-eqn-bellman-expectation-eqn" title="Permalink to this equation">#</a></span>\[Q(s,a) = R(s,a) + \gamma\sum_{s^{\prime}\in\mathcal{S}}T(s^{\prime} | s, a)\left(\max_{a^{\prime}}Q(s^{\prime},a^{\prime})\right)\]</div>
-<p>Here’s the catch: in a model-free universe, we don’t know the rewards or physics of the world, i.e., we don’t know the rewards <span class="math notranslate nohighlight">\(R(s,a)\)</span> or the probability array <span class="math notranslate nohighlight">\(T(s^{\prime} | s, a)\)</span> that appear in Eqn. <a class="reference internal" href="#equation-eqn-bellman-expectation-eqn">(52)</a>. Instead of computing the rewards and transitions from a model we develop, we estimate them from samples received:</p>
+<span class="eqno">(54)<a class="headerlink" href="#equation-eqn-bellman-expectation-eqn" title="Permalink to this equation">#</a></span>\[Q(s,a) = R(s,a) + \gamma\sum_{s^{\prime}\in\mathcal{S}}T(s^{\prime} | s, a)\left(\max_{a^{\prime}}Q(s^{\prime},a^{\prime})\right)\]</div>
+<p>Here’s the catch: in a model-free universe, we don’t know the rewards or physics of the world, i.e., we don’t know the rewards <span class="math notranslate nohighlight">\(R(s,a)\)</span> or the probability array <span class="math notranslate nohighlight">\(T(s^{\prime} | s, a)\)</span> that appear in Eqn. <a class="reference internal" href="#equation-eqn-bellman-expectation-eqn">(54)</a>. Instead of computing the rewards and transitions from a model we develop, we estimate them from samples received:</p>
 <div class="math notranslate nohighlight">
 \[Q(s,a) = \mathbb{E}_{r,s^{\prime}}\left[r+\gamma\cdot\max_{a^{\prime}}Q(s^{\prime},a^{\prime})\right]\]</div>
 <section id="incremental-q-table-updates">
 <h4>Incremental Q-table updates<a class="headerlink" href="#incremental-q-table-updates" title="Permalink to this headline">#</a></h4>
-<p>We can use the incremental update rule shown in Eqn. <a class="reference internal" href="#equation-eqn-next-sample-mean">(51)</a> to develop an an expression that incrementally updates our estimate of <span class="math notranslate nohighlight">\(Q(s,a)\)</span> as more data becomes available:</p>
+<p>We can use the incremental update rule shown in Eqn. <a class="reference internal" href="#equation-eqn-next-sample-mean">(53)</a> to develop an an expression that incrementally updates our estimate of <span class="math notranslate nohighlight">\(Q(s,a)\)</span> as more data becomes available:</p>
 <div class="math notranslate nohighlight" id="equation-eqn-q-learning-update-rule">
-<span class="eqno">(53)<a class="headerlink" href="#equation-eqn-q-learning-update-rule" title="Permalink to this equation">#</a></span>\[Q(s,a)\leftarrow{Q(s,a)}+\alpha\left(r+\gamma\max_{a^{\prime}}Q(s^{\prime},a^{\prime}) - Q(s,a)\right)\]</div>
+<span class="eqno">(55)<a class="headerlink" href="#equation-eqn-q-learning-update-rule" title="Permalink to this equation">#</a></span>\[Q(s,a)\leftarrow{Q(s,a)}+\alpha\left(r+\gamma\max_{a^{\prime}}Q(s^{\prime},a^{\prime}) - Q(s,a)\right)\]</div>
 <p>where <span class="math notranslate nohighlight">\(\alpha\)</span> denotes a <em>learning rate hyperparameter</em>.</p>
 </section>
 </section>
@@ -513,7 +513,7 @@ From our discussion of <a class="reference internal" href="mdp.html"><span class
 <section class="tex2jax_ignore mathjax_ignore" id="summary">
 <h1>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">#</a></h1>
 <p>In our discussion of <a class="reference internal" href="mdp.html"><span class="doc std std-doc">Markov decision process (MDPs)</span></a>, we assumed that the transition and reward models were known precisely. However, these models may not be discovered in many actual problems. In these cases, the agent must learn to act through experience, e.g., by observing the outcomes of its actions. Then the agent chooses actions that maximize its long-term accumulation of reward. This procedure is called <a class="reference external" href="https://en.wikipedia.org/wiki/Reinforcement_learning">Reinforcement Learning (RL)</a>.</p>
-<p><a class="reference external" href="https://en.wikipedia.org/wiki/Reinforcement_learning">Reinforcement Learning (RL)</a> agents learn by performing actions in the world and then analyzing the rewards they receive (<a class="reference internal" href="#fig-rl-schematic"><span class="std std-numref">Fig. 34</span></a>). Thus, reinforcement learning differs from other machine learning approaches, e.g., <a class="reference external" href="https://en.wikipedia.org/wiki/Supervised_learning">supervised learning</a> because labeled input/output pairs, e.g., what actions lead to positive rewards are not presented to the agent <em>a priori</em>.  Instead, reinforcement learning agents learn what is good or bad by trying different actions.</p>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/Reinforcement_learning">Reinforcement Learning (RL)</a> agents learn by performing actions in the world and then analyzing the rewards they receive (<a class="reference internal" href="#fig-rl-schematic"><span class="std std-numref">Fig. 33</span></a>). Thus, reinforcement learning differs from other machine learning approaches, e.g., <a class="reference external" href="https://en.wikipedia.org/wiki/Supervised_learning">supervised learning</a> because labeled input/output pairs, e.g., what actions lead to positive rewards are not presented to the agent <em>a priori</em>.  Instead, reinforcement learning agents learn what is good or bad by trying different actions.</p>
 <p>In this lecture we explored different aspects of reinforcement learning. In particular, we:</p>
 <ul class="simple">
 <li><p>Introduced the <a class="reference internal" href="#content-references-basic-concepts-reinforcement-learning"><span class="std std-ref">Basic concepts of reinforcement learning</span></a> and contrasted reinforcement learning with <a class="reference internal" href="mdp.html"><span class="doc std std-doc">Markov Decision Processes</span></a> and other machine learning approaches.</p></li>
@@ -553,12 +553,12 @@ From our discussion of <a class="reference internal" href="mdp.html"><span class
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="mdp.html"
+       href="bandits.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Markov Decision Process</p>
+        <p class="prev-next-title">Multiarm Bandit Problems</p>
       </div>
     </a>
     <a class="right-next"
