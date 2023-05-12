@@ -1,4 +1,4 @@
-# Financial Data, Markets, and Mayhem
+# CHEME 5660: Financial Data, Markets, and Mayhem
 
 ## Description 
 Finance plays a crucial role in both technological advancement and the lives of individuals in our society. However, financial forecasting, modeling, and decision-making are rarely taught in traditional engineering or physical science curriculums. Further, an increasing number of engineers and scientists are turning to careers in finance and consulting. Finally, despite advancements in market access, many individuals still need help accessing the wealth-creation opportunities offered by financial systems. To address these gaps, this course introduces engineers and scientists to financial systems, markets, and analytical tools for economic and business operations. Using engineering, statistics, data science, and machine learning, we will model, analyze, and optimize financial systems and decision-making processes. The course material can be applied to both traditional economic and engineering fields.

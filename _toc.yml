@@ -3,6 +3,7 @@
 
 format: jb-book
 root: infrastructure
+
 chapters:
 - file: chapter-1-dir/chapter-1-landing
   title: Unit 1. Financial Basics
@@ -25,11 +26,11 @@ chapters:
   - file: chapter-3-dir/hedged-portfolio
 
 - file: chapter-4-dir/chapter-4-landing
-  title: Unit 4. Finanical Decisions
+  title: Unit 4. Financial Decisions
   sections:
   - file: chapter-4-dir/markov
-  - file: chapter-4-dir/bandits
   - file: chapter-4-dir/mdp
+  - file: chapter-4-dir/bandits
   - file: chapter-4-dir/rl
 
 - file: appendix/appendix-landing

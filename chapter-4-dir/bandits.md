@@ -3,9 +3,12 @@ The [multi-armed bandit problem](https://en.wikipedia.org/wiki/Multi-armed_bandi
 
 The goal of the agent is to maximize its total reward over time while learning the reward distributions of the different actions. This presents a tradeoff between exploitation, where the agent chooses the action with the highest estimated reward so far, and exploration, where it selects an action with an uncertain reward to learn more about its distribution. The multi-armed bandit problem has practical applications in various fields, such as clinical trials, online advertising, and recommender systems.
 
+```{topic} Outline
 In this lecture series, we will delve into the problem, covering different algorithms and strategies for balancing exploration and exploitation:
 
 * {ref}`content:references:exploration-versus-exploitation` are games random actions vereus exploiting knowledge already obtained through interacting with the world. Pure exploration allows agents to construct a comprehensive model of their environment, but likely at the expense of positive reward. On the other hand, pure exploitation has the agent continually choosing the action it thinks best to accumulate reward, but different, better actions could be taken.
+
+```
 
 ---
 
