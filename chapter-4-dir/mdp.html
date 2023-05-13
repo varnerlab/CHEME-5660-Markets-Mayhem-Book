@@ -188,7 +188,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 </ul>
 </li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="chapter-4-landing.html">Unit 4. Finanical Decisions</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="chapter-4-landing.html">Unit 4. Financial Decisions</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="markov.html">Markov Chains</a></li>
 
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Stochastic Sequential Decision Making</a></li>
@@ -471,15 +471,15 @@ the utility at iteration <span class="math notranslate nohighlight">\(k\)</span>
 </section>
 </div><p>Let’s do an example to illustrate policy evaluation:</p>
 <div class="proof example dropdown admonition" id="example-MDP-line">
-<p class="admonition-title"><span class="caption-number">Example 25 </span> (Tiger problem)</p>
+<p class="admonition-title"><span class="caption-number">Example 29 </span> (Tiger problem)</p>
 <section class="example-content" id="proof-content">
 <figure class="align-default" id="fig-linear-mdp-schematic">
 <a class="reference internal image-reference" href="../_images/Fig-Linear-MDP-Schematic.pdf"><img alt="../_images/Fig-Linear-MDP-Schematic.pdf" src="../_images/Fig-Linear-MDP-Schematic.pdf" style="height: 110px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 31 </span><span class="caption-text">Schematic of the Tiger problem modeled as an N-state, two-action Markov decision process. A tiger hides behind the red door while freedom awaits behind the green door.</span><a class="headerlink" href="#fig-linear-mdp-schematic" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 35 </span><span class="caption-text">Schematic of the Tiger problem modeled as an N-state, two-action Markov decision process. A tiger hides behind the red door while freedom awaits behind the green door.</span><a class="headerlink" href="#fig-linear-mdp-schematic" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<p>An agent trapped in a long hallway with two doors at either end (<a class="reference internal" href="#fig-linear-mdp-schematic"><span class="std std-numref">Fig. 31</span></a>). Behind the red door is a tiger (and certain death), while behind the green door is freedom. If the agent opens the red door, the agent is eaten (and receives a large negative reward). However, if the agent opens the green door, it escapes and gets a positive reward.</p>
+<p>An agent trapped in a long hallway with two doors at either end (<a class="reference internal" href="#fig-linear-mdp-schematic"><span class="std std-numref">Fig. 35</span></a>). Behind the red door is a tiger (and certain death), while behind the green door is freedom. If the agent opens the red door, the agent is eaten (and receives a large negative reward). However, if the agent opens the green door, it escapes and gets a positive reward.</p>
 <p>For this problem, the MDP has the tuple components:</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(\mathcal{S} = \left\{1,2,\dots,N\right\}\)</span> while the action set is <span class="math notranslate nohighlight">\(\mathcal{A} = \left\{a_{1},a_{2}\right\}\)</span>; action <span class="math notranslate nohighlight">\(a_{1}\)</span> moves the agent one state to the right, action <span class="math notranslate nohighlight">\(a_{2}\)</span> moves the agent one state to the left.</p></li>
@@ -513,15 +513,15 @@ Given a utility <span class="math notranslate nohighlight">\(U\)</span>, we can 
 \[U_{k+1}(s) = \max_{a}\left(R(s,a) + \gamma\sum_{s^{\prime}\in\mathcal{S}}T(s^{\prime} | s, a)U_{k}(s^{\prime})\right)\]</div>
 <p>This procedure is guaranteed to converge to the optimal utility vector (value function).</p>
 <div class="proof example dropdown admonition" id="example-MDP-line-mod">
-<p class="admonition-title"><span class="caption-number">Example 26 </span> (Modified Tiger problem)</p>
+<p class="admonition-title"><span class="caption-number">Example 30 </span> (Modified Tiger problem)</p>
 <section class="example-content" id="proof-content">
 <figure class="align-default" id="fig-branched-mdp-schematic-mod">
 <a class="reference internal image-reference" href="../_images/Fig-Branched-MDP-Schematic.pdf"><img alt="../_images/Fig-Branched-MDP-Schematic.pdf" src="../_images/Fig-Branched-MDP-Schematic.pdf" style="height: 300px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 32 </span><span class="caption-text">Schematic of the Tiger problem modeled as an N-state, four-action (left, right, up, down) Markov decision process. The hallway has three types of paths: unobstructed (white, free), mildly obstructed (light gray, small cost), and obstructed (dark gray, large cost).</span><a class="headerlink" href="#fig-branched-mdp-schematic-mod" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 36 </span><span class="caption-text">Schematic of the Tiger problem modeled as an N-state, four-action (left, right, up, down) Markov decision process. The hallway has three types of paths: unobstructed (white, free), mildly obstructed (light gray, small cost), and obstructed (dark gray, large cost).</span><a class="headerlink" href="#fig-branched-mdp-schematic-mod" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<p>An agent is trapped in a long hallway with two doors at either end (<a class="reference internal" href="#fig-branched-mdp-schematic-mod"><span class="std std-numref">Fig. 32</span></a>). Behind the green door is a tiger (and certain death), while behind the red door is freedom. If the agent opens the green door, the agent is eaten (and receives a large negative reward). However, if the agent opens the red door, it escapes and gets a positive reward.</p>
+<p>An agent is trapped in a long hallway with two doors at either end (<a class="reference internal" href="#fig-branched-mdp-schematic-mod"><span class="std std-numref">Fig. 36</span></a>). Behind the green door is a tiger (and certain death), while behind the red door is freedom. If the agent opens the green door, the agent is eaten (and receives a large negative reward). However, if the agent opens the red door, it escapes and gets a positive reward.</p>
 <p>For this problem, the MDP has the tuple components:</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(\mathcal{S} = \left\{1,2,\dots,N\right\}\)</span> while the action set is <span class="math notranslate nohighlight">\(\mathcal{A} = \left\{a_{1},a_{2}, a_{3}, a_{4}\right\}\)</span>; action <span class="math notranslate nohighlight">\(a_{1}\)</span> moves the agent one state to the left, action <span class="math notranslate nohighlight">\(a_{2}\)</span> moves the agent one state to the right, action <span class="math notranslate nohighlight">\(a_{3}\)</span> moves the agent one stop up, and action <span class="math notranslate nohighlight">\(a_{4}\)</span> moves the agent one step down.</p></li>

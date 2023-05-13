@@ -188,10 +188,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter-4-dir/chapter-4-landing.html">Unit 4. Finanical Decisions</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter-4-dir/chapter-4-landing.html">Unit 4. Financial Decisions</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../chapter-4-dir/markov.html">Markov Chains</a></li>
 
-<li class="toctree-l2"><a class="reference internal" href="../chapter-4-dir/mdp.html">Markov Decision Process</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter-4-dir/mdp.html">Stochastic Sequential Decision Making</a></li>
 
 <li class="toctree-l2"><a class="reference internal" href="../chapter-4-dir/bandits.html">Multiarm Bandit Problems</a></li>
 
@@ -460,9 +460,9 @@ document.write(`
 <section id="sample-space-omega">
 <h3>Sample space <span class="math notranslate nohighlight">\(\Omega\)</span><a class="headerlink" href="#sample-space-omega" title="Permalink to this headline">#</a></h3>
 <p>Given an experiment, the sample space <span class="math notranslate nohighlight">\(\Omega\)</span> is the set containing all possible outcomes of that experiment. These outcomes can be numbers, alphabets, vectors, or functions, as well as, images, videos, EEG signals, audio speeches, etc.</p>
-<p>Let’s consider an example of a six sided dice (<a class="reference internal" href="#ex-sample-space-dice">Example 27</a>):</p>
+<p>Let’s consider an example of a six sided dice (<a class="reference internal" href="#ex-sample-space-dice">Example 31</a>):</p>
 <div class="proof example dropdown admonition" id="ex-sample-space-dice">
-<p class="admonition-title"><span class="caption-number">Example 27 </span> (Sample space <span class="math notranslate nohighlight">\(\Omega\)</span> of six sided dice)</p>
+<p class="admonition-title"><span class="caption-number">Example 31 </span> (Sample space <span class="math notranslate nohighlight">\(\Omega\)</span> of six sided dice)</p>
 <section class="example-content" id="proof-content">
 <p>Suppose we were intersted in the outcome of experiment where a six sided dice was rolled on time.
 Then the sample space for this experiment <span class="math notranslate nohighlight">\(\Omega\)</span> is given by:</p>
@@ -477,9 +477,9 @@ Then the sample space for this experiment <span class="math notranslate nohighli
 However, we may not be interested in an individual outcome.
 Rather we may be interested in combinations of individual outcomes where the elements of these sets share some common trait, e.g., even integers or the collection of face cards, etc. These subsets are called events <span class="math notranslate nohighlight">\(E\subseteq\Omega\)</span>, and the set of all possible events, denoted as <span class="math notranslate nohighlight">\(\mathcal{F}\)</span>, is called the event space.
 Thus, the event space <span class="math notranslate nohighlight">\(\mathcal{F}\)</span> is a particular set of sets; it’s the set of all possible subsets.</p>
-<p>Let’s enumerate the event space for the four suits of a typical deck of cards (<a class="reference internal" href="#ex-event-card-suits">Example 28</a>):</p>
+<p>Let’s enumerate the event space for the four suits of a typical deck of cards (<a class="reference internal" href="#ex-event-card-suits">Example 32</a>):</p>
 <div class="proof example dropdown admonition" id="ex-event-card-suits">
-<p class="admonition-title"><span class="caption-number">Example 28 </span> (Enumerate the event space <span class="math notranslate nohighlight">\(\mathcal{F}\)</span> )</p>
+<p class="admonition-title"><span class="caption-number">Example 32 </span> (Enumerate the event space <span class="math notranslate nohighlight">\(\mathcal{F}\)</span> )</p>
 <section class="example-content" id="proof-content">
 <p>Construct the event space <span class="math notranslate nohighlight">\(\mathcal{F}\)</span> for the sample space <span class="math notranslate nohighlight">\(\Omega=\left\{\clubsuit, \diamondsuit, \heartsuit, \spadesuit\right\}\)</span>. The cardinality of <span class="math notranslate nohighlight">\(\Omega\)</span> is <span class="math notranslate nohighlight">\(\dim\left(\Omega\right) = 4\)</span>.</p>
 <p><strong>Solution</strong>: The <span class="math notranslate nohighlight">\(\dim(\mathcal{F}) = 2^n\)</span> where the elements of <span class="math notranslate nohighlight">\(\mathcal{F}\)</span> correspond to the first <span class="math notranslate nohighlight">\(\dim(\Omega)\)</span> digits of the binary representation of the integers <span class="math notranslate nohighlight">\(i=0,\dots,\dim(\mathcal{F})-1\)</span>. For example, the bitstring <code class="docutils literal notranslate"><span class="pre">0000</span></code>, which corresponds to <span class="math notranslate nohighlight">\(i=0\)</span>, represents the empty set <span class="math notranslate nohighlight">\(\emptyset\)</span> while the bitstring <code class="docutils literal notranslate"><span class="pre">1111</span></code>, which corresponds to <span class="math notranslate nohighlight">\(i=15\)</span>, corresponds to <span class="math notranslate nohighlight">\(\left\{\clubsuit, \diamondsuit, \heartsuit, \spadesuit\right\}\)</span>.</p>

@@ -1,16 +1,21 @@
 # Fixed Income Debt Securities
 
-Fixed-income securities are financial instruments with predefined cashflows at selected dates over the lifetime of the instrument. While there are several types of fixed-income securities, we'll focus on an archetypal category: [United States Treasury Debt Securities](https://www.investor.gov/introduction-investing/investing-basics/glossary/treasury-securities). Treasury debt securities, e.g., [Treasury bills, notes, and bonds](https://www.treasurydirect.gov/indiv/products/prod_tbonds_glance.htm), are debt obligations issued by the United States Department of the Treasury to holder of the security. U.S. Treasury debt securities are a mechanism used by the United States government to borrow money, from bondholders, with a fixed set of repayment terms. 
+Fixed-income securities offer predetermined cashflows on specific dates. One classic example is United States Treasury Debt Securities, which represent debt obligations issued by the U.S. Department of the Treasury. These securities are considered safe investments due to their risk-free nature and the full faith and credit of the United States government backing them. The U.S. government has never defaulted on its debt obligations.
 
-Treasury debt securities are viewed as one of the safest possible investments, e.g., defacto risk-free, because Treasury debt securities are backed by the full faith and credit of the United States government. [The U.S. government has never defaulted on its debt obligations (at least in recent memory)](https://thehill.com/opinion/finance/575722-the-us-has-never-defaulted-on-its-debt-except-the-four-times-it-did/).  
+<!-- Fixed-income securities are financial instruments with predefined cashflows at selected dates over the lifetime of the instrument. While there are several types of fixed-income securities, we'll focus on an archetypal category: [United States Treasury Debt Securities](https://www.investor.gov/introduction-investing/investing-basics/glossary/treasury-securities). Treasury debt securities, e.g., [Treasury bills, notes, and bonds](https://www.treasurydirect.gov/indiv/products/prod_tbonds_glance.htm), are debt obligations issued by the United States Department of the Treasury to holder of the security. U.S. Treasury debt securities are a mechanism used by the United States government to borrow money, from bondholders, with a fixed set of repayment terms. Treasury debt securities are viewed as one of the safest possible investments, e.g., defacto risk-free, because Treasury debt securities are backed by the full faith and credit of the United States government. [The U.S. government has never defaulted on its debt obligations (at least in recent memory)](https://thehill.com/opinion/finance/575722-the-us-has-never-defaulted-on-its-debt-except-the-four-times-it-did/).   -->
 
-In this lecture, we will discuss:
 
-* The definition and valuation of {ref}`content:references:treasury-bonds`
-* Introduce {ref}`content:references:bond-pricing-relationships`
+```{topic} Outline
+* {ref}`content:references:treasury-bonds` are fixed-income securities issued by the US government to fund its operations and meet financial obligations. Treasury bills have a short-term maturity of less than a year, while Treasury notes and bonds have longer maturities ranging from two to thirty years. These securities are regarded as some of the safest investment options globally, backed by the US government’s full faith and credit.
 
+* {ref}`content:references:bond-pricing-relationships` are utilized to determine the equitable value of a bond, considering its maturity, coupon rate, and current market interest rates. As per Malkiel’s guidelines, the bond’s price will fluctuate inversely with changes in interest rates. Long-term bonds will be more affected than short-term bonds. 
+
+* {ref}`content:references:term-structure-of-interest-rates` describes the correlation between fixed-income security interest rates and their maturity period. This concept represents the market’s outlook on future interest rates. The shape of the term structure - whether it’s upward-sloping, flat, or inverted - offers valuable insights into the economy’s present and potential future state. 
+
+```
 
 ---
+
 
 ```{figure} ./figs/Fig-Govt-Debt-Schematic.pdf
 ---
@@ -22,7 +27,7 @@ Schematic of United States Treasury debt instruments. The treasury borrows money
 
 (content:references:treasury-bonds)=
 ## Treasury Bills, Notes and Bonds
-A fixed-income debt security is a contract between a borrower and a lender. In the context of this lecture, we'll focus on U.S. Treasury Bills, Notes, and Bonds, examples of government debt securities. For United States treasury debt instruments, the borrower is the U.S. government; the government issues (i.e., sells) a bond to a lender (you) for some cash. This arrangement obligates the U.S. Treasury to make specified payments to the bondholder (you) on specified dates over the lifetime of the instrument ({numref}`fig-bill-notes-bonds-schematic`).
+A fixed-income debt security is a contract between a borrower and a lender. United States treasury bills, notes, and bonds are examples of government debt securities. For United States treasury debt instruments, the borrower is the U.S. government; the government issues (i.e., sells) a bond to a lender (you) for some cash. This arrangement obligates the U.S. Treasury to make specified payments to the bondholder (you) on specified dates over the lifetime of the instrument ({numref}`fig-bill-notes-bonds-schematic`).
 
 There are many types of U.S. government debt securities. However, the various debt instruments share several similarities:
 
@@ -36,32 +41,29 @@ There are many types of U.S. government debt securities. However, the various de
 
 ```{figure} ./figs/Fig-Zero-Coupon-Schematic.pdf
 ---
-height: 360px
+height: 320px
 name: fig-bill-payout-schematic
 ---
-Schematic of a zero-coupon United States Treasury Bill (T-bill). The bondholder purchases the T-bill for $V_{B}$ USD (current). At the term of the T-bill, the treasury pays the bondholder the face (par) value of the T-bill.    
+Schematic of a zero-coupon United States Treasury Bills. The holder purchases the bill for $V_{B}$ (current). At the term of the bill, the treasury pays the bondholder the face (par) value of the bill $V_{P}$.    
 ```
 
 ### Treasury Bills
-Treasury bills (also called T-bills) are short-term debt instruments sold in terms ranging from a few days to 52 weeks ({numref}`fig-bill-payout-schematic`). Treasury bills are issued for terms of 4, 8, 13, 26, and 52 weeks; 4-week, 8-week, 13-week, 26-week, and 52-week T-bills are auctioned on a regular schedule. 
+T-bills, or Treasury bills, are debt instruments with short-term maturity periods ranging from a few days to 52 weeks ({numref}`fig-bill-payout-schematic`). T-bills are zero-coupon fixed-income investments, i.e., they are no coupon payments during their term. Instead, bills are priced so that the bill-holder receives the par value at the end of the term ({prf:ref}`defn-zero-coupon-bond-pricing`): 
 
-#### Pricing of U.S. Treasury Bills
-T-bills are an example of a zero-coupon fixed-income instrument; thus, T-bills do not make coupon payments during the bill term. Instead, T-bills are priced, so the bondholder receives the par value at the bond’s duration. T-bills are typically sold at a discount from the par amount; rarely are they sold at a price equal to the par amount:
-
-````{prf:definition} Zero Coupon Rate Bond Pricing
+````{prf:definition} Zero Coupon Bond Pricing
 :label: defn-zero-coupon-bond-pricing
 
-Let a zero-coupon treasury bill (T-bill) have a T-year term with an annual market interest rate of $\bar{r}$. Then, the _fair price_ for a zero-coupon treasury bill is the future face (par) value of the bill discounted to today by the market interest rate $\bar{r}$:
+A zero-coupon treasury bill (T-bill) has a T-year term with an annual market interest rate of $\bar{r}$. The fair price of a zero-coupon treasury bill is the future face (par) value of the bill discounted to today by the market interest rate $\bar{r}$:
 
 ```{math}
 :label: eqn-zero-coupon-bill-bond
 V_{B} = \frac{V_{P}}{\left(1+\bar{r}\right)^{T}}
 ```
 
-where $V_{B}$ denotes the price of the treasury bill, and $V_{P}$ represents the face (par) value of the treasury bill. 
+The quantity $V_{B}$ denotes the current price of the treasury bill, and $V_{P}$ represents the face (par) value of the treasury bill.  Treasury bills are issued for specific periods, such as 4, 8, 13, 26, and 52 weeks, and are auctioned off regularly. 
 ````
 
-The price of the bill $V_{B}$ is computed with respect to a particular value of the market interest rate $\bar{r}$ on the day the T-bill is purchased. However, the market interest rate $\bar{r}$ may vary over the T-bill term; hence, the market price of the T-bill can change over its term. Let's do an example illustrating the pricing of a zero-coupon treasury bill ({prf:ref}`defn-zero-coupon-bond-pricing`).
+The price of the bill $V_{B}$ is computed with respect to a value of the market interest rate $\bar{r}$ on the day the bill is purchased. However, the market interest rate $\bar{r}$ varies; hence, the market price of the bill can change over its term ({prf:ref}`example-zero-coupon-t-bill`):
 
 
 ````{prf:example} Pricing of a Treasury Bill
@@ -84,10 +86,6 @@ name: fig-zcbill-price
 Price of a zero coupon treasury bill for a term of 0.5 (dark blue) and one year (light blue) as a function of the market interest rate. Face value $V_{P}$ = 1000 USD.
 ```
 
-__source__: [Live Pluto notebook](https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks) or [a static HTML view](https://htmlview.glitch.me/?https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks/blob/main/pluto-notebooks/html/Example-Price-ZeroCoupon-TreasuryBill.jl.html).
-````
-
-
 The treasury bill pricing calculations shown in {prf:ref}`example-zero-coupon-t-bill` have some interesting properties:
 
 * There is an _inverse_ relationship between the current price of a zero-coupon bill and the market interest rate $\bar{r}$; this must be true as the par value (which is in future dollars) is fixed. Thus, higher market interest rates imply lower initial T-bill prices. 
@@ -96,54 +94,35 @@ The treasury bill pricing calculations shown in {prf:ref}`example-zero-coupon-t-
 
 * Finally, the longer duration treasury bills are more sensitive to interest rate changes; the T = 1-year slope is larger than the T = 0.5-year case.
 
-Thus, the duration and the risk-free interest rate are critical to the pricing of the treasury bill. However, what is the risk-free market interest rate?
-
-````{prf:remark} What is the Risk-free Market Interest Rate?
-:label: remark-market-interest-rate
-
-The present value calculation for a treasury bond depends upon the discount rate, which we assume is the risk-free market interest rate, denoted by $\bar{r}$. However, what is the risk free market interest rate for a bond?
-
- The risk-free market interest rate is the sum of (at least) two terms: the real risk-free rate of return $\bar{r}^{\circ}_{f}$ and a premium paid above the real rate to compensate for expected inflation $\bar{r}_{I}$: 
-
-```{math}
-\bar{r} = \bar{r}^{\circ}_{f}+\bar{r}_{I}+\dots
-```
-
-where $\bar{r}^{\circ}_{f}$ denotes the real risk-free rate and $r_{I}$ denotes a premium above the real-risk free rate, which accounts for inflation risk; the $\bar{\star}$ notation represents the assumption of a constant rate over the bond term. In addition to inflation risk, there can (potentially) be additional terms to compensate the bond buyer for other expected risks. 
 ````
 
 ### Treasury Notes and Bonds
-Treasury notes, sometimes called T-notes, are a medium-term debt instrument that earns a fixed rate of interest every six months until maturity. T-notes are issued in terms of 2, 3, 5, 7, and 10 years. The price of a T-note can be greater than, less than, or equal to the T-note's par value. However, at maturity, the par value of the T-note is paid to the owner of the T-note (lender). 
-
-T-notes are an example of a non-zero coupon debt instrument; thus, the lender receives periodic interest payments, called coupon payments which are proportional to the coupon rate, over the lifetime of the T-note.
+T-notes, also known as Treasury notes, are debt instruments that offer a fixed interest rate every six months until they reach maturity. They are available in 2, 3, 5, 7, and 10-year terms. The price of a T-note can be more or less than its par value, but when it matures, the lender receives the full par value. T-notes are coupon debt instruments, meaning that the lender gets regular interest payments that correspond to a coupon rate throughout the T-note’s life ({numref}`fig-bond-payout-schematic`):
 
 ```{figure} ./figs/Fig-Bond-Asset-Timeline-Schematic.pdf
 ---
 height: 320px
 name: fig-bond-payout-schematic
 ---
-Schematic of the lifetime of a Treasury Bond with semiannual coupon payments. The bond is purchased now (t=0). The bondholder receives semi-annual coupon payments until the maturity of the bond T years in the future. At maturity (t = T), the bondholder receives a final coupon payment plus the face value of the bond.   
+Schematic of the lifetime of a Treasury Bond with semiannual coupon payments. The bond is purchased now and the bondholder receives semi-annual coupon payments until the maturity of the bond T-years into the future. At maturity, the bondholder receives a final coupon payment plus the face value of the bond.    
 ```
 
-Similar to T-notes, treasury bonds are also a coupon debt instrument. However, treasury bonds are long-term U.S Treasury debt instruments. Treasury bonds pay a fixed rate of interest (the coupon rate) every six months until the bond's maturity ({numref}`fig-bond-payout-schematic`). The U.S. Treasury issues bonds with terms of 20 or 30 years. When a bond matures, the bondholder receives the face value of the bond. Bonds can be held until maturity or sold before maturity. 
-
-When a U.S. Treasury bond matures, the U.S government repays the debt by paying the bond's par (or face) value. The bond's coupon rate determines the interest payment: the annual payment is the coupon rate times the bond's par value. The coupon rate, maturity date, and par value of the bond are part of the contract between the issuer, the U.S. government, and the bondholder (you).
+Treasury bonds, like T-notes, are debt instruments that pay a fixed rate of interest every six months. However, treasury bonds are long-term U.S. Treasury debt instruments with terms of 20 or 30 years. When a bond reaches maturity, the bondholder receives the bond’s face value. Bonds can be held until maturity or sold before maturity. 
 
 #### Pricing of U.S. Treasury Bonds
-A bond’s coupon payments, and the eventual repayment of the face value, occurs many years in the future. Thus, the price an investor is willing to pay for a claim to those payments depends on the future value of the dollars that will be received versus the present value of the face value of the bond. 
+A bond’s coupon payments, and the eventual repayment of the face value, occurs many years in the future. Thus, the price an investor is willing to pay for a claim to those payments depends on the future value of the dollars that will be received versus the present value of the face value of the bond 
+({prf:ref}`defn-fixed-r-bond-pricing`):
 
 ````{prf:definition} Fixed Coupon Rate Bond Pricing
 :label: defn-fixed-r-bond-pricing
 
-Let the term of a bond be T-years with $\lambda$ coupon payments per year; $N = \lambda{T}$ coupon payments over the term of the bond. Further, let $\bar{c}$ denote the annual coupon rate, and $\bar{r}$ denote the annual market interest rate.
-
-Then, the _fair price_ for the bond, denoted by $V_{B}$, is the present value of coupon payments $C$ plus the discounted par value $V_{P}$ of the bond:
+Let the term of a bond be T-years with semiannual ($\lambda = 2$) coupon payments per year; $N = \lambda{T}$ coupon payments over the bond term. Further, let $\bar{c}$ denote the annual coupon rate, and $\bar{r}$ denote the annual market interest rate. Then, the _fair price_ for the bond $V_{B}$ is the present value of coupon payments $C$ plus the discounted par value $V_{P}$ of the bond:
 
 ```{math}
 V_{B} = \frac{V_{P}}{\left(1+i\right)^{N}}+\sum_{j=1}^{N}\frac{C}{\left(1+i\right)^{j}}
 ```
 
-where the coupon payment $C=\left(\bar{c}/\lambda\right)\cdot{V_{P}}$ is set when the bond is purchased, and the market interest rate $i=\bar{r}/\lambda$ varies with the market. 
+The coupon payment $C=\left(\bar{c}/\lambda\right)\cdot{V_{P}}$ is set when the bond is purchased, and the market interest rate $i=\bar{r}/\lambda$ varies with the market. The contract between the U.S. government, the issuer, and the bondholder (you) includes the bond’s coupon rate, maturity date, and par value.
 ````
 
 Let's do an example illustrating bond pricing ({prf:ref}`defn-fixed-r-bond-pricing`).
@@ -208,7 +187,7 @@ Sensitivity of bond price to changes in the market interest rate.
 ```
 
 (content:references:bond-pricing-relationships)=
-#### Malkiel’s bond-pricing rules
+#### Malkiel’s bond-pricing guidelines
 The relationship between the price of a bond, and the yeild (i.e., the market interest rate $\bar{r}$) was previously studied by Malkiel {cite}`Malkiel1962`. The so-called Malkiel’s bond-pricing rules are demonstrated by the simulations shown in ({numref}`fig-bond-price-sensitivity`):
 
 1. The price of a U.S. Treasury Bond _increases_ as the market interest rate $\bar{r}$ _decreases_; thus, there is an _inverse_ relationship between the bond yield to maturity (i.e., the market rate $\bar{r}$) and the price of the bond $V_{B}$. 
@@ -217,6 +196,10 @@ an increase in a bond’s interest rate $\bar{r}$ results in a _smaller price ch
 1. Prices of long-term bonds are more sensitive to interest rate changes than short-term bonds. For example, consider Case I and Case II in ({numref}`fig-bond-price-sensitivity`); Case I (short-term bond) is _less sensitive_ to the same magnitude change in $\bar{r}$ compared with Case II (long-term bond).
 1. Interest rate risk is inversely related to a bond’s coupon rate. Prices of low coupon-rate bonds are more sensitive to changes in interest rates than prices of high-rate coupon bonds. For example, compare Case II and III in ({numref}`fig-bond-price-sensitivity`); case III (the low coupon-rate bond) is significanly more sensitive to decreases in interest rate compared with case II (the high coupon-rate bond). A similar, albeit less pronounced, trend is visible for increased
 interest rate.
+
+(content:references:term-structure-of-interest-rates)=
+## Term structure of interest rates
+Fill me in.
 
 ---
  

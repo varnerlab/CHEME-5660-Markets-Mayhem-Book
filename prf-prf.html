@@ -190,7 +190,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="chapter-4-dir/chapter-4-landing.html">Unit 4. Finanical Decisions</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="chapter-4-dir/chapter-4-landing.html">Unit 4. Financial Decisions</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="chapter-4-dir/markov.html">Markov Chains</a></li>
 
 <li class="toctree-l2"><a class="reference internal" href="chapter-4-dir/mdp.html">Stochastic Sequential Decision Making</a></li>
@@ -421,6 +421,9 @@ document.write(`
    <a href="#cap-example-3"><strong>example-3</strong></a> | 
    <a href="#cap-example-MDP-line"><strong>example-MDP-line</strong></a> | 
    <a href="#cap-example-MDP-line-mod"><strong>example-MDP-line-mod</strong></a> | 
+   <a href="#cap-example-amd-daily-returns"><strong>example-amd-daily-returns</strong></a> | 
+   <a href="#cap-example-autocorrelation-WFC"><strong>example-autocorrelation-WFC</strong></a> | 
+   <a href="#cap-example-autocorrelation-abs-WFC"><strong>example-autocorrelation-abs-WFC</strong></a> | 
    <a href="#cap-example-average-cost"><strong>example-average-cost</strong></a> | 
    <a href="#cap-example-categorical-dist"><strong>example-categorical-dist</strong></a> | 
    <a href="#cap-example-delta-hedge-two-cases"><strong>example-delta-hedge-two-cases</strong></a> | 
@@ -431,6 +434,7 @@ document.write(`
    <a href="#cap-example-european-put-contract"><strong>example-european-put-contract</strong></a> | 
    <a href="#cap-example-net-present-value-discrete"><strong>example-net-present-value-discrete</strong></a> | 
    <a href="#cap-example-normal-residual-model"><strong>example-normal-residual-model</strong></a> | 
+   <a href="#cap-example-return-distribution-WFC"><strong>example-return-distribution-WFC</strong></a> | 
    <a href="#cap-example-treaury-bond-price"><strong>example-treaury-bond-price</strong></a> | 
    <a href="#cap-example-zero-coupon-t-bill"><strong>example-zero-coupon-t-bill</strong></a> | 
    <a href="#cap-iron-condor-expiration"><strong>iron-condor-expiration</strong></a> | 
@@ -448,7 +452,6 @@ document.write(`
    <a href="#cap-pop-amd-strange-expiration"><strong>pop-amd-strange-expiration</strong></a> | 
    <a href="#cap-put-contract-expiration"><strong>put-contract-expiration</strong></a> | 
    <a href="#cap-remark-0"><strong>remark-0</strong></a> | 
-   <a href="#cap-remark-market-interest-rate"><strong>remark-market-interest-rate</strong></a> | 
    <a href="#cap-remark-markowitz-in-words"><strong>remark-markowitz-in-words</strong></a> | 
    <a href="#cap-straddle-profit-expiration"><strong>straddle-profit-expiration</strong></a> | 
    <a href="#cap-strangle-profit-expiration"><strong>strangle-profit-expiration</strong></a> | 
@@ -945,6 +948,30 @@ document.write(`
        <a href="chapter-4-dir/mdp.html#example-MDP-line-mod"><code class="xref">example-MDP-line-mod</code></a> <em>(chapter-4-dir/mdp)</em></td><td>
        <em>example</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-example-amd-daily-returns"><td></td><td>
+       <strong>example-amd-daily-returns</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="chapter-2-dir/equity.html#example-amd-daily-returns"><code class="xref">example-amd-daily-returns</code></a> <em>(chapter-2-dir/equity)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-example-autocorrelation-WFC"><td></td><td>
+       <strong>example-autocorrelation-WFC</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="chapter-2-dir/equity.html#example-autocorrelation-WFC"><code class="xref">example-autocorrelation-WFC</code></a> <em>(chapter-2-dir/equity)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-example-autocorrelation-abs-WFC"><td></td><td>
+       <strong>example-autocorrelation-abs-WFC</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="chapter-2-dir/equity.html#example-autocorrelation-abs-WFC"><code class="xref">example-autocorrelation-abs-WFC</code></a> <em>(chapter-2-dir/equity)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-example-average-cost"><td></td><td>
        <strong>example-average-cost</strong></td><td></td></tr>
      <tr>
@@ -1023,6 +1050,14 @@ document.write(`
        <td></td>
        <td>
        <a href="chapter-3-dir/model-markowitz.html#example-normal-residual-model"><code class="xref">example-normal-residual-model</code></a> <em>(chapter-3-dir/model-markowitz)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-example-return-distribution-WFC"><td></td><td>
+       <strong>example-return-distribution-WFC</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="chapter-2-dir/equity.html#example-return-distribution-WFC"><code class="xref">example-return-distribution-WFC</code></a> <em>(chapter-2-dir/equity)</em></td><td>
        <em>example</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-example-treaury-bond-price"><td></td><td>
@@ -1159,14 +1194,6 @@ document.write(`
        <td></td>
        <td>
        <a href="chapter-1-dir/assets.html#remark-0"><code class="xref">remark-0</code></a> <em>(chapter-1-dir/assets)</em></td><td>
-       <em>remark</em></td></tr>
-     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
-     <tr class="cap" id="cap-remark-market-interest-rate"><td></td><td>
-       <strong>remark-market-interest-rate</strong></td><td></td></tr>
-     <tr>
-       <td></td>
-       <td>
-       <a href="chapter-2-dir/bonds.html#remark-market-interest-rate"><code class="xref">remark-market-interest-rate</code></a> <em>(chapter-2-dir/bonds)</em></td><td>
        <em>remark</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-remark-markowitz-in-words"><td></td><td>

@@ -188,10 +188,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 </ul>
 </li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter-4-dir/chapter-4-landing.html">Unit 4. Finanical Decisions</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter-4-dir/chapter-4-landing.html">Unit 4. Financial Decisions</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../chapter-4-dir/markov.html">Markov Chains</a></li>
 
-<li class="toctree-l2"><a class="reference internal" href="../chapter-4-dir/mdp.html">Markov Decision Process</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter-4-dir/mdp.html">Stochastic Sequential Decision Making</a></li>
 
 <li class="toctree-l2"><a class="reference internal" href="../chapter-4-dir/bandits.html">Multiarm Bandit Problems</a></li>
 
@@ -401,10 +401,7 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#treasury-bills-notes-and-bonds">Treasury Bills, Notes and Bonds</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#treasury-bills">Treasury Bills</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pricing-of-u-s-treasury-bills">Pricing of U.S. Treasury Bills</a></li>
-</ul>
-</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#treasury-bills">Treasury Bills</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#treasury-notes-and-bonds">Treasury Notes and Bonds</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pricing-of-u-s-treasury-bonds">Pricing of U.S. Treasury Bonds</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#yield-to-maturity-of-u-s-treasury-bonds">Yield to Maturity of U.S. Treasury Bonds</a><ul class="nav section-nav flex-column">
@@ -414,11 +411,12 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sensitivity-of-bond-prices-to-interest-rate-changes">Sensitivity of Bond Prices to Interest Rate Changes</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#malkiels-bond-pricing-rules">Malkiel’s bond-pricing rules</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#malkiels-bond-pricing-guidelines">Malkiel’s bond-pricing guidelines</a></li>
 </ul>
 </li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#term-structure-of-interest-rates">Term structure of interest rates</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
 </ul>
             </nav>
@@ -433,13 +431,16 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="fixed-income-debt-securities">
 <h1>Fixed Income Debt Securities<a class="headerlink" href="#fixed-income-debt-securities" title="Permalink to this headline">#</a></h1>
-<p>Fixed-income securities are financial instruments with predefined cashflows at selected dates over the lifetime of the instrument. While there are several types of fixed-income securities, we’ll focus on an archetypal category: <a class="reference external" href="https://www.investor.gov/introduction-investing/investing-basics/glossary/treasury-securities">United States Treasury Debt Securities</a>. Treasury debt securities, e.g., <a class="reference external" href="https://www.treasurydirect.gov/indiv/products/prod_tbonds_glance.htm">Treasury bills, notes, and bonds</a>, are debt obligations issued by the United States Department of the Treasury to holder of the security. U.S. Treasury debt securities are a mechanism used by the United States government to borrow money, from bondholders, with a fixed set of repayment terms.</p>
-<p>Treasury debt securities are viewed as one of the safest possible investments, e.g., defacto risk-free, because Treasury debt securities are backed by the full faith and credit of the United States government. <a class="reference external" href="https://thehill.com/opinion/finance/575722-the-us-has-never-defaulted-on-its-debt-except-the-four-times-it-did/">The U.S. government has never defaulted on its debt obligations (at least in recent memory)</a>.</p>
-<p>In this lecture, we will discuss:</p>
+<p>Fixed-income securities offer predetermined cashflows on specific dates. One classic example is United States Treasury Debt Securities, which represent debt obligations issued by the U.S. Department of the Treasury. These securities are considered safe investments due to their risk-free nature and the full faith and credit of the United States government backing them. The U.S. government has never defaulted on its debt obligations.</p>
+<!-- Fixed-income securities are financial instruments with predefined cashflows at selected dates over the lifetime of the instrument. While there are several types of fixed-income securities, we'll focus on an archetypal category: [United States Treasury Debt Securities](https://www.investor.gov/introduction-investing/investing-basics/glossary/treasury-securities). Treasury debt securities, e.g., [Treasury bills, notes, and bonds](https://www.treasurydirect.gov/indiv/products/prod_tbonds_glance.htm), are debt obligations issued by the United States Department of the Treasury to holder of the security. U.S. Treasury debt securities are a mechanism used by the United States government to borrow money, from bondholders, with a fixed set of repayment terms. Treasury debt securities are viewed as one of the safest possible investments, e.g., defacto risk-free, because Treasury debt securities are backed by the full faith and credit of the United States government. [The U.S. government has never defaulted on its debt obligations (at least in recent memory)](https://thehill.com/opinion/finance/575722-the-us-has-never-defaulted-on-its-debt-except-the-four-times-it-did/).   -->
+<div class="topic">
+<p class="topic-title">Outline</p>
 <ul class="simple">
-<li><p>The definition and valuation of <a class="reference internal" href="#content-references-treasury-bonds"><span class="std std-ref">Treasury Bills, Notes and Bonds</span></a></p></li>
-<li><p>Introduce <a class="reference internal" href="#content-references-bond-pricing-relationships"><span class="std std-ref">Malkiel’s bond-pricing rules</span></a></p></li>
+<li><p><a class="reference internal" href="#content-references-treasury-bonds"><span class="std std-ref">Treasury Bills, Notes and Bonds</span></a> are fixed-income securities issued by the US government to fund its operations and meet financial obligations. Treasury bills have a short-term maturity of less than a year, while Treasury notes and bonds have longer maturities ranging from two to thirty years. These securities are regarded as some of the safest investment options globally, backed by the US government’s full faith and credit.</p></li>
+<li><p><a class="reference internal" href="#content-references-bond-pricing-relationships"><span class="std std-ref">Malkiel’s bond-pricing guidelines</span></a> are utilized to determine the equitable value of a bond, considering its maturity, coupon rate, and current market interest rates. As per Malkiel’s guidelines, the bond’s price will fluctuate inversely with changes in interest rates. Long-term bonds will be more affected than short-term bonds.</p></li>
+<li><p><a class="reference internal" href="#content-references-term-structure-of-interest-rates"><span class="std std-ref">Term structure of interest rates</span></a> describes the correlation between fixed-income security interest rates and their maturity period. This concept represents the market’s outlook on future interest rates. The shape of the term structure - whether it’s upward-sloping, flat, or inverted - offers valuable insights into the economy’s present and potential future state.</p></li>
 </ul>
+</div>
 <hr class="docutils" />
 <figure class="align-default" id="fig-bill-notes-bonds-schematic">
 <a class="reference internal image-reference" href="../_images/Fig-Govt-Debt-Schematic.pdf"><img alt="../_images/Fig-Govt-Debt-Schematic.pdf" src="../_images/Fig-Govt-Debt-Schematic.pdf" style="height: 340px;" /></a>
@@ -449,7 +450,7 @@ document.write(`
 </figure>
 <section id="treasury-bills-notes-and-bonds">
 <span id="content-references-treasury-bonds"></span><h2>Treasury Bills, Notes and Bonds<a class="headerlink" href="#treasury-bills-notes-and-bonds" title="Permalink to this headline">#</a></h2>
-<p>A fixed-income debt security is a contract between a borrower and a lender. In the context of this lecture, we’ll focus on U.S. Treasury Bills, Notes, and Bonds, examples of government debt securities. For United States treasury debt instruments, the borrower is the U.S. government; the government issues (i.e., sells) a bond to a lender (you) for some cash. This arrangement obligates the U.S. Treasury to make specified payments to the bondholder (you) on specified dates over the lifetime of the instrument (<a class="reference internal" href="#fig-bill-notes-bonds-schematic"><span class="std std-numref">Fig. 6</span></a>).</p>
+<p>A fixed-income debt security is a contract between a borrower and a lender. United States treasury bills, notes, and bonds are examples of government debt securities. For United States treasury debt instruments, the borrower is the U.S. government; the government issues (i.e., sells) a bond to a lender (you) for some cash. This arrangement obligates the U.S. Treasury to make specified payments to the bondholder (you) on specified dates over the lifetime of the instrument (<a class="reference internal" href="#fig-bill-notes-bonds-schematic"><span class="std std-numref">Fig. 6</span></a>).</p>
 <p>There are many types of U.S. government debt securities. However, the various debt instruments share several similarities:</p>
 <ul class="simple">
 <li><p>U.S. Treasury debt securities have specified term lengths, meaning the duration of the borrowing contract between the borrower and the lender is fixed.</p></li>
@@ -459,26 +460,23 @@ document.write(`
 <li><p>You can buy U.S Treasury debt (meaning lend money to the U.S. government) directly from the <a class="reference external" href="https://www.treasurydirect.gov/indiv/products/prod_tbonds_glance.htm">United States Treasury via TreasuryDirect</a> or through a bank or broker.</p></li>
 </ul>
 <figure class="align-default" id="fig-bill-payout-schematic">
-<a class="reference internal image-reference" href="../_images/Fig-Zero-Coupon-Schematic.pdf"><img alt="../_images/Fig-Zero-Coupon-Schematic.pdf" src="../_images/Fig-Zero-Coupon-Schematic.pdf" style="height: 360px;" /></a>
+<a class="reference internal image-reference" href="../_images/Fig-Zero-Coupon-Schematic.pdf"><img alt="../_images/Fig-Zero-Coupon-Schematic.pdf" src="../_images/Fig-Zero-Coupon-Schematic.pdf" style="height: 320px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 7 </span><span class="caption-text">Schematic of a zero-coupon United States Treasury Bill (T-bill). The bondholder purchases the T-bill for <span class="math notranslate nohighlight">\(V_{B}\)</span> USD (current). At the term of the T-bill, the treasury pays the bondholder the face (par) value of the T-bill.</span><a class="headerlink" href="#fig-bill-payout-schematic" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 7 </span><span class="caption-text">Schematic of a zero-coupon United States Treasury Bills. The holder purchases the bill for <span class="math notranslate nohighlight">\(V_{B}\)</span> (current). At the term of the bill, the treasury pays the bondholder the face (par) value of the bill <span class="math notranslate nohighlight">\(V_{P}\)</span>.</span><a class="headerlink" href="#fig-bill-payout-schematic" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <section id="treasury-bills">
 <h3>Treasury Bills<a class="headerlink" href="#treasury-bills" title="Permalink to this headline">#</a></h3>
-<p>Treasury bills (also called T-bills) are short-term debt instruments sold in terms ranging from a few days to 52 weeks (<a class="reference internal" href="#fig-bill-payout-schematic"><span class="std std-numref">Fig. 7</span></a>). Treasury bills are issued for terms of 4, 8, 13, 26, and 52 weeks; 4-week, 8-week, 13-week, 26-week, and 52-week T-bills are auctioned on a regular schedule.</p>
-<section id="pricing-of-u-s-treasury-bills">
-<h4>Pricing of U.S. Treasury Bills<a class="headerlink" href="#pricing-of-u-s-treasury-bills" title="Permalink to this headline">#</a></h4>
-<p>T-bills are an example of a zero-coupon fixed-income instrument; thus, T-bills do not make coupon payments during the bill term. Instead, T-bills are priced, so the bondholder receives the par value at the bond’s duration. T-bills are typically sold at a discount from the par amount; rarely are they sold at a price equal to the par amount:</p>
+<p>T-bills, or Treasury bills, are debt instruments with short-term maturity periods ranging from a few days to 52 weeks (<a class="reference internal" href="#fig-bill-payout-schematic"><span class="std std-numref">Fig. 7</span></a>). T-bills are zero-coupon fixed-income investments, i.e., they are no coupon payments during their term. Instead, bills are priced so that the bill-holder receives the par value at the end of the term (<a class="reference internal" href="#defn-zero-coupon-bond-pricing">Definition 5</a>):</p>
 <div class="proof definition admonition" id="defn-zero-coupon-bond-pricing">
-<p class="admonition-title"><span class="caption-number">Definition 5 </span> (Zero Coupon Rate Bond Pricing)</p>
+<p class="admonition-title"><span class="caption-number">Definition 5 </span> (Zero Coupon Bond Pricing)</p>
 <section class="definition-content" id="proof-content">
-<p>Let a zero-coupon treasury bill (T-bill) have a T-year term with an annual market interest rate of <span class="math notranslate nohighlight">\(\bar{r}\)</span>. Then, the <em>fair price</em> for a zero-coupon treasury bill is the future face (par) value of the bill discounted to today by the market interest rate <span class="math notranslate nohighlight">\(\bar{r}\)</span>:</p>
+<p>A zero-coupon treasury bill (T-bill) has a T-year term with an annual market interest rate of <span class="math notranslate nohighlight">\(\bar{r}\)</span>. The fair price of a zero-coupon treasury bill is the future face (par) value of the bill discounted to today by the market interest rate <span class="math notranslate nohighlight">\(\bar{r}\)</span>:</p>
 <div class="math notranslate nohighlight" id="equation-eqn-zero-coupon-bill-bond">
 <span class="eqno">(6)<a class="headerlink" href="#equation-eqn-zero-coupon-bill-bond" title="Permalink to this equation">#</a></span>\[V_{B} = \frac{V_{P}}{\left(1+\bar{r}\right)^{T}}\]</div>
-<p>where <span class="math notranslate nohighlight">\(V_{B}\)</span> denotes the price of the treasury bill, and <span class="math notranslate nohighlight">\(V_{P}\)</span> represents the face (par) value of the treasury bill.</p>
+<p>The quantity <span class="math notranslate nohighlight">\(V_{B}\)</span> denotes the current price of the treasury bill, and <span class="math notranslate nohighlight">\(V_{P}\)</span> represents the face (par) value of the treasury bill.  Treasury bills are issued for specific periods, such as 4, 8, 13, 26, and 52 weeks, and are auctioned off regularly.</p>
 </section>
-</div><p>The price of the bill <span class="math notranslate nohighlight">\(V_{B}\)</span> is computed with respect to a particular value of the market interest rate <span class="math notranslate nohighlight">\(\bar{r}\)</span> on the day the T-bill is purchased. However, the market interest rate <span class="math notranslate nohighlight">\(\bar{r}\)</span> may vary over the T-bill term; hence, the market price of the T-bill can change over its term. Let’s do an example illustrating the pricing of a zero-coupon treasury bill (<a class="reference internal" href="#defn-zero-coupon-bond-pricing">Definition 5</a>).</p>
+</div><p>The price of the bill <span class="math notranslate nohighlight">\(V_{B}\)</span> is computed with respect to a value of the market interest rate <span class="math notranslate nohighlight">\(\bar{r}\)</span> on the day the bill is purchased. However, the market interest rate <span class="math notranslate nohighlight">\(\bar{r}\)</span> varies; hence, the market price of the bill can change over its term (<a class="reference internal" href="#example-zero-coupon-t-bill">Example 5</a>):</p>
 <div class="proof example dropdown admonition" id="example-zero-coupon-t-bill">
 <p class="admonition-title"><span class="caption-number">Example 5 </span> (Pricing of a Treasury Bill)</p>
 <section class="example-content" id="proof-content">
@@ -493,49 +491,35 @@ document.write(`
 <p><span class="caption-number">Fig. 8 </span><span class="caption-text">Price of a zero coupon treasury bill for a term of 0.5 (dark blue) and one year (light blue) as a function of the market interest rate. Face value <span class="math notranslate nohighlight">\(V_{P}\)</span> = 1000 USD.</span><a class="headerlink" href="#fig-zcbill-price" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<p><strong>source</strong>: <a class="reference external" href="https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks">Live Pluto notebook</a> or <a class="reference external" href="https://htmlview.glitch.me/?https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks/blob/main/pluto-notebooks/html/Example-Price-ZeroCoupon-TreasuryBill.jl.html">a static HTML view</a>.</p>
-</section>
-</div><p>The treasury bill pricing calculations shown in <a class="reference internal" href="#example-zero-coupon-t-bill">Example 5</a> have some interesting properties:</p>
+<p>The treasury bill pricing calculations shown in <a class="reference internal" href="#example-zero-coupon-t-bill">Example 5</a> have some interesting properties:</p>
 <ul class="simple">
 <li><p>There is an <em>inverse</em> relationship between the current price of a zero-coupon bill and the market interest rate <span class="math notranslate nohighlight">\(\bar{r}\)</span>; this must be true as the par value (which is in future dollars) is fixed. Thus, higher market interest rates imply lower initial T-bill prices.</p></li>
 <li><p>The relationship between <span class="math notranslate nohighlight">\(V_{B}\)</span> and <span class="math notranslate nohighlight">\(\bar{r}\)</span> is <em>not</em> linear (dashed versus solid lines); even though it may appear to be the case from the parameters used in the example, the relationship between price and interest rate is convex</p></li>
 <li><p>Finally, the longer duration treasury bills are more sensitive to interest rate changes; the T = 1-year slope is larger than the T = 0.5-year case.</p></li>
 </ul>
-<p>Thus, the duration and the risk-free interest rate are critical to the pricing of the treasury bill. However, what is the risk-free market interest rate?</p>
-<div class="proof remark admonition" id="remark-market-interest-rate">
-<p class="admonition-title"><span class="caption-number">Remark 2 </span> (What is the Risk-free Market Interest Rate?)</p>
-<section class="remark-content" id="proof-content">
-<p>The present value calculation for a treasury bond depends upon the discount rate, which we assume is the risk-free market interest rate, denoted by <span class="math notranslate nohighlight">\(\bar{r}\)</span>. However, what is the risk free market interest rate for a bond?</p>
-<p>The risk-free market interest rate is the sum of (at least) two terms: the real risk-free rate of return <span class="math notranslate nohighlight">\(\bar{r}^{\circ}_{f}\)</span> and a premium paid above the real rate to compensate for expected inflation <span class="math notranslate nohighlight">\(\bar{r}_{I}\)</span>:</p>
-<div class="math notranslate nohighlight">
-\[\bar{r} = \bar{r}^{\circ}_{f}+\bar{r}_{I}+\dots\]</div>
-<p>where <span class="math notranslate nohighlight">\(\bar{r}^{\circ}_{f}\)</span> denotes the real risk-free rate and <span class="math notranslate nohighlight">\(r_{I}\)</span> denotes a premium above the real-risk free rate, which accounts for inflation risk; the <span class="math notranslate nohighlight">\(\bar{\star}\)</span> notation represents the assumption of a constant rate over the bond term. In addition to inflation risk, there can (potentially) be additional terms to compensate the bond buyer for other expected risks.</p>
 </section>
 </div></section>
-</section>
 <section id="treasury-notes-and-bonds">
 <h3>Treasury Notes and Bonds<a class="headerlink" href="#treasury-notes-and-bonds" title="Permalink to this headline">#</a></h3>
-<p>Treasury notes, sometimes called T-notes, are a medium-term debt instrument that earns a fixed rate of interest every six months until maturity. T-notes are issued in terms of 2, 3, 5, 7, and 10 years. The price of a T-note can be greater than, less than, or equal to the T-note’s par value. However, at maturity, the par value of the T-note is paid to the owner of the T-note (lender).</p>
-<p>T-notes are an example of a non-zero coupon debt instrument; thus, the lender receives periodic interest payments, called coupon payments which are proportional to the coupon rate, over the lifetime of the T-note.</p>
+<p>T-notes, also known as Treasury notes, are debt instruments that offer a fixed interest rate every six months until they reach maturity. They are available in 2, 3, 5, 7, and 10-year terms. The price of a T-note can be more or less than its par value, but when it matures, the lender receives the full par value. T-notes are coupon debt instruments, meaning that the lender gets regular interest payments that correspond to a coupon rate throughout the T-note’s life (<a class="reference internal" href="#fig-bond-payout-schematic"><span class="std std-numref">Fig. 9</span></a>):</p>
 <figure class="align-default" id="fig-bond-payout-schematic">
 <a class="reference internal image-reference" href="../_images/Fig-Bond-Asset-Timeline-Schematic.pdf"><img alt="../_images/Fig-Bond-Asset-Timeline-Schematic.pdf" src="../_images/Fig-Bond-Asset-Timeline-Schematic.pdf" style="height: 320px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 9 </span><span class="caption-text">Schematic of the lifetime of a Treasury Bond with semiannual coupon payments. The bond is purchased now (t=0). The bondholder receives semi-annual coupon payments until the maturity of the bond T years in the future. At maturity (t = T), the bondholder receives a final coupon payment plus the face value of the bond.</span><a class="headerlink" href="#fig-bond-payout-schematic" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 9 </span><span class="caption-text">Schematic of the lifetime of a Treasury Bond with semiannual coupon payments. The bond is purchased now and the bondholder receives semi-annual coupon payments until the maturity of the bond T-years into the future. At maturity, the bondholder receives a final coupon payment plus the face value of the bond.</span><a class="headerlink" href="#fig-bond-payout-schematic" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Similar to T-notes, treasury bonds are also a coupon debt instrument. However, treasury bonds are long-term U.S Treasury debt instruments. Treasury bonds pay a fixed rate of interest (the coupon rate) every six months until the bond’s maturity (<a class="reference internal" href="#fig-bond-payout-schematic"><span class="std std-numref">Fig. 9</span></a>). The U.S. Treasury issues bonds with terms of 20 or 30 years. When a bond matures, the bondholder receives the face value of the bond. Bonds can be held until maturity or sold before maturity.</p>
-<p>When a U.S. Treasury bond matures, the U.S government repays the debt by paying the bond’s par (or face) value. The bond’s coupon rate determines the interest payment: the annual payment is the coupon rate times the bond’s par value. The coupon rate, maturity date, and par value of the bond are part of the contract between the issuer, the U.S. government, and the bondholder (you).</p>
+<p>Treasury bonds, like T-notes, are debt instruments that pay a fixed rate of interest every six months. However, treasury bonds are long-term U.S. Treasury debt instruments with terms of 20 or 30 years. When a bond reaches maturity, the bondholder receives the bond’s face value. Bonds can be held until maturity or sold before maturity.</p>
 <section id="pricing-of-u-s-treasury-bonds">
 <h4>Pricing of U.S. Treasury Bonds<a class="headerlink" href="#pricing-of-u-s-treasury-bonds" title="Permalink to this headline">#</a></h4>
-<p>A bond’s coupon payments, and the eventual repayment of the face value, occurs many years in the future. Thus, the price an investor is willing to pay for a claim to those payments depends on the future value of the dollars that will be received versus the present value of the face value of the bond.</p>
+<p>A bond’s coupon payments, and the eventual repayment of the face value, occurs many years in the future. Thus, the price an investor is willing to pay for a claim to those payments depends on the future value of the dollars that will be received versus the present value of the face value of the bond
+(<a class="reference internal" href="#defn-fixed-r-bond-pricing">Definition 6</a>):</p>
 <div class="proof definition admonition" id="defn-fixed-r-bond-pricing">
 <p class="admonition-title"><span class="caption-number">Definition 6 </span> (Fixed Coupon Rate Bond Pricing)</p>
 <section class="definition-content" id="proof-content">
-<p>Let the term of a bond be T-years with <span class="math notranslate nohighlight">\(\lambda\)</span> coupon payments per year; <span class="math notranslate nohighlight">\(N = \lambda{T}\)</span> coupon payments over the term of the bond. Further, let <span class="math notranslate nohighlight">\(\bar{c}\)</span> denote the annual coupon rate, and <span class="math notranslate nohighlight">\(\bar{r}\)</span> denote the annual market interest rate.</p>
-<p>Then, the <em>fair price</em> for the bond, denoted by <span class="math notranslate nohighlight">\(V_{B}\)</span>, is the present value of coupon payments <span class="math notranslate nohighlight">\(C\)</span> plus the discounted par value <span class="math notranslate nohighlight">\(V_{P}\)</span> of the bond:</p>
+<p>Let the term of a bond be T-years with semiannual (<span class="math notranslate nohighlight">\(\lambda = 2\)</span>) coupon payments per year; <span class="math notranslate nohighlight">\(N = \lambda{T}\)</span> coupon payments over the bond term. Further, let <span class="math notranslate nohighlight">\(\bar{c}\)</span> denote the annual coupon rate, and <span class="math notranslate nohighlight">\(\bar{r}\)</span> denote the annual market interest rate. Then, the <em>fair price</em> for the bond <span class="math notranslate nohighlight">\(V_{B}\)</span> is the present value of coupon payments <span class="math notranslate nohighlight">\(C\)</span> plus the discounted par value <span class="math notranslate nohighlight">\(V_{P}\)</span> of the bond:</p>
 <div class="math notranslate nohighlight">
 \[V_{B} = \frac{V_{P}}{\left(1+i\right)^{N}}+\sum_{j=1}^{N}\frac{C}{\left(1+i\right)^{j}}\]</div>
-<p>where the coupon payment <span class="math notranslate nohighlight">\(C=\left(\bar{c}/\lambda\right)\cdot{V_{P}}\)</span> is set when the bond is purchased, and the market interest rate <span class="math notranslate nohighlight">\(i=\bar{r}/\lambda\)</span> varies with the market.</p>
+<p>The coupon payment <span class="math notranslate nohighlight">\(C=\left(\bar{c}/\lambda\right)\cdot{V_{P}}\)</span> is set when the bond is purchased, and the market interest rate <span class="math notranslate nohighlight">\(i=\bar{r}/\lambda\)</span> varies with the market. The contract between the U.S. government, the issuer, and the bondholder (you) includes the bond’s coupon rate, maturity date, and par value.</p>
 </section>
 </div><p>Let’s do an example illustrating bond pricing (<a class="reference internal" href="#defn-fixed-r-bond-pricing">Definition 6</a>).</p>
 <div class="proof example dropdown admonition" id="example-treaury-bond-price">
@@ -613,8 +597,8 @@ investors must calculate this value from the bond price, maturity date, and coup
 <p><span class="caption-number">Fig. 10 </span><span class="caption-text">Sensitivity of bond price to changes in the market interest rate.</span><a class="headerlink" href="#fig-bond-price-sensitivity" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<section id="malkiels-bond-pricing-rules">
-<span id="content-references-bond-pricing-relationships"></span><h4>Malkiel’s bond-pricing rules<a class="headerlink" href="#malkiels-bond-pricing-rules" title="Permalink to this headline">#</a></h4>
+<section id="malkiels-bond-pricing-guidelines">
+<span id="content-references-bond-pricing-relationships"></span><h4>Malkiel’s bond-pricing guidelines<a class="headerlink" href="#malkiels-bond-pricing-guidelines" title="Permalink to this headline">#</a></h4>
 <p>The relationship between the price of a bond, and the yeild (i.e., the market interest rate <span class="math notranslate nohighlight">\(\bar{r}\)</span>) was previously studied by Malkiel <span id="id1">[<a class="reference internal" href="../References.html#id8" title="Burton G. Malkiel. Expectations, Bond Prices, and the Term Structure of Interest Rates*. The Quarterly Journal of Economics, 76(2):197-218, 05 1962. URL: https://doi.org/10.2307/1880816, arXiv:https://academic.oup.com/qje/article-pdf/76/2/197/5374920/76-2-197.pdf, doi:10.2307/1880816.">Malkiel, 1962</a>]</span>. The so-called Malkiel’s bond-pricing rules are demonstrated by the simulations shown in (<a class="reference internal" href="#fig-bond-price-sensitivity"><span class="std std-numref">Fig. 10</span></a>):</p>
 <ol class="arabic simple">
 <li><p>The price of a U.S. Treasury Bond <em>increases</em> as the market interest rate <span class="math notranslate nohighlight">\(\bar{r}\)</span> <em>decreases</em>; thus, there is an <em>inverse</em> relationship between the bond yield to maturity (i.e., the market rate <span class="math notranslate nohighlight">\(\bar{r}\)</span>) and the price of the bond <span class="math notranslate nohighlight">\(V_{B}\)</span>.</p></li>
@@ -627,6 +611,10 @@ interest rate.</p></li>
 </section>
 </section>
 </section>
+<section id="term-structure-of-interest-rates">
+<span id="content-references-term-structure-of-interest-rates"></span><h2>Term structure of interest rates<a class="headerlink" href="#term-structure-of-interest-rates" title="Permalink to this headline">#</a></h2>
+<p>Fill me in.</p>
+</section>
 <hr class="docutils" />
 <section id="summary">
 <h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">#</a></h2>
@@ -634,7 +622,7 @@ interest rate.</p></li>
 <ul class="simple">
 <li><p>Introduced the definition of <a class="reference internal" href="#content-references-treasury-bonds"><span class="std std-ref">Treasury Bills, Notes and Bonds</span></a></p></li>
 <li><p>Developed tools to compute the fair price of Treasury Bills/Notes/Bonds as a function of the par value, market interest rate, and coupon rate.</p></li>
-<li><p>Introduced <a class="reference internal" href="#content-references-bond-pricing-relationships"><span class="std std-ref">Malkiel’s bond-pricing rules</span></a>; Malkiel’s rules describe the sensitivity of bond price to changes in market interest rates as a function of other bond parameters such as coupon rate and term.</p></li>
+<li><p>Introduced <a class="reference internal" href="#content-references-bond-pricing-relationships"><span class="std std-ref">Malkiel’s bond-pricing guidelines</span></a>; Malkiel’s rules describe the sensitivity of bond price to changes in market interest rates as a function of other bond parameters such as coupon rate and term.</p></li>
 </ul>
 </section>
 </section>
@@ -707,10 +695,7 @@ interest rate.</p></li>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#treasury-bills-notes-and-bonds">Treasury Bills, Notes and Bonds</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#treasury-bills">Treasury Bills</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pricing-of-u-s-treasury-bills">Pricing of U.S. Treasury Bills</a></li>
-</ul>
-</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#treasury-bills">Treasury Bills</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#treasury-notes-and-bonds">Treasury Notes and Bonds</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#pricing-of-u-s-treasury-bonds">Pricing of U.S. Treasury Bonds</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#yield-to-maturity-of-u-s-treasury-bonds">Yield to Maturity of U.S. Treasury Bonds</a><ul class="nav section-nav flex-column">
@@ -720,11 +705,12 @@ interest rate.</p></li>
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sensitivity-of-bond-prices-to-interest-rate-changes">Sensitivity of Bond Prices to Interest Rate Changes</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#malkiels-bond-pricing-rules">Malkiel’s bond-pricing rules</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#malkiels-bond-pricing-guidelines">Malkiel’s bond-pricing guidelines</a></li>
 </ul>
 </li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#term-structure-of-interest-rates">Term structure of interest rates</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
 </ul>
   </nav></div>
