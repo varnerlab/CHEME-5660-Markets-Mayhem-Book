@@ -190,12 +190,8 @@ Stylized facts are empirical statistical properties of return time series {cite}
 * [Absence of Autocorrelation](https://en.wikipedia.org/wiki/Autocorrelation):  Autocorrelation refers to the tendency of stock price returns to correlate with their past returns over time. This suggests some predictability in stock price returns, which traders and investors can exploit. A random walk will not be correlated with itself.
 * [Volatility clustering](https://en.wikipedia.org/wiki/Volatility_clustering): Stock prices tend to be more volatile during specific periods and less volatile during others. This phenomenon is known as volatility clustering, suggesting that large price movements are more likely to be followed by significant moves in the same direction.
 * [Heavy tails](https://en.wikipedia.org/wiki/Fat-tailed_distribution): Stock price returns often exhibit a distribution with fatter tails than would be expected under a normal distribution. This means that extreme price movements are more likely than would be predicted by a normal distribution.
-* [Leverage effect](https://en.wikipedia.org/wiki/Leverage_(finance)): There is a negative relationship between stock returns and volatility. When stock prices fall, volatility tends to increase, exacerbating the decline in stock price
-
 
 Let's compute the stylized facts for the daily returns of [Wells Fargo & Company](https://en.wikipedia.org/wiki/Wells_Fargo) with ticker `WFC`. To compute the [Autocorrelation](https://en.wikipedia.org/wiki/Autocorrelation), the [Volatility clustering](https://en.wikipedia.org/wiki/Volatility_clustering) and the [return disribution](https://en.wikipedia.org/wiki/Fat-tailed_distribution) we use the [Statistics.jl](https://docs.julialang.org/en/v1/stdlib/Statistics/) and [Distributions.jl](https://github.com/JuliaStats/Distributions.jl) packages.
-
-
 
 
 ````{prf:example} Autocorrelation 
@@ -260,9 +256,10 @@ Volatility clustering as a function of lag $\tau$ (days) for logarithmic return 
 :label: example-return-distribution-WFC
 :class: dropdown
 
-Compute and visulize the Volatility clustering of the `WFC` return time series as a function of the lag parameter $\tau$. The Volatility clustering of the return series `R` is computed using the [autocor](https://juliastats.org/StatsBase.jl/stable/signalcorr/#StatsBase.autocov) function:
+Compute and visulize the return distribution of the `WFC` return time series. 
 
 ```julia
+# load packages
 using Plots
 using Colors
 using StatsBase
@@ -280,11 +277,16 @@ colors[5] = colorant"#CC3311"
 colors[6] = colorant"#009988" 
 colors[7] = colorant"#DDDDDD"
 
-# make histogram -
-histogram(R,normalize=:true, c=colors[7], label="Actual",
-    bg="floralwhite", background_color_outside="white", framestyle = :box, fg_legend = :transparent);
+# fit distributions
 ld = fit_mle(Laplace, R); # Laplace
 nd = fit_mle(Normal, R); # Normal
+
+# make histogram of actual data
+histogram(R,normalize=:true, c=colors[7], label="Actual",
+    bg="floralwhite", background_color_outside="white", 
+    framestyle = :box, fg_legend = :transparent);
+
+# plot
 plot!(ld, lw=3, c=colors[5],label="Laplace")
 plot!(nd, lw=3, c=colors[2], label="Normal")
 xlabel!("Daily Return $(ticker)", fontsize=18)
@@ -298,7 +300,7 @@ The distribution of daily returns was visualized using the [Plots.jl](https://do
 height: 380px
 name: example-WFC-return-histogram-data-daily
 ---
-Volatility clustering as a function of lag $\tau$ (days) for logarithmic return of [Wells Fargo & Company](https://en.wikipedia.org/wiki/Wells_Fargo) computed from `2018-11-28` to `2022-11-28`. The data was downloaded using the `aggregate` endpoint from [Polygon.io](https://polygon.io).
+Return distribution for logarithmic daily return of [Wells Fargo & Company](https://en.wikipedia.org/wiki/Wells_Fargo) computed between `2018-11-28` to `2022-11-28`. The data was downloaded using the `aggregate` endpoint from [Polygon.io](https://polygon.io).
 ```
 ````
 
