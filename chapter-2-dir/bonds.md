@@ -6,10 +6,11 @@ Fixed-income securities offer predetermined cashflows on specific dates. One cla
 
 
 ```{topic} Outline
-* {ref}`content:references:treasury-bonds`. The US government issues fixed-income securities such as Treasury bills, notes, and bonds to fund its operations and meet financial obligations. Treasury bills have a short-term maturity of less than a year, while Treasury notes and bonds have longer maturities ranging from two to thirty years. These securities are regarded as some of the safest investment options globally, backed by the US government’s full faith and credit.
+* {ref}`content:references:treasury-bonds` are fixed-income securities issued by the US government to fund its operations and meet financial obligations. Treasury bills have a short-term maturity of less than a year, while Treasury notes and bonds have longer maturities ranging from two to thirty years. These securities are regarded as some of the safest investment options globally, backed by the US government’s full faith and credit.
 
 * {ref}`content:references:bond-pricing-relationships` are utilized to determine the equitable value of a bond, considering its maturity, coupon rate, and current market interest rates. As per Malkiel’s guidelines, the bond’s price will fluctuate oppositely with changes in interest rates and long-term bonds will be more affected than short-term bonds. These guidelines offer investors a valuable framework to analyze the potential risks and returns of various bond types, enabling them to make informed investment choices.
 
+* {ref}`content:references:term-structure-of-interest-rates` describes the correlation between bond or fixed-income security interest rates and their maturity period. This financial concept represents the market’s outlook on future interest rates and economic situations. It’s important to understand the shape of the term structure - whether it’s upward-sloping, flat, or inverted - as it can offer valuable insights into the economy’s present and potential future state. Investors and policymakers can use this information to make informed decisions.
 
 ```
 
@@ -221,6 +222,10 @@ an increase in a bond’s interest rate $\bar{r}$ results in a _smaller price ch
 1. Prices of long-term bonds are more sensitive to interest rate changes than short-term bonds. For example, consider Case I and Case II in ({numref}`fig-bond-price-sensitivity`); Case I (short-term bond) is _less sensitive_ to the same magnitude change in $\bar{r}$ compared with Case II (long-term bond).
 1. Interest rate risk is inversely related to a bond’s coupon rate. Prices of low coupon-rate bonds are more sensitive to changes in interest rates than prices of high-rate coupon bonds. For example, compare Case II and III in ({numref}`fig-bond-price-sensitivity`); case III (the low coupon-rate bond) is significanly more sensitive to decreases in interest rate compared with case II (the high coupon-rate bond). A similar, albeit less pronounced, trend is visible for increased
 interest rate.
+
+(content:references:term-structure-of-interest-rates)=
+## Term structure of interest rates
+Fill me in.
 
 ---
  
