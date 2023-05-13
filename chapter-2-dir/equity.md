@@ -1,16 +1,20 @@
 # Equity Securities
-Common stocks, also known as equity securities or equities, represent ownership shares in a corporation. Each share of common stock entitles its owner to one vote on any matters of corporate governance that are put to the vote at the corporation’s annual meeting and a share in the financial benefits of ownership. The corporation is controlled by a board of directors elected by the shareholders. The board meets a few times per year and selects the management team that runs the corporation daily. Managers have the authority to make most business decisions without the board’s specific approval. The board’s mandate is to oversee the management to ensure that it acts in the best interests of shareholders.
+<!-- Common stocks, also known as equity securities or equities, represent ownership shares in a corporation. Each share of common stock entitles its owner to one vote on any matters of corporate governance that are put to the vote at the corporation’s annual meeting and a share in the financial benefits of ownership. The corporation is controlled by a board of directors elected by the shareholders. The board meets a few times per year and selects the management team that runs the corporation daily. Managers have the authority to make most business decisions without the board’s specific approval. The board’s mandate is to oversee the management to ensure that it acts in the best interests of shareholders.
 
 The two most important characteristics of common stock as an investment are its residual claim and limited liability features:
 
 * Residual claim means that stockholders are the last in line of all those who have a claim on the assets and income of the corporation. In liquidating the firm’s assets, the shareholders have a claim to what is left after all other claimants, such as the tax authorities, employees, suppliers, bondholders, and other creditors, have been paid. For a firm not in liquidation, shareholders have a claim to the part of operating income left over after interest and taxes have been paid. Management can either pay this residual as cash dividends to shareholders or reinvest it in the business to increase the value of the shares. 
 
-* Limited liability means the most shareholders can lose in the event of the corporation’s failure is their original investment. Unlike owners of unincorporated businesses, whose creditors can lay claim to the personal assets of the owner (house, car, furniture), corporate shareholders may, at worst, have worthless stock. They are not personally liable for the firm’s obligations.
+* Limited liability means the most shareholders can lose in the event of the corporation’s failure is their original investment. Unlike owners of unincorporated businesses, whose creditors can lay claim to the personal assets of the owner (house, car, furniture), corporate shareholders may, at worst, have worthless stock. They are not personally liable for the firm’s obligations. -->
+
+Equity securities are financial assets that signify ownership in a company, granting the holder a proportionate share of the company’s assets and profits. These financial instruments are traded on stock exchanges and are a popular investment option for both individual and institutional investors. Although investing in equity securities can provide long-term capital gains and dividend income, it also involves some risk due to fluctuations in stock prices and market conditions.
 
 ```{topic} Outline
 * {ref}`content:references:markets-exchanges` play a crucial role in contemporary economies as they enable the trade of goods, services, and financial instruments like stocks and bonds. A market is a platform where buyers and sellers convene to exchange commodities or services, while an exchange is a market that specializes in financial instruments and has specific trade regulations.
 
 * {ref}`content:orders-order-book-matching`. Traders give instructions to buy or sell financial instruments at a specified price, known as orders. These orders are recorded in the order book, which shows all outstanding buy and sell orders for a specific financial instrument on the exchange. The exchange matches buy and sell orders based on price and other criteria through the process of order matching, which results in trades being executed. The order book provides transparency into market depth and liquidity.
+
+* {ref}`content:references:returns-stylized-facts`. Investment returns are a vital indicator of an investment’s value change over time. Returns play a crucial role in evaluating investment performance. Stylized facts are recognizable patterns or empirical regularities observed in financial markets and investment returns. For instance, stock returns tend to be positively correlated with economic growth. Familiarity with these patterns can assist investors in making informed decisions and creating more effective investment strategies.
 
 ```
 
@@ -61,9 +65,6 @@ Snapshot for the [QQQ](https://www.google.com/finance/quote/QQQ:NASDAQ?sa=X&ved=
 <!-- Financial data providers such as [Polygon.io](https://polygon.io) have [RESTful Application Programming Interface (APIs)](https://polygon.io/docs/stocks/getting-started) that enable programmatic access to market data of all sorts, including data about the buy and sell orders in the [order book](https://en.wikipedia.org/wiki/Order_book) for equities and derivatives, with a nanosecond resolution. -->
 
 
-
-
-
 ### Order Matching
 An [order matching system](https://en.wikipedia.org/wiki/Order_matching_system) matches buy and sell orders held in the [order books](https://www.investopedia.com/terms/o/order-book.asp) of an electronic exchange. [Order books](https://www.investopedia.com/terms/o/order-book.asp) are a data structure that organizes the orders that exchange can accept and allows matching to occur; [order books](https://www.investopedia.com/terms/o/order-book.asp) are essentially electronic lists of buy and sell orders for a specific security or financial instrument organized by price level. 
 
@@ -94,6 +95,7 @@ The Pro-Rata algorithm will match 225 shares to the 300-share buy order and 75 s
 In a classical face-to-face auction, the identity of the buyer and seller, or at least their representatives, is typically known. However, determining who the buyers and sellers are on an electronic exchange is impossible; you will (likely) never _know_ your counterparty. Instead, 
 [Core](https://www.investopedia.com/terms/c/coreliquidityprovider.asp) and [supplemental liquidity providers](https://www.investopedia.com/terms/s/supplemental-liquidity-provider.asp), also called market makers, facilitate securities trading by providing a pool of shares, (which they own), so that buyers and sellers trade without having to locate and deal with each other individually.  -->
 
+(content:references:returns-stylized-facts)=
 ## Returns and Stylized Facts 
 A return refers to the increase or decrease in the price of an asset, e.g., shares of a stock over a specific time period period, e.g., minutes, days, weeks or even years. Studying returns is crucial for understanding the performance of financial assets such as stocks, bonds, and commodities ({prf:ref}`defn-log-return-1`):
 
@@ -127,24 +129,25 @@ where $r_{i,j\rightarrow{k}}$ denotes the fractional return of asset $i$ over ti
 
 ````
 
-Often asset prices, e.g., the share price of a stock, are random variables. Thus, returns computed from these prices are also random. For example, the time-series for the daily rerturn of the share price of [Advanced Micro Devices](https://en.wikipedia.org/wiki/AMD) for the last two years is shown in (XXX)
+Data on stock prices are sourced from platforms like [Polygon.io](https://polygon.io), where datasets are compiled with aggregated Open High Low Close (OHLC) values. The Open price is the share price at the beginning of a specific time frame, while the Close price indicates the share price at the end of that time frame. The High and Low prices indicate the highest and lowest values for that time period, respectively. In addition, these datasets usually include information on the number of shares traded, the number of transactions, and the volume-weighted average price (vwap).
 
+Consider the time-series for the daily rerturn of the share price of [Advanced Micro Devices](https://en.wikipedia.org/wiki/AMD) computed over a four year window ({prf:ref}`example-amd-daily-returns`):
 
+````{prf:example} Daily logarithmic AMD returns
+:label: example-amd-daily-returns
+:class: dropdown
 
+The daily logarithmic return time series for [Advanced Micro Devices](https://en.wikipedia.org/wiki/AMD) with ticker `AMD` is shown in {numref}`example-AMD-return-data-daily`:
 
-### Stylized facts
-Stylized facts are empirical statistical properties of return time series {cite}`Cont-QuantFinance-2001`. By examining returns and stylized facts, analysts and investors gain insights into market behavior, risk, and investment opportunities. While several stylized facts have been developed, let's consider four important examples:
+```{figure} ./figs/Fig-AMD-Daily-Return-4yr.pdf
+---
+height: 380px
+name: example-AMD-return-data-daily
+---
+Daily logarithmic return of [Advanced Micro Devices](https://en.wikipedia.org/wiki/AMD) computed from `2018-11-28` to `2022-11-28`. data was downloaded using the `aggregate` endpoint from [Polygon.io](https://polygon.io).
+```
 
-* [Absence of Autocorrelation](https://en.wikipedia.org/wiki/Autocorrelation):  Autocorrelation refers to the tendency of stock price returns to correlate with their past returns over time. This suggests some predictability in stock price returns, which traders and investors can exploit. A random walk will not be correlated with itself.
-* [Heavy tails](https://en.wikipedia.org/wiki/Fat-tailed_distribution): Stock price returns often exhibit a distribution with fatter tails than would be expected under a normal distribution. This means that extreme price movements are more likely than would be predicted by a normal distribution.
-* [Volatility clustering](https://en.wikipedia.org/wiki/Volatility_clustering): Stock prices tend to be more volatile during specific periods and less volatile during others. This phenomenon is known as volatility clustering, suggesting that large price movements are more likely to be followed by significant moves in the same direction.
-* [Leverage effect](https://en.wikipedia.org/wiki/Leverage_(finance)): There is a negative relationship between stock returns and volatility. When stock prices fall, volatility tends to increase, exacerbating the decline in stock price
-
-#### Computation of returns, and stylized facts
-Stock price data from sources such as Polygon.io are usually presented as aggregated datasets containing Open High Low Close (OHLC) values. The Open price refers to the share price at the start of a specific time window, while the Close price represents the share price at the end of that window. The High and Low prices indicate the highest and lowest prices during that window, respectively. Additional data such as the number of shares traded, the number of transactions, and the volume-weighted average price (vwap) are also typically provided.
-
-````{admonition} __Code__: Compute log (excess) return
-:class: dropdown 
+The logarithmic return was computed using the `logR` function:
 
 ```julia
 """
@@ -180,7 +183,125 @@ end
 ```
 ````
 
-Code {prf:ref}`code-log-excess-return`
+
+### Stylized facts
+Stylized facts are empirical statistical properties of return time series {cite}`Cont-QuantFinance-2001`. By examining returns and stylized facts, analysts and investors gain insights into market behavior, risk, and investment opportunities. While several stylized facts have been developed, let's consider four important examples:
+
+* [Absence of Autocorrelation](https://en.wikipedia.org/wiki/Autocorrelation):  Autocorrelation refers to the tendency of stock price returns to correlate with their past returns over time. This suggests some predictability in stock price returns, which traders and investors can exploit. A random walk will not be correlated with itself.
+* [Volatility clustering](https://en.wikipedia.org/wiki/Volatility_clustering): Stock prices tend to be more volatile during specific periods and less volatile during others. This phenomenon is known as volatility clustering, suggesting that large price movements are more likely to be followed by significant moves in the same direction.
+* [Heavy tails](https://en.wikipedia.org/wiki/Fat-tailed_distribution): Stock price returns often exhibit a distribution with fatter tails than would be expected under a normal distribution. This means that extreme price movements are more likely than would be predicted by a normal distribution.
+* [Leverage effect](https://en.wikipedia.org/wiki/Leverage_(finance)): There is a negative relationship between stock returns and volatility. When stock prices fall, volatility tends to increase, exacerbating the decline in stock price
+
+
+Let's compute the stylized facts for the daily returns of [Wells Fargo & Company](https://en.wikipedia.org/wiki/Wells_Fargo) with ticker `WFC`. To compute the [Autocorrelation](https://en.wikipedia.org/wiki/Autocorrelation), the [Volatility clustering](https://en.wikipedia.org/wiki/Volatility_clustering) and the [return disribution](https://en.wikipedia.org/wiki/Fat-tailed_distribution) we use the [Statistics.jl](https://docs.julialang.org/en/v1/stdlib/Statistics/) and [Distributions.jl](https://github.com/JuliaStats/Distributions.jl) packages.
+
+
+
+
+````{prf:example} Autocorrelation 
+:label: example-autocorrelation-WFC
+:class: dropdown
+
+Compute and visulize the autocorrelation of the `WFC` return time series as a function of the lag parameter $\tau$. The autocorrelation of the return series `R` is computed using the [autocor](https://juliastats.org/StatsBase.jl/stable/signalcorr/#StatsBase.autocov) function:
+
+```julia
+# compute the AC -
+L = length(R);
+lags = range(0,step=1,stop=(L-1));
+AC = autocor(R, lags);
+
+# compute the bounds -
+LB = zeros(L) .- 1.96/sqrt(L);
+UB = zeros(L) .+ 1.96/sqrt(L);
+```
+
+
+The autocorrelation as a function of the lag parameter $\tau$ can be visualized using the [Plots.jl](https://docs.juliaplots.org/stable/) package ({numref}`example-WFC-autocor-return-data-daily`):
+
+```{figure} ./figs/Fig-WFC-Daily-Return-4yr-Autocorrelation.pdf
+---
+height: 380px
+name: example-WFC-autocor-return-data-daily
+---
+Autocorrelation as a function of lag $\tau$ (days) for logarithmic return of [Wells Fargo & Company](https://en.wikipedia.org/wiki/Wells_Fargo) computed from `2018-11-28` to `2022-11-28`. The data was downloaded using the `aggregate` endpoint from [Polygon.io](https://polygon.io).
+```
+````
+
+````{prf:example} Volatility clustering
+:label: example-autocorrelation-abs-WFC
+:class: dropdown
+
+Compute and visulize the Volatility clustering of the `WFC` return time series as a function of the lag parameter $\tau$. The Volatility clustering of the return series `R` is computed using the [autocor](https://juliastats.org/StatsBase.jl/stable/signalcorr/#StatsBase.autocov) function:
+
+```julia
+# compute the AC -
+L = length(R);
+lags = range(0,step=1,stop=(L-1));
+AC = autocor(abs.(R), lags);
+
+# compute the bounds -
+LB = zeros(L) .- 1.96/sqrt(L);
+UB = zeros(L) .+ 1.96/sqrt(L);
+```
+
+
+The Volatility clustering as a function of the lag parameter $\tau$ can be visualized using the [Plots.jl](https://docs.juliaplots.org/stable/) package ({numref}`example-WFC-autocor-abs-return-data-daily`):
+
+```{figure} ./figs/Fig-WFC-Daily-Return-4yr-abs-Autocorrelation.pdf
+---
+height: 380px
+name: example-WFC-autocor-abs-return-data-daily
+---
+Volatility clustering as a function of lag $\tau$ (days) for logarithmic return of [Wells Fargo & Company](https://en.wikipedia.org/wiki/Wells_Fargo) computed from `2018-11-28` to `2022-11-28`. The data was downloaded using the `aggregate` endpoint from [Polygon.io](https://polygon.io).
+```
+````
+
+````{prf:example} Return distribution
+:label: example-return-distribution-WFC
+:class: dropdown
+
+Compute and visulize the Volatility clustering of the `WFC` return time series as a function of the lag parameter $\tau$. The Volatility clustering of the return series `R` is computed using the [autocor](https://juliastats.org/StatsBase.jl/stable/signalcorr/#StatsBase.autocov) function:
+
+```julia
+using Plots
+using Colors
+using StatsBase
+using StatsPlots
+using Statistics
+using Distributions
+
+# setuo color dictionary -
+colors = Dict{Int64,RGB}()
+colors[1] = colorant"#EE7733"
+colors[2] = colorant"#0077BB" 
+colors[3] = colorant"#33BBEE" 
+colors[4] = colorant"#EE3377" 
+colors[5] = colorant"#CC3311" 
+colors[6] = colorant"#009988" 
+colors[7] = colorant"#DDDDDD"
+
+# make histogram -
+histogram(R,normalize=:true, c=colors[7], label="Actual",
+    bg="floralwhite", background_color_outside="white", framestyle = :box, fg_legend = :transparent);
+ld = fit_mle(Laplace, R); # Laplace
+nd = fit_mle(Normal, R); # Normal
+plot!(ld, lw=3, c=colors[5],label="Laplace")
+plot!(nd, lw=3, c=colors[2], label="Normal")
+xlabel!("Daily Return $(ticker)", fontsize=18)
+ylabel!("Count", fontsize=18)
+```
+
+The distribution of daily returns was visualized using the [Plots.jl](https://docs.juliaplots.org/stable/) package ({numref}`example-WFC-return-histogram-data-daily`):
+
+```{figure} ./figs/Fig-WFC-Daily-Return-4yr-histogram.pdf
+---
+height: 380px
+name: example-WFC-return-histogram-data-daily
+---
+Volatility clustering as a function of lag $\tau$ (days) for logarithmic return of [Wells Fargo & Company](https://en.wikipedia.org/wiki/Wells_Fargo) computed from `2018-11-28` to `2022-11-28`. The data was downloaded using the `aggregate` endpoint from [Polygon.io](https://polygon.io).
+```
+````
+
 
 ---
 
