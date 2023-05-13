@@ -1,16 +1,20 @@
 # Fixed Income Debt Securities
 
-Fixed-income securities are financial instruments with predefined cashflows at selected dates over the lifetime of the instrument. While there are several types of fixed-income securities, we'll focus on an archetypal category: [United States Treasury Debt Securities](https://www.investor.gov/introduction-investing/investing-basics/glossary/treasury-securities). Treasury debt securities, e.g., [Treasury bills, notes, and bonds](https://www.treasurydirect.gov/indiv/products/prod_tbonds_glance.htm), are debt obligations issued by the United States Department of the Treasury to holder of the security. U.S. Treasury debt securities are a mechanism used by the United States government to borrow money, from bondholders, with a fixed set of repayment terms. 
+Fixed-income securities offer predetermined cashflows on specific dates. One classic example is United States Treasury Debt Securities, which represent debt obligations issued by the U.S. Department of the Treasury. These securities are considered safe investments due to their risk-free nature and the full faith and credit of the United States government backing them. The U.S. government has never defaulted on its debt obligations.
 
-Treasury debt securities are viewed as one of the safest possible investments, e.g., defacto risk-free, because Treasury debt securities are backed by the full faith and credit of the United States government. [The U.S. government has never defaulted on its debt obligations (at least in recent memory)](https://thehill.com/opinion/finance/575722-the-us-has-never-defaulted-on-its-debt-except-the-four-times-it-did/).  
+<!-- Fixed-income securities are financial instruments with predefined cashflows at selected dates over the lifetime of the instrument. While there are several types of fixed-income securities, we'll focus on an archetypal category: [United States Treasury Debt Securities](https://www.investor.gov/introduction-investing/investing-basics/glossary/treasury-securities). Treasury debt securities, e.g., [Treasury bills, notes, and bonds](https://www.treasurydirect.gov/indiv/products/prod_tbonds_glance.htm), are debt obligations issued by the United States Department of the Treasury to holder of the security. U.S. Treasury debt securities are a mechanism used by the United States government to borrow money, from bondholders, with a fixed set of repayment terms. Treasury debt securities are viewed as one of the safest possible investments, e.g., defacto risk-free, because Treasury debt securities are backed by the full faith and credit of the United States government. [The U.S. government has never defaulted on its debt obligations (at least in recent memory)](https://thehill.com/opinion/finance/575722-the-us-has-never-defaulted-on-its-debt-except-the-four-times-it-did/).   -->
 
-In this lecture, we will discuss:
 
-* The definition and valuation of {ref}`content:references:treasury-bonds`
-* Introduce {ref}`content:references:bond-pricing-relationships`
+```{topic} Outline
+* {ref}`content:references:treasury-bonds`. The US government issues fixed-income securities such as Treasury bills, notes, and bonds to fund its operations and meet financial obligations. Treasury bills have a short-term maturity of less than a year, while Treasury notes and bonds have longer maturities ranging from two to thirty years. These securities are regarded as some of the safest investment options globally, backed by the US government’s full faith and credit.
 
+* {ref}`content:references:bond-pricing-relationships` are utilized to determine the equitable value of a bond, considering its maturity, coupon rate, and current market interest rates. As per Malkiel’s guidelines, the bond’s price will fluctuate oppositely with changes in interest rates and long-term bonds will be more affected than short-term bonds. These guidelines offer investors a valuable framework to analyze the potential risks and returns of various bond types, enabling them to make informed investment choices.
+
+
+```
 
 ---
+
 
 ```{figure} ./figs/Fig-Govt-Debt-Schematic.pdf
 ---
@@ -208,7 +212,7 @@ Sensitivity of bond price to changes in the market interest rate.
 ```
 
 (content:references:bond-pricing-relationships)=
-#### Malkiel’s bond-pricing rules
+#### Malkiel’s bond-pricing guidelines
 The relationship between the price of a bond, and the yeild (i.e., the market interest rate $\bar{r}$) was previously studied by Malkiel {cite}`Malkiel1962`. The so-called Malkiel’s bond-pricing rules are demonstrated by the simulations shown in ({numref}`fig-bond-price-sensitivity`):
 
 1. The price of a U.S. Treasury Bond _increases_ as the market interest rate $\bar{r}$ _decreases_; thus, there is an _inverse_ relationship between the bond yield to maturity (i.e., the market rate $\bar{r}$) and the price of the bond $V_{B}$. 
