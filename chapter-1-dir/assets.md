@@ -1,13 +1,15 @@
-# Financial Balances and Abstract Assets
+# Abstract Assets, Cash flows and Interest
 
 The development of processes or products does not occur inside a mythical universe that is free 
-from market forces. Instead, processes and products must be, at a minimum, financially neutral to be viable. Processes and products that are not financially viable, while perhaps being technically 
-innovative or otherwise advantageous, will not survive in the marketplace without external support e.g., local, state or federal government subsities. 
+from market forces. Instead, processes and products must be, at a minimum, financially neutral to be viable. Processes and products that are not financially viable, while perhaps being technically innovative or otherwise advantageous, will not survive in the marketplace without external support e.g., local, state or federal government subsities. 
 
-In this lecture we will:
-* Introduce the definition of a {ref}`content:references:abstract-asset-defn`
-* Introduce the {ref}`content:references:npv-defn`, a tool to calculate the valuation of an asset
-* Use {ref}`content:references:npv-decision-tool` to evaluate the _relative_ attractiveness of assets and projects
+```{topic} Outline
+
+* {ref}`content:references:abstract-asset-defn` generate value and cash flows for the holder. Cash flows, on the other hand, are the inflows and outflows of money from a business or investment, and are a key factor in determining the value of abstract assets. Finally, interest is the cost of borrowing money, and understanding how interest rates impact cash flows and the value of abstract assets is essential for financial decision making.
+
+* {ref}`content:references:npv-defn` is a financial concept used to determine the current value of future cash flows. It takes into account the time value of money, recognizing that a dollar today is worth more than a dollar in the future due to the potential for investment and earning interest. NPV is a useful tool for evaluating investment opportunities and determining whether they are financially viable.
+
+```
 
 ---
 
