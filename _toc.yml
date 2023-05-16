@@ -8,8 +8,8 @@ chapters:
 - file: chapter-1-dir/chapter-1-landing
   title: Unit 1. Financial Basics
   sections:
-  - file: chapter-1-dir/pfinance-basics
   - file: chapter-1-dir/assets
+  - file: chapter-1-dir/pfinance-basics
  
 - file: chapter-2-dir/chapter-2-landing
   title: Unit 2. Wealth Creation

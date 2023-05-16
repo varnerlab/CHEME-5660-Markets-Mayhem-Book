@@ -4,7 +4,7 @@
 title: CHEME 5660
 author: Varner and Woltornist
 logo: cornell_seal_simple_black-164.svg
-copyright: "2022" 
+copyright: "2023" 
 
 # Force re-execution of notebooks on each build.
 # See https://jupyterbook.org/content/execute.html

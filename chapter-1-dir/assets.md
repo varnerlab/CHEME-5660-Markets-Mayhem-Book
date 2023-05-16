@@ -1,9 +1,13 @@
-# Abstract Assets, Cash flows and Interest
+# Interest, Cash Flows and Future Value
 
-The development of processes or products does not occur inside a mythical universe that is free 
-from market forces. Instead, processes and products must be, at a minimum, financially neutral to be viable. Processes and products that are not financially viable, while perhaps being technically innovative or otherwise advantageous, will not survive in the marketplace without external support e.g., local, state or federal government subsities. 
+<!-- The development of processes or products does not occur inside a mythical universe that is free 
+from market forces. Instead, processes and products must be, at a minimum, financially neutral to be viable. Processes and products that are not financially viable, while perhaps being technically innovative or otherwise advantageous, will not survive in the marketplace without external support e.g., local, state or federal government subsities.  -->
 
 ```{topic} Outline
+
+In this lecture, we introduce three basic financial concepts: simple and compound interest, abstract assets, and the net present value. 
+
+* {ref}`content:references:interest-models`: Simple interest refers to the interest calculated solely on the initial principal amount, while compound interest takes into account both the principal and the accumulated interest. 
 
 * {ref}`content:references:abstract-asset-defn` generate value and cash flows for the holder. Cash flows, on the other hand, are the inflows and outflows of money from a business or investment, and are a key factor in determining the value of abstract assets. Finally, interest is the cost of borrowing money, and understanding how interest rates impact cash flows and the value of abstract assets is essential for financial decision making.
 
@@ -12,6 +16,33 @@ from market forces. Instead, processes and products must be, at a minimum, finan
 ```
 
 ---
+
+(content:references:interest-models)=
+## Simple and Compound Interest
+The distinction between simple and compound interest is crucial in the world of finance and investing. Simple interest is calculated based on the original principal amount, while compound interest takes into account both the principal and the interest accumulated over time. These concepts significantly impact investment growth and borrowing costs, making them fundamental aspects to consider when making financial decisions. 
+
+Simple interest is paid only on the initial principle. For example, if amount $A(0)$ is invested in an account at $t=0$ which pays a simple interest rate of $r$ per period, then after $n$ periods the amount $A(n)$ is given by:
+
+```{math}
+:label: eqn-simple-interest
+A(n) = A(0)\cdot\left(1+rn\right)
+```
+
+Compound interest considers both the principal and the interest accumulated over time. For example, if amount $A(0)$ is invested in an account at $t=0$ which pays a compound interest rate $r$ per period, then after $n$ periods the amount $A(n)$ is given by:
+
+```{math}
+:label: eqn-compound-interest
+A(n) = A(0)\cdot\left(1+r\right)^n
+```
+
+````{prf:example} Simple versus compound interest
+:label: example-simple-vs-compound-interest
+:class: dropdown
+
+Compute the amount $A(n)$ after $n$ periods in an account which pays $r$ per-period using a simple and compound interest rate model if $A(0) = 100.0$ USD.
+
+
+````
 
 (content:references:abstract-asset-defn)=
 ## Abstract Assets
@@ -345,3 +376,6 @@ In this lecture:
 * We introduced the definition of a {ref}`content:references:abstract-asset-defn`. An asset is a sequence of current and future cash flows demarcated in some currency. Assets can be tangible things like cars or houses, but they can also be projects or ideas.  
 * We introduced the {ref}`content:references:npv-defn`, a tool to calculate the valuation of an asset. The net present value is the sum of net cash flows discounted to the current period. 
 * Used {ref}`content:references:npv-decision-tool` to evaluate the _relative_ attractiveness of assets and projects. Assets with a positive net present value have a larger return than hypothetical alternative investments. On the other hand, investments with a negative net present value will have a smaller return than a  hypothetical alternative investment.
+
+## Additional Resources
+* [IEOR E4706: Foundations of Financial Engineering, Columbia University](https://martin-haugh.github.io/teaching/foundations-fe/)
