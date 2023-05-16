@@ -39,10 +39,17 @@ A(n) = A(0)\cdot\left(1+r\right)^n
 :label: example-simple-vs-compound-interest
 :class: dropdown
 
-Compute the amount $A(n)$ after $n$ periods in an account which pays $r$ per-period using a simple and compound interest rate model if $A(0) = 100.0$ USD.
+Compute the balance of an investment account $A(n)$ that pays $r = 0.05$ per period after $n$ periods using a simple and compound interest rate model for an initial investment of $A(0) = 100.0$ USD.
 
-
+```{figure} ./figs/Fig-Simple-Compound-Interest.pdf
+---
+height: 360px
+name: fig-simple-compound-interest
+---
+Simple versus compound interest for n-periods for an interest rate of $r = 0.05$ per-period. Compound interest outperforms simple interest as the number of periods becomes large.
+```
 ````
+
 
 (content:references:abstract-asset-defn)=
 ## Abstract Assets
