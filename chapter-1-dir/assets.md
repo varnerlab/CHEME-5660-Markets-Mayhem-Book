@@ -19,7 +19,7 @@ In this lecture, we introduce three basic financial concepts: simple and compoun
 
 (content:references:interest-models)=
 ## Simple and Compound Interest
-The distinction between simple and compound interest is crucial in the world of finance and investing. Simple interest is calculated based on the original principal amount, while compound interest takes into account both the principal and the interest accumulated over time. These concepts significantly impact investment growth and borrowing costs, making them fundamental aspects to consider when making financial decisions. 
+The distinction between simple and compound interest is crucial in the world of finance and investing. These concepts significantly impact investment growth and borrowing costs, making them fundamental aspects to consider when making financial decisions. 
 
 Simple interest is paid only on the initial principle. For example, if amount $A(0)$ is invested in an account at $t=0$ which pays a simple interest rate of $r$ per period, then after $n$ periods the amount $A(n)$ is given by:
 
@@ -50,6 +50,27 @@ Simple versus compound interest for n-periods for an interest rate of $r = 0.05$
 ```
 ````
 
+Interest rates are typically quoted on an annual basis, and can be compounded at different rates, e.g., annually, quarterly, etc. Putting these ideas together gives a useful definition of compound interest ({prf:ref}`defn-compound-interest`):
+
+````{prf:definition} Continuous compounding
+:label: defn-compound-interest
+
+Let there be n-compounding periods per year and an annualized interest rate of r-percent.  Then an initial investment $A(0)$ will be worth:
+
+```{math}
+:label: eqn-compound-interest-model-discrete
+A(m) = A(0)\cdot\left(1+r/n\right)^{mn}
+```
+
+after $m$-years. As the number of compounding periods $n\rightarrow\infty$, the investment $A(m)$ approaches the continuous compounding case:
+
+```{math}
+:label: eqn-compound-interest-model-cont
+\lim_{n\rightarrow\infty}A(m) = A(0)\cdot\exp\left(rm\right)
+```
+
+````
+
 
 (content:references:abstract-asset-defn)=
 ## Abstract Assets
@@ -59,31 +80,29 @@ Simple versus compound interest for n-periods for an interest rate of $r = 0.05$
 height: 240px
 name: cash-flow-abstract-asset-fig
 ---
-Abstract asset diagram. During each time period $t=1,2,\dots,T$ an asset has cash flow(s) $CF_{t}$. The value of the asset is some function $\mathcal{V}$ of these cash flows; the 
-function $\mathcal{V}$ is the called the valuation operator.  
+Abstract asset diagram. During each time period $t=0,2,\dots,T$ an asset has cash flow(s) $\dot{c}_{t}$. The value of the asset is some function $\mathcal{V}$ of these cash flows; the function $\mathcal{V}$ is the called the valuation operator.  
 ```
 
-In abstract sense, an _asset_ is simply a sequence of current and future cash flows 
-demarcated in some currency, for example, Euros, Dollars, Yuan, or cryptocurrencies such as Bitcoin.
-Thus, the value of an asset can be determined using a valuation operator $\mathcal{V}$ applied to these current and future cash flows:
+An _abstract asset_ is simply a sequence of current and future cash flows 
+demarcated in some currency, for example, Euros, Dollars, Yuan, or cryptocurrencies such as Bitcoin ({numref}`cash-flow-abstract-asset-fig`). Thus, the value of asset is determined using a valuation operator $\mathcal{V}$ applied to these current and future cash flows:
 
 
 ```{math}
 :label: eq-asset-cash-flows
-\mathcal{V}\left(Asset_{t}\right) = \mathcal{V}\left(CF_{t},CF_{t+1},\dots,CF_{t+T-1}\right)
+\mathcal{V}\left(Asset_{t}\right) = \mathcal{V}\left(\dot{c}_{0},\dot{c}_{1},\dots,\dot{c}_{T}\right)
 ```
-where $CF_{t}$ denotes the cash flow in time period $t$ up to $T$ time periods in the future.
-The most common (and intuitive) valuation operator $\mathcal{V}$ is the sum of net cash flows in each time period, i.e., we compute the net cash in each period (cash inflow - cash outflow in period $i$) and then sum these net cash flows over all $T-1$ periods. 
-However, there is a critical and fundamental challenge to this intuition. 
+where $\dot{c}_{t}$ denotes the cash flow in time period $t$ up to $T$ time periods in the future.
+The most common (and intuitive) valuation operator $\mathcal{V}$ is the sum of net cash flows in each time period, i.e., we compute the net cash in each period (cash inflow - cash outflow in period $i$) and then sum these net cash flows over all $T$ periods. However, there is a critical and fundamental challenge to this intuition ({prf:ref}`remark-tvof-money`): 
+
+
+### Time value of money
 
 ```{prf:remark} Time value of Money
+:label: remark-tvof-money
 The value of money is _not_ conserved over time. One dollar today is not worth the same as one dollar tomorrow. The change in the value of money over time is called the _time value of money_.  
 ```
 
-### Time value of money
-The value of money is not conserved; one dollar T years from now is worth _less than_ one dollar today. The change in the value of money over time is called the _time value of money_. The time value of money is an [empirical observation that has been seen over hundreds of years](https://en.wikipedia.org/wiki/Time_value_of_money#History). But why is this the case? 
-
-The short answer: money given to us today has a greater utility than the same amount tomorrow; because we have an extra day to invest that money. 
+The time value of money is an [empirical observation that has been seen over hundreds of years](https://en.wikipedia.org/wiki/Time_value_of_money#History). But why is this the case? The short answer: money given to us today has a greater utility than the same amount tomorrow; because we have an extra day to invest that money. 
 
 ````{prf:observation} Why does that value of money chnage over time?
 :label: obs-time-value-of-money
