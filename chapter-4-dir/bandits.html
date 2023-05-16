@@ -169,8 +169,8 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../chapter-1-dir/chapter-1-landing.html">Unit 1. Financial Basics</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter-1-dir/assets.html">Interest, Cash Flows and Future Value</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapter-1-dir/pfinance-basics.html">Personal Finance Basics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../chapter-1-dir/assets.html">Financial Balances and Abstract Assets</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../chapter-2-dir/chapter-2-landing.html">Unit 2. Wealth Creation</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -434,17 +434,17 @@ document.write(`
 <p>When an agent needs to choose between different actions, each with an unknown reward distribution, they face a crucial trade-off between exploration and exploitation. Exploitation involves selecting the action with the highest estimated reward based on experience, while exploration involves choosing an action with an uncertain reward to learn more about its distribution. To maximize the total reward over time, it’s essential to balance these two objectives. Various algorithms and strategies have been developed to address this trade-off, and studying their performance is crucial to understanding and solving multi-armed bandit problems.</p>
 <p>A general bandit problem is a sequential game played between an agent and the environment. The game is played over <span class="math notranslate nohighlight">\(n\)</span> rounds called the <em>horizon</em>. In each round the agent chooses an action <span class="math notranslate nohighlight">\(a\in\mathcal{A}\)</span> and the environment then reveals a reward <span class="math notranslate nohighlight">\(r\)</span>. Let’s look at a particular sub-type of multi-arm bandit problem, namely, the Bernoulli bandit problem and Thompson sampling, a particular solution approach to this class of problem <span id="id1">[<a class="reference internal" href="../References.html#id3" title="Daniel Russo, Benjamin Van Roy, Abbas Kazerouni, Ian Osband, and Zheng Wen. A tutorial on thompson sampling. Foundations and Trends in Machine Learning, 11(1):1-96, 2017. URL: https://arxiv.org/abs/1707.02038, doi:10.48550/ARXIV.1707.02038.">Russo <em>et al.</em>, 2017</a>]</span>:</p>
 <div class="proof definition admonition" id="defn-multi-arm-bernoulli-bandit-problem">
-<p class="admonition-title"><span class="caption-number">Definition 34 </span> (Binary Bernoulli bandit problem)</p>
+<p class="admonition-title"><span class="caption-number">Definition 35 </span> (Binary Bernoulli bandit problem)</p>
 <section class="definition-content" id="proof-content">
 <p>A Binary Bernoulli bandit problem is a type of multi-armed bandit problem where each action has a binary reward distribution with an unknown probability of success. In this problem:</p>
 <ul class="simple">
-<li><p>An agent has a choice between <span class="math notranslate nohighlight">\(K\)</span> possible actions <span class="math notranslate nohighlight">\(\mathcal{A}=\left\{a_{1},a_{2},\dots,a_{K}\right\}\)</span> where the success or failure of any action <span class="math notranslate nohighlight">\(a_{i}\in\mathcal{A}\)</span> is governed by a Bernoulli random variable (see <a class="reference internal" href="../appendix/random.html#defn-pmf-bernouli">Definition 38</a>).</p></li>
+<li><p>An agent has a choice between <span class="math notranslate nohighlight">\(K\)</span> possible actions <span class="math notranslate nohighlight">\(\mathcal{A}=\left\{a_{1},a_{2},\dots,a_{K}\right\}\)</span> where the success or failure of any action <span class="math notranslate nohighlight">\(a_{i}\in\mathcal{A}\)</span> is governed by a Bernoulli random variable (see <a class="reference internal" href="../appendix/random.html#defn-pmf-bernouli">Definition 39</a>).</p></li>
 <li><p>The success probabilities of any action <span class="math notranslate nohighlight">\(p_{a_{i}}\)</span>, while static over the horizon of the game, are unknown to the agent, but they can be learned by experimentation.</p></li>
 <li><p>The agent receives a reward of <span class="math notranslate nohighlight">\(R_{a_{i}} = 1\)</span> (success) with probability <span class="math notranslate nohighlight">\(p_{a_{i}}\)</span>, and <span class="math notranslate nohighlight">\(R_{a_{i}} = 0\)</span> (failure) otherwise.</p></li>
 </ul>
 <p>The agent’s objective is to maximize the cumulative number of successes over the game horizon, e.g., T-periods, where <span class="math notranslate nohighlight">\(T\gg{K}\)</span>.</p>
 </section>
-</div><p>There are multiple heuristic strategies to solve the Binary Bernoulli bandit problem described in <a class="reference internal" href="#defn-multi-arm-bernoulli-bandit-problem">Definition 34</a>:</p>
+</div><p>There are multiple heuristic strategies to solve the Binary Bernoulli bandit problem described in <a class="reference internal" href="#defn-multi-arm-bernoulli-bandit-problem">Definition 35</a>:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Thompson_sampling">Thompson sampling</a> which is shown in <a class="reference internal" href="#algo-thompson-sampling">Algorithm 3</a> consists of choosing the action that maximizes the expected reward with respect to a randomly drawn belief, where the belief distribution follows a <a class="reference external" href="https://en.wikipedia.org/wiki/Beta_distribution">Beta distribution</a>.</p></li>
 </ul>
@@ -629,7 +629,7 @@ By Varner and Woltornist
     
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2023.
       <br/>
     
   </p>

@@ -169,8 +169,8 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../chapter-1-dir/chapter-1-landing.html">Unit 1. Financial Basics</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter-1-dir/assets.html">Interest, Cash Flows and Future Value</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapter-1-dir/pfinance-basics.html">Personal Finance Basics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../chapter-1-dir/assets.html">Financial Balances and Abstract Assets</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../chapter-2-dir/chapter-2-landing.html">Unit 2. Wealth Creation</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -438,23 +438,23 @@ document.write(`
 <figure class="align-default" id="fig-discrete-markov-model">
 <a class="reference internal image-reference" href="../_images/Fig-Discrete-MarkovChain-Schematic.pdf"><img alt="../_images/Fig-Discrete-MarkovChain-Schematic.pdf" src="../_images/Fig-Discrete-MarkovChain-Schematic.pdf" style="height: 120px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 33 </span><span class="caption-text">Schematic of a discrete two-state time-invariant Markov model; <span class="math notranslate nohighlight">\(p_{ij}\)</span> denotes the time-invariant transition probability between state <span class="math notranslate nohighlight">\(i\)</span> and <span class="math notranslate nohighlight">\(j\)</span>.</span><a class="headerlink" href="#fig-discrete-markov-model" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 34 </span><span class="caption-text">Schematic of a discrete two-state time-invariant Markov model; <span class="math notranslate nohighlight">\(p_{ij}\)</span> denotes the time-invariant transition probability between state <span class="math notranslate nohighlight">\(i\)</span> and <span class="math notranslate nohighlight">\(j\)</span>.</span><a class="headerlink" href="#fig-discrete-markov-model" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>A discrete-time Markov chain is a sequence of random variables <span class="math notranslate nohighlight">\(X_{1}\)</span>, <span class="math notranslate nohighlight">\(X_{2}\)</span>, <span class="math notranslate nohighlight">\(X_{3}\)</span>, …, <span class="math notranslate nohighlight">\(X_{n}\)</span> that have the <a class="reference external" href="https://en.wikipedia.org/wiki/Markov_property">Markov property</a>, i.e., the probability of moving to the <em>next state</em> depends only on the <em>present state</em> and not on the <em>previous states</em>:</p>
 <div class="math notranslate nohighlight" id="equation-eqn-markov-property">
-<span class="eqno">(41)<a class="headerlink" href="#equation-eqn-markov-property" title="Permalink to this equation">#</a></span>\[P(X_{n+1} = x | X_{1}=x_{1}, \dots, X_{n}=x_{n}) = P(X_{n+1} = x | X_{n}=y)\]</div>
+<span class="eqno">(45)<a class="headerlink" href="#equation-eqn-markov-property" title="Permalink to this equation">#</a></span>\[P(X_{n+1} = x | X_{1}=x_{1}, \dots, X_{n}=x_{n}) = P(X_{n+1} = x | X_{n}=y)\]</div>
 <p>where <em>states</em> refer to a finite set of discrete values in which the system can exist.  If the state space is finite, the transition probability distribution, i.e., the probability of moving from the state(s) <span class="math notranslate nohighlight">\(i\rightarrow{j}\)</span>, can be encoded in the transition matrix <span class="math notranslate nohighlight">\(\mathbf{P}\)</span>. Elements of <span class="math notranslate nohighlight">\(\mathbf{P}\)</span>, denoted as <span class="math notranslate nohighlight">\(p_{ij}\)</span>, encode the probability of moving from state <span class="math notranslate nohighlight">\(i\rightarrow{j}\)</span> during the next time step:</p>
 <div class="math notranslate nohighlight" id="equation-eqn-transition-prob-matrix">
-<span class="eqno">(42)<a class="headerlink" href="#equation-eqn-transition-prob-matrix" title="Permalink to this equation">#</a></span>\[p_{ij} = P(X_{n+1}~=~j~|~X_{n}~=~i)\]</div>
+<span class="eqno">(46)<a class="headerlink" href="#equation-eqn-transition-prob-matrix" title="Permalink to this equation">#</a></span>\[p_{ij} = P(X_{n+1}~=~j~|~X_{n}~=~i)\]</div>
 <p>The transition matrix <span class="math notranslate nohighlight">\(\mathbf{P}\)</span> has interesting properties:</p>
 <ul class="simple">
 <li><p>First, the rows of transition matrix <span class="math notranslate nohighlight">\(\mathbf{P}\)</span> must sum to unity, i.e., each row encodes the probability of all possible outcomes. Thus, it must sum to one.</p></li>
 <li><p>Second, if the transition matrix  <span class="math notranslate nohighlight">\(\mathbf{P}\)</span> is time-invariant, then <span class="math notranslate nohighlight">\(\mathbf{P}\)</span> is the same at each step, i.e., <span class="math notranslate nohighlight">\(p_{ij}\)</span> doesn’t change as <span class="math notranslate nohighlight">\(n\rightarrow{n+1}~\forall{n}\)</span>.</p></li>
 </ul>
-<p>Putting these ideas together gives (<a class="reference internal" href="#defn-n-transition">Definition 31</a>):</p>
+<p>Putting these ideas together gives (<a class="reference internal" href="#defn-n-transition">Definition 32</a>):</p>
 <div class="proof definition admonition" id="defn-n-transition">
-<p class="admonition-title"><span class="caption-number">Definition 31 </span> (Time-invariant state transition)</p>
+<p class="admonition-title"><span class="caption-number">Definition 32 </span> (Time-invariant state transition)</p>
 <section class="definition-content" id="proof-content">
 <p>A Markov chain has finite state set <span class="math notranslate nohighlight">\(\mathcal{S}\)</span> and the time-invariant state transition matrix <span class="math notranslate nohighlight">\(\mathbf{P}\)</span>. Let the state vector at time <span class="math notranslate nohighlight">\(j\)</span> be given by <span class="math notranslate nohighlight">\(\mathbf{x}_{j}\)</span>, where <span class="math notranslate nohighlight">\(x_{s,j}\geq{0},\forall{s}\in\mathcal{S}\)</span> and:</p>
 <div class="math notranslate nohighlight">
@@ -467,9 +467,9 @@ document.write(`
 </div><p>Finally, suppose that a Markov chain is both time-invariant and non-periodic. Then, there exists a unique stationary distribution <span class="math notranslate nohighlight">\(\pi\)</span> such that <span class="math notranslate nohighlight">\(\mathbf{P}^{k}\)</span> converges to a rank-one matrix in which each row is the stationary distribution <span class="math notranslate nohighlight">\(\pi\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[\lim_{k\rightarrow\infty} \mathbf{P}^{k} = \mathbf{1}\pi\]</div>
-<p>where <span class="math notranslate nohighlight">\(\mathbf{1}\)</span> is a column vector of all 1’s. Let’s consider an example to make these ideas less abstract (<a class="reference internal" href="#example-dicrete-mchain">Example 26</a>):</p>
+<p>where <span class="math notranslate nohighlight">\(\mathbf{1}\)</span> is a column vector of all 1’s. Let’s consider an example to make these ideas less abstract (<a class="reference internal" href="#example-dicrete-mchain">Example 27</a>):</p>
 <div class="proof example dropdown admonition" id="example-dicrete-mchain">
-<p class="admonition-title"><span class="caption-number">Example 26 </span> (Discrete Markov chain stationary distribution)</p>
+<p class="admonition-title"><span class="caption-number">Example 27 </span> (Discrete Markov chain stationary distribution)</p>
 <section class="example-content" id="proof-content">
 <p>Consider the time-invariant two-state Discrete Markov chain with state transition matrix <span class="math notranslate nohighlight">\(\mathbf{P}\)</span>:</p>
 <div class="math notranslate nohighlight">
@@ -479,7 +479,7 @@ document.write(`
 0.6 &amp; 0.4 \\
 \end{bmatrix}
 \end{split}\]</div>
-<p>shown in (<a class="reference internal" href="#fig-discrete-markov-model"><span class="std std-numref">Fig. 33</span></a>). This transition matrix admits a stationary (non-periodic) solution. As the number of iterations <span class="math notranslate nohighlight">\(n\)</span> becomes large the system state converges to a stationary distribution <span class="math notranslate nohighlight">\(\pi\)</span>. Thus, regardless of the starting state of this Markov chain, the long-term behavior is given by the stationary distribution <span class="math notranslate nohighlight">\(\pi\)</span>.</p>
+<p>shown in (<a class="reference internal" href="#fig-discrete-markov-model"><span class="std std-numref">Fig. 34</span></a>). This transition matrix admits a stationary (non-periodic) solution. As the number of iterations <span class="math notranslate nohighlight">\(n\)</span> becomes large the system state converges to a stationary distribution <span class="math notranslate nohighlight">\(\pi\)</span>. Thus, regardless of the starting state of this Markov chain, the long-term behavior is given by the stationary distribution <span class="math notranslate nohighlight">\(\pi\)</span>.</p>
 <p>Develop a script to compute the stationary distribution <span class="math notranslate nohighlight">\(\pi\)</span>:</p>
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># load package -</span>
 <span class="k">using</span> <span class="n">LinearAlgebra</span>
@@ -524,16 +524,16 @@ document.write(`
 </div><section id="sampling-the-stationary-distribution">
 <h3>Sampling the stationary distribution<a class="headerlink" href="#sampling-the-stationary-distribution" title="Permalink to this headline">#</a></h3>
 <p>Once the stationary distribution <span class="math notranslate nohighlight">\(\pi\)</span> of the Markov chain has been estimated, we can use it to generate samples from that chain.
-For example, the stationary distribution for the two-state Markov chain in <a class="reference internal" href="#example-dicrete-mchain">Example 26</a> is given by:</p>
+For example, the stationary distribution for the two-state Markov chain in <a class="reference internal" href="#example-dicrete-mchain">Example 27</a> is given by:</p>
 <div class="math notranslate nohighlight">
 \[\pi = (0.857,0.143)\]</div>
 <p>We model this system as a <a class="reference external" href="https://en.wikipedia.org/wiki/Categorical_distribution">Categorical distribution</a>. A categorical distribution is a discrete probability distribution that models the probability of a random variable taking on one of a finite set of possible outcomes:</p>
 <div class="math notranslate nohighlight" id="equation-eqn-categorical-dist">
-<span class="eqno">(43)<a class="headerlink" href="#equation-eqn-categorical-dist" title="Permalink to this equation">#</a></span>\[P(X = k) = \pi\left[k\right]\]</div>
+<span class="eqno">(47)<a class="headerlink" href="#equation-eqn-categorical-dist" title="Permalink to this equation">#</a></span>\[P(X = k) = \pi\left[k\right]\]</div>
 <p>Sampling a categorical distribution constructed from the stationary distribution <span class="math notranslate nohighlight">\(\pi\)</span> will return the stationary
-distribution (<a class="reference internal" href="#example-categorical-dist">Example 27</a>):</p>
+distribution (<a class="reference internal" href="#example-categorical-dist">Example 28</a>):</p>
 <div class="proof example dropdown admonition" id="example-categorical-dist">
-<p class="admonition-title"><span class="caption-number">Example 27 </span> (Categorical distribution)</p>
+<p class="admonition-title"><span class="caption-number">Example 28 </span> (Categorical distribution)</p>
 <section class="example-content" id="proof-content">
 <p>Sample a categorical distribution constructed using the stationary distribution:</p>
 <div class="math notranslate nohighlight">
@@ -569,19 +569,19 @@ distribution (<a class="reference internal" href="#example-categorical-dist">Exa
 <figure class="align-default" id="fig-discrete-hidden-markov-model">
 <a class="reference internal image-reference" href="../_images/Fig-HMM-Schematic-23.pdf"><img alt="../_images/Fig-HMM-Schematic-23.pdf" src="../_images/Fig-HMM-Schematic-23.pdf" style="height: 280px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 34 </span><span class="caption-text">Schematic of a discrete two-state time-invariant hidden Markov model (HMM); <span class="math notranslate nohighlight">\(p_{ij}\)</span> denotes the time-invariant transition probability between state <span class="math notranslate nohighlight">\(i\)</span> and <span class="math notranslate nohighlight">\(j\)</span> while <span class="math notranslate nohighlight">\(t_{ij}\)</span> denotes the emission probability for state <span class="math notranslate nohighlight">\(i\)</span> and observation <span class="math notranslate nohighlight">\(j\)</span>.</span><a class="headerlink" href="#fig-discrete-hidden-markov-model" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 35 </span><span class="caption-text">Schematic of a discrete two-state time-invariant hidden Markov model (HMM); <span class="math notranslate nohighlight">\(p_{ij}\)</span> denotes the time-invariant transition probability between state <span class="math notranslate nohighlight">\(i\)</span> and <span class="math notranslate nohighlight">\(j\)</span> while <span class="math notranslate nohighlight">\(t_{ij}\)</span> denotes the emission probability for state <span class="math notranslate nohighlight">\(i\)</span> and observation <span class="math notranslate nohighlight">\(j\)</span>.</span><a class="headerlink" href="#fig-discrete-hidden-markov-model" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>The emission probability refers to the likelihood of observing a particular output <span class="math notranslate nohighlight">\(Y = o_{t}\)</span>, given the current state of the Markov chain <span class="math notranslate nohighlight">\(X = s_{t}\)</span>:</p>
 <div class="math notranslate nohighlight" id="equation-eqn-hmm-output">
-<span class="eqno">(44)<a class="headerlink" href="#equation-eqn-hmm-output" title="Permalink to this equation">#</a></span>\[P(Y = o_{t} | X = s_{t})\]</div>
+<span class="eqno">(48)<a class="headerlink" href="#equation-eqn-hmm-output" title="Permalink to this equation">#</a></span>\[P(Y = o_{t} | X = s_{t})\]</div>
 <p>Similar to the transition probability, the emission probability must sum to unity:</p>
 <div class="math notranslate nohighlight">
 \[\sum_{o\in\mathcal{O}} P(Y = o | X = s) = 1\qquad\forall{s\in\mathcal{S}}\]</div>
 <p>The emission probability plays a crucial role in HMMs, as it is used to calculate the likelihood of a sequence of observed symbols, given the current state of the hidden Markov chain. This likelihood is then used in various applications, including speech recognition, natural language processing, and bioinformatics. The emission probability can be computed using different methods, including maximum likelihood estimation or Bayesian inference.</p>
-<p>Let’s build upon <a class="reference internal" href="#example-dicrete-mchain">Example 26</a> and construct an HMM that mimics a <a class="reference external" href="https://en.wikipedia.org/wiki/Trinomial_tree">trinomial lattice model of Boyle</a> (<a class="reference internal" href="#example-dicrete-mchain-hmm">Example 28</a>):</p>
+<p>Let’s build upon <a class="reference internal" href="#example-dicrete-mchain">Example 27</a> and construct an HMM that mimics a <a class="reference external" href="https://en.wikipedia.org/wiki/Trinomial_tree">trinomial lattice model of Boyle</a> (<a class="reference internal" href="#example-dicrete-mchain-hmm">Example 29</a>):</p>
 <div class="proof example dropdown admonition" id="example-dicrete-mchain-hmm">
-<p class="admonition-title"><span class="caption-number">Example 28 </span> (Stationary hidden Markov model)</p>
+<p class="admonition-title"><span class="caption-number">Example 29 </span> (Stationary hidden Markov model)</p>
 <section class="example-content" id="proof-content">
 <p>Model the share price of a stock <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> using a time-invariant two-state Discrete Markov chain with the state transition matrix <span class="math notranslate nohighlight">\(\mathbf{P}\)</span>:</p>
 <div class="math notranslate nohighlight">
@@ -791,7 +791,7 @@ By Varner and Woltornist
     
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2023.
       <br/>
     
   </p>

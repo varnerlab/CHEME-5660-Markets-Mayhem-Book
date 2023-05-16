@@ -169,8 +169,8 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../chapter-1-dir/chapter-1-landing.html">Unit 1. Financial Basics</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter-1-dir/assets.html">Interest, Cash Flows and Future Value</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapter-1-dir/pfinance-basics.html">Personal Finance Basics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../chapter-1-dir/assets.html">Financial Balances and Abstract Assets</a></li>
 </ul>
 </li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="chapter-2-landing.html">Unit 2. Wealth Creation</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
@@ -478,11 +478,11 @@ has not already executed, it can be cancelled at any time. Moreover, if a limit 
 </ul>
 <section id="order-books-and-matching-algorithms">
 <h3>Order Books and Matching Algorithms<a class="headerlink" href="#order-books-and-matching-algorithms" title="Permalink to this headline">#</a></h3>
-<p>A list of all the <a class="reference external" href="https://en.wikipedia.org/wiki/Order_(exchange)">buy and sell orders</a> for a specific security or financial instrument listed on an exchange is called an <a class="reference external" href="https://en.wikipedia.org/wiki/Order_book">order book</a>. This information is useful in determining the direction of price movement and the market sentiment of an asset. If there are more sell orders than buy orders, it indicates negative sentiment and predicts a price decrease. This data is available for viewing electronically for equity and derivative securities, and the <a class="reference external" href="https://www.cboe.com">Chicago Board Options Exchange (CBOE)</a> offers a free order-book viewer (<a class="reference internal" href="#example-cboe-order-book-data"><span class="std std-numref">Fig. 11</span></a>).</p>
+<p>A list of all the <a class="reference external" href="https://en.wikipedia.org/wiki/Order_(exchange)">buy and sell orders</a> for a specific security or financial instrument listed on an exchange is called an <a class="reference external" href="https://en.wikipedia.org/wiki/Order_book">order book</a>. This information is useful in determining the direction of price movement and the market sentiment of an asset. If there are more sell orders than buy orders, it indicates negative sentiment and predicts a price decrease. This data is available for viewing electronically for equity and derivative securities, and the <a class="reference external" href="https://www.cboe.com">Chicago Board Options Exchange (CBOE)</a> offers a free order-book viewer (<a class="reference internal" href="#example-cboe-order-book-data"><span class="std std-numref">Fig. 12</span></a>).</p>
 <figure class="align-default" id="example-cboe-order-book-data">
 <a class="reference internal image-reference" href="../_images/Fig-CBOE-OrderBook-QQQ-9-8-22.png"><img alt="../_images/Fig-CBOE-OrderBook-QQQ-9-8-22.png" src="../_images/Fig-CBOE-OrderBook-QQQ-9-8-22.png" style="height: 380px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 11 </span><span class="caption-text">Snapshot for the <a class="reference external" href="https://www.google.com/finance/quote/QQQ:NASDAQ?sa=X&amp;ved=2ahUKEwjoqKOL0oX6AhUrkIkEHbrKBaMQ3ecFegQIFxAg">QQQ</a> order book taken from the <a class="reference external" href="https://www.cboe.com">Chicago Board Options Exchange (CBOE)</a>. The <code class="docutils literal notranslate"><span class="pre">top</span></code> of the order book is shown on the left, while the last ten trades are shown on the right. The total volume (the number of share exchanged, bought or sold) and the number of orders accepted (number of matched orders) is also shown. <strong>source</strong>: <a class="reference external" href="https://www.cboe.com/us/equities/market_statistics/book_viewer/">CBOE Book Viewer</a>.</span><a class="headerlink" href="#example-cboe-order-book-data" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 12 </span><span class="caption-text">Snapshot for the <a class="reference external" href="https://www.google.com/finance/quote/QQQ:NASDAQ?sa=X&amp;ved=2ahUKEwjoqKOL0oX6AhUrkIkEHbrKBaMQ3ecFegQIFxAg">QQQ</a> order book taken from the <a class="reference external" href="https://www.cboe.com">Chicago Board Options Exchange (CBOE)</a>. The <code class="docutils literal notranslate"><span class="pre">top</span></code> of the order book is shown on the left, while the last ten trades are shown on the right. The total volume (the number of share exchanged, bought or sold) and the number of orders accepted (number of matched orders) is also shown. <strong>source</strong>: <a class="reference external" href="https://www.cboe.com/us/equities/market_statistics/book_viewer/">CBOE Book Viewer</a>.</span><a class="headerlink" href="#example-cboe-order-book-data" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <!-- Financial data providers such as [Polygon.io](https://polygon.io) have [RESTful Application Programming Interface (APIs)](https://polygon.io/docs/stocks/getting-started) that enable programmatic access to market data of all sorts, including data about the buy and sell orders in the [order book](https://en.wikipedia.org/wiki/Order_book) for equities and derivatives, with a nanosecond resolution. -->
@@ -496,7 +496,7 @@ has not already executed, it can be cancelled at any time. Moreover, if a limit 
 <p>The price-time algorithm, also known as the First-in-First-Out (FIFO) algorithm, is the most straightforward order book matching algorithm. In the price-time algorithm, the order matching priority is price and then time. For example, buy orders with higher prices are automatically prioritized over buy orders at lower prices.
 However, buy orders arriving in the order book with the same maximum price are prioritized based on the bid time, where priority is given to the first buy order.</p>
 <div class="proof example admonition" id="example-0">
-<p class="admonition-title"><span class="caption-number">Example 7 </span> (Price/Time mathching)</p>
+<p class="admonition-title"><span class="caption-number">Example 8 </span> (Price/Time mathching)</p>
 <section class="example-content" id="proof-content">
 <p>For example, a buy order for 300 shares of a security at $50 per share is followed by another buy order of 100 shares of the same security at a similar price.</p>
 <p>According to the FIFO algorithm, the total 300 shares buy order will be matched to sell orders. There can be more than one sell order. After the 300 shares buy order is matched, the 100 shares buy order matching will start.</p>
@@ -506,7 +506,7 @@ However, buy orders arriving in the order book with the same maximum price are p
 <span id="content-references-pro-rata-algo"></span><h4>Pro-Rata matching algorithm<a class="headerlink" href="#pro-rata-matching-algorithm" title="Permalink to this headline">#</a></h4>
 <p>A system using the Pro-Rata algorithm also gives priority to the highest-priced buy order. However, buy orders with the same highest price are matched in proportion to each order size.</p>
 <div class="proof example admonition" id="example-1">
-<p class="admonition-title"><span class="caption-number">Example 8 </span> (Pro-Rata mathching)</p>
+<p class="admonition-title"><span class="caption-number">Example 9 </span> (Pro-Rata mathching)</p>
 <section class="example-content" id="proof-content">
 <p>For example, buy orders of 300 shares and 100 shares of the same security are active in the system. At the same time, a compatible sell order of 300 shares becomes active. The sell order will not be able to fulfill both the buy orders.</p>
 <p>The Pro-Rata algorithm will match 225 shares to the 300-share buy order and 75 shares to the 100-share buy order. Hence, both buy orders are partially filled. Here, the Pro-Rata algorithm fills 75% of both buy orders.</p>
@@ -519,9 +519,9 @@ In a classical face-to-face auction, the identity of the buyer and seller, or at
 </section>
 <section id="returns-and-stylized-facts">
 <span id="content-references-returns-stylized-facts"></span><h2>Returns and Stylized Facts<a class="headerlink" href="#returns-and-stylized-facts" title="Permalink to this headline">#</a></h2>
-<p>A return refers to the increase or decrease in the price of an asset, e.g., shares of a stock over a specific time period period, e.g., minutes, days, weeks or even years. Studying returns is crucial for understanding the performance of financial assets such as stocks, bonds, and commodities (<a class="reference internal" href="#defn-log-return-1">Definition 8</a>):</p>
+<p>A return refers to the increase or decrease in the price of an asset, e.g., shares of a stock over a specific time period period, e.g., minutes, days, weeks or even years. Studying returns is crucial for understanding the performance of financial assets such as stocks, bonds, and commodities (<a class="reference internal" href="#defn-log-return-1">Definition 9</a>):</p>
 <div class="proof definition admonition" id="defn-log-return-1">
-<p class="admonition-title"><span class="caption-number">Definition 8 </span> (Logarithmic return)</p>
+<p class="admonition-title"><span class="caption-number">Definition 9 </span> (Logarithmic return)</p>
 <section class="definition-content" id="proof-content">
 <p>Let the price of asset <span class="math notranslate nohighlight">\(i\)</span> at time <span class="math notranslate nohighlight">\(j\)</span> be gievm by <span class="math notranslate nohighlight">\(P_{ij}&gt;0\)</span>. Then the logarithmic return
 on asset <span class="math notranslate nohighlight">\(i\)</span> over time horizon <span class="math notranslate nohighlight">\(j\rightarrow{k},j\neq{k}\)</span> is defined as:</p>
@@ -529,9 +529,9 @@ on asset <span class="math notranslate nohighlight">\(i\)</span> over time horiz
 \[\bar{r}_{i,j\rightarrow{k}} \equiv \log\left(\frac{P_{ij}}{P_{ik}}\right)\]</div>
 <p>where <span class="math notranslate nohighlight">\(\bar{r}_{i,j\rightarrow{k}}\)</span> denotes the logarithmic return of asset <span class="math notranslate nohighlight">\(i\)</span> over time horizon <span class="math notranslate nohighlight">\(j\rightarrow{k},i\neq{k}\)</span>. The <span class="math notranslate nohighlight">\(\log\left(\star\right)\)</span> term denotes the <a class="reference external" href="https://en.wikipedia.org/wiki/Natural_logarithm">natural log</a>.</p>
 </section>
-</div><p>Returns can also be described as the fractional change in price (<a class="reference internal" href="#defn-percentage-return-1">Definition 9</a>):</p>
+</div><p>Returns can also be described as the fractional change in price (<a class="reference internal" href="#defn-percentage-return-1">Definition 10</a>):</p>
 <div class="proof definition admonition" id="defn-percentage-return-1">
-<p class="admonition-title"><span class="caption-number">Definition 9 </span> (Fractional return)</p>
+<p class="admonition-title"><span class="caption-number">Definition 10 </span> (Fractional return)</p>
 <section class="definition-content" id="proof-content">
 <p>Let the price of asset <span class="math notranslate nohighlight">\(i\)</span> at any time <span class="math notranslate nohighlight">\(j\)</span> be given by <span class="math notranslate nohighlight">\(P_{ij}&gt;0\)</span>. Then the fractional return
 on asset <span class="math notranslate nohighlight">\(i\)</span> over time horizon <span class="math notranslate nohighlight">\(j\rightarrow{k},j\neq{k}\)</span> is defined as:</p>
@@ -540,15 +540,15 @@ on asset <span class="math notranslate nohighlight">\(i\)</span> over time horiz
 <p>where <span class="math notranslate nohighlight">\(r_{i,j\rightarrow{k}}\)</span> denotes the fractional return of asset <span class="math notranslate nohighlight">\(i\)</span> over time horizon <span class="math notranslate nohighlight">\(j\rightarrow{k},i\neq{k}\)</span>.</p>
 </section>
 </div><p>Data on stock prices are sourced from platforms like <a class="reference external" href="https://polygon.io">Polygon.io</a>, where datasets are compiled with aggregated Open High Low Close (OHLC) values. The Open price is the share price at the beginning of a specific time frame, while the Close price indicates the share price at the end of that time frame. The High and Low prices indicate the highest and lowest values for that time period, respectively. In addition, these datasets usually include information on the number of shares traded, the number of transactions, and the volume-weighted average price (vwap).</p>
-<p>Consider the time-series for the daily rerturn of the share price of <a class="reference external" href="https://en.wikipedia.org/wiki/AMD">Advanced Micro Devices</a> computed over a four year window (<a class="reference internal" href="#example-amd-daily-returns">Example 9</a>):</p>
+<p>Consider the time-series for the daily rerturn of the share price of <a class="reference external" href="https://en.wikipedia.org/wiki/AMD">Advanced Micro Devices</a> computed over a four year window (<a class="reference internal" href="#example-amd-daily-returns">Example 10</a>):</p>
 <div class="proof example dropdown admonition" id="example-amd-daily-returns">
-<p class="admonition-title"><span class="caption-number">Example 9 </span> (Daily logarithmic AMD returns)</p>
+<p class="admonition-title"><span class="caption-number">Example 10 </span> (Daily logarithmic AMD returns)</p>
 <section class="example-content" id="proof-content">
-<p>The daily logarithmic return time series for <a class="reference external" href="https://en.wikipedia.org/wiki/AMD">Advanced Micro Devices</a> with ticker <code class="docutils literal notranslate"><span class="pre">AMD</span></code> is shown in <a class="reference internal" href="#example-amd-return-data-daily"><span class="std std-numref">Fig. 12</span></a>:</p>
+<p>The daily logarithmic return time series for <a class="reference external" href="https://en.wikipedia.org/wiki/AMD">Advanced Micro Devices</a> with ticker <code class="docutils literal notranslate"><span class="pre">AMD</span></code> is shown in <a class="reference internal" href="#example-amd-return-data-daily"><span class="std std-numref">Fig. 13</span></a>:</p>
 <figure class="align-default" id="example-amd-return-data-daily">
 <a class="reference internal image-reference" href="../_images/Fig-AMD-Daily-Return-4yr.pdf"><img alt="../_images/Fig-AMD-Daily-Return-4yr.pdf" src="../_images/Fig-AMD-Daily-Return-4yr.pdf" style="height: 380px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 12 </span><span class="caption-text">Daily logarithmic return of <a class="reference external" href="https://en.wikipedia.org/wiki/AMD">Advanced Micro Devices</a> computed from <code class="docutils literal notranslate"><span class="pre">2018-11-28</span></code> to <code class="docutils literal notranslate"><span class="pre">2022-11-28</span></code>. data was downloaded using the <code class="docutils literal notranslate"><span class="pre">aggregate</span></code> endpoint from <a class="reference external" href="https://polygon.io">Polygon.io</a>.</span><a class="headerlink" href="#example-amd-return-data-daily" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 13 </span><span class="caption-text">Daily logarithmic return of <a class="reference external" href="https://en.wikipedia.org/wiki/AMD">Advanced Micro Devices</a> computed from <code class="docutils literal notranslate"><span class="pre">2018-11-28</span></code> to <code class="docutils literal notranslate"><span class="pre">2022-11-28</span></code>. data was downloaded using the <code class="docutils literal notranslate"><span class="pre">aggregate</span></code> endpoint from <a class="reference external" href="https://polygon.io">Polygon.io</a>.</span><a class="headerlink" href="#example-amd-return-data-daily" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>The logarithmic return was computed using the <code class="docutils literal notranslate"><span class="pre">logR</span></code> function:</p>
@@ -595,7 +595,7 @@ on asset <span class="math notranslate nohighlight">\(i\)</span> over time horiz
 </ul>
 <p>Let’s compute the stylized facts for the daily returns of <a class="reference external" href="https://en.wikipedia.org/wiki/Wells_Fargo">Wells Fargo &amp; Company</a> with ticker <code class="docutils literal notranslate"><span class="pre">WFC</span></code>. To compute the <a class="reference external" href="https://en.wikipedia.org/wiki/Autocorrelation">Autocorrelation</a>, the <a class="reference external" href="https://en.wikipedia.org/wiki/Volatility_clustering">Volatility clustering</a> and the <a class="reference external" href="https://en.wikipedia.org/wiki/Fat-tailed_distribution">return disribution</a> we use the <a class="reference external" href="https://docs.julialang.org/en/v1/stdlib/Statistics/">Statistics.jl</a> and <a class="reference external" href="https://github.com/JuliaStats/Distributions.jl">Distributions.jl</a> packages.</p>
 <div class="proof example dropdown admonition" id="example-autocorrelation-WFC">
-<p class="admonition-title"><span class="caption-number">Example 10 </span> (Autocorrelation)</p>
+<p class="admonition-title"><span class="caption-number">Example 11 </span> (Autocorrelation)</p>
 <section class="example-content" id="proof-content">
 <p>Compute and visulize the autocorrelation of the <code class="docutils literal notranslate"><span class="pre">WFC</span></code> return time series as a function of the lag parameter <span class="math notranslate nohighlight">\(\tau\)</span>. The autocorrelation of the return series <code class="docutils literal notranslate"><span class="pre">R</span></code> is computed using the <a class="reference external" href="https://juliastats.org/StatsBase.jl/stable/signalcorr/#StatsBase.autocov">autocor</a> function:</p>
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># compute the AC -</span>
@@ -608,16 +608,16 @@ on asset <span class="math notranslate nohighlight">\(i\)</span> over time horiz
 <span class="n">UB</span> <span class="o">=</span> <span class="n">zeros</span><span class="p">(</span><span class="n">L</span><span class="p">)</span> <span class="o">.+</span> <span class="mf">1.96</span><span class="o">/</span><span class="n">sqrt</span><span class="p">(</span><span class="n">L</span><span class="p">);</span>
 </pre></div>
 </div>
-<p>The autocorrelation as a function of the lag parameter <span class="math notranslate nohighlight">\(\tau\)</span> can be visualized using the <a class="reference external" href="https://docs.juliaplots.org/stable/">Plots.jl</a> package (<a class="reference internal" href="#example-wfc-autocor-return-data-daily"><span class="std std-numref">Fig. 13</span></a>):</p>
+<p>The autocorrelation as a function of the lag parameter <span class="math notranslate nohighlight">\(\tau\)</span> can be visualized using the <a class="reference external" href="https://docs.juliaplots.org/stable/">Plots.jl</a> package (<a class="reference internal" href="#example-wfc-autocor-return-data-daily"><span class="std std-numref">Fig. 14</span></a>):</p>
 <figure class="align-default" id="example-wfc-autocor-return-data-daily">
 <a class="reference internal image-reference" href="../_images/Fig-WFC-Daily-Return-4yr-Autocorrelation.pdf"><img alt="../_images/Fig-WFC-Daily-Return-4yr-Autocorrelation.pdf" src="../_images/Fig-WFC-Daily-Return-4yr-Autocorrelation.pdf" style="height: 380px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 13 </span><span class="caption-text">Autocorrelation as a function of lag <span class="math notranslate nohighlight">\(\tau\)</span> (days) for logarithmic return of <a class="reference external" href="https://en.wikipedia.org/wiki/Wells_Fargo">Wells Fargo &amp; Company</a> computed from <code class="docutils literal notranslate"><span class="pre">2018-11-28</span></code> to <code class="docutils literal notranslate"><span class="pre">2022-11-28</span></code>. The data was downloaded using the <code class="docutils literal notranslate"><span class="pre">aggregate</span></code> endpoint from <a class="reference external" href="https://polygon.io">Polygon.io</a>.</span><a class="headerlink" href="#example-wfc-autocor-return-data-daily" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 14 </span><span class="caption-text">Autocorrelation as a function of lag <span class="math notranslate nohighlight">\(\tau\)</span> (days) for logarithmic return of <a class="reference external" href="https://en.wikipedia.org/wiki/Wells_Fargo">Wells Fargo &amp; Company</a> computed from <code class="docutils literal notranslate"><span class="pre">2018-11-28</span></code> to <code class="docutils literal notranslate"><span class="pre">2022-11-28</span></code>. The data was downloaded using the <code class="docutils literal notranslate"><span class="pre">aggregate</span></code> endpoint from <a class="reference external" href="https://polygon.io">Polygon.io</a>.</span><a class="headerlink" href="#example-wfc-autocor-return-data-daily" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 </div><div class="proof example dropdown admonition" id="example-autocorrelation-abs-WFC">
-<p class="admonition-title"><span class="caption-number">Example 11 </span> (Volatility clustering)</p>
+<p class="admonition-title"><span class="caption-number">Example 12 </span> (Volatility clustering)</p>
 <section class="example-content" id="proof-content">
 <p>Compute and visulize the Volatility clustering of the <code class="docutils literal notranslate"><span class="pre">WFC</span></code> return time series as a function of the lag parameter <span class="math notranslate nohighlight">\(\tau\)</span>. The Volatility clustering of the return series <code class="docutils literal notranslate"><span class="pre">R</span></code> is computed using the <a class="reference external" href="https://juliastats.org/StatsBase.jl/stable/signalcorr/#StatsBase.autocov">autocor</a> function:</p>
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># compute the AC -</span>
@@ -630,16 +630,16 @@ on asset <span class="math notranslate nohighlight">\(i\)</span> over time horiz
 <span class="n">UB</span> <span class="o">=</span> <span class="n">zeros</span><span class="p">(</span><span class="n">L</span><span class="p">)</span> <span class="o">.+</span> <span class="mf">1.96</span><span class="o">/</span><span class="n">sqrt</span><span class="p">(</span><span class="n">L</span><span class="p">);</span>
 </pre></div>
 </div>
-<p>The Volatility clustering as a function of the lag parameter <span class="math notranslate nohighlight">\(\tau\)</span> can be visualized using the <a class="reference external" href="https://docs.juliaplots.org/stable/">Plots.jl</a> package (<a class="reference internal" href="#example-wfc-autocor-abs-return-data-daily"><span class="std std-numref">Fig. 14</span></a>):</p>
+<p>The Volatility clustering as a function of the lag parameter <span class="math notranslate nohighlight">\(\tau\)</span> can be visualized using the <a class="reference external" href="https://docs.juliaplots.org/stable/">Plots.jl</a> package (<a class="reference internal" href="#example-wfc-autocor-abs-return-data-daily"><span class="std std-numref">Fig. 15</span></a>):</p>
 <figure class="align-default" id="example-wfc-autocor-abs-return-data-daily">
 <a class="reference internal image-reference" href="../_images/Fig-WFC-Daily-Return-4yr-abs-Autocorrelation.pdf"><img alt="../_images/Fig-WFC-Daily-Return-4yr-abs-Autocorrelation.pdf" src="../_images/Fig-WFC-Daily-Return-4yr-abs-Autocorrelation.pdf" style="height: 380px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 14 </span><span class="caption-text">Volatility clustering as a function of lag <span class="math notranslate nohighlight">\(\tau\)</span> (days) for logarithmic return of <a class="reference external" href="https://en.wikipedia.org/wiki/Wells_Fargo">Wells Fargo &amp; Company</a> computed from <code class="docutils literal notranslate"><span class="pre">2018-11-28</span></code> to <code class="docutils literal notranslate"><span class="pre">2022-11-28</span></code>. The data was downloaded using the <code class="docutils literal notranslate"><span class="pre">aggregate</span></code> endpoint from <a class="reference external" href="https://polygon.io">Polygon.io</a>.</span><a class="headerlink" href="#example-wfc-autocor-abs-return-data-daily" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 15 </span><span class="caption-text">Volatility clustering as a function of lag <span class="math notranslate nohighlight">\(\tau\)</span> (days) for logarithmic return of <a class="reference external" href="https://en.wikipedia.org/wiki/Wells_Fargo">Wells Fargo &amp; Company</a> computed from <code class="docutils literal notranslate"><span class="pre">2018-11-28</span></code> to <code class="docutils literal notranslate"><span class="pre">2022-11-28</span></code>. The data was downloaded using the <code class="docutils literal notranslate"><span class="pre">aggregate</span></code> endpoint from <a class="reference external" href="https://polygon.io">Polygon.io</a>.</span><a class="headerlink" href="#example-wfc-autocor-abs-return-data-daily" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
 </div><div class="proof example dropdown admonition" id="example-return-distribution-WFC">
-<p class="admonition-title"><span class="caption-number">Example 12 </span> (Return distribution)</p>
+<p class="admonition-title"><span class="caption-number">Example 13 </span> (Return distribution)</p>
 <section class="example-content" id="proof-content">
 <p>Compute and visulize the return distribution of the <code class="docutils literal notranslate"><span class="pre">WFC</span></code> return time series.</p>
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># load packages</span>
@@ -676,11 +676,11 @@ on asset <span class="math notranslate nohighlight">\(i\)</span> over time horiz
 <span class="n">ylabel!</span><span class="p">(</span><span class="s">&quot;Count&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>The distribution of daily returns was visualized using the <a class="reference external" href="https://docs.juliaplots.org/stable/">Plots.jl</a> package (<a class="reference internal" href="#example-wfc-return-histogram-data-daily"><span class="std std-numref">Fig. 15</span></a>):</p>
+<p>The distribution of daily returns was visualized using the <a class="reference external" href="https://docs.juliaplots.org/stable/">Plots.jl</a> package (<a class="reference internal" href="#example-wfc-return-histogram-data-daily"><span class="std std-numref">Fig. 16</span></a>):</p>
 <figure class="align-default" id="example-wfc-return-histogram-data-daily">
 <a class="reference internal image-reference" href="../_images/Fig-WFC-Daily-Return-4yr-histogram.pdf"><img alt="../_images/Fig-WFC-Daily-Return-4yr-histogram.pdf" src="../_images/Fig-WFC-Daily-Return-4yr-histogram.pdf" style="height: 380px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 15 </span><span class="caption-text">Return distribution for logarithmic daily return of <a class="reference external" href="https://en.wikipedia.org/wiki/Wells_Fargo">Wells Fargo &amp; Company</a> computed between <code class="docutils literal notranslate"><span class="pre">2018-11-28</span></code> to <code class="docutils literal notranslate"><span class="pre">2022-11-28</span></code>. The data was downloaded using the <code class="docutils literal notranslate"><span class="pre">aggregate</span></code> endpoint from <a class="reference external" href="https://polygon.io">Polygon.io</a>.</span><a class="headerlink" href="#example-wfc-return-histogram-data-daily" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 16 </span><span class="caption-text">Return distribution for logarithmic daily return of <a class="reference external" href="https://en.wikipedia.org/wiki/Wells_Fargo">Wells Fargo &amp; Company</a> computed between <code class="docutils literal notranslate"><span class="pre">2018-11-28</span></code> to <code class="docutils literal notranslate"><span class="pre">2022-11-28</span></code>. The data was downloaded using the <code class="docutils literal notranslate"><span class="pre">aggregate</span></code> endpoint from <a class="reference external" href="https://polygon.io">Polygon.io</a>.</span><a class="headerlink" href="#example-wfc-return-histogram-data-daily" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -802,7 +802,7 @@ By Varner and Woltornist
     
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2023.
       <br/>
     
   </p>

@@ -171,8 +171,8 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <ul class="nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="chapter-1-dir/chapter-1-landing.html">Unit 1. Financial Basics</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="chapter-1-dir/assets.html">Interest, Cash Flows and Future Value</a></li>
 <li class="toctree-l2"><a class="reference internal" href="chapter-1-dir/pfinance-basics.html">Personal Finance Basics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="chapter-1-dir/assets.html">Financial Balances and Abstract Assets</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="chapter-2-dir/chapter-2-landing.html">Unit 2. Wealth Creation</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -378,6 +378,7 @@ document.write(`
    <a href="#cap-defn-black-scholes-merton"><strong>defn-black-scholes-merton</strong></a> | 
    <a href="#cap-defn-bwer"><strong>defn-bwer</strong></a> | 
    <a href="#cap-defn-composite-contract-profit"><strong>defn-composite-contract-profit</strong></a> | 
+   <a href="#cap-defn-compound-interest"><strong>defn-compound-interest</strong></a> | 
    <a href="#cap-defn-delta-hedge-condition"><strong>defn-delta-hedge-condition</strong></a> | 
    <a href="#cap-defn-discrete-random-variable-expectation"><strong>defn-discrete-random-variable-expectation</strong></a> | 
    <a href="#cap-defn-discrete-random-variable-variance"><strong>defn-discrete-random-variable-variance</strong></a> | 
@@ -418,7 +419,7 @@ document.write(`
    <a href="#cap-ex-sample-space-dice"><strong>ex-sample-space-dice</strong></a> | 
    <a href="#cap-example-0"><strong>example-0</strong></a> | 
    <a href="#cap-example-1"><strong>example-1</strong></a> | 
-   <a href="#cap-example-3"><strong>example-3</strong></a> | 
+   <a href="#cap-example-5"><strong>example-5</strong></a> | 
    <a href="#cap-example-MDP-line"><strong>example-MDP-line</strong></a> | 
    <a href="#cap-example-MDP-line-mod"><strong>example-MDP-line-mod</strong></a> | 
    <a href="#cap-example-amd-daily-returns"><strong>example-amd-daily-returns</strong></a> | 
@@ -435,6 +436,7 @@ document.write(`
    <a href="#cap-example-net-present-value-discrete"><strong>example-net-present-value-discrete</strong></a> | 
    <a href="#cap-example-normal-residual-model"><strong>example-normal-residual-model</strong></a> | 
    <a href="#cap-example-return-distribution-WFC"><strong>example-return-distribution-WFC</strong></a> | 
+   <a href="#cap-example-simple-vs-compound-interest"><strong>example-simple-vs-compound-interest</strong></a> | 
    <a href="#cap-example-treaury-bond-price"><strong>example-treaury-bond-price</strong></a> | 
    <a href="#cap-example-zero-coupon-t-bill"><strong>example-zero-coupon-t-bill</strong></a> | 
    <a href="#cap-iron-condor-expiration"><strong>iron-condor-expiration</strong></a> | 
@@ -451,8 +453,8 @@ document.write(`
    <a href="#cap-observation-3"><strong>observation-3</strong></a> | 
    <a href="#cap-pop-amd-strange-expiration"><strong>pop-amd-strange-expiration</strong></a> | 
    <a href="#cap-put-contract-expiration"><strong>put-contract-expiration</strong></a> | 
-   <a href="#cap-remark-0"><strong>remark-0</strong></a> | 
    <a href="#cap-remark-markowitz-in-words"><strong>remark-markowitz-in-words</strong></a> | 
+   <a href="#cap-remark-tvof-money"><strong>remark-tvof-money</strong></a> | 
    <a href="#cap-straddle-profit-expiration"><strong>straddle-profit-expiration</strong></a> | 
    <a href="#cap-strangle-profit-expiration"><strong>strangle-profit-expiration</strong></a> | 
    <a href="#cap-vertical-put-spread-expiration"><strong>vertical-put-spread-expiration</strong></a>
@@ -602,6 +604,14 @@ document.write(`
        <td></td>
        <td>
        <a href="chapter-2-dir/contracts.html#defn-composite-contract-profit"><code class="xref">defn-composite-contract-profit</code></a> <em>(chapter-2-dir/contracts)</em></td><td>
+       <em>definition</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-defn-compound-interest"><td></td><td>
+       <strong>defn-compound-interest</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="chapter-1-dir/assets.html#defn-compound-interest"><code class="xref">defn-compound-interest</code></a> <em>(chapter-1-dir/assets)</em></td><td>
        <em>definition</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-defn-delta-hedge-condition"><td></td><td>
@@ -924,12 +934,12 @@ document.write(`
        <a href="chapter-2-dir/equity.html#example-1"><code class="xref">example-1</code></a> <em>(chapter-2-dir/equity)</em></td><td>
        <em>example</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
-     <tr class="cap" id="cap-example-3"><td></td><td>
-       <strong>example-3</strong></td><td></td></tr>
+     <tr class="cap" id="cap-example-5"><td></td><td>
+       <strong>example-5</strong></td><td></td></tr>
      <tr>
        <td></td>
        <td>
-       <a href="chapter-1-dir/assets.html#example-3"><code class="xref">example-3</code></a> <em>(chapter-1-dir/assets)</em></td><td>
+       <a href="chapter-1-dir/assets.html#example-5"><code class="xref">example-5</code></a> <em>(chapter-1-dir/assets)</em></td><td>
        <em>example</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-example-MDP-line"><td></td><td>
@@ -1060,6 +1070,14 @@ document.write(`
        <a href="chapter-2-dir/equity.html#example-return-distribution-WFC"><code class="xref">example-return-distribution-WFC</code></a> <em>(chapter-2-dir/equity)</em></td><td>
        <em>example</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-example-simple-vs-compound-interest"><td></td><td>
+       <strong>example-simple-vs-compound-interest</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="chapter-1-dir/assets.html#example-simple-vs-compound-interest"><code class="xref">example-simple-vs-compound-interest</code></a> <em>(chapter-1-dir/assets)</em></td><td>
+       <em>example</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-example-treaury-bond-price"><td></td><td>
        <strong>example-treaury-bond-price</strong></td><td></td></tr>
      <tr>
@@ -1188,20 +1206,20 @@ document.write(`
        <a href="chapter-2-dir/contracts.html#put-contract-expiration"><code class="xref">put-contract-expiration</code></a> <em>(chapter-2-dir/contracts)</em></td><td>
        <em>example</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
-     <tr class="cap" id="cap-remark-0"><td></td><td>
-       <strong>remark-0</strong></td><td></td></tr>
-     <tr>
-       <td></td>
-       <td>
-       <a href="chapter-1-dir/assets.html#remark-0"><code class="xref">remark-0</code></a> <em>(chapter-1-dir/assets)</em></td><td>
-       <em>remark</em></td></tr>
-     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-remark-markowitz-in-words"><td></td><td>
        <strong>remark-markowitz-in-words</strong></td><td></td></tr>
      <tr>
        <td></td>
        <td>
        <a href="chapter-3-dir/data-markowitz.html#remark-markowitz-in-words"><code class="xref">remark-markowitz-in-words</code></a> <em>(chapter-3-dir/data-markowitz)</em></td><td>
+       <em>remark</em></td></tr>
+     <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
+     <tr class="cap" id="cap-remark-tvof-money"><td></td><td>
+       <strong>remark-tvof-money</strong></td><td></td></tr>
+     <tr>
+       <td></td>
+       <td>
+       <a href="chapter-1-dir/assets.html#remark-tvof-money"><code class="xref">remark-tvof-money</code></a> <em>(chapter-1-dir/assets)</em></td><td>
        <em>remark</em></td></tr>
      <tr class="pcap"><td></td><td>&#160;</td><td></td></tr>
      <tr class="cap" id="cap-straddle-profit-expiration"><td></td><td>
@@ -1269,7 +1287,7 @@ By Varner and Woltornist
     
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2023.
       <br/>
     
   </p>

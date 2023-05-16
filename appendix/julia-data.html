@@ -69,8 +69,6 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'appendix/julia-data';</script>
     <link rel="canonical" href="https://varnerlab.github.io/CHEME-5660-Markets-Mayhem-Book/infrastructure.html/appendix/julia-data.html" />
     <link rel="index" title="Index" href="../genindex.html" />
@@ -169,8 +167,8 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../chapter-1-dir/chapter-1-landing.html">Unit 1. Financial Basics</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter-1-dir/assets.html">Interest, Cash Flows and Future Value</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapter-1-dir/pfinance-basics.html">Personal Finance Basics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../chapter-1-dir/assets.html">Financial Balances and Abstract Assets</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../chapter-2-dir/chapter-2-landing.html">Unit 2. Wealth Creation</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -471,7 +469,19 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><div><div style = "float: left;"><span>4×2 DataFrame</span></div><div style = "clear: both;"></div></div><div class = "data-frame" style = "overflow-x: scroll;"><table class = "data-frame" style = "margin-bottom: 6px;"><thead><tr class = "header"><th class = "rowNumber" style = "font-weight: bold; text-align: right;">Row</th><th style = "text-align: left;">A</th><th style = "text-align: left;">B</th></tr><tr class = "subheader headerLastRow"><th class = "rowNumber" style = "font-weight: bold; text-align: right;"></th><th title = "Int64" style = "text-align: left;">Int64</th><th title = "String" style = "text-align: left;">String</th></tr></thead><tbody><tr><td class = "rowNumber" style = "font-weight: bold; text-align: right;">1</td><td style = "text-align: right;">1</td><td style = "text-align: left;">M</td></tr><tr><td class = "rowNumber" style = "font-weight: bold; text-align: right;">2</td><td style = "text-align: right;">2</td><td style = "text-align: left;">F</td></tr><tr><td class = "rowNumber" style = "font-weight: bold; text-align: right;">3</td><td style = "text-align: right;">3</td><td style = "text-align: left;">F</td></tr><tr><td class = "rowNumber" style = "font-weight: bold; text-align: right;">4</td><td style = "text-align: right;">4</td><td style = "text-align: left;">M</td></tr></tbody></table></div></div></div>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span>ArgumentError: Package DataFrames not found in current path.
+- Run `import Pkg; Pkg.add(&quot;DataFrames&quot;)` to install the DataFrames package.
+
+Stacktrace:
+ [1] macro expansion
+   @ ./loading.jl:1595 [inlined]
+ [2] macro expansion
+   @ ./lock.jl:267 [inlined]
+ [3] require(into::Module, mod::Symbol)
+   @ Base ./loading.jl:1576
+</pre></div>
+</div>
+</div>
 </div>
 <p>A <a class="reference external" href="https://dataframes.juliadata.org/stable/lib/types/#DataFrames.DataFrame">DataFrame</a> can also be created from a <a class="reference external" href="https://docs.julialang.org/en/v1/base/collections/#Dictionaries">Dictionary</a>, where the column header names are constructed from the keys of the dictionary, and the column values are the data associated with each key:</p>
 <div class="cell docutils container">
@@ -494,8 +504,6 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div><div style = "float: left;"><span>3×3 DataFrame</span></div><div style = "clear: both;"></div></div><div class = "data-frame" style = "overflow-x: scroll;"><table class = "data-frame" style = "margin-bottom: 6px;"><thead><tr class = "header"><th class = "rowNumber" style = "font-weight: bold; text-align: right;">Row</th><th style = "text-align: left;">customer_age</th><th style = "text-align: left;">first_name</th><th style = "text-align: left;">state</th></tr><tr class = "subheader headerLastRow"><th class = "rowNumber" style = "font-weight: bold; text-align: right;"></th><th title = "Int64" style = "text-align: left;">Int64</th><th title = "String" style = "text-align: left;">String</th><th title = "String" style = "text-align: left;">String</th></tr></thead><tbody><tr><td class = "rowNumber" style = "font-weight: bold; text-align: right;">1</td><td style = "text-align: right;">22</td><td style = "text-align: left;">Rohit</td><td style = "text-align: left;">IN</td></tr><tr><td class = "rowNumber" style = "font-weight: bold; text-align: right;">2</td><td style = "text-align: right;">20</td><td style = "text-align: left;">Rahul</td><td style = "text-align: left;">CA</td></tr><tr><td class = "rowNumber" style = "font-weight: bold; text-align: right;">3</td><td style = "text-align: right;">25</td><td style = "text-align: left;">Akshat</td><td style = "text-align: left;">OR</td></tr></tbody></table></div></div></div>
 </div>
 <p>Notice the <a class="reference external" href="https://docs.julialang.org/en/v1/base/collections/#Dictionaries">Dictionary</a> keys are of type <a class="reference external" href="https://docs.julialang.org/en/v1/base/base/#Core.Symbol">Symbol</a> and <strong>not</strong> <a class="reference external" href="https://docs.julialang.org/en/v1/base/strings/#lib-strings">Strings</a>; a <a class="reference external" href="https://docs.julialang.org/en/v1/base/base/#Core.Symbol">Symbol</a> represents a special type of identifier in <a class="reference external" href="https://julialang.org">Julia</a>. <a class="reference external" href="https://docs.julialang.org/en/v1/base/base/#Core.Symbol">Symbols</a> are often used as names or labels to identify an entity, e.g., as a dictionary key as shown above. <a class="reference external" href="https://docs.julialang.org/en/v1/base/base/#Core.Symbol">Symbols</a> can be entered using the <code class="docutils literal notranslate"><span class="pre">:</span></code> quote operator or constructed from <a class="reference external" href="https://docs.julialang.org/en/v1/base/strings/#lib-strings">Strings</a> using the <code class="docutils literal notranslate"><span class="pre">Symbol(x...)</span></code> constructor method.</p>
 <section id="why-are-dataframes-interesting">
@@ -525,8 +533,6 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div><div style = "float: left;"><span>3×2 DataFrame</span></div><div style = "clear: both;"></div></div><div class = "data-frame" style = "overflow-x: scroll;"><table class = "data-frame" style = "margin-bottom: 6px;"><thead><tr class = "header"><th class = "rowNumber" style = "font-weight: bold; text-align: right;">Row</th><th style = "text-align: left;">first_name</th><th style = "text-align: left;">state</th></tr><tr class = "subheader headerLastRow"><th class = "rowNumber" style = "font-weight: bold; text-align: right;"></th><th title = "String" style = "text-align: left;">String</th><th title = "String" style = "text-align: left;">String</th></tr></thead><tbody><tr><td class = "rowNumber" style = "font-weight: bold; text-align: right;">1</td><td style = "text-align: left;">Rohit</td><td style = "text-align: left;">IN</td></tr><tr><td class = "rowNumber" style = "font-weight: bold; text-align: right;">2</td><td style = "text-align: left;">Rahul</td><td style = "text-align: left;">CA</td></tr><tr><td class = "rowNumber" style = "font-weight: bold; text-align: right;">3</td><td style = "text-align: left;">Akshat</td><td style = "text-align: left;">OR</td></tr></tbody></table></div></div></div>
 </div>
 <p>Finally, <a class="reference external" href="https://dataframes.juliadata.org/stable/lib/types/#DataFrames.DataFrame">DataFrames</a> can also be used in complex data manipulation operations, e.g., <a class="reference external" href="https://dataframes.juliadata.org/stable/lib/functions/#Sorting">sorting</a>, <a class="reference external" href="https://dataframes.juliadata.org/stable/lib/functions/#Filtering-rows">filtering</a> or <a class="reference external" href="https://dataframes.juliadata.org/stable/man/joins/">Join</a> operations.</p>
 <p>For example, suppose in our customer dataset, we wanted all customers from <a class="reference external" href="https://en.wikipedia.org/wiki/Oregon">Oregon</a>; we can do this with the <code class="docutils literal notranslate"><span class="pre">filter</span></code> function:</p>
@@ -553,8 +559,6 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div><div style = "float: left;"><span>1×3 DataFrame</span></div><div style = "clear: both;"></div></div><div class = "data-frame" style = "overflow-x: scroll;"><table class = "data-frame" style = "margin-bottom: 6px;"><thead><tr class = "header"><th class = "rowNumber" style = "font-weight: bold; text-align: right;">Row</th><th style = "text-align: left;">customer_age</th><th style = "text-align: left;">first_name</th><th style = "text-align: left;">state</th></tr><tr class = "subheader headerLastRow"><th class = "rowNumber" style = "font-weight: bold; text-align: right;"></th><th title = "Int64" style = "text-align: left;">Int64</th><th title = "String" style = "text-align: left;">String</th><th title = "String" style = "text-align: left;">String</th></tr></thead><tbody><tr><td class = "rowNumber" style = "font-weight: bold; text-align: right;">1</td><td style = "text-align: right;">25</td><td style = "text-align: left;">Akshat</td><td style = "text-align: left;">OR</td></tr></tbody></table></div></div></div>
 </div>
 <p>There is a large variety of <a class="reference external" href="https://online.hbs.edu/blog/post/data-wrangling">data wrangling</a> functions published by the <a class="reference external" href="https://github.com/JuliaData/DataFrames.jl">DataFrame.jl</a> package, please review the <a class="reference external" href="https://dataframes.juliadata.org/stable/man/getting_started/">Getting started</a> section of the <a class="reference external" href="https://github.com/JuliaData/DataFrames.jl">DataFrame.jl</a> documentation for more information.</p>
 </section>
@@ -582,8 +586,6 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div><div style = "float: left;"><span>4×8 DataFrame</span></div><div style = "clear: both;"></div></div><div class = "data-frame" style = "overflow-x: scroll;"><table class = "data-frame" style = "margin-bottom: 6px;"><thead><tr class = "header"><th class = "rowNumber" style = "font-weight: bold; text-align: right;">Row</th><th style = "text-align: left;">volume</th><th style = "text-align: left;">vwap</th><th style = "text-align: left;">open</th><th style = "text-align: left;">close</th><th style = "text-align: left;">high</th><th style = "text-align: left;">low</th><th style = "text-align: left;">timestamp</th><th style = "text-align: left;">n</th></tr><tr class = "subheader headerLastRow"><th class = "rowNumber" style = "font-weight: bold; text-align: right;"></th><th title = "Float64" style = "text-align: left;">Float64</th><th title = "Float64" style = "text-align: left;">Float64</th><th title = "Float64" style = "text-align: left;">Float64</th><th title = "Float64" style = "text-align: left;">Float64</th><th title = "Float64" style = "text-align: left;">Float64</th><th title = "Float64" style = "text-align: left;">Float64</th><th title = "Dates.DateTime" style = "text-align: left;">DateTime</th><th title = "Int64" style = "text-align: left;">Int64</th></tr></thead><tbody><tr><td class = "rowNumber" style = "font-weight: bold; text-align: right;">1</td><td style = "text-align: right;">1.44524e8</td><td style = "text-align: right;">88.7007</td><td style = "text-align: right;">92.865</td><td style = "text-align: right;">86.36</td><td style = "text-align: right;">93.74</td><td style = "text-align: right;">85.38</td><td style = "text-align: left;">2022-05-09T04:00:00</td><td style = "text-align: right;">901147</td></tr><tr><td class = "rowNumber" style = "font-weight: bold; text-align: right;">2</td><td style = "text-align: right;">1.37235e8</td><td style = "text-align: right;">88.0634</td><td style = "text-align: right;">89.18</td><td style = "text-align: right;">88.73</td><td style = "text-align: right;">90.7721</td><td style = "text-align: right;">85.41</td><td style = "text-align: left;">2022-05-10T04:00:00</td><td style = "text-align: right;">735895</td></tr><tr><td class = "rowNumber" style = "font-weight: bold; text-align: right;">3</td><td style = "text-align: right;">1.36138e8</td><td style = "text-align: right;">90.3059</td><td style = "text-align: right;">87.84</td><td style = "text-align: right;">87.92</td><td style = "text-align: right;">93.46</td><td style = "text-align: right;">86.53</td><td style = "text-align: left;">2022-05-11T04:00:00</td><td style = "text-align: right;">859974</td></tr><tr><td class = "rowNumber" style = "font-weight: bold; text-align: right;">4</td><td style = "text-align: right;">1.29214e8</td><td style = "text-align: right;">85.6857</td><td style = "text-align: right;">86.6</td><td style = "text-align: right;">87.06</td><td style = "text-align: right;">88.55</td><td style = "text-align: right;">83.27</td><td style = "text-align: left;">2022-05-12T04:00:00</td><td style = "text-align: right;">882934</td></tr></tbody></table></div></div></div>
 </div>
 </section>
 <section id="saving-a-dataframe-to-a-csv-file">
@@ -673,16 +675,16 @@ document.write(`
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "julia-1.8"
+            mode: "julia-1.9"
         },
         kernelOptions: {
-            name: "julia-1.8",
+            name: "julia-1.9",
             path: "./appendix"
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'julia-1.8'</script>
+    <script>kernelName = 'julia-1.9'</script>
 
                 </article>
               
@@ -771,7 +773,7 @@ By Varner and Woltornist
     
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2023.
       <br/>
     
   </p>

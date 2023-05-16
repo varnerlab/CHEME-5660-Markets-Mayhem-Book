@@ -169,8 +169,8 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../chapter-1-dir/chapter-1-landing.html">Unit 1. Financial Basics</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter-1-dir/assets.html">Interest, Cash Flows and Future Value</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../chapter-1-dir/pfinance-basics.html">Personal Finance Basics</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../chapter-1-dir/assets.html">Financial Balances and Abstract Assets</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../chapter-2-dir/chapter-2-landing.html">Unit 2. Wealth Creation</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -437,7 +437,7 @@ document.write(`
 <p>A Markov decision process (MDP) is an approach for modeling decision-making in situations where outcomes are partly random but also partly under the control of a <em>decision-maker</em> who receives a reward (or penalty) for each decision. Thus, unlike <a class="reference internal" href="markov.html#content-references-discrete-time-markov-chains"><span class="std std-ref">Discrete-time Markov chains</span></a>, Markov decision processes (MDPs) involve actions, which allow choice, and rewards that motivate the decision maker.</p>
 <p>At each time step, let’s assume the system in some state <span class="math notranslate nohighlight">\(s\)</span> in a set of possible states <span class="math notranslate nohighlight">\(s\in\mathcal{S}\)</span> and the decision maker may choose any action <span class="math notranslate nohighlight">\(a\)</span> from a set of possible actions <span class="math notranslate nohighlight">\(a\in\mathcal{A}\)</span> that are available in state <span class="math notranslate nohighlight">\(s\)</span>. The system responds at the next time step by <em>potentially</em> moving into a new state <span class="math notranslate nohighlight">\(s^{\prime}\)</span> and rewarding the decision maker <span class="math notranslate nohighlight">\(R_{a}\left(s, s^{\prime}\right)\)</span>. The probability that the system moves into a new state <span class="math notranslate nohighlight">\(s^{\prime}\)</span> depends upon the chosen action <span class="math notranslate nohighlight">\(a\)</span> and the current state <span class="math notranslate nohighlight">\(s\)</span>; this probability is governed by a state transition function <span class="math notranslate nohighlight">\(P_{a}\left(s,s^{\prime}\right)\)</span>.</p>
 <div class="proof definition admonition" id="defn-formal-mdp">
-<p class="admonition-title"><span class="caption-number">Definition 32 </span> (Markov decision tuple )</p>
+<p class="admonition-title"><span class="caption-number">Definition 33 </span> (Markov decision tuple )</p>
 <section class="definition-content" id="proof-content">
 <p>A Markov decision process is the tuple <span class="math notranslate nohighlight">\(\left(\mathcal{S}, \mathcal{A}, R_{a}\left(s, s^{\prime}\right), T_{a}\left(s,s^{\prime}\right), \gamma\right)\)</span> where:</p>
 <ul class="simple">
@@ -463,23 +463,23 @@ the utility at iteration <span class="math notranslate nohighlight">\(k\)</span>
 \[U_{k+1}^{\pi}(s) = R(s,\pi(s)) + \gamma\sum_{s^{\prime}\in\mathcal{S}}T(s^{\prime} | s, \pi(s))U_{k}^{\pi}(s^{\prime})\]</div>
 <p>As <span class="math notranslate nohighlight">\(k\rightarrow\infty\)</span> the lookahead utility converges to a stationary value <span class="math notranslate nohighlight">\(U^{\pi}(s)\)</span>:</p>
 <div class="proof definition admonition" id="defn-policy-evalution">
-<p class="admonition-title"><span class="caption-number">Definition 33 </span> (Value function)</p>
+<p class="admonition-title"><span class="caption-number">Definition 34 </span> (Value function)</p>
 <section class="definition-content" id="proof-content">
 <p>Suppose we have a Markov decision process with the tuple <span class="math notranslate nohighlight">\(\left(\mathcal{S}, \mathcal{A}, R_{a}\left(s, s^{\prime}\right), T_{a}\left(s,s^{\prime}\right), \gamma\right)\)</span>. Then, the utility of the policy function <span class="math notranslate nohighlight">\(\pi\)</span> equals:</p>
 <div class="math notranslate nohighlight" id="equation-eqn-converged-policy-eval">
-<span class="eqno">(45)<a class="headerlink" href="#equation-eqn-converged-policy-eval" title="Permalink to this equation">#</a></span>\[U^{\pi}(s) = R(s,\pi(s)) + \gamma\sum_{s^{\prime}\in\mathcal{S}}T(s^{\prime} | s, \pi(s))U^{\pi}(s^{\prime})\]</div>
+<span class="eqno">(49)<a class="headerlink" href="#equation-eqn-converged-policy-eval" title="Permalink to this equation">#</a></span>\[U^{\pi}(s) = R(s,\pi(s)) + \gamma\sum_{s^{\prime}\in\mathcal{S}}T(s^{\prime} | s, \pi(s))U^{\pi}(s^{\prime})\]</div>
 </section>
 </div><p>Let’s do an example to illustrate policy evaluation:</p>
 <div class="proof example dropdown admonition" id="example-MDP-line">
-<p class="admonition-title"><span class="caption-number">Example 29 </span> (Tiger problem)</p>
+<p class="admonition-title"><span class="caption-number">Example 30 </span> (Tiger problem)</p>
 <section class="example-content" id="proof-content">
 <figure class="align-default" id="fig-linear-mdp-schematic">
 <a class="reference internal image-reference" href="../_images/Fig-Linear-MDP-Schematic.pdf"><img alt="../_images/Fig-Linear-MDP-Schematic.pdf" src="../_images/Fig-Linear-MDP-Schematic.pdf" style="height: 110px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 35 </span><span class="caption-text">Schematic of the Tiger problem modeled as an N-state, two-action Markov decision process. A tiger hides behind the red door while freedom awaits behind the green door.</span><a class="headerlink" href="#fig-linear-mdp-schematic" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 36 </span><span class="caption-text">Schematic of the Tiger problem modeled as an N-state, two-action Markov decision process. A tiger hides behind the red door while freedom awaits behind the green door.</span><a class="headerlink" href="#fig-linear-mdp-schematic" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<p>An agent trapped in a long hallway with two doors at either end (<a class="reference internal" href="#fig-linear-mdp-schematic"><span class="std std-numref">Fig. 35</span></a>). Behind the red door is a tiger (and certain death), while behind the green door is freedom. If the agent opens the red door, the agent is eaten (and receives a large negative reward). However, if the agent opens the green door, it escapes and gets a positive reward.</p>
+<p>An agent trapped in a long hallway with two doors at either end (<a class="reference internal" href="#fig-linear-mdp-schematic"><span class="std std-numref">Fig. 36</span></a>). Behind the red door is a tiger (and certain death), while behind the green door is freedom. If the agent opens the red door, the agent is eaten (and receives a large negative reward). However, if the agent opens the green door, it escapes and gets a positive reward.</p>
 <p>For this problem, the MDP has the tuple components:</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(\mathcal{S} = \left\{1,2,\dots,N\right\}\)</span> while the action set is <span class="math notranslate nohighlight">\(\mathcal{A} = \left\{a_{1},a_{2}\right\}\)</span>; action <span class="math notranslate nohighlight">\(a_{1}\)</span> moves the agent one state to the right, action <span class="math notranslate nohighlight">\(a_{2}\)</span> moves the agent one state to the left.</p></li>
@@ -493,17 +493,17 @@ the utility at iteration <span class="math notranslate nohighlight">\(k\)</span>
 </section>
 <section id="value-function-policies">
 <h3>Value function policies<a class="headerlink" href="#value-function-policies" title="Permalink to this headline">#</a></h3>
-<p><a class="reference internal" href="#defn-policy-evalution">Definition 33</a> gives us a method to compute the utility for a particular policy <span class="math notranslate nohighlight">\(U^{\pi}(s)\)</span>.
+<p><a class="reference internal" href="#defn-policy-evalution">Definition 34</a> gives us a method to compute the utility for a particular policy <span class="math notranslate nohighlight">\(U^{\pi}(s)\)</span>.
 However, suppose we were given the utility and wanted to estimate the policy <span class="math notranslate nohighlight">\(\pi(s)\)</span> from that utility.
 Given a utility <span class="math notranslate nohighlight">\(U\)</span>, we can estimate a policy <span class="math notranslate nohighlight">\(\pi(s)\)</span> using the <span class="math notranslate nohighlight">\(Q\)</span>-function (action-value function):</p>
 <div class="math notranslate nohighlight" id="equation-eqn-action-value-function">
-<span class="eqno">(46)<a class="headerlink" href="#equation-eqn-action-value-function" title="Permalink to this equation">#</a></span>\[Q(s,a) = R(s,a) + \gamma\sum_{s^{\prime}\in\mathcal{S}}T(s^{\prime} | s, a)U(s^{\prime})\]</div>
-<p>Equation <a class="reference internal" href="#equation-eqn-action-value-function">(46)</a> gives a <span class="math notranslate nohighlight">\(|\mathcal{S}|\times|\mathcal{A}|\)</span> array, where the utility is given by:</p>
+<span class="eqno">(50)<a class="headerlink" href="#equation-eqn-action-value-function" title="Permalink to this equation">#</a></span>\[Q(s,a) = R(s,a) + \gamma\sum_{s^{\prime}\in\mathcal{S}}T(s^{\prime} | s, a)U(s^{\prime})\]</div>
+<p>Equation <a class="reference internal" href="#equation-eqn-action-value-function">(50)</a> gives a <span class="math notranslate nohighlight">\(|\mathcal{S}|\times|\mathcal{A}|\)</span> array, where the utility is given by:</p>
 <div class="math notranslate nohighlight" id="equation-eqn-utility-from-q">
-<span class="eqno">(47)<a class="headerlink" href="#equation-eqn-utility-from-q" title="Permalink to this equation">#</a></span>\[U(s) = \max_{a} Q(s,a)\]</div>
+<span class="eqno">(51)<a class="headerlink" href="#equation-eqn-utility-from-q" title="Permalink to this equation">#</a></span>\[U(s) = \max_{a} Q(s,a)\]</div>
 <p>and the policy <span class="math notranslate nohighlight">\(\pi(s)\)</span> is:</p>
 <div class="math notranslate nohighlight" id="equation-eqn-policy-from-q">
-<span class="eqno">(48)<a class="headerlink" href="#equation-eqn-policy-from-q" title="Permalink to this equation">#</a></span>\[\pi(s) = \text{arg}\max_{a}Q(s,a)\]</div>
+<span class="eqno">(52)<a class="headerlink" href="#equation-eqn-policy-from-q" title="Permalink to this equation">#</a></span>\[\pi(s) = \text{arg}\max_{a}Q(s,a)\]</div>
 </section>
 <section id="value-iteration">
 <h3>Value iteration<a class="headerlink" href="#value-iteration" title="Permalink to this headline">#</a></h3>
@@ -513,15 +513,15 @@ Given a utility <span class="math notranslate nohighlight">\(U\)</span>, we can 
 \[U_{k+1}(s) = \max_{a}\left(R(s,a) + \gamma\sum_{s^{\prime}\in\mathcal{S}}T(s^{\prime} | s, a)U_{k}(s^{\prime})\right)\]</div>
 <p>This procedure is guaranteed to converge to the optimal utility vector (value function).</p>
 <div class="proof example dropdown admonition" id="example-MDP-line-mod">
-<p class="admonition-title"><span class="caption-number">Example 30 </span> (Modified Tiger problem)</p>
+<p class="admonition-title"><span class="caption-number">Example 31 </span> (Modified Tiger problem)</p>
 <section class="example-content" id="proof-content">
 <figure class="align-default" id="fig-branched-mdp-schematic-mod">
 <a class="reference internal image-reference" href="../_images/Fig-Branched-MDP-Schematic.pdf"><img alt="../_images/Fig-Branched-MDP-Schematic.pdf" src="../_images/Fig-Branched-MDP-Schematic.pdf" style="height: 300px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 36 </span><span class="caption-text">Schematic of the Tiger problem modeled as an N-state, four-action (left, right, up, down) Markov decision process. The hallway has three types of paths: unobstructed (white, free), mildly obstructed (light gray, small cost), and obstructed (dark gray, large cost).</span><a class="headerlink" href="#fig-branched-mdp-schematic-mod" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 37 </span><span class="caption-text">Schematic of the Tiger problem modeled as an N-state, four-action (left, right, up, down) Markov decision process. The hallway has three types of paths: unobstructed (white, free), mildly obstructed (light gray, small cost), and obstructed (dark gray, large cost).</span><a class="headerlink" href="#fig-branched-mdp-schematic-mod" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<p>An agent is trapped in a long hallway with two doors at either end (<a class="reference internal" href="#fig-branched-mdp-schematic-mod"><span class="std std-numref">Fig. 36</span></a>). Behind the green door is a tiger (and certain death), while behind the red door is freedom. If the agent opens the green door, the agent is eaten (and receives a large negative reward). However, if the agent opens the red door, it escapes and gets a positive reward.</p>
+<p>An agent is trapped in a long hallway with two doors at either end (<a class="reference internal" href="#fig-branched-mdp-schematic-mod"><span class="std std-numref">Fig. 37</span></a>). Behind the green door is a tiger (and certain death), while behind the red door is freedom. If the agent opens the green door, the agent is eaten (and receives a large negative reward). However, if the agent opens the red door, it escapes and gets a positive reward.</p>
 <p>For this problem, the MDP has the tuple components:</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(\mathcal{S} = \left\{1,2,\dots,N\right\}\)</span> while the action set is <span class="math notranslate nohighlight">\(\mathcal{A} = \left\{a_{1},a_{2}, a_{3}, a_{4}\right\}\)</span>; action <span class="math notranslate nohighlight">\(a_{1}\)</span> moves the agent one state to the left, action <span class="math notranslate nohighlight">\(a_{2}\)</span> moves the agent one state to the right, action <span class="math notranslate nohighlight">\(a_{3}\)</span> moves the agent one stop up, and action <span class="math notranslate nohighlight">\(a_{4}\)</span> moves the agent one step down.</p></li>
@@ -647,7 +647,7 @@ By Varner and Woltornist
     
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2023.
       <br/>
     
   </p>

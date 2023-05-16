@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Financial Balances and Abstract Assets &#8212; CHEME 5660</title>
+    <title>Interest, Cash Flows and Future Value &#8212; CHEME 5660</title>
   
   
   
@@ -75,8 +75,8 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="canonical" href="https://varnerlab.github.io/CHEME-5660-Markets-Mayhem-Book/infrastructure.html/chapter-1-dir/assets.html" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Unit 2: Wealth Creation" href="../chapter-2-dir/chapter-2-landing.html" />
-    <link rel="prev" title="Personal Finance Basics" href="pfinance-basics.html" />
+    <link rel="next" title="Personal Finance Basics" href="pfinance-basics.html" />
+    <link rel="prev" title="Unit 1: Assets, Money and Markets" href="chapter-1-landing.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="None"/>
   </head>
@@ -169,8 +169,8 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="chapter-1-landing.html">Unit 1. Financial Basics</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Interest, Cash Flows and Future Value</a></li>
 <li class="toctree-l2"><a class="reference internal" href="pfinance-basics.html">Personal Finance Basics</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Financial Balances and Abstract Assets</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../chapter-2-dir/chapter-2-landing.html">Unit 2. Wealth Creation</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -390,7 +390,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Financial Balances and Abstract Assets</h1>
+    <h1>Interest, Cash Flows and Future Value</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -400,6 +400,7 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simple-and-compound-interest">Simple and Compound Interest</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#abstract-assets">Abstract Assets</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#time-value-of-money">Time value of money</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exchange-rate-model">Exchange rate model</a><ul class="nav section-nav flex-column">
@@ -416,6 +417,7 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-resources">Additional Resources</a></li>
 </ul>
             </nav>
         </div>
@@ -427,44 +429,74 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="financial-balances-and-abstract-assets">
-<h1>Financial Balances and Abstract Assets<a class="headerlink" href="#financial-balances-and-abstract-assets" title="Permalink to this headline">#</a></h1>
-<p>The development of processes or products does not occur inside a mythical universe that is free
-from market forces. Instead, processes and products must be, at a minimum, financially neutral to be viable. Processes and products that are not financially viable, while perhaps being technically
-innovative or otherwise advantageous, will not survive in the marketplace without external support e.g., local, state or federal government subsities.</p>
-<p>In this lecture we will:</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="interest-cash-flows-and-future-value">
+<h1>Interest, Cash Flows and Future Value<a class="headerlink" href="#interest-cash-flows-and-future-value" title="Permalink to this headline">#</a></h1>
+<!-- The development of processes or products does not occur inside a mythical universe that is free 
+from market forces. Instead, processes and products must be, at a minimum, financially neutral to be viable. Processes and products that are not financially viable, while perhaps being technically innovative or otherwise advantageous, will not survive in the marketplace without external support e.g., local, state or federal government subsities.  -->
+<div class="topic">
+<p class="topic-title">Outline</p>
+<p>In this lecture, we introduce three basic financial concepts: simple and compound interest, abstract assets, and the net present value.</p>
 <ul class="simple">
-<li><p>Introduce the definition of a <a class="reference internal" href="#content-references-abstract-asset-defn"><span class="std std-ref">Abstract Assets</span></a></p></li>
-<li><p>Introduce the <a class="reference internal" href="#content-references-npv-defn"><span class="std std-ref">Net Present Value (NPV)</span></a>, a tool to calculate the valuation of an asset</p></li>
-<li><p>Use <a class="reference internal" href="#content-references-npv-decision-tool"><span class="std std-ref">NPV as a Decision Tool</span></a> to evaluate the <em>relative</em> attractiveness of assets and projects</p></li>
+<li><p><a class="reference internal" href="#content-references-interest-models"><span class="std std-ref">Simple and Compound Interest</span></a>: Simple interest refers to the interest calculated solely on the initial principal amount, while compound interest takes into account both the principal and the accumulated interest.</p></li>
+<li><p><a class="reference internal" href="#content-references-abstract-asset-defn"><span class="std std-ref">Abstract Assets</span></a> generate value and cash flows for the holder. Cash flows, on the other hand, are the inflows and outflows of money from a business or investment, and are a key factor in determining the value of abstract assets. Finally, interest is the cost of borrowing money, and understanding how interest rates impact cash flows and the value of abstract assets is essential for financial decision making.</p></li>
+<li><p><a class="reference internal" href="#content-references-npv-defn"><span class="std std-ref">Net Present Value (NPV)</span></a> is a financial concept used to determine the current value of future cash flows. It takes into account the time value of money, recognizing that a dollar today is worth more than a dollar in the future due to the potential for investment and earning interest. NPV is a useful tool for evaluating investment opportunities and determining whether they are financially viable.</p></li>
 </ul>
+</div>
 <hr class="docutils" />
+<section id="simple-and-compound-interest">
+<span id="content-references-interest-models"></span><h2>Simple and Compound Interest<a class="headerlink" href="#simple-and-compound-interest" title="Permalink to this headline">#</a></h2>
+<p>The distinction between simple and compound interest is crucial in the world of finance and investing. These concepts significantly impact investment growth and borrowing costs, making them fundamental aspects to consider when making financial decisions.</p>
+<p>Simple interest is paid only on the initial principle. For example, if amount <span class="math notranslate nohighlight">\(A(0)\)</span> is invested in an account at <span class="math notranslate nohighlight">\(t=0\)</span> which pays a simple interest rate of <span class="math notranslate nohighlight">\(r\)</span> per period, then after <span class="math notranslate nohighlight">\(n\)</span> periods the amount <span class="math notranslate nohighlight">\(A(n)\)</span> is given by:</p>
+<div class="math notranslate nohighlight" id="equation-eqn-simple-interest">
+<span class="eqno">(1)<a class="headerlink" href="#equation-eqn-simple-interest" title="Permalink to this equation">#</a></span>\[A(n) = A(0)\cdot\left(1+rn\right)\]</div>
+<p>Compound interest considers both the principal and the interest accumulated over time. For example, if amount <span class="math notranslate nohighlight">\(A(0)\)</span> is invested in an account at <span class="math notranslate nohighlight">\(t=0\)</span> which pays a compound interest rate <span class="math notranslate nohighlight">\(r\)</span> per period, then after <span class="math notranslate nohighlight">\(n\)</span> periods the amount <span class="math notranslate nohighlight">\(A(n)\)</span> is given by:</p>
+<div class="math notranslate nohighlight" id="equation-eqn-compound-interest">
+<span class="eqno">(2)<a class="headerlink" href="#equation-eqn-compound-interest" title="Permalink to this equation">#</a></span>\[A(n) = A(0)\cdot\left(1+r\right)^n\]</div>
+<div class="proof example dropdown admonition" id="example-simple-vs-compound-interest">
+<p class="admonition-title"><span class="caption-number">Example 1 </span> (Simple versus compound interest)</p>
+<section class="example-content" id="proof-content">
+<p>Compute the balance of an investment account <span class="math notranslate nohighlight">\(A(n)\)</span> that pays <span class="math notranslate nohighlight">\(r = 0.05\)</span> per period after <span class="math notranslate nohighlight">\(n\)</span> periods using a simple and compound interest rate model for an initial investment of <span class="math notranslate nohighlight">\(A(0) = 100.0\)</span> USD.</p>
+<figure class="align-default" id="fig-simple-compound-interest">
+<a class="reference internal image-reference" href="../_images/Fig-Simple-Compound-Interest.pdf"><img alt="../_images/Fig-Simple-Compound-Interest.pdf" src="../_images/Fig-Simple-Compound-Interest.pdf" style="height: 360px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 1 </span><span class="caption-text">Simple versus compound interest for n-periods for an interest rate of <span class="math notranslate nohighlight">\(r = 0.05\)</span> per-period. Compound interest outperforms simple interest as the number of periods becomes large.</span><a class="headerlink" href="#fig-simple-compound-interest" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+</div><p>Interest rates are typically quoted on an annual basis, and can be compounded at different rates, e.g., annually, quarterly, etc. Putting these ideas together gives a useful definition of compound interest (<a class="reference internal" href="#defn-compound-interest">Definition 1</a>):</p>
+<div class="proof definition admonition" id="defn-compound-interest">
+<p class="admonition-title"><span class="caption-number">Definition 1 </span> (Continuous compounding)</p>
+<section class="definition-content" id="proof-content">
+<p>Let there be n-compounding periods per year and an annualized interest rate of r-percent.  Then an initial investment <span class="math notranslate nohighlight">\(A(0)\)</span> will be worth:</p>
+<div class="math notranslate nohighlight" id="equation-eqn-compound-interest-model-discrete">
+<span class="eqno">(3)<a class="headerlink" href="#equation-eqn-compound-interest-model-discrete" title="Permalink to this equation">#</a></span>\[A(m) = A(0)\cdot\left(1+r/n\right)^{mn}\]</div>
+<p>after <span class="math notranslate nohighlight">\(m\)</span>-years. As the number of compounding periods <span class="math notranslate nohighlight">\(n\rightarrow\infty\)</span>, the investment <span class="math notranslate nohighlight">\(A(m)\)</span> approaches the continuous compounding case:</p>
+<div class="math notranslate nohighlight" id="equation-eqn-compound-interest-model-cont">
+<span class="eqno">(4)<a class="headerlink" href="#equation-eqn-compound-interest-model-cont" title="Permalink to this equation">#</a></span>\[\lim_{n\rightarrow\infty}A(m) = A(0)\cdot\exp\left(rm\right)\]</div>
+</section>
+</div></section>
 <section id="abstract-assets">
 <span id="content-references-abstract-asset-defn"></span><h2>Abstract Assets<a class="headerlink" href="#abstract-assets" title="Permalink to this headline">#</a></h2>
 <figure class="align-default" id="cash-flow-abstract-asset-fig">
 <a class="reference internal image-reference" href="../_images/Fig-Asset-CashFlowDiagram.pdf"><img alt="../_images/Fig-Asset-CashFlowDiagram.pdf" src="../_images/Fig-Asset-CashFlowDiagram.pdf" style="height: 240px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 1 </span><span class="caption-text">Abstract asset diagram. During each time period <span class="math notranslate nohighlight">\(t=1,2,\dots,T\)</span> an asset has cash flow(s) <span class="math notranslate nohighlight">\(CF_{t}\)</span>. The value of the asset is some function <span class="math notranslate nohighlight">\(\mathcal{V}\)</span> of these cash flows; the
-function <span class="math notranslate nohighlight">\(\mathcal{V}\)</span> is the called the valuation operator.</span><a class="headerlink" href="#cash-flow-abstract-asset-fig" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 2 </span><span class="caption-text">Abstract asset diagram. During each time period <span class="math notranslate nohighlight">\(t=0,2,\dots,T\)</span> an asset has cash flow(s) <span class="math notranslate nohighlight">\(\dot{c}_{t}\)</span>. The value of the asset is some function <span class="math notranslate nohighlight">\(\mathcal{V}\)</span> of these cash flows; the function <span class="math notranslate nohighlight">\(\mathcal{V}\)</span> is the called the valuation operator.</span><a class="headerlink" href="#cash-flow-abstract-asset-fig" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<p>In abstract sense, an <em>asset</em> is simply a sequence of current and future cash flows
-demarcated in some currency, for example, Euros, Dollars, Yuan, or cryptocurrencies such as Bitcoin.
-Thus, the value of an asset can be determined using a valuation operator <span class="math notranslate nohighlight">\(\mathcal{V}\)</span> applied to these current and future cash flows:</p>
+<p>An <em>abstract asset</em> is simply a sequence of current and future cash flows
+demarcated in some currency, for example, Euros, Dollars, Yuan, or cryptocurrencies such as Bitcoin (<a class="reference internal" href="#cash-flow-abstract-asset-fig"><span class="std std-numref">Fig. 2</span></a>). Thus, the value of asset is determined using a valuation operator <span class="math notranslate nohighlight">\(\mathcal{V}\)</span> applied to these current and future cash flows:</p>
 <div class="math notranslate nohighlight" id="equation-eq-asset-cash-flows">
-<span class="eqno">(1)<a class="headerlink" href="#equation-eq-asset-cash-flows" title="Permalink to this equation">#</a></span>\[\mathcal{V}\left(Asset_{t}\right) = \mathcal{V}\left(CF_{t},CF_{t+1},\dots,CF_{t+T-1}\right)\]</div>
-<p>where <span class="math notranslate nohighlight">\(CF_{t}\)</span> denotes the cash flow in time period <span class="math notranslate nohighlight">\(t\)</span> up to <span class="math notranslate nohighlight">\(T\)</span> time periods in the future.
-The most common (and intuitive) valuation operator <span class="math notranslate nohighlight">\(\mathcal{V}\)</span> is the sum of net cash flows in each time period, i.e., we compute the net cash in each period (cash inflow - cash outflow in period <span class="math notranslate nohighlight">\(i\)</span>) and then sum these net cash flows over all <span class="math notranslate nohighlight">\(T-1\)</span> periods.
-However, there is a critical and fundamental challenge to this intuition.</p>
-<div class="proof remark admonition" id="remark-0">
+<span class="eqno">(5)<a class="headerlink" href="#equation-eq-asset-cash-flows" title="Permalink to this equation">#</a></span>\[\mathcal{V}\left(Asset_{t}\right) = \mathcal{V}\left(\dot{c}_{0},\dot{c}_{1},\dots,\dot{c}_{T}\right)\]</div>
+<p>where <span class="math notranslate nohighlight">\(\dot{c}_{t}\)</span> denotes the cash flow in time period <span class="math notranslate nohighlight">\(t\)</span> up to <span class="math notranslate nohighlight">\(T\)</span> time periods in the future.
+The most common (and intuitive) valuation operator <span class="math notranslate nohighlight">\(\mathcal{V}\)</span> is the sum of net cash flows in each time period, i.e., we compute the net cash in each period (cash inflow - cash outflow in period <span class="math notranslate nohighlight">\(i\)</span>) and then sum these net cash flows over all <span class="math notranslate nohighlight">\(T\)</span> periods. However, there is a critical and fundamental challenge to this intuition (<a class="reference internal" href="#remark-tvof-money">Remark 1</a>):</p>
+<section id="time-value-of-money">
+<h3>Time value of money<a class="headerlink" href="#time-value-of-money" title="Permalink to this headline">#</a></h3>
+<div class="proof remark admonition" id="remark-tvof-money">
 <p class="admonition-title"><span class="caption-number">Remark 1 </span> (Time value of Money)</p>
 <section class="remark-content" id="proof-content">
 <p>The value of money is <em>not</em> conserved over time. One dollar today is not worth the same as one dollar tomorrow. The change in the value of money over time is called the <em>time value of money</em>.</p>
 </section>
-</div><section id="time-value-of-money">
-<h3>Time value of money<a class="headerlink" href="#time-value-of-money" title="Permalink to this headline">#</a></h3>
-<p>The value of money is not conserved; one dollar T years from now is worth <em>less than</em> one dollar today. The change in the value of money over time is called the <em>time value of money</em>. The time value of money is an <a class="reference external" href="https://en.wikipedia.org/wiki/Time_value_of_money#History">empirical observation that has been seen over hundreds of years</a>. But why is this the case?</p>
-<p>The short answer: money given to us today has a greater utility than the same amount tomorrow; because we have an extra day to invest that money.</p>
+</div><p>The time value of money is an <a class="reference external" href="https://en.wikipedia.org/wiki/Time_value_of_money#History">empirical observation that has been seen over hundreds of years</a>. But why is this the case? The short answer: money given to us today has a greater utility than the same amount tomorrow; because we have an extra day to invest that money.</p>
 <div class="proof observation admonition" id="obs-time-value-of-money">
 <p class="admonition-title"><span class="caption-number">Observation 1 </span> (Why does that value of money chnage over time?)</p>
 <section class="observation-content" id="proof-content">
@@ -489,19 +521,19 @@ as being in different currencies (e.g., <span class="math notranslate nohighligh
 <p>For example, suppose we wanted to convert the value of a cash flow from one time period in the future
 into today’s dollars (or vice-versa, we want to compute the value of a future cash flow to a current value). To do this, we use a one-period discrete conversion:</p>
 <div class="proof definition admonition" id="defn-one-perod-discrete-conversion">
-<p class="admonition-title"><span class="caption-number">Definition 1 </span> (One Period Discrete Conversion)</p>
+<p class="admonition-title"><span class="caption-number">Definition 2 </span> (One Period Discrete Conversion)</p>
 <section class="definition-content" id="proof-content">
 <p>For any one-period (<span class="math notranslate nohighlight">\(t\rightarrow{t+1}\)</span>),  the present value of cash flow, denoted as <span class="math notranslate nohighlight">\(CF_{t}\)</span>, and the future value of cash-flow, denoted by <span class="math notranslate nohighlight">\(CF_{t+1}\)</span>, there exists a one time-step discrete conversion:</p>
 <div class="math notranslate nohighlight" id="equation-eq-cash-flow-1-period">
-<span class="eqno">(2)<a class="headerlink" href="#equation-eq-cash-flow-1-period" title="Permalink to this equation">#</a></span>\[CF_{t+1} = \left(1+r_{t+1,t}\right)\cdot{CF_{t}}\]</div>
+<span class="eqno">(6)<a class="headerlink" href="#equation-eq-cash-flow-1-period" title="Permalink to this equation">#</a></span>\[CF_{t+1} = \left(1+r_{t+1,t}\right)\cdot{CF_{t}}\]</div>
 <p>where <span class="math notranslate nohighlight">\(r_{t+1,t}&gt;{0}\)</span> is called the rate of return between periods <span class="math notranslate nohighlight">\(t\)</span> and <span class="math notranslate nohighlight">\(t+1\)</span>. The term <span class="math notranslate nohighlight">\((1+r_{t+1,t})\)</span>, which denotes the hypothetical exchange rate between time period <span class="math notranslate nohighlight">\(t\)</span> and <span class="math notranslate nohighlight">\(t+1\)</span>, is called the <em>discrete discount factor</em>. Because <span class="math notranslate nohighlight">\(r_{t+1,t}&gt;{0}\)</span>, the <em>discrete discount factor</em> is always greater than one, thus <span class="math notranslate nohighlight">\(CF_{t+1}&gt;{CF_{t}}\)</span> for any <span class="math notranslate nohighlight">\(t\)</span>.</p>
 </section>
 </div><p>Let’s do a few examples to illustrate one-period conversions.</p>
-<div class="proof example admonition" id="example-3">
-<p class="admonition-title"><span class="caption-number">Example 1 </span> (One Period Conversion)</p>
+<div class="proof example admonition" id="example-5">
+<p class="admonition-title"><span class="caption-number">Example 2 </span> (One Period Conversion)</p>
 <section class="example-content" id="proof-content">
 <p>Prof. Varner offers to buy you a coffee tommorrow (one time period in the future) for <span class="math notranslate nohighlight">\(CF_{2} = \$ 3.35\)</span>. How much is the future coffee worth today if <span class="math notranslate nohighlight">\(r_{21}=0.10\)</span>?</p>
-<p>Let’s put some numbers into Eqn. <a class="reference internal" href="#equation-eq-cash-flow-1-period">(2)</a> to answer this.  Rearraninging Eqn. <a class="reference internal" href="#equation-eq-cash-flow-1-period">(2)</a> for <span class="math notranslate nohighlight">\(CF_{1}\)</span> gives:</p>
+<p>Let’s put some numbers into Eqn. <a class="reference internal" href="#equation-eq-cash-flow-1-period">(6)</a> to answer this.  Rearraninging Eqn. <a class="reference internal" href="#equation-eq-cash-flow-1-period">(6)</a> for <span class="math notranslate nohighlight">\(CF_{1}\)</span> gives:</p>
 <div class="math notranslate nohighlight">
 \[CF_{1} = \frac{CF_{2}}{1+r_{21}}\]</div>
 <p>Subsutituing <span class="math notranslate nohighlight">\(r_{21} = 0.10\)</span> and <span class="math notranslate nohighlight">\(CF_{2}=\$ 3.35\)</span> says the current value of your future coffee is: <span class="math notranslate nohighlight">\(CF_{1} = \$ 3.05\)</span>.</p>
@@ -521,24 +553,24 @@ into today’s dollars (or vice-versa, we want to compute the value of a future 
 \[CF_{3} = \Bigl[\left(1+r_{32}\right)\left(1+r_{21}\right)\Bigr]\cdot{CF_{1}}\]</div>
 <p>If we do this computation between 3 and 4, and then 4 to 5, etc, we develop a relationship between the current value of cash flow (<span class="math notranslate nohighlight">\(t=1\)</span>) and the future (<span class="math notranslate nohighlight">\(t&gt;1\)</span>) value of cash flows:</p>
 <div class="proof definition admonition" id="defn-multi-perod-discrete-conversion">
-<p class="admonition-title"><span class="caption-number">Definition 2 </span> (Multiple Period Discrete Conversion)</p>
+<p class="admonition-title"><span class="caption-number">Definition 3 </span> (Multiple Period Discrete Conversion)</p>
 <section class="definition-content" id="proof-content">
 <p>Let <span class="math notranslate nohighlight">\(CF_{1}\)</span> denote the cash-flow in period 1 (current value), and <span class="math notranslate nohighlight">\(CF_{t}\)</span> the cash-flow in period <span class="math notranslate nohighlight">\(t&gt;1\)</span> (future value). Further, let <span class="math notranslate nohighlight">\(r_{j+1,j}\)</span> denote the rate of return between discrete time period <span class="math notranslate nohighlight">\(j\)</span> and <span class="math notranslate nohighlight">\(j+1\)</span>. Then:</p>
 <div class="math notranslate nohighlight" id="equation-eq-cash-flow-multiple-period">
-<span class="eqno">(3)<a class="headerlink" href="#equation-eq-cash-flow-multiple-period" title="Permalink to this equation">#</a></span>\[CF_{t} = \left[\prod_{j=1}^{t-1}\left(1+r_{j+1,j}\right)\right]\cdot{CF_{1}}\qquad{t=2,3,\dots,T}\]</div>
+<span class="eqno">(7)<a class="headerlink" href="#equation-eq-cash-flow-multiple-period" title="Permalink to this equation">#</a></span>\[CF_{t} = \left[\prod_{j=1}^{t-1}\left(1+r_{j+1,j}\right)\right]\cdot{CF_{1}}\qquad{t=2,3,\dots,T}\]</div>
 </section>
-</div><p>The product term (the <span class="math notranslate nohighlight">\(\prod\star\)</span> in the brackets) in Eqn. <a class="reference internal" href="#equation-eq-cash-flow-multiple-period">(3)</a> is called the <em>multi-period discount factor</em> and given the symbol <span class="math notranslate nohighlight">\(\mathcal{D}\)</span>. Thus, Eqn. <a class="reference internal" href="#equation-eq-cash-flow-multiple-period">(3)</a> can be written in a more compact form as:</p>
+</div><p>The product term (the <span class="math notranslate nohighlight">\(\prod\star\)</span> in the brackets) in Eqn. <a class="reference internal" href="#equation-eq-cash-flow-multiple-period">(7)</a> is called the <em>multi-period discount factor</em> and given the symbol <span class="math notranslate nohighlight">\(\mathcal{D}\)</span>. Thus, Eqn. <a class="reference internal" href="#equation-eq-cash-flow-multiple-period">(7)</a> can be written in a more compact form as:</p>
 <div class="math notranslate nohighlight">
 \[	CF_{t} = \mathcal{D}_{t,1}\cdot{CF_{1}}\qquad{t=2,3,\dots,T}\]</div>
 <p>In the particular case where the rates of return <span class="math notranslate nohighlight">\(r_{\star}\)</span> are equal in each period (let’s call this value <span class="math notranslate nohighlight">\(\bar{r}\)</span>), the <em>multi-period discount factor</em> is given by:</p>
 <div class="math notranslate nohighlight" id="equation-eqn-discrete-discount-factor-constant-r">
-<span class="eqno">(4)<a class="headerlink" href="#equation-eqn-discrete-discount-factor-constant-r" title="Permalink to this equation">#</a></span>\[\mathcal{D}_{t,1} = (1+\bar{r})^{t-1}\qquad{t=2,3,\dots,T}\]</div>
-<p>Let’s do some multi-period discounting examples to better understand <a class="reference internal" href="#defn-multi-perod-discrete-conversion">Definition 2</a>.</p>
+<span class="eqno">(8)<a class="headerlink" href="#equation-eqn-discrete-discount-factor-constant-r" title="Permalink to this equation">#</a></span>\[\mathcal{D}_{t,1} = (1+\bar{r})^{t-1}\qquad{t=2,3,\dots,T}\]</div>
+<p>Let’s do some multi-period discounting examples to better understand <a class="reference internal" href="#defn-multi-perod-discrete-conversion">Definition 3</a>.</p>
 <div class="proof example admonition" id="ex-future-value-discrete">
-<p class="admonition-title"><span class="caption-number">Example 2 </span> (What is $1 collected T time periods in the future worth today? )</p>
+<p class="admonition-title"><span class="caption-number">Example 3 </span> (What is $1 collected T time periods in the future worth today? )</p>
 <section class="example-content" id="proof-content">
 <p>Compute the present value of $1 collected <span class="math notranslate nohighlight">\(T\)</span> time units into the future for a constant discount rate of 2%, 4%, and 6%.</p>
-<p>The value of money today is the present value, whereas the value of money in the <span class="math notranslate nohighlight">\(T\)</span> time units from now is the future  value. In terms of the asset model, <span class="math notranslate nohighlight">\(CF_{1}\)</span> denotes the present value (i = 1 denotes now), while <span class="math notranslate nohighlight">\(CF_{i},i=2,3,\dots,T\)</span> denotes future value. Thus, to compute the present value of $1 collected <span class="math notranslate nohighlight">\(T\)</span> time units into the future, we solve Eqn. <a class="reference internal" href="#equation-eq-cash-flow-multiple-period">(3)</a>
+<p>The value of money today is the present value, whereas the value of money in the <span class="math notranslate nohighlight">\(T\)</span> time units from now is the future  value. In terms of the asset model, <span class="math notranslate nohighlight">\(CF_{1}\)</span> denotes the present value (i = 1 denotes now), while <span class="math notranslate nohighlight">\(CF_{i},i=2,3,\dots,T\)</span> denotes future value. Thus, to compute the present value of $1 collected <span class="math notranslate nohighlight">\(T\)</span> time units into the future, we solve Eqn. <a class="reference internal" href="#equation-eq-cash-flow-multiple-period">(7)</a>
 for <span class="math notranslate nohighlight">\(CF_{1}\)</span> in terms of the future value <span class="math notranslate nohighlight">\(CF_{i},i=2,\dots,T\)</span> and the discount factor
 <span class="math notranslate nohighlight">\(\mathcal{D}\)</span>:</p>
 <div class="math notranslate nohighlight">
@@ -552,7 +584,7 @@ for <span class="math notranslate nohighlight">\(CF_{1}\)</span> in terms of the
 <figure class="align-default" id="fig-presentvalue-futurepayment">
 <a class="reference internal image-reference" href="../_images/Fig-PresentValue-FuturePayment.pdf"><img alt="../_images/Fig-PresentValue-FuturePayment.pdf" src="../_images/Fig-PresentValue-FuturePayment.pdf" style="height: 380px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 2 </span><span class="caption-text">Present value (PV) of $1 USD collected T periods in the future.</span><a class="headerlink" href="#fig-presentvalue-futurepayment" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 3 </span><span class="caption-text">Present value (PV) of $1 USD collected T periods in the future.</span><a class="headerlink" href="#fig-presentvalue-futurepayment" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p><strong>source</strong>: <a class="reference external" href="https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks">live Pluto notebook</a> or <a class="reference external" href="https://htmlview.glitch.me/?https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks/blob/main/pluto-notebooks/html/Example-PresentValue.jl.html">static HTML</a></p>
@@ -560,12 +592,12 @@ for <span class="math notranslate nohighlight">\(CF_{1}\)</span> in terms of the
 </div></section>
 <section id="continuous-discounting">
 <h4>Continuous discounting<a class="headerlink" href="#continuous-discounting" title="Permalink to this headline">#</a></h4>
-<p>When formulating Eqn. <a class="reference internal" href="#equation-eq-cash-flow-1-period">(2)</a> we used a finite discrete-time difference, e.g., days, weeks, or maybe even years to compute the discount factor. However, suppose the time difference between <span class="math notranslate nohighlight">\(t\rightarrow{t+1}\)</span> were infinitesimally small, i.e., the time difference was continuous. In this case, we have <a class="reference external" href="https://www.investopedia.com/terms/c/continuouscompounding.asp">continuous compounding</a> where the discount factor <span class="math notranslate nohighlight">\(\mathcal{D}\)</span> is defined as:</p>
+<p>When formulating Eqn. <a class="reference internal" href="#equation-eq-cash-flow-1-period">(6)</a> we used a finite discrete-time difference, e.g., days, weeks, or maybe even years to compute the discount factor. However, suppose the time difference between <span class="math notranslate nohighlight">\(t\rightarrow{t+1}\)</span> were infinitesimally small, i.e., the time difference was continuous. In this case, we have <a class="reference external" href="https://www.investopedia.com/terms/c/continuouscompounding.asp">continuous compounding</a> where the discount factor <span class="math notranslate nohighlight">\(\mathcal{D}\)</span> is defined as:</p>
 <div class="math notranslate nohighlight">
 \[\mathcal{D}(r,t) = \exp\left(rt\right)\]</div>
 <p>A continuous discount factor gives a future value expression of the form:</p>
 <div class="math notranslate nohighlight" id="equation-eq-cont-exchange-tvm">
-<span class="eqno">(5)<a class="headerlink" href="#equation-eq-cont-exchange-tvm" title="Permalink to this equation">#</a></span>\[CF(t) = \exp\left(rt\right)CF(t_{o})\]</div>
+<span class="eqno">(9)<a class="headerlink" href="#equation-eq-cont-exchange-tvm" title="Permalink to this equation">#</a></span>\[CF(t) = \exp\left(rt\right)CF(t_{o})\]</div>
 <p>where <span class="math notranslate nohighlight">\(r\)</span> denotes the <em>instantaneous</em> discount rate, <span class="math notranslate nohighlight">\(t\)</span> denotes the current time, <span class="math notranslate nohighlight">\(t_{o}\)</span> denotes the initial time.</p>
 <div class="proof observation admonition" id="continuous-compounding">
 <p class="admonition-title"><span class="caption-number">Observation 2 </span> (Discrete and continuous discount factor)</p>
@@ -577,14 +609,14 @@ for <span class="math notranslate nohighlight">\(CF_{1}\)</span> in terms of the
 </section>
 </div><p>Let’s do a continuous discount factor example.</p>
 <div class="proof example admonition" id="ex-future-value-continuous">
-<p class="admonition-title"><span class="caption-number">Example 3 </span> (What is $1 collected today worth T years from now? )</p>
+<p class="admonition-title"><span class="caption-number">Example 4 </span> (What is $1 collected today worth T years from now? )</p>
 <section class="example-content" id="proof-content">
 <p>Let’s consider the opposite case from the previous example. Suppose we are given $1 dollar today. What is the future value of $1 in T years from now? Assume a 2.0%, 4.0% and 6.0% instantaneous annualized discount factor.</p>
 <p>In this example, <span class="math notranslate nohighlight">\(CF(t_{o}) = 1\)</span>, the value of <span class="math notranslate nohighlight">\(r\)</span> = 2%, 4% and 6% and the time <span class="math notranslate nohighlight">\(t\)</span> will be in years. Plugging these into <a class="reference external" href="https://julialang.org">Julia</a> and plotting using the <a class="reference external" href="https://github.com/JuliaPlots/Plots.jl">Plots.jl</a> package gives:</p>
 <figure class="align-default" id="fig-futurevalue-1-dollar">
 <a class="reference internal image-reference" href="../_images/Fig-FutureValue-1-dollar.pdf"><img alt="../_images/Fig-FutureValue-1-dollar.pdf" src="../_images/Fig-FutureValue-1-dollar.pdf" style="height: 380px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 3 </span><span class="caption-text">Future value (FV) of $1 USD (today) T-years in the future using a continuous discont factor.</span><a class="headerlink" href="#fig-futurevalue-1-dollar" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 4 </span><span class="caption-text">Future value (FV) of $1 USD (today) T-years in the future using a continuous discont factor.</span><a class="headerlink" href="#fig-futurevalue-1-dollar" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p><strong>source</strong>: <a class="reference external" href="https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks">live Pluto notebook</a> or <a class="reference external" href="https://htmlview.glitch.me/?https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks/blob/main/pluto-notebooks/html/Example-CDF.jl.html">static HTML</a></p>
@@ -597,7 +629,7 @@ for <span class="math notranslate nohighlight">\(CF_{1}\)</span> in terms of the
 <figure class="align-default" id="cash-financial-node-flow-fig">
 <a class="reference internal image-reference" href="../_images/Fig-FinanicalNode-Schematic.pdf"><img alt="../_images/Fig-FinanicalNode-Schematic.pdf" src="../_images/Fig-FinanicalNode-Schematic.pdf" style="height: 220px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 4 </span><span class="caption-text">Node cash-flow balance diagram. During time <span class="math notranslate nohighlight">\(t=k\)</span> monety flows enter (revenues) and exit (expenses) the time-node.</span><a class="headerlink" href="#cash-financial-node-flow-fig" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 5 </span><span class="caption-text">Node cash-flow balance diagram. During time <span class="math notranslate nohighlight">\(t=k\)</span> monety flows enter (revenues) and exit (expenses) the time-node.</span><a class="headerlink" href="#cash-financial-node-flow-fig" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Now that we have tools to account for the time value of money, we can return to the question of how to value an asset. The most intuitive aproach is to compute the net cash flow at every node. Imagine at node <span class="math notranslate nohighlight">\(t=k\)</span> we have <span class="math notranslate nohighlight">\(\mathcal{S}^{t=k}\)</span> cash streams, denoted as <span class="math notranslate nohighlight">\(\dot{C}_{s}\)</span>, entering (or exiting) the asset node. Then, the net cash would at node <span class="math notranslate nohighlight">\(t=k\)</span> is given by:</p>
@@ -605,7 +637,7 @@ for <span class="math notranslate nohighlight">\(CF_{1}\)</span> in terms of the
 \[CF_{k} = \sum_{s\in\mathcal{S}^{t=k}}\nu_{s}\dot{C}_{s}\]</div>
 <p>where <span class="math notranslate nohighlight">\(\nu_{s}\)</span> denotes a direction parameter; <span class="math notranslate nohighlight">\(\nu_{s}=+1\)</span> if stream <span class="math notranslate nohighlight">\(s\)</span> enters node <span class="math notranslate nohighlight">\(t=k\)</span>, <span class="math notranslate nohighlight">\(\nu_{s}=-1\)</span> if stream <span class="math notranslate nohighlight">\(s\)</span> exists node <span class="math notranslate nohighlight">\(t=k\)</span>. Finally, to value an asset, we could imagine adding up all the current and future cash flows, converted to some shared basis, e.g., current dollars. This sum is called the <a class="reference external" href="https://en.wikipedia.org/wiki/Net_present_value">Net Present Value (NPV)</a>; NPV is a widespread method for asset valuation. As well shall see, NPV is also a widely used tool for financial decision-making.</p>
 <div class="proof definition admonition" id="net-present-value-defn">
-<p class="admonition-title"><span class="caption-number">Definition 3 </span> (Discrete Net Present Value)</p>
+<p class="admonition-title"><span class="caption-number">Definition 4 </span> (Discrete Net Present Value)</p>
 <section class="definition-content" id="proof-content">
 <p>The discrete Net Present Value (NPV) is the sum of the discrete current and future cash flows, corrected to current dollars:</p>
 <div class="math notranslate nohighlight">
@@ -629,14 +661,14 @@ for <span class="math notranslate nohighlight">\(CF_{1}\)</span> in terms of the
 </ul>
 <p>Let’s do a net present value example:</p>
 <div class="proof example admonition" id="example-net-present-value-discrete">
-<p class="admonition-title"><span class="caption-number">Example 4 </span> (Install an upgraded lighting system?)</p>
+<p class="admonition-title"><span class="caption-number">Example 5 </span> (Install an upgraded lighting system?)</p>
 <section class="example-content" id="proof-content">
 <p>Should we install a new computer-controlled lighting system (or not)? Johnson Controls offers to install a new computer-controlled lighting system that will reduce electric bills by 90,000 USD each of the next three years. Is this a good investment if the system costs 230,000 USD fully installed?</p>
 <p>The discount rate is constant over the lifetime of the project, but unkown; thus, <span class="math notranslate nohighlight">\(\bar{r}\)</span> is a parameter in the problem.</p>
 <figure class="align-default" id="example-jcontrols-npv-fig">
 <a class="reference internal image-reference" href="../_images/Fig-JControls-NPV.pdf"><img alt="../_images/Fig-JControls-NPV.pdf" src="../_images/Fig-JControls-NPV.pdf" style="height: 380px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 5 </span><span class="caption-text">Net Present Value (NPV) as a function of the discount rate <span class="math notranslate nohighlight">\(\bar{r}\)</span> for the proposed Johnson Controls lighting upgrade. The alternative investment is a perfectly priced zero-coupon bond with the same <span class="math notranslate nohighlight">\(\bar{r}\)</span> and time-to-maturity as the lighting project.</span><a class="headerlink" href="#example-jcontrols-npv-fig" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 6 </span><span class="caption-text">Net Present Value (NPV) as a function of the discount rate <span class="math notranslate nohighlight">\(\bar{r}\)</span> for the proposed Johnson Controls lighting upgrade. The alternative investment is a perfectly priced zero-coupon bond with the same <span class="math notranslate nohighlight">\(\bar{r}\)</span> and time-to-maturity as the lighting project.</span><a class="headerlink" href="#example-jcontrols-npv-fig" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>The installation of the computer-controlled lighting system from Johnson Controls had a positive net present value (NPV) for discount rates less than 8.5%. However, the alternative investment would be the preferred choice beyond this discount rate.</p>
@@ -653,7 +685,7 @@ for <span class="math notranslate nohighlight">\(CF_{1}\)</span> in terms of the
 </ul>
 <p>The special discount rate where the net present value is zero is called the Internal Rate of Return (IRR):</p>
 <div class="proof definition admonition" id="defn-internal-rate-of-return">
-<p class="admonition-title"><span class="caption-number">Definition 4 </span> (Internal Rate of Return)</p>
+<p class="admonition-title"><span class="caption-number">Definition 5 </span> (Internal Rate of Return)</p>
 <section class="definition-content" id="proof-content">
 <p>Assume the discount rate is constant between time periods, denote this rate as <span class="math notranslate nohighlight">\(\bar{r}\)</span>. Then, the internal rate of rerturn (IRR) is the discount rate that satifies the following condition:</p>
 <div class="math notranslate nohighlight">
@@ -671,6 +703,12 @@ for <span class="math notranslate nohighlight">\(CF_{1}\)</span> in terms of the
 <li><p>We introduced the definition of a <a class="reference internal" href="#content-references-abstract-asset-defn"><span class="std std-ref">Abstract Assets</span></a>. An asset is a sequence of current and future cash flows demarcated in some currency. Assets can be tangible things like cars or houses, but they can also be projects or ideas.</p></li>
 <li><p>We introduced the <a class="reference internal" href="#content-references-npv-defn"><span class="std std-ref">Net Present Value (NPV)</span></a>, a tool to calculate the valuation of an asset. The net present value is the sum of net cash flows discounted to the current period.</p></li>
 <li><p>Used <a class="reference internal" href="#content-references-npv-decision-tool"><span class="std std-ref">NPV as a Decision Tool</span></a> to evaluate the <em>relative</em> attractiveness of assets and projects. Assets with a positive net present value have a larger return than hypothetical alternative investments. On the other hand, investments with a negative net present value will have a smaller return than a  hypothetical alternative investment.</p></li>
+</ul>
+</section>
+<section id="additional-resources">
+<h2>Additional Resources<a class="headerlink" href="#additional-resources" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://martin-haugh.github.io/teaching/foundations-fe/">IEOR E4706: Foundations of Financial Engineering, Columbia University</a></p></li>
 </ul>
 </section>
 </section>
@@ -707,20 +745,20 @@ for <span class="math notranslate nohighlight">\(CF_{1}\)</span> in terms of the
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="pfinance-basics.html"
+       href="chapter-1-landing.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Personal Finance Basics</p>
+        <p class="prev-next-title">Unit 1: Assets, Money and Markets</p>
       </div>
     </a>
     <a class="right-next"
-       href="../chapter-2-dir/chapter-2-landing.html"
+       href="pfinance-basics.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Unit 2: Wealth Creation</p>
+        <p class="prev-next-title">Personal Finance Basics</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -742,6 +780,7 @@ for <span class="math notranslate nohighlight">\(CF_{1}\)</span> in terms of the
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simple-and-compound-interest">Simple and Compound Interest</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#abstract-assets">Abstract Assets</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#time-value-of-money">Time value of money</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exchange-rate-model">Exchange rate model</a><ul class="nav section-nav flex-column">
@@ -758,6 +797,7 @@ for <span class="math notranslate nohighlight">\(CF_{1}\)</span> in terms of the
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-resources">Additional Resources</a></li>
 </ul>
   </nav></div>
 
@@ -781,7 +821,7 @@ By Varner and Woltornist
     
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2023.
       <br/>
     
   </p>
