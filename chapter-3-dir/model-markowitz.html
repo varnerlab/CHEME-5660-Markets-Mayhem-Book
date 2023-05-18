@@ -462,7 +462,7 @@ document.write(`
 </div><p>To understand the various interpretations of <span class="math notranslate nohighlight">\(\beta_{i}\)</span>, we first must understand that both the firm specific <span class="math notranslate nohighlight">\(R_{i}\)</span> and overall market excess returns <span class="math notranslate nohighlight">\(R_{m}\)</span> are random variables. Thus, we can compute the expectation and variance of these variables and look at how these quantities depend upon <span class="math notranslate nohighlight">\(\beta_{i}\)</span>.</p>
 <p>Let’s start by thinking about the reward interpretation of <span class="math notranslate nohighlight">\(\beta_{i}\)</span>:</p>
 <div class="proof observation admonition" id="obs-beta-return-measure">
-<p class="admonition-title"><span class="caption-number">Observation 5 </span> (Reward interpretation of <span class="math notranslate nohighlight">\(\beta_{i}\)</span>)</p>
+<p class="admonition-title"><span class="caption-number">Observation 4 </span> (Reward interpretation of <span class="math notranslate nohighlight">\(\beta_{i}\)</span>)</p>
 <section class="observation-content" id="proof-content">
 <p>Taking the expectation of the firm excess return <span class="math notranslate nohighlight">\(R_{i}\)</span> gives:</p>
 <div class="math notranslate nohighlight" id="equation-eq-expected-r-sim">
@@ -480,7 +480,7 @@ Solving Eqn. <a class="reference internal" href="#equation-eq-expected-r-sim">(3
 </section>
 </div><p>However, <span class="math notranslate nohighlight">\(\beta_{i}\)</span> has another interpretation, namely, the ratio of risks:</p>
 <div class="proof observation admonition" id="obs-beta-risk-measure">
-<p class="admonition-title"><span class="caption-number">Observation 6 </span> (Risk interpretation of <span class="math notranslate nohighlight">\(\beta_{i}\)</span>)</p>
+<p class="admonition-title"><span class="caption-number">Observation 5 </span> (Risk interpretation of <span class="math notranslate nohighlight">\(\beta_{i}\)</span>)</p>
 <section class="observation-content" id="proof-content">
 <p>The <span class="math notranslate nohighlight">\(\beta_{i}\)</span> for asset <span class="math notranslate nohighlight">\(i\)</span> can also be considered a measure of the risk of asset <span class="math notranslate nohighlight">\(i\)</span> relative to the market. For example, we can show that:</p>
 <div class="math notranslate nohighlight" id="equation-eqn-beta-risk-ratio">
@@ -565,7 +565,7 @@ The daily log-return for <a class="reference external" href="https://finance.yah
 <h3>Portfolio Return using Single Index Models<a class="headerlink" href="#portfolio-return-using-single-index-models" title="Permalink to this headline">#</a></h3>
 <p>Portfolio return shows the expected return of portfolio <span class="math notranslate nohighlight">\(\mathcal{P}\)</span> in terms of the expected return of each of the assets in the portfolio. Thus, we must estimate the expected returns for each asset when solving the Markowitz allocation problem from data. However, a single index model can limit this work; instead of estimating the expected return for each asset from data, we only need to calculate the expected excess market return <span class="math notranslate nohighlight">\(\mathbb{E}(R_{m})\)</span> and then use the single index model to predict the firm-specific expected excess returns <span class="math notranslate nohighlight">\(\mathbb{E}(R_{i})\)</span>:</p>
 <div class="proof observation admonition" id="obs-single-index-model-p-return">
-<p class="admonition-title"><span class="caption-number">Observation 7 </span> (Single Index Model Portfolio Return)</p>
+<p class="admonition-title"><span class="caption-number">Observation 6 </span> (Single Index Model Portfolio Return)</p>
 <section class="observation-content" id="proof-content">
 <p>The single index model of Sharpe <span id="id4">[<a class="reference internal" href="../References.html#id17" title="William F. Sharpe. A simplified model for portfolio analysis. Management Science, 9(2):277-293, 1963. URL: https://doi.org/10.1287/mnsc.9.2.277, arXiv:https://doi.org/10.1287/mnsc.9.2.277, doi:10.1287/mnsc.9.2.277.">Sharpe, 1963</a>]</span> describes the excess return of asset <span class="math notranslate nohighlight">\(i\)</span> in terms of a firm specific contribution, and a contribution from the overall market. Substituting the expected excess return for asset <span class="math notranslate nohighlight">\(i\)</span> into Eqn. <a class="reference internal" href="data-markowitz.html#equation-eqn-expected-p-rerturn">(28)</a> gives:</p>
 <div class="math notranslate nohighlight" id="equation-eqn-almost-sim-portfolio">
@@ -588,7 +588,7 @@ The daily log-return for <a class="reference external" href="https://finance.yah
 <h3>Portfolio Variance using Single Index Models<a class="headerlink" href="#portfolio-variance-using-single-index-models" title="Permalink to this headline">#</a></h3>
 <p>The single index portfolio approach provides a theoretically attractive model for the covariance matrix <span class="math notranslate nohighlight">\(\Sigma\)</span>. In particular, let’s build upon <a class="reference internal" href="data-markowitz.html#defn-portfolio-variance">Definition 23</a>:</p>
 <div class="proof observation admonition" id="obs-single-index-model-covariance">
-<p class="admonition-title"><span class="caption-number">Observation 8 </span> (Single Index Model Portfolio Variance)</p>
+<p class="admonition-title"><span class="caption-number">Observation 7 </span> (Single Index Model Portfolio Variance)</p>
 <section class="observation-content" id="proof-content">
 <p>To calculate the portfolio covariance matrix <span class="math notranslate nohighlight">\(\Sigma\)</span>, we must calculate <span class="math notranslate nohighlight">\(\text{cov}(R_{i}, R_{j})\)</span>, the covariance between the excess return of asset <span class="math notranslate nohighlight">\(i\)</span> and <span class="math notranslate nohighlight">\(j\)</span> in portfolio <span class="math notranslate nohighlight">\(\mathcal{P}\)</span>. Toward this, we take advantage of a property of the covariance between random variables <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span>:</p>
 <div class="math notranslate nohighlight" id="equation-eqn-prop-cov">

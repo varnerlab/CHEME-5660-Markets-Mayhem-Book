@@ -75,6 +75,9 @@ after $m$-years. As the number of compounding periods $n\rightarrow\infty$, the 
 (content:references:abstract-asset-defn)=
 ## Abstract Assets
 
+An _abstract asset_ is a sequence of current and future cash flows 
+demarcated in some currency, for example, Euros, Dollars, Yuan, or cryptocurrencies such as Bitcoin ({numref}`cash-flow-abstract-asset-fig`).
+
 ```{figure} ./figs/Fig-Asset-CashFlowDiagram.pdf
 ---
 height: 240px
@@ -83,153 +86,154 @@ name: cash-flow-abstract-asset-fig
 Abstract asset diagram. During each time period $t=0,2,\dots,T$ an asset has cash flow(s) $\dot{c}_{t}$. The value of the asset is some function $\mathcal{V}$ of these cash flows; the function $\mathcal{V}$ is the called the valuation operator.  
 ```
 
-An _abstract asset_ is simply a sequence of current and future cash flows 
-demarcated in some currency, for example, Euros, Dollars, Yuan, or cryptocurrencies such as Bitcoin ({numref}`cash-flow-abstract-asset-fig`). Thus, the value of asset is determined using a valuation operator $\mathcal{V}$ applied to these current and future cash flows:
+The value of an abstract asset is determined using a valuation operator $\mathcal{V}$ applied to the current and future cash flows:
 
 
 ```{math}
 :label: eq-asset-cash-flows
 \mathcal{V}\left(Asset_{t}\right) = \mathcal{V}\left(\dot{c}_{0},\dot{c}_{1},\dots,\dot{c}_{T}\right)
 ```
-where $\dot{c}_{t}$ denotes the cash flow in time period $t$ up to $T$ time periods in the future.
-The most common (and intuitive) valuation operator $\mathcal{V}$ is the sum of net cash flows in each time period, i.e., we compute the net cash in each period (cash inflow - cash outflow in period $i$) and then sum these net cash flows over all $T$ periods. However, there is a critical and fundamental challenge to this intuition ({prf:ref}`remark-tvof-money`): 
+where $\dot{c}_{t}$ denotes the cash flow in time period $t = 0,\dots,T$.
+The most common (and intuitive) valuation operator $\mathcal{V}$ is the sum of net cash flows in each time period, i.e., we compute the net cash in each period (cash inflow - cash outflow in period $i$) and then sum these net cash flows over all $T$ periods.
 
 
 ### Time value of money
+There is a fundamental challenge to the summation valuation intuition, the time value of money ({prf:ref}`remark-tvof-money`): 
 
 ```{prf:remark} Time value of Money
 :label: remark-tvof-money
 The value of money is _not_ conserved over time. One dollar today is not worth the same as one dollar tomorrow. The change in the value of money over time is called the _time value of money_.  
 ```
 
-The time value of money is an [empirical observation that has been seen over hundreds of years](https://en.wikipedia.org/wiki/Time_value_of_money#History). But why is this the case? The short answer: money given to us today has a greater utility than the same amount tomorrow; because we have an extra day to invest that money. 
+The time value of money is an [empirical observation that has been seen over hundreds of years](https://en.wikipedia.org/wiki/Time_value_of_money#History). But why is this the case? The short answer: money given to us today has a greater [Utility](https://en.wikipedia.org/wiki/Utility) than the same amount tomorrow; because we have an extra day to invest that money ({prf:ref}`obs-time-value-of-money`): 
 
 ````{prf:observation} Why does that value of money chnage over time?
 :label: obs-time-value-of-money
 
-Hypothetically, suppose a _risk-free_ investment was guaranteed to return $i>0$ in some period. If we invested $P$ dollars today in this risk-free investment, then at the end of the investment period, we are _guaranteed_ to get $F$ dollars back (because the investment is risk-free) where $F$ is given by:
+There exists a _risk-free_ investment guaranteed to return $i>0$ per period. If we invested $P$ dollars today in this risk-free investment, at the end of the investment period, we are _guaranteed_ to get $F$ dollars back (because the investment is risk-free):
 
 ```{math}
 F = (1+i)\cdot{P}
 ```
 
-Thus, if given a choice between $P$ dollars today, or the same $P$ dollars one investment period in the future, you would _always_ choose (assuming you were a rational investor) to take the $P$ dollars now. 
+If given a choice between $P$ dollars today, or $P$ dollars one investment period in the future, a rational investor would _always_ choose to take the $P$ dollars now. 
 
 __Why?__ 
 
-* By taking $P$ dollars today, you could invest those $P$ dollars in a risk-free product and get $F = (1+i)\cdot{P}$ back, where $F>P$. Thus, the only case where it makes sense to take the future money is if $i=0$, i.e., $F = P$; which is forbidden by the condition $i>0$. 
+* By taking $P$ dollars today, you could invest those $P$ dollars risk-free and get $F = (1+i)\cdot{P}$ back, where $F>P$. Thus, the only case where it makes sense to take the future money is if $i\leq{0}$, i.e., $F\leq{P}$; which is forbidden by the condition $i>0$. 
 
 * This hypothetical scenario assumes that a _risk-free_ investment exists that always returns $i>0$. Does such an investment exist? [Unfortunately, the _risk-free_ investment is only a theoretical concept](https://www.investopedia.com/terms/r/risk-freerate.asp). However, the _risk-free rate of return_ $i$ is often approximated by the [yield on 10-year US Treasury bonds](https://www.bloomberg.com/markets/rates-bonds/government-bonds/us) or some other US Treasury debt security. 
 
 ````
 
-Unfortunately, our intuitive valuation operator (net cash flows) does not consider (yet) the time of value of money. Let's develop some tools to address this issue. 
+<!-- Unfortunately, our intuitive valuation operator (net cash flows) does not consider (yet) the time of value of money. Let's develop some tools to address this issue.  -->
 
 ### Exchange rate model
 A useful mental model for the time value of money is to think of money from different time periods 
-as being in different currencies (e.g., $\$$ and euros) that must be exchanged. Thus, to compare money or cash flows from different time periods we formulate the equivalent of an exchange rate.
+as being in different currencies (e.g., dollars versus euros) that must be exchanged. Thus, to compare money or cash flows from different time periods we formulate the equivalent of an exchange rate.
 
 #### Discrete one-period conversion
-For example, suppose we wanted to convert the value of a cash flow from one time period in the future 
-into today's dollars (or vice-versa, we want to compute the value of a future cash flow to a current value). To do this, we use a one-period discrete conversion:
+Suppose we wanted to convert the value of a cash flow from one time period in the future 
+into today's dollars (or vice-versa, we want to compute the value of a future cash flow to a current value). To do this, we use a one-period discrete conversion ({prf:ref}`defn-one-perod-discrete-conversion`):
 
 ````{prf:definition} One Period Discrete Conversion
 :label: defn-one-perod-discrete-conversion
-For any one-period ($t\rightarrow{t+1}$),  the present value of cash flow, denoted as $CF_{t}$, and the future value of cash-flow, denoted by $CF_{t+1}$, there exists a one time-step discrete conversion:
+For any one-period ($t\rightarrow{t+1}$),  the present value of cash flow, denoted as $\dot{c}_{t}$, and the future value of cash-flow, denoted by $\dot{c}_{t+1}$, there exists a one time-step discrete conversion:
 
 ```{math}
 :label: eq-cash-flow-1-period
-CF_{t+1} = \left(1+r_{t+1,t}\right)\cdot{CF_{t}}
+\dot{c}_{t+1} = \left(1+r_{t+1,t}\right)\cdot{\dot{c}_{t}}
 ```
-where $r_{t+1,t}>{0}$ is called the rate of return between periods $t$ and $t+1$. The term $(1+r_{t+1,t})$, which denotes the hypothetical exchange rate between time period $t$ and $t+1$, is called the _discrete discount factor_. Because $r_{t+1,t}>{0}$, the _discrete discount factor_ is always greater than one, thus $CF_{t+1}>{CF_{t}}$ for any $t$. 
+where $r_{t+1,t}>{0}$ is the _discount rate_ between periods $t$ and $t+1$. The term $(1+r_{t+1,t})$, which denotes the hypothetical exchange rate between time period $t\rightarrow{t+1}$, is called the _discrete discount factor_. The _discrete discount factor_ is always greater than one, thus $\dot{c}_{t+1}>\dot{c}_{t}$ for any $t$. 
 ````
 
-Let's do a few examples to illustrate one-period conversions.
+Let's do an example to illustrate one-period conversions ({prf:ref}`example-one-period-discrete-conversion`):
 
-````{prf:example} One Period Conversion
+````{prf:example} One period conversion
+:label: example-one-period-discrete-conversion
+:class: dropdown
 
-Prof. Varner offers to buy you a coffee tommorrow (one time period in the future) for $CF_{2} = \$ 3.35$. How much is the future coffee worth today if $r_{21}=0.10$? 
-
-Let's put some numbers into Eqn. {eq}`eq-cash-flow-1-period` to answer this.  Rearraninging Eqn. {eq}`eq-cash-flow-1-period` for $CF_{1}$ gives:
+Prof. Varner offers to buy you a coffee tommorrow (one time period in the future) for $\dot{c}_{2} = \$ 3.35$. How much is the future coffee worth today if $r_{21}=10\%$? Let's put some numbers into Eqn. {eq}`eq-cash-flow-1-period` to answer this question.  Rearraninging Eqn. {eq}`eq-cash-flow-1-period` for $\dot{c}_{1}$ gives:
 
 ```{math}
-CF_{1} = \frac{CF_{2}}{1+r_{21}}
+\dot{c}_{1} = \frac{\dot{c}_{2}}{1+r_{21}}
 ```
 
-Subsutituing $r_{21} = 0.10$ and $CF_{2}=\$ 3.35$ says the current value of your future coffee is: $CF_{1} = \$ 3.05$.
+Subsutituing $r_{21}=10\%$ and $\dot{c}_{2}=\$ 3.35$ says the current value of your future coffee is: $\dot{c}_{1} = \$ 3.05$.
 ````
 
 #### Discrete multiple-period conversion
 Suppose, instead of a single period, we are interested in an asset that will be active over multiple periods, e.g., a multi-year project or some other transaction that occurs over many years. In this case, we develop a multi-year conversion that is easily constructed by sequentially applying many one-period calculations.
 
-To see this idea, let's start with period one to period two:
+To see this idea, let's start with period zero to period one:
 ```{math}
-CF_{2} = \left(1+r_{21}\right)\cdot{CF_{1}}
+\dot{c}_{1} = \left(1+r_{10}\right)\cdot\dot{c}_{0}
 ```
-Then, period two to period three is given by:
-
-```{math}
-CF_{3} = \left(1+r_{32}\right)\cdot{CF_{2}}
-```
-
-but we can substiture $CF_{2}$ into the expression above to give:
+Then, period one to period two is given by:
 
 ```{math}
-CF_{3} = \Bigl[\left(1+r_{32}\right)\left(1+r_{21}\right)\Bigr]\cdot{CF_{1}}
+\dot{c}_{2} = \left(1+r_{21}\right)\cdot\dot{c}_{1}
 ```
 
-If we do this computation between 3 and 4, and then 4 to 5, etc, we develop a relationship between the current value of cash flow ($t=1$) and the future ($t>1$) value of cash flows:
+but we can substiture $\dot{c}_{1}$ into the expression above to give:
 
-````{prf:definition} Multiple Period Discrete Conversion
+```{math}
+\dot{c}_{2} = \Bigl[\left(1+r_{21}\right)\left(1+r_{10}\right)\Bigr]\cdot\dot{c}_{0}
+```
+
+If we do this computation between 2 and 3, and then 3 to 4, etc, we develop a relationship between the current value of cash flow ($t=0$) and the future ($t>1$) value of cash flows ({prf:ref}`defn-multi-perod-discrete-conversion`):
+
+````{prf:definition} Multiple period discrete conversion
 :label: defn-multi-perod-discrete-conversion
 
-Let $CF_{1}$ denote the cash-flow in period 1 (current value), and $CF_{t}$ the cash-flow in period $t>1$ (future value). Further, let $r_{j+1,j}$ denote the rate of return between discrete time period $j$ and $j+1$. Then: 
+Let $\dot{c}_{0}$ denote the cash-flow in period 0 (current value), and $\dot{c}_{t}$ the cash-flow in period $t>0$ (future value). Further, let $r_{j+1,j}$ denote the rate of return between discrete time period $j$ and $j+1$. Then: 
 
 ```{math}
 :label: eq-cash-flow-multiple-period
-CF_{t} = \left[\prod_{j=1}^{t-1}\left(1+r_{j+1,j}\right)\right]\cdot{CF_{1}}\qquad{t=2,3,\dots,T}
+\dot{c}_{t} = \left[\prod_{j=0}^{t-1}\left(1+r_{j+1,j}\right)\right]\cdot\dot{c}_{0}\qquad{t=1,2,\dots,T}
 ```
 ````
 
 The product term (the $\prod\star$ in the brackets) in Eqn. {eq}`eq-cash-flow-multiple-period` is called the _multi-period discount factor_ and given the symbol $\mathcal{D}$. Thus, Eqn. {eq}`eq-cash-flow-multiple-period` can be written in a more compact form as:
 
 ```{math}
-	CF_{t} = \mathcal{D}_{t,1}\cdot{CF_{1}}\qquad{t=2,3,\dots,T}
+\dot{c}_{t} = \mathcal{D}_{t,0}\cdot\dot{c}_{0}\qquad{t=1,2,\dots,T}
 ```
 
-In the particular case where the rates of return $r_{\star}$ are equal in each period (let's call this value $\bar{r}$), the _multi-period discount factor_ is given by:
+In the particular case where the rates of return $r_{\star}$ are equal in each period (let's call this value $\bar{r}$), the _multi-period discount factor_ becomes:
 
 ```{math}
 :label: eqn-discrete-discount-factor-constant-r
-\mathcal{D}_{t,1} = (1+\bar{r})^{t-1}\qquad{t=2,3,\dots,T}
+\mathcal{D}_{t,0} = (1+\bar{r})^{t}\qquad{t=1,2,\dots,T}
 ```
 
-Let's do some multi-period discounting examples to better understand {prf:ref}`defn-multi-perod-discrete-conversion`. 
+Let's do an example of multi-period discounting ({prf:ref}`ex-future-value-discrete`):
 
-````{prf:example} What is \$1 collected T time periods in the future worth today? 
+````{prf:example} Multiple period discount
 :label: ex-future-value-discrete
+:class: dropdown
 
-Compute the present value of \$1 collected $T$ time units into the future for a constant discount rate of 2\%, 4\%, and 6\%.
+Compute the present value of \$1 collected $T$ time units into the future for a constant discount rate of 2\%, 4\%, 6\%, 8\% and 10\% per time period.
 
-The value of money today is the present value, whereas the value of money in the $T$ time units from now is the future  value. In terms of the asset model, $CF_{1}$ denotes the present value (i = 1 denotes now), while $CF_{i},i=2,3,\dots,T$ denotes future value. Thus, to compute the present value of \$1 collected $T$ time units into the future, we solve Eqn. {eq}`eq-cash-flow-multiple-period` 
-for $CF_{1}$ in terms of the future value $CF_{i},i=2,\dots,T$ and the discount factor 
-$\mathcal{D}$:
+The value of money today is the present value, whereas the value of money $T$ time periods in is the future  value. The quantity $\dot{c}_{0}$ is the present value, while $\dot{c}_{i},i=1,2,\dots,T$ denotes future value. 
+
+To compute the present value of \$1 collected $T$ time units into the future, we solve Eqn. {eq}`eq-cash-flow-multiple-period` for $\dot{c}_{0}$ in terms of the future value $\dot{c}_{i},i=1,\dots,T$ and the discount factor $\mathcal{D}$:
 
 ```{math}
-CF_{1} = \mathcal{D}_{i1}^{-1}CF_{i}\qquad{i=2,3,\dots,T}
+\dot{c}_{0} = \mathcal{D}_{i,0}^{-1}\cdot\dot{c}_{i}\qquad{i=0,1,\dots,T}
 ```
 
-where $\mathcal{D}_{i1}^{-1}$ is given by:
+where $\mathcal{D}_{i,0}^{-1}$ is given by:
 
 ```{math}
-\mathcal{D}_{i1}^{-1} = \frac{1}{(1+\bar{r})^{i-1}}\qquad{i=2,3,\dots,T}
+\mathcal{D}_{i,0}^{-1} = \frac{1}{(1+\bar{r})^{i}}\qquad{i=0,1,\dots,T}
 ```
 
-We have assumed a constant discount rate $r$ between now (i = 1) and $i = T$ time units into the future. Given that we are looking at the present value of \$1, we can set $CF_{i}$ = 1, which gives:
+We assumed a constant discount rate $r$ between now (i = 0) and $i = T$ time units into the future. Given that we are looking at the present value of \$1, we can set $\dot{c}_{i} = 1$ USD:
 
 
 ```{math}
-CF_{1} = \frac{1}{(1+\bar{r})^{i-1}}\qquad{i=2,3,\dots,T}
+\dot{c}_{0} = \frac{\dot{c}_{i}}{(1+\bar{r})^{i}}\qquad{i=0,1,\dots,T}
 ```
 
 ```{figure} ./figs/Fig-PresentValue-FuturePayment.pdf
@@ -237,124 +241,158 @@ CF_{1} = \frac{1}{(1+\bar{r})^{i-1}}\qquad{i=2,3,\dots,T}
 height: 380px
 name: fig-presentvalue-futurepayment
 ---
-Present value (PV) of \$1 USD collected T periods in the future. 
+Present value (PV) of \$1 USD collected T periods in the future as a function the discount rate $r$.
 ```
-
-__source__: [live Pluto notebook](https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks) or [static HTML](https://htmlview.glitch.me/?https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks/blob/main/pluto-notebooks/html/Example-PresentValue.jl.html)
 
 ````
 
 #### Continuous discounting
-When formulating Eqn. {eq}`eq-cash-flow-1-period` we used a finite discrete-time difference, e.g., days, weeks, or maybe even years to compute the discount factor. However, suppose the time difference between $t\rightarrow{t+1}$ were infinitesimally small, i.e., the time difference was continuous. In this case, we have [continuous compounding](https://www.investopedia.com/terms/c/continuouscompounding.asp) where the discount factor $\mathcal{D}$ is defined as:
-
-```{math}
-\mathcal{D}(r,t) = \exp\left(rt\right)
-```
-
-A continuous discount factor gives a future value expression of the form:
+When formulating Eqn. {eq}`eq-cash-flow-1-period` we used a discrete-time difference, e.g., days, weeks, or maybe even years to compute the discount factor. However, suppose the time difference between $t\rightarrow{t+1}$ were infinitesimally small, i.e., the time difference was continuous. In this case, we have [continuous compounding](https://www.investopedia.com/terms/c/continuouscompounding.asp) where the discount factor is defined as $\mathcal{D}(r,t) = \exp\left(rt\right)$. A continuous discount factor gives a future value expression of the form:
 
 ```{math}
 :label: eq-cont-exchange-tvm
-CF(t) = \exp\left(rt\right)CF(t_{o})
+\dot{c}_{t}= \exp\left(rt\right)\cdot\dot{c}_{0}
 ```
 
-where $r$ denotes the _instantaneous_ discount rate, $t$ denotes the current time, $t_{o}$ denotes the initial time.  
-
-````{prf:observation} Discrete and continuous discount factor
-:label: continuous-compounding
-
-There is a relationship between the discrete and continuous discount factors; the discrete discount factor is the linear portion of the continuous discount factor. We can see this by looking at the series representation of the `exp` function:
-
-```{math}
-\exp\left(x\right) = \sum_{k=0}^{\infty} \frac{x^{k}}{k!} = 1+x+\frac{x^{2}}{2}+\frac{x^{3}}{6}+\dots
-```
-
-The first two terms are the discrete discount factor. Thus, for _small_ values of $rt$ the discrete and continuous discount factors will be similar.  
-
-````
-
-Let's do a continuous discount factor example. 
+where $r$ denotes the _instantaneous_ discount rate, and $t$ denotes the current time. Let's do a continuous discount factor example ({prf:ref}`ex-future-value-continuous`): 
 
 ````{prf:example} What is \$1 collected today worth T years from now? 
 :label: ex-future-value-continuous
+:class: dropdown
 
-Let's consider the opposite case from the previous example. Suppose we are given \$1 dollar today. What is the future value of \$1 in T years from now? Assume a 2.0\%, 4.0\% and 6.0\% instantaneous annualized discount factor. 
-
-In this example, $CF(t_{o}) = 1$, the value of $r$ = 2\%, 4\% and 6\% and the time $t$ will be in years. Plugging these into [Julia](https://julialang.org) and plotting using the [Plots.jl](https://github.com/JuliaPlots/Plots.jl) package gives:
+Suppose we are given \$1 dollar today. What is the future value of \$1 T periods from now for an instantaneous discount rate of $r$ = 2\%, 4\%, 6\%, 8\% and 10\%  and continuous discounting? Plugging these values in {eq}`eq-cont-exchange-tvm` gives:
 
 ```{figure} ./figs/Fig-FutureValue-1-dollar.pdf
 ---
 height: 380px
 name: fig-futurevalue-1-dollar
 ---
-Future value (FV) of \$1 USD (today) T-years in the future using a continuous discont factor. 
+Future value (FV) of 1 USD (today) T-periods in the future using a continuous discounting model. 
 ```
 
-__source__: [live Pluto notebook](https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks) or [static HTML](https://htmlview.glitch.me/?https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks/blob/main/pluto-notebooks/html/Example-CDF.jl.html)
+[Julia script](https://julialang.org) to compute the future value as a function of the discount rate $r$, and plot the data:
+```julia
+# load packages (assume these are installed)
+using Plots
+using Colors
+
+# setup color dictionary -
+# Colors taken from: https://personal.sron.nl/~pault/
+colors = Dict{Int64,RGB}()
+colors[1] = colorant"#0077BB" 
+colors[2] = colorant"#33BBEE"
+colors[3] = colorant"#009988"
+colors[4] = colorant"#EE7733"
+colors[5] = colorant"#CC3311"
+colors[6] = colorant"#EE3377" 
+colors[7] = colorant"#BBBBBB"
+
+# initialize -
+Cₜ = 1.0;
+R = [0.02, 0.04, 0.06, 0.08, 0.10];
+number_of_periods = 25;
+number_of_rates = length(R)
+Cₒ = Array{Float64,2}(undef, number_of_periods, number_of_rates + 1);
+
+# main loop - compute the present values
+for j ∈ 1:number_of_rates
+        
+    # pick a rate -
+    r = R[j];
+
+    # iterare of period -
+    for i ∈ 1:number_of_periods
+        
+        # compute the discount -
+        D = exp(r*i)
+
+        # compute the future values
+        Cₒ[i,1] = i-1       # period is in the first col
+        Cₒ[i,j+1] = (D)*Cₜ   # future value is for each r in the col 2,... 
+    end
+end
+
+# plot -
+for i ∈ 1:number_of_rates
+    plot!(Cₒ[:,1],Cₒ[:,i+1], c = colors[i], label="r = $(R[i])", lw=2, xlim=(0.0,number_of_periods), ylim=(0.0,14.0),
+        bg="floralwhite", background_color_outside="white", framestyle = :box, 
+        fg_legend = :transparent)
+end
+current();
+xlabel!("Period index (AU)", fontsize=18)
+ylabel!("Future value (USD)", fontsize=18)
+```
 ````
 
 (content:references:npv-defn)=
 ## Net Present Value (NPV)
+Now that we have tools to account for the time value of money, we can return to the question of how to value an asset. 
+
 ```{figure} ./figs/Fig-FinanicalNode-Schematic.pdf
 ---
 height: 220px
 name: cash-financial-node-flow-fig
 ---
-Node cash-flow balance diagram. During time $t=k$ monety flows enter (revenues) and exit (expenses) the time-node.  
+Node cash-flow balance diagram. During time $t=k$, money flows enter (revenues) and exit (expenses) the time node.   
 ```
 
-Now that we have tools to account for the time value of money, we can return to the question of how to value an asset. The most intuitive aproach is to compute the net cash flow at every node. Imagine at node $t=k$ we have $\mathcal{S}^{t=k}$ cash streams, denoted as $\dot{C}_{s}$, entering (or exiting) the asset node. Then, the net cash would at node $t=k$ is given by:
+The most intuitive approach is to compute the net cash flow at every node. Imagine at node $t=k$ we have $\mathcal{S}^{t=k}$ cash streams, denoted as $\dot{c}_{s}$, entering (or exiting) the asset node ({numref}`cash-financial-node-flow-fig`). Then, the net cash flow at node $t=k$ is given by:
 
 ```{math}
-CF_{k} = \sum_{s\in\mathcal{S}^{t=k}}\nu_{s}\dot{C}_{s}
+\bar{c}_{k} = \sum_{s\in\mathcal{S}^{t=k}}\nu_{s}\dot{c}_{s}
 ```
 
-where $\nu_{s}$ denotes a direction parameter; $\nu_{s}=+1$ if stream $s$ enters node $t=k$, $\nu_{s}=-1$ if stream $s$ exists node $t=k$. Finally, to value an asset, we could imagine adding up all the current and future cash flows, converted to some shared basis, e.g., current dollars. This sum is called the [Net Present Value (NPV)](https://en.wikipedia.org/wiki/Net_present_value); NPV is a widespread method for asset valuation. As well shall see, NPV is also a widely used tool for financial decision-making.   
+where $\nu_{s}$ is a direction parameter; $\nu_{s}=+1$ if stream $s$ enters node $t=k$, $\nu_{s}=-1$ if stream $s$ exists node $t=k$. Finally, we sum all the current and future cash flows, converted to some shared basis, e.g., current dollars. This sum is called the [Net Present Value (NPV)](https://en.wikipedia.org/wiki/Net_present_value); NPV is a widespread method for asset valuation. In addition, NPV is also a widely used tool for financial decision-making ({prf:ref}`net-present-value-defn`):     
 
-````{prf:definition} Discrete Net Present Value
+````{prf:definition} Net Present Value
 :label: net-present-value-defn
 
-The discrete Net Present Value (NPV) is the sum of the discrete current and future cash flows, corrected to current dollars:
+The net present value (NPV) is the sum of the discrete current and future cash flows, corrected to current dollars ($t=0$):
 
 ```{math}
-\text{NPV} = \sum_{t=1}^{T}{\mathcal{D}_{t,1}^{-1}}\cdot{CF_{t}}
+\text{NPV}(T) = \sum_{t=0}^{T}{\mathcal{D}_{t,0}^{-1}}\cdot\bar{c}_{t}
 ```
 
-where $CF_{t}$ denotes the cash flow in time period $t$, and $\mathcal{D}_{t,1}$ denotes the discrete multistep discount factor between the current time period, and time period $t$. However, we know that $r_{1,1} = 0$ because there is no possibility of an instantaneous return; thus, $\mathcal{D}_{t,1} = 1$. Therefore NPV can be re-written as:
-
-```{math}
-\text{NPV} = CF_{1} + \sum_{t=2}^{T}{\mathcal{D}_{t,1}^{-1}}\cdot{CF_{t}}
-```
-
-where the value of each cash flow at time $\star$, denoted by $CF_{\star}$, is the net cash flow:
-
-```{math}
-CF_{\star} = \sum_{s\in\mathcal{S}^{t=\star}}\nu_{s}\dot{C}_{s}
-```
+where $\bar{c}_{t}$ denotes the _net cash flow_ in period $t$, and $\mathcal{D}_{t,0}$ denotes the multistep discount factor between the current period (now), and future period $t$. The discount factor $\mathcal{D}_{t,0}$ can be modeled as either a discrete or a continuous discount factor.
 ````
 
 (content:references:npv-decision-tool)=
 ### NPV as a Decision Tool
-The net present value is a widely used tool for financial decision-making. However, to understand the basis of the approach, we must first answer a technical question: What discount rate should we use? 
+When calculating net present value, the discount rate $r_{t+1,t}$ represents the minimum rate of return that a decision-maker would accept for a project or investment compared with a hypothetical alternative investment. To compare a potential asset or project with an alternative investment, we can establish the following criteria:
 
-The discount rates $r_{t+1,t}$, i.e., the rates of return between time periods $t\rightarrow{t+1}$ appearing in the discount factors, have an exciting interpretation within the context of net present value calculations. These rates can be _specified_ by the decision maker as the minimum acceptable rate of return that some hypothetical _alternative_ investment could earn. 
+* $\textbf{NPV}<0$: A negative NPV indicates the proposed project will generate less income than the alternative investment, e.g., a zero-coupon bond at the same discount rate and time-to-maturity as the project.
 
-We can set up the following criteria to decide between a possible asset or project and a hypothetical alternative investment:
+* $\textbf{NPV}=0$: A zero NPV indicates the proposed project will generate the same income as the alternative investment, e.g., a zero-coupon bond at the same discount rate and time-to-maturity as the project.
 
-* $\text{NPV}<0$: A negative NPV indicates the proposed project will generate less income than the alternative investment, e.g., a zero-coupon bond at the same discount rate and time-to-maturity as the project.
+* $\textbf{NPV}>0$: A positive NPV indicates the proposed project will generate more income than a hypothetical alternative investment, e.g., a zero-coupon bond at the same discount rate and time-to-maturity as the project.
 
-* $\text{NPV}=0$: A zero NPV indicates the proposed project will generate the same income as the alternative investment, e.g., a zero-coupon bond at the same discount rate and time-to-maturity as the project.
+The NPV decision rule above relies on computing the sum of discounted future cash flows. However, in these calculations, what discount rate should we use? This question is difficult; the correct discount rate varies between applications and industries.  The special discount rate where the net present value is zero is called the Internal Rate of Return (IRR) ({prf:ref}`defn-internal-rate-of-return`):
 
-* $\text{NPV}>0$: A positive NPV indicates the proposed project will generate more income than a hypothetical alternative investment, e.g., a zero-coupon bond at the same discount rate and time-to-maturity as the project.
+<!-- * If the net present value of an investment or project is positive, the project earns more than a zero-coupon bond with a yield equal to the discount rate used to discount future cash flows. 
+* If the net present value of a project is negative, the project earns less than a zero-coupon bond with a yield equal to the discount rate used to discount future cash flows. 
+* If the net present value of a project or investment is precisely $0, the project earns the same as a zero-coupon bond with a yield equal to the discount rate used to discount future cash flows. -->
 
-Let's do a net present value example:
+
+
+````{prf:definition} Internal Rate of Return
+:label: defn-internal-rate-of-return
+
+Assume the discount rate is constant between time periods. Then, the internal rate of rerturn (IRR) is the discount rate that satifies the following condition:
+
+```{math}
+\sum_{t=0}^{T}{\mathcal{D}_{t,0}^{-1}}\cdot\bar{c}_{t} = 0
+```
+
+Discount rates greater than the IRR favor the alternative investment.
+````
+
+Thus, IRR can thought of as a decision boundary of sorts; the IRR is the discount rate where the project manager or investor is indifferent to the project. Let's do a net present value example where we compute the IRR ({prf:ref}`example-net-present-value-discrete`):
 
 ````{prf:example} Install an upgraded lighting system?
 :label: example-net-present-value-discrete
+:class: dropdown
 
-Should we install a new computer-controlled lighting system (or not)? Johnson Controls offers to install a new computer-controlled lighting system that will reduce electric bills by 90,000 USD each of the next three years. Is this a good investment if the system costs 230,000 USD fully installed?
-
-The discount rate is constant over the lifetime of the project, but unkown; thus, $\bar{r}$ is a parameter in the problem.
+Johnson Controls offers to install a new computer-controlled lighting system that will reduce electric bills by 90,000 USD in each of the next three years. Is this a good investment if the system costs 230,000 USD fully installed? Assume the discount rate is constant over the project’s lifetime but unknown. Thus, $\bar{r}$ is a parameter in the problem.
 
 ```{figure} ./figs/Fig-JControls-NPV.pdf
 ---
@@ -364,44 +402,23 @@ name: example-jcontrols-npv-fig
 Net Present Value (NPV) as a function of the discount rate $\bar{r}$ for the proposed Johnson Controls lighting upgrade. The alternative investment is a perfectly priced zero-coupon bond with the same $\bar{r}$ and time-to-maturity as the lighting project. 
 ```
 
-The installation of the computer-controlled lighting system from Johnson Controls had a positive net present value (NPV) for discount rates less than 8.5%. However, the alternative investment would be the preferred choice beyond this discount rate.
+The computer-controlled lighting system installed by Johnson Controls yielded a positive net present value (NPV) for discount rates below 8.5%. However, if the discount rate surpasses this threshold, an alternative investment would be preferable.
 
-__source__: The Johnson Controls example was modified from [MIT 15.401](https://ocw.mit.edu/courses/sloan-school-of-management/15-401-finance-theory-i-fall-2008/). Donwload [the live Pluto notebook](https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks) or [a static html version](https://htmlview.glitch.me/?https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks/blob/main/pluto-notebooks/html/Example-NetPresentValue.jl.html).
-
-````
-
-### The Internal Rate of Return (IRR)
-The NPV decision rule above relies on computing the sum of discounted future cash flows. However, in these calculations, what discount rate should we use? This is not an easy question; the correct discount rate varies between applications and industries.  Thus, let's think of the discount rate as a variable. 
-
-* If the net present value of an investment or project is positive, the project earns more than a zero-coupon bond with a yield equal to the discount rate used to discount future cash flows. 
-* If the net present value of a project is negative, the project earns less than a zero-coupon bond with a yield equal to the discount rate used to discount future cash flows. 
-* If the net present value of a project or investment is precisely $0, the project earns the same as a zero-coupon bond with a yield equal to the discount rate used to discount future cash flows.
-
-The special discount rate where the net present value is zero is called the Internal Rate of Return (IRR):
-
-````{prf:definition} Internal Rate of Return
-:label: defn-internal-rate-of-return
-
-Assume the discount rate is constant between time periods, denote this rate as $\bar{r}$. Then, the internal rate of rerturn (IRR) is the discount rate that satifies the following condition:
-
-```{math}
-\sum_{t=1}^{T}{\mathcal{D}_{t,1}^{-1}}\cdot{CF_{t}} = 0
-```
-
-Discount rates greater than the IRR favor the alternative investment.
+__source__: The Johnson Controls example was modified from [MIT 15.401](https://ocw.mit.edu/courses/sloan-school-of-management/15-401-finance-theory-i-fall-2008/).
 
 ````
-
-Thus, IRR can thought of as a decision boundary of sorts; the IRR is the discount rate where the project manager or investor is indifferent to the project. 
 
 ---
 
 ## Summary
-In this lecture:
+In this lecture, we introduced:
 
-* We introduced the definition of a {ref}`content:references:abstract-asset-defn`. An asset is a sequence of current and future cash flows demarcated in some currency. Assets can be tangible things like cars or houses, but they can also be projects or ideas.  
-* We introduced the {ref}`content:references:npv-defn`, a tool to calculate the valuation of an asset. The net present value is the sum of net cash flows discounted to the current period. 
-* Used {ref}`content:references:npv-decision-tool` to evaluate the _relative_ attractiveness of assets and projects. Assets with a positive net present value have a larger return than hypothetical alternative investments. On the other hand, investments with a negative net present value will have a smaller return than a  hypothetical alternative investment.
+* {ref}`content:references:interest-models`: Simple interest refers to the interest calculated solely on the initial principal amount, while compound interest takes into account both the principal and the accumulated interest. 
+
+* {ref}`content:references:abstract-asset-defn` generate value and cash flows for the holder. Cash flows, on the other hand, are the inflows and outflows of money from a business or investment, and are a key factor in determining the value of abstract assets. Finally, interest is the cost of borrowing money, and understanding how interest rates impact cash flows and the value of abstract assets is essential for financial decision making.
+
+* {ref}`content:references:npv-defn` is a financial concept used to determine the current value of future cash flows. It takes into account the time value of money, recognizing that a dollar today is worth more than a dollar in the future due to the potential for investment and earning interest. NPV is a useful tool for evaluating investment opportunities and determining whether they are financially viable.
 
 ## Additional Resources
 * [IEOR E4706: Foundations of Financial Engineering, Columbia University](https://martin-haugh.github.io/teaching/foundations-fe/)
+* [Finance Theory I: MIT 15.401](https://ocw.mit.edu/courses/sloan-school-of-management/15-401-finance-theory-i-fall-2008/)
