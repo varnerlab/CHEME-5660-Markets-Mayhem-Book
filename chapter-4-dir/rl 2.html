@@ -1,0 +1,659 @@
+
+
+<!DOCTYPE html>
+
+
+<html >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Reinforcement Learning &#8212; CHEME 5660</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/myfile.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-PG1Y6R28LY"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-PG1Y6R28LY');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chapter-4-dir/rl';</script>
+    <link rel="canonical" href="https://varnerlab.github.io/CHEME-5660-Markets-Mayhem-Book/infrastructure.html/chapter-4-dir/rl.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Appendices" href="../appendix/appendix-landing.html" />
+    <link rel="prev" title="Multiarm Bandit Problems" href="bandits.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="None"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../infrastructure.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/cornell_seal_simple_black-164.svg" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/cornell_seal_simple_black-164.svg" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../infrastructure.html">
+                    CHEME 5660: Financial Data, Markets, and Mayhem
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter-1-dir/chapter-1-landing.html">Unit 1. Financial Basics</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter-1-dir/assets.html">Interest, Cash Flows and Future Value</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter-1-dir/pfinance-basics.html">Personal Finance Basics</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter-2-dir/chapter-2-landing.html">Unit 2. Wealth Creation</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter-2-dir/bonds.html">Fixed Income Debt Securities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter-2-dir/equity.html">Equity Securities</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../chapter-2-dir/contracts.html">Derivative Securities</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter-3-dir/chapter-3-landing.html">Unit 3. Portfolio Management</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter-3-dir/data-markowitz.html">Data-Driven Portfolio Theory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter-3-dir/model-markowitz.html">Model-Driven Portfolio Theory</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../chapter-3-dir/hedged-portfolio.html">Hedged Portfolio Theory</a></li>
+
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="chapter-4-landing.html">Unit 4. Financial Decisions</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="markov.html">Markov Chains</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="mdp.html">Stochastic Sequential Decision Making</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="bandits.html">Multiarm Bandit Problems</a></li>
+
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Reinforcement Learning</a></li>
+
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../appendix/appendix-landing.html">Appendices</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../appendix/random.html">Random variables and probability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendix/julia-installation.html">Julia Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendix/julia-basics.html">Introduction to Julia Basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendix/julia-data.html">Working with Data in Julia</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../References.html">References</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Book/issues/new?title=Issue%20on%20page%20%2Fchapter-4-dir/rl.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/chapter-4-dir/rl.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Reinforcement Learning</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Reinforcement Learning</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-concepts-of-reinforcement-learning">Basic concepts of reinforcement learning</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-free-reinforcement-learning">Model-free reinforcement learning</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#incremental-updates">Incremental updates</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q-learning">Q-learning</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#incremental-q-table-updates">Incremental Q-table updates</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-based-reinforcement-learning">Model-based reinforcement learning</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="reinforcement-learning">
+<h1>Reinforcement Learning<a class="headerlink" href="#reinforcement-learning" title="Permalink to this headline">#</a></h1>
+<p>In our discussion of <a class="reference internal" href="mdp.html"><span class="doc std std-doc">Markov decision process (MDPs)</span></a>, we assumed that the transition and reward models were known precisely. However, these models may not be discovered in many actual problems. In these cases, the agent must learn to act through experience, e.g., by observing the outcomes of its actions. Then the agent chooses actions that maximize its long-term accumulation of reward.</p>
+<p>Several challenges must be addressed in cases of uncertain models. First, agents must balance between exploring the world and exploiting knowledge gained through experience. Second, rewards may be received long after decisions have been made. Finally, agents must generalize from limited experience.</p>
+<p>In this lecture, we will explore these three challenges. In particular, we will:</p>
+<ul class="simple">
+<li><p>Introduce the <a class="reference internal" href="#content-references-basic-concepts-reinforcement-learning"><span class="std std-ref">Basic concepts of reinforcement learning</span></a> and contrast reinforcement learning with <a class="reference internal" href="mdp.html"><span class="doc std std-doc">Markov Decision Processes</span></a> and other machine learning approaches.</p></li>
+<li><p>Introduce <a class="reference internal" href="#content-references-model-free-reinforcement-learning"><span class="std std-ref">Model-free reinforcement learning</span></a> in which an agent builds a policy directly from interacting with the world</p></li>
+<li><p>Introduce <a class="reference internal" href="#content-references-model-based-reinforcement-learning"><span class="std std-ref">Model-based reinforcement learning</span></a> in which the decision-making agent iteratively builds a model for the world</p></li>
+</ul>
+<hr class="docutils" />
+<figure class="align-default" id="fig-rl-schematic">
+<a class="reference internal image-reference" href="../_images/Fig-Schematic-RL.pdf"><img alt="../_images/Fig-Schematic-RL.pdf" src="../_images/Fig-Schematic-RL.pdf" style="height: 260px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 38 </span><span class="caption-text">Schematic of the reinforcement learning (RL) process. An agent takes action <span class="math notranslate nohighlight">\(a\)</span> and then observes reward <span class="math notranslate nohighlight">\(r\)</span> and changes in the state of the environment (<span class="math notranslate nohighlight">\(s\rightarrow{s^{\prime}}\)</span>) following the action <span class="math notranslate nohighlight">\(a\)</span>.</span><a class="headerlink" href="#fig-rl-schematic" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<section id="basic-concepts-of-reinforcement-learning">
+<span id="content-references-basic-concepts-reinforcement-learning"></span><h2>Basic concepts of reinforcement learning<a class="headerlink" href="#basic-concepts-of-reinforcement-learning" title="Permalink to this headline">#</a></h2>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/Reinforcement_learning">Reinforcement Learning (RL)</a> agents learn by performing actions in the world and then analyzing the rewards they receive (<a class="reference internal" href="#fig-rl-schematic"><span class="std std-numref">Fig. 38</span></a>). Thus, reinforcement learning differs from other machine learning approaches, e.g., <a class="reference external" href="https://en.wikipedia.org/wiki/Supervised_learning">supervised learning</a> because labeled input/output pairs, e.g., what actions lead to positive rewards are not presented to the agent <em>a priori</em>.  Instead, reinforcement learning agents learn what is good or bad by trying different actions.</p>
+<p>Reinforcement learning agents learn optimal choices in different situations by balancing the exploration of their environment, e.g., by taking random actions and watching what happens, with the exploitation of the knowledge they have built up so far, i.e., choosing what the agent thinks is an optimal action based upon previous experience. The balance between exploration and exploitation is one of the critical concepts in reinforcement learning.</p>
+</section>
+<section id="model-free-reinforcement-learning">
+<span id="content-references-model-free-reinforcement-learning"></span><h2>Model-free reinforcement learning<a class="headerlink" href="#model-free-reinforcement-learning" title="Permalink to this headline">#</a></h2>
+<p>Unlike <a class="reference internal" href="#content-references-model-based-reinforcement-learning"><span class="std std-ref">Model-based reinforcement learning</span></a>, model-free reinforcement learning does not require transition or reward models. Instead, model-free methods, like bandit problems, iteratively construct a policy by interacting with the world. However, unlike bandit problems, model-free
+reinforcement learning builds the action value function <span class="math notranslate nohighlight">\(Q(s, a)\)</span> directly, e.g., by incrementally estimating the action value function <span class="math notranslate nohighlight">\(Q(s, a)\)</span> from samples using the <em>Q-learning</em> approach.</p>
+<section id="incremental-updates">
+<h3>Incremental updates<a class="headerlink" href="#incremental-updates" title="Permalink to this headline">#</a></h3>
+<p>Model-free methods incrementally estimate the action value function <span class="math notranslate nohighlight">\(Q(s, a)\)</span> by sampling the world. To understand the structure of the update procedures, which we’ll discuss later, let’s take a quick detour and look at how we incrementally estimate the mean of a single variable <span class="math notranslate nohighlight">\(X\)</span>.</p>
+<p>Suppose we are interested in computing the mean of <span class="math notranslate nohighlight">\(X\)</span> from <span class="math notranslate nohighlight">\(m\)</span> samples:</p>
+<div class="math notranslate nohighlight" id="equation-eqn-simple-mean">
+<span class="eqno">(53)<a class="headerlink" href="#equation-eqn-simple-mean" title="Permalink to this equation">#</a></span>\[\hat{x}_{m} = \frac{1}{m}\sum_{i=1}^{m}x^{(i)}\]</div>
+<p>where <span class="math notranslate nohighlight">\(x^{(i)}\)</span> denotes the ith sample. However, model-free RL incrementally updates <span class="math notranslate nohighlight">\(Q(s,a)\)</span>; thus, we need to develop an incremental estimation calculation.
+Equation <a class="reference internal" href="#equation-eqn-simple-mean">(53)</a> can be re-written as:</p>
+<div class="math notranslate nohighlight" id="equation-eqn-simple-mean-1">
+<span class="eqno">(54)<a class="headerlink" href="#equation-eqn-simple-mean-1" title="Permalink to this equation">#</a></span>\[\hat{x}_{m} = \frac{1}{m}\left(x^{(m)}+\sum_{i=1}^{m-1}x^{(i)}\right)\]</div>
+<p>but the summation term is mean from <span class="math notranslate nohighlight">\(m-1\)</span> samples or:</p>
+<div class="math notranslate nohighlight" id="equation-eqn-simple-mean-2">
+<span class="eqno">(55)<a class="headerlink" href="#equation-eqn-simple-mean-2" title="Permalink to this equation">#</a></span>\[\hat{x}_{m} = \frac{1}{m}\left(x^{(m)}+(m-1)\hat{x}_{m-1}\right)\]</div>
+<p>which can be rearranged to give the incremental update expression:</p>
+<div class="math notranslate nohighlight" id="equation-eqn-simple-mean-3">
+<span class="eqno">(56)<a class="headerlink" href="#equation-eqn-simple-mean-3" title="Permalink to this equation">#</a></span>\[\hat{x}_{m} = \hat{x}_{m-1} + \frac{1}{m}\left(x^{(m)}-\hat{x}_{m-1}\right)\]</div>
+<p>Equation <a class="reference internal" href="#equation-eqn-simple-mean-3">(56)</a> can be generalized to give the incremental update rule:</p>
+<div class="proof observation admonition" id="obs-incremental-update-rule">
+<p class="admonition-title"><span class="caption-number">Observation 8 </span> (Incremental update rule)</p>
+<section class="observation-content" id="proof-content">
+<p>Let <span class="math notranslate nohighlight">\(\hat{x}_{m-1}\)</span> denote the mean value computed from <span class="math notranslate nohighlight">\(m-1\)</span> samples. The value of <span class="math notranslate nohighlight">\(\hat{x}_{m}\)</span> given the the next sample <span class="math notranslate nohighlight">\(x^{(m)}\)</span> can be written as:</p>
+<div class="math notranslate nohighlight" id="equation-eqn-next-sample-mean">
+<span class="eqno">(57)<a class="headerlink" href="#equation-eqn-next-sample-mean" title="Permalink to this equation">#</a></span>\[\hat{x}_{m} = \hat{x}_{m-1} + \alpha\left(m\right)\left(x^{(m)}-\hat{x}_{m-1}\right)\]</div>
+<p>where <span class="math notranslate nohighlight">\(\alpha\left(m\right)\)</span> is the <em>learning rate</em> function.</p>
+<p>The learning rate can be any function of <span class="math notranslate nohighlight">\(m\)</span>; however, to ensure convergence
+<span class="math notranslate nohighlight">\(\alpha\left(m\right)\)</span> must have the properties: the sum of <span class="math notranslate nohighlight">\(\alpha\left(m\right)\)</span> as <span class="math notranslate nohighlight">\(m\rightarrow\infty\)</span> can be unbounded, but the sum of <span class="math notranslate nohighlight">\(\alpha\left(m\right)^{2}\)</span> as <span class="math notranslate nohighlight">\(m\rightarrow\infty\)</span> is bounded.</p>
+</section>
+</div></section>
+<section id="q-learning">
+<h3>Q-learning<a class="headerlink" href="#q-learning" title="Permalink to this headline">#</a></h3>
+<p>The Q-learning approach incrementally estimates the action value function <span class="math notranslate nohighlight">\(Q(s,a)\)</span> using the action value form of the <em>Bellman expectation equation</em>.
+From our discussion of <a class="reference internal" href="mdp.html"><span class="doc std std-doc">Markov decision process (MDPs)</span></a>, we know that the action-value function (the <span class="math notranslate nohighlight">\(Q\)</span>-function) is defined as:</p>
+<div class="math notranslate nohighlight">
+\[Q(s,a) = R(s,a) + \gamma\sum_{s^{\prime}\in\mathcal{S}}T(s^{\prime} | s, a)U(s^{\prime})\]</div>
+<p>However, we do know that:</p>
+<div class="math notranslate nohighlight">
+\[U(s) = \max_{a} Q(s,a)\]</div>
+<p>thus:</p>
+<div class="math notranslate nohighlight" id="equation-eqn-bellman-expectation-eqn">
+<span class="eqno">(58)<a class="headerlink" href="#equation-eqn-bellman-expectation-eqn" title="Permalink to this equation">#</a></span>\[Q(s,a) = R(s,a) + \gamma\sum_{s^{\prime}\in\mathcal{S}}T(s^{\prime} | s, a)\left(\max_{a^{\prime}}Q(s^{\prime},a^{\prime})\right)\]</div>
+<p>Here’s the catch: in a model-free universe, we don’t know the rewards or physics of the world, i.e., we don’t know the rewards <span class="math notranslate nohighlight">\(R(s,a)\)</span> or the probability array <span class="math notranslate nohighlight">\(T(s^{\prime} | s, a)\)</span> that appear in Eqn. <a class="reference internal" href="#equation-eqn-bellman-expectation-eqn">(58)</a>. Instead of computing the rewards and transitions from a model we develop, we estimate them from samples received:</p>
+<div class="math notranslate nohighlight">
+\[Q(s,a) = \mathbb{E}_{r,s^{\prime}}\left[r+\gamma\cdot\max_{a^{\prime}}Q(s^{\prime},a^{\prime})\right]\]</div>
+<section id="incremental-q-table-updates">
+<h4>Incremental Q-table updates<a class="headerlink" href="#incremental-q-table-updates" title="Permalink to this headline">#</a></h4>
+<p>We can use the incremental update rule shown in Eqn. <a class="reference internal" href="#equation-eqn-next-sample-mean">(57)</a> to develop an an expression that incrementally updates our estimate of <span class="math notranslate nohighlight">\(Q(s,a)\)</span> as more data becomes available:</p>
+<div class="math notranslate nohighlight" id="equation-eqn-q-learning-update-rule">
+<span class="eqno">(59)<a class="headerlink" href="#equation-eqn-q-learning-update-rule" title="Permalink to this equation">#</a></span>\[Q(s,a)\leftarrow{Q(s,a)}+\alpha\left(r+\gamma\max_{a^{\prime}}Q(s^{\prime},a^{\prime}) - Q(s,a)\right)\]</div>
+<p>where <span class="math notranslate nohighlight">\(\alpha\)</span> denotes a <em>learning rate hyperparameter</em>.</p>
+</section>
+</section>
+</section>
+<section id="model-based-reinforcement-learning">
+<span id="content-references-model-based-reinforcement-learning"></span><h2>Model-based reinforcement learning<a class="headerlink" href="#model-based-reinforcement-learning" title="Permalink to this headline">#</a></h2>
+<p>The key idea the underlies model-based reinforcement learning is to convert a model-free problem, i.e., where we don’t know the state transition probability or the reward structure of the system into an MDP.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section class="tex2jax_ignore mathjax_ignore" id="summary">
+<h1>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">#</a></h1>
+<p>In our discussion of <a class="reference internal" href="mdp.html"><span class="doc std std-doc">Markov decision process (MDPs)</span></a>, we assumed that the transition and reward models were known precisely. However, these models may not be discovered in many actual problems. In these cases, the agent must learn to act through experience, e.g., by observing the outcomes of its actions. Then the agent chooses actions that maximize its long-term accumulation of reward. This procedure is called <a class="reference external" href="https://en.wikipedia.org/wiki/Reinforcement_learning">Reinforcement Learning (RL)</a>.</p>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/Reinforcement_learning">Reinforcement Learning (RL)</a> agents learn by performing actions in the world and then analyzing the rewards they receive (<a class="reference internal" href="#fig-rl-schematic"><span class="std std-numref">Fig. 38</span></a>). Thus, reinforcement learning differs from other machine learning approaches, e.g., <a class="reference external" href="https://en.wikipedia.org/wiki/Supervised_learning">supervised learning</a> because labeled input/output pairs, e.g., what actions lead to positive rewards are not presented to the agent <em>a priori</em>.  Instead, reinforcement learning agents learn what is good or bad by trying different actions.</p>
+<p>In this lecture we explored different aspects of reinforcement learning. In particular, we:</p>
+<ul class="simple">
+<li><p>Introduced the <a class="reference internal" href="#content-references-basic-concepts-reinforcement-learning"><span class="std std-ref">Basic concepts of reinforcement learning</span></a> and contrasted reinforcement learning with <a class="reference internal" href="mdp.html"><span class="doc std std-doc">Markov Decision Processes</span></a> and other machine learning approaches.</p></li>
+<li><p>Introduced <a class="reference internal" href="#content-references-model-free-reinforcement-learning"><span class="std std-ref">Model-free reinforcement learning</span></a> in which an agent builds a policy directly from interacting with the world.</p></li>
+</ul>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./chapter-4-dir"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="bandits.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Multiarm Bandit Problems</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../appendix/appendix-landing.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Appendices</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Reinforcement Learning</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-concepts-of-reinforcement-learning">Basic concepts of reinforcement learning</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-free-reinforcement-learning">Model-free reinforcement learning</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#incremental-updates">Incremental updates</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q-learning">Q-learning</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#incremental-q-table-updates">Incremental Q-table updates</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-based-reinforcement-learning">Model-based reinforcement learning</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Varner and Woltornist
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

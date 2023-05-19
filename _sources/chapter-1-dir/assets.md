@@ -347,13 +347,15 @@ where $\nu_{s}$ is a direction parameter; $\nu_{s}=+1$ if stream $s$ enters node
 ````{prf:definition} Net Present Value
 :label: net-present-value-defn
 
-The net present value (NPV) is the sum of the discrete current and future cash flows, corrected to current dollars ($t=0$):
+
+The net present value (NPV) is the sum of current and future cash flows, corrected to current dollars ($t=0$):
 
 ```{math}
 \text{NPV}(T) = \sum_{t=0}^{T}{\mathcal{D}_{t,0}^{-1}}\cdot\bar{c}_{t}
 ```
 
-where $\bar{c}_{t}$ denotes the _net cash flow_ in period $t$, and $\mathcal{D}_{t,0}$ denotes the multistep discount factor between the current period (now), and future period $t$. The discount factor $\mathcal{D}_{t,0}$ can be modeled as either a discrete or a continuous discount factor.
+where $\bar{c}_{t}$ denotes the _net cash flow_ in period $t$, $T$ denotes the number of periods, and $\mathcal{D}_{t,0}$ represents the multistep discount factor between the current period (now), and future period $t$. The discount factor $\mathcal{D}_{t,0}$ can be modeled as either a discrete or a continuous discount factor.
+
 ````
 
 (content:references:npv-decision-tool)=
@@ -377,13 +379,13 @@ The NPV decision rule above relies on computing the sum of discounted future cas
 ````{prf:definition} Internal Rate of Return
 :label: defn-internal-rate-of-return
 
-Assume the discount rate is constant between time periods. Then, the internal rate of rerturn (IRR) is the discount rate that satifies the following condition:
+Assume the discount rate is constant between time periods. Then, the internal rate of rerturn (IRR) is the discount rate that makes the net present value equal to zero:
 
 ```{math}
 \sum_{t=0}^{T}{\mathcal{D}_{t,0}^{-1}}\cdot\bar{c}_{t} = 0
 ```
 
-Discount rates greater than the IRR favor the alternative investment.
+The discount factor $\mathcal{D}_{t,0}$ can be modeled as either a discrete or a continuous discount factor. Discount rates greater than the IRR favor the alternative investment.
 ````
 
 Thus, IRR can thought of as a decision boundary of sorts; the IRR is the discount rate where the project manager or investor is indifferent to the project. Let's do a net present value example where we compute the IRR ({prf:ref}`example-net-present-value-discrete`):

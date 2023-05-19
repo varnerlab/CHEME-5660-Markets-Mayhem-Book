@@ -1,0 +1,967 @@
+
+
+<!DOCTYPE html>
+
+
+<html >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Random variables and probability &#8212; CHEME 5660</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/myfile.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-PG1Y6R28LY"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-PG1Y6R28LY');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'appendix/random';</script>
+    <link rel="canonical" href="https://varnerlab.github.io/CHEME-5660-Markets-Mayhem-Book/infrastructure.html/appendix/random.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Julia Installation" href="julia-installation.html" />
+    <link rel="prev" title="Appendices" href="appendix-landing.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="None"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../infrastructure.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/cornell_seal_simple_black-164.svg" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/cornell_seal_simple_black-164.svg" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../infrastructure.html">
+                    CHEME 5660: Financial Data, Markets, and Mayhem
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter-1-dir/chapter-1-landing.html">Unit 1. Financial Basics</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter-1-dir/assets.html">Interest, Cash Flows and Future Value</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter-1-dir/pfinance-basics.html">Personal Finance Basics</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter-2-dir/chapter-2-landing.html">Unit 2. Wealth Creation</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter-2-dir/bonds.html">Fixed Income Debt Securities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter-2-dir/equity.html">Equity Securities</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../chapter-2-dir/contracts.html">Derivative Securities</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter-3-dir/chapter-3-landing.html">Unit 3. Portfolio Management</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter-3-dir/data-markowitz.html">Data-Driven Portfolio Theory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter-3-dir/model-markowitz.html">Model-Driven Portfolio Theory</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../chapter-3-dir/hedged-portfolio.html">Hedged Portfolio Theory</a></li>
+
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter-4-dir/chapter-4-landing.html">Unit 4. Financial Decisions</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter-4-dir/markov.html">Markov Chains</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../chapter-4-dir/mdp.html">Stochastic Sequential Decision Making</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../chapter-4-dir/bandits.html">Multiarm Bandit Problems</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../chapter-4-dir/rl.html">Reinforcement Learning</a></li>
+
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="appendix-landing.html">Appendices</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Random variables and probability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="julia-installation.html">Julia Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="julia-basics.html">Introduction to Julia Basics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="julia-data.html">Working with Data in Julia</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../References.html">References</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Book/issues/new?title=Issue%20on%20page%20%2Fappendix/random.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/appendix/random.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Random variables and probability</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#probability-spaces">Probability spaces</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sample-space-omega">Sample space <span class="math notranslate nohighlight">\(\Omega\)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#event-space-mathcal-f">Event space <span class="math notranslate nohighlight">\(\mathcal{F}\)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#probability-law-p">Probability law <span class="math notranslate nohighlight">\(P\)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conditional-probability">Conditional Probability</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#independence-versus-disjoint">Independence versus Disjoint</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bayes-theorem">Bayes’ theorem</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#law-of-total-probability">Law of Total Probability</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#probability-mass-functions">Probability mass functions</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bernoulli-random-variable">Bernoulli random variable</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#binomial-random-variable">Binomial random variable</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#geometric-random-variable">Geometric random variable</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#poisson-random-variable">Poisson random variable</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#moments-of-a-random-variable">Moments of a random variable</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#expectation">Expectation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#variance">Variance</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="random-variables-and-probability">
+<h1>Random variables and probability<a class="headerlink" href="#random-variables-and-probability" title="Permalink to this headline">#</a></h1>
+<p>Random variables and probability are central concepts in understanding uncertainty.  Random variables represent quantities that can take on different values with a particular probability distribution. They are used to model uncertainty and randomness in various fields, including finance, physics, and engineering. Probability theory provides a framework for understanding and quantifying the likelihood of different events occurring based on the underlying distribution of the random variables involved.</p>
+<ul class="simple">
+<li><p>A <a class="reference external" href="https://en.wikipedia.org/wiki/Random_variable">random variable</a> is a variable <span class="math notranslate nohighlight">\(X\)</span> that takes on different values <span class="math notranslate nohighlight">\(x\)</span> according to the outcome of a random event or process. There are two types of random variables: discrete random variables and continuous random variables. Discrete random variables can take on a countable number of distinct values, while continuous random variables can take on any value in a continuous range.</p></li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Probability">Probability</a> measures the likelihood that a particular event or outcome will occur and is commonly used to quantify uncertainty in various fields, such as science, engineering, economics, and finance. For a discrete random variable, the likelihood that <span class="math notranslate nohighlight">\(X=x\)</span> is described by a <a class="reference external" href="https://en.wikipedia.org/wiki/Probability_mass_function">Probability Mass Function (PMF)</a> and a <a class="reference external" href="https://en.wikipedia.org/wiki/Probability_density_function">Probability Density Function (PDF)</a> for continuous random variables.</p></li>
+</ul>
+<section id="probability-spaces">
+<span id="content-references-probability"></span><h2>Probability spaces<a class="headerlink" href="#probability-spaces" title="Permalink to this headline">#</a></h2>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/Frequentist_probability">Frequentists</a> argue that probability is the relative frequency or propensity of a particular outcome in the set of all possible outcomes. On the other hand, <a class="reference external" href="https://en.wikipedia.org/wiki/Bayesian_probability">Bayesians</a> argue that probability is a subjective belief. The context of your problem will typically suggest which perspective to use. For example, when you have a shortage of data, a Bayesian approach allows you to use prior knowledge or belief. On the other hand, when in a data-rich environment, a <a class="reference external" href="https://en.wikipedia.org/wiki/Frequentist_probability">frequentist</a> approach calculates the probability of an event directly from the data, along with confidence intervals on your estimate.</p>
+<p>Whether you prefer the <a class="reference external" href="https://en.wikipedia.org/wiki/Frequentist_probability">frequentist’s</a> or the <a class="reference external" href="https://en.wikipedia.org/wiki/Bayesian_probability">Bayesian view</a>, there is a more fundamental notion of probability thanks to <a class="reference external" href="https://en.wikipedia.org/wiki/Andrey_Kolmogorov">Andrey Kolmogorov</a>, namely, the probability is a measure of the size of a set (<a class="reference internal" href="#defn-prob-space-kolmogorov">Definition 36</a>):</p>
+<div class="proof definition admonition" id="defn-prob-space-kolmogorov">
+<p class="admonition-title"><span class="caption-number">Definition 36 </span> (Probability space)</p>
+<section class="definition-content" id="proof-content">
+<p>A probability space is described by the tuple of objects <span class="math notranslate nohighlight">\((\Omega,\mathcal{F},P)\)</span>:</p>
+<ul class="simple">
+<li><p>The sample space <span class="math notranslate nohighlight">\(\Omega\)</span> holds the set of all possible outcomes from an experiment.</p></li>
+<li><p>The event space <span class="math notranslate nohighlight">\(\mathcal{F}\)</span> is the collection of all possible events. An event <span class="math notranslate nohighlight">\(E\)</span> is a subset in <span class="math notranslate nohighlight">\(\Omega\)</span> that defines an outcome or a combination of outcomes.</p></li>
+<li><p>The probability law <span class="math notranslate nohighlight">\(P\)</span> is a mapping from an event <span class="math notranslate nohighlight">\(E\)</span> to a number <span class="math notranslate nohighlight">\(P(E)\)</span> which, measures the <em>size</em> of the event <span class="math notranslate nohighlight">\(E\)</span>.</p></li>
+</ul>
+</section>
+</div><p>The sample space and the event space are all based on statements, for example, getting a head when flipping a coin, winning the game, or drawing a card, etc. These statements are not numbers; how do we convert a statement to a number? The answer is a random variable; random variables are mappings from events to numbers, these numbers are probabilities.</p>
+<section id="sample-space-omega">
+<h3>Sample space <span class="math notranslate nohighlight">\(\Omega\)</span><a class="headerlink" href="#sample-space-omega" title="Permalink to this headline">#</a></h3>
+<p>Given an experiment, the sample space <span class="math notranslate nohighlight">\(\Omega\)</span> is the set containing all possible outcomes of that experiment. These outcomes can be numbers, alphabets, vectors, or functions, as well as, images, videos, EEG signals, audio speeches, etc.</p>
+<p>Let’s consider an example of a six sided dice (<a class="reference internal" href="#ex-sample-space-dice">Example 32</a>):</p>
+<div class="proof example dropdown admonition" id="ex-sample-space-dice">
+<p class="admonition-title"><span class="caption-number">Example 32 </span> (Sample space <span class="math notranslate nohighlight">\(\Omega\)</span> of six sided dice)</p>
+<section class="example-content" id="proof-content">
+<p>Suppose we were intersted in the outcome of experiment where a six sided dice was rolled on time.
+Then the sample space for this experiment <span class="math notranslate nohighlight">\(\Omega\)</span> is given by:</p>
+<div class="math notranslate nohighlight">
+\[\Omega=\left\{1,2,3,4,5,6\right\}\]</div>
+<p>The <a class="reference external" href="https://en.wikipedia.org/wiki/Cardinality">cardinality</a> of this sample space <span class="math notranslate nohighlight">\(\dim\left(\Omega\right) = 6\)</span>.</p>
+</section>
+</div></section>
+<section id="event-space-mathcal-f">
+<h3>Event space <span class="math notranslate nohighlight">\(\mathcal{F}\)</span><a class="headerlink" href="#event-space-mathcal-f" title="Permalink to this headline">#</a></h3>
+<p>The sample space <span class="math notranslate nohighlight">\(\Omega\)</span> contains all the possible outcomes of an experiment.
+However, we may not be interested in an individual outcome.
+Rather we may be interested in combinations of individual outcomes where the elements of these sets share some common trait, e.g., even integers or the collection of face cards, etc. These subsets are called events <span class="math notranslate nohighlight">\(E\subseteq\Omega\)</span>, and the set of all possible events, denoted as <span class="math notranslate nohighlight">\(\mathcal{F}\)</span>, is called the event space.
+Thus, the event space <span class="math notranslate nohighlight">\(\mathcal{F}\)</span> is a particular set of sets; it’s the set of all possible subsets.</p>
+<p>Let’s enumerate the event space for the four suits of a typical deck of cards (<a class="reference internal" href="#ex-event-card-suits">Example 33</a>):</p>
+<div class="proof example dropdown admonition" id="ex-event-card-suits">
+<p class="admonition-title"><span class="caption-number">Example 33 </span> (Enumerate the event space <span class="math notranslate nohighlight">\(\mathcal{F}\)</span> )</p>
+<section class="example-content" id="proof-content">
+<p>Construct the event space <span class="math notranslate nohighlight">\(\mathcal{F}\)</span> for the sample space <span class="math notranslate nohighlight">\(\Omega=\left\{\clubsuit, \diamondsuit, \heartsuit, \spadesuit\right\}\)</span>. The cardinality of <span class="math notranslate nohighlight">\(\Omega\)</span> is <span class="math notranslate nohighlight">\(\dim\left(\Omega\right) = 4\)</span>.</p>
+<p><strong>Solution</strong>: The <span class="math notranslate nohighlight">\(\dim(\mathcal{F}) = 2^n\)</span> where the elements of <span class="math notranslate nohighlight">\(\mathcal{F}\)</span> correspond to the first <span class="math notranslate nohighlight">\(\dim(\Omega)\)</span> digits of the binary representation of the integers <span class="math notranslate nohighlight">\(i=0,\dots,\dim(\mathcal{F})-1\)</span>. For example, the bitstring <code class="docutils literal notranslate"><span class="pre">0000</span></code>, which corresponds to <span class="math notranslate nohighlight">\(i=0\)</span>, represents the empty set <span class="math notranslate nohighlight">\(\emptyset\)</span> while the bitstring <code class="docutils literal notranslate"><span class="pre">1111</span></code>, which corresponds to <span class="math notranslate nohighlight">\(i=15\)</span>, corresponds to <span class="math notranslate nohighlight">\(\left\{\clubsuit, \diamondsuit, \heartsuit, \spadesuit\right\}\)</span>.</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>index</p></th>
+<th class="head"><p>bitstring</p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(x\in\mathcal{F}\)</span></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0000</span></code></p></td>
+<td><p><span class="math notranslate nohighlight">\(\emptyset\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0001</span></code></p></td>
+<td><p><span class="math notranslate nohighlight">\(\left\{\spadesuit\right\}\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0010</span></code></p></td>
+<td><p><span class="math notranslate nohighlight">\(\left\{\heartsuit\right\}\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>3</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0011</span></code></p></td>
+<td><p><span class="math notranslate nohighlight">\(\left\{\heartsuit, \spadesuit\right\}\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p>.</p></td>
+<td><p>….</p></td>
+<td><p>…</p></td>
+</tr>
+<tr class="row-odd"><td><p>9</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">1001</span></code></p></td>
+<td><p><span class="math notranslate nohighlight">\(\left\{\clubsuit, \spadesuit\right\}\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p>.</p></td>
+<td><p>….</p></td>
+<td><p>…</p></td>
+</tr>
+<tr class="row-odd"><td><p>14</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">1110</span></code></p></td>
+<td><p><span class="math notranslate nohighlight">\(\left\{\clubsuit, \diamondsuit, \heartsuit\right\}\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p>15</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">1111</span></code></p></td>
+<td><p><span class="math notranslate nohighlight">\(\left\{\clubsuit, \diamondsuit, \heartsuit, \spadesuit\right\}\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</div></section>
+<section id="probability-law-p">
+<h3>Probability law <span class="math notranslate nohighlight">\(P\)</span><a class="headerlink" href="#probability-law-p" title="Permalink to this headline">#</a></h3>
+<p>A probability law <span class="math notranslate nohighlight">\(P\)</span> is a function <span class="math notranslate nohighlight">\(P\)</span> : <span class="math notranslate nohighlight">\(\mathcal{F}\rightarrow\left[0, 1\right]\)</span>;
+the function <span class="math notranslate nohighlight">\(P\)</span> maps an event (set) <span class="math notranslate nohighlight">\(E\subseteq\Omega\)</span> to a real number in <span class="math notranslate nohighlight">\(\left[0, 1\right]\)</span>.
+The definition above does not specify how an event <span class="math notranslate nohighlight">\(E\subseteq\Omega\)</span> is being mapped to a number.
+However, since probability is a measure of the size of a set, a meaningful probability law <span class="math notranslate nohighlight">\(P\)</span> should be consistent for all <span class="math notranslate nohighlight">\(E\subseteq\Omega\)</span>.</p>
+<p>This requires rules, known as the axioms of probability (<a class="reference internal" href="#axiom-probability">Axiom 1</a>):</p>
+<div class="proof axiom admonition" id="axiom-probability">
+<p class="admonition-title"><span class="caption-number">Axiom 1 </span> (Axioms of Probability)</p>
+<section class="axiom-content" id="proof-content">
+<p>A probability law <span class="math notranslate nohighlight">\(P\)</span> is a function <span class="math notranslate nohighlight">\(P:\mathcal{F}\rightarrow\left[0, 1\right]\)</span> that maps an event <span class="math notranslate nohighlight">\(E\subseteq\Omega\)</span>
+to a real number on the interval <span class="math notranslate nohighlight">\(\left[0, 1\right]\)</span>. The function <span class="math notranslate nohighlight">\(P\)</span> must satisfy the three axioms of probability:</p>
+<ul class="simple">
+<li><p>Non-negativity: <span class="math notranslate nohighlight">\(P(E)\geq{0}\)</span>, for any <span class="math notranslate nohighlight">\(E\in\mathcal{F}\)</span></p></li>
+<li><p>Normalization: <span class="math notranslate nohighlight">\(P(\Omega)=1\)</span></p></li>
+<li><p>Additivity: For any disjoint event sets <span class="math notranslate nohighlight">\(\left\{E_{1}, E_{2}, \dots, E_{n}\right\}\)</span> then <span class="math notranslate nohighlight">\(P\left(\bigcup_{i=1}^{n}E_{i}\right) = 
+\sum_{i=1}^{n}P(E_{i})\)</span></p></li>
+</ul>
+</section>
+</div></section>
+<section id="conditional-probability">
+<h3>Conditional Probability<a class="headerlink" href="#conditional-probability" title="Permalink to this headline">#</a></h3>
+<p>The motivation of conditional probability is to restrict the probability to a subevent happening in the sample space. If B has happened, the probability for A to also happen is P[A∩B]/P[B]. If two events are not influencing each other, then we say that A and B are independent.</p>
+<section id="independence-versus-disjoint">
+<h4>Independence versus Disjoint<a class="headerlink" href="#independence-versus-disjoint" title="Permalink to this headline">#</a></h4>
+<p>Conditional probability deals with situations where two events, <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span>, are related.  However, what if the two events are unrelated, i.e., information about one event says nothing about the second event? In this case, the events <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span> are independent (<a class="reference internal" href="#defn-independence">Definition 37</a>):</p>
+<div class="proof definition admonition" id="defn-independence">
+<p class="admonition-title"><span class="caption-number">Definition 37 </span> (Statistical independence of events)</p>
+<section class="definition-content" id="proof-content">
+<p>Two events A and B are statistically independent if:</p>
+<div class="math notranslate nohighlight">
+\[P\left(A\cap{B}\right) = P(A)P(B)\]</div>
+</section>
+</div><p>However, independence says nothing about whether two events are disjoint. Suppose events <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span> were disjoint, then we know that <span class="math notranslate nohighlight">\(A\cap{B} = 0\)</span> and:</p>
+<div class="math notranslate nohighlight">
+\[P\left(A\cap{B}\right) = 0\]</div>
+<p>But, this says nothing about whether <span class="math notranslate nohighlight">\(P(A\cap{B})\)</span> can be factorized into the product <span class="math notranslate nohighlight">\(P(A)P(B)\)</span>.
+The only case when disjoint implies independence is if either <span class="math notranslate nohighlight">\(P(A) = 0\)</span> or <span class="math notranslate nohighlight">\(P(B) = 0\)</span>.</p>
+</section>
+</section>
+<section id="bayes-theorem">
+<h3>Bayes’ theorem<a class="headerlink" href="#bayes-theorem" title="Permalink to this headline">#</a></h3>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/Bayes%27_theorem">Bayes’ theorem</a>, named after <a class="reference external" href="https://en.wikipedia.org/wiki/Thomas_Bayes">Thomas Bayes</a>, describes the likelihood of an event based on prior knowledge of conditions related to the event (<a class="reference internal" href="#bayes-theorem">Theorem 1</a>):</p>
+<div class="proof theorem admonition" id="bayes-theorem">
+<p class="admonition-title"><span class="caption-number">Theorem 1 </span> (Bayes’ theorem)</p>
+<section class="theorem-content" id="proof-content">
+<p>For any two events <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span> where <span class="math notranslate nohighlight">\(P(A) &gt; 0\)</span> and <span class="math notranslate nohighlight">\(P(B) &gt; 0\)</span>, the conditional probability <span class="math notranslate nohighlight">\(P(A\vert{B})\)</span> is given by:</p>
+<div class="math notranslate nohighlight">
+\[P(A\vert{B}) = \frac{P\left(A\cap{B}\right)}{P\left(B\right)}\]</div>
+</section>
+</div><p>Bayes’ theorem provides two views of the intersection <span class="math notranslate nohighlight">\(P\left(A\cap{B}\right)\)</span> using two different conditional probabilities. To see this, we use the fact that the order of the events <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span> is arbitrary:</p>
+<div class="math notranslate nohighlight">
+\[P(A\,\vert{B})P(B) = P(B\,\vert{A})P(A) = P(A \cap B)\]</div>
+<p>Thus, Bayes’ theorem offers a mechanism to interconvert <span class="math notranslate nohighlight">\(P(A\vert{B})\)</span> and <span class="math notranslate nohighlight">\(P(B\vert{A})\)</span>.</p>
+</section>
+<section id="law-of-total-probability">
+<h3>Law of Total Probability<a class="headerlink" href="#law-of-total-probability" title="Permalink to this headline">#</a></h3>
+<p>The law of total probability is a fundamental concept in probability theory that allows us to compute the probability of an event by considering all the possible ways in which it can occur (<a class="reference internal" href="#defn-law-total-probability">Theorem 2</a>):</p>
+<div class="proof theorem admonition" id="defn-law-total-probability">
+<p class="admonition-title"><span class="caption-number">Theorem 2 </span> (Law of Total Probability)</p>
+<section class="theorem-content" id="proof-content">
+<p>Let <span class="math notranslate nohighlight">\(\left\{A_{1},\dots,A_{n}\right\}\)</span> be a partition of the sample space <span class="math notranslate nohighlight">\(\Omega\)</span> where the
+partitions <span class="math notranslate nohighlight">\(A_{\star}\)</span> are disjoint and <span class="math notranslate nohighlight">\(\Omega=A_{1}\cup{A_{2}}\cup\dots\cup{A_{n}}\)</span>.
+Then for <span class="math notranslate nohighlight">\(B\subseteq\Omega\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[P(B) = \sum_{i=1}^{n}P\left(B\,\vert{A_{i}}\right)P\left(A_{i}\right)\]</div>
+</section>
+</div></section>
+<section id="probability-mass-functions">
+<h3>Probability mass functions<a class="headerlink" href="#probability-mass-functions" title="Permalink to this headline">#</a></h3>
+<p>In the case of discrete random variables, for example, dice roles, coin flips etc, the likelihood that <span class="math notranslate nohighlight">\(X=x\)</span> is described by a <a class="reference external" href="https://en.wikipedia.org/wiki/Probability_mass_function">Probability Mass Function (PMF)</a> (<a class="reference internal" href="#defn-pmf">Definition 38</a>):</p>
+<div class="proof definition admonition" id="defn-pmf">
+<p class="admonition-title"><span class="caption-number">Definition 38 </span> (Probability Mass Function)</p>
+<section class="definition-content" id="proof-content">
+<p>The probability mass function (PMF) of a discrete random variable <span class="math notranslate nohighlight">\(X\)</span> is a function that specifies the probability of obtaining <span class="math notranslate nohighlight">\(X = x\)</span>, where <span class="math notranslate nohighlight">\(x\)</span> is a particular event in the set of possible events we’re interested in <span class="math notranslate nohighlight">\(\mathcal{F}\subseteq{X\left(\Omega\right)}\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[p_{X}(x) = P\left(X=x\right)\]</div>
+<p>where <span class="math notranslate nohighlight">\(\mathcal{F}\)</span> is the event space, and <span class="math notranslate nohighlight">\(\Omega\)</span> is the sample space. A probability mass function must satisfy the condition:</p>
+<div class="math notranslate nohighlight">
+\[\sum_{x\in{X(\Omega)}}p_{X}(x)=1\]</div>
+</section>
+</div><p>Thus, in the context of the <a class="reference external" href="https://en.wikipedia.org/wiki/Von_Neumann%E2%80%93Morgenstern_utility_theorem">von Neumann-Morgenstern theorem</a>, the probability mass function is a weight for discrete random variables which model uncertain payoffs.</p>
+<p>In <a class="reference external" href="https://julialang.org">Julia</a>, probability mass (or density) functions can be constructed and sampled using the <a class="reference external" href="https://juliastats.org/Distributions.jl/stable/">Distributions.jl</a> package. Let’s look at a few common probability mass functions.</p>
+<section id="bernoulli-random-variable">
+<h4>Bernoulli random variable<a class="headerlink" href="#bernoulli-random-variable" title="Permalink to this headline">#</a></h4>
+<p>A Bernoulli random variable, the simplest random variable, models a coin flip or some other type of binary
+outcome (<a class="reference internal" href="#defn-pmf-bernouli">Definition 39</a>):</p>
+<div class="proof definition admonition" id="defn-pmf-bernouli">
+<p class="admonition-title"><span class="caption-number">Definition 39 </span> (Bernoulli Random Variable)</p>
+<section class="definition-content" id="proof-content">
+<p>Let <span class="math notranslate nohighlight">\(X\)</span> be a Bernoulli random variable. Then, the probability mass function of <span class="math notranslate nohighlight">\(X\)</span> is given by:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}p_{X}(x) =
+\begin{cases}
+  p &amp; \text{if } x = 1 \\
+  1 - p &amp; \text{if } x = 0
+\end{cases}\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(0&lt;p&lt;1\)</span> is called the Bernoulli parameter. For a Bernoulli random variable <span class="math notranslate nohighlight">\(X(\Omega) \in [0,1]\)</span> the expectation is given by:</p>
+<div class="math notranslate nohighlight">
+\[\mathbb{E}\left[X\right] = p\]</div>
+<p>while the variance <span class="math notranslate nohighlight">\(\text{Var}(X)\)</span> is given by:</p>
+<div class="math notranslate nohighlight">
+\[\text{Var}\left[X\right] = p(1-p)\]</div>
+</section>
+</div><p>Bernoulli random variables, named after the Swiss mathematician <a class="reference external" href="https://en.wikipedia.org/wiki/Jacob_Bernoulli">Jacob Bernoulli</a>, have two states: either <code class="docutils literal notranslate"><span class="pre">1</span></code> or <code class="docutils literal notranslate"><span class="pre">0</span></code>. The probability of getting <code class="docutils literal notranslate"><span class="pre">1</span></code> is <span class="math notranslate nohighlight">\(p\)</span>, while the likelihood of getting a value of <code class="docutils literal notranslate"><span class="pre">0</span></code> is <span class="math notranslate nohighlight">\(1 − p\)</span>. Bernoulli random variables model many binary events: coin flips (H or T), binary bits (1 or 0), true or false, yes or no, present or absent, etc.</p>
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># load the distributions package, and some other stuff</span>
+<span class="k">using</span> <span class="n">Distributions</span>
+<span class="k">using</span> <span class="n">Statistics</span>
+<span class="k">using</span> <span class="n">PrettyTables</span>
+
+<span class="c"># Details of Bernoulli distribution: </span>
+<span class="c"># https://juliastats.org/Distributions.jl/stable/univariate/#Discrete-Distributions</span>
+
+<span class="c"># setup constants -</span>
+<span class="n">p</span> <span class="o">=</span> <span class="mf">0.64</span><span class="p">;</span>
+<span class="n">number_of_samples</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span>
+
+<span class="c"># build a Bernoulli distribution</span>
+<span class="n">d</span> <span class="o">=</span> <span class="n">Bernoulli</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+
+<span class="c"># sample (check expectation, and variance)</span>
+<span class="n">samples</span> <span class="o">=</span> <span class="n">rand</span><span class="p">(</span><span class="n">d</span><span class="p">,</span><span class="n">number_of_samples</span><span class="p">);</span>
+
+<span class="c"># build a table -</span>
+<span class="n">data_for_table</span> <span class="o">=</span> <span class="kt">Array</span><span class="p">{</span><span class="kt">Any</span><span class="p">,</span><span class="mi">2</span><span class="p">}(</span><span class="nb">undef</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">table_header</span> <span class="o">=</span> <span class="p">[</span><span class="s">&quot;&quot;</span><span class="p">,</span> <span class="s">&quot;E(X)&quot;</span><span class="p">,</span> <span class="s">&quot;Var(X)&quot;</span><span class="p">]</span>
+
+<span class="c"># row 1: model</span>
+<span class="n">data_for_table</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="s">&quot;model&quot;</span>
+<span class="n">data_for_table</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">mean</span><span class="p">(</span><span class="n">d</span><span class="p">);</span>
+<span class="n">data_for_table</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="n">var</span><span class="p">(</span><span class="n">d</span><span class="p">);</span>
+
+<span class="c"># row 2: samples</span>
+<span class="n">data_for_table</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="s">&quot;samples&quot;</span>
+<span class="n">data_for_table</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">mean</span><span class="p">(</span><span class="n">samples</span><span class="p">);</span>
+<span class="n">data_for_table</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="n">var</span><span class="p">(</span><span class="n">samples</span><span class="p">);</span>
+<span class="n">pretty_table</span><span class="p">(</span><span class="n">data_for_table</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="n">table_header</span><span class="p">);</span>
+</pre></div>
+</div>
+</section>
+<section id="binomial-random-variable">
+<h4>Binomial random variable<a class="headerlink" href="#binomial-random-variable" title="Permalink to this headline">#</a></h4>
+<p>The binomial distribution is the probability of getting exactly <span class="math notranslate nohighlight">\(k\)</span> successes in <span class="math notranslate nohighlight">\(n\)</span> independent Bernoulli trials, e.g., the chance of getting four heads in 6 coin tosses (<a class="reference internal" href="#defn-pmf-binomial">Definition 40</a>):</p>
+<div class="proof definition admonition" id="defn-pmf-binomial">
+<p class="admonition-title"><span class="caption-number">Definition 40 </span> (Binomial Random Variable)</p>
+<section class="definition-content" id="proof-content">
+<p>Suppose we perform repeated Bernoulli trials <span class="math notranslate nohighlight">\(X(\Omega) \in [0,1]^n\)</span>, i.e., <span class="math notranslate nohighlight">\(n\)</span> trials of an independent binary experiment. The probability of getting exactly <span class="math notranslate nohighlight">\(k\)</span> successes in <span class="math notranslate nohighlight">\(n\)</span> independent Bernoulli trials is governed by the binomial probability mass function:</p>
+<div class="math notranslate nohighlight">
+\[p_{X}(k) = \binom{n}{k}p^{k}\left(1-p\right)^{n-k}\qquad{k=0,1,\dots,n}\]</div>
+<p>where <span class="math notranslate nohighlight">\(k\)</span> denotes the number of successes in <span class="math notranslate nohighlight">\(n\)</span> independent experiments, the binomial parameter <span class="math notranslate nohighlight">\(0&lt;p&lt;1\)</span> is the probability
+of a successful trial and:</p>
+<div class="math notranslate nohighlight">
+\[\binom{n}{k} = \frac{n!}{k!\left(n-k\right)!}\]</div>
+<p>is the binomial coefficient. The expectation of a binomial random variable is given by:</p>
+<div class="math notranslate nohighlight">
+\[\mathbb{E}\left[X\right] = np\]</div>
+<p>while the variance <span class="math notranslate nohighlight">\(\text{Var}(X)\)</span> is given by:</p>
+<div class="math notranslate nohighlight">
+\[\text{Var}\left[X\right] = np(1-p)\]</div>
+</section>
+</div><div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># load the distributions package, and some other stuff</span>
+<span class="k">using</span> <span class="n">Distributions</span>
+<span class="k">using</span> <span class="n">Statistics</span>
+<span class="k">using</span> <span class="n">PrettyTables</span>
+
+<span class="c"># Details of Binomial distribution: </span>
+<span class="c"># https://juliastats.org/Distributions.jl/stable/univariate/#Distributions.Binomial</span>
+
+<span class="c"># setup constants -</span>
+<span class="n">number_of_trials</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span>
+<span class="n">p</span> <span class="o">=</span> <span class="mf">0.64</span><span class="p">;</span>
+<span class="n">number_of_samples</span> <span class="o">=</span> <span class="mi">100</span><span class="p">;</span>
+
+<span class="c"># build a Bernoulli distribution</span>
+<span class="n">d</span> <span class="o">=</span> <span class="n">Binomial</span><span class="p">(</span><span class="n">number_of_trials</span><span class="p">,</span><span class="n">p</span><span class="p">)</span>
+
+<span class="c"># sample (check expectation, and variance)</span>
+<span class="n">samples</span> <span class="o">=</span> <span class="n">rand</span><span class="p">(</span><span class="n">d</span><span class="p">,</span><span class="n">number_of_samples</span><span class="p">);</span>
+
+<span class="c"># build a table -</span>
+<span class="n">data_for_table</span> <span class="o">=</span> <span class="kt">Array</span><span class="p">{</span><span class="kt">Any</span><span class="p">,</span><span class="mi">2</span><span class="p">}(</span><span class="nb">undef</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">table_header</span> <span class="o">=</span> <span class="p">[</span><span class="s">&quot;&quot;</span><span class="p">,</span> <span class="s">&quot;E(X)&quot;</span><span class="p">,</span> <span class="s">&quot;Var(X)&quot;</span><span class="p">]</span>
+
+<span class="c"># row 1: model</span>
+<span class="n">data_for_table</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="s">&quot;model&quot;</span>
+<span class="n">data_for_table</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">mean</span><span class="p">(</span><span class="n">d</span><span class="p">);</span>
+<span class="n">data_for_table</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="n">var</span><span class="p">(</span><span class="n">d</span><span class="p">);</span>
+
+<span class="c"># row 2: samples</span>
+<span class="n">data_for_table</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="s">&quot;samples&quot;</span>
+<span class="n">data_for_table</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">mean</span><span class="p">(</span><span class="n">samples</span><span class="p">);</span>
+<span class="n">data_for_table</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="n">var</span><span class="p">(</span><span class="n">samples</span><span class="p">);</span>
+<span class="n">pretty_table</span><span class="p">(</span><span class="n">data_for_table</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="n">table_header</span><span class="p">);</span>
+</pre></div>
+</div>
+</section>
+<section id="geometric-random-variable">
+<h4>Geometric random variable<a class="headerlink" href="#geometric-random-variable" title="Permalink to this headline">#</a></h4>
+<p>Geometric random variables are a type of discrete probability distribution that models the number of trials required to obtain the first success in a sequence of independent Bernoulli trials (<a class="reference internal" href="#defn-pmf-geometric">Definition 41</a>):</p>
+<div class="proof definition admonition" id="defn-pmf-geometric">
+<p class="admonition-title"><span class="caption-number">Definition 41 </span> (Geometric Random Variable)</p>
+<section class="definition-content" id="proof-content">
+<p>Let <span class="math notranslate nohighlight">\(X\)</span> be a geometric random variable. The probability mass function for a geometric random variable is given by:</p>
+<div class="math notranslate nohighlight">
+\[p_{X}(k) = (1-p)^{(k-1)}p\qquad{k=1,2,\dots}\]</div>
+<p>where <span class="math notranslate nohighlight">\(p\)</span> denotes the geometric parameter <span class="math notranslate nohighlight">\(0&lt;p&lt;1\)</span>. The expectation of a geometric random variable <span class="math notranslate nohighlight">\(X\)</span> is given by:</p>
+<div class="math notranslate nohighlight">
+\[\mathbb{E}\left[X\right] = \frac{1}{p}\]</div>
+<p>while the variance <span class="math notranslate nohighlight">\(\text{Var}(X)\)</span> is given by:</p>
+<div class="math notranslate nohighlight">
+\[\text{Var}\left[X\right] = \frac{1-p}{p^2}\]</div>
+</section>
+</div></section>
+<section id="poisson-random-variable">
+<h4>Poisson random variable<a class="headerlink" href="#poisson-random-variable" title="Permalink to this headline">#</a></h4>
+<p>Poisson random variables are a type of discrete probability distribution that models the number of occurrences of an event in a fixed interval of time or space (<a class="reference internal" href="#defn-pmf-poisson">Definition 42</a>):</p>
+<div class="proof definition admonition" id="defn-pmf-poisson">
+<p class="admonition-title"><span class="caption-number">Definition 42 </span> (Poisson Random Variable)</p>
+<section class="definition-content" id="proof-content">
+<p>Let <span class="math notranslate nohighlight">\(X\)</span> be a Poisson random variable. The probability mass function for a Poisson random variable is given by:</p>
+<div class="math notranslate nohighlight">
+\[p_{X}(x) = \frac{\lambda^{x}}{x!}\exp\left(-\lambda\right)\]</div>
+<p>where <span class="math notranslate nohighlight">\(\lambda&gt;0\)</span> denotes the Poisson parameter, and <span class="math notranslate nohighlight">\(!\)</span> denotes the factorial function. The expectation of a Poisson random variable <span class="math notranslate nohighlight">\(X\)</span> is given by:</p>
+<div class="math notranslate nohighlight">
+\[\mathbb{E}\left[X\right] = \lambda\]</div>
+<p>while the variance <span class="math notranslate nohighlight">\(\text{Var}(X)\)</span> is given by:</p>
+<div class="math notranslate nohighlight">
+\[\text{Var}\left[X\right] = \lambda\]</div>
+</section>
+</div><p>Poisson random variables estimate how likely something will happen <span class="math notranslate nohighlight">\(x\)</span> number of times in a fixed interval, e.g., the number of car crashes in a city of a given size or the number of cheeseburgers sold at a fast-food chain on a Friday night.</p>
+</section>
+</section>
+</section>
+<section id="moments-of-a-random-variable">
+<h2>Moments of a random variable<a class="headerlink" href="#moments-of-a-random-variable" title="Permalink to this headline">#</a></h2>
+<p>Moments of a random variable are a way to summarize its distribution and provide important information about its properties. Specifically, moments are mathematical quantities that describe the shape, center, and spread of a distribution, and they can be used to calculate other statistical measures such as variance and skewness.Let’s look at the first and second moments of a random variable, namely the <a class="reference internal" href="#content-references-random-variable-expectation"><span class="std std-ref">Expectation</span></a> and the <a class="reference internal" href="#content-references-random-variable-variance"><span class="std std-ref">Variance</span></a>.</p>
+<section id="expectation">
+<span id="content-references-random-variable-expectation"></span><h3>Expectation<a class="headerlink" href="#expectation" title="Permalink to this headline">#</a></h3>
+<p>The <a class="reference external" href="https://en.wikipedia.org/wiki/Expected_value">expectation</a> of a discrete random variable <span class="math notranslate nohighlight">\(X\)</span> measures the central tendency of the values of that random variable (<a class="reference internal" href="#defn-discrete-random-variable-expectation">Definition 43</a>):</p>
+<div class="proof definition admonition" id="defn-discrete-random-variable-expectation">
+<p class="admonition-title"><span class="caption-number">Definition 43 </span> (Expectation discrete random variable)</p>
+<section class="definition-content" id="proof-content">
+<p>Let <span class="math notranslate nohighlight">\(X\)</span> denote a discrete random variable with the probability space <span class="math notranslate nohighlight">\(\left(\Omega,\mathcal{F}, P\right)\)</span>, where <span class="math notranslate nohighlight">\(\Omega\)</span> denotes the sample space, <span class="math notranslate nohighlight">\(\mathcal{F}\)</span> denotes the event space, and <span class="math notranslate nohighlight">\(P\)</span> denotes the probability measure. Then, the expected value of the random variable <span class="math notranslate nohighlight">\(X\)</span> is given by:</p>
+<div class="math notranslate nohighlight" id="equation-eqn-expectation">
+<span class="eqno">(60)<a class="headerlink" href="#equation-eqn-expectation" title="Permalink to this equation">#</a></span>\[\mathbb{E}\left[X\right] = \sum_{x\in\Omega}xp_{X}(x)\]</div>
+<p>where <span class="math notranslate nohighlight">\(x\)</span> denotes a value for the discrete random variable <span class="math notranslate nohighlight">\(X\)</span>, and <span class="math notranslate nohighlight">\(p_{X}(x)\)</span> denotes the probability of <span class="math notranslate nohighlight">\(X=x\)</span>. The value of <span class="math notranslate nohighlight">\(p_{X}(x)\)</span> is governed by a <a class="reference external" href="https://en.wikipedia.org/wiki/Probability_mass_function">Probability Mass Function (PMF)</a>.</p>
+</section>
+</div><p>The expectation of a discrete random variable has a few interesting properties (<a class="reference internal" href="#obs-expectation-props">Observation 9</a>):</p>
+<div class="proof observation admonition" id="obs-expectation-props">
+<p class="admonition-title"><span class="caption-number">Observation 9 </span> (Properties of expectation)</p>
+<section class="observation-content" id="proof-content">
+<p>The expectation of a random variable <span class="math notranslate nohighlight">\(X\)</span> has several useful (and important) properties:</p>
+<ol class="arabic simple">
+<li><p><span class="math notranslate nohighlight">\(\mathbb{E}\left(c\right) = c\)</span> for any constant <span class="math notranslate nohighlight">\(c\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\mathbb{E}\left(cX\right) = c\times\mathbb{E}\left(X\right)\)</span> for any constant <span class="math notranslate nohighlight">\(c\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\mathbb{E}\left(g(X)\right) = \sum_{x\in{X(\Omega)}}g(x)p_{X}(x)\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\mathbb{E}\left(g(X)+h(X)\right) = \mathbb{E}(g(X)) + \mathbb{E}(h(X))\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\mathbb{E}\left(X+c\right) = \mathbb{E}(X) + c\)</span> for any constant <span class="math notranslate nohighlight">\(c\)</span></p></li>
+</ol>
+</section>
+</div></section>
+<section id="variance">
+<span id="content-references-random-variable-variance"></span><h3>Variance<a class="headerlink" href="#variance" title="Permalink to this headline">#</a></h3>
+<p>The <a class="reference external" href="https://en.wikipedia.org/wiki/Variance">variance</a> measures the expected dispersion for
+individual values of a random variable <span class="math notranslate nohighlight">\(X\)</span>, i.e., the average distance that values of <span class="math notranslate nohighlight">\(X\)</span> are spread out from their expected value (<a class="reference internal" href="#defn-discrete-random-variable-variance">Definition 44</a>):</p>
+<div class="proof definition admonition" id="defn-discrete-random-variable-variance">
+<p class="admonition-title"><span class="caption-number">Definition 44 </span> (Variance discrete random variable)</p>
+<section class="definition-content" id="proof-content">
+<p>Let <span class="math notranslate nohighlight">\(X\)</span> denote a discrete random variable with the probability space <span class="math notranslate nohighlight">\(\left(\Omega,\mathcal{F},P\right)\)</span>, where <span class="math notranslate nohighlight">\(\Omega\)</span> denotes the sample space, <span class="math notranslate nohighlight">\(\mathcal{F}\)</span> denotes the event space, and <span class="math notranslate nohighlight">\(P\)</span> denotes the probability measure. Then, the variance of the random variable <span class="math notranslate nohighlight">\(X\)</span> is given by:</p>
+<div class="math notranslate nohighlight" id="equation-eqn-variance">
+<span class="eqno">(61)<a class="headerlink" href="#equation-eqn-variance" title="Permalink to this equation">#</a></span>\[\text{Var}(X) = \mathbb{E}\Bigl[(X-\mu)^{2}\Bigr]\]</div>
+<p>where <span class="math notranslate nohighlight">\(\mu = \mathbb{E}(X)\)</span> denotes the expected value of the random variable <span class="math notranslate nohighlight">\(X\)</span>.</p>
+</section>
+</div><p>The variance of a discrete random variable has a few interesting properties (<a class="reference internal" href="#obs-variances-var">Observation 10</a>):</p>
+<div class="proof observation admonition" id="obs-variances-var">
+<p class="admonition-title"><span class="caption-number">Observation 10 </span> (Properties of variance)</p>
+<section class="observation-content" id="proof-content">
+<p>The variance of a random variable <span class="math notranslate nohighlight">\(X\)</span> has a few interesting (and important) properties:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\text{Var}(X) = \mathbb{E}\left(X^{2}\right) - \mathbb{E}\left(X\right)^2\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\text{Var}(cX) = {c^2}\text{Var}(X)\)</span> for any constant <span class="math notranslate nohighlight">\(c\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\text{Var}(X+c) = \text{Var}(X)\)</span> for any constant <span class="math notranslate nohighlight">\(c\)</span></p></li>
+</ul>
+</section>
+</div><p>The more common quantity that is used to measure dispersion, the standard deviation <span class="math notranslate nohighlight">\(\sigma\)</span>, is related to the variance: <span class="math notranslate nohighlight">\(\sigma_{X} = \sqrt{\text{Var}(X)}\)</span>.</p>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./appendix"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="appendix-landing.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Appendices</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="julia-installation.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Julia Installation</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#probability-spaces">Probability spaces</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sample-space-omega">Sample space <span class="math notranslate nohighlight">\(\Omega\)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#event-space-mathcal-f">Event space <span class="math notranslate nohighlight">\(\mathcal{F}\)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#probability-law-p">Probability law <span class="math notranslate nohighlight">\(P\)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conditional-probability">Conditional Probability</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#independence-versus-disjoint">Independence versus Disjoint</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bayes-theorem">Bayes’ theorem</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#law-of-total-probability">Law of Total Probability</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#probability-mass-functions">Probability mass functions</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bernoulli-random-variable">Bernoulli random variable</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#binomial-random-variable">Binomial random variable</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#geometric-random-variable">Geometric random variable</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#poisson-random-variable">Poisson random variable</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#moments-of-a-random-variable">Moments of a random variable</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#expectation">Expectation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#variance">Variance</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Varner and Woltornist
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

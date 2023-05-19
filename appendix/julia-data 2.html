@@ -1,0 +1,806 @@
+
+
+<!DOCTYPE html>
+
+
+<html >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Working with Data in Julia &#8212; CHEME 5660</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/myfile.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-PG1Y6R28LY"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-PG1Y6R28LY');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'appendix/julia-data';</script>
+    <link rel="canonical" href="https://varnerlab.github.io/CHEME-5660-Markets-Mayhem-Book/infrastructure.html/appendix/julia-data.html" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="References" href="../References.html" />
+    <link rel="prev" title="Introduction to Julia Basics" href="julia-basics.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="None"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../infrastructure.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/cornell_seal_simple_black-164.svg" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/cornell_seal_simple_black-164.svg" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../infrastructure.html">
+                    CHEME 5660: Financial Data, Markets, and Mayhem
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter-1-dir/chapter-1-landing.html">Unit 1. Financial Basics</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter-1-dir/assets.html">Interest, Cash Flows and Future Value</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter-1-dir/pfinance-basics.html">Personal Finance Basics</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter-2-dir/chapter-2-landing.html">Unit 2. Wealth Creation</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter-2-dir/bonds.html">Fixed Income Debt Securities</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter-2-dir/equity.html">Equity Securities</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../chapter-2-dir/contracts.html">Derivative Securities</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter-3-dir/chapter-3-landing.html">Unit 3. Portfolio Management</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter-3-dir/data-markowitz.html">Data-Driven Portfolio Theory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../chapter-3-dir/model-markowitz.html">Model-Driven Portfolio Theory</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../chapter-3-dir/hedged-portfolio.html">Hedged Portfolio Theory</a></li>
+
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter-4-dir/chapter-4-landing.html">Unit 4. Financial Decisions</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../chapter-4-dir/markov.html">Markov Chains</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../chapter-4-dir/mdp.html">Stochastic Sequential Decision Making</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../chapter-4-dir/bandits.html">Multiarm Bandit Problems</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../chapter-4-dir/rl.html">Reinforcement Learning</a></li>
+
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="appendix-landing.html">Appendices</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="random.html">Random variables and probability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="julia-installation.html">Julia Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="julia-basics.html">Introduction to Julia Basics</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Working with Data in Julia</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../References.html">References</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Book/issues/new?title=Issue%20on%20page%20%2Fappendix/julia-data.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/appendix/julia-data.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Working with Data in Julia</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comma-seperated-value-csv-files">Comma seperated value (CSV) files</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dataframes">DataFrames</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-are-dataframes-interesting">Why are DataFrames interesting?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reading-and-writing-dataframes">Reading and writing DataFrames</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-a-csv-file-into-a-dataframe">Loading a CSV file into a DataFrame</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#saving-a-dataframe-to-a-csv-file">Saving a DataFrame to a CSV file</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#binary-file-formats">Binary file formats</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#save">save</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#load">load</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="working-with-data-in-julia">
+<h1>Working with Data in Julia<a class="headerlink" href="#working-with-data-in-julia" title="Permalink to this headline">#</a></h1>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">#</a></h2>
+<p>Working with data is one of the most common tasks in any programming language, including <a class="reference external" href="https://julialang.org">Julia</a>. For example, loading data into a program, doing some calculations using that data, and then saving the results to a file (either locally or in the cloud) describes the majority of programs you will write in this course.</p>
+<p>There are various tools and approaches to reading and writing data files in <a class="reference external" href="https://julialang.org">Julia</a>. This chapter will consider a few common approaches and introduce some patterns for working with data files. In particular, we will:</p>
+<ul class="simple">
+<li><p>Introduce reading and writing <a class="reference internal" href="#content-references-julia-csv-files"><span class="std std-ref">Comma seperated value (CSV) files</span></a>, a common data format for numerical data files</p></li>
+<li><p>Introduce more expressive tools such as <a class="reference internal" href="#content-references-julia-dataframes"><span class="std std-ref">DataFrames</span></a>, which are in-memory tabular data structures</p></li>
+<li><p>Introduce reading and writing data in <a class="reference internal" href="#content-references-julia-binary-formats"><span class="std std-ref">Binary file formats</span></a>, a common approach for large data files and more complex data structures</p></li>
+</ul>
+<hr class="docutils" />
+</section>
+<section id="comma-seperated-value-csv-files">
+<span id="content-references-julia-csv-files"></span><h2>Comma seperated value (CSV) files<a class="headerlink" href="#comma-seperated-value-csv-files" title="Permalink to this headline">#</a></h2>
+<p>Arguably, the most widely used data file format for the universe of possible applications is the <a class="reference external" href="https://en.wikipedia.org/wiki/Comma-separated_values">comma separated value (CSV) format</a>. A CVS file is a delimited text file that uses a comma to separate data values. Each line of a CSV file is called a record, where each record consists of one or more fields (data values), separated by commas; hence the name comma separated value file.</p>
+<p>A CSV file is typically used to store tabular data (numbers and text) in plain text, where each line has the same number of fields. However, the CSV file format is not standardized. For example, column headers may or may not be present. Further, while separating fields in records with commas is standard, various exceptions and exceptional cases sometimes make CSV files problematic, e.g., fields with commas in the data or records with a variable number of fields can make working CSV files challenging.</p>
+<p>Fortunately, the applications we are interested in typically involve numerical <a class="reference external" href="https://en.wikipedia.org/wiki/Comma-separated_values">CSV files</a> that are easily handled using the <a class="reference external" href="https://github.com/JuliaData/CSV.jl">CSV.jl</a> package. The <a class="reference external" href="https://github.com/JuliaData/CSV.jl">CSV.jl</a> package can be downloaded and installed using the <a class="reference internal" href="julia-basics.html"><span class="doc std std-doc">Julia package manager</span></a>. To load the <code class="docutils literal notranslate"><span class="pre">CSV</span></code> package into your program, or the <a class="reference internal" href="julia-basics.html"><span class="doc std std-doc">REPL</span></a>, issue the <a class="reference external" href="https://docs.julialang.org/en/v1/base/base/#using">using</a> or <a class="reference external" href="https://docs.julialang.org/en/v1/base/base/#import">import</a> commands. Once loaded, the <code class="docutils literal notranslate"><span class="pre">CSV</span></code> package publishes several commands to read and write <a class="reference external" href="https://en.wikipedia.org/wiki/Comma-separated_values">CSV files</a>.</p>
+<p>The main methods exported by the <a class="reference external" href="https://github.com/JuliaData/CSV.jl">CSV.jl</a> package are the <a class="reference external" href="https://csv.juliadata.org/stable/reading.html#CSV.read">CVS.read</a> and <a class="reference external" href="https://csv.juliadata.org/stable/writing.html#CSV.write">CVS.write</a> methods.</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://csv.juliadata.org/stable/reading.html#CSV.read">CVS.read</a> allows the user to load a data file into one of several data structures</p></li>
+<li><p><a class="reference external" href="https://csv.juliadata.org/stable/writing.html#CSV.write">CVS.write</a> allows the user to write a tabular data structure to a CSV file.</p></li>
+</ul>
+<p>For most of the applications, we will be doing, the source and sink data structure will be <a class="reference external" href="https://dataframes.juliadata.org/stable/lib/types/#DataFrames.DataFrame">DataFrames</a>, a handy tabular data structure. Thus, we do not read (or write) a <a class="reference external" href="https://dataframes.juliadata.org/stable/lib/types/#DataFrames.DataFrame">DataFrame</a> directly; instead, we store it as (or read from) a CSV file.</p>
+</section>
+<section id="dataframes">
+<span id="content-references-julia-dataframes"></span><h2>DataFrames<a class="headerlink" href="#dataframes" title="Permalink to this headline">#</a></h2>
+<p><a class="reference external" href="https://github.com/JuliaData/DataFrames.jl">DataFrame.jl</a> is a <a class="reference external" href="https://julialang.org">Julia</a> package that provides tools for working with tabular data in <a class="reference external" href="https://julialang.org">Julia</a>, e.g., numerical data tables. The <a class="reference external" href="https://github.com/JuliaData/DataFrames.jl">DataFrame.jl</a> package can be downloaded and installed using the <a class="reference internal" href="julia-basics.html"><span class="doc std std-doc">Julia package manager</span></a>. To load the <code class="docutils literal notranslate"><span class="pre">DataFrames</span></code> package into your program, or the <a class="reference internal" href="julia-basics.html"><span class="doc std std-doc">REPL</span></a>, issue the <a class="reference external" href="https://docs.julialang.org/en/v1/base/base/#using">using</a> or <a class="reference external" href="https://docs.julialang.org/en/v1/base/base/#import">import</a> commands. Once the <code class="docutils literal notranslate"><span class="pre">DataFrames</span></code>  package is loaded, it publishes several commands to work with tabular data.</p>
+<p>Objects of type <a class="reference external" href="https://dataframes.juliadata.org/stable/lib/types/#DataFrames.DataFrame">DataFrame</a> represent data tables where each column corresponds vector of values. The simplest way to construct a <a class="reference external" href="https://dataframes.juliadata.org/stable/lib/types/#DataFrames.DataFrame">DataFrame</a> is to pass vectors holding the values for each column using keyword arguments or pairs:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># This example was reproduced from the DataFrames.jl package documentation</span>
+<span class="c"># https://dataframes.juliadata.org/stable/man/basics/#First-Steps-with-DataFrames.jl</span>
+
+<span class="c"># Load external packages</span>
+<span class="k">using</span> <span class="n">DataFrames</span>
+
+<span class="c"># build a sample DataFrame -&gt; store in variable df</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">DataFrame</span><span class="p">(</span><span class="n">A</span><span class="o">=</span><span class="mi">1</span><span class="o">:</span><span class="mi">4</span><span class="p">,</span> <span class="n">B</span><span class="o">=</span><span class="p">[</span><span class="s">&quot;M&quot;</span><span class="p">,</span> <span class="s">&quot;F&quot;</span><span class="p">,</span> <span class="s">&quot;F&quot;</span><span class="p">,</span> <span class="s">&quot;M&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span>ArgumentError: Package DataFrames not found in current path.
+- Run `import Pkg; Pkg.add(&quot;DataFrames&quot;)` to install the DataFrames package.
+
+Stacktrace:
+ [1] macro expansion
+   @ ./loading.jl:1595 [inlined]
+ [2] macro expansion
+   @ ./lock.jl:267 [inlined]
+ [3] require(into::Module, mod::Symbol)
+   @ Base ./loading.jl:1576
+</pre></div>
+</div>
+</div>
+</div>
+<p>A <a class="reference external" href="https://dataframes.juliadata.org/stable/lib/types/#DataFrames.DataFrame">DataFrame</a> can also be created from a <a class="reference external" href="https://docs.julialang.org/en/v1/base/collections/#Dictionaries">Dictionary</a>, where the column header names are constructed from the keys of the dictionary, and the column values are the data associated with each key:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># This example was reproduced from the DataFrames.jl package documentation</span>
+<span class="c"># https://dataframes.juliadata.org/stable/man/basics/#First-Steps-with-DataFrames.jl</span>
+
+<span class="c"># Load external packages</span>
+<span class="k">using</span> <span class="n">DataFrames</span>
+
+<span class="c"># create a dictionary w/data -&gt; variable dict</span>
+<span class="n">dict</span> <span class="o">=</span> <span class="kt">Dict</span><span class="p">(</span>
+  <span class="ss">:customer_age</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="mi">22</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">25</span><span class="p">],</span> 
+  <span class="ss">:first_name</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s">&quot;Rohit&quot;</span><span class="p">,</span> <span class="s">&quot;Rahul&quot;</span><span class="p">,</span> <span class="s">&quot;Akshat&quot;</span><span class="p">],</span>
+  <span class="ss">:state</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s">&quot;IN&quot;</span><span class="p">,</span><span class="s">&quot;CA&quot;</span><span class="p">,</span><span class="s">&quot;OR&quot;</span><span class="p">]</span>
+<span class="p">);</span>
+
+<span class="c"># convert the dictionary to a DataFrame -&gt; variable df</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">DataFrame</span><span class="p">(</span><span class="n">dict</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Notice the <a class="reference external" href="https://docs.julialang.org/en/v1/base/collections/#Dictionaries">Dictionary</a> keys are of type <a class="reference external" href="https://docs.julialang.org/en/v1/base/base/#Core.Symbol">Symbol</a> and <strong>not</strong> <a class="reference external" href="https://docs.julialang.org/en/v1/base/strings/#lib-strings">Strings</a>; a <a class="reference external" href="https://docs.julialang.org/en/v1/base/base/#Core.Symbol">Symbol</a> represents a special type of identifier in <a class="reference external" href="https://julialang.org">Julia</a>. <a class="reference external" href="https://docs.julialang.org/en/v1/base/base/#Core.Symbol">Symbols</a> are often used as names or labels to identify an entity, e.g., as a dictionary key as shown above. <a class="reference external" href="https://docs.julialang.org/en/v1/base/base/#Core.Symbol">Symbols</a> can be entered using the <code class="docutils literal notranslate"><span class="pre">:</span></code> quote operator or constructed from <a class="reference external" href="https://docs.julialang.org/en/v1/base/strings/#lib-strings">Strings</a> using the <code class="docutils literal notranslate"><span class="pre">Symbol(x...)</span></code> constructor method.</p>
+<section id="why-are-dataframes-interesting">
+<h3>Why are DataFrames interesting?<a class="headerlink" href="#why-are-dataframes-interesting" title="Permalink to this headline">#</a></h3>
+<p><a class="reference external" href="https://dataframes.juliadata.org/stable/lib/types/#DataFrames.DataFrame">DataFrames</a> are interesting because, in many ways, they act like <a class="reference external" href="https://docs.julialang.org/en/v1/base/arrays/">Arrays</a>, e.g., they can be indexed to access values, and they are <a class="reference external" href="https://docs.julialang.org/en/v1/base/collections/#lib-collections-iteration">iterable</a>, i.e., they can be used in loops. Further, entire columns can be accessed by the column names.</p>
+<p>For example, suppose we have a <a class="reference external" href="https://dataframes.juliadata.org/stable/lib/types/#DataFrames.DataFrame">DataFrame</a> stored in a variable <code class="docutils literal notranslate"><span class="pre">df</span></code> that holds demographic data about clients, e.g., names, ages, etc. We can access entire columns (or the data from a collection of columns) by the column name using the syntax <code class="docutils literal notranslate"><span class="pre">df[!</span> <span class="pre">colname]</span></code> or with dot notation <code class="docutils literal notranslate"><span class="pre">df.colname</span></code> for a single column:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># modified from the DataFrames.jl package documentation</span>
+<span class="c"># https://dataframes.juliadata.org/stable/man/basics/#First-Steps-with-DataFrames.jl</span>
+
+<span class="c"># Load external packages</span>
+<span class="k">using</span> <span class="n">DataFrames</span>
+
+<span class="c"># create a dictionary w/data -&gt; variable dict</span>
+<span class="n">dict</span> <span class="o">=</span> <span class="kt">Dict</span><span class="p">(</span>
+  <span class="ss">:customer_age</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="mi">22</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">25</span><span class="p">],</span> 
+  <span class="ss">:first_name</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s">&quot;Rohit&quot;</span><span class="p">,</span> <span class="s">&quot;Rahul&quot;</span><span class="p">,</span> <span class="s">&quot;Akshat&quot;</span><span class="p">],</span>
+  <span class="ss">:state</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s">&quot;IN&quot;</span><span class="p">,</span><span class="s">&quot;CA&quot;</span><span class="p">,</span><span class="s">&quot;OR&quot;</span><span class="p">]</span>
+<span class="p">);</span>
+
+<span class="c"># convert the dictionary to a DataFrame -&gt; variable df</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">DataFrame</span><span class="p">(</span><span class="n">dict</span><span class="p">);</span>
+
+<span class="c"># get all the values in the first name col -</span>
+<span class="n">df</span><span class="p">[</span><span class="o">!</span><span class="p">,[</span><span class="ss">:first_name</span><span class="p">,</span> <span class="ss">:state</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Finally, <a class="reference external" href="https://dataframes.juliadata.org/stable/lib/types/#DataFrames.DataFrame">DataFrames</a> can also be used in complex data manipulation operations, e.g., <a class="reference external" href="https://dataframes.juliadata.org/stable/lib/functions/#Sorting">sorting</a>, <a class="reference external" href="https://dataframes.juliadata.org/stable/lib/functions/#Filtering-rows">filtering</a> or <a class="reference external" href="https://dataframes.juliadata.org/stable/man/joins/">Join</a> operations.</p>
+<p>For example, suppose in our customer dataset, we wanted all customers from <a class="reference external" href="https://en.wikipedia.org/wiki/Oregon">Oregon</a>; we can do this with the <code class="docutils literal notranslate"><span class="pre">filter</span></code> function:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># modified from the DataFrames.jl package documentation</span>
+<span class="c"># https://dataframes.juliadata.org/stable/man/basics/#First-Steps-with-DataFrames.jl</span>
+
+<span class="c"># Load external packages</span>
+<span class="k">using</span> <span class="n">DataFrames</span>
+
+<span class="c"># create a dictionary w/data -&gt; variable dict</span>
+<span class="n">dict</span> <span class="o">=</span> <span class="kt">Dict</span><span class="p">(</span>
+  <span class="ss">:customer_age</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="mi">22</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">25</span><span class="p">],</span> 
+  <span class="ss">:first_name</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s">&quot;Rohit&quot;</span><span class="p">,</span> <span class="s">&quot;Rahul&quot;</span><span class="p">,</span> <span class="s">&quot;Akshat&quot;</span><span class="p">],</span>
+  <span class="ss">:state</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s">&quot;IN&quot;</span><span class="p">,</span><span class="s">&quot;CA&quot;</span><span class="p">,</span><span class="s">&quot;OR&quot;</span><span class="p">]</span>
+<span class="p">);</span>
+
+<span class="c"># convert the dictionary to a DataFrame -&gt; variable df</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">DataFrame</span><span class="p">(</span><span class="n">dict</span><span class="p">);</span>
+
+<span class="c"># get all customers from OR</span>
+<span class="n">OR_customers</span> <span class="o">=</span> <span class="n">filter</span><span class="p">(</span><span class="ss">:state</span><span class="o">=&gt;</span><span class="n">x</span><span class="o">-&gt;</span><span class="n">x</span><span class="o">==</span><span class="s">&quot;OR&quot;</span><span class="p">,</span> <span class="n">df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>There is a large variety of <a class="reference external" href="https://online.hbs.edu/blog/post/data-wrangling">data wrangling</a> functions published by the <a class="reference external" href="https://github.com/JuliaData/DataFrames.jl">DataFrame.jl</a> package, please review the <a class="reference external" href="https://dataframes.juliadata.org/stable/man/getting_started/">Getting started</a> section of the <a class="reference external" href="https://github.com/JuliaData/DataFrames.jl">DataFrame.jl</a> documentation for more information.</p>
+</section>
+<section id="reading-and-writing-dataframes">
+<h3>Reading and writing DataFrames<a class="headerlink" href="#reading-and-writing-dataframes" title="Permalink to this headline">#</a></h3>
+<p>While it’s easy to create a <a class="reference external" href="https://dataframes.juliadata.org/stable/lib/types/#DataFrames.DataFrame">DataFrame</a>, e.g., from a <a class="reference external" href="https://docs.julialang.org/en/v1/base/collections/#Dictionaries">Dictionary</a>, we are also often interested in applications that require reading and writing of data files from disk.</p>
+<p>Converting data files e.g., a table of numerical values, into a <a class="reference external" href="https://dataframes.juliadata.org/stable/lib/types/#DataFrames.DataFrame">DataFrame</a> object, (or exporting a <a class="reference external" href="https://dataframes.juliadata.org/stable/lib/types/#DataFrames.DataFrame">DataFrame</a> object to a file) can be done with the <a class="reference external" href="https://github.com/JuliaData/CSV.jl">CSV.jl</a> package described above.</p>
+<section id="loading-a-csv-file-into-a-dataframe">
+<h4>Loading a CSV file into a DataFrame<a class="headerlink" href="#loading-a-csv-file-into-a-dataframe" title="Permalink to this headline">#</a></h4>
+<p>Suppose we have a CSV file which holds numerical data, e.g., stock price values for the firm with ticker symbol <code class="docutils literal notranslate"><span class="pre">XYZ</span></code>. We can load this file from disk, and automatically convert the data to a <a class="reference external" href="https://dataframes.juliadata.org/stable/lib/types/#DataFrames.DataFrame">DataFrame</a> using the <code class="docutils literal notranslate"><span class="pre">read</span></code> method in the <a class="reference external" href="https://github.com/JuliaData/CSV.jl">CSV.jl</a> package:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># Load external packages</span>
+<span class="k">using</span> <span class="n">CSV</span>
+<span class="k">using</span> <span class="n">DataFrames</span>
+
+<span class="c"># setup the path to the data file -</span>
+<span class="n">path_to_datafile</span> <span class="o">=</span> <span class="n">joinpath</span><span class="p">(</span><span class="n">pwd</span><span class="p">(),</span><span class="s">&quot;data&quot;</span><span class="p">,</span> <span class="s">&quot;AMD-OCHL-from-05-07-22-to-2022-08-05.csv&quot;</span><span class="p">)</span>
+
+<span class="c"># load the CSV file into a DataFrame -&gt; df</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">CSV</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">path_to_datafile</span><span class="p">,</span> <span class="n">DataFrame</span><span class="p">)</span>
+
+<span class="c"># show the first few rows of data </span>
+<span class="n">df</span><span class="p">[</span><span class="mi">1</span><span class="o">:</span><span class="mi">4</span><span class="p">,</span><span class="o">:</span><span class="p">]</span> <span class="c"># Indexing allows DataFrames to behave like arrays </span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="saving-a-dataframe-to-a-csv-file">
+<h4>Saving a DataFrame to a CSV file<a class="headerlink" href="#saving-a-dataframe-to-a-csv-file" title="Permalink to this headline">#</a></h4>
+<p>Conversely, suppose we have a <a class="reference external" href="https://dataframes.juliadata.org/stable/lib/types/#DataFrames.DataFrame">DataFrame</a> holding numerical data want to save. In this case, we can take advantage of the <code class="docutils literal notranslate"><span class="pre">save</span></code> methods published by the <a class="reference external" href="https://github.com/JuliaData/CSV.jl">CSV.jl</a> package; <code class="docutils literal notranslate"><span class="pre">save</span></code> takes two arguments, the first is the path to the file we want to save, and the second is the <a class="reference external" href="https://dataframes.juliadata.org/stable/lib/types/#DataFrames.DataFrame">DataFrame</a> instance that we want to save.</p>
+<p>For example, assume we have a variable of type <a class="reference external" href="https://dataframes.juliadata.org/stable/lib/types/#DataFrames.DataFrame">DataFrame</a> named <code class="docutils literal notranslate"><span class="pre">df</span></code>, then the following code snippet shows how we could save <code class="docutils literal notranslate"><span class="pre">df</span></code> to a CSV file:</p>
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># Load external packages </span>
+<span class="k">using</span> <span class="n">CSV</span>
+<span class="k">using</span> <span class="n">DataFrames</span>
+
+<span class="c"># some mythical process generates the DataFrame df</span>
+<span class="n">df</span> <span class="o">=</span> <span class="o">...</span>
+
+<span class="c"># Dump df to disk as a CSV file </span>
+<span class="n">path_to_csv_file</span> <span class="o">=</span> <span class="o">...</span>
+
+<span class="c"># write out the file </span>
+<span class="n">CSV</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">path_to_csv_file</span><span class="p">,</span> <span class="n">df</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+<section id="binary-file-formats">
+<span id="content-references-julia-binary-formats"></span><h2>Binary file formats<a class="headerlink" href="#binary-file-formats" title="Permalink to this headline">#</a></h2>
+<p>Binary file formats have been developed to store and organize large amounts of complex structured data. The basis of many binary formats is the <a class="reference external" href="https://en.wikipedia.org/wiki/Hierarchical_Data_Format">Hierarchical Data Format (HDF)</a>, a set of file formats initially developed by the <a class="reference external" href="https://en.wikipedia.org/wiki/National_Center_for_Supercomputing_Applications">U.S. National Center for Supercomputing Applications (NCSA)</a>.</p>
+<p>The <a class="reference external" href="https://github.com/JuliaIO/JLD2.jl">JLD2.jl</a> package saves and loads <a class="reference external" href="https://julialang.org">Julia</a> data structures in a format that is a subset of <a class="reference external" href="https://en.wikipedia.org/wiki/Hierarchical_Data_Format#HDF5">HDF5</a>, the latest iteration of the <a class="reference external" href="https://en.wikipedia.org/wiki/Hierarchical_Data_Format">Hierarchical Data Format (HDF)</a>.</p>
+<p>The <a class="reference external" href="https://github.com/JuliaIO/JLD2.jl">JLD2.jl</a> package can be downloaded and installed using the <a class="reference internal" href="julia-basics.html"><span class="doc std std-doc">Julia package manager</span></a>. To load the <code class="docutils literal notranslate"><span class="pre">JLD2</span></code> package into your program, or the <a class="reference internal" href="julia-basics.html"><span class="doc std std-doc">REPL</span></a>, issue the <a class="reference external" href="https://docs.julialang.org/en/v1/base/base/#using">using</a> or <a class="reference external" href="https://docs.julialang.org/en/v1/base/base/#import">import</a> commands. Once the <code class="docutils literal notranslate"><span class="pre">JLD2</span></code>  package is loaded, it publishes several commands to load and save data in the <a class="reference external" href="https://en.wikipedia.org/wiki/Hierarchical_Data_Format#HDF5">HDF5</a> format. Let’s look at the <a class="reference internal" href="#content-references-julia-binary-formats-save"><span class="std std-ref">save</span></a> and <a class="reference internal" href="#content-references-julia-binary-formats-load"><span class="std std-ref">load</span></a> functions.</p>
+<section id="save">
+<span id="content-references-julia-binary-formats-save"></span><h3>save<a class="headerlink" href="#save" title="Permalink to this headline">#</a></h3>
+<p>Consider an example of saving a <code class="docutils literal notranslate"><span class="pre">JLD2</span></code> file; in this example, we downloaded stock price data for several firms from an external application programming interface (API) and saved this dataset as a <a class="reference external" href="https://docs.julialang.org/en/v1/base/collections/#Dictionaries">Dictionary</a>. The price history for each firm is stored in a <a class="reference external" href="https://dataframes.juliadata.org/stable/lib/types/#DataFrames.DataFrame">DataFrame</a>, while the overall dataset for N = 25 firms is stored as a <a class="reference external" href="https://docs.julialang.org/en/v1/base/collections/#Dictionaries">Dictionary</a> where the ticker symbol for firm <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> (of type <a class="reference external" href="https://docs.julialang.org/en/v1/base/strings/#lib-strings">String</a>) is used as the <a class="reference external" href="https://docs.julialang.org/en/v1/base/collections/#Dictionaries">Dictionary</a> key.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">save</span></code> function accepts a path and an <code class="docutils literal notranslate"><span class="pre">AbstractDict</span></code> holding the key/value pairs that we wish to save, where the key is a string representing the name of the dataset and the value is its contents:</p>
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># load external packages</span>
+<span class="k">using</span> <span class="n">DataFrames</span>
+<span class="k">using</span> <span class="n">JLD2</span>
+<span class="k">using</span> <span class="n">FileIO</span>
+
+<span class="c"># external process to download data (not shown)</span>
+<span class="n">dd</span> <span class="o">=</span> <span class="n">api</span><span class="p">({</span><span class="kt">arguments</span><span class="p">});</span> <span class="c"># dd -&gt; Dict{String,DataFrame}</span>
+
+<span class="c"># path to data file </span>
+<span class="n">filename</span> <span class="o">=</span> <span class="s">&quot;Portfolio-Data-06-20-22.jld2&quot;</span>
+
+<span class="c"># save</span>
+<span class="n">save</span><span class="p">(</span><span class="s">&quot;Portfolio-Data-06-20-22.jld2&quot;</span><span class="p">,</span> <span class="kt">Dict</span><span class="p">(</span><span class="s">&quot;dd&quot;</span> <span class="o">=&gt;</span> <span class="n">dd</span><span class="p">));</span> <span class="c"># saved dd in Dict with key dd</span>
+</pre></div>
+</div>
+</section>
+<section id="load">
+<span id="content-references-julia-binary-formats-load"></span><h3>load<a class="headerlink" href="#load" title="Permalink to this headline">#</a></h3>
+<p>Consider an example of loading a <code class="docutils literal notranslate"><span class="pre">JLD2</span></code> file; in this example, a <a class="reference external" href="https://docs.julialang.org/en/v1/base/collections/#Dictionaries">Dictionary</a> holding stock market data is loaded from disk. In particular, the price data for each of N = 25 firms is stored in a <a class="reference external" href="https://dataframes.juliadata.org/stable/lib/types/#DataFrames.DataFrame">DataFrame</a>, where the ticker symbol for each firm <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> is used as the <a class="reference external" href="https://docs.julialang.org/en/v1/base/collections/#Dictionaries">Dictionary</a> key; the ticker symbol <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> is of type <a class="reference external" href="https://docs.julialang.org/en/v1/base/strings/#lib-strings">String</a>. Thus, the loaded <a class="reference external" href="https://docs.julialang.org/en/v1/base/collections/#Dictionaries">Dictionary</a> is of type <code class="docutils literal notranslate"><span class="pre">Dict{String,DataFrame}</span></code>.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">load</span></code> function reads a <code class="docutils literal notranslate"><span class="pre">*.jld2</span></code> file from the disk. When called with a path argument only, the <code class="docutils literal notranslate"><span class="pre">load</span></code> function loads the dataset from the given file into a <a class="reference external" href="https://docs.julialang.org/en/v1/base/collections/#Dictionaries">Dictionary</a>:</p>
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># load external packages</span>
+<span class="k">using</span> <span class="n">DataFrames</span>
+<span class="k">using</span> <span class="n">JLD2</span>
+<span class="k">using</span> <span class="n">FileIO</span>
+
+<span class="c"># set path to the data file</span>
+<span class="c"># joinpath is cross platform: handles / vs \</span>
+<span class="n">path_to_data_file</span> <span class="o">=</span> <span class="n">joinpath</span><span class="p">(</span><span class="s">&quot;.&quot;</span><span class="p">,</span> <span class="s">&quot;data&quot;</span><span class="p">,</span> <span class="s">&quot;Portfolio-Data-06-20-22.jld2&quot;</span><span class="p">)</span>
+
+<span class="c"># load the dataset: the original data is stored in a Dict with key `dd`</span>
+<span class="n">dd</span> <span class="o">=</span> <span class="n">load</span><span class="p">(</span><span class="n">path_to_data_file</span><span class="p">)[</span><span class="s">&quot;dd&quot;</span><span class="p">]</span> <span class="c"># dd -&gt; Dict{String,DataFrame}</span>
+</pre></div>
+</div>
+<p>Taken together, the <a class="reference external" href="https://github.com/JuliaIO/JLD2.jl">JLD2.jl</a> package provides tools to directly persist (and load) complex hierarchical data structures, which go well beyond just numerical data. For more information, please see the <a class="reference external" href="https://github.com/JuliaIO/JLD2.jl">JLD2.jl package documentation</a>.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this headline">#</a></h2>
+<p>In this chpater we:</p>
+<ul class="simple">
+<li><p>Introduced reading and writing <a class="reference internal" href="#content-references-julia-csv-files"><span class="std std-ref">Comma seperated value (CSV) files</span></a>, a standard data format for working with numerical data files</p></li>
+<li><p>Introduced more expressive tools such as <a class="reference internal" href="#content-references-julia-dataframes"><span class="std std-ref">DataFrames</span></a>, which are in-memory tabular data structures. <code class="docutils literal notranslate"><span class="pre">DataFrames</span></code> are highly flexible data structures offering many advanced storage and query capabilities.</p></li>
+<li><p>Introduced reading and writing data in <a class="reference internal" href="#content-references-julia-binary-formats"><span class="std std-ref">Binary file formats</span></a>, a common approach for large data files and more complex data structures</p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "julia-1.9"
+        },
+        kernelOptions: {
+            name: "julia-1.9",
+            path: "./appendix"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'julia-1.9'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="julia-basics.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Introduction to Julia Basics</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../References.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">References</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comma-seperated-value-csv-files">Comma seperated value (CSV) files</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dataframes">DataFrames</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#why-are-dataframes-interesting">Why are DataFrames interesting?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reading-and-writing-dataframes">Reading and writing DataFrames</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-a-csv-file-into-a-dataframe">Loading a CSV file into a DataFrame</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#saving-a-dataframe-to-a-csv-file">Saving a DataFrame to a CSV file</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#binary-file-formats">Binary file formats</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#save">save</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#load">load</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Varner and Woltornist
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

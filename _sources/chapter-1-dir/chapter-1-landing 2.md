@@ -1,0 +1,6 @@
+# Unit 1: Assets, Money and Markets
+
+The objective of this unit is to introduce the essential components of personal finance, markets, and assets:
+
+* [Personal finance basics](./pfinance-basics.md). We start the course by introducing key concepts such as budgets, balance sheets, and the idea of needs versus wants that we build upon for later.
+* [Most of us think about assets](./assets.md) as tangible items, e.g., cars, houses, etc. These are certainly examples of physical, tangible assets. However, assets are more general than just material items. For example, intellectual property, e.g., patents or other non-physical things such as a manufacturing process, are also assets. Thus, a more general notion of an asset is simply a flow of money; what is money? Money is an economic unit that functions as a generally recognized medium of exchange for transactional purposes in an economy. Money is an asset used to settle transactions between a buyer and a seller. 

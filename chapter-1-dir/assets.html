@@ -676,10 +676,10 @@ into today’s dollars (or vice-versa, we want to compute the value of a future 
 <div class="proof definition admonition" id="net-present-value-defn">
 <p class="admonition-title"><span class="caption-number">Definition 4 </span> (Net Present Value)</p>
 <section class="definition-content" id="proof-content">
-<p>The net present value (NPV) is the sum of the discrete current and future cash flows, corrected to current dollars (<span class="math notranslate nohighlight">\(t=0\)</span>):</p>
+<p>The net present value (NPV) is the sum of current and future cash flows, corrected to current dollars (<span class="math notranslate nohighlight">\(t=0\)</span>):</p>
 <div class="math notranslate nohighlight">
 \[\text{NPV}(T) = \sum_{t=0}^{T}{\mathcal{D}_{t,0}^{-1}}\cdot\bar{c}_{t}\]</div>
-<p>where <span class="math notranslate nohighlight">\(\bar{c}_{t}\)</span> denotes the <em>net cash flow</em> in period <span class="math notranslate nohighlight">\(t\)</span>, and <span class="math notranslate nohighlight">\(\mathcal{D}_{t,0}\)</span> denotes the multistep discount factor between the current period (now), and future period <span class="math notranslate nohighlight">\(t\)</span>. The discount factor <span class="math notranslate nohighlight">\(\mathcal{D}_{t,0}\)</span> can be modeled as either a discrete or a continuous discount factor.</p>
+<p>where <span class="math notranslate nohighlight">\(\bar{c}_{t}\)</span> denotes the <em>net cash flow</em> in period <span class="math notranslate nohighlight">\(t\)</span>, <span class="math notranslate nohighlight">\(T\)</span> denotes the number of periods, and <span class="math notranslate nohighlight">\(\mathcal{D}_{t,0}\)</span> represents the multistep discount factor between the current period (now), and future period <span class="math notranslate nohighlight">\(t\)</span>. The discount factor <span class="math notranslate nohighlight">\(\mathcal{D}_{t,0}\)</span> can be modeled as either a discrete or a continuous discount factor.</p>
 </section>
 </div><section id="npv-as-a-decision-tool">
 <span id="content-references-npv-decision-tool"></span><h3>NPV as a Decision Tool<a class="headerlink" href="#npv-as-a-decision-tool" title="Permalink to this headline">#</a></h3>
@@ -696,10 +696,10 @@ into today’s dollars (or vice-versa, we want to compute the value of a future 
 <div class="proof definition admonition" id="defn-internal-rate-of-return">
 <p class="admonition-title"><span class="caption-number">Definition 5 </span> (Internal Rate of Return)</p>
 <section class="definition-content" id="proof-content">
-<p>Assume the discount rate is constant between time periods. Then, the internal rate of rerturn (IRR) is the discount rate that satifies the following condition:</p>
+<p>Assume the discount rate is constant between time periods. Then, the internal rate of rerturn (IRR) is the discount rate that makes the net present value equal to zero:</p>
 <div class="math notranslate nohighlight">
 \[\sum_{t=0}^{T}{\mathcal{D}_{t,0}^{-1}}\cdot\bar{c}_{t} = 0\]</div>
-<p>Discount rates greater than the IRR favor the alternative investment.</p>
+<p>The discount factor <span class="math notranslate nohighlight">\(\mathcal{D}_{t,0}\)</span> can be modeled as either a discrete or a continuous discount factor. Discount rates greater than the IRR favor the alternative investment.</p>
 </section>
 </div><p>Thus, IRR can thought of as a decision boundary of sorts; the IRR is the discount rate where the project manager or investor is indifferent to the project. Let’s do a net present value example where we compute the IRR (<a class="reference internal" href="#example-net-present-value-discrete">Example 5</a>):</p>
 <div class="proof example dropdown admonition" id="example-net-present-value-discrete">
