@@ -132,7 +132,6 @@ __Why?__
 A useful mental model for the time value of money is to think of money from different time periods 
 as being in different currencies (e.g., dollars versus euros) that must be exchanged. Thus, to compare money or cash flows from different time periods we formulate the equivalent of an exchange rate.
 
-#### Discrete one-period conversion
 Suppose we wanted to convert the value of a cash flow from one time period in the future 
 into today's dollars (or vice-versa, we want to compute the value of a future cash flow to a current value). To do this, we use a one-period discrete conversion ({prf:ref}`defn-one-perod-discrete-conversion`):
 
@@ -162,10 +161,8 @@ Prof. Varner offers to buy you a coffee tommorrow (one time period in the future
 Subsutituing $r_{21}=10\%$ and $\dot{c}_{2}=\$ 3.35$ says the current value of your future coffee is: $\dot{c}_{1} = \$ 3.05$.
 ````
 
-#### Discrete multiple-period conversion
-Suppose, instead of a single period, we are interested in an asset that will be active over multiple periods, e.g., a multi-year project or some other transaction that occurs over many years. In this case, we develop a multi-year conversion that is easily constructed by sequentially applying many one-period calculations.
+Suppose, instead of a single discrete period, we have an asset that is active over multiple periods, e.g., a multi-period project or some other transaction that occurs over many time periods. In this case, we develop a multi-year conversion that is easily constructed by sequentially applying many one-period calculations. To see this idea, let's start with period zero to period one:
 
-To see this idea, let's start with period zero to period one:
 ```{math}
 \dot{c}_{1} = \left(1+r_{10}\right)\cdot\dot{c}_{0}
 ```
@@ -181,7 +178,7 @@ but we can substiture $\dot{c}_{1}$ into the expression above to give:
 \dot{c}_{2} = \Bigl[\left(1+r_{21}\right)\left(1+r_{10}\right)\Bigr]\cdot\dot{c}_{0}
 ```
 
-If we do this computation between 2 and 3, and then 3 to 4, etc, we develop a relationship between the current value of cash flow ($t=0$) and the future ($t>1$) value of cash flows ({prf:ref}`defn-multi-perod-discrete-conversion`):
+If we do this computation between 2 and 3, and then 3 to 4, etc, we develop a relationship between the current value of cash flow $\dot{c}_{0}$ and the future $\dot{c}_{t}$ cash flow values ({prf:ref}`defn-multi-perod-discrete-conversion`):
 
 ````{prf:definition} Multiple period discrete conversion
 :label: defn-multi-perod-discrete-conversion
@@ -200,7 +197,7 @@ The product term (the $\prod\star$ in the brackets) in Eqn. {eq}`eq-cash-flow-mu
 \dot{c}_{t} = \mathcal{D}_{t,0}\cdot\dot{c}_{0}\qquad{t=1,2,\dots,T}
 ```
 
-In the particular case where the rates of return $r_{\star}$ are equal in each period (let's call this value $\bar{r}$), the _multi-period discount factor_ becomes:
+In the particular case where discount rate $r_{\star}$ are equal in each period (let's call this value $\bar{r}$), the _multi-period discount factor_ becomes:
 
 ```{math}
 :label: eqn-discrete-discount-factor-constant-r

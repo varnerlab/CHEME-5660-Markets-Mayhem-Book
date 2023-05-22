@@ -10,6 +10,8 @@ The two most important characteristics of common stock as an investment are its 
 Equity securities are financial assets that signify ownership in a company, granting the holder a proportionate share of the company’s assets and profits. These financial instruments are traded on stock exchanges and are a popular investment option for both individual and institutional investors. Although investing in equity securities can provide long-term capital gains and dividend income, it also involves some risk due to fluctuations in stock prices and market conditions.
 
 ```{topic} Outline
+This week we'll introduce equity securities, discuss the different types of orders that can be used to buy or sell equity securities and explore the statistical properties of equity security data.
+
 * {ref}`content:references:markets-exchanges` play a crucial role in contemporary economies as they enable the trade of goods, services, and financial instruments like stocks and bonds. A market is a platform where buyers and sellers convene to exchange commodities or services, while an exchange is a market that specializes in financial instruments and has specific trade regulations.
 
 * {ref}`content:orders-order-book-matching`. Traders give instructions to buy or sell financial instruments at a specified price, known as orders. These orders are recorded in the order book, which shows all outstanding buy and sell orders for a specific financial instrument on the exchange. The exchange matches buy and sell orders based on price and other criteria through the process of order matching, which results in trades being executed. The order book provides transparency into market depth and liquidity.
