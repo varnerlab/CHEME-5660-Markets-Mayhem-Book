@@ -42,7 +42,7 @@ Through this agreement, the U.S. Treasury is obligated to make specified payment
 
 
 ### Treasury Bills
-Treasury bills, or T-bills, are debt instruments with short-term maturity periods ranging from a few days to 52 weeks and zero coupon payments ({numref}`fig-bill-payout-schematic`).
+Treasury bills, or T-bills, which are [auctioned off regularly](https://www.treasurydirect.gov/auctions/upcoming/), are treasury debt instruments with short-term maturity periods $T$ = 4, 8, 13, 26, and 52 weeks and zero coupon payments ({numref}`fig-bill-payout-schematic`):
 
 ```{figure} ./figs/Fig-Zero-Coupon-Schematic.pdf
 ---
@@ -52,19 +52,19 @@ name: fig-bill-payout-schematic
 Schematic of a zero-coupon United States Treasury bill. The bill holder purchases the bill for $V_{B}$ (current dollars). At the term of the bill, the treasury pays the bondholder the face (par) value of the bill $V_{P}$.   
 ```
 
-T-bills are zero-coupon fixed-income investments, i.e., they are no coupon payments during their term. Instead, treasury bills are priced so that the bill holder receives the par value at the end of the term ({prf:ref}`defn-zero-coupon-bond-pricing`): 
+T-bills are zero-coupon fixed-income investments, i.e., they are no coupon payments during their term. Instead, treasury bills are priced so that the bill holder receives the face (par) value at the end of the term ({prf:ref}`defn-zero-coupon-bond-pricing`): 
 
 ````{prf:definition} Zero Coupon bill pricing
 :label: defn-zero-coupon-bond-pricing
 
-A zero-coupon treasury bill has a T-year term with an annual market interest rate of $\bar{r}$ at the time of purchase. The fair price of the treasury bill is the future face (par) value of the bill discounted to today by the market interest rate $\bar{r}$:
+A zero-coupon treasury bill has a T-year term with an annual market (constant) interest rate of $\bar{r}$ specified at the time of purchase. The fair price of the T-bill is the future face (par) value discounted to today by the market interest rate $\bar{r}$:
 
 ```{math}
 :label: eqn-zero-coupon-bill-bond
-V_{B} = \frac{V_{P}}{\left(1+\bar{r}\right)^{T}}
+V_{B} = \mathcal{D}^{-1}_{T,0}\cdot{V_{P}}
 ```
 
-The quantity $V_{B}$ denotes the current price of the treasury bill, and $V_{P}$ represents the face (par) value of the treasury bill.  Treasury bills are issued for specific periods, such as 4, 8, 13, 26, and 52 weeks, and are [auctioned off regularly](https://www.treasurydirect.gov/auctions/upcoming/). 
+The quantity $V_{B}$ denotes the current price of the bill, $V_{P}$ represents the future face (par) value of the bill, and $\mathcal{D}_{T,0}$ denotes the discount factor governing the period $0\rightarrow{T}$, i.e., from when the zero coupon treasury security was auctioned (current) to maturation (future). The discount factor model can be either discrete or continuous.
 ````
 
 The price of a treasury bill $V_{B}$ is computed with respect to a market interest rate $\bar{r}$ on the day the bill is purchased. Further, the fair price of a treasury bill has a net present value equal to zero. However, interest rates $\bar{r}$ vary with time and economic conditions ({numref}`fig-bill-daily-interest-rate`):
@@ -89,7 +89,7 @@ Compute the fair price for a zero-coupon treasury bill with a par value of \$1,0
 
 The fair price for a zero-coupon treasury bill, denoted by $V_{B}$, is the future face (par) value $V_{P}$ of the bill discounted at $\bar{r}$ to the time of the purchase (current dollars):
 
-$$V_{B} = \frac{V_{P}}{\left(1+\bar{r}\right)^{T}}$$
+$$V_{B} = \mathcal{D}^{-1}_{T,0}\cdot{V_{P}}$$
 
 Solving this expression as a function of $\bar{r}$ for different values of the T-bill term $T$ gives the results shown in {numref}`fig-zcbill-price`:
 
@@ -124,20 +124,19 @@ Schematic of the lifetime of a Treasury Bond with semiannual coupon payments. Th
 
 Treasury bonds, like T-notes, are debt instruments that pay a fixed rate of interest every six months. However, treasury bonds are long-term U.S. Treasury debt instruments with terms of 20 or 30 years. When a bond reaches maturity, the bondholder receives the bond’s face value. Bonds can be held until maturity or sold before maturity. 
 
-#### Pricing of U.S. Treasury Bonds
-A bond’s coupon payments, and the eventual repayment of the face value, occurs many years in the future. Thus, the price an investor is willing to pay for a claim to those payments depends on the future value of the dollars that will be received versus the present value of the face value of the bond 
-({prf:ref}`defn-fixed-r-bond-pricing`):
+#### Pricing of U.S. Treasury Notes and Bonds
+A bond’s coupon payments, and the eventual repayment of the face value, occurs many years in the future. Thus, the price an investor is willing to pay for a claim to those payments depends on the future value of the dollars that will be received versus the present value of the face value of the bond ({prf:ref}`defn-fixed-r-bond-pricing`):
 
 ````{prf:definition} Fixed Coupon Rate Bond Pricing
 :label: defn-fixed-r-bond-pricing
 
-Let the term of a bond be T-years with semiannual ($\lambda = 2$) coupon payments per year; $N = \lambda{T}$ coupon payments over the bond term. Further, let $\bar{c}$ denote the annual coupon rate, and $\bar{r}$ denote the annual market interest rate. Then, the _fair price_ for the bond $V_{B}$ is the present value of coupon payments $C$ plus the discounted par value $V_{P}$ of the bond:
+Assuming a bond term of T-years with semiannual coupon payments per year (represented by $\lambda = 2$), there will be N = $\lambda{T}$ coupon payments over the bond term. The annual coupon rate is $\bar{c}$%, while the annual market interest rate is denoted by $\bar{r}$%. The fair price for the bond $V_{B}$ is the present value of coupon payments $C$ added to the discounted face value of the bond $V_{P}$:
 
 ```{math}
-V_{B} = \frac{V_{P}}{\left(1+i\right)^{N}}+\sum_{j=1}^{N}\frac{C}{\left(1+i\right)^{j}}
+V_{B} = \mathcal{D}^{-1}_{N,0}V_{P}+\sum_{j=1}^{N}\mathcal{D}_{j,0}^{-1}C
 ```
 
-The coupon payment $C=\left(\bar{c}/\lambda\right)\cdot{V_{P}}$ is set when the bond is purchased, and the market interest rate $i=\bar{r}/\lambda$ varies with the market. The contract between the U.S. government, the issuer, and the bondholder (you) includes the bond’s coupon rate, maturity date, and par value.
+The discount factor for time period $0\rightarrow{I}$, denoted as $\mathcal{D}_{i,0}$, can be either a discrete or continuous compounding model. The coupon payment is determined at the time of bond is purchased, where $C=\left(\bar{c}/\lambda\right)\cdot{V_{P}}$. The market interest rate is assumed to be constant over the course of the bond and is represented as $I=\bar{r}/\lambda$. 
 ````
 
 Let's do an example illustrating bond pricing ({prf:ref}`example-treaury-bond-price`).
@@ -163,7 +162,7 @@ __source__: [Live Pluto notebook](https://github.com/varnerlab/CHEME-5660-Market
 ````
 
 
-#### Yield to Maturity of U.S. Treasury Bonds
+#### Yield to Maturity of U.S. Treasury Notes and Bonds
 To determine the rate of return of a bond, we use a metric called the yield to maturity (YTM). The yield to maturity considers the current income generated by coupon payments and the potential price increase or decrease over the bond term ({prf:ref}`defn-yield-to-maturity`): 
 
 ````{prf:definition} Yield to Maturity 
@@ -209,7 +208,27 @@ interest rate.
 
 (content:references:term-structure-of-interest-rates)=
 ## Term structure of interest rates
-Fill me in.
+In discrete compounding models, the interest rate denoted by $\bar{r}$ is assumed to be constant throughout the life of the treasury security. This gives us the discrete discount factor in the form:
+
+$$\mathcal{D}_{T,0} = (1+\bar{r})^{T}$$ 
+
+However, in reality, interest rates fluctuate, giving us insight into larger macroeconomic conditions and affecting the price movement of different assets. To account for this variation, we can consider _short rates_, i.e., the interest rates between the periods $j\rightarrow{j+1}$, denoted by $r_{j+1,j}$. The discount factor in terms of the _short rates_ is expressed as: 
+
+$$\mathcal{D}_{T,0} = \left[\prod_{j=0}^{t-1}\left(1+r_{j+1,j}\right)\right]$$ 
+
+Of course, these two discount factor expressions must be equal, giving the mathching condition:
+
+```{math}
+:label: eqn-discount-factor-matching
+(1+\bar{r})^{T} = \left[\prod_{j=0}^{t-1}\left(1+r_{j+1,j}\right)\right]
+```
+
+Solving Eqn. {eq}`eqn-discount-factor-matching` gives the market interest rate $\bar{r}$ in terms of the _short rates_:
+
+```{math}
+:label: eqn-rbar-in-terms-of-short rates
+\bar{r} = \left(\left[\prod_{j=0}^{t-1}\left(1+r_{j+1,j}\right)\right]\right)^{1/T} - 1
+```
 
 ---
  
