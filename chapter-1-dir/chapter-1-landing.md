@@ -1,4 +1,4 @@
-# Unit 1: Assets, Money and Markets
+# Assets, Money and Markets
 
 The objective of this unit is to introduce the essential components of personal finance, markets, and assets:
 

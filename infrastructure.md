@@ -16,7 +16,7 @@ We believe there is a compelling opportunity for scientists and engineers to lev
 * [Unit 1. Financial Basics](./chapter-1-dir/chapter-1-landing.md)
 * [Unit 2: Wealth Creation](./chapter-2-dir/chapter-2-landing.md)
 * [Unit 3: Portfolio Management](./chapter-3-dir/chapter-3-landing.md)
-* [Unit 4: Finanical Decisions](./chapter-4-dir/chapter-4-landing.md)
+* [Unit 4: Investment Decisions](./chapter-4-dir/chapter-4-landing.md)
 
 ### Times, places and websites
 * __Credits__: 3-credits

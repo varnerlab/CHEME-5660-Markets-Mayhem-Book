@@ -10,16 +10,14 @@ The two most important characteristics of common stock as an investment are its 
 Equity securities are financial assets that signify ownership in a company, granting the holder a proportionate share of the company’s assets and profits. These financial instruments are traded on stock exchanges and are a popular investment option for both individual and institutional investors. Although investing in equity securities can provide long-term capital gains and dividend income, it also involves some risk due to fluctuations in stock prices and market conditions.
 
 ```{topic} Outline
-This week we'll introduce equity securities, discuss the different types of orders that can be used to buy or sell equity securities and explore the statistical properties of equity security data.
+This week we'll introduce equity securities, discuss the different types of orders that can be used to buy or sell these securities and explore the statistical properties of equity security data.
 
 * {ref}`content:references:markets-exchanges` play a crucial role in contemporary economies as they enable the trade of goods, services, and financial instruments like stocks and bonds. A market is a platform where buyers and sellers convene to exchange commodities or services, while an exchange is a market that specializes in financial instruments and has specific trade regulations.
 
-* {ref}`content:orders-order-book-matching`. Traders give instructions to buy or sell financial instruments at a specified price, known as orders. These orders are recorded in the order book, which shows all outstanding buy and sell orders for a specific financial instrument on the exchange. The exchange matches buy and sell orders based on price and other criteria through the process of order matching, which results in trades being executed. The order book provides transparency into market depth and liquidity.
+* {ref}`content:orders-order-book-matching`. As a trader, you issue instructions to buy or sell a financial instrument at a specific price, by sending an order to an exchange. The exchange records all outstanding orders for a particular financial instrument in the order book. By matching the orders based on price and other criteria through an order matching algorithm, the exchange executes trades. 
 
-* {ref}`content:references:returns-stylized-facts`. Investment returns are a vital indicator of an investment’s value change over time. Returns play a crucial role in evaluating investment performance. Stylized facts are recognizable patterns or empirical regularities observed in financial markets and investment returns. For instance, stock returns tend to be positively correlated with economic growth. Familiarity with these patterns can assist investors in making informed decisions and creating more effective investment strategies.
-
+* {ref}`content:references:returns-stylized-facts`. Equity price data, particular the return between two dates, can be analyzed to produce a set of statistics called stylized facts. Stylized facts are recognizable patterns or empirical regularities observed in financial markets and investment returns. Familiarity with these patterns can assist investors in making informed decisions and creating more effective investment strategies.
 ```
-
 
 ---
 
@@ -68,9 +66,9 @@ Snapshot for the [QQQ](https://www.google.com/finance/quote/QQQ:NASDAQ?sa=X&ved=
 
 
 ### Order Matching
-An [order matching system](https://en.wikipedia.org/wiki/Order_matching_system) matches buy and sell orders held in the [order books](https://www.investopedia.com/terms/o/order-book.asp) of an electronic exchange. [Order books](https://www.investopedia.com/terms/o/order-book.asp) are a data structure that organizes the orders that exchange can accept and allows matching to occur; [order books](https://www.investopedia.com/terms/o/order-book.asp) are essentially electronic lists of buy and sell orders for a specific security or financial instrument organized by price level. 
+An [order matching system](https://en.wikipedia.org/wiki/Order_matching_system) is responsible for pairing buy and sell orders within the [order books](https://www.investopedia.com/terms/o/order-book.asp) of electronic exchanges. Order books are electronic lists of buy and sell orders organized by price level for a specific financial instrument. Order matching algorithms analyze this data to find matches between buyers and sellers. These algorithms have a significant impact on the efficiency, liquidity, and prices of the instruments being traded. 
 
-[Order matching algorithms](https://en.wikipedia.org/wiki/Order_matching_system) find matches between buyers and sellers by analyzing the data stored in the [order books](https://www.investopedia.com/terms/o/order-book.asp). The matching algorithms used on electronic exchanges are essential components that significantly impact efficiency, [liquidity](https://en.wikipedia.org/wiki/Market_liquidity) and prices of the instruments being traded in the market. There are a variety of algorithms for order matching. The Pro-Rata and Price/Time matching algorithms are the most common. 
+There are several matching algorithms available, but the most common ones are the [Price/Time](content:references:price-time-algo) and [Pro-Rata](content:references:pro-rata-algo) matching algorithms.
 
 (content:references:price-time-algo)=
 #### Price/Time matching algorithm
@@ -98,7 +96,7 @@ In a classical face-to-face auction, the identity of the buyer and seller, or at
 [Core](https://www.investopedia.com/terms/c/coreliquidityprovider.asp) and [supplemental liquidity providers](https://www.investopedia.com/terms/s/supplemental-liquidity-provider.asp), also called market makers, facilitate securities trading by providing a pool of shares, (which they own), so that buyers and sellers trade without having to locate and deal with each other individually.  -->
 
 (content:references:returns-stylized-facts)=
-## Returns and Stylized Facts 
+## Statistical properties of equity price data
 A return refers to the increase or decrease in the price of an asset, e.g., shares of a stock over a specific time period period, e.g., minutes, days, weeks or even years. Studying returns is crucial for understanding the performance of financial assets such as stocks, bonds, and commodities ({prf:ref}`defn-log-return-1`):
 
 ````{prf:definition} Logarithmic return
@@ -310,4 +308,11 @@ Return distribution for logarithmic daily return of [Wells Fargo & Company](http
 ---
 
 # Summary
-Fill me in.
+This week introduced equity securities, discussed the different types of orders that can be used to buy or sell these securities and explored the statistical properties of the equity returns:
+
+
+* {ref}`content:references:markets-exchanges` play a crucial role in contemporary economies as they enable the trade of goods, services, and financial instruments like stocks and bonds. A market is a platform where buyers and sellers convene to exchange commodities or services, while an exchange is a market that specializes in financial instruments and has specific trade regulations.
+
+* {ref}`content:orders-order-book-matching`. As a trader, you issue instructions to buy or sell a financial instrument at a specific price, by sending an order to an exchange. The exchange records all outstanding orders for a particular financial instrument in the order book. By matching the orders based on price and other criteria through an order matching algorithm, the exchange executes trades. 
+
+* {ref}`content:references:returns-stylized-facts`. Equity price data, particular the return between two dates, can be analyzed to produce a set of statistics called stylized facts. Stylized facts are recognizable patterns or empirical regularities observed in financial markets and investment returns. Familiarity with these patterns can assist investors in making informed decisions and creating more effective investment strategies.

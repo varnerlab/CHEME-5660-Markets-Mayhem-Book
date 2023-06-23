@@ -1,4 +1,4 @@
-# Unit 2: Wealth Creation
+# Wealth Creation
 Wealth creation using bonds, stocks, and options is an important aspect of investment management. Bonds are debt securities that provide a fixed income to investors, while stocks represent ownership in a company and offer the potential for capital gains and dividends. Options are financial instruments that give investors the right, but not the obligation, to buy or sell an underlying asset at a predetermined price and time. These tools can be used in combination to create a diversified investment portfolio that balances risk and reward. By understanding the characteristics and risks associated with each asset class, investors can make informed decisions to maximize their wealth creation potential.
 
 In this unit, we will discuss the following topics:

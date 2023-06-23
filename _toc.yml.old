@@ -1,0 +1,43 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: infrastructure
+chapters:
+- file: chapter-1-dir/chapter-1-landing
+  title: Unit 1. Financial Basics
+- file: chapter-1-dir/assets
+  sections:
+  - file: chapter-1-dir/pfinance-basics
+ 
+- file: chapter-2-dir/chapter-2-landing
+  title: Unit 2. Wealth Creation
+  sections: 
+  - file: chapter-2-dir/bonds.md
+  - file: chapter-2-dir/equity.md
+  - file: chapter-2-dir/contracts.md
+
+- file: chapter-3-dir/chapter-3-landing
+  title: Unit 3. Portfolio Management
+  sections: 
+  - file: chapter-3-dir/data-markowitz
+  - file: chapter-3-dir/model-markowitz
+  - file: chapter-3-dir/hedged-portfolio
+
+- file: chapter-4-dir/chapter-4-landing
+  title: Unit 4. Financial Decisions
+  sections:
+  - file: chapter-4-dir/markov
+  - file: chapter-4-dir/mdp
+  - file: chapter-4-dir/bandits
+  - file: chapter-4-dir/rl
+
+- file: appendix/appendix-landing
+  title: Appendices
+  sections:
+  - file: appendix/random
+  - file: appendix/julia-installation
+  - file: appendix/julia-basics
+  - file: appendix/julia-data
+
+- file: References
