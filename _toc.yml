@@ -1,14 +1,15 @@
 format: jb-book
 root: infrastructure
 parts:
-- caption: Financial Basics
+- caption: Unit 1 Financial Basics
   chapters:
   - file: chapter-1-dir/chapter-1-landing
     sections:
     - file: chapter-1-dir/assets
 
-- caption: Wealth Creation
+- caption: Unit 2 Wealth Creation
   chapters:
+  - file: chapter-2-dir/chapter-2-landing
   - file: chapter-2-dir/bonds
     sections:
     - file: chapter-2-dir/bonds/T-bills
@@ -29,9 +30,10 @@ parts:
     - file: chapter-2-dir/options/option-contract-dynamics
     - file: chapter-2-dir/options/option-rolling
 
-- caption: Portfolio Theory
+- caption: Unit 3 Portfolio Theory
   chapters:
   - file: chapter-3-dir/chapter-3-landing.md
+  - file: chapter-3-dir/markowitz
     sections:
     - file: chapter-3-dir/data-markowitz
     - file: chapter-3-dir/model-markowitz
@@ -39,9 +41,9 @@ parts:
   - file: chapter-3-dir/black-swan-events
     sections: 
     - file: chapter-3-dir/var
-    - file: chapter-3-dir/hedging
+    - file: chapter-3-dir/hedged-portfolio
 
-- caption: Decision Theory
+- caption: Unit 4 Decision Theory
   chapters:
   - file: chapter-4-dir/chapter-4-landing
   - file: chapter-4-dir/markov
@@ -53,6 +55,18 @@ parts:
     - file: chapter-4-dir/bandits/bandits
     - file: chapter-4-dir/rl/Q-learning
 
+- caption: Appendices
+  chapters: 
+  - file: appendix/probability-basics
+  - file: appendix/julia-basics
+    sections:
+    - file: appendix/julia/julia-installation
+    - file: appendix/julia/julia-functions-types
+    - file: appendix/julia/julia-data
+
+- caption: References
+  chapters:
+  - file: References
 
 
 

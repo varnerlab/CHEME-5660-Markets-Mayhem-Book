@@ -4,7 +4,7 @@
 title: CHEME 5660
 author: Varner and Woltornist
 copyright: "2023" 
-logo: cornell_seal_simple_black-128.svg
+logo: cornell_seal_simple_black-164.svg
 
 # Force re-execution of notebooks on each build.
 # See https://jupyterbook.org/content/execute.html
@@ -36,7 +36,7 @@ html:
   google_analytics_id: G-PG1Y6R28LY
   title: "Toes"
   home_page_in_toc: true
-  home_page_in_navbar: false
+  home_page_in_navbar: true
   use_issues_button: true
 
 

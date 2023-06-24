@@ -1,4 +1,4 @@
-# CHEME 5660 Course Information and Overview
+# Course Information and Overview
 
 ## Description 
 Finance plays a crucial role in both technological advancement and the lives of individuals in our society. However, financial forecasting, modeling, and decision-making are rarely taught in traditional engineering or physical science curriculums. Further, an increasing number of engineers and scientists are turning to careers in finance and consulting. Finally, despite advancements in market access, many individuals still need help accessing the wealth-creation opportunities offered by financial systems. To address these gaps, this course introduces engineers and scientists to financial systems, markets, and analytical tools for economic and business operations. Using engineering, statistics, data science, and machine learning, we will model, analyze, and optimize financial systems and decision-making processes. The course material can be applied to both traditional economic and engineering fields.
@@ -62,7 +62,7 @@ If you have a disability-related need for reasonable academic adjustments in thi
 We aspire to create an environment for learning, intellectual discourse, and professional and social interactions where every individual feels welcome and valued. We recognize all course participants as responsible adults with differing perspectives based, in part, on their unique experiences. We espouse the broader mission and values of the Smith School as described here: https://www.cheme.cornell.edu/cbe/about/mission.
 
 
-## Disclaimer and Risk Statement
+### Disclaimer and Risk Statement
 This content is offered solely for training and informational purposes. No offer or solicitation to buy or sell securities or derivative products, or any investment or trading advice or strategy, is made, given, or endorsed by any member of the teaching team. 
 
 Trading involves risk. Carefully review your financial situation before investing in securities, futures contracts, options, or commodity interests. Past performance, whether actual or indicated by historical tests of strategies, is no guarantee of future performance or success. Trading is generally inappropriate for someone with limited resources, investment or trading experience, or a low-risk tolerance.  Only risk capital that is not required for living expenses.
