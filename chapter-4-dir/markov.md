@@ -1,2 +1,2 @@
-# Markov Models and the Markov Property
+# Markov Models
 Fill me in.

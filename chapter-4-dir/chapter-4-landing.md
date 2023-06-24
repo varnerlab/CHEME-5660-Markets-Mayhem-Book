@@ -1,8 +1,10 @@
-# Uncertain Rational Decision Making
+# Rational Decision Making
 Making decisions in uncertain situations, potentially involving multiple agents, can be challenging. Decision-making in uncertain situations involves uncertainty and risk. Thus, in this unit, we'll introduce tools to model uncertainty, approaches to understand risk, and risk tolerance and model the actions of multiple actors involved in our decisions.
 
 ```{topic} Decision Making Outline
 In this unit, we will discuss the following topics:
+
+* [Expected utility hypothesis](./expected-utility.md) is a cornerstone concept in decision theory and economics. It proposes that individuals make choices based on their anticipated outcomes and corresponding utility or satisfaction. This hypothesis assumes that individuals are rational and seek to maximize their expected utility when making decisions, subject to various constraints.
 
 * [The Markov property and Markov processes](./markov.md) are mathematical models of randomness that assume the next state of a sysyem depends only on the current state and not the past. It's like a game where the outcome of the next move depends only on the game’s current state, not on previous states. Markov processes have many applications, such as predicting the weather, modeling financial markets, and understanding how diseases spread. We'll make use of Markov processes to model the evolution of sequential decision making, i.e., [Markov decision processes](./markov/mdp.md). 
 

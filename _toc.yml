@@ -46,6 +46,7 @@ parts:
 - caption: Unit 4 Decision Theory
   chapters:
   - file: chapter-4-dir/chapter-4-landing
+  - file: chapter-4-dir/expected-utility
   - file: chapter-4-dir/markov
     sections: 
     - file: chapter-4-dir/markov/hmm
