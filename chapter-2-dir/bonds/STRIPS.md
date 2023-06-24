@@ -1,2 +1,2 @@
-# Registered Interest and Principal of Securities (STRIPS) Bonds
+# STRIPS Bonds and the Term Structure of Interest Rates
 Fill me in.

@@ -6,27 +6,28 @@ parts:
   - file: chapter-1-dir/chapter-1-landing
     sections:
     - file: chapter-1-dir/assets
-  - file: chapter-1-dir/pfinance-basics
 
 - caption: Wealth Creation
   chapters:
   - file: chapter-2-dir/bonds
     sections:
     - file: chapter-2-dir/bonds/T-bills
-    - file: chapter-2-dir/bonds/T-notes-bonds
+    - file: chapter-2-dir/bonds/T-bill-note-bond-pricing
     - file: chapter-2-dir/bonds/STRIPS
   - file: chapter-2-dir/stocks
     sections:
     - file: chapter-2-dir/stocks/stylized-facts
     - file: chapter-2-dir/stocks/lattice-eq-price
-    - file: chapter-2-dir/stocks/obm-eq-price
-    - file: chapter-2-dir/stocks/gbm-eq-price
+    - file: chapter-2-dir/stocks/obm-gbm-eq-price
+    - file: chapter-2-dir/stocks/multivariate-eq-price
+    - file: chapter-2-dir/stocks/advanced-eq-price
   - file: chapter-2-dir/options
     sections: 
-    - file: chapter-2-dir/options/american-call-contracts
-    - file: chapter-2-dir/options/american-put-contracts
+    - file: chapter-2-dir/options/american-call-and-put-contracts
     - file: chapter-2-dir/options/composite-contracts
     - file: chapter-2-dir/options/option-contract-pricing
+    - file: chapter-2-dir/options/option-contract-dynamics
+    - file: chapter-2-dir/options/option-rolling
 
 - caption: Portfolio Theory
   chapters:
@@ -34,6 +35,7 @@ parts:
     sections:
     - file: chapter-3-dir/data-markowitz
     - file: chapter-3-dir/model-markowitz
+    - file: chapter-3-dir/reallocation
   - file: chapter-3-dir/black-swan-events
     sections: 
     - file: chapter-3-dir/var
@@ -42,10 +44,15 @@ parts:
 - caption: Decision Theory
   chapters:
   - file: chapter-4-dir/chapter-4-landing
+  - file: chapter-4-dir/markov
     sections: 
-    - file: chapter-4-dir/markov
-    - file: chapter-4-dir/hmm
-    - file: chapter-4-dir/mdp
-    - file: chapter-4-dir/rl
+    - file: chapter-4-dir/markov/hmm
+    - file: chapter-4-dir/markov/mdp
+  - file: chapter-4-dir/rl
+    sections:
+    - file: chapter-4-dir/bandits/bandits
+    - file: chapter-4-dir/rl/Q-learning
+
+
 
 

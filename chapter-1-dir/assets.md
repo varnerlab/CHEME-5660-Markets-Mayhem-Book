@@ -1,4 +1,4 @@
-# Cash Flow, Present and Future Value
+# Money flows and the net present value of an abstract asset
 
 <!-- The development of processes or products does not occur inside a mythical universe that is free 
 from market forces. Instead, processes and products must be, at a minimum, financially neutral to be viable. Processes and products that are not financially viable, while perhaps being technically innovative or otherwise advantageous, will not survive in the marketplace without external support e.g., local, state or federal government subsities.  -->

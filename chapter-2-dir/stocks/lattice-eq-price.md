@@ -1,2 +1,2 @@
-# Lattice Models
+# Discrete Lattice Models of Equity Pricing
 Fill me in

@@ -1,2 +1,2 @@
-# Composite Options Contracts
+# Composite Contract Payoff and Profit Diagrams
 Fill me in.

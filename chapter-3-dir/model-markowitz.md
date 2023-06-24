@@ -1,2 +1,2 @@
-# Model-Assisted Markowitz Portfolio Optimization
+# Model-Assisted Markowitz Portfolio Allocation
 Fill me in.
