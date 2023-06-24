@@ -3,8 +3,8 @@
 
 title: CHEME 5660
 author: Varner and Woltornist
-logo: cornell_seal_simple_black-164.svg
 copyright: "2023" 
+logo: cornell_seal_simple_black-128.svg
 
 # Force re-execution of notebooks on each build.
 # See https://jupyterbook.org/content/execute.html
@@ -31,13 +31,22 @@ repository:
 html:
   use_issues_button: true
   use_repository_button: true
+  use_fullscreen_button: true
   baseurl: "https://varnerlab.github.io/CHEME-5660-Markets-Mayhem-Book/infrastructure.html"
   google_analytics_id: G-PG1Y6R28LY
+  title: "Toes"
+  home_page_in_toc: true
+  home_page_in_navbar: false
+  use_issues_button: true
+
 
 # In _config.yml
 sphinx:
   config:
     mathjax_path: https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
     bibtex_reference_style: author_year
+    html_theme: sphinx_book_theme
+    html_title: "CHEME-5660"
+    title: "What?"
   extra_extensions:
     - sphinx_proof

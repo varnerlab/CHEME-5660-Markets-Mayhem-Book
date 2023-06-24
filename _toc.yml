@@ -1,19 +1,51 @@
 format: jb-book
 root: infrastructure
 parts:
-- caption: "I: Financial Basics"
+- caption: Financial Basics
   chapters:
   - file: chapter-1-dir/chapter-1-landing
-  - file: chapter-1-dir/assets
-  - file: chapter-1-dir/pfinance-basics
-- caption: "II: Wealth Creation"
-  chapters:
-  - file: chapter-2-dir/chapter-2-landing
-  - file: chapter-2-dir/equity
     sections:
-    - file: chapter-2-dir/eq-models/gbm-eq-model
+    - file: chapter-1-dir/assets
+  - file: chapter-1-dir/pfinance-basics
+
+- caption: Wealth Creation
+  chapters:
   - file: chapter-2-dir/bonds
     sections:
-    - file: chapter-2-dir/treasury-securities/T-bills
-    - file: chapter-2-dir/treasury-securities/T-notes-bonds
-  - file: chapter-2-dir/contracts
+    - file: chapter-2-dir/bonds/T-bills
+    - file: chapter-2-dir/bonds/T-notes-bonds
+    - file: chapter-2-dir/bonds/STRIPS
+  - file: chapter-2-dir/stocks
+    sections:
+    - file: chapter-2-dir/stocks/stylized-facts
+    - file: chapter-2-dir/stocks/lattice-eq-price
+    - file: chapter-2-dir/stocks/obm-eq-price
+    - file: chapter-2-dir/stocks/gbm-eq-price
+  - file: chapter-2-dir/options
+    sections: 
+    - file: chapter-2-dir/options/american-call-contracts
+    - file: chapter-2-dir/options/american-put-contracts
+    - file: chapter-2-dir/options/composite-contracts
+    - file: chapter-2-dir/options/option-contract-pricing
+
+- caption: Portfolio Theory
+  chapters:
+  - file: chapter-3-dir/chapter-3-landing.md
+    sections:
+    - file: chapter-3-dir/data-markowitz
+    - file: chapter-3-dir/model-markowitz
+  - file: chapter-3-dir/black-swan-events
+    sections: 
+    - file: chapter-3-dir/var
+    - file: chapter-3-dir/hedging
+
+- caption: Decision Theory
+  chapters:
+  - file: chapter-4-dir/chapter-4-landing
+    sections: 
+    - file: chapter-4-dir/markov
+    - file: chapter-4-dir/hmm
+    - file: chapter-4-dir/mdp
+    - file: chapter-4-dir/rl
+
+
