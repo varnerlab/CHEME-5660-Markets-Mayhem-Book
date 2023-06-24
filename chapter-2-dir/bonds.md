@@ -12,7 +12,7 @@ In this lecture, we introduce US Treasury debt securities, their risks and prici
 
 * {ref}`content:references:bond-pricing-relationships` are utilized to determine the equitable value of a bond, considering its maturity, coupon rate, and current market interest rates. As per Malkiel’s guidelines, the bond’s price will fluctuate inversely with changes in interest rates. Long-term bonds will be more affected than short-term bonds. 
 
-* {ref}`content:references:term-structure-of-interest-rates` describes the correlation between fixed-income security interest rates and their maturity period. This concept represents the market’s outlook on future interest rates. The shape of the term structure - whether it’s upward-sloping, flat, or inverted - offers valuable insights into the economy’s present and potential future state. 
+* {ref}`content:references:term-structure-of-interest-rates` describes the relationship between fixed-income security interest rates and their maturity period. This concept represents the market’s outlook on future interest rates. The shape of the term structure - whether it’s upward-sloping, flat, or inverted - offers valuable insights into the economy’s present and potential future state. 
 
 ```
 <!-- 

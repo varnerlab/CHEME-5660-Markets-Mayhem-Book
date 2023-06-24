@@ -1,8 +1,9 @@
+(content:references:term-structure-of-interest-rates)=
 # STRIPS Bonds and the Term Structure of Interest Rates
 
 ---
 ```{topic} Learning Objectives
-* We'll introduce the bootstrapping method to estimate the [term structure of interest rates](content:references:STRIPS-TSoIR).
+* We'll introduce the [bootstrapping method to estimate the term structure of interest rates](content:references:STRIPS-TSoIR).
 The bootstrapping method is a technique for constructing a zero-coupon yield curve from the prices of zero-coupon bonds with different maturities created by stripping a single coupon bond.
 ```
 ---
@@ -18,7 +19,7 @@ name: fig-SStrips-Schematic
 Schematic of United States Treasury Registered Interest and Principal of Securities (STRIPS) debt instrument. 
 ```
 
-For example, the 5-year Treasury note with annual coupon payments of $C$ USD and a face (par) value of $V_{P}$ (USD) in {numref}`fig-SStrips-Schematic` can be stripped into six separate zero-coupon securities, i.e., five zero-coupon bonds, each with face values of $C$ and maturity of $T$= 1,2,3,4 and 5 years, and a six security with face (par) value of $V_{P}$ USD with a duration of $T$ = 5 years. In the general case, a treasury note or bond with $N=\lambda{T}$ coupon payments, where $T$ denotes the maturity in years, and $\lambda$ represents the number of coupon payments per year, can be stripped into $N+1$ separate zero-coupon securities. 
+For example, the 5-year Treasury note with annual coupon payments of $C$ USD and a face (par) value of $V_{P}$ (USD) in {numref}`fig-SStrips-Schematic` can be stripped into six separate zero-coupon securities, i.e., five zero-coupon bonds, each with face values of $C$ and maturity of `T = 1,2,3,4 and 5 years`, and a six security with face (par) value of $V_{P}$ USD with a duration of $T$ = 5 years. In the general case, a treasury note or bond with $N=\lambda{T}$ coupon payments, where $T$ denotes the maturity in years, and $\lambda$ represents the number of coupon payments per year, can be stripped into $N+1$ separate zero-coupon securities. 
 
 (content:references:STRIPS-TSoIR)=
 ## Term Structure of Interest Rates and STRIPS

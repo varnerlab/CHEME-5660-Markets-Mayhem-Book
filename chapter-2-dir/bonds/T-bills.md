@@ -78,9 +78,10 @@ The price an investor is willing to pay for a claim to the future coupon payment
 
 For a note or bond with a term of T-years and $\lambda$ coupon payments per year, there will be $N = \lambda{T}$ payments. The fair price is the present value of coupon payments $C$ and the discounted face value $V_{P}$:
 
-$$
+```{math}
+:label: eqn-fixed-r-bond-price-w-coupon
 V_{B} = \mathcal{D}^{-1}_{N,0}(\bar{r})\cdot{V_{P}}+C\cdot\sum_{j=1}^{N}\mathcal{D}_{j,0}^{-1}(\bar{r})
-$$
+```
 
 The term $\mathcal{D}_{i,0}(\bar{r})$ denotes the discount factor for the period $0\rightarrow{N}$, which can be either a discrete or continuous compounding model. The coupon payment $C=\left(\bar{c}/\lambda\right)\cdot{V_{P}}$, and the interest rate $i=\bar{r}/\lambda$ are set at auction. 
 ````
@@ -96,7 +97,7 @@ Compute the price of a bond with a T = 30-year term and a par value of $V_{P}$ =
 1. The interest rate $\bar{r}$ is larger than the coupon rate $\bar{c}$; let $\bar{c}=8\%$ and $\bar{r}=10\%$
 1. The interest rate $\bar{r}$ is smaller than the coupon rate $\bar{c}$; let $\bar{c}=8\%$ and $\bar{r}=6\%$
 
-The bond price is given by {prf:ref}`defn-fixed-r-bond-pricing`. A 30-year term gives 60 semi-annual coupon payments. Substituting the values for $\bar{r}$, $\bar{c}$ and the number of payments into the pricing equation gives:
+A 30-year term gives 60 semi-annual coupon payments. Substituting the values for $\bar{r}$, $\bar{c}$ and the number of payments into {prf:ref}`defn-fixed-r-bond-pricing` gives:
 
 | Case | $\bar{r}$ (\%) | $\bar{c}$ (\%) | $V_{P}$ (USD) | $V_{B}$ (USD) |
 | :----: | :---------: | :---------: | :-------: | :-------: |
@@ -106,6 +107,8 @@ The bond price is given by {prf:ref}`defn-fixed-r-bond-pricing`. A 30-year term 
 
 __source__: [Live Pluto notebook](https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks) or [a static HTML view](https://htmlview.glitch.me/?https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks/blob/main/pluto-notebooks/html/Example-Price-TreasuryBond.jl.html).
 ````
+
+
 
 (content:references:US-YTM-Defn)=
 ## Yield to Maturity (YTM)
@@ -131,7 +134,7 @@ The yield to maturity and the effective market interest rate are equal when the 
 ---
 
 ## Summary
-In this lecture we introduced Treasury, Bills, Notes, and Bonds, and we discussed the relationship between the coupon rate, the interest rate, and the price of the security. We also introduced the concept of the Yield to Maturity (YTM) and the relationship between the YTM and the market interest rate.
+In this lecture we introduced Treasury, Bills, Notes, and Bonds, and we discussed the relationship between the coupon rate, the interest rate, and the price of the security. We also introduced the Yield to Maturity (YTM) and the relationship between the YTM and the market interest rate.
 
 * [U.S. Treasury Bills](content:references:US-T-Bills) are short-term debt securities with a maturity of less than one year. [Treasury Notes and Bonds](content:references:US-T-Notes-Bonds) are long-term debt securities with a maturity of two to thirty years.
 
