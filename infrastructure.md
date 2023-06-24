@@ -19,20 +19,20 @@ Lectures are organized into units, each unit having roughly four weeks of class 
 
 ### Outcomes
 Upon completion of this course, students will be able to:
-* Analyze financial data sets using tools from statistics, data science (DS) and machine learning (ML)
-* Identify quantitative models of asset pricing and process performance using historical and real-time financial data sets 
-* Demonstrate mastery of quantitative decision-making and risk management approaches in the context of corporate finance and personal wealth management.
+* __Outcome 1__: Analyze financial data sets using tools from statistics, data science (DS) and machine learning (ML)
+* __Outcome 2__: Identify quantitative models of asset pricing and process performance using historical and real-time financial data sets 
+* __Outcome 3__: Demonstrate mastery of quantitative decision-making and risk management approaches in the context of corporate finance and personal wealth management.
 
 ### Prerequisites
 There are no formal prerequisites for this course. However, general familiarity with common programming languages such as Python/Matlab/Julia and mathematical and computing topics such as probability, statistics, optimization, and data science tools such as Jupyter notebooks, DataFrames, etc., will be helpful.
 
 ## Grading 
-Grades will be computed from 2 take-home prelims (dates/times indicated on the course calendar), a final group project (scheduled by the University), and a participation score. The take-home prelims are collectively worth 60%, while the group project is worth 30% of your final grade. Class participation and other designated assignments will collectively account for 10% of your final grade.  
+Grades will be computed from 3 $\times$ take-home prelims (dates/times indicated on the course calendar), a final group project (scheduled by the University), and a participation score. The take-home prelims are collectively worth 60%, while the group project is worth 30% of your final grade. Class participation and other designated assignments will collectively account for 10% of your final grade.  
 
 | Percentage | Component |
 | ----------: | --------- |
 | 10%	| __Participation__. Course participation (code reviews, questions and TA/course evaluations) will be an important component of the course. Participation opportunities will be identified throughout the semester. |
-| 60%	| __Take-home exams__. Two take-home examinations will be distributed. The distribution date will be announced ahead of time, and once distributed, students will have a specified number of hours (at least 36 hours) to complete the exams. |
+| 60%	| __Take-home exams__. Three take-home examinations will be distributed. The distribution date will be announced ahead of time, and once distributed, students will have a specified number of hours (at least 36 hours) to complete the exams. |
 | 30%	| __Final project__. Development of a research project by each student (semester long with additional emphasis during the final 5 weeks of the course). The projects will conclude with a written report and an oral presentation to the class near the end of the semester. The final written reports will be due on the University assigned date for final projects. |
 
 This course will have weekly hands-on case studies completed as teams in the discussion section(s). We expect everyone to attempt every case study and to participate in the discussion section:
