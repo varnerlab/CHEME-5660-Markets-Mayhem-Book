@@ -1,4 +1,4 @@
-# Introduction to the Tools of Wealth Creation
+# Introduction to the Tools and Strategies of Wealth Creation
 To create wealth, several financial and investment tools are worth considering. Bonds provide investors with a fixed income, while stocks offer the possibility of capital gains and dividends in exchange for ownership in a company. Options, on the other hand, are financial instruments that allow investors to buy or sell an underlying asset at a predetermined price and time without any obligation. It is important for investors to understand the features and hazards associated with each asset class, in order to make informed decisions and maximize their potential for wealth creation. 
 
 ```{topic} Wealth Creation Outline

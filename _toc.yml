@@ -4,8 +4,7 @@ parts:
 - caption: Unit 1 Financial Basics
   chapters:
   - file: chapter-1-dir/chapter-1-landing
-    sections:
-    - file: chapter-1-dir/assets
+  - file: chapter-1-dir/assets
 
 - caption: Unit 2 Wealth Creation
   chapters:

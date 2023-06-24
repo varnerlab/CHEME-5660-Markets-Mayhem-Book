@@ -1,6 +1,12 @@
-# Abstract Assets
+# Introduction to Personal and Corporate Financial Basics
 
-The objective of this unit is to introduce the essential components of personal finance, markets, and assets:
+In this unit, we'll introduce basic personal and corporate finance concepts. 
 
-<!-- * [Personal finance basics](./pfinance-basics.md). We start the course by introducing key concepts such as budgets, balance sheets, and the idea of needs versus wants that we build upon for later.
-* [Most of us think about assets](./assets.md) as tangible items, e.g., cars, houses, etc. These are certainly examples of physical, tangible assets. However, assets are more general than just material items. For example, intellectual property, e.g., patents or other non-physical things such as a manufacturing process, are also assets. Thus, a more general notion of an asset is simply a flow of money; what is money? Money is an economic unit that functions as a generally recognized medium of exchange for transactional purposes in an economy. Money is an asset used to settle transactions between a buyer and a seller.  -->
+```{topic} Finance Basic Outline
+In this unit, we will discuss the following topics:
+
+* [Abstract assets](./assets.md) are a theortectical model of an asset, i.e., an abstract asset is series of current and future cash flows. We'll introduce the concept of an abstract asset, the idea of time value of money an a key concept to value assets called the net present value.
+
+* [Personal finance basics](./pfinance-basics.md). We then continue by introducing key concepts such as budgets, balance sheets, and the idea of needs versus wants that we build upon for later.
+
+```
