@@ -1,5 +1,5 @@
 (content:references:bond-pricing-relationships)=
-# The Pricing of Treasury Bills, Notes and Bonds
+# U.S. Treasury Security Pricing
 
 ---
 ```{topic} Learning Objectives

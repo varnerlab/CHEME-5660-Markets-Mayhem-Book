@@ -1,2 +1,2 @@
-# Multivariate Brownian motion models of equity prices
+# Multivariate Brownian Motion Models of Equity Prices
 Fill me in.

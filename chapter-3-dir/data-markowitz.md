@@ -1,2 +1,2 @@
-# Data-Driven Markowitz Portfolio Allocation
+# Data-Driven Portfolio Allocation
 Fill me in.

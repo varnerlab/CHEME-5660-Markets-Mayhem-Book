@@ -1,2 +1,2 @@
-# The Portfolio Reallocation Problem
+# Portfolio Reallocation
 Fill me in.
