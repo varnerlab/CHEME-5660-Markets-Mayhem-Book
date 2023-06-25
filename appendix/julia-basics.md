@@ -1,2 +1,2 @@
-# Appendix B: Julia Basics
+# Julia Basics
 Fill me in.

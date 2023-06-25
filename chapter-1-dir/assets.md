@@ -1,15 +1,13 @@
-# Valuation of Abstract Assets and the Net Present Value
+# Valuation of Abstract Assets
 
-```{figure} ./figs/Fig-Asset-CashFlowDiagram.pdf
+---
 
 <!-- The development of processes or products does not occur inside a mythical universe that is free 
 from market forces. Instead, processes and products must be, at a minimum, financially neutral to be viable. Processes and products that are not financially viable, while perhaps being technically innovative or otherwise advantageous, will not survive in the marketplace without external support e.g., local, state or federal government subsities.  -->
 
 ```{topic} Outline
 
-In this lecture, we introduce three basic financial concepts: simple and compound interest, abstract assets, and the net present value. 
-
-* {ref}`content:references:interest-models`: Simple interest refers to the interest calculated solely on the initial principal amount, while compound interest takes into account both the principal and the accumulated interest. 
+In this lecture, we introduce three basic financial concepts: abstract assets, simple and compound interest, and the net present value. 
 
 * {ref}`content:references:abstract-asset-defn` generate value and cash flows for the holder. Cash flows, on the other hand, are the inflows and outflows of money from a business or investment, and are a key factor in determining the value of abstract assets. Finally, interest is the cost of borrowing money, and understanding how interest rates impact cash flows and the value of abstract assets is essential for financial decision making.
 
@@ -18,60 +16,6 @@ In this lecture, we introduce three basic financial concepts: simple and compoun
 ```
 
 ---
-
-(content:references:interest-models)=
-## Simple and Compound Interest
-The distinction between simple and compound interest is crucial in the world of finance and investing. These concepts significantly impact investment growth and borrowing costs, making them fundamental aspects to consider when making financial decisions. 
-
-Simple interest is paid only on the initial principle. For example, if amount $A(0)$ is invested in an account at $t=0$ which pays a simple interest rate of $r$ per period, then after $n$ periods the amount $A(n)$ is given by:
-
-```{math}
-:label: eqn-simple-interest
-A(n) = A(0)\cdot\left(1+rn\right)
-```
-
-Compound interest considers both the principal and the interest accumulated over time. For example, if amount $A(0)$ is invested in an account at $t=0$ which pays a compound interest rate $r$ per period, then after $n$ periods the amount $A(n)$ is given by:
-
-```{math}
-:label: eqn-compound-interest
-A(n) = A(0)\cdot\left(1+r\right)^n
-```
-
-````{prf:example} Simple versus compound interest
-:label: example-simple-vs-compound-interest
-:class: dropdown
-
-Compute the balance of an investment account $A(n)$ that pays $r = 0.05$ per period after $n$ periods using a simple and compound interest rate model for an initial investment of $A(0) = 100.0$ USD.
-
-```{figure} ./figs/Fig-Simple-Compound-Interest.pdf
----
-height: 360px
-name: fig-simple-compound-interest
----
-Simple versus compound interest for n-periods for an interest rate of $r = 0.05$ per-period. Compound interest outperforms simple interest as the number of periods becomes large.
-```
-````
-
-Interest rates are typically quoted on an annual basis, and can be compounded at different rates, e.g., annually, quarterly, etc. Putting these ideas together gives a useful definition of compound interest ({prf:ref}`defn-compound-interest`):
-
-````{prf:definition} Continuous compounding
-:label: defn-compound-interest
-
-Let there be n-compounding periods per year and an annualized interest rate of r-percent.  Then an initial investment $A(0)$ will be worth:
-
-```{math}
-:label: eqn-compound-interest-model-discrete
-A(m) = A(0)\cdot\left(1+r/n\right)^{mn}
-```
-
-after $m$-years. As the number of compounding periods $n\rightarrow\infty$, the investment $A(m)$ approaches the continuous compounding case:
-
-```{math}
-:label: eqn-compound-interest-model-cont
-\lim_{n\rightarrow\infty}A(m) = A(0)\cdot\exp\left(rm\right)
-```
-
-````
 
 
 (content:references:abstract-asset-defn)=
@@ -99,8 +43,10 @@ where $\dot{c}_{t}$ denotes the cash flow in time period $t = 0,\dots,T$.
 The most common (and intuitive) valuation operator $\mathcal{V}$ is the sum of net cash flows in each time period, i.e., we compute the net cash in each period (cash inflow - cash outflow in period $i$) and then sum these net cash flows over all $T$ periods.
 
 
-### Time value of money
-There is a fundamental challenge to the summation valuation intuition, the time value of money ({prf:ref}`remark-tvof-money`): 
+<!-- Unfortunately, our intuitive valuation operator (net cash flows) does not consider (yet) the time of value of money. Let's develop some tools to address this issue.  -->
+
+### Exchange rate model
+There is a fundamental flaw to the summation valuation intuition, the time value of money ({prf:ref}`remark-tvof-money`): 
 
 ```{prf:remark} Time value of Money
 :label: remark-tvof-money
@@ -128,12 +74,10 @@ __Why?__
 
 ````
 
-<!-- Unfortunately, our intuitive valuation operator (net cash flows) does not consider (yet) the time of value of money. Let's develop some tools to address this issue.  -->
-
-### Exchange rate model
 A useful mental model for the time value of money is to think of money from different time periods 
 as being in different currencies (e.g., dollars versus euros) that must be exchanged. Thus, to compare money or cash flows from different time periods we formulate the equivalent of an exchange rate.
 
+#### Discrete Discounting
 Suppose we wanted to convert the value of a cash flow from one time period in the future 
 into today's dollars (or vice-versa, we want to compute the value of a future cash flow to a current value). To do this, we use a one-period discrete conversion ({prf:ref}`defn-one-perod-discrete-conversion`):
 
@@ -322,6 +266,7 @@ xlabel!("Period index (AU)", fontsize=18)
 ylabel!("Future value (USD)", fontsize=18)
 ```
 ````
+
 
 (content:references:npv-defn)=
 ## Net Present Value (NPV)

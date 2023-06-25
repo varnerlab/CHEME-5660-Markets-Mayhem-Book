@@ -1,4 +1,4 @@
-# Introduction to Uncertain Rational Decisions
+# Unit 4: Rational Decision Theory
 Making decisions in uncertain situations, potentially involving multiple agents, can be challenging. Decision-making in uncertain situations involves uncertainty and risk. Thus, in this unit, we'll introduce tools to model uncertainty, approaches to understand risk, and risk tolerance and model the actions of multiple actors involved in our decisions.
 
 ```{topic} Decision Making Outline

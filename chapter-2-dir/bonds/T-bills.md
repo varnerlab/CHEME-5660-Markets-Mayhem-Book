@@ -4,9 +4,15 @@
 ---
 
 ```{topic} Learning Objectives
-* [U.S. Treasury Bills](content:references:US-T-Bills) are short-term debt securities with a maturity of less than one year. [Treasury Notes and Bonds](content:references:US-T-Notes-Bonds) are long-term debt securities with a maturity of two to thirty years.
+After introducing the structure and properties of U.S. Treasury securities, in this lecture we'll discuss the following topics:
 
-* [The Yield to Maturity (YTM)](content:references:US-YTM-Defn) is a measure of the _return_ of a bond investment. Yield to maturity is the discount rate that equates the present value of a bond's cashflows to its price.  The YTM is the internal rate of return (IRR) of an investment in a bond if the investor holds the bond until maturity and if all payments are made as scheduled.
+* [Simple and Compound Interest](content:references:interest-models) are two methods of calculating interest. Simple interest is calculated on the principal amount of a loan only. Compound interest is calculated on the principal amount and also on the accumulated interest of previous periods, and can thus be regarded as `interest on interest.`
+
+
+* [U.S. Treasury Bills](content:references:US-T-Bills) are short-term debt securities with a maturity of less than one year. On the other hand,[Treasury Notes and Bonds](content:references:US-T-Notes-Bonds) are long-term debt securities with a maturity of two to thirty years. Bills, Notes and Bonds are structured contracts between the U.S. government and bondholders that specify the repayment terms of the loan, e.g., the duration of the loan and the payment schedule.
+
+
+* [The Yield to Maturity (YTM)](content:references:US-YTM-Defn) is a measure of the _return of a bond investment_. Yield to maturity is the discount rate that equates the present value of a bond's cashflows to its price.  The YTM is the internal rate of return (IRR) of an investment in a bond if the investor holds the bond until maturity and if all payments are made as scheduled.
 ```
 
 ---
@@ -29,6 +35,60 @@ The bondholder and the U.S. Treasury have a marketable agreement, which can be r
 * Some U.S. Treasury debt securities have interest payments commonly called coupons. These payments give the lender fixed cashflows on a predetermined schedule throughout the debt instrument's term.
 * Income from interest on U.S. Treasury debt securities is free of state and local income taxes but subject to federal income taxes.
 * You can purchase U.S. Treasury debt directly from the [United States Treasury via TreasuryDirect](https://www.treasurydirect.gov/indiv/products/prod_tbonds_glance.htm) or through a bank or broker to lend money to the U.S. government.
+
+(content:references:interest-models)=
+## Simple and Compound Interest
+The distinction between simple and compound interest is crucial in the world of finance and investing. These concepts significantly impact investment growth and borrowing costs, making them fundamental aspects to consider when making financial decisions. 
+
+Simple interest is paid only on the initial principle. For example, if amount $A(0)$ is invested in an account at $t=0$ which pays a simple interest rate of $r$ per period, then after $n$ periods the amount $A(n)$ is given by:
+
+```{math}
+:label: eqn-simple-interest
+A(n) = A(0)\cdot\left(1+rn\right)
+```
+
+Compound interest considers both the principal and the interest accumulated over time. For example, if amount $A(0)$ is invested in an account at $t=0$ which pays a compound interest rate $r$ per period, then after $n$ periods the amount $A(n)$ is given by:
+
+```{math}
+:label: eqn-compound-interest
+A(n) = A(0)\cdot\left(1+r\right)^n
+```
+
+````{prf:example} Simple versus compound interest
+:label: example-simple-vs-compound-interest
+:class: dropdown
+
+Compute the balance of an investment account $A(n)$ that pays $r = 0.05$ per period after $n$ periods using a simple and compound interest rate model for an initial investment of $A(0) = 100.0$ USD.
+
+```{figure} ./figs/Fig-Simple-Compound-Interest.pdf
+---
+height: 360px
+name: fig-simple-compound-interest
+---
+Simple versus compound interest for n-periods for an interest rate of $r = 0.05$ per-period. Compound interest outperforms simple interest as the number of periods becomes large.
+```
+````
+
+Interest rates are typically quoted on an annual basis, and can be compounded at different rates, e.g., annually, quarterly, etc. Putting these ideas together gives a useful definition of compound interest ({prf:ref}`defn-compound-interest`):
+
+````{prf:definition} Continuous compounding
+:label: defn-compound-interest
+
+Let there be n-compounding periods per year and an annualized interest rate of r-percent.  Then an initial investment $A(0)$ will be worth:
+
+```{math}
+:label: eqn-compound-interest-model-discrete
+A(m) = A(0)\cdot\left(1+r/n\right)^{mn}
+```
+
+after $m$-years. As the number of compounding periods $n\rightarrow\infty$, the investment $A(m)$ approaches the continuous compounding case:
+
+```{math}
+:label: eqn-compound-interest-model-cont
+\lim_{n\rightarrow\infty}A(m) = A(0)\cdot\exp\left(rm\right)
+```
+````
+
 
 (content:references:US-T-Bills)=
 ## U.S. Treasury Bills

@@ -1,4 +1,4 @@
-# Introduction to Personal and Corporate Financial Basics
+# Unit 1: Financial Basics
 
 In this unit, we'll introduce basic personal and corporate finance concepts. 
 

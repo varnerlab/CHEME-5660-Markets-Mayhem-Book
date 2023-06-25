@@ -1,4 +1,4 @@
-# Appendix A: Probability and Random Variables
+# Probability and Random Variables
 Understanding uncertainty relies heavily on the concepts of random variables and probability. Random variables are used to represent quantities that can take on different values based on a particular probability distribution. They play a crucial role in modeling uncertainty and randomness in diverse areas such as finance, physics, and engineering. Probability theory provides a framework for modeling the likelihood of various events occurring based on the underlying distribution of the random variables involved.
 
 ```{topic} Outline

@@ -1,4 +1,4 @@
-# Introduction to Modern Portfolio Theory
+# Unit 3: Modern Portfolio Theory
 Modern Portfolio Theory (MPT), also known as mean-variance analysis, is a fundamental concept in finance that provides a framework for constructing and optimizing investment portfolios. Developed by Harry Markowitz in the 1950s, MPT revolutionized the field of portfolio management by introducing a systematic approach to balancing risk and return {cite}`MPT1952`. The fundamental principle of MPT is that investors can reduce the overall risk of the portfolio by combining assets that are not perfectly correlated, without sacrificing potential returns. 
 
 ```{topic} Portfolio Allocation Outline
