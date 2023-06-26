@@ -74,6 +74,8 @@ The logarithmic return can be computed using the `logR` function. The equity pri
 
 ```{code-block} julia
 :caption: The `logR` function
+:linenos:
+
 
 """
     logR(data::DataFrame; r::Float64 = 0.045) -> Array{Float64,1}
@@ -145,13 +147,37 @@ Daily logarithmic return of [Wells Fargo & Company](https://en.wikipedia.org/wik
 To compute the [Autocorrelation](https://en.wikipedia.org/wiki/Autocorrelation), the [Volatility clustering](https://en.wikipedia.org/wiki/Volatility_clustering) and the [return disribution](https://en.wikipedia.org/wiki/Fat-tailed_distribution) we use the [Statistics.jl](https://docs.julialang.org/en/v1/stdlib/Statistics/) and [Distributions.jl](https://github.com/JuliaStats/Distributions.jl) packages.
 
 ### Autocorrelation
-Fill me in.
+Autocorrelation is the correlation of a signal $X_{t}$ with a delayed copy of itself $X_{t+\tau}$ as a function of a delay parameter $\tau$:
+
+```{math}
+R_{XX}(\tau) = \mathbb{E}\left(X_{t+\tau}X_{t}^{T}\right)
+```
+
+where $\mathbb{E}(\star)$ denotes the expectation operator, and $X_{t}^{T}$ denotes the transpose of $X_{t}$. The autocorrelation is a measure of the similarity between a signal and a delayed copy of itself as a function of the delay. It is often used in signal processing for analyzing functions or series of values, such as time domain signals.
+
+The autocorrelation as a function of the lag parameter $\tau$ can be visualized using the [Plots.jl](https://docs.juliaplots.org/stable/) package ({numref}`example-WFC-autocor-return-data-daily`):
+
+```{figure} ./figs/Fig-WFC-Daily-Return-4yr-Autocorrelation.svg
+---
+height: 380px
+name: example-WFC-autocor-return-data-daily
+---
+Autocorrelation as a function of lag $\tau$ (days) for logarithmic return of [Wells Fargo & Company](https://en.wikipedia.org/wiki/Wells_Fargo) computed from `2018-11-28` to `2022-11-28`. Data was downloaded using the `aggregate` endpoint of [Polygon.io](https://polygon.io/docs/stocks/get_v2_aggs_ticker__stocksticker__range__multiplier___timespan___from___to).
+```
 
 ### Volatility clustering
 Fill me in.
 
 ### Return distribution
-Fill me in.
+The distribution of daily returns was visualized using the [Plots.jl](https://docs.juliaplots.org/stable/) package ({numref}`example-WFC-return-histogram-data-daily`):
+
+```{figure} ./figs/Fig-WFC-Daily-Return-4yr-histogram.svg
+---
+height: 380px
+name: example-WFC-return-histogram-data-daily
+---
+Return distribution for logarithmic daily return of [Wells Fargo & Company](https://en.wikipedia.org/wiki/Wells_Fargo) computed between `2018-11-28` to `2022-11-28`. Data was downloaded using the `aggregate` endpoint of [Polygon.io](https://polygon.io/docs/stocks/get_v2_aggs_ticker__stocksticker__range__multiplier___timespan___from___to).
+```
 
 ---
 

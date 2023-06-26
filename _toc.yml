@@ -62,6 +62,7 @@ parts:
 - caption: Appendices
   chapters: 
   - file: appendix/probability-basics
+  - file: appendix/ito
   - file: appendix/julia-basics
     sections:
     - file: appendix/julia/julia-installation
