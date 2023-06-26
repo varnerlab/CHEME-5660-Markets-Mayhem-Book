@@ -1,0 +1,725 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Markets and Stylized Facts &#8212; CHEME-5660</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-PG1Y6R28LY"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-PG1Y6R28LY');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chapter-2-dir/stocks/stylized-facts';</script>
+    <link rel="canonical" href="https://varnerlab.github.io/CHEME-5660-Markets-Mayhem-Book/infrastructure.html/chapter-2-dir/stocks/stylized-facts.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Lattice Models of Equity Pricing" href="lattice-eq-price.html" />
+    <link rel="prev" title="Equity Securities" href="../stocks.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../../infrastructure.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/cornell_seal_simple_black-164.svg" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../../_static/cornell_seal_simple_black-164.svg" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../infrastructure.html">
+                    Course Information and Overview
+                </a>
+            </li>
+        </ul>
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../chapter-1-dir/chapter-1-landing.html">Unit 1: Financial Basics</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../chapter-1-dir/assets.html">Valuation of Abstract Assets</a></li>
+</ul>
+</li>
+</ul>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../chapter-2-landing.html">Unit 2: Wealth Creation Tools</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2 has-children"><a class="reference internal" href="../bonds.html">U.S. Treasury Securities</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../bonds/T-bills.html">U.S. Treasury Bills, Notes and Bonds</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../bonds/T-bill-note-bond-pricing.html">U.S. Treasury Security Pricing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../bonds/STRIPS.html">STRIPS Bonds and the Term Structure of Interest Rates</a></li>
+</ul>
+</li>
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="../stocks.html">Equity Securities</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l3 current active"><a class="current reference internal" href="#">Markets and Stylized Facts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lattice-eq-price.html">Lattice Models of Equity Pricing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="obm-gbm-eq-price.html">Brownian Motion Models of Equity Pricing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="multivariate-eq-price.html">Multivariate Brownian Motion Models of Equity Prices</a></li>
+<li class="toctree-l3"><a class="reference internal" href="advanced-eq-price.html">Advanced Stochastic Models of Equity Pricing</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../options.html">Derivative Securities</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../options/american-call-and-put-contracts.html">American and European Call and Put Contracts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../options/composite-contracts.html">Composite Contract Payoff and Profit Diagrams</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../options/option-contract-pricing.html">Contract Pricing at Expiration: Extrinsic and Intrinsic Value</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../options/option-contract-dynamics.html">Contract Pricing Before Expiration: Price Dynamics and Sensitivities</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../options/option-rolling.html">Trade mechanics for options positions: The Art of the Roll</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../chapter-3-dir/chapter-3-landing.html">Unit 3: Modern Portfolio Theory</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../chapter-3-dir/markowitz.html">Markowitz Portfolio Allocation</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../chapter-3-dir/data-markowitz.html">Data-Driven Portfolio Allocation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../chapter-3-dir/model-markowitz.html">Model-Driven Portfolio Allocation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../chapter-3-dir/reallocation.html">Portfolio Reallocation Strategies</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../chapter-3-dir/black-swan-events.html">Surviving Black Swan Events</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../chapter-3-dir/var.html">Value at Risk and Conditional Value at Risk</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../chapter-3-dir/hedged-portfolio.html">Hedging and Dynamic Hedging Approaches</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../chapter-4-dir/chapter-4-landing.html">Unit 4: Rational Decision Theory</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../chapter-4-dir/expected-utility.html">Maximzing the Expected Utility</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../chapter-4-dir/markov.html">Markov Models</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../chapter-4-dir/markov/hmm.html">Hidden Markov Models of Investor Behavior</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../chapter-4-dir/markov/mdp.html">Markov Decision Process Models of Sequential Decision Making</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../chapter-4-dir/rl.html">Reinforcement Learning</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../chapter-4-dir/bandits/bandits.html">Bandit problems, exploration versus exploitation and Thompson sampling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../chapter-4-dir/rl/Q-learning.html">Reinforcement Learning (RL) and the asset management problem</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../appendix/probability-basics.html">Probability and Random Variables</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../appendix/julia-basics.html">Julia Basics</a><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-12"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../appendix/julia/julia-installation.html">Julia Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../appendix/julia/julia-functions-types.html">Julia Types, Functions and Programs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../appendix/julia/julia-data.html">Working with Data in Julia</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">References</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../References.html">References</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Book/issues/new?title=Issue%20on%20page%20%2Fchapter-2-dir/stocks/stylized-facts.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/chapter-2-dir/stocks/stylized-facts.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Markets and Stylized Facts</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#markets">Markets</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#orders-order-books-and-order-matching">Orders, Order Books and Order Matching</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#returns-and-stylized-facts">Returns and Stylized Facts</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#autocorrelation">Autocorrelation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#volatility-clustering">Volatility clustering</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#return-distribution">Return distribution</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="markets-and-stylized-facts">
+<span id="content-references-markets-exchanges-stylized-facts"></span><h1>Markets and Stylized Facts<a class="headerlink" href="#markets-and-stylized-facts" title="Permalink to this heading">#</a></h1>
+<aside class="topic">
+<p class="topic-title">Outline</p>
+<p>In this lecture, we’ll introduce equity securities, discuss the different types of orders that can be used to buy or sell equity securities, introduce some components of market microstructure such as the order book and order matching, and finally explore the statistical properties of equity prices.</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#content-references-markets-exchanges"><span class="std std-ref">Markets</span></a> play a crucial role in contemporary economies as they enable the trade of goods, services, and financial instruments like stocks and bonds. A market is a platform where buyers and sellers convene to exchange commodities or services, while an exchange is a market that specializes in financial instruments and has specific trade regulations.</p></li>
+<li><p><a class="reference internal" href="#content-orders-order-book-matching"><span class="std std-ref">Orders, Order Books and Order Matching</span></a>. Traders give instructions to buy or sell financial instruments at a specified price, known as orders. These orders are recorded in the order book, which shows all outstanding buy and sell orders for a specific financial instrument on the exchange. The exchange matches buy and sell orders based on price and other criteria through the process of order matching, which results in trades being executed. The order book provides transparency into market depth and liquidity.</p></li>
+<li><p><a class="reference internal" href="#content-references-returns-stylized-facts"><span class="std std-ref">Stylized facts are identifiable trends or recurring patterns</span></a> seen in investment returns and financial markets. One example is that stock price returns typically display minimal autocorrelation and a leptokurtic distribution, signifying a higher peak and fatter tails than a normal distribution. Familiarity with these patterns can aid investors in making well-informed choices and developing more successful investment strategies.</p></li>
+</ul>
+</aside>
+<hr class="docutils" />
+<section id="markets">
+<span id="content-references-markets-exchanges"></span><h2>Markets<a class="headerlink" href="#markets" title="Permalink to this heading">#</a></h2>
+<p>Markets are physical or virtual locations where parties exchange goods and services. In a physical market, buyers and sellers interact face-to-face, while a virtual market does not require physical contact. Any place where two or more parties engage in an economic transaction, such as the exchange of goods, services, information, or currency, is considered a market.</p>
+<p>Financial instruments, like shares of stock, can be purchased or sold on electronic exchanges. Potential buyers submit <code class="docutils literal notranslate"><span class="pre">bids</span></code> specifying the quantity and price they wish to purchase the good or service, and potential sellers submit <code class="docutils literal notranslate"><span class="pre">asks</span></code> describing the amount and price at which they want to sell. These <code class="docutils literal notranslate"><span class="pre">bids</span></code> and <code class="docutils literal notranslate"><span class="pre">asks</span></code> are continuously arriving or being canceled, and deals are being made between parties continuously. Therefore, a double auction must have strategies and tools to track orders and match buyers and sellers and methods to keep market transactions flowing smoothly.</p>
+</section>
+<section id="orders-order-books-and-order-matching">
+<span id="content-orders-order-book-matching"></span><h2>Orders, Order Books and Order Matching<a class="headerlink" href="#orders-order-books-and-order-matching" title="Permalink to this heading">#</a></h2>
+<p>At the center of an electronic exchange are <a class="reference external" href="https://en.wikipedia.org/wiki/Order_(exchange)">orders</a> and <a class="reference external" href="https://en.wikipedia.org/wiki/Order_book">order books</a>. An <a class="reference external" href="https://en.wikipedia.org/wiki/Order_book">order book</a> holds a list of <a class="reference external" href="https://en.wikipedia.org/wiki/Order_(exchange)">orders</a> for a particular security or financial instrument listed on the exchange; thus, it is a tick-by-tick record of the interest buyers and sellers have for a particular security or financial instrument on the exchange.</p>
+<p>Many types of <a class="reference external" href="https://en.wikipedia.org/wiki/Order_(exchange)">orders</a> can be initiated by traders. However, let’s consider only four basic classes of orders, a market order, a limit order, a stop order and a cancel order.</p>
+<ul class="simple">
+<li><p><strong>Market order</strong>: A market order is a buy or sell order executed immediately, regardless of the current market prices. As long as willing sellers and buyers are present in the exchange, market orders are always executed (filled). Market orders are used when the certainty of execution is more important than the execution price. Thus, a market order is the simplest of the order types as it forgoes control over the execution price. A market order is filled at the best price available at execution. In fast-moving markets, the price paid or received may differ significantly from the price quoted when the order was entered. Further, a market order may be split across multiple participants on the other side of the transaction, resulting in different prices for some of the instruments involved in the trade.</p></li>
+<li><p><strong>Limit order</strong>: A limit order is an order to buy a financial instrument at no more than a specific price or sell a security at no less than a particular price. This gives the trader control over the price at which the trade is executed. However, unlike a market order which is guaranteed to be executed (filled), a limit order may never be executed if the price conditions are not met. Thus, limit orders are used when the trader wishes to control price rather than the certainty of being filled.</p></li>
+<li><p><strong>Stop order</strong>: A stop order is an order to buy or sell a financial instrument once the price of that instrument reaches a specified price, the stop price:</p>
+<ul>
+<li><p>A <a class="reference external" href="https://en.wikipedia.org/wiki/Order_(exchange)#Buy-stop_order">buy-stop order</a> is entered at a stop price above the current market price. Traders use buy-stop orders to limit a loss or protect a profit on a stock they have sold short.</p></li>
+<li><p>A <a class="reference external" href="https://en.wikipedia.org/wiki/Order_(exchange)#Sell-stop_order">sell-stop order</a> is entered at a stop price below the current market price. Traders use sell-stop orders to limit a loss or protect a profit on a stock they already own. For either a <a class="reference external" href="https://en.wikipedia.org/wiki/Order_(exchange)#Buy-stop_order">buy-stop order</a> or a <a class="reference external" href="https://en.wikipedia.org/wiki/Order_(exchange)#Sell-stop_order">sell-stop order</a>, when the stop price is reached, the stop order becomes a market order. Thus, a stop trade will be executed if the stop price is reached, but not necessarily at or near the stop price, particularly in a fast-moving market, or if there is insufficient liquidity available relative to the size of the order.</p></li>
+<li><p>A <a class="reference external" href="https://en.wikipedia.org/wiki/Order_(exchange)#Stop-limit_order">stop-limit order</a> is an order to buy or sell a stock that combines features of a stop order and a limit order. Once the stop price is reached, a stop-limit order becomes a limit order executed at a specified price (or better). As with all limit orders, a stop-limit order doesn’t get filled if the security’s price never reaches the specified limit price.</p></li>
+</ul>
+</li>
+<li><p><strong>Cancel order</strong>: A cancel order allows an investor to remove a current order from the exchange. If an order
+has not already executed, it can be cancelled at any time. Moreover, if a limit order has not executed by the end of the trading day (or some specified time period) it is automatically cancelled.</p></li>
+</ul>
+</section>
+<section id="returns-and-stylized-facts">
+<span id="content-references-returns-stylized-facts"></span><h2>Returns and Stylized Facts<a class="headerlink" href="#returns-and-stylized-facts" title="Permalink to this heading">#</a></h2>
+<p>Stylized facts are empirical statistical properties of the return time series <span id="id1">[<a class="reference internal" href="../../References.html#id2" title="R. Cont. Empirical properties of asset returns: stylized facts and statistical issues. Quantitative Finance, 1(2):223-236, 2001. URL: https://EconPapers.repec.org/RePEc:taf:quantf:v:1:y:2001:i:2:p:223-236.">Cont, 2001</a>]</span>. A return refers to the increase or decrease in the price of an asset, e.g., shares of a stock over a specific time period period, e.g., minutes, days, weeks or even years (<a class="reference internal" href="#defn-log-return-1">Definition 9</a>):</p>
+<div class="proof definition admonition" id="defn-log-return-1">
+<p class="admonition-title"><span class="caption-number">Definition 9 </span> (Logarithmic return)</p>
+<section class="definition-content" id="proof-content">
+<p>Let the price of asset <span class="math notranslate nohighlight">\(i\)</span> at time <span class="math notranslate nohighlight">\(j\)</span> be given by <span class="math notranslate nohighlight">\(P_{ij}&gt;0\)</span>. Then the logarithmic return
+on asset <span class="math notranslate nohighlight">\(i\)</span> over time horizon <span class="math notranslate nohighlight">\(j\rightarrow{k}\)</span> is defined as:</p>
+<div class="math notranslate nohighlight">
+\[\bar{r}_{i,j\rightarrow{k}} \equiv \log\left(\frac{P_{ik}}{P_{ij}}\right)\]</div>
+<p>where <span class="math notranslate nohighlight">\(\bar{r}_{i,j\rightarrow{k}}\)</span> denotes the logarithmic return of asset <span class="math notranslate nohighlight">\(i\)</span> over time horizon <span class="math notranslate nohighlight">\(j\rightarrow{k}\)</span>. The <span class="math notranslate nohighlight">\(\log\left(\star\right)\)</span> term denotes the <a class="reference external" href="https://en.wikipedia.org/wiki/Natural_logarithm">natural log</a>.</p>
+</section>
+</div><p>The logarithmic return can be computed using the <code class="docutils literal notranslate"><span class="pre">logR</span></code> function. The equity price data, passed into the function in the <code class="docutils literal notranslate"><span class="pre">data::DataFrame</span></code> argument, is assumed to an <a class="reference external" href="https://en.wikipedia.org/wiki/Open-high-low-close_chart">ascending OHLC dataset</a>. The <code class="docutils literal notranslate"><span class="pre">logR</span></code> function is defined in the following code block:</p>
+<div class="literal-block-wrapper docutils container" id="id2">
+<div class="code-block-caption"><span class="caption-number">Listing 1 </span><span class="caption-text">The <code class="docutils literal notranslate"><span class="pre">logR</span></code> function</span><a class="headerlink" href="#id2" title="Permalink to this code">#</a></div>
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="s">&quot;&quot;&quot;</span>
+<span class="s">    logR(data::DataFrame; r::Float64 = 0.045) -&gt; Array{Float64,1}</span>
+
+<span class="s">Computes the log excess return for firm i from the </span>
+<span class="s">Open High Low Close (OHLC) DataFrame.</span>
+
+<span class="s">See: https://dataframes.juliadata.org/stable/man/getting_started/</span>
+<span class="s">&quot;&quot;&quot;</span>
+<span class="k">function</span> <span class="n">logR</span><span class="p">(</span><span class="n">data</span><span class="o">::</span><span class="kt">DataFrame</span><span class="p">;</span> <span class="n">r</span><span class="o">::</span><span class="kt">Float64</span> <span class="o">=</span> <span class="mf">0.045</span><span class="p">,</span> <span class="n">key</span><span class="o">::</span><span class="kt">Symbol</span><span class="o">=</span><span class="ss">:close</span><span class="p">)</span><span class="o">::</span><span class="kt">Array</span><span class="p">{</span><span class="kt">Float64</span><span class="p">,</span><span class="mi">1</span><span class="p">}</span>
+
+    <span class="c"># convert risk free rate to daily rate -</span>
+    <span class="n">r̄</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">r</span><span class="p">)</span><span class="o">^</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">365</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span> <span class="c"># convert the annual risk free rate to daily value</span>
+
+    <span class="c"># initialize -</span>
+    <span class="n">number_trading_days</span> <span class="o">=</span> <span class="n">nrow</span><span class="p">(</span><span class="n">data</span><span class="p">);</span>
+    <span class="n">log_excess_return_array</span> <span class="o">=</span> <span class="kt">Array</span><span class="p">{</span><span class="kt">Float64</span><span class="p">,</span><span class="mi">1</span><span class="p">}(</span><span class="nb">undef</span><span class="p">,</span> <span class="n">number_trading_days</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+    
+    <span class="c"># main loop - compute the excess returns, store them in an array</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="o">∈</span> <span class="mi">2</span><span class="o">:</span><span class="n">number_trading_days</span>
+        
+        <span class="c"># grab yesterday&#39;s and today&#39;s close price</span>
+        <span class="n">P₁</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">key</span><span class="p">];</span> <span class="c"># yesterday</span>
+        <span class="n">P₂</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">key</span><span class="p">];</span>   <span class="c"># today</span>
+
+        <span class="c"># compute the excess return -</span>
+        <span class="n">log_excess_return_array</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">log</span><span class="p">(</span><span class="n">P₂</span><span class="o">/</span><span class="n">P₁</span><span class="p">)</span> <span class="o">-</span> <span class="n">r̄</span>
+    <span class="k">end</span>
+
+    <span class="c"># return -</span>
+    <span class="k">return</span> <span class="n">log_excess_return_array</span><span class="p">;</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+</div>
+<p>Returns can also be described as the fractional change in price between two time periods (<a class="reference internal" href="#defn-percentage-return-1">Definition 10</a>):</p>
+<div class="proof definition admonition" id="defn-percentage-return-1">
+<p class="admonition-title"><span class="caption-number">Definition 10 </span> (Fractional return)</p>
+<section class="definition-content" id="proof-content">
+<p>Let the price of asset <span class="math notranslate nohighlight">\(i\)</span> at any time <span class="math notranslate nohighlight">\(j\)</span> be given by <span class="math notranslate nohighlight">\(P_{ij}&gt;0\)</span>. Then the fractional return
+on asset <span class="math notranslate nohighlight">\(i\)</span> over time horizon <span class="math notranslate nohighlight">\(j\rightarrow{k}\)</span> is defined as:</p>
+<div class="math notranslate nohighlight">
+\[r_{i,j\rightarrow{k}} \equiv \frac{P_{ik} - P_{ij}}{P_{ij}}\]</div>
+<p>where <span class="math notranslate nohighlight">\(r_{i,j\rightarrow{k}}\)</span> denotes the fractional return of asset <span class="math notranslate nohighlight">\(i\)</span> over time horizon <span class="math notranslate nohighlight">\(j\rightarrow{k}\)</span>.</p>
+</section>
+</div><p>However, we will typically use the logarithmic return in this book. The logarithmic return is preferred because it is additive, i.e., the logarithmic return over a time period is the sum of the logarithmic returns over sub-periods. This is not true for the fractional return.</p>
+<p>By examining returns and stylized facts, analysts and investors gain insights into market behavior, risk, and investment opportunities. While several stylized facts have been developed, let’s consider the following important examples:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Autocorrelation">Absence of Autocorrelation</a>:  Autocorrelation refers to the tendency of stock price returns to correlate with their past returns over time. This suggests some predictability in stock price returns, which traders and investors can exploit. A random walk will not be correlated with itself.</p></li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Volatility_clustering">Volatility clustering</a>: Stock prices tend to be more volatile during specific periods and less volatile during others. This phenomenon is known as volatility clustering, suggesting that large price movements are more likely to be followed by significant moves in the same direction.</p></li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Fat-tailed_distribution">Heavy tails</a>: Stock price returns often exhibit a distribution with fatter tails than would be expected under a normal distribution. This means that extreme price movements are more likely than would be predicted by a normal distribution.</p></li>
+</ul>
+<p>Let’s compute the stylized facts for the daily returns of <a class="reference external" href="https://en.wikipedia.org/wiki/Wells_Fargo">Wells Fargo &amp; Company</a> with ticker <code class="docutils literal notranslate"><span class="pre">WFC</span></code>.
+The daily logarithmic return time series for <a class="reference external" href="https://en.wikipedia.org/wiki/Wells_Fargo">Wells Fargo &amp; Company</a> is shown in <a class="reference internal" href="#example-wfc-return-data-daily"><span class="std std-numref">Fig. 14</span></a>:</p>
+<figure class="align-default" id="example-wfc-return-data-daily">
+<a class="reference internal image-reference" href="../../_images/Fig-WFC-Daily-Return-4yr.svg"><img alt="../../_images/Fig-WFC-Daily-Return-4yr.svg" height="400px" src="../../_images/Fig-WFC-Daily-Return-4yr.svg" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 14 </span><span class="caption-text">Daily logarithmic return of <a class="reference external" href="https://en.wikipedia.org/wiki/Wells_Fargo">Wells Fargo &amp; Company</a> computed from <code class="docutils literal notranslate"><span class="pre">2018-11-28</span></code> to <code class="docutils literal notranslate"><span class="pre">2022-11-28</span></code> using the <code class="docutils literal notranslate"><span class="pre">logR</span></code> function. Data was downloaded using the <code class="docutils literal notranslate"><span class="pre">aggregate</span></code> endpoint of <a class="reference external" href="https://polygon.io/docs/stocks/get_v2_aggs_ticker__stocksticker__range__multiplier___timespan___from___to">Polygon.io</a>.</span><a class="headerlink" href="#example-wfc-return-data-daily" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>To compute the <a class="reference external" href="https://en.wikipedia.org/wiki/Autocorrelation">Autocorrelation</a>, the <a class="reference external" href="https://en.wikipedia.org/wiki/Volatility_clustering">Volatility clustering</a> and the <a class="reference external" href="https://en.wikipedia.org/wiki/Fat-tailed_distribution">return disribution</a> we use the <a class="reference external" href="https://docs.julialang.org/en/v1/stdlib/Statistics/">Statistics.jl</a> and <a class="reference external" href="https://github.com/JuliaStats/Distributions.jl">Distributions.jl</a> packages.</p>
+<section id="autocorrelation">
+<h3>Autocorrelation<a class="headerlink" href="#autocorrelation" title="Permalink to this heading">#</a></h3>
+<p>Fill me in.</p>
+</section>
+<section id="volatility-clustering">
+<h3>Volatility clustering<a class="headerlink" href="#volatility-clustering" title="Permalink to this heading">#</a></h3>
+<p>Fill me in.</p>
+</section>
+<section id="return-distribution">
+<h3>Return distribution<a class="headerlink" href="#return-distribution" title="Permalink to this heading">#</a></h3>
+<p>Fill me in.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this heading">#</a></h2>
+<p>In this lecture, we introduced equity securities, discussed the different types of orders that can be used to buy or sell equity securities, introduced some components of market microstructure such as the order book and order matching, and finally explored the statistical properties of equity prices.</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#content-references-markets-exchanges"><span class="std std-ref">Markets</span></a> play a crucial role in contemporary economies as they enable the trade of goods, services, and financial instruments like stocks and bonds. A market is a platform where buyers and sellers convene to exchange commodities or services, while an exchange is a market that specializes in financial instruments and has specific trade regulations.</p></li>
+<li><p><a class="reference internal" href="#content-orders-order-book-matching"><span class="std std-ref">Orders, Order Books and Order Matching</span></a>. Traders give instructions to buy or sell financial instruments at a specified price, known as orders. These orders are recorded in the order book, which shows all outstanding buy and sell orders for a specific financial instrument on the exchange. The exchange matches buy and sell orders based on price and other criteria through the process of order matching, which results in trades being executed. The order book provides transparency into market depth and liquidity.</p></li>
+<li><p><a class="reference internal" href="#content-references-returns-stylized-facts"><span class="std std-ref">Stylized facts are identifiable trends or recurring patterns</span></a>  seen in investment returns and financial markets. One such example is that stock price returns typically display minimal autocorrelation and a leptokurtic distribution, signifying a higher peak and fatter tails than a normal distribution. Familiarity with these patterns can aid investors in making well-informed choices and developing more successful investment strategies.</p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "julia-1.9"
+        },
+        kernelOptions: {
+            name: "julia-1.9",
+            path: "./chapter-2-dir/stocks"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'julia-1.9'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../stocks.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Equity Securities</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="lattice-eq-price.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Lattice Models of Equity Pricing</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#markets">Markets</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#orders-order-books-and-order-matching">Orders, Order Books and Order Matching</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#returns-and-stylized-facts">Returns and Stylized Facts</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#autocorrelation">Autocorrelation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#volatility-clustering">Volatility clustering</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#return-distribution">Return distribution</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Varner and Woltornist
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

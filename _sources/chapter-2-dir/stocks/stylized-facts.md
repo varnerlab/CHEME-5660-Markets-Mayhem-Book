@@ -1,0 +1,165 @@
+---
+jupytext:
+  formats: md:myst
+  text_representation:
+    extension: .md
+    format_name: myst
+kernelspec:
+  display_name: Julia
+  language: julia
+  name: julia-1.9
+---
+
+(content:references:markets-exchanges-stylized-facts)=
+# Markets and Stylized Facts
+
+```{topic} Outline
+In this lecture, we'll introduce equity securities, discuss the different types of orders that can be used to buy or sell equity securities, introduce some components of market microstructure such as the order book and order matching, and finally explore the statistical properties of equity prices.
+
+* {ref}`content:references:markets-exchanges` play a crucial role in contemporary economies as they enable the trade of goods, services, and financial instruments like stocks and bonds. A market is a platform where buyers and sellers convene to exchange commodities or services, while an exchange is a market that specializes in financial instruments and has specific trade regulations.
+
+* {ref}`content:orders-order-book-matching`. Traders give instructions to buy or sell financial instruments at a specified price, known as orders. These orders are recorded in the order book, which shows all outstanding buy and sell orders for a specific financial instrument on the exchange. The exchange matches buy and sell orders based on price and other criteria through the process of order matching, which results in trades being executed. The order book provides transparency into market depth and liquidity.
+
+* [Stylized facts are identifiable trends or recurring patterns](content:references:returns-stylized-facts) seen in investment returns and financial markets. One example is that stock price returns typically display minimal autocorrelation and a leptokurtic distribution, signifying a higher peak and fatter tails than a normal distribution. Familiarity with these patterns can aid investors in making well-informed choices and developing more successful investment strategies.
+
+```
+
+---
+
+(content:references:markets-exchanges)=
+## Markets
+Markets are physical or virtual locations where parties exchange goods and services. In a physical market, buyers and sellers interact face-to-face, while a virtual market does not require physical contact. Any place where two or more parties engage in an economic transaction, such as the exchange of goods, services, information, or currency, is considered a market.
+
+Financial instruments, like shares of stock, can be purchased or sold on electronic exchanges. Potential buyers submit `bids` specifying the quantity and price they wish to purchase the good or service, and potential sellers submit `asks` describing the amount and price at which they want to sell. These `bids` and `asks` are continuously arriving or being canceled, and deals are being made between parties continuously. Therefore, a double auction must have strategies and tools to track orders and match buyers and sellers and methods to keep market transactions flowing smoothly.
+
+(content:orders-order-book-matching)=
+## Orders, Order Books and Order Matching
+At the center of an electronic exchange are [orders](https://en.wikipedia.org/wiki/Order_(exchange)) and [order books](https://en.wikipedia.org/wiki/Order_book). An [order book](https://en.wikipedia.org/wiki/Order_book) holds a list of [orders](https://en.wikipedia.org/wiki/Order_(exchange)) for a particular security or financial instrument listed on the exchange; thus, it is a tick-by-tick record of the interest buyers and sellers have for a particular security or financial instrument on the exchange. 
+
+Many types of [orders](https://en.wikipedia.org/wiki/Order_(exchange)) can be initiated by traders. However, let's consider only four basic classes of orders, a market order, a limit order, a stop order and a cancel order.
+
+* __Market order__: A market order is a buy or sell order executed immediately, regardless of the current market prices. As long as willing sellers and buyers are present in the exchange, market orders are always executed (filled). Market orders are used when the certainty of execution is more important than the execution price. Thus, a market order is the simplest of the order types as it forgoes control over the execution price. A market order is filled at the best price available at execution. In fast-moving markets, the price paid or received may differ significantly from the price quoted when the order was entered. Further, a market order may be split across multiple participants on the other side of the transaction, resulting in different prices for some of the instruments involved in the trade.   
+
+* __Limit order__: A limit order is an order to buy a financial instrument at no more than a specific price or sell a security at no less than a particular price. This gives the trader control over the price at which the trade is executed. However, unlike a market order which is guaranteed to be executed (filled), a limit order may never be executed if the price conditions are not met. Thus, limit orders are used when the trader wishes to control price rather than the certainty of being filled.
+
+* __Stop order__: A stop order is an order to buy or sell a financial instrument once the price of that instrument reaches a specified price, the stop price:
+
+    * A [buy-stop order](https://en.wikipedia.org/wiki/Order_(exchange)#Buy-stop_order) is entered at a stop price above the current market price. Traders use buy-stop orders to limit a loss or protect a profit on a stock they have sold short. 
+    * A [sell-stop order](https://en.wikipedia.org/wiki/Order_(exchange)#Sell-stop_order) is entered at a stop price below the current market price. Traders use sell-stop orders to limit a loss or protect a profit on a stock they already own. For either a [buy-stop order](https://en.wikipedia.org/wiki/Order_(exchange)#Buy-stop_order) or a [sell-stop order](https://en.wikipedia.org/wiki/Order_(exchange)#Sell-stop_order), when the stop price is reached, the stop order becomes a market order. Thus, a stop trade will be executed if the stop price is reached, but not necessarily at or near the stop price, particularly in a fast-moving market, or if there is insufficient liquidity available relative to the size of the order. 
+    * A [stop-limit order](https://en.wikipedia.org/wiki/Order_(exchange)#Stop-limit_order) is an order to buy or sell a stock that combines features of a stop order and a limit order. Once the stop price is reached, a stop-limit order becomes a limit order executed at a specified price (or better). As with all limit orders, a stop-limit order doesn't get filled if the security's price never reaches the specified limit price.
+
+* __Cancel order__: A cancel order allows an investor to remove a current order from the exchange. If an order
+has not already executed, it can be cancelled at any time. Moreover, if a limit order has not executed by the end of the trading day (or some specified time period) it is automatically cancelled. 
+
+(content:references:returns-stylized-facts)=
+## Returns and Stylized Facts 
+Stylized facts are empirical statistical properties of the return time series {cite}`Cont-QuantFinance-2001`. A return refers to the increase or decrease in the price of an asset, e.g., shares of a stock over a specific time period period, e.g., minutes, days, weeks or even years ({prf:ref}`defn-log-return-1`):
+
+````{prf:definition} Logarithmic return
+:label: defn-log-return-1
+
+Let the price of asset $i$ at time $j$ be given by $P_{ij}>0$. Then the logarithmic return 
+on asset $i$ over time horizon $j\rightarrow{k}$ is defined as: 
+
+```{math}
+\bar{r}_{i,j\rightarrow{k}} \equiv \log\left(\frac{P_{ik}}{P_{ij}}\right)
+```
+
+where $\bar{r}_{i,j\rightarrow{k}}$ denotes the logarithmic return of asset $i$ over time horizon $j\rightarrow{k}$. The $\log\left(\star\right)$ term denotes the [natural log](https://en.wikipedia.org/wiki/Natural_logarithm). 
+
+````
+
+The logarithmic return can be computed using the `logR` function. The equity price data, passed into the function in the `data::DataFrame` argument, is assumed to an [ascending OHLC dataset](https://en.wikipedia.org/wiki/Open-high-low-close_chart). The `logR` function is defined in the following code block:
+
+
+```{code-block} julia
+:caption: The `logR` function
+
+"""
+    logR(data::DataFrame; r::Float64 = 0.045) -> Array{Float64,1}
+
+Computes the log excess return for firm i from the 
+Open High Low Close (OHLC) DataFrame.
+
+See: https://dataframes.juliadata.org/stable/man/getting_started/
+"""
+function logR(data::DataFrame; r::Float64 = 0.045, key::Symbol=:close)::Array{Float64,1}
+
+    # convert risk free rate to daily rate -
+    r̄ = (1+r)^(1/365) - 1; # convert the annual risk free rate to daily value
+
+    # initialize -
+    number_trading_days = nrow(data);
+    log_excess_return_array = Array{Float64,1}(undef, number_trading_days - 1)
+    
+    # main loop - compute the excess returns, store them in an array
+    for i ∈ 2:number_trading_days
+        
+        # grab yesterday's and today's close price
+        P₁ = data[i-1, key]; # yesterday
+        P₂ = data[i, key];   # today
+
+        # compute the excess return -
+        log_excess_return_array[i-1] = log(P₂/P₁) - r̄
+    end
+
+    # return -
+    return log_excess_return_array;
+end
+```
+
+Returns can also be described as the fractional change in price between two time periods ({prf:ref}`defn-percentage-return-1`):
+
+````{prf:definition} Fractional return
+:label: defn-percentage-return-1
+
+Let the price of asset $i$ at any time $j$ be given by $P_{ij}>0$. Then the fractional return 
+on asset $i$ over time horizon $j\rightarrow{k}$ is defined as: 
+
+```{math}
+r_{i,j\rightarrow{k}} \equiv \frac{P_{ik} - P_{ij}}{P_{ij}}
+```
+
+where $r_{i,j\rightarrow{k}}$ denotes the fractional return of asset $i$ over time horizon $j\rightarrow{k}$.
+````
+
+However, we will typically use the logarithmic return in this book. The logarithmic return is preferred because it is additive, i.e., the logarithmic return over a time period is the sum of the logarithmic returns over sub-periods. This is not true for the fractional return.
+
+By examining returns and stylized facts, analysts and investors gain insights into market behavior, risk, and investment opportunities. While several stylized facts have been developed, let's consider the following important examples:
+
+* [Absence of Autocorrelation](https://en.wikipedia.org/wiki/Autocorrelation):  Autocorrelation refers to the tendency of stock price returns to correlate with their past returns over time. This suggests some predictability in stock price returns, which traders and investors can exploit. A random walk will not be correlated with itself.
+* [Volatility clustering](https://en.wikipedia.org/wiki/Volatility_clustering): Stock prices tend to be more volatile during specific periods and less volatile during others. This phenomenon is known as volatility clustering, suggesting that large price movements are more likely to be followed by significant moves in the same direction.
+* [Heavy tails](https://en.wikipedia.org/wiki/Fat-tailed_distribution): Stock price returns often exhibit a distribution with fatter tails than would be expected under a normal distribution. This means that extreme price movements are more likely than would be predicted by a normal distribution.
+
+Let's compute the stylized facts for the daily returns of [Wells Fargo & Company](https://en.wikipedia.org/wiki/Wells_Fargo) with ticker `WFC`. 
+The daily logarithmic return time series for [Wells Fargo & Company](https://en.wikipedia.org/wiki/Wells_Fargo) is shown in {numref}`example-WFC-return-data-daily`:
+
+```{figure} ./figs/Fig-WFC-Daily-Return-4yr.svg
+---
+height: 400px
+name: example-WFC-return-data-daily
+---
+Daily logarithmic return of [Wells Fargo & Company](https://en.wikipedia.org/wiki/Wells_Fargo) computed from `2018-11-28` to `2022-11-28` using the `logR` function. Data was downloaded using the `aggregate` endpoint of [Polygon.io](https://polygon.io/docs/stocks/get_v2_aggs_ticker__stocksticker__range__multiplier___timespan___from___to).
+```
+
+To compute the [Autocorrelation](https://en.wikipedia.org/wiki/Autocorrelation), the [Volatility clustering](https://en.wikipedia.org/wiki/Volatility_clustering) and the [return disribution](https://en.wikipedia.org/wiki/Fat-tailed_distribution) we use the [Statistics.jl](https://docs.julialang.org/en/v1/stdlib/Statistics/) and [Distributions.jl](https://github.com/JuliaStats/Distributions.jl) packages.
+
+### Autocorrelation
+Fill me in.
+
+### Volatility clustering
+Fill me in.
+
+### Return distribution
+Fill me in.
+
+---
+
+## Summary
+In this lecture, we introduced equity securities, discussed the different types of orders that can be used to buy or sell equity securities, introduced some components of market microstructure such as the order book and order matching, and finally explored the statistical properties of equity prices.
+
+* {ref}`content:references:markets-exchanges` play a crucial role in contemporary economies as they enable the trade of goods, services, and financial instruments like stocks and bonds. A market is a platform where buyers and sellers convene to exchange commodities or services, while an exchange is a market that specializes in financial instruments and has specific trade regulations.
+
+* {ref}`content:orders-order-book-matching`. Traders give instructions to buy or sell financial instruments at a specified price, known as orders. These orders are recorded in the order book, which shows all outstanding buy and sell orders for a specific financial instrument on the exchange. The exchange matches buy and sell orders based on price and other criteria through the process of order matching, which results in trades being executed. The order book provides transparency into market depth and liquidity.
+
+* [Stylized facts are identifiable trends or recurring patterns](content:references:returns-stylized-facts)  seen in investment returns and financial markets. One such example is that stock price returns typically display minimal autocorrelation and a leptokurtic distribution, signifying a higher peak and fatter tails than a normal distribution. Familiarity with these patterns can aid investors in making well-informed choices and developing more successful investment strategies.
