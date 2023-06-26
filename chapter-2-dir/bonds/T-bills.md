@@ -111,7 +111,7 @@ A zero-coupon Treasury bill with a face (par) value of $V_{P}$ (future) has a T-
 
 ```{math}
 :label: eqn-zero-coupon-bill-bond
-V_{B} = \mathcal{D}^{-1}_{T,0}(\bar{r})\cdot{V_{P}}
+V_{B}(\bar{r}) = \mathcal{D}^{-1}_{T,0}(\bar{r})\cdot{V_{P}}
 ```
 
 The quantity $\mathcal{D}_{T,0}(\bar{r})$ denotes the discount factor governing the period between the auction at $t = 0$ and the term of the bill in $t = T$ years. 

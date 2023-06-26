@@ -39,7 +39,6 @@ html:
   home_page_in_navbar: true
   use_issues_button: true
 
-
 # In _config.yml
 sphinx:
   config:
@@ -48,5 +47,7 @@ sphinx:
     html_theme: sphinx_book_theme
     html_title: "CHEME-5660"
     title: "What?"
+      
+    
   extra_extensions:
     - sphinx_proof
