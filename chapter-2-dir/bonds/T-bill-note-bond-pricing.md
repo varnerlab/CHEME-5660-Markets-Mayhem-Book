@@ -53,7 +53,7 @@ The treasury bill pricing calculations have some interesting properties:
 ## Malkiel’s bond-pricing guidelines
 Bond investors have two actions open to them: hold the bond until maturity (and collect the coupon payments along the way), or resell the bond (and potentially benefit from a change in the bond price). The latter is possible because after the bonds are issued, bondholders may buy or resell bonds in secondary bond markets. In these markets, bond prices fluctuate inversely with the market interest rate $\bar{r}$. Thus, interest rate fluctuations are the main source of risk to the bondholder if they are not holding the bound to maturity.
 
-```{figure} ./figs/Fig-Sensitivity-Bond-Price-Interest-Rate.pdf
+```{figure} ./figs/Fig-Sensitivity-Bond-Price-Interest-Rate.svg
 ---
 height: 420px
 name: fig-bond-price-sensitivity

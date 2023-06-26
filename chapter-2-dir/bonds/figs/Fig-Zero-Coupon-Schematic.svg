@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="411px" height="334px" viewBox="0 0 411 334" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Fig-Zero-Coupon-Schematic</title>
+    <defs>
+        <path d="M47,0 C72.9574,0 94,21.4903 94,48 C94,74.50967 72.9574,96 47,96 C21.04262,96 0,74.50967 0,48 C0,21.4903 21.04262,0 47,0 Z" id="path-1"></path>
+        <path d="M7,0 C10.866,0 14,3.134 14,7 C14,10.866 10.866,14 7,14 C3.134,14 0,10.866 0,7 C0,3.134 3.134,0 7,0 Z" id="path-3"></path>
+        <path d="M7,0 C10.866,0 14,3.134 14,7 C14,10.866 10.866,14 7,14 C3.134,14 0,10.866 0,7 C0,3.134 3.134,0 7,0 Z" id="path-5"></path>
+    </defs>
+    <g id="Fig-Zero-Coupon-Schematic" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group-3" transform="translate(59, 164)">
+            <mask id="mask-2" fill="white">
+                <use xlink:href="#path-1"></use>
+            </mask>
+            <g id="Clip-2"></g>
+            <path d="M47,96 C72.95738,96 94,74.50967 94,48 C94,21.49033 72.95738,0 47,0 C21.04262,0 0,21.49033 0,48 C0,74.50967 21.04262,96 47,96 Z" id="Stroke-1" stroke="#89CCE2" stroke-width="6" mask="url(#mask-2)"></path>
+        </g>
+        <g id="Group-12" transform="translate(6.5, 128)">
+            <path d="M234.5,133 C260.4574,133 281.5,111.50967 281.5,85 C281.5,58.4903 260.4574,37 234.5,37 C208.5426,37 187.5,58.4903 187.5,85 C187.5,111.50967 208.5426,133 234.5,133 Z" id="Fill-4" fill="#FFDA31"></path>
+            <line x1="0" y1="84.5" x2="342.5" y2="84" id="Stroke-6" stroke="#000000" stroke-width="2" stroke-linecap="square"></line>
+            <path d="M348.1389,84.1389 L335.8611,90.6389 C337.787,88.1512 338.75,86.1049 338.75,84.5 C338.75,82.8951 337.787,80.608 335.8611,77.6389 L348.1389,84.1389 Z" id="Fill-7" fill="#000000"></path>
+            <path d="M100,70.2778 L93.5,58 C95.9877,59.9259 98.034,60.8889 99.6389,60.8889 C101.2438,60.8889 103.5309,59.9259 106.5,58 L100,70.2778 Z" id="Fill-8" fill="#000000"></path>
+            <line x1="100" y1="1.5" x2="100" y2="62.5" id="Stroke-9" stroke="#000000" stroke-width="2" stroke-linecap="square"></line>
+            <path d="M235,0 L241.5,12.2778 C239.0123,10.3519 236.966,9.3889 235.3611,9.3889 C233.7562,9.3889 231.4691,10.3519 228.5,12.2778 L235,0 Z" id="Fill-10" fill="#000000"></path>
+            <line x1="235" y1="68.7778" x2="235" y2="7.7778" id="Stroke-11" stroke="#000000" stroke-width="2" stroke-linecap="square"></line>
+        </g>
+        <g id="Group-16" transform="translate(99, 206)">
+            <mask id="mask-4" fill="white">
+                <use xlink:href="#path-3"></use>
+            </mask>
+            <g id="Clip-14"></g>
+            <polygon id="Fill-13" fill="#FFFDFD" mask="url(#mask-4)" points="-1 -1 15 -1 15 15 -1 15"></polygon>
+            <path d="M7,14 C10.86599,14 14,10.86599 14,7 C14,3.134007 10.86599,0 7,0 C3.134007,0 0,3.134007 0,7 C0,10.86599 3.134007,14 7,14 Z" id="Stroke-15" stroke="#000000" stroke-width="2" mask="url(#mask-4)"></path>
+        </g>
+        <g id="Group-20" transform="translate(234, 206)">
+            <mask id="mask-6" fill="white">
+                <use xlink:href="#path-5"></use>
+            </mask>
+            <g id="Clip-18"></g>
+            <polygon id="Fill-17" fill="#FFFDFD" mask="url(#mask-6)" points="-1 -1 15 -1 15 15 -1 15"></polygon>
+            <path d="M7,14 C10.86599,14 14,10.86599 14,7 C14,3.134007 10.86599,0 7,0 C3.134007,0 0,3.134007 0,7 C0,10.86599 3.134007,14 7,14 Z" id="Stroke-19" stroke="#000000" stroke-width="2" mask="url(#mask-6)"></path>
+        </g>
+        <g id="Group-35" transform="translate(66.3276, 27.5391)">
+            <text id="Time" font-family="ArialMT, Arial" font-size="21" font-weight="normal" letter-spacing="-0.7833" fill="#000000">
+                <tspan x="291.67236" y="187">T</tspan>
+                <tspan x="302.9374" y="187" letter-spacing="0.0042">i</tspan>
+                <tspan x="307.607127" y="187">me</tspan>
+            </text>
+            <text id="V" font-family="ArialMT, Arial" font-size="21" font-weight="normal" fill="#000000">
+                <tspan x="25.67236" y="80">V</tspan>
+            </text>
+            <text id="B" font-family="ArialMT, Arial" font-size="21" font-weight="normal" fill="#000000">
+                <tspan x="39.6792" y="89">B</tspan>
+            </text>
+            <text id="V" font-family="ArialMT, Arial" font-size="21" font-weight="normal" fill="#000000">
+                <tspan x="164.67236" y="83">V</tspan>
+            </text>
+            <text id="P" font-family="ArialMT, Arial" font-size="21" font-weight="normal" fill="#000000">
+                <tspan x="178.6792" y="92">P</tspan>
+            </text>
+            <text id="Start-" font-family="ArialMT, Arial" font-size="21" font-weight="normal" fill="#000000">
+                <tspan x="17.49829" y="260">S</tspan>
+                <tspan x="31.5051259" y="260" letter-spacing="-0.0042">t</tspan>
+                <tspan x="37.3353986" y="260" letter-spacing="0.0042">a</tspan>
+                <tspan x="49.0187978" y="260">r</tspan>
+                <tspan x="56.0119619" y="260" letter-spacing="-0.0042">t</tspan>
+                <tspan x="61.8422345" y="260"> </tspan>
+            </text>
+            <text id="(current)" font-family="ArialMT, Arial" font-size="21" font-weight="normal" fill="#000000">
+                <tspan x="0" y="283">(c</tspan>
+                <tspan x="17.4931641" y="283" letter-spacing="0.0042">u</tspan>
+                <tspan x="29.1765633" y="283">rr</tspan>
+                <tspan x="43.1628914" y="283" letter-spacing="0.0042">en</tspan>
+                <tspan x="66.5296898" y="283" letter-spacing="-0.0042">t</tspan>
+                <tspan x="72.3599625" y="283">)</tspan>
+            </text>
+            <text id="Future" font-family="ArialMT, Arial" font-size="21" font-weight="normal" letter-spacing="-0.0042" fill="#000000">
+                <tspan x="143.67236" y="19">F</tspan>
+                <tspan x="156.495797" y="19" letter-spacing="0.0042">u</tspan>
+                <tspan x="168.179196" y="19">t</tspan>
+                <tspan x="174.009469" y="19" letter-spacing="0.0042">u</tspan>
+                <tspan x="185.692868" y="19">re</tspan>
+            </text>
+            <text id="t-=-0" font-family="ArialMT, Arial" font-size="18" font-weight="normal" letter-spacing="-0.0036" fill="#000000">
+                <tspan x="21.67236" y="209.351562">t </tspan>
+                <tspan x="31.6671131" y="209.351562">=</tspan>
+                <tspan x="42.1788319" y="209.351562"> </tspan>
+                <tspan x="47.1762084" y="209.351562">0</tspan>
+            </text>
+            <text id="t-=-T" font-family="ArialMT, Arial" font-size="18" font-weight="normal" letter-spacing="-0.0036" fill="#000000">
+                <tspan x="156.67236" y="213.351562">t </tspan>
+                <tspan x="166.667113" y="213.351562">=</tspan>
+                <tspan x="177.178832" y="213.351562" letter-spacing="-0.3276"> </tspan>
+                <tspan x="181.527013" y="213.351562">T</tspan>
+            </text>
+            <line x1="108.17236" y1="39.9609375" x2="242.17236" y2="39.9609375" id="Stroke-31" stroke="#000000" stroke-linecap="square"></line>
+            <text id="Finish-" font-family="ArialMT, Arial" font-size="21" font-weight="normal" letter-spacing="-0.0042" fill="#000000">
+                <tspan x="147.16382" y="260">F</tspan>
+                <tspan x="159.987257" y="260" letter-spacing="0.0042">ini</tspan>
+                <tspan x="181.010111" y="260">s</tspan>
+                <tspan x="191.510111" y="260" letter-spacing="0.0042">h</tspan>
+                <tspan x="203.19351" y="260"> </tspan>
+            </text>
+            <text id="(future)" font-family="ArialMT, Arial" font-size="21" font-weight="normal" fill="#000000">
+                <tspan x="141.32934" y="283">(</tspan>
+                <tspan x="148.322504" y="283" letter-spacing="-0.0042">f</tspan>
+                <tspan x="154.152777" y="283" letter-spacing="0.0042">u</tspan>
+                <tspan x="165.836176" y="283" letter-spacing="-0.0042">t</tspan>
+                <tspan x="171.666449" y="283" letter-spacing="0.0042">u</tspan>
+                <tspan x="183.349848" y="283">r</tspan>
+                <tspan x="190.343012" y="283" letter-spacing="0.0042">e</tspan>
+                <tspan x="202.026411" y="283">)</tspan>
+            </text>
+        </g>
+    </g>
+</svg>

@@ -20,7 +20,7 @@ After introducing the structure and properties of U.S. Treasury securities, in t
 ## Introduction
 United States Treasury debt securities are structured loan agreements between a borrower, i.e., the U.S. government, and a lender (you) that allows the government to fund its operations and obligations ({numref}`fig-bill-notes-bonds-schematic`).
 
-```{figure} ./figs/Fig-Govt-Debt-Schematic.pdf
+```{figure} ./figs/Fig-Govt-Debt-Schematic.svg
 ---
 height: 340px
 name: fig-bill-notes-bonds-schematic
@@ -94,7 +94,7 @@ after $m$-years. As the number of compounding periods $n\rightarrow\infty$, the 
 ## U.S. Treasury Bills
 [United States Treasury Bills](https://treasurydirect.gov/marketable-securities/treasury-bills/), or T-bills are Treasury debt instruments with short-term maturity periods $T$ = 4, 8, 13, 26, and 52 weeks and zero coupon payments ({numref}`fig-bill-payout-schematic`):
 
-```{figure} ./figs/Fig-Zero-Coupon-Schematic.pdf
+```{figure} ./figs/Fig-Zero-Coupon-Schematic.svg
 ---
 height: 320px
 name: fig-bill-payout-schematic
@@ -121,7 +121,7 @@ The quantity $\mathcal{D}_{T,0}(\bar{r})$ denotes the discount factor governing 
 ## U.S. Treasury Notes and Bonds
 [T-notes, or United States Treasury Notes](https://treasurydirect.gov/marketable-securities/treasury-notes/), are debt instruments that provide a stable interest rate every six months until maturity. These notes are offered in terms of 2, 3, 5, 7, and 10 years and can be bought for more or less than their face (par) value. Upon maturity, the lender receives the entire par value. T-notes are considered coupon debt instruments, which means that the lender receives periodic interest payments based on a coupon rate during the T-note’s lifespan ({numref}`fig-bond-payout-schematic`):
 
-```{figure} ./figs/Fig-Bond-Asset-Timeline-Schematic.pdf
+```{figure} ./figs/Fig-Bond-Asset-Timeline-Schematic.svg
 ---
 height: 320px
 name: fig-bond-payout-schematic

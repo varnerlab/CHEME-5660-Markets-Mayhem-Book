@@ -11,7 +11,7 @@ The bootstrapping method is a technique for constructing a zero-coupon yield cur
 ## Introdcution
 [Registered Interest and Principal of Securities (STRIPS) bonds](https://en.wikipedia.org/wiki/United_States_Treasury_security#STRIPS) are a unique type of fixed-income investment that provides an alternative way to access the income and coupon payments of Treasury securities. STRIPS bonds are created by separating a Treasury security’s coupon and principal components and trading them as individual zero-coupon securities ({numref}`fig-SStrips-Schematic`). 
 
-```{figure} ./figs//Fig-STRIPS-Schematic.pdf
+```{figure} ./figs//Fig-STRIPS-Schematic.svg
 ---
 height: 440px
 name: fig-SStrips-Schematic
