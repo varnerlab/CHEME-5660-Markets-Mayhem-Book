@@ -16,7 +16,7 @@ Fill me in.
 
 (content:lattice-models-risk-neutral-pricing)=
 ## Single-period binomial model
-Consider a single-period binomial model which goes from an initial time `0` to a final time `1`. The initial share price at time `0` is $S_{\circ}$ and the share price at time `1` is $S_{1}$. During the transition from time `0`$\rightarrow$`1` the world moves to the `up` state with probability $p$ or the `down` state with probability $1-p$ ({numref}`example-oneste-binomial-lattice-schematic`):
+Consider a single-period binomial model which goes from an initial time `0` to a final time `1` ({numref}`example-oneste-binomial-lattice-schematic`). The initial share price at time `0` is $S_{\circ}$ and the share price at time `1` is $S_{1}$. During the transition from time `0`$\rightarrow$`1` the world moves from a current state to the `up` state with probability $p$ or the `down` state with probability $(1-p)$.
 
 
 
@@ -28,12 +28,23 @@ name: example-oneste-binomial-lattice-schematic
 Schematic of a single-period binomial lattice model. In the future, the world can probabilistically move to the `up` with probability $p$ or the `down` state with probability $(1-p)$. The share price at time `1` is $S_{1}$ and can take on one of two possible values: $S^{u}$ if the world moves to the `up` state, or $S^{d}$ if the world moves to the `down` state.
 ```
 
-Thus, at time `1` the share price $S_{1}$ can take on one of two possible values: $S^{u} = u\cdot{S_{\circ}}$ if the world moves to the `up` state, or $S^{d} = d\cdot{S_{\circ}}$ if the world moves to the `down` state.
+At the time `1`, the share price $S_{1}$ can take on one of two possible values: $S^{u} = u\cdot{S_{\circ}}$ if the world moves to the `up` state, or $S^{d} = d\cdot{S_{\circ}}$ if the world moves to the `down` state. The `up` and `down` factors $u$ and $d$, and the probability $p$ can be defined in various ways.  
+
+Let's consider two approaches for computing the tuple $(u,d,p)$: real-world probabilities, which can be estimated from historical data, and risk-neutral probabilities, which are hypothetical probabilities that allow us to price assets as if investors are risk-neutral. 
+
 <!-- Finally, let $\bar{r}>0$ denote the annualized risk-free rate (which we approximate as the spot rate of 10-year U.S. 
 Treasury notes).  -->
 
 ### Real-world probability
+We can estimate real-world values for the `up` and `down` factors $u$ and $d$, and the probability $p$ by analyzing realized prices (the real world realization of the _hidden_ pricing process for an asset). For example, consider the following strategy:
+
+```{admonition} Real-world $(u,d,p)$ strategy
+We can estimate the real world probability $p$ by counting the number of times the share price went up and dividing by the total number of observations. Similarly, we can estimate the `up` and `down` factors $u$ and $d$ by computing the average change in the share price when the share price went up and down, respectively.
+```
+
+#### Implementation: Real-world $(u,d,p)$ strategy
 Fill me in.
+
 
 ### Risk neutral probability
 One of the fundemental assumptions of the risk neutral binomial model is that there are no arbitrage opportunities. In other words, there is no way to make a risk-free profit. This assumption is equivalent to the assumption that the market is complete. In the one-period binomial model described above, the no arbitrage condition is given by:
