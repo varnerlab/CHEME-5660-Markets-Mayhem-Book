@@ -62,7 +62,26 @@ $$
 \mu_{j,j-1} = \left(\frac{1}{\Delta{t}}\right)\cdot\ln\left(\frac{S_{j}}{S_{j-1}}\right)
 $$
 
-Assuming we use daily data the natural time frame between $S_{j-1}$ and $S_{j}$ is a single _trading_ day. However, subsequently, it will be easier to use an annualized value for the $\mu$ parameter; thus, we let $\Delta{t} = 1/252$, i.e., the fraction of a year that occurs in a single _trading_ day. If we use a different ferquency of data, e.g., weekly, then we would need to adjust the $\Delta{t}$ parameter accordingly.
+Assuming we use daily data the natural time frame between $S_{j-1}$ and $S_{j}$ is a single _trading_ day. However, subsequently, it will be easier to use an annualized value for the $\mu$ parameter; thus, we let $\Delta{t} = 1/252$, i.e., the fraction of a year that occurs in a single _trading_ day. If we use a different ferquency of data, e.g., weekly, then we would need to adjust the $\Delta{t}$ parameter accordingly. 
+
+```{code-block} julia
+:caption: Script to compute the growth rate array
+:linenos:
+
+# initialize -
+max_number_of_records = nrow(firm_data) # how many records do we have?
+Δt = (1.0/252.0); # daily data: assume time step is 1 x trading data
+μ = Array{Float64,1}(undef, max_number_of_records - 1) # initialize growth rate array
+
+# main loop: compute the growth rate, store in the μ array
+for j ∈ 2:max_number_of_records
+    
+    S₁ = firm_data[j-1,:volume_weighted_average_price];
+    S₂ = firm_data[j,:volume_weighted_average_price];
+    μ[j-1] = (1/Δt)*log(S₂/S₁);
+end
+
+```
 
 Finally to estimate $p$, after calculating $\mu_{j,j-1}$ for each trading day in the training dataset, we count the number of times the share price went up, i.e., $\mu_{j,j-1}>0$, and divide by the total number of observations. The magnitude of the `up` and `down` moves can be estimated by computing the average change in the share price factors when the share price went up and down, respectively, and then transforming these values, i.e., $u= \exp\left(\mu_{j,j-1}\cdot\Delta{t}\right)$ when $\mu_{j,j-1}>0$ and $d= \exp\left(\mu_{j,j-1}\cdot\Delta{t}\right)$ when $\mu_{j,j-1}<0$.
 
@@ -112,6 +131,26 @@ function analyze(R::Array{Float64,1};
     return (u,d,p);
 end
 ```
+
+We implemented the `analyze` function on the `μ` array we computed above for some common stocks {prf:ref}`tbl-binomial-parameters`:
+
+```{prf:observation} Real-world Binomial parameters for common stocks
+:label: tbl-binomial-parameters
+
+Real-world values for the $p$, $u$, and $d$ parameters for some common stocks. The data is based on the daily volume weighted average price for the period `2018-01-03` to `2022-12-31`. The `id` column is the unique identifier for the stock in the `firm_data` table. 
+
+| id  | ticker | name                   | probability | up    | down   |
+|-----|--------|------------------------|-------------|-------|--------|
+|  11 |    AMD | Advanced Micro Devices |      0.5331 | 1.022 | 0.9785 |
+| 487 |    WFC |            Wells Fargo |      0.5227 | 1.013 | 0.9854 |
+| 241 |    IBM |                    IBM |      0.5227 |  1.01 | 0.9892 |
+| 221 |     GS |          Goldman Sachs |       0.502 | 1.013 | 0.9875 |
+| 437 |   TSLA |                  Tesla |      0.5283 | 1.027 | 0.9744 |
+
+
+For the five tickers in the table, the probability of an `up` move is between 50% and 53%, and the average `up` and `down` factors are between 0.97 and 1.03. 
+```
+
 
 ### Risk neutral probability
 One of the fundemental assumptions of the risk neutral binomial model is that there are no arbitrage opportunities. In other words, there is no way to make a risk-free profit. This assumption is equivalent to the assumption that the market is complete. In the one-period binomial model described above, the no arbitrage condition is given by:
