@@ -142,8 +142,8 @@ Real-world values for the $p$, $u$, and $d$ parameters for some common stocks. T
 | id  | ticker | name                   | sector                 | probability | up    | down   |
 |-----|--------|------------------------|------------------------|-------------|-------|--------|
 |  11 |    AMD | Advanced Micro Devices | Information Technology |      0.5331 | 1.022 | 0.9785 |
-| 487 |    WFC |            Wells Fargo |             Financials |      0.5227 | 1.013 | 0.9854 |
 | 241 |    IBM |                    IBM | Information Technology |      0.5227 |  1.01 | 0.9892 |
+| 487 |    WFC |            Wells Fargo |             Financials |      0.5227 | 1.013 | 0.9854 |
 | 221 |     GS |          Goldman Sachs |             Financials |       0.502 | 1.013 | 0.9875 |
 | 437 |   TSLA |                  Tesla | Consumer Discretionary |      0.5283 | 1.027 | 0.9744 |
 
@@ -199,6 +199,64 @@ q = \frac{\mathcal{D}_{1,0}(\bar{r},\Delta{t}) - d}{u - d}
 where $\mathcal{D}_{1,0}(\bar{r},\Delta{t})$ denotes the discount factor evaluated using the effective annualized risk free rate $\bar{r}$, $\Delta{t}$ denotes the length of time (in years) between states `0` and `1`, and the factors $u$ and $d$ denote the `up` and `down` factors, respectively. 
 
 ````
+
+To determine the risk-neutral probability, we can adjust the `analyze` function mentioned earlier, where we assume (for now) the realized average `up` factors are the same as the real-world probability, but the moves are symmetric, namely $d = 1/u$. This assumption will be relaxed when dealing with derivatives pricing; specific models for `u` are typically applied to calculate `q` in the case of derivatives.
+
+The modified function, called `riskneutralanalyze`, is defined below:
+
+```{code-block} julia
+:caption: The `risk-neutral analyze` function 
+:linenos:
+
+"""
+    riskneutralanalyze(R::Array{Float64,1};  Δt::Float64 = (1.0/252.0), 
+        r̄::Float64 = 0.040) -> Tuple{Float64,Float64,Float64}
+"""
+function riskneutralanalyze(R::Array{Float64,1};  Δt::Float64 = (1.0/252.0), 
+    r̄::Float64 = 0.040)::Tuple{Float64,Float64,Float64}
+    
+    # initialize -
+    u,d,q = 0.0, 0.0, 0.0;
+    darray = Array{Float64,1}();
+    uarray = Array{Float64,1}();
+
+    # up - compute the up moves, and estimate the average u value -
+    index_up_moves = findall(x->x>0, R);
+    for index ∈ index_up_moves
+        R[index] |> (μ -> push!(uarray, exp(μ*Δt)))
+    end
+    u = mean(uarray);
+    d = 1/u;
+
+    # risk neutral probability -
+    q = (exp(r̄*Δt) - d)/(u - d);
+
+    # return -
+    return (u,d,q);
+end
+```
+
+
+We implemented the `riskneutralanalyze` function and processed the `μ` array for some common stocks ({prf:ref}`tbl-binomial-parameters-risk-neutral-probability`):
+
+```{prf:observation} Risk-neutral Binomial parameters for common stocks
+:label: tbl-binomial-parameters-risk-neutral-probability
+
+Risk-neutral values for the $q$, $u$, and $d$ parameters for some common stocks. The data is based on the daily volume weighted average price for the period `2018-01-03` to `2022-12-31`. The `id` column is the unique identifier for the stock in the `firm_data` table. 
+
+
+| id  | ticker | name                   | sector                 | probability | up    | down   |
+|-----|--------|------------------------|------------------------|-------------|-------|--------|
+|  11 |    AMD | Advanced Micro Devices | Information Technology |      0.4982 | 1.022 | 0.9783 |
+| 241 |    IBM |                    IBM | Information Technology |      0.5058 |  1.01 | 0.9902 |
+| 487 |    WFC |            Wells Fargo |             Financials |      0.5029 | 1.013 |  0.987 |
+| 221 |     GS |          Goldman Sachs |             Financials |      0.5029 | 1.013 |  0.987 |
+| 437 |   TSLA |                  Tesla | Consumer Discretionary |      0.4965 | 1.027 |  0.974 |
+
+For the five tickers in the table, the risk-neutral probability of an `up` move is approximately 50%, i.e., a coin-flip.
+```
+
+Notice, the risk-neutral probability is approximately 50% for all the stocks in the table. This is not surprising, since the risk-neutral probability is a function of the risk-free rate, which is the same for all the stocks.
 
 
 (content:lattice-models-testing-lattice-model)=
