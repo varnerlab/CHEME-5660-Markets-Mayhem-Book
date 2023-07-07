@@ -200,7 +200,7 @@ where $\mathcal{D}_{1,0}(\bar{r},\Delta{t})$ denotes the discount factor evaluat
 
 ````
 
-To determine the risk-neutral probability, we can adjust the `analyze` function mentioned earlier, where we assume (for now) the realized average `up` factors are the same as the real-world probability, but the moves are symmetric, namely $d = 1/u$. This assumption will be relaxed when dealing with derivatives pricing; specific models for `u` are typically applied to calculate `q` in the case of derivatives.
+To determine the risk-neutral probability, we can adjust the `analyze` function mentioned earlier, where we assume (for now) the realized average `up` factors are the same as the real-world case, but the moves are symmetric, namely $d = 1/u$. This assumption will be relaxed when dealing with derivatives pricing; specific models for `u` are typically applied to calculate `q` in the case of derivatives.
 
 The modified function, called `riskneutralanalyze`, is defined below:
 
