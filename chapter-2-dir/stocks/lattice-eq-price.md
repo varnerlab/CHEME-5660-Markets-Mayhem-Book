@@ -1,7 +1,7 @@
 # Lattice Models of Equity Pricing
 
 ```{topic} Outline
-In this lecture, we'll discuss our first type of model of equity pricing, namely lattice models. We'll start with this simple model and then add complexity to it in subsequent lectures. In particular, we'll discuss the following topics:
+In this lecture, we'll discuss our first type of model of equity pricing, namely lattice models. We'll start with this simple model and then add complexity to it in subsequent lectures. Today, we'll discuss the following topics:
 
 * [Introduction to lattice models](content:lattice-models-introduction). Lattice models discretize the possible furture states of the world, e.g., the share price of a stock, into a finite number of states. For example, a Binomial lattice model has two future states, up and down. We'll discuss how to build a lattice model and how to use it to price assets.
 
@@ -43,8 +43,75 @@ We can estimate the real world probability $p$ by counting the number of times t
 ```
 
 #### Implementation: Real-world $(u,d,p)$ strategy
-Fill me in.
+To create a binomial lattice model for share price projections using real-world probabilities, we estimate the three critical parameters: $p$, $u$, and $d$ from historical data:
 
+* The $p$ parameter represents the probability of a share price increase or an `up` move between two periods $j\rightarrow{j+1}$. As a binary lattice model only allows `up` and `down` moves, the probability of a `down` move is $1-p$.
+* The $u$ parameter represents the amount of an `up` move. If $S_{j}$ stands for the share price in period $j$, and $S_{j+1}$ is the share price in the next period, then an `up` move will give $S_{j+1} = u\cdot{S}_{j}$.
+* The $d$ parameter represents the amount of a `down` move. If $S_{j}$ stands for the share price in period $j$, and $S_{j+1}$ is the share price in the next period, then a `down` move will give $S_{j+1} = d\cdot{S}_{j}$.
+
+
+We can calculate the number of `up` and `down` moves, and the magnitude of these moves by analyzing a training dataset. To do this, we assume a share price model of the form:
+
+$$
+S_{j} = \exp\left(\mu_{j,j-1}\cdot\Delta{t}\right)\cdot{S_{j-1}}
+$$
+
+where $\mu_{j,j-1}$ denotes the _growth rate_ (units: 1/time) and $\Delta{t}$ (units: time) denotes the step size during the time period $(j-1)\rightarrow{j}$. Solving for the growth rate parameter $\mu_{j,j-1}$ gives the expression:
+
+$$
+\mu_{j,j-1} = \left(\frac{1}{\Delta{t}}\right)\cdot\ln\left(\frac{S_{j}}{S_{j-1}}\right)
+$$
+
+Assuming we use daily data the natural time frame between $S_{j-1}$ and $S_{j}$ is a single _trading_ day. However, subsequently, it will be easier to use an annualized value for the $\mu$ parameter; thus, we let $\Delta{t} = 1/252$, i.e., the fraction of a year that occurs in a single _trading_ day. If we use a different ferquency of data, e.g., weekly, then we would need to adjust the $\Delta{t}$ parameter accordingly.
+
+Finally to estimate $p$, after calculating $\mu_{j,j-1}$ for each trading day in the training dataset, we count the number of times the share price went up, i.e., $\mu_{j,j-1}>0$, and divide by the total number of observations. The magnitude of the `up` and `down` moves can be estimated by computing the average change in the share price factors when the share price went up and down, respectively, and then transforming these values, i.e., $u= \exp\left(\mu_{j,j-1}\cdot\Delta{t}\right)$ when $\mu_{j,j-1}>0$ and $d= \exp\left(\mu_{j,j-1}\cdot\Delta{t}\right)$ when $\mu_{j,j-1}<0$.
+
+Assuming we have already calculated the $\mu_{j,j-1}$ values for each trading period in the training dataset, the following code snippet defines the `analyze` function which estimates the $p$, $u$, and $d$ parameters from the $\mu_{j,j-1}$ values:
+
+```{code-block} julia
+:caption: The `analyze` function 
+:linenos:
+
+"""
+    analyze(R::Array{Float64,1};  
+        Δt::Float64 = (1.0/252.0)) -> Tuple{Float64,Float64,Float64}
+
+Computes the probability of an up move and the up and down factors for a binomial lattice model. 
+The `R` argument is an array of growth rate values, and the `Δt` argument is the fraction of a 
+year that occurs in a single lattice step (default: 1 trading day). The function returns a 
+tuple of the form $(p,u,d)$
+"""
+function analyze(R::Array{Float64,1};  
+    Δt::Float64 = (1.0/252.0))::Tuple{Float64,Float64,Float64}
+    
+    # initialize -
+    u,d,p = 0.0, 0.0, 0.0;
+    darray = Array{Float64,1}();
+    uarray = Array{Float64,1}();
+    N₊ = 0;
+
+    # up - compute the up moves, and estimate the average u value -
+    index_up_moves = findall(x->x>0, R);
+    for index ∈ index_up_moves
+        R[index] |> (μ -> push!(uarray, exp(μ*Δt)))
+    end
+    u = mean(uarray);
+
+    # down - compute the down moves, and estimate the average d value -
+    index_down_moves = findall(x->x<0, R);
+    for index ∈ index_down_moves
+        R[index] |> (μ -> push!(darray, exp(μ*Δt)))
+    end
+    d = mean(darray);
+
+    # probability -
+    N₊ = length(index_up_moves);
+    p = N₊/length(R);
+
+    # return -
+    return (u,d,p);
+end
+```
 
 ### Risk neutral probability
 One of the fundemental assumptions of the risk neutral binomial model is that there are no arbitrage opportunities. In other words, there is no way to make a risk-free profit. This assumption is equivalent to the assumption that the market is complete. In the one-period binomial model described above, the no arbitrage condition is given by:
