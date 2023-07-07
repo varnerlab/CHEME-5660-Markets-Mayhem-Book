@@ -83,7 +83,7 @@ end
 
 ```
 
-Finally to estimate $p$, after calculating $\mu_{j,j-1}$ for each trading day in the training dataset, we count the number of times the share price went up, i.e., $\mu_{j,j-1}>0$, and divide by the total number of observations. The magnitude of the `up` and `down` moves can be estimated by computing the average change in the share price factors when the share price went up and down, respectively, and then transforming these values, i.e., $u= \exp\left(\mu_{j,j-1}\cdot\Delta{t}\right)$ when $\mu_{j,j-1}>0$ and $d= \exp\left(\mu_{j,j-1}\cdot\Delta{t}\right)$ when $\mu_{j,j-1}<0$.
+Finally to estimate $p$, after calculating $\mu_{j,j-1}$ for each trading day in the training dataset, we count the number of times the share price went up, i.e., $\mu_{j,j-1}>0$, and divide by the total number of observations. The magnitude of the `up` and `down` moves can be estimated by computing the average change in the share price factors when the share price went up and down, respectively, transforming these values, i.e., $u(j)= \exp\left(\mu_{j,j-1}\cdot\Delta{t}\right)$ when $\mu_{j,j-1}>0$ and $d(j)= \exp\left(\mu_{j,j-1}\cdot\Delta{t}\right)$ when $\mu_{j,j-1}<0$, and then taking the average of these values.
 
 Assuming we have already calculated the $\mu_{j,j-1}$ values for each trading period in the training dataset, the following code snippet defines the `analyze` function which estimates the $p$, $u$, and $d$ parameters from the $\mu_{j,j-1}$ values:
 
@@ -132,20 +132,21 @@ function analyze(R::Array{Float64,1};
 end
 ```
 
-We implemented the `analyze` function on the `μ` array we computed above for some common stocks {prf:ref}`tbl-binomial-parameters`:
+We implemented the `analyze` function on the `μ` array we computed above for some common stocks ({prf:ref}`tbl-binomial-parameters`):
 
 ```{prf:observation} Real-world Binomial parameters for common stocks
 :label: tbl-binomial-parameters
 
 Real-world values for the $p$, $u$, and $d$ parameters for some common stocks. The data is based on the daily volume weighted average price for the period `2018-01-03` to `2022-12-31`. The `id` column is the unique identifier for the stock in the `firm_data` table. 
 
-| id  | ticker | name                   | probability | up    | down   |
-|-----|--------|------------------------|-------------|-------|--------|
-|  11 |    AMD | Advanced Micro Devices |      0.5331 | 1.022 | 0.9785 |
-| 487 |    WFC |            Wells Fargo |      0.5227 | 1.013 | 0.9854 |
-| 241 |    IBM |                    IBM |      0.5227 |  1.01 | 0.9892 |
-| 221 |     GS |          Goldman Sachs |       0.502 | 1.013 | 0.9875 |
-| 437 |   TSLA |                  Tesla |      0.5283 | 1.027 | 0.9744 |
+| id  | ticker | name                   | sector                 | probability | up    | down   |
+|-----|--------|------------------------|------------------------|-------------|-------|--------|
+|  11 |    AMD | Advanced Micro Devices | Information Technology |      0.5331 | 1.022 | 0.9785 |
+| 487 |    WFC |            Wells Fargo |             Financials |      0.5227 | 1.013 | 0.9854 |
+| 241 |    IBM |                    IBM | Information Technology |      0.5227 |  1.01 | 0.9892 |
+| 221 |     GS |          Goldman Sachs |             Financials |       0.502 | 1.013 | 0.9875 |
+| 437 |   TSLA |                  Tesla | Consumer Discretionary |      0.5283 | 1.027 | 0.9744 |
+
 
 
 For the five tickers in the table, the probability of an `up` move is between 50% and 53%, and the average `up` and `down` factors are between 0.97 and 1.03. 
@@ -153,21 +154,16 @@ For the five tickers in the table, the probability of an `up` move is between 50
 
 
 ### Risk neutral probability
-One of the fundemental assumptions of the risk neutral binomial model is that there are no arbitrage opportunities. In other words, there is no way to make a risk-free profit. This assumption is equivalent to the assumption that the market is complete. In the one-period binomial model described above, the no arbitrage condition is given by:
+In finance, risk-neutral pricing is an important concept that helps investors determine the value of financial instruments. This approach assumes that market participants are not affected by risk and are only motivated by their expected returns. By using risk-neutral pricing, investors can estimate the fair value of securities by discounting their expected future cash flows at a risk-free rate. This is particularly useful in derivatives valuation, and other financial models as it allows investors to account for uncertainty in their investment decisions and make informed choices in the marketplace. 
 
-```{math}
-:label: eqn-binomial-no-arbitrage
-S^{d} \leq S_{\circ}\cdot\mathcal{D}_{1,0}(\bar{r},\Delta{t})\leq S^{u}
-```
-
-where $\mathcal{D}_{1,0}(\bar{r},\Delta{t})$ denotes the discount factor between period `0` and `1`,  $\Delta{t}$ is the length of the time between periods `0` and `1` (in years) , and $\bar{r}$ denotes the annualized risk-free rate. Modeling shares of an equity as a risk neutral asset, e.g., a zero-coupon bond with a random face value, gives the condition:
+In the one-period binomial model described above, the expected value of the future risk neutral price is governed by:
 
 ```{math}
 :label: eqn-binomial-no-arbitrage-risk-neutral
 \mathcal{D}_{1,0}(\bar{r},\Delta{t})\cdot{S_{\circ}} = \mathbb{E}_{Q}\left(S_{1}\right)
 ```
 
-where the expectation operator $\mathbb{E}_{Q}(\dots)$ is taken with respect to a _risk neutral probability measure_ $Q$. The risk neutral probability $Q$ is a hypothetical probability measure that allows us to price assets as if investors are risk neutral. In other words, the risk neutral probability measure $Q$ allows us to price assets as if there are no arbitrage opportunities. Because we have a single-period binomial model, we can expand the expectation operator $\mathbb{E}_{Q}(\dots)$ on the right-hand side of Eqn. {eq}`eqn-binomial-no-arbitrage-risk-neutral` as:
+where $\mathcal{D}_{1,0}(\bar{r},\Delta{t})$ denotes the discount factor between period `0` and `1`,  $\Delta{t}$ is the length of the time between periods `0` and `1` (in years) , and $\bar{r}$ denotes the annualized risk-free rate. The expectation operator $\mathbb{E}_{Q}(\dots)$ is taken with respect to a _risk neutral probability measure_ $Q$. The risk neutral probability $Q$ is a hypothetical probability measure that allows us to price assets as if investors are risk neutral. For a binomial model, we can expand the expectation operator $\mathbb{E}_{Q}(\dots)$ on the right-hand side of Eqn. {eq}`eqn-binomial-no-arbitrage-risk-neutral` as:
 
 ```{math}
 :label: eqn-binomial-risk-neutral-probability-expectation
