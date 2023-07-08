@@ -157,10 +157,10 @@ In the one-period binomial model described above, the expected value of the futu
 
 ```{math}
 :label: eqn-binomial-no-arbitrage-risk-neutral
-\mathcal{D}_{1,0}(\bar{r},\Delta{t})\cdot{S_{\circ}} = \mathbb{E}_{Q}\left(S_{1}\right)
+\mathcal{D}_{1,0}(\bar{r},\Delta{t})\cdot{S_{\circ}} = \mathbb{E}_{\mathbb{Q}}\left(S_{1}\right)
 ```
 
-where $\mathcal{D}_{1,0}(\bar{r},\Delta{t})$ denotes the discount factor between period `0` and `1`,  $\Delta{t}$ is the length of the time between periods `0` and `1` (in years) , and $\bar{r}$ denotes the annualized risk-free rate. The expectation operator $\mathbb{E}_{Q}(\dots)$ is taken with respect to a _risk neutral probability measure_ $Q$. The risk neutral probability $Q$ is a hypothetical probability measure that allows us to price assets as if investors are risk neutral. For a binomial model, we can expand the expectation operator $\mathbb{E}_{Q}(\dots)$ on the right-hand side of Eqn. {eq}`eqn-binomial-no-arbitrage-risk-neutral` as:
+where $\mathcal{D}_{1,0}(\bar{r},\Delta{t})$ denotes the discount factor between period `0` and `1`,  $\Delta{t}$ is the length of the time between periods `0` and `1` (in years) , and $\bar{r}$ denotes the annualized risk-free rate. The expectation operator $\mathbb{E}_{\mathbb{Q}}(\dots)$ is taken with respect to a _risk neutral probability measure_ $\mathbb{Q}$. The risk neutral probability measure $\mathbb{Q}$ is a hypothetical probability measure that allows us to price assets as if investors are risk neutral. For a binomial model, we can expand the expectation operator $\mathbb{E}_{\mathbb{Q}}(\dots)$ on the right-hand side of Eqn. {eq}`eqn-binomial-no-arbitrage-risk-neutral` as:
 
 ```{math}
 :label: eqn-binomial-risk-neutral-probability-expectation
@@ -257,7 +257,16 @@ For the five tickers in the table, the risk-neutral probability of an `up` move 
 It’s interesting to note that the risk-neutral probability of all the stocks in the table is around 50%. This is expected because the risk-neutral probability depends upon the risk-free rate $\bar{r}$, which is consistent across all the stocks. However, the difference between the real-world and risk-neutral probabilities is influenced by the stock’s volatility, specifically the size of its `up` and `down` movements. The greater the volatility, the higher the probability of an `up` move in the risk-neutral scenario.
 
 ### Risk premium
-A risk premium is the additional return an individual expects to receive for taking on a higher level of risk. The interpretation of the risk premium depends on the situation. In this case, we are calculating the risk premium for a stock by finding the difference between the expected return based on real-world probabilities and the expected return based on risk-neutral probabilities.
+A risk premium is the additional return an individual expects to receive for taking on a higher level of risk. The interpretation of the risk premium depends on the situation. In this case, we are calculating the risk premium for a stock by finding the difference between the expected return based on real-world probabilities and the expected return based on risk-neutral probabilities:
+
+```{math}
+:label: eqn-risk-premium
+\mathcal{R_{P}} = \mathbb{E}(r) - \mathbb{E}_{\mathbb{Q}}(r)
+```
+
+
+where $\mathbb{E}(r)$ denotes the expected return based on real-world probabilities, and $\mathbb{E}_{\mathbb{Q}}(r)$ denotes the expected return based on risk-neutral probabilities. Let's define the return as the log return, i.e., $r = \ln\left(\frac{S_{t+1}}{S_{t}}\right)$, where $S_{t}$ denotes the stock price at time $t$. 
+
 
 (content:lattice-models-testing-lattice-model)=
 ## Testing the lattice model
