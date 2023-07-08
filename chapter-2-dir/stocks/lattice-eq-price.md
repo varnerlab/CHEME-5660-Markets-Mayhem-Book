@@ -5,7 +5,7 @@ In this lecture, we'll discuss our first type of model of equity pricing, namely
 
 * [Introduction to lattice models](content:lattice-models-introduction). Lattice models discretize the possible furture states of the world, e.g., the share price of a stock, into a finite number of states. For example, a Binomial lattice model has two future states, up and down. We'll discuss how to build a lattice model and how to use it to price assets.
 
-* [Risk-neutral pricing](content:lattice-models-risk-neutral-pricing) is a alternative hypothetical pricing framework that allows us to price assets assuming that investors are risk-neutral. We'll discuss how to use risk-neutral pricing to price assets in a lattice model.
+* [Real-world and risk-neutral pricing](content:lattice-models-risk-neutral-pricing). Real-world pricing refers to the observed price, while risk-neutral pricing is a hypothetical pricing framework that assumes investors are risk-neutral. This section will explore how to use both methods to price assets within a lattice model.
 
 * [Testing the lattice model](content:lattice-models-testing-lattice-model) is an important step in the model building process. We'll discuss how to test the lattice model using real-world versus risk-neutral probabilities. We'll also discuss how to test the lattice model using the implied volatility of options.
 
@@ -17,8 +17,6 @@ Fill me in.
 (content:lattice-models-risk-neutral-pricing)=
 ## Single-period binomial model
 Consider a single-period binomial model which goes from an initial time `0` to a final time `1` ({numref}`example-oneste-binomial-lattice-schematic`). The initial share price at time `0` is $S_{\circ}$ and the share price at time `1` is $S_{1}$. During the transition from time `0`$\rightarrow$`1` the world moves from a current state to the `up` state with probability $p$ or the `down` state with probability $(1-p)$.
-
-
 
 ```{figure} ./figs/Fig-OneStep-Binomial-Lattice-Schematic.svg
 ---
@@ -152,7 +150,6 @@ Real-world values for the $p$, $u$, and $d$ parameters for some common stocks. T
 For the five tickers in the table, the probability of an `up` move is between 50% and 53%, and the average `up` and `down` factors are between 0.97 and 1.03. 
 ```
 
-
 ### Risk neutral probability
 In finance, risk-neutral pricing is an important concept that helps investors determine the value of financial instruments. This approach assumes that market participants are not affected by risk and are only motivated by their expected returns. By using risk-neutral pricing, investors can estimate the fair value of securities by discounting their expected future cash flows at a risk-free rate. This is particularly useful in derivatives valuation, and other financial models as it allows investors to account for uncertainty in their investment decisions and make informed choices in the marketplace. 
 
@@ -200,7 +197,8 @@ where $\mathcal{D}_{1,0}(\bar{r},\Delta{t})$ denotes the discount factor evaluat
 
 ````
 
-To determine the risk-neutral probability, we can adjust the `analyze` function mentioned earlier, where we assume (for now) the realized average `up` factors are the same as the real-world case, but the moves are symmetric, namely $d = 1/u$. This assumption will be relaxed when dealing with derivatives pricing; specific models for `u` are typically applied to calculate `q` in the case of derivatives.
+#### Implementation: Risk-neutral $(u,q)$ strategy
+To determine the risk-neutral probability, we can refactor the `analyze` function mentioned earlier, where we assume (for now) the realized average `up` factors are the same as the real-world case, but the moves are symmetric, namely $d = 1/u$. This assumption will be relaxed when dealing with derivatives pricing; specific models for `u` are typically applied to calculate `q` in the case of derivatives.
 
 The modified function, called `riskneutralanalyze`, is defined below:
 
@@ -256,14 +254,61 @@ Risk-neutral values for the $q$, $u$, and $d$ parameters for some common stocks.
 For the five tickers in the table, the risk-neutral probability of an `up` move is approximately 50%, i.e., a coin-flip.
 ```
 
-Notice, the risk-neutral probability is approximately 50% for all the stocks in the table. This is not surprising, since the risk-neutral probability is a function of the risk-free rate, which is the same for all the stocks.
+It’s interesting to note that the risk-neutral probability of all the stocks in the table is around 50%. This is expected because the risk-neutral probability depends upon the risk-free rate $\bar{r}$, which is consistent across all the stocks. However, the difference between the real-world and risk-neutral probabilities is influenced by the stock’s volatility, specifically the size of its `up` and `down` movements. The greater the volatility, the higher the probability of an `up` move in the risk-neutral scenario.
 
+### Risk premium
+A risk premium is the additional return an individual expects to receive for taking on a higher level of risk. The interpretation of the risk premium depends on the situation. In this case, we are calculating the risk premium for a stock by finding the difference between the expected return based on real-world probabilities and the expected return based on risk-neutral probabilities.
 
 (content:lattice-models-testing-lattice-model)=
-## Real-world versus risk-neutral probabilities
-Fill me in.
+## Testing the lattice model
+Now that we can calculate both the real-world and risk-neutral probabilities, we can test the lattice model. However, before we do that let's extend the single-period lattice model to simulate multiple trading time periods, i.e., multiple days, weeks, months, or years into the future.
+
+### Extension to multiple periods
+The single-period lattice model can be extended to multiple periods by simply adding more nodes to the lattice ({numref}`example-twostep-binomial-lattice-schematic`).
+
+```{figure} ./figs/Fig-TwoStep-Binomial-Lattice-Schematic.svg
+---
+height: 420px
+name: example-twostep-binomial-lattice-schematic
+---
+Schematic of a multiple-period binomial lattice model. In the future, the world can probabilistically move to the `up` with probability $p$ or the `down` state with probability $(1-p)$. The share price at each future node ($j-1\rightarrow{j})$ can take on one of two possible values: $S_{j}=u\cdot{S}_{j-1}$ if the world moves to the `up` state, or $S_{j}=d\cdot{S}_{j-1}$ if the world moves to the `down` state.
+```
+
+At each node, we treat the future state of the world as the outcome of a [Bernoulli trial](https://en.wikipedia.org/wiki/Bernoulli_trial) with probability $p$ of success (or the risk-neutral probability $q$ if we are dealing with a risk-netural pricing scheme). Thus, at any node in the tree, the share price is governed by the following equation:
+
+```{math}
+:label: eqn-binomial-lattice-share-price
+S_{t} = S_{\circ}u^{k}d^{t-k}\qquad\text{for}\qquad{k=0,1,\ldots,t}
+```
+
+where $S_{\circ}$ is the initial share price, $u$ is the up factor, $d$ is the down factor, and $t$ is the number of periods into the future that we are simulating. The probability of reaching a particular node in the lattice is given by the binomial distribution:
+
+```{math}
+:label: eqn-binomial-lattice-share-price-probability
+P(S_{t}=S_{\circ}u^{k}d^{t-k}) = \binom{t}{k}p^{k}(1-p)^{t-k}\qquad\text{for}\quad{k=0,1,\ldots,t}
+```
+
+where $k$ is the number of `up` moves and $t-k$ is the number of `down` moves. The binomial coefficient $\binom{t}{k}$ is the number of ways to choose $k$ `up` moves from $t$ total moves:
+
+```{math}
+\binom{t}{k} = \frac{t!}{k!(t-k)!}
+```
+
+where $t!$ is the factorial of $t$.
+
+### Testing strategy
+Let's determine the likelihood of making accurate predictions using the binomial lattice model. To do this, we'll randomly divide the future time into continuous segments of `T` days, denoted as $\mathcal{I}_{k}\in\mathcal{I}$. At the beginning of each segment $\mathcal{I}_{k}$, we'll create a binomial lattice model and compare the actual price of a company ($S_{j}$) at time $j$ with the simulated price during each time segment. 
+
+* If the simulated price falls between the lower bound ($L_{j}$) and upper bound ($U_{j}$) for all $j\in\mathcal{I}_{k}$, we consider the simulation to be a `success`. The lower and upper bounds can be specified, but we'll set them to $\mu\pm{2.576}\cdot\sigma$ by default, where $\mu$ is the expected value, and $\sigma$ is the standard deviation of the binomial lattice simulation. 
+* However, if the actual price violates the upper or lower bound at any point, the simulation is deemed a `failure`.
 
 ---
 
 ## Summary
-Fill me in.
+In this lecture, we discussed the first type of model of equity pricing, namely lattice models. In particular, we discussed the following topics:
+
+* [Introduction to lattice models](content:lattice-models-introduction). Lattice models discretize the possible furture states of the world, e.g., the share price of a stock, into a finite number of states. For example, a Binomial lattice model has two future states, up and down. We'll discuss how to build a lattice model and how to use it to price assets.
+
+* [Real-world and risk-neutral pricing](content:lattice-models-risk-neutral-pricing). Real-world pricing refers to the observed price, while risk-neutral pricing is a hypothetical pricing framework that assumes investors are risk-neutral. In this section, we will explore how to use both methods to price assets within a lattice model.
+
+* [Testing the lattice model](content:lattice-models-testing-lattice-model) is an important step in the model building process. We'll discuss how to test the lattice model using real-world versus risk-neutral probabilities. We'll also discuss how to test the lattice model using the implied volatility of options.
