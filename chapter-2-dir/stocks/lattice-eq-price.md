@@ -12,7 +12,9 @@ In this lecture, we'll discuss our first type of model of equity pricing, namely
 ```
 (content:lattice-models-introduction)=
 ## Introduction to lattice models
-Fill me in.
+A lattice model discretizes the potential future states of the world into a finite number of options. For instance, a binomial lattice model has two future states: `up` and `down`, while a ternary lattice model has three: `up`, `down`, and `flat`. To make predictions, we must assign values and probabilities to each of these future states and then calculate the expected value and variance of future values. Thus, we do not know quantities such as share price exactly because we are projecting into the future. Instead, we have only a probabilistic model of the possible future values. 
+
+Let’s look at the simplest possible lattice model, a binomial lattice. This is our first example of a [stochastic model](https://en.wikipedia.org/wiki/Stochastic_process) of equity pricing.
 
 (content:lattice-models-risk-neutral-pricing)=
 ## Single-period binomial model
