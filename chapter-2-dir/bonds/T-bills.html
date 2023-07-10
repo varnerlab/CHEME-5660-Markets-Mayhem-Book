@@ -235,6 +235,7 @@ const thebe_selector_output = ".output, .cell_output"
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../appendix/probability-basics.html">Probability and Random Variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../appendix/ito.html">Stochastic Processes</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../appendix/julia-basics.html">Julia Basics</a><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-12"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../appendix/julia/julia-installation.html">Julia Installation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../appendix/julia/julia-functions-types.html">Julia Types, Functions and Programs</a></li>
@@ -536,7 +537,7 @@ document.write(`
 <section class="definition-content" id="proof-content">
 <p>A zero-coupon Treasury bill with a face (par) value of <span class="math notranslate nohighlight">\(V_{P}\)</span> (future) has a T-year term and an <em>annualized</em> effective market rate of interest of <span class="math notranslate nohighlight">\(\bar{r}\)</span>. The <em>fair price</em>, denoted by <span class="math notranslate nohighlight">\(V_{B}\)</span>, is the face (par) value discounted to today by the market interest rate <span class="math notranslate nohighlight">\(\bar{r}\)</span>:</p>
 <div class="math notranslate nohighlight" id="equation-eqn-zero-coupon-bill-bond">
-<span class="eqno">(10)<a class="headerlink" href="#equation-eqn-zero-coupon-bill-bond" title="Permalink to this equation">#</a></span>\[V_{B} = \mathcal{D}^{-1}_{T,0}(\bar{r})\cdot{V_{P}}\]</div>
+<span class="eqno">(10)<a class="headerlink" href="#equation-eqn-zero-coupon-bill-bond" title="Permalink to this equation">#</a></span>\[V_{B}(\bar{r}) = \mathcal{D}^{-1}_{T,0}(\bar{r})\cdot{V_{P}}\]</div>
 <p>The quantity <span class="math notranslate nohighlight">\(\mathcal{D}_{T,0}(\bar{r})\)</span> denotes the discount factor governing the period between the auction at <span class="math notranslate nohighlight">\(t = 0\)</span> and the term of the bill in <span class="math notranslate nohighlight">\(t = T\)</span> years.</p>
 </section>
 </div></section>

@@ -74,6 +74,8 @@ The logarithmic return can be computed using the `logR` function. The equity pri
 
 ```{code-block} julia
 :caption: The `logR` function
+:linenos:
+
 
 """
     logR(data::DataFrame; r::Float64 = 0.045) -> Array{Float64,1}
@@ -129,29 +131,134 @@ By examining returns and stylized facts, analysts and investors gain insights in
 
 * [Absence of Autocorrelation](https://en.wikipedia.org/wiki/Autocorrelation):  Autocorrelation refers to the tendency of stock price returns to correlate with their past returns over time. This suggests some predictability in stock price returns, which traders and investors can exploit. A random walk will not be correlated with itself.
 * [Volatility clustering](https://en.wikipedia.org/wiki/Volatility_clustering): Stock prices tend to be more volatile during specific periods and less volatile during others. This phenomenon is known as volatility clustering, suggesting that large price movements are more likely to be followed by significant moves in the same direction.
-* [Heavy tails](https://en.wikipedia.org/wiki/Fat-tailed_distribution): Stock price returns often exhibit a distribution with fatter tails than would be expected under a normal distribution. This means that extreme price movements are more likely than would be predicted by a normal distribution.
+* [Heavy (also called fat) tails](https://en.wikipedia.org/wiki/Fat-tailed_distribution): Stock price returns often exhibit a distribution with fatter tails than would be expected under a normal distribution. This means that extreme price movements are more likely than would be predicted by a normal distribution.
 
-Let's compute the stylized facts for the daily returns of [Wells Fargo & Company](https://en.wikipedia.org/wiki/Wells_Fargo) with ticker `WFC`. 
-The daily logarithmic return time series for [Wells Fargo & Company](https://en.wikipedia.org/wiki/Wells_Fargo) is shown in {numref}`example-WFC-return-data-daily`:
+Let's compute the stylized facts for the daily returns of [Wells Fargo & Company](https://en.wikipedia.org/wiki/Wells_Fargo) with ticker `WFC`. The daily logarithmic return time series for [Wells Fargo & Company](https://en.wikipedia.org/wiki/Wells_Fargo) is shown in {numref}`example-WFC-return-data-daily`:
 
 ```{figure} ./figs/Fig-WFC-Daily-Return-4yr.svg
 ---
-height: 400px
+height: 420px
 name: example-WFC-return-data-daily
 ---
 Daily logarithmic return of [Wells Fargo & Company](https://en.wikipedia.org/wiki/Wells_Fargo) computed from `2018-11-28` to `2022-11-28` using the `logR` function. Data was downloaded using the `aggregate` endpoint of [Polygon.io](https://polygon.io/docs/stocks/get_v2_aggs_ticker__stocksticker__range__multiplier___timespan___from___to).
 ```
 
-To compute the [Autocorrelation](https://en.wikipedia.org/wiki/Autocorrelation), the [Volatility clustering](https://en.wikipedia.org/wiki/Volatility_clustering) and the [return disribution](https://en.wikipedia.org/wiki/Fat-tailed_distribution) we use the [Statistics.jl](https://docs.julialang.org/en/v1/stdlib/Statistics/) and [Distributions.jl](https://github.com/JuliaStats/Distributions.jl) packages.
+To calculate Autocorrelation, Volatility clustering, and the return distribution, we utilize the [Statistics.jl](https://docs.julialang.org/en/v1/stdlib/Statistics/) and [Distributions.jl](https://github.com/JuliaStats/Distributions.jl) packages. For data visualization, we rely on the [Plots.jl](https://docs.juliaplots.org/stable/) and [StatsPlots.jl](https://github.com/JuliaPlots/StatsPlots.jl) packages.
 
 ### Autocorrelation
-Fill me in.
+Autocorrelation is the correlation of a signal time series $X_{t}$ with a delayed copy of itself $X_{t+\tau}$ as the function of a delay parameter $\tau$:
+
+```{math}
+R_{XX}(\tau) = \mathbb{E}\left(X_{t+\tau}{X_{t}}\right)
+```
+
+where $\mathbb{E}(\star)$ denotes the expectation operator and $X_{t+\tau}$ is the time series delayed by $\tau$ time steps. In this case, we are interested in a particular signal vector, namely the logarithmic return time series $\bar{r}_{i,j\rightarrow{k}}$ computing using {prf:ref}`defn-log-return-1` and shown in {numref}`example-WFC-return-data-daily`.
+
+```{code-block} julia
+:caption: Script for computing the autocorrelation series
+:linenos:
+
+# Load the required packages -
+using Statistics
+using CSV
+using DataFrames
+
+# load the data -
+data = CSV.read(path-to-csv-file, DataFrame);
+
+# compute the return time series -
+R = logR(data, key = :close);
+
+# compute the autocorrelation -
+L = length(R);
+τ  = range(0,step=1,stop=(L-1));
+AC = autocor(R, τ); # function provided by the Statistics package
+```
+
+The autocorrelation as a function of the lag parameter $\tau$ for `WFC` computed using the `autocorrelation script` can be visualized using the [Plots.jl](https://docs.juliaplots.org/stable/) package ({numref}`example-WFC-autocor-return-data-daily`):
+
+```{figure} ./figs/Fig-WFC-Daily-Return-4yr-Autocorrelation.svg
+---
+height: 420px
+name: example-WFC-autocor-return-data-daily
+---
+Autocorrelation as a function of lag $\tau$ (days) for logarithmic return of [Wells Fargo & Company](https://en.wikipedia.org/wiki/Wells_Fargo) computed from `2018-11-28` to `2022-11-28`. Data was downloaded using the `aggregate` endpoint of [Polygon.io](https://polygon.io/docs/stocks/get_v2_aggs_ticker__stocksticker__range__multiplier___timespan___from___to).
+```
+
+
+The autocorrelation of the `WFC` return displays a common [random walk pattern](https://en.wikipedia.org/wiki/Random_walk_hypothesis), where the correlation is negligible for all lags $\tau>0$. Hence, a future return is independent of the current return, making it impossible to predict future returns based on past returns. 
 
 ### Volatility clustering
-Fill me in.
+Through analysis of various asset prices, Mandelbrot {cite}`Mandelbrot-1963, Mandelbrot-1967` discovered that significant changes in price are usually followed by other significant changes, regardless of whether they are positive or negative. Conversely, small changes are typically followed by small changes. 
+
+```{figure} ./figs/Fig-WFC-Daily-Return-4yr-abs-Autocorrelation.svg
+---
+height: 420px
+name: example-WFC-autocor-abs-return-data-daily
+---
+Autocorrelation as a function of lag $\tau$ (days) for the absolute value of logarithmic return of [Wells Fargo & Company](https://en.wikipedia.org/wiki/Wells_Fargo) computed from `2018-11-28` to `2022-11-28`. Data was downloaded using the `aggregate` endpoint of [Polygon.io](https://polygon.io/docs/stocks/get_v2_aggs_ticker__stocksticker__range__multiplier___timespan___from___to).
+```
+
+While we have shown that returns themselves are uncorrelated in time, the absolute value of returns $|\bar{r}_{i,j\rightarrow{k}}|$ or their squares $\bar{r}^{2}_{i,j\rightarrow{k}}$ demonstrate a positive and gradually decreasing absolute autocorrelation $\bar{R}_{XX}(\tau)$ as a function of the lag parameter $\tau$:
+
+```{math}
+\bar{R}_{XX}(\tau) = \mathbb{E}\left(|X_{t+\tau}||{X_{t}}|\right)
+```
+
+
+This phenomenon, commonly referred to as [volatility clustering](https://en.wikipedia.org/wiki/Volatility_clustering), is present in the `WFC` return series ({numref}`example-WFC-autocor-abs-return-data-daily`). Thus, large returns of `WFC` are more likely to be followed by large returns, and small returns followed by small returns, i.e., the volatility of the `WFC` return is clustered in the time series. You can see evidence of this in the `WFC` return data series shown in {numref}`example-WFC-return-data-daily`, as the the spikes in the return time series are clustered in time.
+
+The existence of [volatility clustering](https://en.wikipedia.org/wiki/Volatility_clustering) has inspired a family of advanced mathematical models of financial time series, known as [stochastic volatility models](https://en.wikipedia.org/wiki/Stochastic_volatility). These models are based on the assumption that the volatility of the underlying asset is not constant, but varies over time.
+
+```{code-block} julia
+:caption: Script for computing the absolute autocorrelation series
+:linenos:
+
+# Load the required packages -
+using Statistics
+using CSV
+using DataFrames
+
+# load the data -
+data = CSV.read(path-to-csv-file, DataFrame);
+
+# compute the return time series
+R = logR(data, key = :close);
+
+# compute the autocorrelation -
+L = length(R);
+τ  = range(0,step=1,stop=(L-1));
+AC = autocor(abs.(R), τ); # function provided by the Statistics package
+```
 
 ### Return distribution
-Fill me in.
+The daily return values for `WFC` show another typical pattern, namely a [fat- or hearvy-tailed distribution](https://en.wikipedia.org/wiki/Fat-tailed_distribution). The daily return values for `WFC` were calculated using the `logR` function. A [Normal](https://juliastats.org/Distributions.jl/stable/univariate/#Distributions.Normal) and [Laplace](https://juliastats.org/Distributions.jl/stable/univariate/#Distributions.Laplace) distribution was then fit to the return data using the [maximum likelihood estimation (MLE)](https://en.wikipedia.org/wiki/Maximum_likelihood_estimation#:~:text=In%20statistics%2C%20maximum%20likelihood%20estimation,observed%20data%20is%20most%20probable.) routine encoded in the [Distributions.jl](https://github.com/JuliaStats/Distributions.jl) package. 
+
+
+```{figure} ./figs/Fig-WFC-Daily-Return-4yr-histogram.svg
+---
+height: 420px
+name: example-WFC-return-histogram-data-daily
+---
+Return distribution for logarithmic daily return of [Wells Fargo & Company](https://en.wikipedia.org/wiki/Wells_Fargo) computed between `2018-11-28` to `2022-11-28`. Data was downloaded using the `aggregate` endpoint of [Polygon.io](https://polygon.io/docs/stocks/get_v2_aggs_ticker__stocksticker__range__multiplier___timespan___from___to).
+```
+
+The distribution of daily returns, visualized using the [StatsPlots.jl](https://github.com/JuliaPlots/StatsPlots.jl) package, has decreasing density around the mean and thicker tails compared to a [Normal](https://juliastats.org/Distributions.jl/stable/univariate/#Distributions.Normal) distribution ({numref}`example-WFC-return-histogram-data-daily`). Thus, the daily returns for `WFC` appear to not follow a [Normal](https://juliastats.org/Distributions.jl/stable/univariate/#Distributions.Normal) distribution. Instead, the returns appear to better described by a [Laplace](https://juliastats.org/Distributions.jl/stable/univariate/#Distributions.Laplace) distribution, which has thicker tails and less density around the mean. 
+
+#### Q-Q plots
+To determine if a dataset is normally distributed, there are several techniques that can be used. One such method is a quantile-quantile (Q-Q) plot, which compares two probability distributions by plotting their quantiles against each other. If two distributions are equal, their respective quantiles will lie on a 45$^{\circ}$ line. However, if the distributions are different, there will be a deviation from the 45$^{\circ}$ line.
+
+In the logarithmic daily return series of `WFC`, the Q-Q plot shows that the return is not normally distributed. Instead, it closely follows a Laplace distribution ({numref}`example-WFC-return-QQ-daily-Normal-Laplace`). The data points deviate from the 45$^{\circ}$ line, particularly in the tails of the normal distribution (left panel). In contrast, the deviation from the 45$^{\circ}$ line is less pronounced for the Laplace distribution (right panel). 
+
+```{figure} ./figs/Fig-WFC-Daily-Return-4yr-QQ-plot-Normal-Laplace.svg
+---
+height: 420px
+name: example-WFC-return-QQ-daily-Normal-Laplace
+---
+Q-Q plot for logarithmic daily return of [Wells Fargo & Company](https://en.wikipedia.org/wiki/Wells_Fargo) computed between `2018-11-28` to `2022-11-28`. Data was downloaded using the `aggregate` endpoint of [Polygon.io](https://polygon.io/docs/stocks/get_v2_aggs_ticker__stocksticker__range__multiplier___timespan___from___to).
+```
+
+However, there is still some deviation particularly on the lower tail, suggesting that Laplace, while being better, is not a perfect description of the return distribution.
 
 ---
 

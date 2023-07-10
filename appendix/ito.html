@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Unit 3: Modern Portfolio Theory &#8212; CHEME-5660</title>
+    <title>Stochastic Processes &#8212; CHEME-5660</title>
   
   
   
@@ -69,12 +69,14 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'chapter-3-dir/chapter-3-landing';</script>
-    <link rel="canonical" href="https://varnerlab.github.io/CHEME-5660-Markets-Mayhem-Book/infrastructure.html/chapter-3-dir/chapter-3-landing.html" />
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'appendix/ito';</script>
+    <link rel="canonical" href="https://varnerlab.github.io/CHEME-5660-Markets-Mayhem-Book/infrastructure.html/appendix/ito.html" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Markowitz Portfolio Allocation" href="markowitz.html" />
-    <link rel="prev" title="Trade mechanics for options positions: The Art of the Roll" href="../chapter-2-dir/options/option-rolling.html" />
+    <link rel="next" title="Julia Basics" href="julia-basics.html" />
+    <link rel="prev" title="Probability and Random Variables" href="probability-basics.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -198,17 +200,17 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 </li>
 </ul>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Unit 3: Modern Portfolio Theory</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2 has-children"><a class="reference internal" href="markowitz.html">Markowitz Portfolio Allocation</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="data-markowitz.html">Data-Driven Portfolio Allocation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="model-markowitz.html">Model-Driven Portfolio Allocation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="reallocation.html">Portfolio Reallocation Strategies</a></li>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter-3-dir/chapter-3-landing.html">Unit 3: Modern Portfolio Theory</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../chapter-3-dir/markowitz.html">Markowitz Portfolio Allocation</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../chapter-3-dir/data-markowitz.html">Data-Driven Portfolio Allocation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../chapter-3-dir/model-markowitz.html">Model-Driven Portfolio Allocation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../chapter-3-dir/reallocation.html">Portfolio Reallocation Strategies</a></li>
 </ul>
 </li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="black-swan-events.html">Surviving Black Swan Events</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="var.html">Value at Risk and Conditional Value at Risk</a></li>
-<li class="toctree-l3"><a class="reference internal" href="hedged-portfolio.html">Hedging and Dynamic Hedging Approaches</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../chapter-3-dir/black-swan-events.html">Surviving Black Swan Events</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../chapter-3-dir/var.html">Value at Risk and Conditional Value at Risk</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../chapter-3-dir/hedged-portfolio.html">Hedging and Dynamic Hedging Approaches</a></li>
 </ul>
 </li>
 </ul>
@@ -231,13 +233,13 @@ const thebe_selector_output = ".output, .cell_output"
 </li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../appendix/probability-basics.html">Probability and Random Variables</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../appendix/ito.html">Stochastic Processes</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../appendix/julia-basics.html">Julia Basics</a><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-12"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../appendix/julia/julia-installation.html">Julia Installation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../appendix/julia/julia-functions-types.html">Julia Types, Functions and Programs</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../appendix/julia/julia-data.html">Working with Data in Julia</a></li>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="probability-basics.html">Probability and Random Variables</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Stochastic Processes</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="julia-basics.html">Julia Basics</a><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-12"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="julia/julia-installation.html">Julia Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="julia/julia-functions-types.html">Julia Types, Functions and Programs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="julia/julia-data.html">Working with Data in Julia</a></li>
 </ul>
 </li>
 </ul>
@@ -315,7 +317,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Book/issues/new?title=Issue%20on%20page%20%2Fchapter-3-dir/chapter-3-landing.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Book/issues/new?title=Issue%20on%20page%20%2Fappendix/ito.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -345,7 +347,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="../_sources/chapter-3-dir/chapter-3-landing.md" target="_blank"
+      <li><a href="../_sources/appendix/ito.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -414,7 +416,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -425,11 +429,28 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Unit 3: Modern Portfolio Theory</h1>
+    <h1>Stochastic Processes</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#brownian-motion">Brownian Motion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ito-processes">Ito Processes</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ito-s-lemma">Ito’s Lemma</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#discretization-approaches">Discretization Approaches</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#euler-maruyama-discretization-method">Euler-Maruyama Discretization Method</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -439,37 +460,88 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="unit-3-modern-portfolio-theory">
-<h1>Unit 3: Modern Portfolio Theory<a class="headerlink" href="#unit-3-modern-portfolio-theory" title="Permalink to this heading">#</a></h1>
-<p>Modern Portfolio Theory (MPT), also known as mean-variance analysis, is a fundamental concept in finance that provides a framework for constructing and optimizing investment portfolios. Developed by Harry Markowitz in the 1950s, MPT revolutionized the field of portfolio management by introducing a systematic approach to balancing risk and return <span id="id1">[<a class="reference internal" href="../References.html#id21" title="Harry Markowitz. Portfolio selection. The Journal of Finance, 7(1):77–91, 1952. URL: http://www.jstor.org/stable/2975974 (visited on 2022-04-12).">Markowitz, 1952</a>]</span>. The fundamental principle of MPT is that investors can reduce the overall risk of the portfolio by combining assets that are not perfectly correlated, without sacrificing potential returns.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="stochastic-processes">
+<h1>Stochastic Processes<a class="headerlink" href="#stochastic-processes" title="Permalink to this heading">#</a></h1>
 <aside class="topic">
-<p class="topic-title">Portfolio Allocation Outline</p>
-<p>In this unit, we will discuss the basics of portfolio allocation and how it can be used to build a diversified portfolio:</p>
+<p class="topic-title">Outline</p>
+<p>In this section, we will discuss the following topics:</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="data-markowitz.html"><span class="doc std std-doc">Data-driven portfolio allocation</span></a> is a portfolio optimization technique that uses statistical methods to identify the optimal combination of assets that maximizes return for a given level of risk. It builds on the classic Markowitz portfolio theory by incorporating machine learning and data analysis techniques to improve the accuracy of expected returns and covariance estimates.</p></li>
-<li><p><a class="reference internal" href="model-markowitz.html"><span class="doc std std-doc">Model-driven portfolio allocation</span></a> is a portfolio optimization technique that uses mathematical models to predict future returns and risks of different assets. It builds on the classic Markowitz portfolio theory by incorporating more sophisticated mathematical models such as stochastic calculus, econometric models, and factor models. This approach can lead to more accurate and efficient portfolio allocations by incorporating more detailed and nuanced market dynamics than traditional methods.</p></li>
-<li><p><a class="reference internal" href="hedged-portfolio.html"><span class="doc std std-doc">Dynamically hedged portfolio allocation</span></a> is an investment strategy that involves dynamically adjusting the composition of a portfolio in response to changing market conditions. The goal of the strategy is to minimize downside risk while maximizing upside potential. This is achieved by using a combination of hedging techniques, such as options or futures contracts, and active management of the portfolio’s asset allocation. The result is a more resilient and adaptive portfolio that can better navigate market fluctuations and deliver more consistent returns.</p></li>
+<li><p>Introduce <a class="reference internal" href="#content-references-wiener-process"><span class="std std-ref">Brownian Motion</span></a> which is a continuous-time stochastic process that can be used to model asset price dynamics</p></li>
+<li><p>Introduce <a class="reference internal" href="#content-references-discretization"><span class="std std-ref">Discretization Approaches</span></a> which can describe more complex asset price trends</p></li>
 </ul>
 </aside>
-<!-- 
-
-
-
-
- -->
-<!-- There are three primary financial instruments for wealth creation: equity (i.e., shares of stock), debt (i.e., bonds and mortgages), and derivatives. Each of these instruments has a unique risk-reward profile. However, they also share a common trait; at their core, they are just _structured relationships_ between a buyer and a seller. For example, fixed-income debt securities, e.g., Treasury Bills, Notes, and Bonds are just contracts, i.e., a relationship between a borrower and a lender. In the case of United States treasury debt instruments, the borrower is the U.S. government, and the lender is the investor; the government issues (i.e., sells) a bond to a lender (you) for some cash. Then over time, depending upon the stipulations of the debt instrument, the borrower pays back the lender in a specified way. 
-
-Another type of higher-risk (but higher-reward) investment tool is called an option. Option contracts describe the _potential transfer_ of stock shares, e.g., `MSFT`, `AAPL` or `AMD` between a buyer and a seller. Options contracts are traded on exchanges throughout the world; the [Chicago Board Options Exchange](https://www.cboe.com) is the largest options exchange in the United States, responsible for approximately 33\% of the daily options trading volume in the United States (27 million contracts are traded each day in the United States). Worldwide, in 2021, about 33 billion options contracts were traded annually.
-
-Futures contracts, much like options, are agreements between a buyer and a seller to buy (or sell) an asset on a specific date in the future. However, unlike options, futures contracts _require_ the buyer to purchase the underlying asset and the contract seller to sell the asset on a specific future date unless the contract holder's position is closed before the contract’s expiration date. Future contracts can control underlying assets, agricultural products, currencies, and equities.
-Futures contracts are traded on an exchange; the most significant exchange on which futures contracts are sold is the [Chicago Board of Trade (CBOT)](https://www.cmegroup.com). Worldwide, in 2021, about 29 billion futures contracts were traded annually, with an approximately daily volume of 11 million contracts traded on the CBOE.  -->
-<!-- 
-At the end of this unit, students should be able to understand:
-* [Fixed-income debt securities such United States Treasury Bills, Notes and Bonds](./bonds.md)
-* [The basics of options contracts and how to price them](./contracts.md)
-* [The basics of portfolio management using Modern Portfolio Theory](./markowitz.md)  -->
-<div class="toctree-wrapper compound">
-</div>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
+<p>Stochastic differential equations can model various physical, biological, and chemical systems.
+For example, the path traced by a molecule as it travels through a liquid or a gas can be modeled as a
+random walk, a type of stochastic differential equation.
+Stochastic Differential Equations (SDEs) are essential tools to simulate asset price dynamics.
+They are a top-down approach to simulating market behavior, where markers are treated as a macroscopic system.</p>
+<p>In the context of financial systems, the <a class="reference external" href="https://en.wikipedia.org/wiki/Random_walk_hypothesis">random walk hypothesis</a> postulates that the stock market prices evolve according to a random walk (so price changes are random) and thus cannot be predicted. However, there are
+dueling perspectives on the randomness of stock prices in the finance and economics community.
+<a class="reference external" href="https://en.wikipedia.org/wiki/Burton_Malkiel">Malkiel</a>, in his book <a class="reference external" href="https://en.wikipedia.org/wiki/A_Random_Walk_Down_Wall_Street">A Random Walk Down Wall Street</a>, argues that asset prices typically exhibit signs of a random walk and that investors cannot consistently outperform market averages. On the other hand, in their book <a class="reference external" href="https://www.jstor.org/stable/j.ctt7tccx">A Non-Random Walk Down Wall Street, Lo and MacKinlay present</a>, several studies that suggest there are stock market pricing trends are somewhat predictable.</p>
+<p>To better understand these arguments and build mathematical models that can be used to simulate market
+dynamics, we introduce analytical and numerical tools to solve SDEs. Our development follows chapters 3, 6, and Appendix B of <span id="id1">[<a class="reference internal" href="../References.html#id16" title="Paul Glasserman. Monte Carlo methods in financial engineering. Volume 53. Springer, New York, 2004. ISBN 0387004513 (alk. paper). URL: http://www.loc.gov/catdir/enhancements/fy0813/2003050499-d.html.">Glasserman, 2004</a>]</span></p>
+</section>
+<section id="brownian-motion">
+<span id="content-references-wiener-process"></span><h2>Brownian Motion<a class="headerlink" href="#brownian-motion" title="Permalink to this heading">#</a></h2>
+<p>A <a class="reference external" href="https://en.wikipedia.org/wiki/Wiener_process">Wiener Process</a> (also often referred to as a <a class="reference external" href="https://en.wikipedia.org/wiki/Brownian_motion">standard Brownian motion</a>) is a real-valued continuous-time stochastic process named after the <a class="reference external" href="https://en.wikipedia.org/wiki/Norbert_Wiener">Norbert Wiener</a> for the study of one-dimensional Brownian motion:</p>
+<div class="proof definition admonition" id="defn-wiener-process">
+<p class="admonition-title"><span class="caption-number">Definition 12 </span> (One-dimensional Wiener Process)</p>
+<section class="definition-content" id="proof-content">
+<p>A Wiener process is a continuous one-dimensional stochastic process <span class="math notranslate nohighlight">\(\left\{W\left(t\right), 0\leq{t}\leq{T}\right\}\)</span> with the following properties:</p>
+<ul class="simple">
+<li><p>W<span class="math notranslate nohighlight">\(\left(0\right)\)</span> = <span class="math notranslate nohighlight">\(0\)</span></p></li>
+<li><p>The increments <span class="math notranslate nohighlight">\(\left\{W(t_{1}) - W(t_{o}),\dots, W(t_{k}) - W(t_{k-1})\right\}\)</span> are independent for any <span class="math notranslate nohighlight">\(k\)</span> and <span class="math notranslate nohighlight">\(0\leq{t_{o}}&lt; t_{1} &lt; \dots &lt; t_{k} \leq{T}\)</span>.</p></li>
+<li><p>The increment W(t) - W(s) <span class="math notranslate nohighlight">\(\sim~N\left(0,t-s\right)\)</span> for any <span class="math notranslate nohighlight">\(0\leq{s}&lt; t \leq{T}\)</span>, where <span class="math notranslate nohighlight">\(N\left(0,t-s\right)\)</span> denotes a <a class="reference external" href="https://en.wikipedia.org/wiki/Normal_distribution">normally distributed random variable</a> with mean <span class="math notranslate nohighlight">\(0\)</span> and variance <span class="math notranslate nohighlight">\(t - s\)</span>.</p></li>
+</ul>
+</section>
+</div></section>
+<section id="ito-processes">
+<span id="content-references-ito-calculus"></span><h2>Ito Processes<a class="headerlink" href="#ito-processes" title="Permalink to this heading">#</a></h2>
+<p>We are interested in random variables <span class="math notranslate nohighlight">\(X(t)\)</span> whose time evolution is governed by stochastic differential equations of the form (<a class="reference external" href="https://en.wikipedia.org/wiki/It%C3%B4_diffusion">Ito Process or Ito Diffusion</a>):</p>
+<div class="math notranslate nohighlight" id="equation-eq-ito-process">
+<span class="eqno">(19)<a class="headerlink" href="#equation-eq-ito-process" title="Permalink to this equation">#</a></span>\[dX = a(X(t),t)dt + b(X(t),t)dW(t)\]</div>
+<p>subject to the (known) constant initial condition <span class="math notranslate nohighlight">\(X(0)\)</span>.
+Eqn. <a class="reference internal" href="#equation-eq-ito-process">(19)</a> is called an <a class="reference external" href="https://en.wikipedia.org/wiki/It%C3%B4_diffusion">Ito Process or Ito Diffusion</a>. The random variable <span class="math notranslate nohighlight">\(X\in\mathbb{R}^{d}\)</span>, while the functions
+<span class="math notranslate nohighlight">\(a:\mathbb{R}^{d}\times\mathbb{R}\rightarrow\mathbb{R}^{d}\)</span>
+and <span class="math notranslate nohighlight">\(b:\mathbb{R}^{d}\times\mathbb{R}\rightarrow\mathbb{R}^{d\times{m}}\)</span>,
+and <span class="math notranslate nohighlight">\(W\)</span> denotes an m-dimensional noise process. There are some additional conditions on
+<span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> that we will talk about later.</p>
+<p>Depending upon the form of <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span>, Eqn <a class="reference internal" href="#equation-eq-ito-process">(19)</a> can sometimes be solved
+analytically. However, in the general case, we’ll need to solve Eqn <a class="reference internal" href="#equation-eq-ito-process">(19)</a>
+numerically. Numerical approximations to the solution of Eqn <a class="reference internal" href="#equation-eq-ito-process">(19)</a> can be
+developed quickly; however, they have different levels of error depending upon the solution approach.</p>
+<section id="ito-s-lemma">
+<h3>Ito’s Lemma<a class="headerlink" href="#ito-s-lemma" title="Permalink to this heading">#</a></h3>
+<p>A critical theoretical result that supports the construction of analytical solutions to stochastic differential equations is <a class="reference external" href="https://en.wikipedia.org/wiki/It%C3%B4%27s_lemma">Ito’s Lemma</a>; Ito’s Lemma,  developed by K. Ito in 1951, is the analog of the Taylor series for stochastic systems:</p>
+<div class="proof lemma admonition" id="ito-lemma">
+<p class="admonition-title"><span class="caption-number">Lemma 1 </span> (Scalar Ito’s Lemma)</p>
+<section class="lemma-content" id="proof-content">
+<p>Let the behavior of the random variable <span class="math notranslate nohighlight">\(X(t)\)</span> be governed by the stochastic differential equation:</p>
+<div class="math notranslate nohighlight">
+\[dX = a\left(X(t),t\right)dt + b\left(X(t),t\right)dW(t)\]</div>
+<p>where <span class="math notranslate nohighlight">\(dW(t)\)</span> is a one-dimensional Wiener process and <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> are functions of <span class="math notranslate nohighlight">\(X(t)\)</span> and <span class="math notranslate nohighlight">\(t\)</span>.</p>
+<p>Let <span class="math notranslate nohighlight">\(Y(t) = \phi\left(t,X(t)\right)\)</span> be another process that is a function of <span class="math notranslate nohighlight">\(X(t)\)</span> and time <span class="math notranslate nohighlight">\(t\)</span>, where <span class="math notranslate nohighlight">\(\phi\left(t,X(t)\right)\)</span> is twice differentiable with respect to <span class="math notranslate nohighlight">\(X(t)\)</span>, and singly differentiable with respect to <span class="math notranslate nohighlight">\(t\)</span>. Then, the process <span class="math notranslate nohighlight">\(Y(t)\)</span> is governed by the equation:</p>
+<div class="math notranslate nohighlight" id="equation-eq-ito-lemma">
+<span class="eqno">(20)<a class="headerlink" href="#equation-eq-ito-lemma" title="Permalink to this equation">#</a></span>\[dY = \left(\frac{\partial{Y}}{\partial{t}}+a\frac{\partial{Y}}{\partial{X}}+\frac{b^{2}}{2}\frac{\partial^{2}{Y}}{\partial{X}^{2}}\right)dt+b\left(\frac{\partial{Y}}{\partial{X}}\right)dW(t)\]</div>
+</section>
+</div></section>
+</section>
+<section id="discretization-approaches">
+<span id="content-references-discretization"></span><h2>Discretization Approaches<a class="headerlink" href="#discretization-approaches" title="Permalink to this heading">#</a></h2>
+<p>In general, we cannot develop an analytical solution to Eqn. <a class="reference internal" href="#equation-eq-ito-process">(19)</a>; however, we can create an approximate numerical solution by discretization. This is an issue because sometimes we may want to use more sophisticated models for the price of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code>, for example, a stochastic volatility model that better captures changes in market conditions.</p>
+<section id="euler-maruyama-discretization-method">
+<h3>Euler-Maruyama Discretization Method<a class="headerlink" href="#euler-maruyama-discretization-method" title="Permalink to this heading">#</a></h3>
+<p>The <a class="reference external" href="https://en.wikipedia.org/wiki/Euler%E2%80%93Maruyama_method">Euler-Maruyama (EM) method</a> is an extension to stochastic differential equations (SDEs) of the <a class="reference external" href="https://en.wikipedia.org/wiki/Euler_method">Euler method</a> used for approximating the solution of ordinary differential equations (ODEs). For the general scalar stochastic differential equation (Wiener noise):</p>
+<div class="math notranslate nohighlight">
+\[dX = a(X,t)dt + b(X,t)dW\]</div>
+<p>The EM method gives the approximate solution:</p>
+<div class="math notranslate nohighlight">
+\[X_{k+1} = X_{k} + a(X_{k}, t_{k})h + b(X_{k},t_{k})\sqrt{h}Z\left(0,1\right)\]</div>
+<p>where the step size <span class="math notranslate nohighlight">\(h=t_{k+1} - t_{k}\)</span> and <span class="math notranslate nohighlight">\(Z(0,1)\)</span> denotes a standard normal random variable.  While the EM method is straightforward to implement, it has a poor overall accuracy with error on order <span class="math notranslate nohighlight">\(\sqrt{h}\)</span>; thus, small step sizes are required to get accurate solutions.</p>
+</section>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -485,7 +557,7 @@ At the end of this unit, students should be able to understand:
         },
         kernelOptions: {
             name: "python3",
-            path: "./chapter-3-dir"
+            path: "./appendix"
         },
         predefinedOutput: true
     }
@@ -504,20 +576,20 @@ At the end of this unit, students should be able to understand:
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../chapter-2-dir/options/option-rolling.html"
+       href="probability-basics.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Trade mechanics for options positions: The Art of the Roll</p>
+        <p class="prev-next-title">Probability and Random Variables</p>
       </div>
     </a>
     <a class="right-next"
-       href="markowitz.html"
+       href="julia-basics.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Markowitz Portfolio Allocation</p>
+        <p class="prev-next-title">Julia Basics</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -530,6 +602,29 @@ At the end of this unit, students should be able to understand:
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#brownian-motion">Brownian Motion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ito-processes">Ito Processes</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ito-s-lemma">Ito’s Lemma</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#discretization-approaches">Discretization Approaches</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#euler-maruyama-discretization-method">Euler-Maruyama Discretization Method</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>

@@ -235,6 +235,7 @@ const thebe_selector_output = ".output, .cell_output"
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../../appendix/probability-basics.html">Probability and Random Variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../appendix/ito.html">Stochastic Processes</a></li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../../appendix/julia-basics.html">Julia Basics</a><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-12"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../../appendix/julia/julia-installation.html">Julia Installation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../appendix/julia/julia-functions-types.html">Julia Types, Functions and Programs</a></li>
@@ -443,7 +444,10 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#returns-and-stylized-facts">Returns and Stylized Facts</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#autocorrelation">Autocorrelation</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#volatility-clustering">Volatility clustering</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#return-distribution">Return distribution</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#return-distribution">Return distribution</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#q-q-plots">Q-Q plots</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
@@ -495,7 +499,7 @@ has not already executed, it can be cancelled at any time. Moreover, if a limit 
 </section>
 <section id="returns-and-stylized-facts">
 <span id="content-references-returns-stylized-facts"></span><h2>Returns and Stylized Facts<a class="headerlink" href="#returns-and-stylized-facts" title="Permalink to this heading">#</a></h2>
-<p>Stylized facts are empirical statistical properties of the return time series <span id="id1">[<a class="reference internal" href="../../References.html#id2" title="R. Cont. Empirical properties of asset returns: stylized facts and statistical issues. Quantitative Finance, 1(2):223-236, 2001. URL: https://EconPapers.repec.org/RePEc:taf:quantf:v:1:y:2001:i:2:p:223-236.">Cont, 2001</a>]</span>. A return refers to the increase or decrease in the price of an asset, e.g., shares of a stock over a specific time period period, e.g., minutes, days, weeks or even years (<a class="reference internal" href="#defn-log-return-1">Definition 9</a>):</p>
+<p>Stylized facts are empirical statistical properties of the return time series <span id="id1">[<a class="reference internal" href="../../References.html#id4" title="R. Cont. Empirical properties of asset returns: stylized facts and statistical issues. Quantitative Finance, 1(2):223-236, 2001. URL: https://EconPapers.repec.org/RePEc:taf:quantf:v:1:y:2001:i:2:p:223-236.">Cont, 2001</a>]</span>. A return refers to the increase or decrease in the price of an asset, e.g., shares of a stock over a specific time period period, e.g., minutes, days, weeks or even years (<a class="reference internal" href="#defn-log-return-1">Definition 9</a>):</p>
 <div class="proof definition admonition" id="defn-log-return-1">
 <p class="admonition-title"><span class="caption-number">Definition 9 </span> (Logarithmic return)</p>
 <section class="definition-content" id="proof-content">
@@ -506,39 +510,39 @@ on asset <span class="math notranslate nohighlight">\(i\)</span> over time horiz
 <p>where <span class="math notranslate nohighlight">\(\bar{r}_{i,j\rightarrow{k}}\)</span> denotes the logarithmic return of asset <span class="math notranslate nohighlight">\(i\)</span> over time horizon <span class="math notranslate nohighlight">\(j\rightarrow{k}\)</span>. The <span class="math notranslate nohighlight">\(\log\left(\star\right)\)</span> term denotes the <a class="reference external" href="https://en.wikipedia.org/wiki/Natural_logarithm">natural log</a>.</p>
 </section>
 </div><p>The logarithmic return can be computed using the <code class="docutils literal notranslate"><span class="pre">logR</span></code> function. The equity price data, passed into the function in the <code class="docutils literal notranslate"><span class="pre">data::DataFrame</span></code> argument, is assumed to an <a class="reference external" href="https://en.wikipedia.org/wiki/Open-high-low-close_chart">ascending OHLC dataset</a>. The <code class="docutils literal notranslate"><span class="pre">logR</span></code> function is defined in the following code block:</p>
-<div class="literal-block-wrapper docutils container" id="id2">
-<div class="code-block-caption"><span class="caption-number">Listing 1 </span><span class="caption-text">The <code class="docutils literal notranslate"><span class="pre">logR</span></code> function</span><a class="headerlink" href="#id2" title="Permalink to this code">#</a></div>
-<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="s">&quot;&quot;&quot;</span>
-<span class="s">    logR(data::DataFrame; r::Float64 = 0.045) -&gt; Array{Float64,1}</span>
-
-<span class="s">Computes the log excess return for firm i from the </span>
-<span class="s">Open High Low Close (OHLC) DataFrame.</span>
-
-<span class="s">See: https://dataframes.juliadata.org/stable/man/getting_started/</span>
-<span class="s">&quot;&quot;&quot;</span>
-<span class="k">function</span> <span class="n">logR</span><span class="p">(</span><span class="n">data</span><span class="o">::</span><span class="kt">DataFrame</span><span class="p">;</span> <span class="n">r</span><span class="o">::</span><span class="kt">Float64</span> <span class="o">=</span> <span class="mf">0.045</span><span class="p">,</span> <span class="n">key</span><span class="o">::</span><span class="kt">Symbol</span><span class="o">=</span><span class="ss">:close</span><span class="p">)</span><span class="o">::</span><span class="kt">Array</span><span class="p">{</span><span class="kt">Float64</span><span class="p">,</span><span class="mi">1</span><span class="p">}</span>
-
-    <span class="c"># convert risk free rate to daily rate -</span>
-    <span class="n">r̄</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">r</span><span class="p">)</span><span class="o">^</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">365</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span> <span class="c"># convert the annual risk free rate to daily value</span>
-
-    <span class="c"># initialize -</span>
-    <span class="n">number_trading_days</span> <span class="o">=</span> <span class="n">nrow</span><span class="p">(</span><span class="n">data</span><span class="p">);</span>
-    <span class="n">log_excess_return_array</span> <span class="o">=</span> <span class="kt">Array</span><span class="p">{</span><span class="kt">Float64</span><span class="p">,</span><span class="mi">1</span><span class="p">}(</span><span class="nb">undef</span><span class="p">,</span> <span class="n">number_trading_days</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
-    
-    <span class="c"># main loop - compute the excess returns, store them in an array</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="o">∈</span> <span class="mi">2</span><span class="o">:</span><span class="n">number_trading_days</span>
-        
-        <span class="c"># grab yesterday&#39;s and today&#39;s close price</span>
-        <span class="n">P₁</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">key</span><span class="p">];</span> <span class="c"># yesterday</span>
-        <span class="n">P₂</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">key</span><span class="p">];</span>   <span class="c"># today</span>
-
-        <span class="c"># compute the excess return -</span>
-        <span class="n">log_excess_return_array</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">log</span><span class="p">(</span><span class="n">P₂</span><span class="o">/</span><span class="n">P₁</span><span class="p">)</span> <span class="o">-</span> <span class="n">r̄</span>
-    <span class="k">end</span>
-
-    <span class="c"># return -</span>
-    <span class="k">return</span> <span class="n">log_excess_return_array</span><span class="p">;</span>
-<span class="k">end</span>
+<div class="literal-block-wrapper docutils container" id="id3">
+<div class="code-block-caption"><span class="caption-number">Listing 1 </span><span class="caption-text">The <code class="docutils literal notranslate"><span class="pre">logR</span></code> function</span><a class="headerlink" href="#id3" title="Permalink to this code">#</a></div>
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="s">&quot;&quot;&quot;</span>
+<span class="linenos"> 2</span><span class="s">    logR(data::DataFrame; r::Float64 = 0.045) -&gt; Array{Float64,1}</span>
+<span class="linenos"> 3</span>
+<span class="linenos"> 4</span><span class="s">Computes the log excess return for firm i from the </span>
+<span class="linenos"> 5</span><span class="s">Open High Low Close (OHLC) DataFrame.</span>
+<span class="linenos"> 6</span>
+<span class="linenos"> 7</span><span class="s">See: https://dataframes.juliadata.org/stable/man/getting_started/</span>
+<span class="linenos"> 8</span><span class="s">&quot;&quot;&quot;</span>
+<span class="linenos"> 9</span><span class="k">function</span> <span class="n">logR</span><span class="p">(</span><span class="n">data</span><span class="o">::</span><span class="kt">DataFrame</span><span class="p">;</span> <span class="n">r</span><span class="o">::</span><span class="kt">Float64</span> <span class="o">=</span> <span class="mf">0.045</span><span class="p">,</span> <span class="n">key</span><span class="o">::</span><span class="kt">Symbol</span><span class="o">=</span><span class="ss">:close</span><span class="p">)</span><span class="o">::</span><span class="kt">Array</span><span class="p">{</span><span class="kt">Float64</span><span class="p">,</span><span class="mi">1</span><span class="p">}</span>
+<span class="linenos">10</span>
+<span class="linenos">11</span>    <span class="c"># convert risk free rate to daily rate -</span>
+<span class="linenos">12</span>    <span class="n">r̄</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">r</span><span class="p">)</span><span class="o">^</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">365</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span> <span class="c"># convert the annual risk free rate to daily value</span>
+<span class="linenos">13</span>
+<span class="linenos">14</span>    <span class="c"># initialize -</span>
+<span class="linenos">15</span>    <span class="n">number_trading_days</span> <span class="o">=</span> <span class="n">nrow</span><span class="p">(</span><span class="n">data</span><span class="p">);</span>
+<span class="linenos">16</span>    <span class="n">log_excess_return_array</span> <span class="o">=</span> <span class="kt">Array</span><span class="p">{</span><span class="kt">Float64</span><span class="p">,</span><span class="mi">1</span><span class="p">}(</span><span class="nb">undef</span><span class="p">,</span> <span class="n">number_trading_days</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+<span class="linenos">17</span>    
+<span class="linenos">18</span>    <span class="c"># main loop - compute the excess returns, store them in an array</span>
+<span class="linenos">19</span>    <span class="k">for</span> <span class="n">i</span> <span class="o">∈</span> <span class="mi">2</span><span class="o">:</span><span class="n">number_trading_days</span>
+<span class="linenos">20</span>        
+<span class="linenos">21</span>        <span class="c"># grab yesterday&#39;s and today&#39;s close price</span>
+<span class="linenos">22</span>        <span class="n">P₁</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">key</span><span class="p">];</span> <span class="c"># yesterday</span>
+<span class="linenos">23</span>        <span class="n">P₂</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">key</span><span class="p">];</span>   <span class="c"># today</span>
+<span class="linenos">24</span>
+<span class="linenos">25</span>        <span class="c"># compute the excess return -</span>
+<span class="linenos">26</span>        <span class="n">log_excess_return_array</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">log</span><span class="p">(</span><span class="n">P₂</span><span class="o">/</span><span class="n">P₁</span><span class="p">)</span> <span class="o">-</span> <span class="n">r̄</span>
+<span class="linenos">27</span>    <span class="k">end</span>
+<span class="linenos">28</span>
+<span class="linenos">29</span>    <span class="c"># return -</span>
+<span class="linenos">30</span>    <span class="k">return</span> <span class="n">log_excess_return_array</span><span class="p">;</span>
+<span class="linenos">31</span><span class="k">end</span>
 </pre></div>
 </div>
 </div>
@@ -557,28 +561,108 @@ on asset <span class="math notranslate nohighlight">\(i\)</span> over time horiz
 <ul class="simple">
 <li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Autocorrelation">Absence of Autocorrelation</a>:  Autocorrelation refers to the tendency of stock price returns to correlate with their past returns over time. This suggests some predictability in stock price returns, which traders and investors can exploit. A random walk will not be correlated with itself.</p></li>
 <li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Volatility_clustering">Volatility clustering</a>: Stock prices tend to be more volatile during specific periods and less volatile during others. This phenomenon is known as volatility clustering, suggesting that large price movements are more likely to be followed by significant moves in the same direction.</p></li>
-<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Fat-tailed_distribution">Heavy tails</a>: Stock price returns often exhibit a distribution with fatter tails than would be expected under a normal distribution. This means that extreme price movements are more likely than would be predicted by a normal distribution.</p></li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Fat-tailed_distribution">Heavy (also called fat) tails</a>: Stock price returns often exhibit a distribution with fatter tails than would be expected under a normal distribution. This means that extreme price movements are more likely than would be predicted by a normal distribution.</p></li>
 </ul>
-<p>Let’s compute the stylized facts for the daily returns of <a class="reference external" href="https://en.wikipedia.org/wiki/Wells_Fargo">Wells Fargo &amp; Company</a> with ticker <code class="docutils literal notranslate"><span class="pre">WFC</span></code>.
-The daily logarithmic return time series for <a class="reference external" href="https://en.wikipedia.org/wiki/Wells_Fargo">Wells Fargo &amp; Company</a> is shown in <a class="reference internal" href="#example-wfc-return-data-daily"><span class="std std-numref">Fig. 14</span></a>:</p>
+<p>Let’s compute the stylized facts for the daily returns of <a class="reference external" href="https://en.wikipedia.org/wiki/Wells_Fargo">Wells Fargo &amp; Company</a> with ticker <code class="docutils literal notranslate"><span class="pre">WFC</span></code>. The daily logarithmic return time series for <a class="reference external" href="https://en.wikipedia.org/wiki/Wells_Fargo">Wells Fargo &amp; Company</a> is shown in <a class="reference internal" href="#example-wfc-return-data-daily"><span class="std std-numref">Fig. 14</span></a>:</p>
 <figure class="align-default" id="example-wfc-return-data-daily">
-<a class="reference internal image-reference" href="../../_images/Fig-WFC-Daily-Return-4yr.svg"><img alt="../../_images/Fig-WFC-Daily-Return-4yr.svg" height="400px" src="../../_images/Fig-WFC-Daily-Return-4yr.svg" /></a>
+<a class="reference internal image-reference" href="../../_images/Fig-WFC-Daily-Return-4yr.svg"><img alt="../../_images/Fig-WFC-Daily-Return-4yr.svg" height="420px" src="../../_images/Fig-WFC-Daily-Return-4yr.svg" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 14 </span><span class="caption-text">Daily logarithmic return of <a class="reference external" href="https://en.wikipedia.org/wiki/Wells_Fargo">Wells Fargo &amp; Company</a> computed from <code class="docutils literal notranslate"><span class="pre">2018-11-28</span></code> to <code class="docutils literal notranslate"><span class="pre">2022-11-28</span></code> using the <code class="docutils literal notranslate"><span class="pre">logR</span></code> function. Data was downloaded using the <code class="docutils literal notranslate"><span class="pre">aggregate</span></code> endpoint of <a class="reference external" href="https://polygon.io/docs/stocks/get_v2_aggs_ticker__stocksticker__range__multiplier___timespan___from___to">Polygon.io</a>.</span><a class="headerlink" href="#example-wfc-return-data-daily" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<p>To compute the <a class="reference external" href="https://en.wikipedia.org/wiki/Autocorrelation">Autocorrelation</a>, the <a class="reference external" href="https://en.wikipedia.org/wiki/Volatility_clustering">Volatility clustering</a> and the <a class="reference external" href="https://en.wikipedia.org/wiki/Fat-tailed_distribution">return disribution</a> we use the <a class="reference external" href="https://docs.julialang.org/en/v1/stdlib/Statistics/">Statistics.jl</a> and <a class="reference external" href="https://github.com/JuliaStats/Distributions.jl">Distributions.jl</a> packages.</p>
+<p>To calculate Autocorrelation, Volatility clustering, and the return distribution, we utilize the <a class="reference external" href="https://docs.julialang.org/en/v1/stdlib/Statistics/">Statistics.jl</a> and <a class="reference external" href="https://github.com/JuliaStats/Distributions.jl">Distributions.jl</a> packages. For data visualization, we rely on the <a class="reference external" href="https://docs.juliaplots.org/stable/">Plots.jl</a> and <a class="reference external" href="https://github.com/JuliaPlots/StatsPlots.jl">StatsPlots.jl</a> packages.</p>
 <section id="autocorrelation">
 <h3>Autocorrelation<a class="headerlink" href="#autocorrelation" title="Permalink to this heading">#</a></h3>
-<p>Fill me in.</p>
+<p>Autocorrelation is the correlation of a signal time series <span class="math notranslate nohighlight">\(X_{t}\)</span> with a delayed copy of itself <span class="math notranslate nohighlight">\(X_{t+\tau}\)</span> as the function of a delay parameter <span class="math notranslate nohighlight">\(\tau\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[R_{XX}(\tau) = \mathbb{E}\left(X_{t+\tau}{X_{t}}\right)\]</div>
+<p>where <span class="math notranslate nohighlight">\(\mathbb{E}(\star)\)</span> denotes the expectation operator and <span class="math notranslate nohighlight">\(X_{t+\tau}\)</span> is the time series delayed by <span class="math notranslate nohighlight">\(\tau\)</span> time steps. In this case, we are interested in a particular signal vector, namely the logarithmic return time series <span class="math notranslate nohighlight">\(\bar{r}_{i,j\rightarrow{k}}\)</span> computing using <a class="reference internal" href="#defn-log-return-1">Definition 9</a> and shown in <a class="reference internal" href="#example-wfc-return-data-daily"><span class="std std-numref">Fig. 14</span></a>.</p>
+<div class="literal-block-wrapper docutils container" id="id4">
+<div class="code-block-caption"><span class="caption-number">Listing 2 </span><span class="caption-text">Script for computing the autocorrelation series</span><a class="headerlink" href="#id4" title="Permalink to this code">#</a></div>
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="c"># Load the required packages -</span>
+<span class="linenos"> 2</span><span class="k">using</span> <span class="n">Statistics</span>
+<span class="linenos"> 3</span><span class="k">using</span> <span class="n">CSV</span>
+<span class="linenos"> 4</span><span class="k">using</span> <span class="n">DataFrames</span>
+<span class="linenos"> 5</span>
+<span class="linenos"> 6</span><span class="c"># load the data -</span>
+<span class="linenos"> 7</span><span class="n">data</span> <span class="o">=</span> <span class="n">CSV</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">path</span><span class="o">-</span><span class="n">to</span><span class="o">-</span><span class="n">csv</span><span class="o">-</span><span class="n">file</span><span class="p">,</span> <span class="n">DataFrame</span><span class="p">);</span>
+<span class="linenos"> 8</span>
+<span class="linenos"> 9</span><span class="c"># compute the return time series -</span>
+<span class="linenos">10</span><span class="n">R</span> <span class="o">=</span> <span class="n">logR</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">key</span> <span class="o">=</span> <span class="ss">:close</span><span class="p">);</span>
+<span class="linenos">11</span>
+<span class="linenos">12</span><span class="c"># compute the autocorrelation -</span>
+<span class="linenos">13</span><span class="n">L</span> <span class="o">=</span> <span class="n">length</span><span class="p">(</span><span class="n">R</span><span class="p">);</span>
+<span class="linenos">14</span><span class="n">τ</span>  <span class="o">=</span> <span class="n">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">stop</span><span class="o">=</span><span class="p">(</span><span class="n">L</span><span class="o">-</span><span class="mi">1</span><span class="p">));</span>
+<span class="linenos">15</span><span class="n">AC</span> <span class="o">=</span> <span class="n">autocor</span><span class="p">(</span><span class="n">R</span><span class="p">,</span> <span class="n">τ</span><span class="p">);</span> <span class="c"># function provided by the Statistics package</span>
+</pre></div>
+</div>
+</div>
+<p>The autocorrelation as a function of the lag parameter <span class="math notranslate nohighlight">\(\tau\)</span> for <code class="docutils literal notranslate"><span class="pre">WFC</span></code> computed using the <code class="docutils literal notranslate"><span class="pre">autocorrelation</span> <span class="pre">script</span></code> can be visualized using the <a class="reference external" href="https://docs.juliaplots.org/stable/">Plots.jl</a> package (<a class="reference internal" href="#example-wfc-autocor-return-data-daily"><span class="std std-numref">Fig. 15</span></a>):</p>
+<figure class="align-default" id="example-wfc-autocor-return-data-daily">
+<a class="reference internal image-reference" href="../../_images/Fig-WFC-Daily-Return-4yr-Autocorrelation.svg"><img alt="../../_images/Fig-WFC-Daily-Return-4yr-Autocorrelation.svg" height="420px" src="../../_images/Fig-WFC-Daily-Return-4yr-Autocorrelation.svg" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 15 </span><span class="caption-text">Autocorrelation as a function of lag <span class="math notranslate nohighlight">\(\tau\)</span> (days) for logarithmic return of <a class="reference external" href="https://en.wikipedia.org/wiki/Wells_Fargo">Wells Fargo &amp; Company</a> computed from <code class="docutils literal notranslate"><span class="pre">2018-11-28</span></code> to <code class="docutils literal notranslate"><span class="pre">2022-11-28</span></code>. Data was downloaded using the <code class="docutils literal notranslate"><span class="pre">aggregate</span></code> endpoint of <a class="reference external" href="https://polygon.io/docs/stocks/get_v2_aggs_ticker__stocksticker__range__multiplier___timespan___from___to">Polygon.io</a>.</span><a class="headerlink" href="#example-wfc-autocor-return-data-daily" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>The autocorrelation of the <code class="docutils literal notranslate"><span class="pre">WFC</span></code> return displays a common <a class="reference external" href="https://en.wikipedia.org/wiki/Random_walk_hypothesis">random walk pattern</a>, where the correlation is negligible for all lags <span class="math notranslate nohighlight">\(\tau&gt;0\)</span>. Hence, a future return is independent of the current return, making it impossible to predict future returns based on past returns.</p>
 </section>
 <section id="volatility-clustering">
 <h3>Volatility clustering<a class="headerlink" href="#volatility-clustering" title="Permalink to this heading">#</a></h3>
-<p>Fill me in.</p>
+<p>Through analysis of various asset prices, Mandelbrot <span id="id2">[<a class="reference internal" href="../../References.html#id3" title="Benoit Mandelbrot. The variation of certain speculative prices. The Journal of Business, 36(4):394–419, 1963. URL: http://www.jstor.org/stable/2350970 (visited on 2023-06-29).">Mandelbrot, 1963</a>, <a class="reference internal" href="../../References.html#id2" title="Benoit Mandelbrot. The variation of some other speculative prices. The Journal of Business, 40(4):393–413, 1967. URL: http://www.jstor.org/stable/2351623 (visited on 2023-06-29).">Mandelbrot, 1967</a>]</span> discovered that significant changes in price are usually followed by other significant changes, regardless of whether they are positive or negative. Conversely, small changes are typically followed by small changes.</p>
+<figure class="align-default" id="example-wfc-autocor-abs-return-data-daily">
+<a class="reference internal image-reference" href="../../_images/Fig-WFC-Daily-Return-4yr-abs-Autocorrelation.svg"><img alt="../../_images/Fig-WFC-Daily-Return-4yr-abs-Autocorrelation.svg" height="420px" src="../../_images/Fig-WFC-Daily-Return-4yr-abs-Autocorrelation.svg" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 16 </span><span class="caption-text">Autocorrelation as a function of lag <span class="math notranslate nohighlight">\(\tau\)</span> (days) for the absolute value of logarithmic return of <a class="reference external" href="https://en.wikipedia.org/wiki/Wells_Fargo">Wells Fargo &amp; Company</a> computed from <code class="docutils literal notranslate"><span class="pre">2018-11-28</span></code> to <code class="docutils literal notranslate"><span class="pre">2022-11-28</span></code>. Data was downloaded using the <code class="docutils literal notranslate"><span class="pre">aggregate</span></code> endpoint of <a class="reference external" href="https://polygon.io/docs/stocks/get_v2_aggs_ticker__stocksticker__range__multiplier___timespan___from___to">Polygon.io</a>.</span><a class="headerlink" href="#example-wfc-autocor-abs-return-data-daily" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>While we have shown that returns themselves are uncorrelated in time, the absolute value of returns <span class="math notranslate nohighlight">\(|\bar{r}_{i,j\rightarrow{k}}|\)</span> or their squares <span class="math notranslate nohighlight">\(\bar{r}^{2}_{i,j\rightarrow{k}}\)</span> demonstrate a positive and gradually decreasing absolute autocorrelation <span class="math notranslate nohighlight">\(\bar{R}_{XX}(\tau)\)</span> as a function of the lag parameter <span class="math notranslate nohighlight">\(\tau\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\bar{R}_{XX}(\tau) = \mathbb{E}\left(|X_{t+\tau}||{X_{t}}|\right)\]</div>
+<p>This phenomenon, commonly referred to as <a class="reference external" href="https://en.wikipedia.org/wiki/Volatility_clustering">volatility clustering</a>, is present in the <code class="docutils literal notranslate"><span class="pre">WFC</span></code> return series (<a class="reference internal" href="#example-wfc-autocor-abs-return-data-daily"><span class="std std-numref">Fig. 16</span></a>). Thus, large returns of <code class="docutils literal notranslate"><span class="pre">WFC</span></code> are more likely to be followed by large returns, and small returns followed by small returns, i.e., the volatility of the <code class="docutils literal notranslate"><span class="pre">WFC</span></code> return is clustered in the time series. You can see evidence of this in the <code class="docutils literal notranslate"><span class="pre">WFC</span></code> return data series shown in <a class="reference internal" href="#example-wfc-return-data-daily"><span class="std std-numref">Fig. 14</span></a>, as the the spikes in the return time series are clustered in time.</p>
+<p>The existence of <a class="reference external" href="https://en.wikipedia.org/wiki/Volatility_clustering">volatility clustering</a> has inspired a family of advanced mathematical models of financial time series, known as <a class="reference external" href="https://en.wikipedia.org/wiki/Stochastic_volatility">stochastic volatility models</a>. These models are based on the assumption that the volatility of the underlying asset is not constant, but varies over time.</p>
+<div class="literal-block-wrapper docutils container" id="id5">
+<div class="code-block-caption"><span class="caption-number">Listing 3 </span><span class="caption-text">Script for computing the absolute autocorrelation series</span><a class="headerlink" href="#id5" title="Permalink to this code">#</a></div>
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="c"># Load the required packages -</span>
+<span class="linenos"> 2</span><span class="k">using</span> <span class="n">Statistics</span>
+<span class="linenos"> 3</span><span class="k">using</span> <span class="n">CSV</span>
+<span class="linenos"> 4</span><span class="k">using</span> <span class="n">DataFrames</span>
+<span class="linenos"> 5</span>
+<span class="linenos"> 6</span><span class="c"># load the data -</span>
+<span class="linenos"> 7</span><span class="n">data</span> <span class="o">=</span> <span class="n">CSV</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">path</span><span class="o">-</span><span class="n">to</span><span class="o">-</span><span class="n">csv</span><span class="o">-</span><span class="n">file</span><span class="p">,</span> <span class="n">DataFrame</span><span class="p">);</span>
+<span class="linenos"> 8</span>
+<span class="linenos"> 9</span><span class="c"># compute the return time series</span>
+<span class="linenos">10</span><span class="n">R</span> <span class="o">=</span> <span class="n">logR</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">key</span> <span class="o">=</span> <span class="ss">:close</span><span class="p">);</span>
+<span class="linenos">11</span>
+<span class="linenos">12</span><span class="c"># compute the autocorrelation -</span>
+<span class="linenos">13</span><span class="n">L</span> <span class="o">=</span> <span class="n">length</span><span class="p">(</span><span class="n">R</span><span class="p">);</span>
+<span class="linenos">14</span><span class="n">τ</span>  <span class="o">=</span> <span class="n">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">stop</span><span class="o">=</span><span class="p">(</span><span class="n">L</span><span class="o">-</span><span class="mi">1</span><span class="p">));</span>
+<span class="linenos">15</span><span class="n">AC</span> <span class="o">=</span> <span class="n">autocor</span><span class="p">(</span><span class="n">abs</span><span class="o">.</span><span class="p">(</span><span class="n">R</span><span class="p">),</span> <span class="n">τ</span><span class="p">);</span> <span class="c"># function provided by the Statistics package</span>
+</pre></div>
+</div>
+</div>
 </section>
 <section id="return-distribution">
 <h3>Return distribution<a class="headerlink" href="#return-distribution" title="Permalink to this heading">#</a></h3>
-<p>Fill me in.</p>
+<p>The daily return values for <code class="docutils literal notranslate"><span class="pre">WFC</span></code> show another typical pattern, namely a <a class="reference external" href="https://en.wikipedia.org/wiki/Fat-tailed_distribution">fat- or hearvy-tailed distribution</a>. The daily return values for <code class="docutils literal notranslate"><span class="pre">WFC</span></code> were calculated using the <code class="docutils literal notranslate"><span class="pre">logR</span></code> function. A <a class="reference external" href="https://juliastats.org/Distributions.jl/stable/univariate/#Distributions.Normal">Normal</a> and <a class="reference external" href="https://juliastats.org/Distributions.jl/stable/univariate/#Distributions.Laplace">Laplace</a> distribution was then fit to the return data using the <a class="reference external" href="https://en.wikipedia.org/wiki/Maximum_likelihood_estimation#:~:text=In%20statistics%2C%20maximum%20likelihood%20estimation,observed%20data%20is%20most%20probable.">maximum likelihood estimation (MLE)</a> routine encoded in the <a class="reference external" href="https://github.com/JuliaStats/Distributions.jl">Distributions.jl</a> package.</p>
+<figure class="align-default" id="example-wfc-return-histogram-data-daily">
+<a class="reference internal image-reference" href="../../_images/Fig-WFC-Daily-Return-4yr-histogram.svg"><img alt="../../_images/Fig-WFC-Daily-Return-4yr-histogram.svg" height="420px" src="../../_images/Fig-WFC-Daily-Return-4yr-histogram.svg" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 17 </span><span class="caption-text">Return distribution for logarithmic daily return of <a class="reference external" href="https://en.wikipedia.org/wiki/Wells_Fargo">Wells Fargo &amp; Company</a> computed between <code class="docutils literal notranslate"><span class="pre">2018-11-28</span></code> to <code class="docutils literal notranslate"><span class="pre">2022-11-28</span></code>. Data was downloaded using the <code class="docutils literal notranslate"><span class="pre">aggregate</span></code> endpoint of <a class="reference external" href="https://polygon.io/docs/stocks/get_v2_aggs_ticker__stocksticker__range__multiplier___timespan___from___to">Polygon.io</a>.</span><a class="headerlink" href="#example-wfc-return-histogram-data-daily" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>The distribution of daily returns, visualized using the <a class="reference external" href="https://github.com/JuliaPlots/StatsPlots.jl">StatsPlots.jl</a> package, has decreasing density around the mean and thicker tails compared to a <a class="reference external" href="https://juliastats.org/Distributions.jl/stable/univariate/#Distributions.Normal">Normal</a> distribution (<a class="reference internal" href="#example-wfc-return-histogram-data-daily"><span class="std std-numref">Fig. 17</span></a>). Thus, the daily returns for <code class="docutils literal notranslate"><span class="pre">WFC</span></code> appear to not follow a <a class="reference external" href="https://juliastats.org/Distributions.jl/stable/univariate/#Distributions.Normal">Normal</a> distribution. Instead, the returns appear to better described by a <a class="reference external" href="https://juliastats.org/Distributions.jl/stable/univariate/#Distributions.Laplace">Laplace</a> distribution, which has thicker tails and less density around the mean.</p>
+<section id="q-q-plots">
+<h4>Q-Q plots<a class="headerlink" href="#q-q-plots" title="Permalink to this heading">#</a></h4>
+<p>To determine if a dataset is normally distributed, there are several techniques that can be used. One such method is a quantile-quantile (Q-Q) plot, which compares two probability distributions by plotting their quantiles against each other. If two distributions are equal, their respective quantiles will lie on a 45<span class="math notranslate nohighlight">\(^{\circ}\)</span> line. However, if the distributions are different, there will be a deviation from the 45<span class="math notranslate nohighlight">\(^{\circ}\)</span> line.</p>
+<p>In the logarithmic daily return series of <code class="docutils literal notranslate"><span class="pre">WFC</span></code>, the Q-Q plot shows that the return is not normally distributed. Instead, it closely follows a Laplace distribution (<a class="reference internal" href="#example-wfc-return-qq-daily-normal-laplace"><span class="std std-numref">Fig. 18</span></a>). The data points deviate from the 45<span class="math notranslate nohighlight">\(^{\circ}\)</span> line, particularly in the tails of the normal distribution (left panel). In contrast, the deviation from the 45<span class="math notranslate nohighlight">\(^{\circ}\)</span> line is less pronounced for the Laplace distribution (right panel).</p>
+<figure class="align-default" id="example-wfc-return-qq-daily-normal-laplace">
+<a class="reference internal image-reference" href="../../_images/Fig-WFC-Daily-Return-4yr-QQ-plot-Normal-Laplace.svg"><img alt="../../_images/Fig-WFC-Daily-Return-4yr-QQ-plot-Normal-Laplace.svg" height="420px" src="../../_images/Fig-WFC-Daily-Return-4yr-QQ-plot-Normal-Laplace.svg" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 18 </span><span class="caption-text">Q-Q plot for logarithmic daily return of <a class="reference external" href="https://en.wikipedia.org/wiki/Wells_Fargo">Wells Fargo &amp; Company</a> computed between <code class="docutils literal notranslate"><span class="pre">2018-11-28</span></code> to <code class="docutils literal notranslate"><span class="pre">2022-11-28</span></code>. Data was downloaded using the <code class="docutils literal notranslate"><span class="pre">aggregate</span></code> endpoint of <a class="reference external" href="https://polygon.io/docs/stocks/get_v2_aggs_ticker__stocksticker__range__multiplier___timespan___from___to">Polygon.io</a>.</span><a class="headerlink" href="#example-wfc-return-qq-daily-normal-laplace" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>However, there is still some deviation particularly on the lower tail, suggesting that Laplace, while being better, is not a perfect description of the return distribution.</p>
+</section>
 </section>
 </section>
 <hr class="docutils" />
@@ -665,7 +749,10 @@ The daily logarithmic return time series for <a class="reference external" href=
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#returns-and-stylized-facts">Returns and Stylized Facts</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#autocorrelation">Autocorrelation</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#volatility-clustering">Volatility clustering</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#return-distribution">Return distribution</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#return-distribution">Return distribution</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#q-q-plots">Q-Q plots</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
