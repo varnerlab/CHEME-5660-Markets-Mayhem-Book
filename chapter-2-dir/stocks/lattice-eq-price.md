@@ -254,7 +254,7 @@ Risk-neutral values for the $q$, $u$, and $d$ parameters for some common stocks.
 For the five tickers in the table, the risk-neutral probability of an `up` move is approximately 50%, i.e., a coin-flip.
 ```
 
-It’s interesting to note that the risk-neutral probability of all the stocks in the table is around 50%. This is expected because the risk-neutral probability depends upon the risk-free rate $\bar{r}$, which is consistent across all the stocks. However, the difference between the real-world and risk-neutral probabilities is influenced by the stock’s volatility, specifically the size of its `up` and `down` movements. The greater the volatility, the higher the probability of an `up` move in the risk-neutral scenario.
+The risk-neutral probability of all the stocks in the table is around 50%. This is expected because the risk-neutral probability depends upon the risk-free rate $\bar{r}$, which is consistent across all the stocks. Thus, the difference between the real-world and risk-neutral probabilities is influenced by the stock’s volatility, specifically the size of its `up` and `down` movements. The greater the volatility, the higher the probability of an `up` move in the risk-neutral scenario.
 
 ### Risk premium
 A risk premium is the additional return an individual expects to receive for taking on a higher level of risk. The interpretation of the risk premium depends on the situation. In this case, we are calculating the risk premium for a stock by finding the difference between the expected return based on real-world probabilities and the expected return based on risk-neutral probabilities:
@@ -265,7 +265,29 @@ A risk premium is the additional return an individual expects to receive for tak
 ```
 
 
-where $\mathbb{E}(r)$ denotes the expected return based on real-world probabilities, and $\mathbb{E}_{\mathbb{Q}}(r)$ denotes the expected return based on risk-neutral probabilities. Let's define the return as the log return, i.e., $r = \ln\left(\frac{S_{t+1}}{S_{t}}\right)$, where $S_{t}$ denotes the stock price at time $t$. 
+where $\mathbb{E}(r)$ denotes the expected return based on real-world probabilities, and $\mathbb{E}_{\mathbb{Q}}(r)$ denotes the expected return based on risk-neutral probabilities. Let's define the return as the log return, i.e., $r = \ln\left(\frac{S_{t+1}}{S_{t}}\right)$, where $S_{t}$ denotes the stock price at time $t$. We computed the risk premium for five common stocks across multiple sectors ({prf:ref}`tbl-risk-premium-common-stocks`):
+
+```{prf:observation} Risk premium for common stocks
+:label: tbl-risk-premium-common-stocks
+
+The risk premium for five common stocks. The data is based on the daily volume weighted average price for the period `2018-01-03` to `2022-12-31`. The `id` column is the unique identifier for the stock in the `firm_data` table. 
+
+The `Sₒ` column is the initial stock price, and the `RWE` and `RNE` columns are the real-world and risk-neutral expected share price, respectively. The `ΔS` column is the difference between the real-world and risk-neutral share price, and the `RP` column is the risk premium. These results were computed for time period `1200`$\rightarrow$`1201`.
+
+| id  | ticker | name                   | Sₒ    | RWE   | RNE   | ΔS       | RP       |
+|-----|--------|------------------------|-------|-------|-------|----------|----------|
+|  11 |    AMD | Advanced Micro Devices | 57.51 | 57.61 | 57.51 |  0.09308 |   0.1617 |
+| 241 |    IBM |                    IBM | 118.2 | 118.2 | 118.2 | -0.01686 | -0.01427 |
+| 487 |    WFC |            Wells Fargo | 40.47 | 40.47 | 40.48 | -0.01007 | -0.02489 |
+| 221 |     GS |          Goldman Sachs | 296.6 | 296.7 | 296.6 |  0.06691 |  0.02256 |
+| 437 |   TSLA |                  Tesla | 220.7 | 221.2 | 220.8 |   0.4136 |   0.1872 |
+
+
+The risk-premium can be interpreted as the additional return an individual expects to receive for taking on a higher level of risk. There are a few interesting observations in this data:
+
+* Three out of the five stocks have a positive risk premium, with Tesla having the highest risk premium. A negative risk premium indicates that the anticipated return based on real-world probabilities is lower than the anticipated return based on risk-neutral probabilities. Essentially, a risk-neutral investment outperforms a real-world investment in the stock.
+* As expected, Tesla has the highest risk premium since it is the most volatile stock in the table, followed by AMD.
+```
 
 
 (content:lattice-models-testing-lattice-model)=
@@ -310,6 +332,43 @@ Let's determine the likelihood of making accurate predictions using the binomial
 
 * If the simulated price falls between the lower bound ($L_{j}$) and upper bound ($U_{j}$) for all $j\in\mathcal{I}_{k}$, we consider the simulation to be a `success`. The lower and upper bounds can be specified, but we'll set them to $\mu\pm{2.576}\cdot\sigma$ by default, where $\mu$ is the expected value, and $\sigma$ is the standard deviation of the binomial lattice simulation. 
 * However, if the actual price violates the upper or lower bound at any point, the simulation is deemed a `failure`.
+
+We'll repeat this process $\forall{\mathcal{I}_{k}}\in\mathcal{I}$ and calculate the percentage of simulations that are a `success`. This percentage is the likelihood of making accurate predictions using the binomial lattice model ({prf:ref}`prf-likelihood-of-success-for-lattice-model`):
+
+```{prf:observation} Likelihood of success for real-world lattice model
+:label: prf-likelihood-of-success-for-lattice-model
+
+We compute the success probability of the binomial lattice model for each stock in the table below using the real-world parameters for random `T = 21` day periods (N = 1200). The lower and upper bounds are set to $\mu\pm{2.576}\cdot\sigma$.
+
+| id  | ticker | name                   | sector                 | probability |
+|-----|--------|------------------------|------------------------|-------------|
+|  11 |    AMD | Advanced Micro Devices | Information Technology |      0.6467 |
+| 241 |    IBM |                    IBM | Information Technology |      0.6833 |
+| 487 |    WFC |            Wells Fargo |             Financials |      0.7317 |
+| 221 |     GS |          Goldman Sachs |             Financials |       0.735 |
+| 437 |   TSLA |                  Tesla | Consumer Discretionary |      0.6383 |
+
+Real-world lattice models forcast the share price within the lower and upper bounds with a probability of success between 64% and 74% of the random date ranges sampled (which is surprisingly high). The success probability is lower for stocks with higher volatility, e.g., Tesla or AMD, and higher for stocks with lower volatility, e.g., IBM or GS.
+```
+
+We could also do a similar analysis using the risk-neutral parameters ({prf:ref}`prf-likelihood-of-success-for-lattice-model-risk-neutral`):
+
+```{prf:observation} Likelihood of success for risk-neutral lattice model
+:label: prf-likelihood-of-success-for-lattice-model-risk-neutral
+
+We compute the success probability of the binomial lattice model for each stock in the table below using the risk-neutral parameters for random `T = 21` day periods (N = 1200). The lower and upper bounds are set to $\mu\pm{2.576}\cdot\sigma$.
+
+| id  | ticker | name                   | sector                 | probability |
+|-----|--------|------------------------|------------------------|-------------|
+|  11 |    AMD | Advanced Micro Devices | Information Technology |      0.6308 |
+| 241 |    IBM |                    IBM | Information Technology |      0.6592 |
+| 487 |    WFC |            Wells Fargo |             Financials |      0.6967 |
+| 221 |     GS |          Goldman Sachs |             Financials |      0.7458 |
+| 437 |   TSLA |                  Tesla | Consumer Discretionary |      0.6425 |
+
+The risk-neutral analysis gives qualitatively similar results to the real-world analysis. The success probability is lower for stocks with higher volatility, e.g., Tesla, and higher for stocks with lower volatility, e.g., IBM or GS.
+
+```
 
 ---
 
