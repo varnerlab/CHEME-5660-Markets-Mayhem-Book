@@ -69,6 +69,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'chapter-2-dir/stocks/obm-gbm-eq-price';</script>
     <link rel="canonical" href="https://varnerlab.github.io/CHEME-5660-Markets-Mayhem-Book/infrastructure.html/chapter-2-dir/stocks/obm-gbm-eq-price.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -414,7 +416,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -430,6 +434,30 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction-to-brownian-motion-models">Introduction to Brownian motion models</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ordinary-brownian-motion-models">Ordinary Brownian motion models</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analytical-and-numerical-solution">Analytical and numerical solution</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#estimating-the-drift-and-volatility-parameters">Estimating the drift and volatility parameters</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#geometric-brownian-motion-models">Geometric Brownian motion models</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Analytical and numerical solution</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#estimating-the-mu-parameter">Estimating the <span class="math notranslate nohighlight">\(\mu\)</span> parameter</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#solving-the-normal-equations">Solving the normal equations</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#implementation">Implementation</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#estimating-the-sigma-parameter">Estimating the <span class="math notranslate nohighlight">\(\sigma\)</span> parameter</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -441,7 +469,166 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="brownian-motion-models-of-equity-pricing">
 <h1>Brownian Motion Models of Equity Pricing<a class="headerlink" href="#brownian-motion-models-of-equity-pricing" title="Permalink to this heading">#</a></h1>
-<p>Fill me in</p>
+<aside class="topic">
+<p class="topic-title">Outline</p>
+<p>Today’s lecture will introduce the first continuous-time tool of equity pricing - Brownian motion models. Our focus for today will be on the ordinary Brownian motion model, which is the simplest model. We will also consider the geometric Brownian motion model, arguably the most commonly used model.</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#content-brownian-models-introduction"><span class="std std-ref">Introduction to Brownian motion models</span></a>. Brownian motion models are continuous-time models that are used to describe the evolution of an asset price. We’ll discuss the properties of Brownian motion models and how to use them to price assets.</p></li>
+<li><p><a class="reference internal" href="#content-brownian-models-ordinary"><span class="std std-ref">Ordinary Brownian motion models</span></a>. Ordinary Brownian motion models are the simplest Brownian motion models. We’ll discuss how to use them to price assets and how to test the model using real-world versus risk-neutral parameters.</p></li>
+<li><p><a class="reference internal" href="#content-brownian-models-geometric"><span class="std std-ref">Geometric Brownian motion models</span></a>. Geometric Brownian motion models are the most commonly used Brownian motion models. We’ll discuss how to use them to price assets and how to test the model using real-world versus risk-neutral parameters.</p></li>
+</ul>
+</aside>
+<section id="introduction-to-brownian-motion-models">
+<span id="content-brownian-models-introduction"></span><h2>Introduction to Brownian motion models<a class="headerlink" href="#introduction-to-brownian-motion-models" title="Permalink to this heading">#</a></h2>
+<p>Fill me in.</p>
+</section>
+<section id="ordinary-brownian-motion-models">
+<span id="content-brownian-models-ordinary"></span><h2>Ordinary Brownian motion models<a class="headerlink" href="#ordinary-brownian-motion-models" title="Permalink to this heading">#</a></h2>
+<p>Ordinary Brownian motion is a general class of models that simulate random fluctuations around a constant deterministic drift term. Suppose there exists constants <span class="math notranslate nohighlight">\(\mu\)</span> and <span class="math notranslate nohighlight">\(\sigma&gt;0\)</span>. Then a random process <span class="math notranslate nohighlight">\(X(t)\)</span> is said to follow an oridinary Brownian motion (Wiener) process with drift <span class="math notranslate nohighlight">\(\mu\)</span> and diffusion coefficient <span class="math notranslate nohighlight">\(\sigma\)</span> if <span class="math notranslate nohighlight">\(X(t)\)</span> is a solution to the Stochastic Differential Equation (SDE):</p>
+<div class="math notranslate nohighlight" id="equation-eq-sde-bm">
+<span class="eqno">(19)<a class="headerlink" href="#equation-eq-sde-bm" title="Permalink to this equation">#</a></span>\[dX\left(t\right) = \mu{dt}+\sigma\cdot{dW(t)}\]</div>
+<p>where <span class="math notranslate nohighlight">\(dX(t)\)</span> is the infinitesimal change in <span class="math notranslate nohighlight">\(X(t)\)</span>, <span class="math notranslate nohighlight">\(dt\)</span> is the infinitesimal change in time, and <span class="math notranslate nohighlight">\(dW(t)\)</span> is a one-dimensional Wiener Process. Eqn. <a class="reference internal" href="#equation-eq-sde-bm">(19)</a> is the simplest Brownian model of equity share price. For example, Louis Bachelier used a similar model to describe stock prices in his pioneering thesis work in 1900 <span id="id1">[<a class="reference internal" href="../../References.html#id20" title="M. Davis and A Etheridge. Louis Bachelier's Theory of speculation: the origins of modern finance. Princeton University Press, Princeton, N.J., 2006. ISBN 9780691117522 (hbk. : alk. paper).">Davis and Etheridge, 2006</a>]</span>.</p>
+<section id="analytical-and-numerical-solution">
+<h3>Analytical and numerical solution<a class="headerlink" href="#analytical-and-numerical-solution" title="Permalink to this heading">#</a></h3>
+<p>When simulating stock prices using Brownian motion, it’s common to calculate the noise terms and state terms at specific times <span class="math notranslate nohighlight">\(0 &lt; t_{1}  &lt; \dots &lt; t_{n}\)</span>. However, since the equation Eqn. <a class="reference internal" href="#equation-eq-sde-bm">(19)</a> and the underlying Wiener noise process are continuous, we need to develop a discretization method that approximates the solution of the equation at discrete-time points. The <a class="reference external" href="https://en.wikipedia.org/wiki/Euler%E2%80%93Maruyama_method">Euler–Maruyama method</a> is the simplest (and least accurate) procedure and involves the use of independent standard normal random variables <span class="math notranslate nohighlight">\(Z_{1},\dots, Z_{n}\)</span>. For an ordinary Brownian motion where <span class="math notranslate nohighlight">\(t_{o} = 0\)</span> and <span class="math notranslate nohighlight">\(W(0) = 0\)</span>, the <a class="reference external" href="https://en.wikipedia.org/wiki/Euler%E2%80%93Maruyama_method">Euler–Maruyama method</a> method approximates the solution to equation <a class="reference internal" href="#equation-eq-sde-bm">(19)</a> using a recurrence relationship:</p>
+<div class="math notranslate nohighlight" id="equation-eq-sde-bm-euler">
+<span class="eqno">(20)<a class="headerlink" href="#equation-eq-sde-bm-euler" title="Permalink to this equation">#</a></span>\[X_{i+1} = X_{i}+\mu\left(t_{i+1} - t_{i}\right)+\left(\sigma\sqrt{t_{i+1} - t_{i}}\right)\cdot{Z_{i+1}}\qquad{i=0,1,\dots,n-1}\]</div>
+<p>where <span class="math notranslate nohighlight">\(X_{i+1}\)</span> denotes the state variable evaluated at time index <span class="math notranslate nohighlight">\(i+1\)</span>. In Eqn. <a class="reference internal" href="#equation-eq-sde-bm-euler">(20)</a>, both <span class="math notranslate nohighlight">\(\mu\)</span> and <span class="math notranslate nohighlight">\(\sigma\)</span> are assumed to be constants, and:</p>
+<div class="math notranslate nohighlight">
+\[W_{i+1} = W_{i} + \left(\sqrt{t_{i+1} - t_{i}}\right)\cdot{Z_{i+1}}\qquad{i=0,1,\dots,n-1}\]</div>
+<p>We can compute sample paths (solutions) for Eqn. <a class="reference internal" href="#equation-eq-sde-bm-euler">(20)</a> generated using the <a class="reference external" href="https://en.wikipedia.org/wiki/Euler%E2%80%93Maruyama_method">Euler–Maruyama discretization method</a> using <a class="reference internal" href="#algo-ord-brownian-motion">Algorithm 1</a>.</p>
+<div class="proof algorithm admonition" id="algo-ord-brownian-motion">
+<p class="admonition-title"><span class="caption-number">Algorithm 1 </span> (Ordinary Brownian Motion)</p>
+<section class="algorithm-content" id="proof-content">
+<p><strong>Inputs</strong> Parameters <span class="math notranslate nohighlight">\(\left(\mu,\sigma\right)\)</span>, initial condition <span class="math notranslate nohighlight">\(X\left(t_{o}\right) = X_{o}\)</span>, initial time <span class="math notranslate nohighlight">\(t_{o}\)</span>, final time <span class="math notranslate nohighlight">\(t_{f}\)</span>, time step size <span class="math notranslate nohighlight">\(h\)</span>, and the number of sample paths <span class="math notranslate nohighlight">\(P\)</span></p>
+<p><strong>Output</strong> Time array T and the <span class="math notranslate nohighlight">\(\dim\left(T\right)\times{P}\)</span> solution array <span class="math notranslate nohighlight">\(X\)</span></p>
+<ol class="arabic simple">
+<li><p>initialize <span class="math notranslate nohighlight">\(T~\leftarrow\)</span> range(<span class="math notranslate nohighlight">\(t_{o}\)</span>, stop = <span class="math notranslate nohighlight">\(t_{f}\)</span>, step = <span class="math notranslate nohighlight">\(h\)</span>) |&gt; collect</p></li>
+<li><p>initialize <span class="math notranslate nohighlight">\(\mathcal{P}~\leftarrow\)</span> range(1, stop = <span class="math notranslate nohighlight">\(P\)</span>, step = 1) |&gt; collect</p></li>
+<li><p>initialize <span class="math notranslate nohighlight">\(X~\leftarrow\)</span> Array(<span class="math notranslate nohighlight">\(\dim\left(T\right)\)</span>, <span class="math notranslate nohighlight">\(P\)</span>)</p></li>
+<li><p>initialize <span class="math notranslate nohighlight">\(X[1,\mathcal{P}]~\leftarrow~X_{o}\)</span> for all sample paths <span class="math notranslate nohighlight">\(P\)</span></p></li>
+<li><p>for each <span class="math notranslate nohighlight">\((k,s) \in \mathcal{P}\)</span></p>
+<ol class="arabic simple">
+<li><p>for each <span class="math notranslate nohighlight">\((i,t) \in T\)</span></p>
+<ol class="arabic simple">
+<li><p>generate <span class="math notranslate nohighlight">\(Z~\leftarrow~\mathcal{N}\left(0,1\right)\)</span></p></li>
+<li><p>set <span class="math notranslate nohighlight">\(X[i+1,k]~\leftarrow~X[i,k]+\mu{h}+\left(\sigma\sqrt{h}\right)Z\)</span></p></li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+</section>
+</div></section>
+<section id="estimating-the-drift-and-volatility-parameters">
+<h3>Estimating the drift and volatility parameters<a class="headerlink" href="#estimating-the-drift-and-volatility-parameters" title="Permalink to this heading">#</a></h3>
+<p>Fill me in.</p>
+</section>
+</section>
+<section id="geometric-brownian-motion-models">
+<span id="content-brownian-models-geometric"></span><h2>Geometric Brownian motion models<a class="headerlink" href="#geometric-brownian-motion-models" title="Permalink to this heading">#</a></h2>
+<p>Unfortunately, Equation <a class="reference internal" href="#equation-eq-sde-bm">(19)</a> has a significant flaw: its solution can have negative values. As a result, it is not commonly used as a model for stock prices or other risky assets, since their prices are always non-negative. Instead, a more popular model for asset prices is the geometric Brownian motion (GBM) model. This model assumes the existence of constants <span class="math notranslate nohighlight">\(\mu\)</span> and <span class="math notranslate nohighlight">\(\sigma&gt;0\)</span>, and a random process <span class="math notranslate nohighlight">\(X(t)\)</span> which is described by the solution of the Stochastic Differential Equation (SDE):</p>
+<div class="math notranslate nohighlight" id="equation-eq-sde-gbm">
+<span class="eqno">(21)<a class="headerlink" href="#equation-eq-sde-gbm" title="Permalink to this equation">#</a></span>\[\frac{dX\left(t\right)}{X(t)} = \mu{dt}+\sigma{dW(t)}\]</div>
+<p>Here, <span class="math notranslate nohighlight">\(dW(t)\)</span> is a one-dimensional Wiener process. Geometric Brownian motion is primarily used as a financial model due to the work of Samuelson in the 1950s and 1960s <span id="id2">[<a class="reference internal" href="../../References.html#id18" title="Robert C. Merton. Paul samuelson and financial economics. The American Economist, 50(2):9–31, 2006. URL: http://www.jstor.org/stable/40657651 (visited on 2022-05-16).">Merton, 2006</a>]</span>. However, today GBM is more commonly associated with the Black–Scholes options pricing model, which we will describe later <span id="id3">[<a class="reference internal" href="../../References.html#id17" title="Fischer Black and Myron Scholes. The pricing of options and corporate liabilities. Journal of Political Economy, 81(3):637–654, 1973. URL: http://www.jstor.org/stable/1831029 (visited on 2022-05-16).">Black and Scholes, 1973</a>]</span>.</p>
+<section id="id4">
+<h3>Analytical and numerical solution<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
+<p>Geometric Brownian motion has several excellent theoretical properties, most notably that it has an analytical solution that will not produce negative values. Therefore, we can calculate the price value <span class="math notranslate nohighlight">\(X(t)\)</span> precisely as a function of time without the need for an approximate solution. The analytical solution to the geometric Brownian motion stochastic differential equation with constant drift and volatility is given by:</p>
+<div class="math notranslate nohighlight" id="equation-eq-sde-gbm-analytical-solution">
+<span class="eqno">(22)<a class="headerlink" href="#equation-eq-sde-gbm-analytical-solution" title="Permalink to this equation">#</a></span>\[X(t) = X_{\circ}\cdot\exp\Biggl[\left(\mu-\frac{\sigma^{2}}{2}\right)\left(t - t_{\circ}\right) + (\sigma\sqrt{t-t_{\circ}})\cdot{Z(0,1)}\Biggr]\]</div>
+<p>where <span class="math notranslate nohighlight">\(X_{\circ}\)</span> is the initial price of the asset, <span class="math notranslate nohighlight">\(t_{\circ}\)</span> is the initial time, and <span class="math notranslate nohighlight">\(Z(0,1)\)</span> is a standard normal random variable. Meanwhile, the approximate Euler–Maruyama solution is given by:</p>
+<div class="math notranslate nohighlight" id="equation-eq-sde-gbm-em-solution">
+<span class="eqno">(23)<a class="headerlink" href="#equation-eq-sde-gbm-em-solution" title="Permalink to this equation">#</a></span>\[X_{k+1} = X_{k}\cdot\left[1+\mu{h}+\left(\sigma\sqrt{h}\right)\cdot{Z\left(0,1\right)}\right]\qquad{k=1,2,\dots,N-1}\]</div>
+<p>Here, <span class="math notranslate nohighlight">\(X_{\star}\)</span> represents the approximate solution at time step <span class="math notranslate nohighlight">\(\star\)</span>, <span class="math notranslate nohighlight">\(h = t_{k+1} - t_{k}\)</span> represents the time step size, <span class="math notranslate nohighlight">\(Z\left(0,1\right)\)</span> denotes a standard normal random variable, and <span class="math notranslate nohighlight">\(\mu\)</span> and <span class="math notranslate nohighlight">\(\sigma&gt;0\)</span> are constants.</p>
+</section>
+<section id="estimating-the-mu-parameter">
+<h3>Estimating the <span class="math notranslate nohighlight">\(\mu\)</span> parameter<a class="headerlink" href="#estimating-the-mu-parameter" title="Permalink to this heading">#</a></h3>
+<p>Suppose there was no stochastic noise in the system, i.e., the volatility parameter <span class="math notranslate nohighlight">\(\sigma=0\)</span>. In this case, the GBM solution becomes deterministic:</p>
+<div class="math notranslate nohighlight">
+\[X(t) = X_{\circ}\exp\bigl[{\mu}\left(t-t_{\circ}\right)\bigr]\]</div>
+<p>Rearranging the <code class="docutils literal notranslate"><span class="pre">ln</span></code> of the deterministic solution gives the linear expression:</p>
+<div class="math notranslate nohighlight">
+\[\ln{S(t)} = \ln{S_{\circ}} + \mu\left(t-t_{\circ}\right)+\epsilon(t)\]</div>
+<p>where <span class="math notranslate nohighlight">\(\epsilon(t)\)</span> is an error term, i.e., the component of the share price that is not explained by this linear deterministic model. We construct a <a class="reference external" href="https://en.wikipedia.org/wiki/Least_squares">least-squares estimate</a> of <span class="math notranslate nohighlight">\(\hat{\mu}\)</span> by solving the <span class="xref myst">normal equations</span>, and then estimating the parameters of the error term <span class="math notranslate nohighlight">\(\epsilon(t)\)</span> by calculating the <a class="reference external" href="https://en.wikipedia.org/wiki/Errors_and_residuals_in_statistics">residuals</a>.</p>
+<section id="solving-the-normal-equations">
+<h4>Solving the normal equations<a class="headerlink" href="#solving-the-normal-equations" title="Permalink to this heading">#</a></h4>
+<p>Let <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> denote a <span class="math notranslate nohighlight">\(\mathcal{S}\times{2}\)</span> matrix, where each row corresponds to a time value. The first column of <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> is all 1’s while the second column holds the <span class="math notranslate nohighlight">\((t_{k}-t_{\circ})\)</span> values. Further, let <span class="math notranslate nohighlight">\(\mathbf{Y}\)</span> denote the <code class="docutils literal notranslate"><span class="pre">ln</span></code> of the price values of <code class="docutils literal notranslate"><span class="pre">firm_id</span></code> (in the same order as the <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> matrix). Then, the y-intercept and slope (drift parameter) can be estimated by solving the <code class="docutils literal notranslate"><span class="pre">overdetermined</span></code> system of equations:</p>
+<div class="math notranslate nohighlight">
+\[\mathbf{A}\mathbf{\theta} + \mathbf{\epsilon} = \mathbf{Y}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\mathbf{\theta}\)</span> denotes the vector of unknown parameters. This system can be solved as:</p>
+<div class="math notranslate nohighlight">
+\[\mathbf{\theta} = (\mathbf{A}^{T}\mathbf{A})^{-1}\mathbf{A}^{T}\mathbf{Y} - (\mathbf{A}^{T}\mathbf{A})^{-1}\mathbf{A}^{T}\mathbf{\epsilon}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\mathbf{A}^{T}\)</span> denotes the transpose of the matrix <span class="math notranslate nohighlight">\(\mathbf{A}\)</span>, and <span class="math notranslate nohighlight">\((\mathbf{A}^{T}\mathbf{A})^{-1}\)</span> denotes the inverse of the square matrix product <span class="math notranslate nohighlight">\(\mathbf{A}^{T}\mathbf{A}\)</span>. Finally, we can estimate the error term <span class="math notranslate nohighlight">\(\mathbf{\epsilon}\)</span> by calculating the residuals:</p>
+<div class="math notranslate nohighlight">
+\[\mathbf{\epsilon} = \mathbf{Y} - \mathbf{A}\mathbf{\theta}\]</div>
+<p>and fitting a normal distribution to compute the uncertainty in the estimate of the drift parameter <span class="math notranslate nohighlight">\(\hat{\mu}\)</span>.</p>
+</section>
+<section id="implementation">
+<h4>Implementation<a class="headerlink" href="#implementation" title="Permalink to this heading">#</a></h4>
+<p>Let’s say we have a historical training dataset that shows the <a class="reference external" href="https://en.wikipedia.org/wiki/Volume-weighted_average_price#:~:text=In%20finance%2C%20volume%2Dweighted%20average,transactions%20during%20a%20trading%20session.">volume-weighted average price over time</a>. We store this data for all the firms of interest in the <code class="docutils literal notranslate"><span class="pre">dataset</span></code> variable. We can estimate the drift parameter <span class="math notranslate nohighlight">\(\mu\)</span> for a specific stock within the <code class="docutils literal notranslate"><span class="pre">dataset</span></code>, identified by <code class="docutils literal notranslate"><span class="pre">firm_id</span></code>,  using the following method:</p>
+<div class="literal-block-wrapper docutils container" id="id5">
+<div class="code-block-caption"><span class="caption-number">Listing 7 </span><span class="caption-text">Mean drift parameter estimate in a geometric Brownian motion model.</span><a class="headerlink" href="#id5" title="Permalink to this code">#</a></div>
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="c"># load typical required packages -</span>
+<span class="linenos"> 2</span><span class="k">using</span> <span class="n">DataFrames</span><span class="p">,</span> <span class="n">CSV</span><span class="p">,</span> <span class="n">LinearAlgebra</span><span class="p">,</span> <span class="n">Statistics</span><span class="p">,</span> <span class="n">Distributions</span>
+<span class="linenos"> 3</span>
+<span class="linenos"> 4</span><span class="c"># get the firm specific data from the dataset -</span>
+<span class="linenos"> 5</span><span class="n">firm_data</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">[</span><span class="n">firm_id</span><span class="p">];</span>
+<span class="linenos"> 6</span><span class="n">number_of_trading_days</span> <span class="o">=</span> <span class="n">nrow</span><span class="p">(</span><span class="n">firm_data</span><span class="p">);</span>
+<span class="linenos"> 7</span>
+<span class="linenos"> 8</span><span class="c"># define the range of the time values (use all for now) -</span>
+<span class="linenos"> 9</span><span class="n">all_range</span> <span class="o">=</span> <span class="n">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">stop</span><span class="o">=</span><span class="n">number_of_trading_days</span><span class="p">,</span><span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">|&gt;</span> <span class="n">collect</span>
+<span class="linenos">10</span><span class="n">T_all</span> <span class="o">=</span> <span class="n">all_range</span><span class="o">*</span><span class="n">Δt</span> <span class="o">.-</span> <span class="n">Δt</span>
+<span class="linenos">11</span>
+<span class="linenos">12</span><span class="c"># Setup the normal equations -</span>
+<span class="linenos">13</span><span class="n">A</span> <span class="o">=</span> <span class="p">[</span><span class="n">ones</span><span class="p">(</span><span class="n">number_of_trading_days</span><span class="p">)</span> <span class="n">T_all</span><span class="p">];</span>
+<span class="linenos">14</span><span class="n">Y</span> <span class="o">=</span> <span class="n">log</span><span class="o">.</span><span class="p">(</span><span class="n">firm_data</span><span class="p">[</span><span class="o">!</span><span class="p">,</span><span class="ss">:volume_weighted_average_price</span><span class="p">]);</span>
+<span class="linenos">15</span>
+<span class="linenos">16</span><span class="c"># Solve the normal equations -</span>
+<span class="linenos">17</span><span class="n">θ</span> <span class="o">=</span> <span class="n">inv</span><span class="p">(</span><span class="n">transpose</span><span class="p">(</span><span class="n">A</span><span class="p">)</span><span class="o">*</span><span class="n">A</span><span class="p">)</span><span class="o">*</span><span class="n">transpose</span><span class="p">(</span><span class="n">A</span><span class="p">)</span><span class="o">*</span><span class="n">Y</span><span class="p">;</span>
+<span class="linenos">18</span>
+<span class="linenos">19</span><span class="c"># get estimated μ and b (intercept) values -</span>
+<span class="linenos">20</span><span class="n">b̂</span> <span class="o">=</span> <span class="n">exp</span><span class="p">(</span><span class="n">θ</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
+<span class="linenos">21</span><span class="n">μ̂</span> <span class="o">=</span> <span class="n">θ</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
+<span class="linenos">22</span>
+<span class="linenos">23</span><span class="c"># compute the residuals -</span>
+<span class="linenos">24</span><span class="n">residuals</span> <span class="o">=</span> <span class="n">Y</span> <span class="o">-</span> <span class="n">A</span><span class="o">*</span><span class="n">θ</span><span class="p">;</span>
+<span class="linenos">25</span>
+<span class="linenos">26</span><span class="c"># fit a normal distribution to the residuals -</span>
+<span class="linenos">27</span><span class="n">ϵ</span> <span class="o">=</span> <span class="n">mle_fit</span><span class="p">(</span><span class="n">Normal</span><span class="p">,</span> <span class="n">residuals</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<p>We implemented this method to estimate the drift parameter <span class="math notranslate nohighlight">\(\mu\)</span> and the error model <span class="math notranslate nohighlight">\(\epsilon(t)\)</span> for two example tickers, namely <code class="docutils literal notranslate"><span class="pre">WFC</span></code> and <code class="docutils literal notranslate"><span class="pre">AMD</span></code> using daily training data (<a class="reference internal" href="#fig-drift-simulation-wfc-amd"><span class="std std-numref">Fig. 21</span></a>).</p>
+<figure class="align-default" id="fig-drift-simulation-wfc-amd">
+<a class="reference internal image-reference" href="../../_images/Fig-drift-simulation-WFC-AMD.svg"><img alt="../../_images/Fig-drift-simulation-WFC-AMD.svg" height="320px" src="../../_images/Fig-drift-simulation-WFC-AMD.svg" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 21 </span><span class="caption-text">The <code class="docutils literal notranslate"><span class="pre">ln</span></code> of share price of <code class="docutils literal notranslate"><span class="pre">WFC</span></code> (left) and <code class="docutils literal notranslate"><span class="pre">AMD</span></code> (right) versus time using a deterministic geometric Brownian motion model. The dashed line denotes the mean simulation, the shaded regions show the 99% confidence interval of the mean (inner shaded region) and individual simulations (outer shaded region). Daily training data between <code class="docutils literal notranslate"><span class="pre">2018-11-28</span></code> to <code class="docutils literal notranslate"><span class="pre">2022-11-28</span></code> was downloaded using the <code class="docutils literal notranslate"><span class="pre">aggregate</span></code> endpoint of <a class="reference external" href="https://polygon.io/docs/stocks/get_v2_aggs_ticker__stocksticker__range__multiplier___timespan___from___to">Polygon.io</a>.</span><a class="headerlink" href="#fig-drift-simulation-wfc-amd" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+<section id="estimating-the-sigma-parameter">
+<h3>Estimating the <span class="math notranslate nohighlight">\(\sigma\)</span> parameter<a class="headerlink" href="#estimating-the-sigma-parameter" title="Permalink to this heading">#</a></h3>
+<p>There are multiple methods to calculate the volatility parameter <span class="math notranslate nohighlight">\(\sigma\)</span>. Generally, these approaches can be classified into two categories - historical volatility estimates based on return data and future volatility estimates based on the <a class="reference external" href="https://en.wikipedia.org/wiki/Implied_volatility">Implied Volatility (IV)</a> of <a class="reference external" href="https://en.wikipedia.org/wiki/Option_(finance)">put and call options contracts</a>. For now, let’s focus on computing the volatility <span class="math notranslate nohighlight">\(\sigma\)</span> from historical data and talk about options later.</p>
+<p>The historic volatility is estimated by analyzing the distribution of returns. To do this, let’s assume a share price model of the form:</p>
+<div class="math notranslate nohighlight">
+\[
+S_{j} = \exp\left(\mu_{j,j-1}\Delta{t}\right)\cdot{S_{j-1}}
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(\mu_{j,j-1}\)</span> denotes the <em>growth rate</em> (units: 1/time) and <span class="math notranslate nohighlight">\(\Delta{t}\)</span> (units: time) denotes the time step during the time period <span class="math notranslate nohighlight">\((j-1)\rightarrow{j}\)</span>. Solving for the return parameter <span class="math notranslate nohighlight">\(\mu_{j,j-1}\)</span> gives the expression:</p>
+<div class="math notranslate nohighlight">
+\[
+\mu_{j,j-1} = \left(\frac{1}{\Delta{t}}\right)\cdot\ln\left(\frac{S_{j}}{S_{j-1}}\right)
+\]</div>
+<p>We use daily data; thus, the natural time frame between <span class="math notranslate nohighlight">\(S_{j-1}\)</span> and <span class="math notranslate nohighlight">\(S_{j}\)</span> is a single day. However, subsequently, it will be easier to use an annualized value for the <span class="math notranslate nohighlight">\(\mu\)</span> parameter; thus, we let <span class="math notranslate nohighlight">\(\Delta{t} = 1/365\)</span>, or <span class="math notranslate nohighlight">\(\Delta{t} = 1/252\)</span>, i.e., the fraction of a calendar or trading year that occurs in a single day (specified above).</p>
+<p>We can then approximate the historical volatility parameter <span class="math notranslate nohighlight">\(\sigma\)</span> from the variance of the returns computed from the historical data set. In particular, we fit the return data to a <code class="docutils literal notranslate"><span class="pre">Normal</span></code> distribution using <a class="reference external" href="https://en.wikipedia.org/wiki/Maximum_likelihood_estimation">maximum likelihood estimation</a>, and then compute an estimate of the historical volatility as <span class="math notranslate nohighlight">\(\hat{\sigma} = \sqrt{\text{Var}(\mu\cdot\Delta{t})}\)</span>.</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this heading">#</a></h2>
+<p>Fill me in.</p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -502,6 +689,36 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction-to-brownian-motion-models">Introduction to Brownian motion models</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ordinary-brownian-motion-models">Ordinary Brownian motion models</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analytical-and-numerical-solution">Analytical and numerical solution</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#estimating-the-drift-and-volatility-parameters">Estimating the drift and volatility parameters</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#geometric-brownian-motion-models">Geometric Brownian motion models</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Analytical and numerical solution</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#estimating-the-mu-parameter">Estimating the <span class="math notranslate nohighlight">\(\mu\)</span> parameter</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#solving-the-normal-equations">Solving the normal equations</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#implementation">Implementation</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#estimating-the-sigma-parameter">Estimating the <span class="math notranslate nohighlight">\(\sigma\)</span> parameter</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>

@@ -501,16 +501,16 @@ dynamics, we introduce analytical and numerical tools to solve SDEs. Our develop
 <span id="content-references-ito-calculus"></span><h2>Ito Processes<a class="headerlink" href="#ito-processes" title="Permalink to this heading">#</a></h2>
 <p>We are interested in random variables <span class="math notranslate nohighlight">\(X(t)\)</span> whose time evolution is governed by stochastic differential equations of the form (<a class="reference external" href="https://en.wikipedia.org/wiki/It%C3%B4_diffusion">Ito Process or Ito Diffusion</a>):</p>
 <div class="math notranslate nohighlight" id="equation-eq-ito-process">
-<span class="eqno">(19)<a class="headerlink" href="#equation-eq-ito-process" title="Permalink to this equation">#</a></span>\[dX = a(X(t),t)dt + b(X(t),t)dW(t)\]</div>
+<span class="eqno">(24)<a class="headerlink" href="#equation-eq-ito-process" title="Permalink to this equation">#</a></span>\[dX = a(X(t),t)dt + b(X(t),t)dW(t)\]</div>
 <p>subject to the (known) constant initial condition <span class="math notranslate nohighlight">\(X(0)\)</span>.
-Eqn. <a class="reference internal" href="#equation-eq-ito-process">(19)</a> is called an <a class="reference external" href="https://en.wikipedia.org/wiki/It%C3%B4_diffusion">Ito Process or Ito Diffusion</a>. The random variable <span class="math notranslate nohighlight">\(X\in\mathbb{R}^{d}\)</span>, while the functions
+Eqn. <a class="reference internal" href="#equation-eq-ito-process">(24)</a> is called an <a class="reference external" href="https://en.wikipedia.org/wiki/It%C3%B4_diffusion">Ito Process or Ito Diffusion</a>. The random variable <span class="math notranslate nohighlight">\(X\in\mathbb{R}^{d}\)</span>, while the functions
 <span class="math notranslate nohighlight">\(a:\mathbb{R}^{d}\times\mathbb{R}\rightarrow\mathbb{R}^{d}\)</span>
 and <span class="math notranslate nohighlight">\(b:\mathbb{R}^{d}\times\mathbb{R}\rightarrow\mathbb{R}^{d\times{m}}\)</span>,
 and <span class="math notranslate nohighlight">\(W\)</span> denotes an m-dimensional noise process. There are some additional conditions on
 <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> that we will talk about later.</p>
-<p>Depending upon the form of <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span>, Eqn <a class="reference internal" href="#equation-eq-ito-process">(19)</a> can sometimes be solved
-analytically. However, in the general case, we’ll need to solve Eqn <a class="reference internal" href="#equation-eq-ito-process">(19)</a>
-numerically. Numerical approximations to the solution of Eqn <a class="reference internal" href="#equation-eq-ito-process">(19)</a> can be
+<p>Depending upon the form of <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span>, Eqn <a class="reference internal" href="#equation-eq-ito-process">(24)</a> can sometimes be solved
+analytically. However, in the general case, we’ll need to solve Eqn <a class="reference internal" href="#equation-eq-ito-process">(24)</a>
+numerically. Numerical approximations to the solution of Eqn <a class="reference internal" href="#equation-eq-ito-process">(24)</a> can be
 developed quickly; however, they have different levels of error depending upon the solution approach.</p>
 <section id="ito-s-lemma">
 <h3>Ito’s Lemma<a class="headerlink" href="#ito-s-lemma" title="Permalink to this heading">#</a></h3>
@@ -524,13 +524,13 @@ developed quickly; however, they have different levels of error depending upon t
 <p>where <span class="math notranslate nohighlight">\(dW(t)\)</span> is a one-dimensional Wiener process and <span class="math notranslate nohighlight">\(a\)</span> and <span class="math notranslate nohighlight">\(b\)</span> are functions of <span class="math notranslate nohighlight">\(X(t)\)</span> and <span class="math notranslate nohighlight">\(t\)</span>.</p>
 <p>Let <span class="math notranslate nohighlight">\(Y(t) = \phi\left(t,X(t)\right)\)</span> be another process that is a function of <span class="math notranslate nohighlight">\(X(t)\)</span> and time <span class="math notranslate nohighlight">\(t\)</span>, where <span class="math notranslate nohighlight">\(\phi\left(t,X(t)\right)\)</span> is twice differentiable with respect to <span class="math notranslate nohighlight">\(X(t)\)</span>, and singly differentiable with respect to <span class="math notranslate nohighlight">\(t\)</span>. Then, the process <span class="math notranslate nohighlight">\(Y(t)\)</span> is governed by the equation:</p>
 <div class="math notranslate nohighlight" id="equation-eq-ito-lemma">
-<span class="eqno">(20)<a class="headerlink" href="#equation-eq-ito-lemma" title="Permalink to this equation">#</a></span>\[dY = \left(\frac{\partial{Y}}{\partial{t}}+a\frac{\partial{Y}}{\partial{X}}+\frac{b^{2}}{2}\frac{\partial^{2}{Y}}{\partial{X}^{2}}\right)dt+b\left(\frac{\partial{Y}}{\partial{X}}\right)dW(t)\]</div>
+<span class="eqno">(25)<a class="headerlink" href="#equation-eq-ito-lemma" title="Permalink to this equation">#</a></span>\[dY = \left(\frac{\partial{Y}}{\partial{t}}+a\frac{\partial{Y}}{\partial{X}}+\frac{b^{2}}{2}\frac{\partial^{2}{Y}}{\partial{X}^{2}}\right)dt+b\left(\frac{\partial{Y}}{\partial{X}}\right)dW(t)\]</div>
 </section>
 </div></section>
 </section>
 <section id="discretization-approaches">
 <span id="content-references-discretization"></span><h2>Discretization Approaches<a class="headerlink" href="#discretization-approaches" title="Permalink to this heading">#</a></h2>
-<p>In general, we cannot develop an analytical solution to Eqn. <a class="reference internal" href="#equation-eq-ito-process">(19)</a>; however, we can create an approximate numerical solution by discretization. This is an issue because sometimes we may want to use more sophisticated models for the price of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code>, for example, a stochastic volatility model that better captures changes in market conditions.</p>
+<p>In general, we cannot develop an analytical solution to Eqn. <a class="reference internal" href="#equation-eq-ito-process">(24)</a>; however, we can create an approximate numerical solution by discretization. This is an issue because sometimes we may want to use more sophisticated models for the price of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code>, for example, a stochastic volatility model that better captures changes in market conditions.</p>
 <section id="euler-maruyama-discretization-method">
 <h3>Euler-Maruyama Discretization Method<a class="headerlink" href="#euler-maruyama-discretization-method" title="Permalink to this heading">#</a></h3>
 <p>The <a class="reference external" href="https://en.wikipedia.org/wiki/Euler%E2%80%93Maruyama_method">Euler-Maruyama (EM) method</a> is an extension to stochastic differential equations (SDEs) of the <a class="reference external" href="https://en.wikipedia.org/wiki/Euler_method">Euler method</a> used for approximating the solution of ordinary differential equations (ODEs). For the general scalar stochastic differential equation (Wiener noise):</p>
