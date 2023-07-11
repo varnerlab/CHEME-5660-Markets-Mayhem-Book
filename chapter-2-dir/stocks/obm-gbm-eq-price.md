@@ -152,6 +152,15 @@ residuals = Y - A*θ;
 ϵ = mle_fit(Normal, residuals);
 ```
 
+We implemented this method to estimate the drift parameter $\mu$ and the error model $\epsilon(t)$ for two example tickers, namely `WFC` and `AMD` using daily training data ({numref}`fig-drift-simulation-WFC-AMD`).
+
+```{figure} ./figs/Fig-drift-simulation-WFC-AMD.svg
+---
+height: 320px
+name: fig-drift-simulation-WFC-AMD
+---
+The `ln` of share price of `WFC` (left) and `AMD` (right) versus time using a deterministic geometric Brownian motion model. The dashed line denotes the mean simulation, the shaded regions show the 99% confidence interval of the mean (inner shaded region) and individual simulations (outer shaded region). Daily training data between `2018-11-28` to `2022-11-28` was downloaded using the `aggregate` endpoint of [Polygon.io](https://polygon.io/docs/stocks/get_v2_aggs_ticker__stocksticker__range__multiplier___timespan___from___to).
+```
 
 ### Estimating the $\sigma$ parameter
 There are multiple methods to calculate the volatility parameter $\sigma$. Generally, these approaches can be classified into two categories - historical volatility estimates based on return data and future volatility estimates based on the [Implied Volatility (IV)](https://en.wikipedia.org/wiki/Implied_volatility) of [put and call options contracts](https://en.wikipedia.org/wiki/Option_(finance)). For now, let's focus on computing the volatility $\sigma$ from historical data and talk about options later.
