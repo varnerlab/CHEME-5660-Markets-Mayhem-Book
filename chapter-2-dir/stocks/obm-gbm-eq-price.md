@@ -1,14 +1,15 @@
 # Brownian Motion Models of Equity Pricing
 
 ```{topic} Outline
-Today’s lecture will introduce the first continuous-time tool of equity pricing - Brownian motion models. Our focus for today will be on the ordinary Brownian motion model, which is the simplest model. We will also consider the geometric Brownian motion model, arguably the most commonly used model.  
+Today’s lecture will introduce the first continuous-time tool of equity pricing - Brownian motion models. Our focus for today will be on ordinary Brownian motion, the simplest model, and geometric Brownian motion, arguably the most commonly used model.  
 
-* [Introduction to Brownian motion models](content:brownian-models-introduction). Brownian motion models are continuous-time models that are used to describe the evolution of an asset price. We'll discuss the properties of Brownian motion models and how to use them to price assets.
+* [Brownian motion models](content:brownian-models-introduction) are continuous-time models used to describe the evolution of an asset price, i.e., share price. We'll discuss the properties of Brownian motion models and how to use them to price assets.
 
-* [Ordinary Brownian motion models](content:brownian-models-ordinary). Ordinary Brownian motion models are the simplest Brownian motion models. We'll discuss how to use them to price assets and how to test the model using real-world versus risk-neutral parameters.
+* [Ordinary Brownian motion models](content:brownian-models-ordinary) are the simplest Brownian motion models for share prices. We'll discuss how to use them to price assets and the basic of monte carlo price simulations.
 
-* [Geometric Brownian motion models](content:brownian-models-geometric). Geometric Brownian motion models are the most commonly used Brownian motion models. We'll discuss how to use them to price assets and how to test the model using real-world versus risk-neutral parameters.
+* [Geometric Brownian motion models](content:brownian-models-geometric) are arguably the most commonly used Brownian motion model for the share price. We'll discuss how to use them to price assets and how to estimate model parameters from historical data. 
 
+* [Testing the geometric Brownian motion model](content:gbm-models-testing) is an important step in the model building process. We'll discuss how to test the geometric Brownian motion model using real-world parameters and historic data.
 ```
 
 (content:brownian-models-introduction)=
@@ -64,40 +65,53 @@ Fill me in.
 
 (content:brownian-models-geometric)=
 ## Geometric Brownian motion models
-Unfortunately, Equation {eq}`eq-SDE-BM` has a significant flaw: its solution can have negative values. As a result, it is not commonly used as a model for stock prices or other risky assets, since their prices are always non-negative. Instead, a more popular model for asset prices is the geometric Brownian motion (GBM) model. This model assumes the existence of constants $\mu$ and $\sigma>0$, and a random process $X(t)$ which is described by the solution of the Stochastic Differential Equation (SDE):
+Unfortunately, Eqn. {eq}`eq-SDE-BM` has a significant flaw: its solution can have negative values. As a result, it is not commonly used as a model for stock prices or other risky assets, since their prices are always non-negative. Instead, a more popular model for asset prices is the geometric Brownian motion (GBM) model. This model assumes the existence of constants $\mu$ and $\sigma>0$, and a random process $X(t)$ which is described by the solution of the Stochastic Differential Equation (SDE):
 
 ```{math}
 :label: eq-SDE-GBM
-\frac{dX\left(t\right)}{X(t)} = \mu{dt}+\sigma{dW(t)}
+\frac{dS\left(t\right)}{S(t)} = \mu{dt}+\sigma{dW(t)}
 ```
 
-Here, $dW(t)$ is a one-dimensional Wiener process. Geometric Brownian motion is primarily used as a financial model due to the work of Samuelson in the 1950s and 1960s {cite}`Merton2006`. However, today GBM is more commonly associated with the Black–Scholes options pricing model, which we will describe later {cite}`BlackScholes1973`.
+Here, $S$ denotes the share price, and $dW(t)$ is a one-dimensional Wiener process. Geometric Brownian motion is primarily used as a financial model due to the work of Samuelson in the 1950s and 1960s {cite}`Merton2006`. However, today GBM is more commonly associated with the Black–Scholes options pricing model, which we will describe later {cite}`BlackScholes1973`.
 
-### Analytical and numerical solution
-Geometric Brownian motion has several excellent theoretical properties, most notably that it has an analytical solution that will not produce negative values. Therefore, we can calculate the price value $X(t)$ precisely as a function of time without the need for an approximate solution. The analytical solution to the geometric Brownian motion stochastic differential equation with constant drift and volatility is given by:
+### Analytical solution
+We can calculate the share price value $S(t)$ as a function of time without the need for an approximate solution by developing an analytical solution to Eqn. {eq}`eq-SDE-GBM`. The analytical solution to the geometric Brownian motion stochastic differential equation with constant drift $\mu$ and volatility $\sigma>0$ is given by:
 
 ```{math}
 :label: eq-SDE-GBM-analytical-solution
-X(t) = X_{\circ}\cdot\exp\Biggl[\left(\mu-\frac{\sigma^{2}}{2}\right)\left(t - t_{\circ}\right) + (\sigma\sqrt{t-t_{\circ}})\cdot{Z(0,1)}\Biggr]
+S(t) = S_{\circ}\cdot\exp\Biggl[\left(\mu-\frac{\sigma^{2}}{2}\right)\left(t - t_{\circ}\right) + (\sigma\sqrt{t-t_{\circ}})\cdot{Z(0,1)}\Biggr]
 ```
 
-where $X_{\circ}$ is the initial price of the asset, $t_{\circ}$ is the initial time, and $Z(0,1)$ is a standard normal random variable. Meanwhile, the approximate Euler–Maruyama solution is given by:
+where $S_{\circ}$ is the initial share price of the asset at $t_{\circ}$, the initial time, and $Z(0,1)$ is a standard normal random variable. Finally, we can use the analytical solution in Eqn. {eq}`eq-SDE-GBM-analytical-solution` to develop analytical expressions for the expectation and variance of the share price. The expected share price is given by:
 
 ```{math}
-:label: eq-SDE-GBM-EM-solution
-X_{k+1} = X_{k}\cdot\left[1+\mu{h}+\left(\sigma\sqrt{h}\right)\cdot{Z\left(0,1\right)}\right]\qquad{k=1,2,\dots,N-1}
+:label: eq-SDE-GBM-expected-value
+\mathbb{E}\left(S_{t}\right) = S_{o}\cdot\exp\left(\mu\cdot\Delta{t}\right)
 ```
 
-Here, $X_{\star}$ represents the approximate solution at time step $\star$, $h = t_{k+1} - t_{k}$ represents the time step size, $Z\left(0,1\right)$ denotes a standard normal random variable, and $\mu$ and $\sigma>0$ are constants.
+where $\Delta{t} = t-t_{o}$ and $S_{o}$ denotes the share price at $t=t_{o}$. On the other hand, the variance of the share price $\text{Var}(S_{t})$ at time $t$ is given by:
+
+```{math}
+:label: eq-SDE-GBM-variance
+\text{Var}\left(S_{t}\right) = S_{\circ}^{2}e^{2\mu\cdot\Delta{t}}\left[e^{\sigma^{2}{\Delta{t}}} - 1\right]
+```
+
+The derivation of the analytical solution, the expectation and the variance of the share price are [provided in the Appendix](../../appendix/ito.md).
 
 ### Estimating the $\mu$ parameter
-Suppose there was no stochastic noise in the system, i.e., the volatility parameter $\sigma=0$. In this case, the GBM solution becomes deterministic:
+Suppose there was no stochastic noise in the system, i.e., the volatility parameter $\sigma=0$ in Eqn. {eq}`eq-SDE-GBM-analytical-solution`. In this case, the GBM solution becomes deterministic:
 
-$$X(t) = X_{\circ}\exp\bigl[{\mu}\left(t-t_{\circ}\right)\bigr]$$
+```{math}
+:label: eq-SDE-GBM-deterministic-solution
+S(t) = S_{\circ}\cdot\exp\bigl(\mu\cdot\Delta{t}\bigr)
+```
 
-Rearranging the `ln` of the deterministic solution gives the linear expression:
+where $\Delta{t} = t-t_{o}$ and $S_{o}$ denotes the share price at $t=t_{o}$. Rearranging the `ln` of the deterministic solution gives the linear expression:
 
-$$\ln{S(t)} = \ln{S_{\circ}} + \mu\left(t-t_{\circ}\right)+\epsilon(t)$$
+```{math}
+:label: eqn-SDE-GBM-deterministic-solution-ln
+\ln{S(t)} = \ln{S_{\circ}} + \mu\left(t-t_{\circ}\right)+\epsilon(t)
+```
 
 where $\epsilon(t)$ is an error term, i.e., the component of the share price that is not explained by this linear deterministic model. We construct a [least-squares estimate](https://en.wikipedia.org/wiki/Least_squares) of $\hat{\mu}$ by solving the [normal equations](./background/CS3220-L10-Bindel.pdf), and then estimating the parameters of the error term $\epsilon(t)$ by calculating the [residuals](https://en.wikipedia.org/wiki/Errors_and_residuals_in_statistics).
 
@@ -114,7 +128,7 @@ where $\mathbf{A}^{T}$ denotes the transpose of the matrix $\mathbf{A}$, and $(\
 
 $$\mathbf{\epsilon} = \mathbf{Y} - \mathbf{A}\mathbf{\theta}$$
 
-and fitting a normal distribution to compute the uncertainty in the estimate of the drift parameter $\hat{\mu}$.
+and fitting a normal distribution to the resisduals to compute the uncertainty in the estimate of the mean of the drift parameter $\hat{\mu}$.
 
 #### Implementation
 Let’s say we have a historical training dataset that shows the [volume-weighted average price over time](https://en.wikipedia.org/wiki/Volume-weighted_average_price#:~:text=In%20finance%2C%20volume%2Dweighted%20average,transactions%20during%20a%20trading%20session.). We store this data for all the firms of interest in the `dataset` variable. We can estimate the drift parameter $\mu$ for a specific stock within the `dataset`, identified by `firm_id`,  using the following method:
@@ -156,32 +170,83 @@ We implemented this method to estimate the drift parameter $\mu$ and the error m
 
 ```{figure} ./figs/Fig-drift-simulation-WFC-AMD.svg
 ---
-height: 320px
+height: 480px
 name: fig-drift-simulation-WFC-AMD
 ---
-The `ln` of share price of `WFC` (left) and `AMD` (right) versus time using a deterministic geometric Brownian motion model. The dashed line denotes the mean simulation, the shaded regions show the 99% confidence interval of the mean (inner shaded region) and individual simulations (outer shaded region). Daily training data between `2018-11-28` to `2022-11-28` was downloaded using the `aggregate` endpoint of [Polygon.io](https://polygon.io/docs/stocks/get_v2_aggs_ticker__stocksticker__range__multiplier___timespan___from___to).
+The `ln` of share price of `AMD` (left) and `WFC` (right) versus time using a deterministic geometric Brownian motion model. The dashed line denotes the mean simulation, the shaded regions show the 99.9% confidence interval of the mean (inner shaded region) and individual simulations (outer shaded region). Daily training data between `2018-11-28` to `2022-11-28` was downloaded using the `aggregate` endpoint of [Polygon.io](https://polygon.io/docs/stocks/get_v2_aggs_ticker__stocksticker__range__multiplier___timespan___from___to).
 ```
 
 ### Estimating the $\sigma$ parameter
 There are multiple methods to calculate the volatility parameter $\sigma$. Generally, these approaches can be classified into two categories - historical volatility estimates based on return data and future volatility estimates based on the [Implied Volatility (IV)](https://en.wikipedia.org/wiki/Implied_volatility) of [put and call options contracts](https://en.wikipedia.org/wiki/Option_(finance)). For now, let's focus on computing the volatility $\sigma$ from historical data and talk about options later.
 
-The historic volatility is estimated by analyzing the distribution of returns. To do this, let's assume a share price model of the form:
+The historic volatility is estimated by analyzing the distribution of returns using much the same approach we took when looking at the stylized facts. To do this, let's assume a share price model of the form:
 
 $$
 S_{j} = \exp\left(\mu_{j,j-1}\Delta{t}\right)\cdot{S_{j-1}}
 $$
 
-where $\mu_{j,j-1}$ denotes the _growth rate_ (units: 1/time) and $\Delta{t}$ (units: time) denotes the time step during the time period $(j-1)\rightarrow{j}$. Solving for the return parameter $\mu_{j,j-1}$ gives the expression:
+where $\mu_{j,j-1}$ denotes the _growth rate_ (units: 1/time) and $\Delta{t}$ (units: time) denotes the time step during the time period $(j-1)\rightarrow{j}$. Solving for the growth rate parameter $\mu_{j,j-1}$ gives the expression:
 
-$$
+```{math}
+:label: eqn-growth-rate-sigma-estimate
 \mu_{j,j-1} = \left(\frac{1}{\Delta{t}}\right)\cdot\ln\left(\frac{S_{j}}{S_{j-1}}\right)
-$$
+```
 
-We use daily data; thus, the natural time frame between $S_{j-1}$ and $S_{j}$ is a single day. However, subsequently, it will be easier to use an annualized value for the $\mu$ parameter; thus, we let $\Delta{t} = 1/365$, or $\Delta{t} = 1/252$, i.e., the fraction of a calendar or trading year that occurs in a single day (specified above). 
+The time frame between two points in historical data, $S_{j-1}$ and $S_{j}$, varies depending on the frequency of the data (daily, weekly, monthly, etc.). For instance, if the data is daily, then the time difference $\Delta{t} =  1/252$, which is the fraction of a trading year that occurs in a single day. Similarly, if the data is weekly, then $\Delta{t} = 1/52$, and if it is monthly, then $\Delta{t} = 1/12$. 
 
-We can then approximate the historical volatility parameter $\sigma$ from the variance of the returns computed from the historical data set. In particular, we fit the return data to a `Normal` distribution using [maximum likelihood estimation](https://en.wikipedia.org/wiki/Maximum_likelihood_estimation), and then compute an estimate of the historical volatility as $\hat{\sigma} = \sqrt{\text{Var}(\mu\cdot\Delta{t})}$. 
+````{note}
+The product of the growth rate and the timestep equals the logaritmic return defined in {prf:ref}`defn-log-return-1` over the time period $\Delta{t}$:
+
+```{math}
+:label: eqn-log-return-growt-rate
+\mu_{j,j-1}\cdot\Delta{t} = \ln\left(\frac{S_{j}}{S_{j-1}}\right) = \bar{r}^{(i)}_{j,j-1}
+```
+
+Thus, we can use the growth rate parameter $\mu_{j,j-1}$ to estimate the log return $\bar{r}^{(i)}_{j,j-1}$ for firm $i$ over the time period $(j-1)\rightarrow{j}$.
+````
+
+#### Implementation
+To compute the historical volatility parameter, $\hat{\sigma}$, we calculated the variance of the returns of the historical training data set. In particular, we fit the historical return data to a [Normal distribution](https://juliastats.org/Distributions.jl/stable/univariate/#Distributions.Normal) using [maximum likelihood estimation](https://juliastats.org/Distributions.jl/stable/fit/#Distributions.fit_mle-Tuple{Any,%20Any,%20Any}) we then estimated the historical volatility as $\hat{\sigma} = \sqrt{\text{Var}(\mu\cdot\Delta{t})}$. Example values for a few typical firms in the S&P 500 index are shown in {prf:ref}`obs-gbm-model-parameter-estimates`.
+
+```{prf:observation} Real-world estimates of the drift and volatility parameters
+:label: obs-gbm-model-parameter-estimates
+
+Estimated drift and volatility parameters for five sample firms in the S&P 500 index. The $\hat{\mu}$ and $\hat{\sigma}$ columns denote the estimated drift and volatility parameters, respectively.
+
+| id  | ticker | name                   | sector                 | $\hat{\mu}$  | $\hat{\sigma}$      |
+|-----|--------|------------------------|------------------------|----------|--------|
+|  11 |    AMD | Advanced Micro Devices | Information Technology |   0.4605 | 0.1718 |
+| 241 |    IBM |                    IBM | Information Technology | -0.01817 | 0.1233 |
+| 487 |    WFC |            Wells Fargo |             Financials | -0.05003 | 0.1424 |
+| 221 |     GS |          Goldman Sachs |             Financials |   0.1274 | 0.1338 |
+| 437 |   TSLA |                  Tesla | Consumer Discretionary |   0.7519 | 0.1895 |
+
+Daily logarithmic return values from `2018-11-28` to `2022-11-28` were computed from data downloaded using the `aggregate` endpoint of [Polygon.io](https://polygon.io/docs/stocks/get_v2_aggs_ticker__stocksticker__range__multiplier___timespan___from___to). The `fit_mle(...)` function from the [Distributions.jl package](https://juliastats.org/Distributions.jl/stable/) was used to fit the data to a Normal distribution.
+
+```
+
+Now that we have estimates of the drift and volatility parameters, we can simulate the share price of a firm using the geometric Brownian motion model. Let's consider `WFC` and `TSLA` for a random `T = 42` time interval (Fig. ZZ).
+
+
+
+(content:gbm-models-testing)=
+## Testing geometric Brownian motion
+Let's determine the likelihood of making accurate predictions using a geometric Brownian motion model. To do this, we'll randomly divide the future time into continuous segments of `T` days, denoted as $\mathcal{I}_{k}\in\mathcal{I}$. At the beginning of each segment $\mathcal{I}_{k}$, we'll initialize a geometric Brownian motion model and compare the actual price of a firm ($S_{j}$) at time $j$ with the simulated price during each time segment. 
+
+* If the simulated price falls between the lower bound ($L_{j}$) and upper bound ($U_{j}$) for all $j\in\mathcal{I}_{k}$, we consider the simulation to be a `success`. The lower and upper bounds can be specified, but we'll set them to $\mu\pm{2.576}\cdot\sigma$ by default, where $\mu$ is the expected value, and $\sigma$ is the standard deviation of the binomial lattice simulation. 
+* However, if the actual price violates the upper or lower bound at any point, the simulation is deemed a `failure`.
+
+We'll repeat this process $\forall{\mathcal{I}_{k}}\in\mathcal{I}$ and calculate the percentage of simulations that are a `success`. This percentage is the likelihood of making accurate predictions using the geometric Brownian motion model (fill me in):
 
 ---
 
 ## Summary
-Fill me in.
+Today we introduced the first continuous-time tool of equity pricing - Brownian motion models. We focused on ordinary Brownian motion model, which is the simplest model, and geometric Brownian motion model, arguably the most commonly used model.  
+
+* [Brownian motion models](content:brownian-models-introduction) are continuous-time models used to describe the evolution of an asset price, i.e., share price. We'll discuss the properties of Brownian motion models and how to use them to price assets.
+
+* [Ordinary Brownian motion models](content:brownian-models-ordinary) are the simplest Brownian motion models for share prices. We'll discuss how to use them to price assets and the basic of monte carlo price simulations.
+
+* [Geometric Brownian motion models](content:brownian-models-geometric) are arguably the most commonly used Brownian motion model for the share price. We'll discuss how to use them to price assets and how to estimate model parameters from historical data. 
+
+* [Testing the geometric Brownian motion model](content:gbm-models-testing) is an important step in the model building process. We'll discuss how to test the geometric Brownian motion model using real-world parameters and historic data.

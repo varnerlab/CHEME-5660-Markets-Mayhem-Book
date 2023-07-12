@@ -62,10 +62,10 @@ Let the price of asset $i$ at time $j$ be given by $P_{ij}>0$. Then the logarith
 on asset $i$ over time horizon $j\rightarrow{k}$ is defined as: 
 
 ```{math}
-\bar{r}_{i,j\rightarrow{k}} \equiv \log\left(\frac{P_{ik}}{P_{ij}}\right)
+\bar{r}^{(i)}_{k,j} \equiv \log\left(\frac{P_{ik}}{P_{ij}}\right)
 ```
 
-where $\bar{r}_{i,j\rightarrow{k}}$ denotes the logarithmic return of asset $i$ over time horizon $j\rightarrow{k}$. The $\log\left(\star\right)$ term denotes the [natural log](https://en.wikipedia.org/wiki/Natural_logarithm). 
+where $\bar{r}^{(i)}_{k,j}$ denotes the logarithmic return of asset $i$ over time horizon $j\rightarrow{k}$. The $\log\left(\star\right)$ term denotes the [natural log](https://en.wikipedia.org/wiki/Natural_logarithm). 
 
 ````
 
@@ -119,10 +119,10 @@ Let the price of asset $i$ at any time $j$ be given by $P_{ij}>0$. Then the frac
 on asset $i$ over time horizon $j\rightarrow{k}$ is defined as: 
 
 ```{math}
-r_{i,j\rightarrow{k}} \equiv \frac{P_{ik} - P_{ij}}{P_{ij}}
+r^{(i)}_{k,j} \equiv \frac{P_{ik} - P_{ij}}{P_{ij}}
 ```
 
-where $r_{i,j\rightarrow{k}}$ denotes the fractional return of asset $i$ over time horizon $j\rightarrow{k}$.
+where $r^{(i)}_{k,j}$ denotes the fractional return of asset $i$ over time horizon $j\rightarrow{k}$.
 ````
 
 However, we will typically use the logarithmic return in this book. The logarithmic return is preferred because it is additive, i.e., the logarithmic return over a time period is the sum of the logarithmic returns over sub-periods. This is not true for the fractional return.
