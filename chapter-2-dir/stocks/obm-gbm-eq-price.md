@@ -14,19 +14,24 @@ Today’s lecture will introduce the first continuous-time tool of equity pricin
 
 (content:brownian-models-introduction)=
 ## Introduction to Brownian motion models
-Fill me in.
+One of the most important models in quantitative finance is Brownian motion. It was named after the [Scottish botanist Robert Brown](https://en.wikipedia.org/wiki/Robert_Brown_(botanist,_born_1773)). Essentially, it’s a continuous-time random walk that represents the price of a financial asset, which evolves over time in a random way. The two main characteristics of Brownian motion are independence and stationarity. 
+
+* Independence means that the future behavior of a process is not influenced by its past, i.e., a process has no memory.
+* Stationarity means that the statistical properties of a process remain constant over time. 
+
+Brownian models are incredibly useful in many areas of quantitative finance, such as option pricing, risk management, and portfolio optimization.
 
 
 (content:brownian-models-ordinary)=
 ## Ordinary Brownian motion models
-Ordinary Brownian motion is a general class of models that simulate random fluctuations around a constant deterministic drift term. Suppose there exists constants $\mu$ and $\sigma>0$. Then a random process $X(t)$ is said to follow an oridinary Brownian motion (Wiener) process with drift $\mu$ and diffusion coefficient $\sigma$ if $X(t)$ is a solution to the Stochastic Differential Equation (SDE):
+Ordinary Brownian motion is a general class of models that simulate random fluctuations around a constant deterministic drift term. Suppose there exists constants $\mu$, a drift parameter, and $\sigma>0$, a constant that controls the strength of the random flucuations, which we'll call the volatility. Then a random process for share price $S(t)$ is said to follow an oridinary Brownian motion (Wiener) process with drift $\mu$ and volatility coefficient $\sigma$ if $S(t)$ is a solution to the Stochastic Differential Equation (SDE):
 
 ```{math}
 :label: eq-SDE-BM
-dX\left(t\right) = \mu{dt}+\sigma\cdot{dW(t)}
+dS\left(t\right) = \mu~{dt}+\sigma\cdot{dW(t)}
 ```
 
-where $dX(t)$ is the infinitesimal change in $X(t)$, $dt$ is the infinitesimal change in time, and $dW(t)$ is a one-dimensional Wiener Process. Eqn. {eq}`eq-SDE-BM` is the simplest Brownian model of equity share price. For example, Louis Bachelier used a similar model to describe stock prices in his pioneering thesis work in 1900 {cite:p}`Bachelier:2006vl`.  
+where $dS(t)$ is the infinitesimal change in $S(t)$, $dt$ is the infinitesimal change in time, and $dW(t)$ is a one-dimensional Wiener noise process. Eqn. {eq}`eq-SDE-BM` is the simplest Brownian model of equity share price. For example, Louis Bachelier used a similar model to describe stock prices in his pioneering thesis work in 1900 {cite:p}`Bachelier:2006vl`.  
 
 ### Analytical and numerical solution
 When simulating stock prices using Brownian motion, it’s common to calculate the noise terms and state terms at specific times $0 < t_{1}  < \dots < t_{n}$. However, since the equation Eqn. {eq}`eq-SDE-BM` and the underlying Wiener noise process are continuous, we need to develop a discretization method that approximates the solution of the equation at discrete-time points. The [Euler–Maruyama method](https://en.wikipedia.org/wiki/Euler–Maruyama_method) is the simplest (and least accurate) procedure and involves the use of independent standard normal random variables $Z_{1},\dots, Z_{n}$. For an ordinary Brownian motion where $t_{o} = 0$ and $W(0) = 0$, the [Euler–Maruyama method](https://en.wikipedia.org/wiki/Euler–Maruyama_method) method approximates the solution to equation {eq}`eq-SDE-BM` using a recurrence relationship:
