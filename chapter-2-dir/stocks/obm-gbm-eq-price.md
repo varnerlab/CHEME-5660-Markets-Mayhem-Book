@@ -197,7 +197,7 @@ where $\mu_{j,j-1}$ denotes the _growth rate_ (units: 1/time) and $\Delta{t}$ (u
 \mu_{j,j-1} = \left(\frac{1}{\Delta{t}}\right)\cdot\ln\left(\frac{S_{j}}{S_{j-1}}\right)
 ```
 
-The time frame between two points in historical data, $S_{j-1}$ and $S_{j}$, varies depending on the frequency of the data (daily, weekly, monthly, etc.). For instance, if the data is daily, then the time difference $\Delta{t} =  1/252$, which is the fraction of a trading year that occurs in a single day. Similarly, if the data is weekly, then $\Delta{t} = 1/52$, and if it is monthly, then $\Delta{t} = 1/12$. 
+The time frame between two historical prices $S_{j-1}$ and $S_{j}$, varies depending on the frequency of the data (daily, weekly, monthly, etc.). For instance, if the data is daily, then the time difference $\Delta{t} =  1/252$, which is the fraction of a trading year that occurs in a single day. Similarly, if the data is weekly, then $\Delta{t} = 1/52$, and if it is monthly, then $\Delta{t} = 1/12$. 
 
 ````{note}
 The product of the growth rate and the timestep equals the logaritmic return defined in {prf:ref}`defn-log-return-1` over the time period $\Delta{t}$:
@@ -230,12 +230,109 @@ Daily logarithmic return values from `2018-11-28` to `2022-11-28` were computed 
 
 ```
 
-Now that we have estimates of the drift and volatility parameters, we can simulate the share price of a firm using the geometric Brownian motion model. Let's consider `WFC` and `TSLA` for a random `T = 42` time interval (Fig. ZZ).
+Now that we have estimates of the drift and volatility parameters, we can simulate the share price of a firm using the geometric Brownian motion model and the `sample(...)` function: 
+
+```{code-block} julia
+:caption: Simulating the share price of a firm using the geometric Brownian motion model.
+:linenos:
+
+"""
+    MyGeometricBrownianMotionEquityModel <: AbstractAssetModel
+
+Mutable composite type holding the drift and volatility parameters 
+for a geometric Brownian motion model.
+"""
+mutable struct MyGeometricBrownianMotionEquityModel <: AbstractAssetModel
+
+    # data -
+    μ::Float64;     # drift parameter
+    σ::Float64;     # volatility parameter
+
+    # constructor -
+    MyGeometricBrownianMotionEquityModel() = new()
+end
 
 
+""" 
+    sample(model::MyGeometricBrownianMotionEquityModel, data::NamedTuple) -> Array{Float64,2}
+"""
+function sample(model::MyGeometricBrownianMotionEquityModel, data::NamedTuple; 
+    number_of_paths::Int64 = 100)::Array{Float64,2}
+
+    # get information from data tuple 
+    T₁ = data[:T₁]; # start time
+    T₂ = data[:T₂]; # stop time
+    Δt = data[:Δt]; # time step
+    Sₒ = data[:Sₒ]; # initial price
+
+    # get information from model -
+    μ = model.μ; # drift parameter
+    σ = model.σ; # volatility parameter
+
+	# initialize -
+	time_array = range(T₁, stop=T₂, step=Δt) |> collect
+    number_of_time_steps = length(time_array)
+    X = zeros(number_of_time_steps, number_of_paths + 1) # extra column for time -
+
+    # put the time in the first col -
+    for t ∈ 1:number_of_time_steps
+        X[t,1] = time_array[t]
+    end
+
+	# replace first-row w/Sₒ (we always start at Sₒ) -
+	for p ∈ 1:number_of_paths
+		X[1, p+1] = Sₒ
+	end
+
+	# build a noise array of Z(0,1)
+	d = Normal(0,1)
+	ZM = rand(d,number_of_time_steps, number_of_paths);
+
+	# main simulation loop -
+	for p ∈ 1:number_of_paths
+		for t ∈ 1:number_of_time_steps-1
+			X[t+1,p+1] = X[t,p+1]*exp((μ - σ^2/2)*Δt + σ*(sqrt(Δt))*ZM[t,p])
+		end
+	end
+
+	# return -
+	return X
+end
+```
+
+Let's sample, using the `sample(...)` function, the volume-weighted averaged share price of two example firms `IBM` and `GS` for a random `T = 66` day time interval ({numref}`fig-gbm-simulation-IBM-GS`).
+
+```{figure} ./figs/Fig-GBM-IBM-GS-T66.svg
+---
+height: 480px
+name: fig-gbm-simulation-IBM-GS
+---
+Geometric Brownian motion simulation of the daily volume weighted average price (vwap) of `IBM` (left) and `GS` (right) for a random `T = 66` day period (in-sample). The solid lines denote the analytical confidence intervals, while the shaded regions denote the 68%, 95% and 99% confidence estimates of the vwap recovered by sampling (N = 100). Daily training data between `2018-11-28` to `2022-11-28` was downloaded using the `aggregate` endpoint of [Polygon.io](https://polygon.io/docs/stocks/get_v2_aggs_ticker__stocksticker__range__multiplier___timespan___from___to).
+```
+
+The geometric Brownian motion model captured the general trend of the share price for both firms, but it failed to capture the large spikes in the share price. This is because the geometric Brownian motion model assumes that the growth rate (drift term) and volatility are constant over time, which is may not be true for real-world share prices. 
+
+Thus, while these two example firms and time periods were consistent with the observed price, choosing a different firm or time interval may result in a very different simulation. This leaves us with two questions to answer: first, can a geomertric Brownian motion model accurately predict stylized facts, i.e., the statistical properties, of return data and second, how likely is it that the geometric Brownian motion model will accurately predict the share price of a firm?
 
 (content:gbm-models-testing)=
 ## Testing geometric Brownian motion
+
+(content:gbm-models-testing-stylized-facts)=
+### Stylized facts and geometric Brownian motion
+The stylized facts of return data are the statistical properties of the data. These properties include the distribution of logarithmic returns, the autocorrelation of logarithmic returns, and the volatility clustering of the logarithmic returns. The logarithmic return under the assumption that the share price follows a geometric Brownian motion model is given by:
+
+```{math}
+:label: eqn-log-return-gbm-return
+
+\bar{r}_{j,j-1} = \left(\mu - \frac{\sigma^{2}}{2}\right)h + \left(\sigma\cdot\sqrt{h}\right)\cdot{Z}_{j,j-1}(0.1)
+```
+
+where $h$ is the time step, $\mu$ is the drift parameter, $\sigma$ is the volatility parameter, and ${Z}_{j,j-1}(0,1)$ is a random variable drawn from a standard normal distribution (mean zero and variance one) for the time period $(j-1)\rightarrow{j}$.
+
+(content:gbm-models-testing-price-prediction)=
+### Share price prediction and geometric Brownian motion
+A limitation of geometric Brownian motion would seem to be the assumption of constant drift and volatility parameters. However, we have not quantified the `goodness` of the model. In other words, how likely is it that the geometric Brownian motion model will accurately predict the future share price of a firm?
+
 Let's determine the likelihood of making accurate predictions using a geometric Brownian motion model. To do this, we'll randomly divide the future time into continuous segments of `T` days, denoted as $\mathcal{I}_{k}\in\mathcal{I}$. At the beginning of each segment $\mathcal{I}_{k}$, we'll initialize a geometric Brownian motion model and compare the actual price of a firm ($S_{j}$) at time $j$ with the simulated price during each time segment. 
 
 * If the simulated price falls between the lower bound ($L_{j}$) and upper bound ($U_{j}$) for all $j\in\mathcal{I}_{k}$, we consider the simulation to be a `success`. The lower and upper bounds can be specified, but we'll set them to $\mu\pm{2.576}\cdot\sigma$ by default, where $\mu$ is the expected value, and $\sigma$ is the standard deviation of the binomial lattice simulation. 
