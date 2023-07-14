@@ -65,8 +65,6 @@ We can compute sample paths (solutions) for Eqn. {eq}`eq-SDE-BM-Euler` generated
         2. set $X[i+1,k]~\leftarrow~X[i,k]+\mu{h}+\left(\sigma\sqrt{h}\right)Z$
 ```
 
-### Estimating the drift and volatility parameters
-Fill me in.
 
 (content:brownian-models-geometric)=
 ## Geometric Brownian motion models
@@ -187,10 +185,10 @@ There are multiple methods to calculate the volatility parameter $\sigma$. Gener
 The historic volatility is estimated by analyzing the distribution of returns using much the same approach we took when looking at the stylized facts. To do this, let's assume a share price model of the form:
 
 $$
-S_{j} = \exp\left(\mu_{j,j-1}\Delta{t}\right)\cdot{S_{j-1}}
+S_{j} = S_{j-1}\cdot\exp\left(\mu_{j,j-1}\cdot\Delta{t}\right)
 $$
 
-where $\mu_{j,j-1}$ denotes the _growth rate_ (units: 1/time) and $\Delta{t}$ (units: time) denotes the time step during the time period $(j-1)\rightarrow{j}$. Solving for the growth rate parameter $\mu_{j,j-1}$ gives the expression:
+where $S_{j-1}$ and $S_{j}$ denote the share price at time $j-1$ and $j$, $\mu_{j,j-1}$ denotes the _growth rate_ (units: 1/time) and $\Delta{t}$ (units: time) denotes the time step for time period $(j-1)\rightarrow{j}$. Solving for the growth rate parameter $\mu_{j,j-1}$ gives the expression:
 
 ```{math}
 :label: eqn-growth-rate-sigma-estimate
@@ -230,8 +228,9 @@ Daily logarithmic return values from `2018-11-28` to `2022-11-28` were computed 
 
 ```
 
-Now that we have estimates of the drift and volatility parameters, we can simulate the share price of a firm using the geometric Brownian motion model and the `sample(...)` function: 
+Now that we have estimates of the drift and volatility parameters, we can simulate the share price of a firm using the geometric Brownian motion model and the [`sample(...)` function defined below](contest:geometric-brownian-motion-sample-function):
 
+(contest:geometric-brownian-motion-sample-function)=
 ```{code-block} julia
 :caption: Simulating the share price of a firm using the geometric Brownian motion model.
 :linenos:
@@ -300,7 +299,7 @@ function sample(model::MyGeometricBrownianMotionEquityModel, data::NamedTuple;
 end
 ```
 
-Let's sample, using the `sample(...)` function, the volume-weighted averaged share price of two example firms `IBM` and `GS` for a random `T = 66` day time interval ({numref}`fig-gbm-simulation-IBM-GS`).
+Let's sample, [using the `sample(...)` function](contest:geometric-brownian-motion-sample-function), the volume-weighted averaged share price of two example firms `IBM` and `GS` for a random `T = 66` day time interval ({numref}`fig-gbm-simulation-IBM-GS`).
 
 ```{figure} ./figs/Fig-GBM-IBM-GS-T66.svg
 ---
@@ -318,7 +317,7 @@ Thus, while these two example firms and time periods were consistent with the ob
 ## Testing geometric Brownian motion
 
 (content:gbm-models-testing-stylized-facts)=
-### Stylized facts and geometric Brownian motion
+### Stylized facts
 The stylized facts of return data are the statistical properties of the data. These properties include the distribution of logarithmic returns, the autocorrelation of logarithmic returns, and the volatility clustering of the logarithmic returns. The logarithmic return under the assumption that the share price follows a geometric Brownian motion model is given by:
 
 ```{math}
@@ -327,10 +326,17 @@ The stylized facts of return data are the statistical properties of the data. Th
 \bar{r}_{j,j-1} = \left(\mu - \frac{\sigma^{2}}{2}\right)h + \left(\sigma\cdot\sqrt{h}\right)\cdot{Z}_{j,j-1}(0.1)
 ```
 
-where $h$ is the time step, $\mu$ is the drift parameter, $\sigma$ is the volatility parameter, and ${Z}_{j,j-1}(0,1)$ is a random variable drawn from a standard normal distribution (mean zero and variance one) for the time period $(j-1)\rightarrow{j}$.
+where $h$ is the time step, $\mu$ is the drift parameter, $\sigma$ is the volatility parameter, and ${Z}_{j,j-1}(0,1)$ is a random variable drawn from a standard normal distribution (mean zero and variance one) for the time period $(j-1)\rightarrow{j}$. From the definition of the standard normal distribution and Eqn. {eq}`eqn-log-return-gbm-return` , we can see that the logarithmic return $\bar{r}_{j,j-1}$ for a process described by geometric Brownian motion is normally distributed:
+
+```{math}
+\bar{r}_{j,j-1} \sim \mathcal{N}\left(\left(\mu - \frac{\sigma^{2}}{2}\right)h, ~\sigma^{2}h\right)
+```
+
+with mean $\left(\mu - \frac{\sigma^{2}}{2}\right)h$ and variance $\sigma^{2}h$. Thus, a geometric Brownian motion model does predict the distribution of logarithmic returns only in cases where the logarithmic returns are normally distributed, which is not always true as we have seen [in our previous discussion of stylized facts](content:references:returns-stylized-facts).
+
 
 (content:gbm-models-testing-price-prediction)=
-### Share price prediction and geometric Brownian motion
+### Share price prediction
 A limitation of geometric Brownian motion would seem to be the assumption of constant drift and volatility parameters. However, we have not quantified the `goodness` of the model. In other words, how likely is it that the geometric Brownian motion model will accurately predict the future share price of a firm?
 
 Let's determine the likelihood of making accurate predictions using a geometric Brownian motion model. To do this, we'll randomly divide the future time into continuous segments of `T` days, denoted as $\mathcal{I}_{k}\in\mathcal{I}$. At the beginning of each segment $\mathcal{I}_{k}$, we'll initialize a geometric Brownian motion model and compare the actual price of a firm ($S_{j}$) at time $j$ with the simulated price during each time segment. 

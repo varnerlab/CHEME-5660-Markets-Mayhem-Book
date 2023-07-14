@@ -260,6 +260,9 @@ Q-Q plot for logarithmic daily return of [Wells Fargo & Company](https://en.wiki
 
 However, there is still some deviation particularly on the lower tail, suggesting that Laplace, while being better, is not a perfect description of the return distribution.
 
+#### Kolmogorov-Smirnov test
+The [Kolmogorov–Smirnov test (K–S test)](https://en.wikipedia.org/wiki/Kolmogorov–Smirnov_test) is a nonparametric test of the equality of continuous (or discontinuous, see Section 2.2), one-dimensional probability distributions that can be used to compare a sample with a reference probability distribution (one-sample K–S test), or to compare two samples (two-sample K–S test).
+
 ---
 
 ## Summary
