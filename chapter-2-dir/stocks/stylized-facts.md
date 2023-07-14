@@ -271,11 +271,49 @@ The [Kolmogorov–Smirnov test (K–S test)](https://en.wikipedia.org/wiki/Kolmo
 * The null hypothesis of the K-S test is that the sample is drawn from the reference distribution (in the one-sample case) or that the samples are drawn from the same distribution (in the two-sample case). 
 * The alternative hypothesis is that the sample is not drawn from the reference distribution (in the one-sample case) or that the samples are drawn from different distributions (in the two-sample case).
 
+```{prf:observation} One-sample Kolmogorov-Smirnov test
+
+A one-sample Kolmogorov-Smirnov test was performed to determine if the daily returns of `N = 458` tickers were Normally distributed using daily returns computed between `2018-01-03` to `2022-12-31` (a total of `1256` observations per ticker). 
+
+Results for five example tickers are shown in the table below:
+
+| id  | ticker | name                   | sector                 | Normal (pv)   | Laplace (pv) |
+|-----|--------|------------------------|------------------------|----------|---------|
+|  11 |    AMD | Advanced Micro Devices | Information Technology |  0.00878 |   0.178 |
+| 241 |    IBM |                    IBM | Information Technology |  7.38e-9 |   0.507 |
+| 487 |    WFC |            Wells Fargo |             Financials |  5.27e-7 |   0.438 |
+| 221 |     GS |          Goldman Sachs |             Financials | 0.000712 |   0.364 |
+| 437 |   TSLA |                  Tesla | Consumer Discretionary | 0.000258 |  0.0337 |
+
+A p-value (pv) less than `0.05` means that the null hypothesis can be rejected at the `95%` confidence level. 
+
+```
 
 
 (content:references:returns-stylized-facts-AD-test)=
 #### Anderson-Darling test
-The [Anderson–Darling test](https://en.wikipedia.org/wiki/Anderson–Darling_test) is a statistical test of whether a given sample of data is drawn from a given probability distribution. The Anderson–Darling test assesses whether a sample comes from a specified distribution. It makes use of the fact that, when given a hypothesized underlying distribution and assuming the data does arise from this distribution, the [cumulative distribution function (CDF](https://en.wikipedia.org/wiki/Cumulative_distribution_function) of the data can be assumed to follow a [uniform distribution](https://en.wikipedia.org/wiki/Continuous_uniform_distribution). 
+The [Anderson–Darling test](https://en.wikipedia.org/wiki/Anderson–Darling_test) is a statistical test of whether a given sample of data is drawn from a given probability distribution. The Anderson–Darling test assesses whether a sample comes from a specified distribution. It makes use of the fact that, when given a hypothesized underlying distribution and assuming the data does arise from this distribution, the [cumulative distribution function (CDF)](https://en.wikipedia.org/wiki/Cumulative_distribution_function) of the data can be assumed to follow a [uniform distribution](https://en.wikipedia.org/wiki/Continuous_uniform_distribution). 
+
+* The null hypothesis of the Anderson–Darling test is that the sample is drawn from the reference distribution.
+* The alternative hypothesis is that the sample is not drawn from the reference distribution.
+
+```{prf:observation} One-sample Anderson-Darling test
+
+A one-sample Anderson-Darling test was performed to determine if the daily returns of `N = 458` tickers were Normally distributed using daily returns computed between `2018-01-03` to `2022-12-31` (a total of `1256` observations per ticker). 
+
+Results for five example tickers are shown in the table below:
+
+| id  | ticker | name                   | sector                 | Normal (pv)   | Laplace (pv) |
+|-----|--------|------------------------|------------------------|----------|---------|
+|  11 |    AMD | Advanced Micro Devices | Information Technology | 0.000756 |   0.152 |
+| 241 |    IBM |                    IBM | Information Technology |  4.78e-7 |   0.254 |
+| 487 |    WFC |            Wells Fargo |             Financials |  4.78e-7 |   0.338 |
+| 221 |     GS |          Goldman Sachs |             Financials |  5.25e-5 |   0.254 |
+| 437 |   TSLA |                  Tesla | Consumer Discretionary |  8.34e-5 |   0.165 |
+
+A p-value (pv) less than `0.05` means that the null hypothesis can be rejected at the `95%` confidence level.
+
+```
 
 ---
 
