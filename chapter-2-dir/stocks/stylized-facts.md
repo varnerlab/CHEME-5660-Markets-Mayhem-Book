@@ -245,8 +245,12 @@ Return distribution for logarithmic daily return of [Wells Fargo & Company](http
 
 The distribution of daily returns, visualized using the [StatsPlots.jl](https://github.com/JuliaPlots/StatsPlots.jl) package, has decreasing density around the mean and thicker tails compared to a [Normal](https://juliastats.org/Distributions.jl/stable/univariate/#Distributions.Normal) distribution ({numref}`example-WFC-return-histogram-data-daily`). Thus, the daily returns for `WFC` appear to not follow a [Normal](https://juliastats.org/Distributions.jl/stable/univariate/#Distributions.Normal) distribution. Instead, the returns appear to better described by a [Laplace](https://juliastats.org/Distributions.jl/stable/univariate/#Distributions.Laplace) distribution, which has thicker tails and less density around the mean. 
 
+To determine if a dataset is normally distributed, there are several techniques that can be used. We consider three possible methods: [Q-Q plots](content:references:returns-stylized-facts-qq), the [Kolmogorov-Smirnov test](content:references:returns-stylized-facts-KS-test) and the [Anderson-Darling test](content:references:returns-stylized-facts-AD-test). Both the Kolmogorov-Smirnov and the Anderson-Darling tests are implemented in the [HypothesisTests.jl](https://github.com/JuliaStats/HypothesisTests.jl) package.
+
+
+(content:references:returns-stylized-facts-qq)=
 #### Q-Q plots
-To determine if a dataset is normally distributed, there are several techniques that can be used. One such method is a quantile-quantile (Q-Q) plot, which compares two probability distributions by plotting their quantiles against each other. If two distributions are equal, their respective quantiles will lie on a 45$^{\circ}$ line. However, if the distributions are different, there will be a deviation from the 45$^{\circ}$ line.
+The quantile-quantile (Q-Q) plot compares two probability distributions by plotting their quantiles against each other. If two distributions are equal, their respective quantiles will lie on a 45$^{\circ}$ line. However, if the distributions are different, there will be a deviation from the 45$^{\circ}$ line.
 
 In the logarithmic daily return series of `WFC`, the Q-Q plot shows that the return is not normally distributed. Instead, it closely follows a Laplace distribution ({numref}`example-WFC-return-QQ-daily-Normal-Laplace`). The data points deviate from the 45$^{\circ}$ line, particularly in the tails of the normal distribution (left panel). In contrast, the deviation from the 45$^{\circ}$ line is less pronounced for the Laplace distribution (right panel). 
 
@@ -260,8 +264,18 @@ Q-Q plot for logarithmic daily return of [Wells Fargo & Company](https://en.wiki
 
 However, there is still some deviation particularly on the lower tail, suggesting that Laplace, while being better, is not a perfect description of the return distribution.
 
+(content:references:returns-stylized-facts-KS-test)=
 #### Kolmogorov-Smirnov test
-The [Kolmogorov–Smirnov test (K–S test)](https://en.wikipedia.org/wiki/Kolmogorov–Smirnov_test) is a nonparametric test of the equality of continuous (or discontinuous, see Section 2.2), one-dimensional probability distributions that can be used to compare a sample with a reference probability distribution (one-sample K–S test), or to compare two samples (two-sample K–S test).
+The [Kolmogorov–Smirnov test (K–S test)](https://en.wikipedia.org/wiki/Kolmogorov–Smirnov_test) is a nonparametric test of the equality of continuous, one-dimensional probability distributions that can be used to compare a sample with a reference probability distribution (one-sample K–S test), or to compare two samples (two-sample K–S test). The Kolmogorov–Smirnov statistic quantifies a distance between the [empirical distribution function](https://en.wikipedia.org/wiki/Empirical_distribution_function) of the sample and the [cumulative distribution function (CDF) of the reference distribution](https://en.wikipedia.org/wiki/Cumulative_distribution_function), or between the empirical distribution functions of two samples.
+
+* The null hypothesis of the K-S test is that the sample is drawn from the reference distribution (in the one-sample case) or that the samples are drawn from the same distribution (in the two-sample case). 
+* The alternative hypothesis is that the sample is not drawn from the reference distribution (in the one-sample case) or that the samples are drawn from different distributions (in the two-sample case).
+
+
+
+(content:references:returns-stylized-facts-AD-test)=
+#### Anderson-Darling test
+The [Anderson–Darling test](https://en.wikipedia.org/wiki/Anderson–Darling_test) is a statistical test of whether a given sample of data is drawn from a given probability distribution. The Anderson–Darling test assesses whether a sample comes from a specified distribution. It makes use of the fact that, when given a hypothesized underlying distribution and assuming the data does arise from this distribution, the [cumulative distribution function (CDF](https://en.wikipedia.org/wiki/Cumulative_distribution_function) of the data can be assumed to follow a [uniform distribution](https://en.wikipedia.org/wiki/Continuous_uniform_distribution). 
 
 ---
 

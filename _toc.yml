@@ -21,8 +21,8 @@ parts:
       - file: chapter-2-dir/stocks/stylized-facts
       - file: chapter-2-dir/stocks/lattice-eq-price
       - file: chapter-2-dir/stocks/obm-gbm-eq-price
-      - file: chapter-2-dir/stocks/multivariate-eq-price
       - file: chapter-2-dir/stocks/advanced-eq-price
+      - file: chapter-2-dir/stocks/multivariate-eq-price
     - file: chapter-2-dir/options
       sections: 
       - file: chapter-2-dir/options/american-call-and-put-contracts
