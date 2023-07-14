@@ -214,15 +214,16 @@ To compute the historical volatility parameter, $\hat{\sigma}$, we calculated th
 ```{prf:observation} Real-world estimates of the drift and volatility parameters
 :label: obs-gbm-model-parameter-estimates
 
-Estimated drift and volatility parameters for five sample firms in the S&P 500 index. The $\hat{\mu}$ and $\hat{\sigma}$ columns denote the estimated drift and volatility parameters, respectively.
+Estimated annualized drift and volatility parameters for five sample firms in the S&P 500 index. The $\hat{\mu}$ and $\hat{\sigma}$ columns denote the estimated drift and volatility parameters, respectively.
 
-| id  | ticker | name                   | sector                 | $\hat{\mu}$  | $\hat{\sigma}$      |
+| id  | ticker | name                   | sector                 | $\hat{\mu}$        | $\hat{\sigma}$    |
 |-----|--------|------------------------|------------------------|----------|--------|
-|  11 |    AMD | Advanced Micro Devices | Information Technology |   0.4605 | 0.1718 |
-| 241 |    IBM |                    IBM | Information Technology | -0.01817 | 0.1233 |
-| 487 |    WFC |            Wells Fargo |             Financials | -0.05003 | 0.1424 |
-| 221 |     GS |          Goldman Sachs |             Financials |   0.1274 | 0.1338 |
-| 437 |   TSLA |                  Tesla | Consumer Discretionary |   0.7519 | 0.1895 |
+|  11 |    AMD | Advanced Micro Devices | Information Technology |   0.4605 | 0.4688 |
+| 241 |    IBM |                    IBM | Information Technology | -0.01817 | 0.2414 |
+| 487 |    WFC |            Wells Fargo |             Financials | -0.05003 |  0.322 |
+| 221 |     GS |          Goldman Sachs |             Financials |   0.1274 | 0.2841 |
+| 437 |   TSLA |                  Tesla | Consumer Discretionary |   0.7519 |   0.57 |
+
 
 Daily logarithmic return values from `2018-11-28` to `2022-11-28` were computed from data downloaded using the `aggregate` endpoint of [Polygon.io](https://polygon.io/docs/stocks/get_v2_aggs_ticker__stocksticker__range__multiplier___timespan___from___to). The `fit_mle(...)` function from the [Distributions.jl package](https://juliastats.org/Distributions.jl/stable/) was used to fit the data to a Normal distribution.
 
@@ -329,10 +330,15 @@ The stylized facts of return data are the statistical properties of the data. Th
 where $h$ is the time step, $\mu$ is the drift parameter, $\sigma$ is the volatility parameter, and ${Z}_{j,j-1}(0,1)$ is a random variable drawn from a standard normal distribution (mean zero and variance one) for the time period $(j-1)\rightarrow{j}$. From the definition of the standard normal distribution and Eqn. {eq}`eqn-log-return-gbm-return` , we can see that the logarithmic return $\bar{r}_{j,j-1}$ for a process described by geometric Brownian motion is normally distributed:
 
 ```{math}
+:label: eqn-log-return-gbm-distribution
 \bar{r}_{j,j-1} \sim \mathcal{N}\left(\left(\mu - \frac{\sigma^{2}}{2}\right)h, ~\sigma^{2}h\right)
 ```
 
-with mean $\left(\mu - \frac{\sigma^{2}}{2}\right)h$ and variance $\sigma^{2}h$. Thus, a geometric Brownian motion model does predict the distribution of logarithmic returns only in cases where the logarithmic returns are normally distributed, which is not always true as we have seen [in our previous discussion of stylized facts](content:references:returns-stylized-facts).
+with mean $\left(\mu - \frac{\sigma^{2}}{2}\right)h$ and variance $\sigma^{2}h$. Thus, a geometric Brownian motion model predicts the distribution returns only in cases where the logarithmic returns are normally distributed, which is not always true as we have seen [in our previous discussion of stylized facts](content:references:returns-stylized-facts).
+
+Let's visualize a few observed return distributions compared with the distributiuon predicted by Eqn. {eq}`eqn-log-return-gbm-distribution`. 
+
+
 
 
 (content:gbm-models-testing-price-prediction)=
@@ -344,7 +350,11 @@ Let's determine the likelihood of making accurate predictions using a geometric 
 * If the simulated price falls between the lower bound ($L_{j}$) and upper bound ($U_{j}$) for all $j\in\mathcal{I}_{k}$, we consider the simulation to be a `success`. The lower and upper bounds can be specified, but we'll set them to $\mu\pm{2.576}\cdot\sigma$ by default, where $\mu$ is the expected value, and $\sigma$ is the standard deviation of the binomial lattice simulation. 
 * However, if the actual price violates the upper or lower bound at any point, the simulation is deemed a `failure`.
 
-We'll repeat this process $\forall{\mathcal{I}_{k}}\in\mathcal{I}$ and calculate the percentage of simulations that are a `success`. This percentage is the likelihood of making accurate predictions using the geometric Brownian motion model (fill me in):
+We'll repeat this process $\forall{\mathcal{I}_{k}}\in\mathcal{I}$ and calculate the percentage of simulations that are a `success`. This percentage is the likelihood of making accurate predictions using the geometric Brownian motion model
+
+```{prf:observation} Geometric Brownian motion prediction likelhood
+Fill me in.
+```
 
 ---
 
