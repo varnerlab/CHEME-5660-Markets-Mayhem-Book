@@ -24,51 +24,62 @@ Brownian models are incredibly useful in many areas of quantitative finance, suc
 
 (content:brownian-models-ordinary)=
 ## Ordinary Brownian motion models
-Ordinary Brownian motion is a general class of models that simulate random fluctuations around a constant deterministic drift term. Suppose there exists constants $\mu$, a drift parameter, and $\sigma>0$, a constant that controls the strength of the random flucuations, which we'll call the volatility. Then a random process for share price $S(t)$ is said to follow an oridinary Brownian motion (Wiener) process with drift $\mu$ and volatility coefficient $\sigma$ if $S(t)$ is a solution to the Stochastic Differential Equation (SDE):
+Ordinary Brownian Motion (OBM) is a continuous-time stochastic process in which the random variable $S(t)$, e.g., the share price at time $t$ of a firm with ticker `XYZ`, is described by a deterministic drift term corrupted by a [Wiener noise process](https://en.wikipedia.org/wiki/Wiener_process):
 
 ```{math}
 :label: eq-SDE-BM
-dS\left(t\right) = \mu~{dt}+\sigma\cdot{dW(t)}
+dS = {\mu}dt + \sigma{dW}
 ```
 
-where $dS(t)$ is the infinitesimal change in $S(t)$, $dt$ is the infinitesimal change in time, and $dW(t)$ is a one-dimensional Wiener noise process. Eqn. {eq}`eq-SDE-BM` is the simplest Brownian model of equity share price. For example, Louis Bachelier used a similar model to describe stock prices in his pioneering thesis work in 1900 {cite:p}`Bachelier:2006vl`.  
+The constant $\mu$ denotes a drift parameter, $\sigma$ indicates a volatility parameter and $dW$ represents the output of a [Wiener process](https://en.wikipedia.org/wiki/Wiener_process).  However, while Louis Bachelier used a similar model to describe stock prices in his pioneering thesis work in 1900 {cite:p}`Bachelier:2006vl`, ordinary Brownian motion is not commonly used as a model for stock prices or other risky assets. The primary reason is that the share price can take on negative values, which is unrealistic. 
 
-### Analytical and numerical solution
-When simulating stock prices using Brownian motion, it’s common to calculate the noise terms and state terms at specific times $0 < t_{1}  < \dots < t_{n}$. However, since the equation Eqn. {eq}`eq-SDE-BM` and the underlying Wiener noise process are continuous, we need to develop a discretization method that approximates the solution of the equation at discrete-time points. The [Euler–Maruyama method](https://en.wikipedia.org/wiki/Euler–Maruyama_method) is the simplest (and least accurate) procedure and involves the use of independent standard normal random variables $Z_{1},\dots, Z_{n}$. For an ordinary Brownian motion where $t_{o} = 0$ and $W(0) = 0$, the [Euler–Maruyama method](https://en.wikipedia.org/wiki/Euler–Maruyama_method) method approximates the solution to equation {eq}`eq-SDE-BM` using a recurrence relationship:
+Despite the negativity issue, ordinary Brownian motion models are useful for understanding the properties of more realistic models, such as [geometric Brownian motion models which we consider next](content:brownian-models-geometric), understanding the properties of stochastic processes in general, and developing numerical methods for solving stochastic differential equations.
+
+### Analytical solution
+Using [Ito's lemma](https://en.wikipedia.org/wiki/Itô%27s_lemma), we can formulate an analytical solution to the OBM equation which describes the evolution of the share price $S(t)$ over time $t$:
 
 ```{math}
-:label: eq-SDE-BM-Euler
-X_{i+1} = X_{i}+\mu\left(t_{i+1} - t_{i}\right)+\left(\sigma\sqrt{t_{i+1} - t_{i}}\right)\cdot{Z_{i+1}}\qquad{i=0,1,\dots,n-1}
+:label: eq-SDE-BM-solution
+S(t) = S_{\circ} + \mu\left(t-t_{\circ}\right)+\left(\sigma\sqrt{t - t_{\circ}}\right)\cdot{Z_{t}(0,1)}
 ```
 
-where $X_{i+1}$ denotes the state variable evaluated at time index $i+1$. In Eqn. {eq}`eq-SDE-BM-Euler`, both $\mu$ and $\sigma$ are assumed to be constants, and:
+where $S_{\circ}$ denotes the share price at the initial time $t_{\circ}$, and $Z_{t}(0,1)$ denotes a [standard normal random variable](https://en.wikipedia.org/wiki/Normal_distribution#Standard_normal_distribution) at time $t$. The analytical solution allows us to directly compute the expected value and variance of the share price at time $t$. The expected share price is given by:
 
-$$W_{i+1} = W_{i} + \left(\sqrt{t_{i+1} - t_{i}}\right)\cdot{Z_{i+1}}\qquad{i=0,1,\dots,n-1}$$
+$$\mathbb{E}\left(S_{t}\right) = S_{o} + \mu\cdot\Delta{t}$$
 
-We can compute sample paths (solutions) for Eqn. {eq}`eq-SDE-BM-Euler` generated using the [Euler–Maruyama discretization method](https://en.wikipedia.org/wiki/Euler–Maruyama_method) using {prf:ref}`algo-ord-brownian-motion`.
+where $\Delta{t} = t-t_{o}$. On the other hand, the variance of the share price $\text{Var}(S_{t})$ at time $t$ is given by:
 
-```{prf:algorithm} Ordinary Brownian Motion
-:label: algo-ord-brownian-motion
+$$\text{Var}\left(S_{t}\right) = \sigma^{2}{\Delta{t}}$$
 
-**Inputs** Parameters $\left(\mu,\sigma\right)$, initial condition $X\left(t_{o}\right) = X_{o}$, initial time $t_{o}$, final time $t_{f}$, time step size $h$, and the number of sample paths $P$ 
+The derivation of the analytical solution, the expectation and the variance of the share price are [provided in the Appendix](../../appendix/ito.md).
 
-**Output** Time array T and the $\dim\left(T\right)\times{P}$ solution array $X$
+### Monte Carlo simulation
+Monte Carlo simulation is a powerful tool for simulating stochastic systems where analytical expressions for the solution, expectation, and variance are unavailable. Consider the simulation of the share price $S(t)$. Monte Carlo simulation is based on generating a large number of random sample paths, e.g., possible trajectories of the share price $S(t)$, and then computing the expected value and variance of the share price from the population of sample paths. However, if we don't have an analytical solution for the share price, how can we simulate it?
 
-1. initialize $T~\leftarrow$ range($t_{o}$, stop = $t_{f}$, step = $h$) |> collect
-2. initialize $\mathcal{P}~\leftarrow$ range(1, stop = $P$, step = 1) |> collect
-2. initialize $X~\leftarrow$ Array($\dim\left(T\right)$, $P$)
-3. initialize $X[1,\mathcal{P}]~\leftarrow~X_{o}$ for all sample paths $P$
+The answer is to use a discretization technique such the [Euler-Maruyama (EM) method](https://en.wikipedia.org/wiki/Euler%E2%80%93Maruyama_method), which is a numerical method for approximating the solution of stochastic differential equations. For the general scalar stochastic differential equation with a Wiener noise process:
 
-1. for each $(k,s) \in \mathcal{P}$
-    1. for each $(i,t) \in T$
-        1. generate $Z~\leftarrow~\mathcal{N}\left(0,1\right)$
-        2. set $X[i+1,k]~\leftarrow~X[i,k]+\mu{h}+\left(\sigma\sqrt{h}\right)Z$
-```
+$$dX = a(X,t)dt + b(X,t)dW$$
+
+The EM method gives the discrete approximate solution at time-step $k\rightarrow{k+1}$:
+
+$$X_{k+1} = X_{k} + a(X_{k}, t_{k})h + \left(b(X_{k},t_{k})\sqrt{h}\right)\cdot{Z_{k}}\left(0,1\right)$$
+
+where the step size $h=t_{k+1} - t_{k}$ and $Z_{k}(0,1)$ denotes a standard normal random variable at time-step $k$.  While the EM method is straightforward to implement, it has a poor overall accuracy with error on order $\sqrt{h}$; thus, small step sizes are required to get accurate solutions.
+
+
+<!-- As a result, we will focus on the geometric Brownian motion model, which is a more realistic model of share price evolution.
+
+
+there is a significant issue with this type of stochastic model for share prices. The problem lies in the potential for negative share prices, which is unrealistic.
+
+Finally, let's compute the expectation and variance of the share price simulation. We could estimate these values from the population of sample paths. However, for the Geometric Brownian Motion (GBM) analytical expressions are available for both the expected value and the variance of the share price. 
+
+Despite the negative share price issue, Eqn. {eq}`eq-SDE-BM` is the simplest Brownian model of equity share price.  -->
 
 
 (content:brownian-models-geometric)=
 ## Geometric Brownian motion models
-Unfortunately, Eqn. {eq}`eq-SDE-BM` has a significant flaw: its solution can have negative values. As a result, it is not commonly used as a model for stock prices or other risky assets, since their prices are always non-negative. Instead, a more popular model for asset prices is the geometric Brownian motion (GBM) model. This model assumes the existence of constants $\mu$ and $\sigma>0$, and a random process $X(t)$ which is described by the solution of the Stochastic Differential Equation (SDE):
+A more popular model for asset prices is the geometric Brownian motion (GBM) model. This model assumes the existence of constants $\mu$ and $\sigma>0$, and a random process $X(t)$ which is described by the solution of the Stochastic Differential Equation (SDE):
 
 ```{math}
 :label: eq-SDE-GBM
@@ -180,7 +191,7 @@ The `ln` of share price of `AMD` (left) and `WFC` (right) versus time using a de
 ```
 
 ### Estimating the $\sigma$ parameter
-There are multiple methods to calculate the volatility parameter $\sigma$. Generally, these approaches can be classified into two categories - historical volatility estimates based on return data and future volatility estimates based on the [Implied Volatility (IV)](https://en.wikipedia.org/wiki/Implied_volatility) of [put and call options contracts](https://en.wikipedia.org/wiki/Option_(finance)). For now, let's focus on computing the volatility $\sigma$ from historical data and talk about options later.
+There are multiple methods to calculate the volatility parameter $\sigma$. Generally, these approaches can be classified into two categories - historical volatility estimates based on the distribution of the return data and future volatility estimates based on the [Implied Volatility (IV)](https://en.wikipedia.org/wiki/Implied_volatility) of [put and call options contracts](https://en.wikipedia.org/wiki/Option_(finance)). For now, let's focus on computing the volatility $\sigma$ from historical data and talk about options later.
 
 The historic volatility is estimated by analyzing the distribution of returns using much the same approach we took when looking at the stylized facts. To do this, let's assume a share price model of the form:
 
@@ -209,7 +220,7 @@ Thus, we can use the growth rate parameter $\mu_{j,j-1}$ to estimate the log ret
 ````
 
 #### Implementation
-To compute the historical volatility parameter, $\hat{\sigma}$, we calculated the variance of the returns of the historical training data set. In particular, we fit the historical return data to a [Normal distribution](https://juliastats.org/Distributions.jl/stable/univariate/#Distributions.Normal) using [maximum likelihood estimation](https://juliastats.org/Distributions.jl/stable/fit/#Distributions.fit_mle-Tuple{Any,%20Any,%20Any}) we then estimated the historical volatility as $\hat{\sigma} = \sqrt{\text{Var}(\mu\cdot\Delta{t})}$. Example values for a few typical firms in the S&P 500 index are shown in {prf:ref}`obs-gbm-model-parameter-estimates`.
+To compute the historical volatility parameter, $\hat{\sigma}$, we calculated the variance of the returns of the historical training data set. In particular, we fit the historical return data to a [Normal distribution](https://juliastats.org/Distributions.jl/stable/univariate/#Distributions.Normal) using [maximum likelihood estimation](https://juliastats.org/Distributions.jl/stable/fit/#Distributions.fit_mle-Tuple{Any,%20Any,%20Any}) we then estimated the historical annualized volatility as $\sqrt{252}\cdot\hat{\sigma}$, where $\hat{\sigma}$ is the standard deviation of the return distribution. Example values for a few typical firms in the S&P 500 index are shown in {prf:ref}`obs-gbm-model-parameter-estimates`.
 
 ```{prf:observation} Real-world estimates of the drift and volatility parameters
 :label: obs-gbm-model-parameter-estimates
@@ -300,7 +311,7 @@ function sample(model::MyGeometricBrownianMotionEquityModel, data::NamedTuple;
 end
 ```
 
-Let's sample, [using the `sample(...)` function](contest:geometric-brownian-motion-sample-function), the volume-weighted averaged share price of two example firms `IBM` and `GS` for a random `T = 66` day time interval ({numref}`fig-gbm-simulation-IBM-GS`).
+Let's simulate, [using the `sample(...)` function](contest:geometric-brownian-motion-sample-function), the volume-weighted averaged share price of two example firms `IBM` and `GS` for a random `T = 66` day time interval ({numref}`fig-gbm-simulation-IBM-GS`).
 
 ```{figure} ./figs/Fig-GBM-IBM-GS-T66.svg
 ---
@@ -319,7 +330,16 @@ Thus, while these two example firms and time periods were consistent with the ob
 
 (content:gbm-models-testing-stylized-facts)=
 ### Stylized facts
-The stylized facts of return data are the statistical properties of the data. These properties include the distribution of logarithmic returns, the autocorrelation of logarithmic returns, and the volatility clustering of the logarithmic returns. The logarithmic return under the assumption that the share price follows a geometric Brownian motion model is given by:
+The stylized facts of return data are the statistical properties of the data. These properties include the distribution of logarithmic returns, the autocorrelation of logarithmic returns, and the volatility clustering of the logarithmic returns. 
+
+#### Autocorrelation of logarithmic returns
+Fill me in.
+
+#### Volatility clustering of logarithmic returns
+Fill me in.
+
+#### Distribution of logarithmic returns
+The logarithmic return under the assumption that the share price follows a geometric Brownian motion model is given by:
 
 ```{math}
 :label: eqn-log-return-gbm-return
@@ -334,9 +354,9 @@ where $h$ is the time step, $\mu$ is the drift parameter, $\sigma$ is the volati
 \bar{r}_{j,j-1} \sim \mathcal{N}\left(\left(\mu - \frac{\sigma^{2}}{2}\right)h, ~\sigma^{2}h\right)
 ```
 
-with mean $\left(\mu - \frac{\sigma^{2}}{2}\right)h$ and variance $\sigma^{2}h$. Thus, a geometric Brownian motion model predicts the distribution returns only in cases where the logarithmic returns are normally distributed, which is not always true as we have seen [in our previous discussion of stylized facts](content:references:returns-stylized-facts).
+with mean $\left(\mu - \frac{\sigma^{2}}{2}\right)h$ and variance $\sigma^{2}h$. 
 
-Let's visualize a few observed return distributions compared with the distributiuon predicted by Eqn. {eq}`eqn-log-return-gbm-distribution`. 
+Thus, a geometric Brownian motion model predicts the distribution returns only in cases where the logarithmic returns are normally distributed, which is not always true as we have seen [in our previous discussion of stylized facts](content:references:returns-stylized-facts). Let's visualize a few observed return distributions compared with the distributiuon predicted by Eqn. {eq}`eqn-log-return-gbm-distribution`. 
 
 
 
@@ -347,13 +367,26 @@ A limitation of geometric Brownian motion would seem to be the assumption of con
 
 Let's determine the likelihood of making accurate predictions using a geometric Brownian motion model. To do this, we'll randomly divide the future time into continuous segments of `T` days, denoted as $\mathcal{I}_{k}\in\mathcal{I}$. At the beginning of each segment $\mathcal{I}_{k}$, we'll initialize a geometric Brownian motion model and compare the actual price of a firm ($S_{j}$) at time $j$ with the simulated price during each time segment. 
 
-* If the simulated price falls between the lower bound ($L_{j}$) and upper bound ($U_{j}$) for all $j\in\mathcal{I}_{k}$, we consider the simulation to be a `success`. The lower and upper bounds can be specified, but we'll set them to $\mu\pm{2.576}\cdot\sigma$ by default, where $\mu$ is the expected value, and $\sigma$ is the standard deviation of the binomial lattice simulation. 
+* If the simulated price falls between the lower bound $L_{j}$ and upper bound $U_{j}$ for all $j\in\mathcal{I}_{k}$, we consider the simulation to be a `success`. The lower and upper bounds can be specified, but we'll set them to $\mu\pm{z}\cdot\sigma$, where $\mu$ is the expected value, $\sigma$ is the standard deviation of the simulation, and $z$ is the number of standard deviations from the mean (e.g., the z-score). 
 * However, if the actual price violates the upper or lower bound at any point, the simulation is deemed a `failure`.
 
-We'll repeat this process $\forall{\mathcal{I}_{k}}\in\mathcal{I}$ and calculate the percentage of simulations that are a `success`. This percentage is the likelihood of making accurate predictions using the geometric Brownian motion model
+We'll repeat this process $\forall{\mathcal{I}_{k}}\in\mathcal{I}$ and calculate the fraction of `successful` simulations. This percentage is the likelihood of making bounded predictions using the geometric Brownian motion model ({prf:ref}`obs-gbm-prediction-likelihood`):
 
 ```{prf:observation} Geometric Brownian motion prediction likelhood
-Fill me in.
+:label: obs-gbm-prediction-likelihood
+
+Fraction of `successful` simulations for five exaample firms using geometric Brownian motion to predict the share price of a firm over a random `T = 21` day time periods (in sample). The fraction was calculated using `N = 500` trials.
+
+| id  | ticker | name                   | $\pm$ 1.0$\cdot\sigma$   | $\pm$ 1.96$\cdot\sigma$   |  $\pm$ 2.576$\cdot\sigma$  |
+|-----|--------|------------------------|:-------:|:-------:|:-------:|
+|  11 |    AMD | Advanced Micro Devices | 0.168 | 0.688 | 0.862 |
+| 241 |    IBM |                    IBM | 0.282 | 0.732 | 0.882 |
+| 487 |    WFC |            Wells Fargo | 0.358 |  0.78 | 0.886 |
+| 221 |     GS |          Goldman Sachs | 0.174 | 0.782 | 0.904 |
+| 437 |   TSLA |                  Tesla | 0.224 | 0.676 |  0.87 |
+
+As the z-score increases, the likelihood of making bounded predictions using the geometric Brownian motion model increases. However, the likelihood of making bounded predictions is lower than the theoretical values of 68%, 95% and 99% for all firms. 
+
 ```
 
 ---
