@@ -54,17 +54,36 @@ $$\text{Var}\left(S_{t}\right) = \sigma^{2}{\Delta{t}}$$
 The derivation of the analytical solution, the expectation and the variance of the share price are [provided in the Appendix](../../appendix/ito.md).
 
 ### Monte Carlo simulation
-Monte Carlo simulation is a powerful tool for simulating stochastic systems where analytical expressions for the solution, expectation, and variance are unavailable. Consider the simulation of the share price $S(t)$. Monte Carlo simulation is based on generating a large number of random sample paths, e.g., possible trajectories of the share price $S(t)$, and then computing the expected value and variance of the share price from the population of sample paths. However, if we don't have an analytical solution for the share price, how can we simulate it?
+Monte Carlo simulation is a powerful tool for simulating stochastic systems, e.g., share prices, where analytical expressions for the solution, expectation, and variance are unavailable. Monte Carlo simulation is based on generating a large number of random sample paths, e.g., possible trajectories of the share price $S(t)$, and then computing the expected value and variance of the share price from the population of sample paths ({numref}`fig-obm-samples`)
 
-The answer is to use a discretization technique such the [Euler-Maruyama (EM) method](https://en.wikipedia.org/wiki/Euler%E2%80%93Maruyama_method), which is a numerical method for approximating the solution of stochastic differential equations. For the general scalar stochastic differential equation with a Wiener noise process:
+```{figure} ./figs/Fig-Samples-OBM.svg
+---
+height: 420px
+name: fig-obm-samples
+---
+Simulation of Brownian motion for share price $S(t)$ with N = 100 and 1000 sample paths (blue lines). The analytical expected value is shown as a black dashed line, and the analytical variance is shown as shaded regions for `z = 1.0, 1.96, 2.576`. Sample path expectation and variance are shown as black lines. Parameters: $S_{\circ} = 100$, $\mu = 2.0$, $\sigma = 20$, and `T = 42` days.
+```
+
+As the number of sample path increases, the estimated expected value and variance converge to the analytical values ({numref}`fig-obm-samples`, left versus right panels). However, this opens up the question of how many sample paths are required to obtain a good estimate of the expected value and variance, i.e., what is a good stopping criterion? 
+
+Bicher et al., recently reviewed the stopping criteria for Monte Carlo simulation {cite}`Bicher2022ReviewOM`.
+
+
+<!-- the literature on the convergence of Monte Carlo simulation for stochastic differential equations {cite:p}`Bichsel:2013vz`. They found that the convergence rate of Monte Carlo simulation for stochastic differential equations is $O(N^{-1/2})$, where $N$ is the number of sample paths. This means that the variance of the Monte Carlo estimate of the expected value and variance decreases as $N^{-1/2}$, i.e., the variance decreases as the square root of the number of sample paths. -->
+
+### Discretization
+However, if we don't have an analytical solution for the share price (which for advanced models is typically the case), how can we simulate it? The answer is to use a discretization technique such the [Euler-Maruyama (EM) method](https://en.wikipedia.org/wiki/Euler%E2%80%93Maruyama_method), which is a numerical method for approximating the solution of stochastic differential equations. For the general scalar stochastic differential equation with a Wiener noise process:
 
 $$dX = a(X,t)dt + b(X,t)dW$$
 
 The EM method gives the discrete approximate solution at time-step $k\rightarrow{k+1}$:
 
-$$X_{k+1} = X_{k} + a(X_{k}, t_{k})h + \left(b(X_{k},t_{k})\sqrt{h}\right)\cdot{Z_{k}}\left(0,1\right)$$
+```{math}
+:label: eq-EM-method-general-case
+X_{k+1} = X_{k} + a(X_{k}, t_{k})h + \left(b(X_{k},t_{k})\sqrt{h}\right)\cdot{Z_{k}}\left(0,1\right)
+```
 
-where the step size $h=t_{k+1} - t_{k}$ and $Z_{k}(0,1)$ denotes a standard normal random variable at time-step $k$.  While the EM method is straightforward to implement, it has a poor overall accuracy with error on order $\sqrt{h}$; thus, small step sizes are required to get accurate solutions.
+where the step size $h=t_{k+1} - t_{k}$ and $Z_{k}(0,1)$ denotes a standard normal random variable at time-step $k$.  While the EM method is straightforward to implement, it has a poor overall accuracy with error on order $\sqrt{h}$. Thus, small step sizes are required to get accurate solutions.
 
 
 <!-- As a result, we will focus on the geometric Brownian motion model, which is a more realistic model of share price evolution.
@@ -79,14 +98,16 @@ Despite the negative share price issue, Eqn. {eq}`eq-SDE-BM` is the simplest Bro
 
 (content:brownian-models-geometric)=
 ## Geometric Brownian motion models
-A more popular model for asset prices is the geometric Brownian motion (GBM) model. This model assumes the existence of constants $\mu$ and $\sigma>0$, and a random process $X(t)$ which is described by the solution of the Stochastic Differential Equation (SDE):
+A more popular model for asset prices is the geometric Brownian motion (GBM) model. The GBM model is a stochastic differential equation that describes the evolution of the share price $S(t)$ as random walk with drift and volatility:
 
 ```{math}
 :label: eq-SDE-GBM
 \frac{dS\left(t\right)}{S(t)} = \mu{dt}+\sigma{dW(t)}
 ```
 
-Here, $S$ denotes the share price, and $dW(t)$ is a one-dimensional Wiener process. Geometric Brownian motion is primarily used as a financial model due to the work of Samuelson in the 1950s and 1960s {cite}`Merton2006`. However, today GBM is more commonly associated with the Black–Scholes options pricing model, which we will describe later {cite}`BlackScholes1973`.
+Here, $S(t)$ denotes the share price, the constant $\mu$ denotes a drift parameter, $\sigma>0$ indicates a volatility parameter and $dW$ represents the output of a [Wiener noise process](https://en.wikipedia.org/wiki/Wiener_process). 
+
+Geometric Brownian motion is primarily used as a financial model due to the work of Samuelson in the 1950s and 1960s {cite}`Merton2006`. However, today GBM is more commonly associated with the Black–Scholes options pricing model, which we will describe later {cite}`BlackScholes1973`.
 
 ### Analytical solution
 We can calculate the share price value $S(t)$ as a function of time without the need for an approximate solution by developing an analytical solution to Eqn. {eq}`eq-SDE-GBM`. The analytical solution to the geometric Brownian motion stochastic differential equation with constant drift $\mu$ and volatility $\sigma>0$ is given by:
