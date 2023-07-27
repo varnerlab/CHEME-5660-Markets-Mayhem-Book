@@ -69,6 +69,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'chapter-2-dir/options/composite-contracts';</script>
     <link rel="canonical" href="https://varnerlab.github.io/CHEME-5660-Markets-Mayhem-Book/infrastructure.html/chapter-2-dir/options/composite-contracts.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -183,8 +185,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l3"><a class="reference internal" href="../stocks/stylized-facts.html">Markets and Stylized Facts</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../stocks/lattice-eq-price.html">Lattice Models of Equity Pricing</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../stocks/obm-gbm-eq-price.html">Brownian Motion Models of Equity Pricing</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../stocks/multivariate-eq-price.html">Multivariate Brownian Motion Models of Equity Prices</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../stocks/advanced-eq-price.html">Advanced Stochastic Models of Equity Pricing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../stocks/multivariate-eq-price.html">Multivariate Brownian Motion Models of Equity Prices</a></li>
 </ul>
 </li>
 <li class="toctree-l2 current active has-children"><a class="reference internal" href="../options.html">Derivative Securities</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
@@ -414,7 +416,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -430,6 +434,28 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#general-composite-contracts">General composite contracts</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#implementation">Implementation</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vertical-spreads">Vertical Spreads</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#put-vertical-spreads">Put vertical spreads</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#credit-spreads">Credit spreads</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#debit-spreads">Debit spreads</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#straddles-and-strangles">Straddles and Strangles</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#butterflies-and-condors">Butterflies and Condors</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -441,7 +467,150 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="composite-contract-payoff-and-profit-diagrams">
 <span id="content-references-american-options-composite-contracts"></span><h1>Composite Contract Payoff and Profit Diagrams<a class="headerlink" href="#composite-contract-payoff-and-profit-diagrams" title="Permalink to this heading">#</a></h1>
+<p>Call and put contracts can be combined to develop composite contract structures with interesting payoff and profit properties. Initially let’s focus on contracts that have the same underlying asset and the same expiration date.</p>
+<aside class="topic">
+<p class="topic-title">Outline</p>
+<p>In this lecture we analyze the payoff and profit diagrams of composite option contracts at expiration. In particular, we start by introducing the general case of composite contracts, then focus on composite contracts that have a directional bias, and conclude with contracts that are neutral to the direction of the underlying asset.</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#content-references-general-composite-contracts"><span class="std std-ref">General composite contracts</span></a> are constructed by combining two or more option contracts to generate a new composite contract with some desired payoff and profit properties. For now, we limit our analysis to contracts that have the same underlying asset and the same expiration date.</p></li>
+<li><p><a class="reference internal" href="#content-references-vertical-spreads"><span class="std std-ref">Vertical spreads</span></a> are composite contracts that have a directional bias. They are constructed by combining a single long and and single short option contract with the same expiration date but different strike prices.</p></li>
+<li><p><a class="reference internal" href="#content-references-vertical-straddles-strangles"><span class="std std-ref">Straddles and Strangles</span></a> are composite contracts that are neutral to the direction of the underlying asset. They are constructed by combining two long or two short options contracts with the same expiration date and strike price.</p></li>
+<li><p><a class="reference internal" href="#content-references-vertical-butterflies-condors"><span class="std std-ref">Butterflies and Condors</span></a> are composite contracts that are neutral to the direction of the underlying asset. They are constructed by combining two short and two long option contracts with the same expiration date but different strike prices.</p></li>
+</ul>
+</aside>
+<hr class="docutils" />
+<section id="general-composite-contracts">
+<span id="content-references-general-composite-contracts"></span><h2>General composite contracts<a class="headerlink" href="#general-composite-contracts" title="Permalink to this heading">#</a></h2>
+<p>Call and put contracts can be combined to develop composite contract structures with interesting payoff diagrams. Let’s limit our focus to contracts that have the same underlying asset and the same expiration date (<a class="reference internal" href="#defn-composite-contract-profit">Definition 12</a>):</p>
+<div class="proof definition admonition" id="defn-composite-contract-profit">
+<p class="admonition-title"><span class="caption-number">Definition 12 </span> (Composite contract payoff and profit)</p>
+<section class="definition-content" id="proof-content">
+<p>Let a composite option contract be composed of the set of <span class="math notranslate nohighlight">\(d\)</span> legs (individual contracts) <span class="math notranslate nohighlight">\(\mathcal{C}\)</span> where each leg <span class="math notranslate nohighlight">\(i\in\mathcal{C}\)</span> is written with respect to the same underlying stock <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> and has the same expiration date. Then, the overall payoff of the composite contract <span class="math notranslate nohighlight">\(\hat{V}(S(T),K_{1},\dots,K_{d})\)</span> is given by:</p>
+<div class="math notranslate nohighlight" id="equation-eqn-overall-payoff-composite-contract">
+<span class="eqno">(32)<a class="headerlink" href="#equation-eqn-overall-payoff-composite-contract" title="Permalink to this equation">#</a></span>\[\hat{V}(S(T),K_{1},\dots,K_{d}) = \sum_{i\in\mathcal{C}}\theta_{i}n_{i}V_{i}(S(T),K_{i})\]</div>
+<p>where <span class="math notranslate nohighlight">\(K_{i}\)</span> denotes the strike price of contract <span class="math notranslate nohighlight">\(i\in\mathcal{C}\)</span>. The overall profit of the composite contract <span class="math notranslate nohighlight">\(\hat{P}\)</span> is given by:</p>
+<div class="math notranslate nohighlight" id="equation-eqn-overall-profit-composite-contract">
+<span class="eqno">(33)<a class="headerlink" href="#equation-eqn-overall-profit-composite-contract" title="Permalink to this equation">#</a></span>\[\hat{P}(S(T),K_{1},\dots,K_{d}) = \sum_{i\in\mathcal{C}}\theta_{i}n_{i}P_{i}(S(T),K_{i})\]</div>
+<p>where <span class="math notranslate nohighlight">\(\theta_{i}\)</span> denotes the direction of contract <span class="math notranslate nohighlight">\(i\)</span>: if contract <span class="math notranslate nohighlight">\(i\)</span> is short (sold), then <span class="math notranslate nohighlight">\(\theta_{i}=-1\)</span>, otherwise <span class="math notranslate nohighlight">\(\theta_{i}=1\)</span>, the quantity <span class="math notranslate nohighlight">\(n_{i}\)</span> denotes the copy number of contract <span class="math notranslate nohighlight">\(i\)</span>, <span class="math notranslate nohighlight">\({V}_{i}(S(T),K_{i})\)</span> denotes the payoff of contract <span class="math notranslate nohighlight">\(i\)</span>, and <span class="math notranslate nohighlight">\(P_{i}(S(T),K_{i})\)</span> denotes the profit of contract <span class="math notranslate nohighlight">\(i\)</span>.</p>
+</section>
+</div><p>For those interested in more advanced cases, e.g., combining contracts with different expiration dates, check out <a class="reference external" href="https://www.investopedia.com/terms/c/calendarspread.asp">calendar spreads</a>, or <a class="reference external" href="https://www.investopedia.com/terms/d/diagonalspread.asp">diagonal spreads</a> which combine different experation dates and strike prices.</p>
+<section id="implementation">
+<h3>Implementation<a class="headerlink" href="#implementation" title="Permalink to this heading">#</a></h3>
+<p>We compute the payoff and profit of a composite contract by summing the payoff and profit of each leg of the contract.</p>
+<div class="literal-block-wrapper docutils container" id="id1">
+<div class="code-block-caption"><span class="caption-number">Listing 9 </span><span class="caption-text">Function to compute the Profit of a composite contract</span><a class="headerlink" href="#id1" title="Permalink to this code">#</a></div>
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="k">function</span> <span class="n">profit</span><span class="p">(</span><span class="n">contracts</span><span class="o">::</span><span class="kt">Array</span><span class="p">{</span><span class="kt">T</span><span class="p">,</span><span class="mi">1</span><span class="p">},</span> 
+<span class="linenos"> 2</span>    <span class="n">S</span><span class="o">::</span><span class="kt">Array</span><span class="p">{</span><span class="kt">Float64</span><span class="p">,</span><span class="mi">1</span><span class="p">})</span><span class="o">::</span><span class="kt">Array</span><span class="p">{</span><span class="kt">Float64</span><span class="p">,</span><span class="mi">2</span><span class="p">}</span> <span class="k">where</span> <span class="kt">T</span> <span class="o">&lt;:</span> <span class="kt">AbstractContractModel</span>
+<span class="linenos"> 3</span>
+<span class="linenos"> 4</span>    <span class="c"># initialize - </span>
+<span class="linenos"> 5</span>    <span class="n">number_of_underlying_prices</span> <span class="o">=</span> <span class="n">length</span><span class="p">(</span><span class="n">S</span><span class="p">);</span>
+<span class="linenos"> 6</span>    <span class="n">number_of_contracts</span> <span class="o">=</span> <span class="n">length</span><span class="p">(</span><span class="n">contracts</span><span class="p">);</span>
+<span class="linenos"> 7</span>    <span class="n">profit_array</span> <span class="o">=</span> <span class="kt">Array</span><span class="p">{</span><span class="kt">Float64</span><span class="p">,</span><span class="mi">2</span><span class="p">}(</span><span class="nb">undef</span><span class="p">,</span> <span class="n">number_of_underlying_prices</span><span class="p">,</span> <span class="n">number_of_contracts</span><span class="o">+</span><span class="mi">2</span><span class="p">);</span>
+<span class="linenos"> 8</span>
+<span class="linenos"> 9</span>    <span class="c"># main loop -</span>
+<span class="linenos">10</span>    <span class="k">for</span> <span class="n">i</span> <span class="o">∈</span> <span class="mi">1</span><span class="o">:</span><span class="n">number_of_underlying_prices</span>
+<span class="linenos">11</span>
+<span class="linenos">12</span>        <span class="c"># get the underlying price -</span>
+<span class="linenos">13</span>        <span class="n">Sᵢ</span> <span class="o">=</span> <span class="n">S</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+<span class="linenos">14</span>
+<span class="linenos">15</span>        <span class="c"># compute the payoff -</span>
+<span class="linenos">16</span>        <span class="n">profit_array</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">Sᵢ</span><span class="p">;</span>
+<span class="linenos">17</span>
+<span class="linenos">18</span>        <span class="c"># loop over the contracts -</span>
+<span class="linenos">19</span>        <span class="k">for</span> <span class="n">j</span> <span class="o">∈</span> <span class="mi">1</span><span class="o">:</span><span class="n">number_of_contracts</span>
+<span class="linenos">20</span>
+<span class="linenos">21</span>            <span class="c"># get the contract, and data associated with it -</span>
+<span class="linenos">22</span>            <span class="n">contract</span> <span class="o">=</span> <span class="n">contracts</span><span class="p">[</span><span class="n">j</span><span class="p">];</span>
+<span class="linenos">23</span>            <span class="n">sense</span> <span class="o">=</span> <span class="n">contract</span><span class="o">.</span><span class="n">sense</span> <span class="o">|&gt;</span> <span class="kt">Float64</span><span class="p">;</span>
+<span class="linenos">24</span>            <span class="n">copy</span> <span class="o">=</span> <span class="n">contract</span><span class="o">.</span><span class="n">copy</span> <span class="o">|&gt;</span> <span class="kt">Float64</span><span class="p">;</span>
+<span class="linenos">25</span>            <span class="n">premium</span> <span class="o">=</span> <span class="n">contract</span><span class="o">.</span><span class="n">premium</span><span class="p">;</span>
+<span class="linenos">26</span>
+<span class="linenos">27</span>            <span class="c"># compute the payoff -</span>
+<span class="linenos">28</span>            <span class="n">profit_array</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">copy</span><span class="o">*</span><span class="n">sense</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="n">_payoff</span><span class="p">(</span><span class="n">contract</span><span class="p">,</span> <span class="n">Sᵢ</span><span class="p">)</span> <span class="o">-</span> <span class="n">premium</span><span class="p">)</span>
+<span class="linenos">29</span>        <span class="k">end</span>
+<span class="linenos">30</span>    <span class="k">end</span>
+<span class="linenos">31</span>
+<span class="linenos">32</span>    <span class="c"># compute the sum -</span>
+<span class="linenos">33</span>    <span class="k">for</span> <span class="n">i</span> <span class="o">∈</span> <span class="mi">1</span><span class="o">:</span><span class="n">number_of_underlying_prices</span>
+<span class="linenos">34</span>        <span class="n">profit_array</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="k">end</span><span class="p">]</span> <span class="o">=</span> <span class="n">sum</span><span class="p">(</span><span class="n">profit_array</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="mi">2</span><span class="o">:</span><span class="k">end</span><span class="o">-</span><span class="mi">1</span><span class="p">]);</span>
+<span class="linenos">35</span>    <span class="k">end</span>
+<span class="linenos">36</span>
+<span class="linenos">37</span>    <span class="c"># return -</span>
+<span class="linenos">38</span>    <span class="k">return</span> <span class="n">profit_array</span><span class="p">;</span>    
+<span class="linenos">39</span><span class="k">end</span>
+</pre></div>
+</div>
+</div>
+</section>
+</section>
+<section id="vertical-spreads">
+<span id="content-references-vertical-spreads"></span><h2>Vertical Spreads<a class="headerlink" href="#vertical-spreads" title="Permalink to this heading">#</a></h2>
+<p><a class="reference external" href="https://www.fidelity.com/bin-public/060_www_fidelity_com/documents/learning-center/Deck_Vertical-spreads.pdf">Vertical spreads</a>, a defined risk directional strategy, involve buying and selling the same type of option with different strike prices and the same expiration date. This creates two legs, a long leg (the option purchased by the investor) and a short leg (the option sold by the investor). The investor can use the strategy to take a position on whether the share price of the underlying stock, such as <code class="docutils literal notranslate"><span class="pre">XYZ</span></code>, will increase or decrease.</p>
+<p>Vertical spreads are defined risk because the maximum possible gain or loss is known when the contract is sold, meaning investors know how much they can make or lose before entering the trade.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>It is important to note that the future share price of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> is unknown when the investor opens the trade. Thus, the investor is making a direction assumption when trading a vertical spread about the movement of the share price.</p>
+</div>
+<section id="put-vertical-spreads">
+<h3>Put vertical spreads<a class="headerlink" href="#put-vertical-spreads" title="Permalink to this heading">#</a></h3>
+<p>There are two types of vertical spreads that can be made with put contracts, each with a different directional assumption.</p>
+<ul class="simple">
+<li><p>The put bullish credit spread assumes that the share price of the underlying asset, in this case, <code class="docutils literal notranslate"><span class="pre">XYZ</span></code>, will increase by the time of expiration.</p></li>
+<li><p>In contrast, the put bearish debit spread assumes that the share price of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> will decrease by the time of expiration.</p></li>
+</ul>
+<p>When investors choose the bullish credit spread, they receive a credit upfront, which is the maximum profit. However, when they choose the debit spread, they incur a net debit to their account. The trade can become profitable over time if the directional assumption is correct.</p>
+<p>Generally, the profit for a put vertical spread depends on the strike prices and the cost of each leg of the composite contract (<a class="reference internal" href="#defn-PL-put-contract-vertical-spread">Definition 13</a>):</p>
+<div class="proof definition admonition" id="defn-PL-put-contract-vertical-spread">
+<p class="admonition-title"><span class="caption-number">Definition 13 </span> (Profit Put Vertical spread)</p>
+<section class="definition-content" id="proof-content">
+<p>Let contract <span class="math notranslate nohighlight">\(j\)</span> have a strike price of <span class="math notranslate nohighlight">\(K_{j}\)</span> and premium <span class="math notranslate nohighlight">\(\mathcal{P}_{j}\)</span>. The share price at expiration is given by <span class="math notranslate nohighlight">\(S(T)\)</span>. Finally, let contract 1 be the short leg <span class="math notranslate nohighlight">\(\theta_{1} = -1\)</span> and contract 2 be the long leg <span class="math notranslate nohighlight">\(\theta_{2} = 1\)</span>. Then, the profit for a single Put vertical spread <span class="math notranslate nohighlight">\(P_{12}\)</span> at expiration is given by:</p>
+<div class="math notranslate nohighlight">
+\[\hat{P} = -P_{1}+P_{2}\]</div>
+<p>which, after substitution of the profit functions for a put contract, gives:</p>
+<div class="math notranslate nohighlight">
+\[
+\hat{P}(S(T),K_{1},K_{2}, \mathcal{P}_{1}, \mathcal{P}_{2}) = \max\left(K_{2} - S(T),0\right) - \max\left(K_{1} - S(T),0\right) + \left(\mathcal{P}_{1} - \mathcal{P}_{2}\right)\]</div>
+<p>The first term is the net payout of the two legs of the spread, while the second term is the net cost of the two contracts. The maximum possible profit, loss, and breakeven conditions are given by:</p>
+<ul class="simple">
+<li><p>The maximum possible profit of <span class="math notranslate nohighlight">\(\left(\mathcal{P}_{1} - \mathcal{P}_{2}\right)\)</span> will occur when <span class="math notranslate nohighlight">\(S\geq{K_{1}}\)</span>.</p></li>
+<li><p>The maximum possible loss of <span class="math notranslate nohighlight">\(K_{2} - K_{1} + \left(\mathcal{P}_{1} - \mathcal{P}_{2}\right)\)</span> will occur when <span class="math notranslate nohighlight">\(S\leq{K_{2}}\)</span>.</p></li>
+<li><p>The vertical put spread will breakeven when <span class="math notranslate nohighlight">\(S =  K_{1}+\left(\mathcal{P}_{2} - \mathcal{P}_{1}\right)\)</span>.</p></li>
+</ul>
+</section>
+</div><p><a class="reference internal" href="#defn-PL-put-contract-vertical-spread">Definition 13</a> has many exciting behaviors. It is much more complex than it might first appear as the cost of each contract <span class="math notranslate nohighlight">\(\mathcal{P}_{j}\)</span> is a non-linear function of many variables including the current share price of the underlying asset <span class="math notranslate nohighlight">\(S\)</span>, the strike price of the contract, the number of days the contract has before expiration, and the implied volatility.</p>
+<section id="credit-spreads">
+<h4>Credit spreads<a class="headerlink" href="#credit-spreads" title="Permalink to this heading">#</a></h4>
+<p>A <code class="docutils literal notranslate"><span class="pre">bull``</span> <span class="pre">put</span> <span class="pre">credit</span> <span class="pre">spread</span> <span class="pre">is</span> <span class="pre">a</span> <span class="pre">composite</span> <span class="pre">contract</span> <span class="pre">that</span> <span class="pre">combines</span> <span class="pre">a</span> <span class="pre">short</span> <span class="pre">put</span> <span class="pre">and</span> <span class="pre">a</span> <span class="pre">long</span> <span class="pre">put,</span> <span class="pre">providing</span> <span class="pre">the</span> <span class="pre">investor</span> <span class="pre">with</span> <span class="pre">a</span> <span class="pre">credit</span> <span class="pre">upon</span> <span class="pre">opening</span> <span class="pre">the</span> <span class="pre">trade.</span> <span class="pre">This</span> <span class="pre">strategy</span> <span class="pre">has</span> <span class="pre">a</span> <span class="pre">directional</span> <span class="pre">bias</span> <span class="pre">(bullish)</span> <span class="pre">and</span> <span class="pre">a</span> <span class="pre">defined</span> <span class="pre">risk,</span> <span class="pre">with</span> <span class="pre">the</span> <span class="pre">short</span> <span class="pre">put</span> <span class="pre">strike</span> <span class="pre">price</span> <span class="pre">$K_{1}$</span> <span class="pre">being</span> <span class="pre">lower</span> <span class="pre">than</span> <span class="pre">the</span> <span class="pre">current</span> <span class="pre">share</span> <span class="pre">price</span> <span class="pre">$S_{\circ}$</span> <span class="pre">but</span> <span class="pre">higher</span> <span class="pre">than</span> <span class="pre">the</span> <span class="pre">long</span> <span class="pre">put</span> <span class="pre">strike</span> <span class="pre">price</span> <span class="pre">$K_{2}$</span> <span class="pre">(i.e.</span> <span class="pre">$S_{\circ}&gt;K_{1}&gt;K_{2}$).</span> <span class="pre">The</span> <span class="pre">long</span> <span class="pre">put</span> <span class="pre">serves</span> <span class="pre">to</span> <span class="pre">limit</span> <span class="pre">potential</span> <span class="pre">losses,</span> <span class="pre">but</span> <span class="pre">it</span> <span class="pre">also</span> <span class="pre">restricts</span> <span class="pre">potential</span> <span class="pre">gains</span> <span class="pre">due</span> <span class="pre">to</span> <span class="pre">its</span> <span class="pre">cost</span> <span class="pre">({numref}</span></code>fig-put-vertical-spread-credit`).</p>
+<figure class="align-default" id="fig-put-vertical-spread-credit">
+<a class="reference internal image-reference" href="../../_images/Fig-put-vertical-spread-credit.svg"><img alt="../../_images/Fig-put-vertical-spread-credit.svg" height="420px" src="../../_images/Fig-put-vertical-spread-credit.svg" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 24 </span><span class="caption-text">The payoff and profit for a bull put credit spread credit on <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> with 56-DTE. Parameters: <span class="math notranslate nohighlight">\(K_{1}=60.0\)</span> USD/share, <span class="math notranslate nohighlight">\(K_{2}=50.0\)</span> USD/share, <span class="math notranslate nohighlight">\(S_{\circ}=64.69\)</span> USD/share, <span class="math notranslate nohighlight">\(\mathcal{P}_{1}=1.39\)</span> USD/share, <span class="math notranslate nohighlight">\(\mathcal{P}_{2}=0.23\)</span> USD/share, <span class="math notranslate nohighlight">\(T=56\)</span> days, and <span class="math notranslate nohighlight">\(r=0.04\)</span>.</span><a class="headerlink" href="#fig-put-vertical-spread-credit" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="debit-spreads">
+<h4>Debit spreads<a class="headerlink" href="#debit-spreads" title="Permalink to this heading">#</a></h4>
 <p>Fill me in.</p>
+</section>
+</section>
+</section>
+<section id="straddles-and-strangles">
+<span id="content-references-vertical-straddles-strangles"></span><h2>Straddles and Strangles<a class="headerlink" href="#straddles-and-strangles" title="Permalink to this heading">#</a></h2>
+<p>A <a class="reference external" href="https://www.investopedia.com/terms/s/straddle.asp">straddle</a> is a <em>neutral strategy</em> constructed by simultaneously buying (or selling) a put and a call option on the same underlying asset <code class="docutils literal notranslate"><span class="pre">XYZ</span></code>, with the <em>same expiration</em>, and the <em>same strike price</em>. Depending upon the choice of the strike prices and whether an investor buys or sells both legs, a <a class="reference external" href="https://www.investopedia.com/terms/s/straddle.asp">straddle</a> can be initiated as a credit or debit and can potentially have undefined profit or loss.</p>
+<p>Unlike directional strategies such as <a class="reference internal" href="#content-references-vertical-spreads"><span class="std std-ref">Vertical spreads</span></a>, a <a class="reference external" href="https://www.investopedia.com/terms/s/straddle.asp">straddle</a> is a <em>neutral</em> position; an investor holding a <a class="reference external" href="https://www.investopedia.com/terms/s/straddle.asp">straddle</a> profits if the share price of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> moves up, down or potentially zero depending upon the construction of the straddle.</p>
+<p>A <a class="reference external" href="https://www.investopedia.com/terms/s/strangle.asp">strangle</a> position is a <em>neutral strategy</em> constructed by simultaneously buying and selling a put and a call option on the same underlying asset <code class="docutils literal notranslate"><span class="pre">XYZ</span></code>, with the same expiration but with <em>different</em> strike prices. Depending upon the choice of the strike prices and whether an investor buys or sells both legs, a <a class="reference external" href="https://www.investopedia.com/terms/s/strangle.asp">strangle</a> can be initiated as a credit or debit and can potentially have undefined profit or loss.</p>
+<p>Unlike directional strategies such as <span class="xref std std-ref">content:references:option-contracts-vertical-spread</span>, a <a class="reference external" href="https://www.investopedia.com/terms/s/strangle.asp">strangle</a> is a <em>neutral</em> position; an investor holding a <a class="reference external" href="https://www.investopedia.com/terms/s/strangle.asp">strangle</a> profits if the share price of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> moves between the strike prices of the strangle.</p>
+</section>
+<section id="butterflies-and-condors">
+<span id="content-references-vertical-butterflies-condors"></span><h2>Butterflies and Condors<a class="headerlink" href="#butterflies-and-condors" title="Permalink to this heading">#</a></h2>
+<p>An <a class="reference external" href="https://www.investopedia.com/terms/i/ironcondor.asp">iron condor</a> is a <em>neutral defined risk</em> position constructed by <em>selling</em> a put (1) and call (2) options on the underlying asset <code class="docutils literal notranslate"><span class="pre">XYZ</span></code>, while simultaneously <em>buying</em> a put (3) and call (4) options on <code class="docutils literal notranslate"><span class="pre">XYZ</span></code>. All the legs of an <a class="reference external" href="https://www.investopedia.com/terms/i/ironcondor.asp">iron condor</a> have the same underlying asset <code class="docutils literal notranslate"><span class="pre">XYZ</span></code>, and have the same expiration, but they have different strike prices where <span class="math notranslate nohighlight">\(K_{3}&lt;K_{1}&lt;K_{2}&lt;K_{4}\)</span>. In particular, the two short options are sold with strikes on either side of the current share price <span class="math notranslate nohighlight">\(S_{o}\)</span> of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code>, with the short put strike price <span class="math notranslate nohighlight">\(K_{1}&lt;S_{o}\)</span> and the short call strike price <span class="math notranslate nohighlight">\(K_{2}&gt;S_{o}\)</span>. Then, the long legs are purchased above and below the short strikes.  Thus, an <a class="reference external" href="https://www.investopedia.com/terms/i/ironcondor.asp">iron condor</a> position has the character of a <a class="reference external" href="https://www.investopedia.com/terms/s/strangle.asp">strangle</a> combined with a vertical spread.</p>
+<p>An investor holding an <a class="reference external" href="https://www.investopedia.com/terms/i/ironcondor.asp">iron condor</a> profits if the share price of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> remains between the strike prices of the two short options (like a short strangle). However, unlike a <a class="reference external" href="https://www.investopedia.com/terms/s/strangle.asp">strangle</a>, an <a class="reference external" href="https://www.investopedia.com/terms/i/ironcondor.asp">iron condor</a> is a defined risk strategy; the long options act to limit any possible losses, but they also restrict potential gains (because of their cost).</p>
+</section>
+<hr class="docutils" />
+<section id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this heading">#</a></h2>
+<p>Fill me in</p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -502,6 +671,34 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#general-composite-contracts">General composite contracts</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#implementation">Implementation</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vertical-spreads">Vertical Spreads</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#put-vertical-spreads">Put vertical spreads</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#credit-spreads">Credit spreads</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#debit-spreads">Debit spreads</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#straddles-and-strangles">Straddles and Strangles</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#butterflies-and-condors">Butterflies and Condors</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
