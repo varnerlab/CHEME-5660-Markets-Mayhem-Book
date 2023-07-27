@@ -39,7 +39,7 @@ where $\theta_{i}$ denotes the direction of contract $i$: if contract $i$ is sho
 
 ````
 
-For those interested in more advanced cases, e.g., combining contracts with different expiration dates, check out [calendar spreads](https://www.investopedia.com/terms/c/calendarspread.asp), or [diagonal spreads](https://www.investopedia.com/terms/d/diagonalspread.asp).
+For those interested in more advanced cases, e.g., combining contracts with different expiration dates, check out [calendar spreads](https://www.investopedia.com/terms/c/calendarspread.asp), or [diagonal spreads](https://www.investopedia.com/terms/d/diagonalspread.asp) which combine different experation dates and strike prices.
 
 ### Implementation
 We compute the payoff and profit of a composite contract by summing the payoff and profit of each leg of the contract. 
@@ -101,7 +101,11 @@ It is important to note that the future share price of `XYZ` is unknown when the
 ```
 
 ### Put vertical spreads
-There are two types of vertical spreads that can be made with put contracts, each with a different directional assumption. The put bullish credit spread assumes that the share price of the underlying asset, in this case, `XYZ`, will increase by the time of expiration. In contrast, the put bearish debit spread assumes that the share price of `XYZ` will decrease by the time of expiration. When investors choose the bullish credit spread, they receive a credit upfront, which is the maximum profit. However, when they choose the debit spread, they will have to incur a net debit to their account. The trade can become profitable over time if the directional assumption is correct.
+There are two types of vertical spreads that can be made with put contracts, each with a different directional assumption. 
+* The`bull` put credit spread assumes that the share price of the underlying asset, in this case, `XYZ`, will increase by the time of expiration. 
+* In contrast, the `bear`` put debit spread assumes that the share price of `XYZ` will decrease by the time of expiration. 
+
+When investors choose the bullish credit spread, they receive a credit upfront, which is the maximum profit. However, when they choose the debit spread, they incur a net debit to their account. The trade can become profitable over time if the directional assumption is correct.
 
 Generally, the profit for a put vertical spread depends on the strike prices and the cost of each leg of the composite contract ({prf:ref}`defn-PL-put-contract-vertical-spread`):
 
@@ -127,6 +131,21 @@ The first term is the net payout of the two legs of the spread, while the second
 ````
 
 {prf:ref}`defn-PL-put-contract-vertical-spread` has many exciting behaviors. It is much more complex than it might first appear as the cost of each contract $\mathcal{P}_{j}$ is a non-linear function of many variables including the current share price of the underlying asset $S$, the strike price of the contract, the number of days the contract has before expiration, and the implied volatility.
+
+#### Credit spreads
+A `bull` put credit spread is a composite contract that combines a short put and a long put, providing the investor with a credit upon opening the trade. This strategy has a directional bias (bullish) and a defined risk, with the short put strike price $K_{1}$ being lower than the current share price $S_{\circ}$ but higher than the long put strike price $K_{2}$ (i.e. $S_{\circ}>K_{1}>K_{2}$). The long put serves to limit potential losses, but it also restricts potential gains due to its cost ({numref}`fig-put-vertical-spread-credit`).
+
+
+```{figure} ./figs//Fig-put-vertical-spread-credit-bull.svg
+---
+height: 420px
+name: fig-put-vertical-spread-credit
+---
+The payoff and profit for a bull put credit spread credit on `XYZ` with 56-DTE. Parameters: $K_{1}=60.0$ USD/share, $K_{2}=50.0$ USD/share, $S_{\circ}=64.69$ USD/share, $\mathcal{P}_{1}=1.39$ USD/share, $\mathcal{P}_{2}=0.23$ USD/share, $T=56$ days, and $r=0.04$.
+```
+
+A `bear` put debit spread is a composite contract that combines a short put and a long put, providing the investor with a debit upon opening the trade. This strategy has a directional bias (bearish) and a defined risk, with the short put strike price $K_{1}$ being higher than the current share price $S_{\circ}$ but lower than the long put strike price $K_{2}$ (i.e. $S_{\circ}<K_{1}<K_{2}$). The long put serves to limit potential losses, but it also restricts potential gains due to its cost ({numref}`fig-put-vertical-spread-debit`).
+
 
 (content:references:vertical-straddles-strangles)=
 ## Straddles and Strangles
