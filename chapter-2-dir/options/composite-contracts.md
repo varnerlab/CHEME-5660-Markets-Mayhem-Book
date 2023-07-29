@@ -103,7 +103,7 @@ It is important to note that the future share price of `XYZ` is unknown when the
 ### Put vertical spreads
 There are two types of vertical spreads that can be made with put contracts, each with a different directional assumption. 
 * The`bull` put credit spread assumes that the share price of the underlying asset, in this case, `XYZ`, will increase by the time of expiration. 
-* In contrast, the `bear`` put debit spread assumes that the share price of `XYZ` will decrease by the time of expiration. 
+* In contrast, the `bear` put debit spread assumes that the share price of `XYZ` will decrease by the time of expiration. 
 
 When investors choose the bullish credit spread, they receive a credit upfront, which is the maximum profit. However, when they choose the debit spread, they incur a net debit to their account. The trade can become profitable over time if the directional assumption is correct.
 
@@ -136,26 +136,29 @@ The first term is the net payout of the two legs of the spread, while the second
 A `bull` put credit spread is a composite contract that combines a short put and a long put, providing the investor with a credit upon opening the trade. This strategy has a directional bias (bullish) and a defined risk, with the short put strike price $K_{1}$ being lower than the current share price $S_{\circ}$ but higher than the long put strike price $K_{2}$ (i.e. $S_{\circ}>K_{1}>K_{2}$). The long put serves to limit potential losses, but it also restricts potential gains due to its cost ({numref}`fig-put-vertical-spread-credit`).
 
 
-```{figure} ./figs//Fig-put-vertical-spread-credit-bull.svg
+```{figure} ./figs/Fig-put-vertical-spread-credit-bull.svg
 ---
 height: 420px
 name: fig-put-vertical-spread-credit
 ---
-The payoff and profit for a bull put credit spread credit on `XYZ` with 56-DTE. Parameters: $K_{1}=60.0$ USD/share, $K_{2}=50.0$ USD/share, $S_{\circ}=64.69$ USD/share, $\mathcal{P}_{1}=1.39$ USD/share, $\mathcal{P}_{2}=0.23$ USD/share, $T=56$ days, and $r=0.04$.
+The payoff and profit for a bull put credit spread on `XYZ` with 56-DTE. Parameters: $K_{1}=60.0$ USD/share, $K_{2}=50.0$ USD/share, $S_{\circ}=64.69$ USD/share, $\mathcal{P}_{1}=1.39$ USD/share, $\mathcal{P}_{2}=0.23$ USD/share, $T=56$ days, and $r=0.04$.
 ```
 
 A `bear` put debit spread is a composite contract that combines a short put and a long put, providing the investor with a debit upon opening the trade. This strategy has a directional bias (bearish) and a defined risk, with the short put strike price $K_{1}$ being higher than the current share price $S_{\circ}$ but lower than the long put strike price $K_{2}$ (i.e. $S_{\circ}<K_{1}<K_{2}$). The long put serves to limit potential losses, but it also restricts potential gains due to its cost ({numref}`fig-put-vertical-spread-debit`).
 
+```{figure} ./figs/Fig-put-vertical-spread-debit-bear.svg
+---
+height: 420px
+name: fig-put-vertical-spread-debit
+---
+The payoff and profit for a bear put debit spread on `XYZ` with 56-DTE. Parameters: $K_{1}=65.0$ USD/share, $K_{2}=75.0$ USD/share, $S_{\circ}=64.69$ USD/share, $\mathcal{P}_{1}=3.30$ USD/share, $\mathcal{P}_{2}=10.70$ USD/share, $T=56$ days, and $r=0.04$.
+```
 
 (content:references:vertical-straddles-strangles)=
 ## Straddles and Strangles
-A [straddle](https://www.investopedia.com/terms/s/straddle.asp) is a _neutral strategy_ constructed by simultaneously buying (or selling) a put and a call option on the same underlying asset `XYZ`, with the _same expiration_, and the _same strike price_. Depending upon the choice of the strike prices and whether an investor buys or sells both legs, a [straddle](https://www.investopedia.com/terms/s/straddle.asp) can be initiated as a credit or debit and can potentially have undefined profit or loss.
+A [straddle](https://www.investopedia.com/terms/s/straddle.asp) is a _neutral strategy_ constructed by simultaneously buying (or selling) a put and a call option on the same underlying asset `XYZ`, with the _same expiration_, and the _same strike price_. Depending upon the choice of the strike prices and whether an investor buys or sells both legs, a [straddle](https://www.investopedia.com/terms/s/straddle.asp) can be initiated as a credit or debit and can potentially have undefined profit or loss. Unlike directional strategies such as [Vertical spreads](content:references:vertical-spreads), a [straddle](https://www.investopedia.com/terms/s/straddle.asp) is a _neutral_ position; an investor holding a [straddle](https://www.investopedia.com/terms/s/straddle.asp) profits if the share price of `XYZ` moves up, down or potentially zero depending upon the construction of the straddle.
 
-Unlike directional strategies such as [Vertical spreads](content:references:vertical-spreads), a [straddle](https://www.investopedia.com/terms/s/straddle.asp) is a _neutral_ position; an investor holding a [straddle](https://www.investopedia.com/terms/s/straddle.asp) profits if the share price of `XYZ` moves up, down or potentially zero depending upon the construction of the straddle.
-
-A [strangle](https://www.investopedia.com/terms/s/strangle.asp) position is a _neutral strategy_ constructed by simultaneously buying and selling a put and a call option on the same underlying asset `XYZ`, with the same expiration but with _different_ strike prices. Depending upon the choice of the strike prices and whether an investor buys or sells both legs, a [strangle](https://www.investopedia.com/terms/s/strangle.asp) can be initiated as a credit or debit and can potentially have undefined profit or loss. 
-
-Unlike directional strategies such as {ref}`content:references:option-contracts-vertical-spread`, a [strangle](https://www.investopedia.com/terms/s/strangle.asp) is a _neutral_ position; an investor holding a [strangle](https://www.investopedia.com/terms/s/strangle.asp) profits if the share price of `XYZ` moves between the strike prices of the strangle.
+A [strangle](https://www.investopedia.com/terms/s/strangle.asp) position is a _neutral strategy_ constructed by simultaneously buying and selling a put and a call option on the same underlying asset `XYZ`, with the _same expiration_ but with _different strike prices_. Depending upon the choice of the strike prices and whether an investor buys or sells both legs, a [strangle](https://www.investopedia.com/terms/s/strangle.asp) can be initiated as a credit or debit and can potentially have undefined profit or loss. Unlike directional strategies such as {ref}`content:references:option-contracts-vertical-spread`, a [strangle](https://www.investopedia.com/terms/s/strangle.asp) is a _neutral_ position; an investor holding a [strangle](https://www.investopedia.com/terms/s/strangle.asp) profits if the share price of `XYZ` moves between the strike prices of the strangle.
 
 
 

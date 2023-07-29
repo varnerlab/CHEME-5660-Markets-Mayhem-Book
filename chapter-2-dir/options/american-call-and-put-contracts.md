@@ -30,19 +30,19 @@ The business case for buying (or selling) a `call` contract:
 ### Payoff, Profit, Premium and Breakeven
 The payoff per share of a `call` contract at expiration `T` days in the future $V_{c}(K,S(T))$ is defined as:
 
-$$V_{c}(K,S(T)) = \max\left(S(T) - K,~0.0\right)$$
+$$V_{c}(K,S(T)) = \max\left(S(T) - K,~0\right)$$
 
 where $K$ denotes the strike price and $S(T)$ represents the share price of the underlying asset `T` days in the future (at expiration). The right (but not the obligation) to buy shares at the strike `K` is not free. The contract `seller` charges the contract `buyer` a premium for each `call` contract $\mathcal{P}_{c}(\dots)$. From the perspective of the `buyer`, the profit per share for the `call` contract $P_{c}$ is the payoff of the contract minus the cost of the contract:
 
-$$P_{c}(K,S(T)) = V_{c}(K,S(T)) -  \mathcal{P}_{c}(K,S(T))$$
+$$P_{c}(K,S(T)) = V_{c}(K,S(T)) -  \mathcal{P}_{c}(K,S(0))$$
 
 Thus, from the buyer’s perspective, the share price must fall _above the strike price_ to make up the amount paid for the contract. This is called the breakeven price $\mathcal{B}_{c}(K, S(T))$:
 
-$$\mathcal{B}_{c}(K,S(T)) = K + \mathcal{P}_{c}(K,S(T))$$
+$$\mathcal{B}_{c}(K,S(0)) = K + \mathcal{P}_{c}(K,S(0))$$
 
 Finally, the premium (cost) for each `call` contract $\mathcal{P}_{c}(\dots)$ is defined by the expression:
 
-$$\mathcal{P}_{c}(K,S(T))\geq\mathbb{E}\Bigl(\mathcal{D}^{-1}_{T,0}(\bar{r})\cdot{V_{c}}(K,S(T)\Bigr)$$
+$$\mathcal{P}_{c}(K,S(0))\geq\mathbb{E}\Bigl(\mathcal{D}^{-1}_{T,0}(\bar{r})\cdot{V_{c}}(K,S(T)\Bigr)$$
 
 where $\mathcal{D}_{T,0}(\bar{r})$ denotes the discount rate between the time when the contract was purchased `0` and contract expiration `T` days in the future. Option contracts use risk-neutral pricing; thus, the discount rate $\bar{r}$ is typically taken as the interest rate on 10-year treasury notes. 
 
@@ -59,19 +59,19 @@ The business case for buying (or selling) `put` contracts:
 ### Payoff, Profit, Premium and Breakeven
 The payoff per share of a `put` contract at expiration `T` days in the future $V_{p}(K,S(T))$ is defined as:
 
-$$V_{p}(K,S(T)) = \max\left(K - S(T),~0.0\right)$$
+$$V_{p}(K,S(T)) = \max\left(K - S(T),~0\right)$$
 
 where $K$ denotes the strike price and $S(T)$ represents the share price of the underlying asset `T` days in the future (at expiration). The right (but not the obligation) to sell shares at the strike `K` is not free. The contract `seller` charges the contract `buyer` a premium for each `put` contract $\mathcal{P}_{p}(\dots)$. From the perspective of the `buyer`, the profit per share for the `put` contract $P_{p}$ is the payoff of the contract minus the cost of the contract:
 
-$$P_{p}(K,S(T)) = {V}_{p}(K,S(T)) -  \mathcal{P}_{p}(K,S(T))$$
+$$P_{p}(K,S(T)) = {V}_{p}(K,S(T)) -  \mathcal{P}_{p}(K,S(0))$$
 
 Thus, from the buyer’s perspective, the share price must fall _below the strike price_ to make up the amount paid for the contract. This is called the breakeven price $\mathcal{B}_{p}(K, S(T))$:
 
-$$\mathcal{B}_{p}(K,S(T)) = K - \mathcal{P}(K,S(T))$$
+$$\mathcal{B}_{p}(K,S(0)) = K - \mathcal{P}_{p}(K,S(0))$$
 
 Finally, the premium (cost) for each `put` contract $\mathcal{P}_{p}(\dots)$ is defined by the expression:
 
-$$\mathcal{P}_{p}(K,S(T))\geq\mathbb{E}\Bigl(\mathcal{D}^{-1}_{T,0}(\bar{r})\cdot{V_{p}}(K,S(T)\Bigr)$$
+$$\mathcal{P}_{p}(K,S(0))\geq\mathbb{E}\Bigl(\mathcal{D}^{-1}_{T,0}(\bar{r})\cdot{V_{p}}(K,S(T))\Bigr)$$
 
 where $\mathcal{D}_{T,0}(\bar{r})$ denotes the discount rate between the time when the contract was purchased `0` and contract expiration `T` days in the future. Option contracts use risk-neutral pricing; thus, the discount rate $\bar{r}$ is typically taken as the interest rate on 10-year treasury notes. 
 
