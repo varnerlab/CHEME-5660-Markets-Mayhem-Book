@@ -97,7 +97,7 @@ end
 Vertical spreads are defined risk because the maximum possible gain or loss is known when the contract is sold, meaning investors know how much they can make or lose before entering the trade. 
 
 ```{note}
-It is important to note that the future share price of `XYZ` is unknown when the investor opens the trade. Thus, the investor is making a direction assumption when trading a vertical spread about the movement of the share price.
+It is important to note that the future share price of `XYZ` is unknown when the investor opens the trade. Thus, the investor is making a directional assumption when trading a vertical spread about the future movement of the share price.
 ```
 
 ### Put vertical spreads
