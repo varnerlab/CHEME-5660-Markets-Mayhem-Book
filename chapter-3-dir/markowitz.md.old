@@ -1,0 +1,10 @@
+# Markowitz Portfolio Allocation
+ Markowitz portfolio allocation is a method for selecting a portfolio of assets, e.g., a collection of stocks or bonds, that maximizes the overall reward an investor recieves, given an acceptable level of risk {cite}`MPT1952`.
+ 
+ ```{topic} Portfolio Allocation Outline
+what goes here.
+
+ ```
+ 
+ 
+  <!-- In particular, we'll exploreoptimization; Harry Markowitz, who developed the mathematical foundation of MPT , was later awarded a [Nobel Prize for his work in 1990](https://www.nobelprize.org/prizes/economic-sciences/1990/markowitz/facts/).  -->

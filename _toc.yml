@@ -35,11 +35,9 @@ parts:
   chapters:
   - file: chapter-3-dir/chapter-3-landing.md
     sections:
-    - file: chapter-3-dir/markowitz
-      sections:
-      - file: chapter-3-dir/data-markowitz
-      - file: chapter-3-dir/model-markowitz
-      - file: chapter-3-dir/reallocation
+    - file: chapter-3-dir/data-markowitz
+    - file: chapter-3-dir/model-markowitz
+    - file: chapter-3-dir/reallocation
     - file: chapter-3-dir/black-swan-events
       sections: 
       - file: chapter-3-dir/var

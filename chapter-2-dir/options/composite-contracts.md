@@ -1,6 +1,6 @@
 (content:references:american-options-composite-contracts)=
-# Composite Contract Profit Diagrams
-Call and put contracts can be combined to develop composite contract structures with interesting payoff and profit properties. Initially let's focus on contracts that have the same underlying asset and the same expiration date.
+# Composite Contracts at Expiration
+Call and put contracts can be combined to develop composite contract structures with interesting payoff and profit properties. Initially let's focus on the behavior of contracts at expiration.
 
 ```{topic} Outline
 In this lecture we analyze the payoff and profit diagrams of composite option contracts at expiration. In particular, we start by introducing the general case of composite contracts, then focus on composite contracts that have a directional bias, and conclude with contracts that are neutral to the direction of the underlying asset.
@@ -221,9 +221,10 @@ For a short straddle, we sell (are short) both the `put` and the `call` contract
 height: 420px
 name: fig-short-amd-straddle
 ---
-Profit for a short straddle on `AMD` with `DTE = 31 days` until expiration. The strike price for both legs is $K = 120 USD/share$. The premium for the `put` leg is $\mathcal{P}_{1} = 7.85$ USD/share, and the premium for the `call` leg is $\mathcal{P}_{2} = 6.30$ USD/share. 
+Profit for a short straddle on `AMD` with `DTE = 31 days` until expiration. The strike price for both legs is $K = 120$ USD/share. The premium for the `put` leg is $\mathcal{P}_{1} = 7.85$ USD/share, and the premium for the `call` leg is $\mathcal{P}_{2} = 6.30$ USD/share. 
 ```
 
+(content:references:vertical-strangle-long-short)=
 ### Strangles
 A [strangle](https://www.investopedia.com/terms/s/strangle.asp) position is a _neutral strategy_ constructed by simultaneously buying and selling a put and a call option on the same underlying asset `XYZ`, with the _same expiration_ but with _different strike prices_ ({prf:ref}`defn-PL-strangle`):
 
@@ -259,6 +260,7 @@ $$S^{+} = K_{2} + \left(\mathcal{P}_{1}+\mathcal{P}_{2}\right)$$
 
 Depending upon the choice of the strike prices and whether an investor buys or sells both legs, a [strangle](https://www.investopedia.com/terms/s/strangle.asp) can be initiated as a credit or debit and can potentially have undefined profit or loss.
 
+(content:references:vertical-strangle-long)=
 #### Long strangle
 For a long strangle, we purchase (are long) both the `put` and the `call` contracts in the straddle, thus $\theta = 1$. Opening this trade results in a `debit`, where the investor profits when the trade is closed. Let's contruct the profit diagram for a long straddle with the parameters:
 
@@ -274,6 +276,7 @@ name: fig-long-amd-strangle
 Profit for a long strangle on `AMD` with `DTE = 31 days` until expiration. The strike price for the `put` leg $K_{1} = 105$ USD/share, while the strike price for the `call` leg $K_{2} = 135$ USD/share. The premium for the `put` leg is $\mathcal{P}_{1} = 1.95$ USD/share, and the premium for the `call` leg is $\mathcal{P}_{2} = 2.20$ USD/share. 
 ```
 
+(content:references:vertical-strangle-short)=
 #### Short strangle
 For a short strangle, we sell (are short) both the `put` and the `call` contracts in the straddle, thus $\theta = 1$. Let's contruct the profit diagram for a long straddle with the parameters:
 
@@ -292,9 +295,77 @@ Profit for a short strangle on `AMD` with `DTE = 31 days` until expiration. The 
 
 (content:references:vertical-butterflies-condors)=
 ## Butterflies and Condors
-An [iron condor](https://www.investopedia.com/terms/i/ironcondor.asp) is a _neutral defined risk_ position constructed by _selling_ a put (1) and call (2) options on the underlying asset `XYZ`, while simultaneously _buying_ a put (3) and call (4) options on `XYZ`. All the legs of an [iron condor](https://www.investopedia.com/terms/i/ironcondor.asp) have the same underlying asset `XYZ`, and have the same expiration, but they have different strike prices where $K_{3}<K_{1}<K_{2}<K_{4}$. In particular, the two short options are sold with strikes on either side of the current share price $S_{o}$ of `XYZ`, with the short put strike price $K_{1}<S_{o}$ and the short call strike price $K_{2}>S_{o}$. Then, the long legs are purchased above and below the short strikes.  Thus, an [iron condor](https://www.investopedia.com/terms/i/ironcondor.asp) position has the character of a [strangle](https://www.investopedia.com/terms/s/strangle.asp) combined with a vertical spread. 
 
-An investor holding an [iron condor](https://www.investopedia.com/terms/i/ironcondor.asp) profits if the share price of `XYZ` remains between the strike prices of the two short options (like a short strangle). However, unlike a [strangle](https://www.investopedia.com/terms/s/strangle.asp), an [iron condor](https://www.investopedia.com/terms/i/ironcondor.asp) is a defined risk strategy; the long options act to limit any possible losses, but they also restrict potential gains (because of their cost).
+### Iron Butterfly
+An [iron butterfly](https://www.investopedia.com/terms/i/ironbutterfly.asp) is a _neutral strategy_ that has _defined risk_ constructed by _selling_ `put` and `call` options, while simultaneously _buying_ `put` and `call` options. All the legs have the same underlying asset `XYZ`, and the same expiration, but have different strike prices. In particular, the strike prices for the `short put` and `short call` contracts are the same, while the strike prices for the `long put` and `long call` contracts are different ({prf:ref}`defn-PL-iron-butterfly`):
+
+```{prf:definition} Profit and loss of an Iron Butterfly
+:label: defn-PL-iron-butterfly
+
+Fill me in
+
+```
+
+#### Example
+
+* Underlying: `AMD` has `S(0) = 117.50 USD/share`, the average implied volatility for `AMD` options with `DTE = 31 days` is `IV = 51.75%`.
+* Leg 1: The strike price for the `short put` leg is given by $K_{1}$ = 120 USD/share with `DTE = 31 days`. The premium for this contract is $\mathcal{P}_{1}$ = 7.85 USD/share.
+* Leg 2: The strike price for the `short call` leg is given by $K_{2}$ = 120 USD/share with `DTE = 31 days`. The premium for this contract is $\mathcal{P}_{2}$ = 6.30 USD/share.
+* Leg 3: The strike price for the `long put` leg is given by $K_{3}$ = 110 USD/share with `DTE = 31 days`. The premium for this contract is $\mathcal{P}_{3}$ = 3.30 USD/share.
+* Leg 4: The strike price for the `long call` leg is given by $K_{4}$ = 130 USD/share with `DTE = 31 days`. The premium for this contract is $\mathcal{P}_{4}$ = 3.15 USD/share.
+
+
+
+### Iron Condor
+An [iron condor](https://www.investopedia.com/terms/i/ironcondor.asp) is a _neutral strategy_ that has _defined risk_ constructed by _selling_ `put` and `call` options, while simultaneously _buying_ `put` and `call` options. All the legs have the same underlying asset `XYZ`, and the same expiration, but have different strike prices ({prf:ref}`defn-PL-iron-condor`):
+
+````{prf:definition} Profit and loss of an Iron Condor
+:label: defn-PL-iron-condor
+
+Let $K_{j}$ denote the strike price of contract $j$ (USD/share), and let $\mathcal{P}_{j}$ denote the price of contract $j$ (USD/share). Let index $j=1$ denote the `short put` contract, $j=2$ denote the `short call` contract,  $j=3$ denote the `long put` contract and  $j=4$ denote the `long call` contract. For an [iron condor](https://www.investopedia.com/terms/i/ironcondor.asp) $K_{3} < K_{1} < S(0) < K_{2} < K_{3}$, where $S(0)$ denotes the current share price of the underlying asset. Then, the profit for a single iron condor contract $\hat{P}$ at expiration is given by:
+
+$$\hat{P} = \theta_{1}P_{1} + \theta_{2}P_{2} + \theta_{3}P_{3} + \theta_{4}P_{4}$$
+
+where $\theta_{1}=\theta_{2} = -1$ (short legs) and $\theta_{3}=\theta_{4} = 1$ (long legs). After substitution of the profit functions for `put` and `call` contracts, the overall profit $\hat{P}$ is given by:
+
+$$\hat{P} = -(K_{1}-S)^{+} - (S-K_{2})^{+} + (K_{3} - S)^{+} + (S-K_{4})^{+} + \left(\mathcal{P}_{1} + \mathcal{P}_{2} - \mathcal{P}_{3}-\mathcal{P}_{4}\right)$$
+
+where $V_{p,\star} = (K_{\star}-S)^{+}=\max(K_{\star}-S,0)$ is the put payoff, and $V_{c,\star} = (S-K_{\star})^{+} = \max(S-K_{\star},0)$ is the call payoff. The profit (or loss) of an iron condor has several important regimes:
+
+$$
+\hat{P} = \begin{cases}
+  K_{2} - K_{4} + \Bigl(\mathcal{P}_{1} + \mathcal{P}_{2} - \mathcal{P}_{3}-\mathcal{P}_{4}\Bigr)  & S>K_{4} \\
+  K_{2} - S + \Bigl(\mathcal{P}_{1} + \mathcal{P}_{2} - \mathcal{P}_{3}-\mathcal{P}_{4}\Bigr)  & K_{2}<S<K_{4} \\
+  \Bigl(\mathcal{P}_{1} + \mathcal{P}_{2} - \mathcal{P}_{3}-\mathcal{P}_{4}\Bigr) & K_{1}\leq{S}\leq{K_{2}} \\
+  S - K_{1} + \Bigl(\mathcal{P}_{1} + \mathcal{P}_{2} - \mathcal{P}_{3}-\mathcal{P}_{4}\Bigr) & K_{3}<S<K_{1} \\
+  K_{3} - K_{1} + \Bigl(\mathcal{P}_{1} + \mathcal{P}_{2} - \mathcal{P}_{3}-\mathcal{P}_{4}\Bigr) & S<K_{3}
+\end{cases}
+$$
+
+An [iron condor](https://www.investopedia.com/terms/i/ironcondor.asp) has two break-even points. The low break-even point $S^{-}$ occurs when $K_{3}<S^{-}<K_{1}$ while the high break-even point $S^{+}$ occurs when $K_{2}<S^{+}<K_{4}$:
+
+$$
+\begin{eqnarray}
+S^{-} &=& K_{1} - \Bigl(\mathcal{P}_{1} + \mathcal{P}_{2} - \mathcal{P}_{3}-\mathcal{P}_{4}\Bigr)\\
+S^{+} &=& K_{2} + \Bigl(\mathcal{P}_{1} + \mathcal{P}_{2} - \mathcal{P}_{3}-\mathcal{P}_{4}\Bigr)
+\end{eqnarray}
+$$
+````
+
+An investor holding an [iron condor](https://www.investopedia.com/terms/i/ironcondor.asp) profits if the share price of `XYZ` remains between the strike prices of the two short options (like a [short strangle](content:references:vertical-strangle-short)). However, unlike [strangles](content:references:vertical-strangle-long-short), an [iron condor](https://www.investopedia.com/terms/i/ironcondor.asp) is a defined risk strategy. The long options limit possible losses, but they also restrict potential gains (because of their cost).
+
+#### Example
+
+* Underlying: `AMD` has `S(0) = 117.50 USD/share`, the average implied volatility for `AMD` options with `DTE = 31 days` is `IV = 51.75%`.
+* Leg 1: The strike price for the `short put` leg is given by $K_{1}$ = 105 USD/share with `DTE = 31 days`. The premium for this contract is $\mathcal{P}_{1}$ = 1.95 USD/share. 
+* Leg 2: The strike price for the `short call` leg is given by $K_{2}$ = 135 USD/share with `DTE = 31 days`. The premium for this contract is $\mathcal{P}_{2}$ = 2.20 USD/share.
+* Leg 3: The strike price for the `long put` leg is given by $K_{3}$ = 100 USD/share with `DTE = 31 days`. The premium for this contract is $\mathcal{P}_{3}$ = 1.10 USD/share.
+* Leg 4: The strike price for the `long call` leg is given by $K_{4}$ = 140 USD/share with `DTE = 31 days`. The premium for this contract is $\mathcal{P}_{4}$ = 1.57 USD/share.
+
+
+<!-- 
+ where $K_{3}<K_{1}<S(0)<K_{2}<K_{4}$. In particular, the two short options are sold with strikes on either side of the current share price $S(0)$ of `XYZ`, with the short put strike price $K_{1}<S_{o}$ and the short call strike price $K_{2}>S_{o}$. Then, the long legs are purchased above and below the short strikes.  Thus, an [iron condor](https://www.investopedia.com/terms/i/ironcondor.asp) position has the character of a [strangle](https://www.investopedia.com/terms/s/strangle.asp) combined with a vertical spread.  -->
+
 
 ---
 
