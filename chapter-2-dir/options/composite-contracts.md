@@ -299,4 +299,9 @@ An investor holding an [iron condor](https://www.investopedia.com/terms/i/ironco
 ---
 
 ## Summary
-Fill me in
+In this lecture we analyzed the payoff and profit diagrams of composite option contracts at expiration. In particular, we introduced general composite contracts, then focused on composite contracts that have a directional bias, and concluded with contracts that are neutral to the direction of the underlying asset.
+
+* [General composite contracts](content:references:general-composite-contracts) are constructed by combining two or more option contracts to generate a new composite contract with some desired payoff and profit properties. For now, we limit our analysis to contracts that have the same underlying asset and the same expiration date. 
+* [Vertical spreads](content:references:vertical-spreads) are composite contracts that have a directional bias. They are constructed by combining a single long and and single short option contract with the same expiration date but different strike prices.
+* [Straddles and Strangles](content:references:vertical-straddles-strangles) are composite contracts that are neutral to the direction of the underlying asset. They are constructed by combining two long or two short options contracts with the same expiration date and strike price.
+* [Butterflies and Condors](content:references:vertical-butterflies-condors) are composite contracts that are neutral to the direction of the underlying asset. They are constructed by combining two short and two long option contracts with the same expiration date but different strike prices.
