@@ -1,5 +1,5 @@
 (content:references:american-options-composite-contracts)=
-# Composite Contract Payoff and Profit Diagrams
+# Composite Contract Profit Diagrams
 Call and put contracts can be combined to develop composite contract structures with interesting payoff and profit properties. Initially let's focus on contracts that have the same underlying asset and the same expiration date.
 
 ```{topic} Outline
@@ -156,10 +156,138 @@ The payoff and profit for a bear put debit spread on `XYZ` with 56-DTE. Paramete
 
 (content:references:vertical-straddles-strangles)=
 ## Straddles and Strangles
-A [straddle](https://www.investopedia.com/terms/s/straddle.asp) is a _neutral strategy_ constructed by simultaneously buying (or selling) a put and a call option on the same underlying asset `XYZ`, with the _same expiration_, and the _same strike price_. Depending upon the choice of the strike prices and whether an investor buys or sells both legs, a [straddle](https://www.investopedia.com/terms/s/straddle.asp) can be initiated as a credit or debit and can potentially have undefined profit or loss. Unlike directional strategies such as [Vertical spreads](content:references:vertical-spreads), a [straddle](https://www.investopedia.com/terms/s/straddle.asp) is a _neutral_ position; an investor holding a [straddle](https://www.investopedia.com/terms/s/straddle.asp) profits if the share price of `XYZ` moves up, down or potentially zero depending upon the construction of the straddle.
 
-A [strangle](https://www.investopedia.com/terms/s/strangle.asp) position is a _neutral strategy_ constructed by simultaneously buying and selling a put and a call option on the same underlying asset `XYZ`, with the _same expiration_ but with _different strike prices_. Depending upon the choice of the strike prices and whether an investor buys or sells both legs, a [strangle](https://www.investopedia.com/terms/s/strangle.asp) can be initiated as a credit or debit and can potentially have undefined profit or loss. Unlike directional strategies such as {ref}`content:references:option-contracts-vertical-spread`, a [strangle](https://www.investopedia.com/terms/s/strangle.asp) is a _neutral_ position; an investor holding a [strangle](https://www.investopedia.com/terms/s/strangle.asp) profits if the share price of `XYZ` moves between the strike prices of the strangle.
+[Straddles](https://www.investopedia.com/terms/s/straddle.asp) and [Strangles](https://www.investopedia.com/terms/s/strangle.asp) are neutral trades, i.e., they do not make a directional assumption. Thus, an investor can benefit in these trades if the share price of the underyling asset increases, decreases or potentially (depending upon how the trade was initialized) not move at all. The primary difference between a [straddle](https://www.investopedia.com/terms/s/straddle.asp) and a [strangle](https://www.investopedia.com/terms/s/strangle.asp) is that the strike prices of the contracts are different in a [strangle](https://www.investopedia.com/terms/s/strangle.asp) while they are the same in a [straddle](https://www.investopedia.com/terms/s/straddle.asp).
 
+### Straddles
+A [straddle](https://www.investopedia.com/terms/s/straddle.asp) is a _neutral strategy_ constructed by simultaneously buying (or selling) a `put` and a `call` option on the same underlying asset `XYZ`, with the _same expiration_, and the _same strike price_ ({prf:ref}`defn-PL-straddle`):
+
+```{prf:definition} Profit and loss of a straddle
+:label: defn-PL-straddle
+
+Let $K_{j}$ denote the strike price of contract $j$ (USD/share), and let $\mathcal{P}_{j}$ denote the price of contract $j$ (USD/share). Finally, let index $j=1$ denote the `put` contract, $j=2$ denote the `call` contract; for a straddle $K_{1} = K_{2}\equiv{K}$ (both legs have the same strike). The profit for a single straddle contract $\hat{P}$ at expiration is given by:
+
+$$\hat{P} = \theta\cdot\left(P_{1}+P_{2}\right)$$
+
+where $\theta_{1}=\theta_{2}\equiv\theta$ denotes a direction parameter: $\theta=-1$ if each leg is sold (short), $\theta=1$ otherwise. After substitution of the profit functions for a `put` and a `call` contract, the overall profit $\hat{P}$ is given by:
+
+$$\hat{P} = \theta\cdot\Bigl[(K-S)^{+}+(S-K)^{+}-(\mathcal{P}_{1}+\mathcal{P}_{2})\Bigr]$$
+
+where $V_{p} = (K-S)^{+}=\max(K-S,0)$ is the payoff function for the `put` contract, and $V_{c} = (S-K)^{+} = \max(S-K,0)$ is the payoff function for the `call` contract. The profit (or loss) of a straddle has three regimes given by:
+
+$$
+\hat{P} = \begin{cases}
+  \theta\cdot\Bigl[(S-K)-\left(\mathcal{P}_{1}+\mathcal{P}_{2}\right)\Bigr]  & S>K \\
+  -\theta\cdot\Bigl[\mathcal{P}_{1}+\mathcal{P}_{2}\Bigr] & S=K \\
+    \theta\cdot\Bigl[(K-S)-\left(\mathcal{P}_{1}+\mathcal{P}_{2}\right)\Bigr] & S<K
+\end{cases}
+$$
+
+Finally, a straddle has _two_ possible breakeven points denoted as $S^{+}$ and $S^{-}$:
+* If $S>K$: a straddle will breakeven at $S^{+} = K + \left(\mathcal{P}_{1}+\mathcal{P}_{2}\right)$
+* If $S<K$: a straddle will breakeven at $S^{-} = K - \left(\mathcal{P}_{1}+\mathcal{P}_{2}\right)$.
+
+```
+
+Investors can initiate a straddle either for a credit or a debit, depending on whether they buy or sell both legs. This strategy has the potential for unlimited profit or loss. A [long straddle](content:references:vertical-straddles-long) is initiated for a debit and has unlimited profit potential but limited loss potential. On the other hand, a [short straddle](content:references:vertical-straddles-short) is initiated for a credit and has limited profit potential but unlimited loss potential.
+
+(content:references:vertical-straddles-long)=
+#### Long straddle
+For a long straddle, we purchase (are long) both the `put` and the `call` contracts in the straddle, thus $\theta = 1$. Let's contruct the profit diagram for a long straddle for `AMD` with the parameters:
+
+* Underlying: `AMD` has `S(0) = 117.50 USD/share`, the average implied volatility for `AMD` options with `DTE = 31 days` is `IV = 51.75%`.
+* Leg 1: The strike price for the `long put` leg is given by $K_{1}$ = 120 USD/share with `DTE = 31 days`. The premium for this contract is $\mathcal{P}_{1}$ = 7.85 USD/share.
+* Leg 2: The strike price for the `long call` leg is given by $K_{2}$ = 120 USD/share with `DTE = 31 days`. The premium for this contract is $\mathcal{P}_{2}$ = 6.30 USD/share.
+
+```{figure} ./figs/Fig-AMD-long-straddle-DTE-31d.svg
+---
+height: 420px
+name: fig-long-amd-straddle
+---
+Profit for a long straddle on `AMD` with `DTE = 31 days` until expiration. The strike price for both legs is $K = 120$ USD/share. The premium for the `put` leg is $\mathcal{P}_{1} = 7.85$ USD/share and the premium for the `call` leg is $\mathcal{P}_{2} = 6.30$ USD/share. 
+```
+
+
+(content:references:vertical-straddles-short)=
+#### Short straddle
+For a short straddle, we sell (are short) both the `put` and the `call` contracts in the straddle, thus $\theta = 1$. Let's contruct the profit diagram for a long straddle with the parameters:
+
+* Underlying: `AMD` has `S(0) = 117.50 USD/share`, the average implied volatility for `AMD` options with `DTE = 31 days` is `IV = 51.75%`.
+* Leg 1: The strike price for the `short put` leg is given by $K_{1}$ = 120 USD/share with `DTE = 31 days`. The premium for this contract is $\mathcal{P}_{1}$ = 7.85 USD/share.
+* Leg 2: The strike price for the `short call` leg is given by $K_{2}$ = 120 USD/share with `DTE = 31 days`. The premium for this contract is $\mathcal{P}_{2}$ = 6.30 USD/share.
+
+```{figure} ./figs/Fig-AMD-short-straddle-DTE-31d.svg
+---
+height: 420px
+name: fig-short-amd-straddle
+---
+Profit for a short straddle on `AMD` with `DTE = 31 days` until expiration. The strike price for both legs is $K = 120 USD/share$. The premium for the `put` leg is $\mathcal{P}_{1} = 7.85$ USD/share, and the premium for the `call` leg is $\mathcal{P}_{2} = 6.30$ USD/share. 
+```
+
+### Strangles
+A [strangle](https://www.investopedia.com/terms/s/strangle.asp) position is a _neutral strategy_ constructed by simultaneously buying and selling a put and a call option on the same underlying asset `XYZ`, with the _same expiration_ but with _different strike prices_ ({prf:ref}`defn-PL-strangle`):
+
+```{prf:definition} Profit and loss of a strangle
+:label: defn-PL-strangle
+Let $K_{j}$ denote the strike price of contract $j$ (USD/share), and let $\mathcal{P}_{j}$ denote the price of contract $j$ (USD/share). Finally, let index $j=1$ denote the `put` contract, $j=2$ denote the `call` contract; for a strangle $K_{1}<K_{2}$. The profit for a single strangle contract $\hat{P}$ at expiration is given by:
+
+$$\hat{P} = \theta\cdot\left(P_{1}+P_{2}\right)$$
+
+where $\theta_{1}=\theta_{2}\equiv\theta$ denotes a direction parameter: $\theta=-1$ if each leg is sold (short), $\theta=1$ otherwise. After substitution of the profit functions for a `put` and a `call` contract, the overall profit $\hat{P}$ is given by:
+
+$$\hat{P} = \theta\cdot\Bigl[(K_{1}-S)^{+}+(S-K_{2})^{+}-(\mathcal{P}_{1}+\mathcal{P}_{2})\Bigr]$$
+
+where $V_{p} = (K_{1}-S)^{+}=\max(K_{1}-S,0)$ is the `payoff` for the `put` contract, and $V_{c} = (S-K_{2})^{+} = \max(S-K_{2},0)$ is the `payoff` for the `call` contract. The profit (or loss) of a strangle has three regimes given by:
+
+$$
+\hat{P} = \begin{cases}
+  \theta\cdot\Bigl[(S-K_{2})-\left(\mathcal{P}_{1}+\mathcal{P}_{2}\right)\Bigr]  & S>K_{2} \\
+  -\theta\cdot\Bigl[\mathcal{P}_{1}+\mathcal{P}_{2}\Bigr] & K_{1}\leq{S}\leq{K_{2}} \\
+  \theta\cdot\Bigl[(K_{1}-S)-\left(\mathcal{P}_{1}+\mathcal{P}_{2}\right)\Bigr] & S<{K_{1}}
+\end{cases}
+$$
+
+A [strangle](https://www.investopedia.com/terms/s/strangle.asp) has two break-even points $S^{+}$ and $S^{-}$ where $K_{2}<S^{+}$ and $S^{-}<K_{1}$. The low break-even point $S^{-}$ is given by:
+
+$$S^{-} = K_{1} - \left(\mathcal{P}_{1}+\mathcal{P}_{2}\right)$$
+
+while the high break-even point $S^{+}$ is given by:
+
+$$S^{+} = K_{2} + \left(\mathcal{P}_{1}+\mathcal{P}_{2}\right)$$
+```
+
+
+Depending upon the choice of the strike prices and whether an investor buys or sells both legs, a [strangle](https://www.investopedia.com/terms/s/strangle.asp) can be initiated as a credit or debit and can potentially have undefined profit or loss.
+
+#### Long strangle
+For a long strangle, we purchase (are long) both the `put` and the `call` contracts in the straddle, thus $\theta = 1$. Opening this trade results in a `debit`, where the investor profits when the trade is closed. Let's contruct the profit diagram for a long straddle with the parameters:
+
+* Underlying: `AMD` has `S(0) = 117.50 USD/share`, the average implied volatility for `AMD` options with `DTE = 31 days` is `IV = 51.75%`.
+* Leg 1: The strike price for the `short put` leg is given by $K_{1}$ = 105 USD/share with `DTE = 31 days`. The premium for this contract is $\mathcal{P}_{1}$ = 1.95 USD/share. 
+* Leg 2: The strike price for the `short call` leg is given by $K_{2}$ = 135 USD/share with `DTE = 31 days`. The premium for this contract is $\mathcal{P}_{2}$ = 2.20 USD/share.
+
+```{figure} ./figs/Fig-AMD-long-strangle-DTE-31d.svg
+---
+height: 420px
+name: fig-long-amd-strangle
+---
+Profit for a long strangle on `AMD` with `DTE = 31 days` until expiration. The strike price for the `put` leg $K_{1} = 105$ USD/share, while the strike price for the `call` leg $K_{2} = 135$ USD/share. The premium for the `put` leg is $\mathcal{P}_{1} = 1.95$ USD/share, and the premium for the `call` leg is $\mathcal{P}_{2} = 2.20$ USD/share. 
+```
+
+#### Short strangle
+For a short strangle, we sell (are short) both the `put` and the `call` contracts in the straddle, thus $\theta = 1$. Let's contruct the profit diagram for a long straddle with the parameters:
+
+* Underlying: `AMD` has `S(0) = 117.50 USD/share`, the average implied volatility for `AMD` options with `DTE = 31 days` is `IV = 51.75%`.
+* Leg 1: The strike price for the `short put` leg is given by $K_{1}$ = 105 USD/share with `DTE = 31 days`. The premium for this contract is $\mathcal{P}_{1}$ = 1.95 USD/share. 
+* Leg 2: The strike price for the `short call` leg is given by $K_{2}$ = 135 USD/share with `DTE = 31 days`. The premium for this contract is $\mathcal{P}_{2}$ = 2.20 USD/share.
+
+```{figure} ./figs/Fig-AMD-short-strangle-DTE-31d.svg
+---
+height: 420px
+name: fig-short-amd-strangle
+---
+Profit for a short strangle on `AMD` with `DTE = 31 days` until expiration. The strike price for the `put` leg $K_{1} = 105$ USD/share, while the strike price for the `call` leg $K_{2} = 135$ USD/share. The premium for the `put` leg is $\mathcal{P}_{1} = 1.95$ USD/share, and the premium for the `call` leg is $\mathcal{P}_{2} = 2.20$ USD/share. 
+```
 
 
 (content:references:vertical-butterflies-condors)=
