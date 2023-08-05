@@ -289,7 +289,7 @@ For a short strangle, we sell (are short) both the `put` and the `call` contract
 height: 420px
 name: fig-short-amd-strangle
 ---
-Profit for a short strangle on `AMD` with `DTE = 31 days` until expiration. The strike price for the `put` leg $K_{1} = 105$ USD/share, while the strike price for the `call` leg $K_{2} = 135$ USD/share. The premium for the `put` leg is $\mathcal{P}_{1} = 1.95$ USD/share, and the premium for the `call` leg is $\mathcal{P}_{2} = 2.20$ USD/share. 
+Profit for a short strangle on `AMD` with `DTE = 31 days` until expiration. The strike price for the `put` leg $K_{1} = 105$ USD/share, while the strike price for the `call` leg $K_{2} = 135$ USD/share. 
 ```
 
 
@@ -314,7 +314,13 @@ Fill me in
 * Leg 3: The strike price for the `long put` leg is given by $K_{3}$ = 110 USD/share with `DTE = 31 days`. The premium for this contract is $\mathcal{P}_{3}$ = 3.30 USD/share.
 * Leg 4: The strike price for the `long call` leg is given by $K_{4}$ = 130 USD/share with `DTE = 31 days`. The premium for this contract is $\mathcal{P}_{4}$ = 3.15 USD/share.
 
-
+```{figure} ./figs/Fig-AMD-iron-butterfly-DTE-31d.svg
+---
+height: 420px
+name: fig-short-amd-iron-butterfly
+---
+Profit for an iron butterfly on `AMD` with `DTE = 31 days` until expiration. The strike price for the short `put` and `call` legs is $K = 120$ USD/share, while the strike price for the `long put` leg is $K_{3} = 110$ USD/share, and the `long call` leg is $K_{4} = 130$ USD/share. 
+```
 
 ### Iron Condor
 An [iron condor](https://www.investopedia.com/terms/i/ironcondor.asp) is a _neutral strategy_ that has _defined risk_ constructed by _selling_ `put` and `call` options, while simultaneously _buying_ `put` and `call` options. All the legs have the same underlying asset `XYZ`, and the same expiration, but have different strike prices ({prf:ref}`defn-PL-iron-condor`):
@@ -362,6 +368,13 @@ An investor holding an [iron condor](https://www.investopedia.com/terms/i/ironco
 * Leg 3: The strike price for the `long put` leg is given by $K_{3}$ = 100 USD/share with `DTE = 31 days`. The premium for this contract is $\mathcal{P}_{3}$ = 1.10 USD/share.
 * Leg 4: The strike price for the `long call` leg is given by $K_{4}$ = 140 USD/share with `DTE = 31 days`. The premium for this contract is $\mathcal{P}_{4}$ = 1.57 USD/share.
 
+```{figure} ./figs/Fig-AMD-iron-condor-DTE-31d.svg
+---
+height: 420px
+name: fig-short-amd-iron-condor
+---
+Profit for an iron condor on `AMD` with `DTE = 31 days` until expiration. The strike price for the `short put` leg is $K_{1} = 105$ USD/share, the `short call` leg has strike $K_{2} = 135$ USD/share, the `long put` leg has strike $K_{3} = 100$ USD/share, and the `long call` leg has strike $K_{4} = 140$ USD/share. 
+```
 
 <!-- 
  where $K_{3}<K_{1}<S(0)<K_{2}<K_{4}$. In particular, the two short options are sold with strikes on either side of the current share price $S(0)$ of `XYZ`, with the short put strike price $K_{1}<S_{o}$ and the short call strike price $K_{2}>S_{o}$. Then, the long legs are purchased above and below the short strikes.  Thus, an [iron condor](https://www.investopedia.com/terms/i/ironcondor.asp) position has the character of a [strangle](https://www.investopedia.com/terms/s/strangle.asp) combined with a vertical spread.  -->
