@@ -69,6 +69,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'chapter-3-dir/model-markowitz';</script>
     <link rel="canonical" href="https://varnerlab.github.io/CHEME-5660-Markets-Mayhem-Book/infrastructure.html/chapter-3-dir/model-markowitz.html" />
     <link rel="index" title="Index" href="../genindex.html" />
@@ -161,7 +163,7 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="../infrastructure.html">
-                    Course Information and Overview
+                    Finance and Markets for Engineers and Scientists
                 </a>
             </li>
         </ul>
@@ -189,7 +191,7 @@ const thebe_selector_output = ".output, .cell_output"
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../chapter-2-dir/options.html">Derivative Securities</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="../chapter-2-dir/options/american-call-and-put-contracts.html">American and European Call and Put Contracts</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../chapter-2-dir/options/composite-contracts.html">Composite Contract Payoff and Profit Diagrams</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../chapter-2-dir/options/composite-contracts.html">Composite Contracts at Expiration</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../chapter-2-dir/options/option-contract-pricing.html">Contract Pricing at Expiration: Extrinsic and Intrinsic Value</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../chapter-2-dir/options/option-contract-dynamics.html">Contract Pricing Before Expiration: Price Dynamics and Sensitivities</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../chapter-2-dir/options/option-rolling.html">Trade mechanics for options positions: The Art of the Roll</a></li>
@@ -200,13 +202,10 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="chapter-3-landing.html">Unit 3: Modern Portfolio Theory</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
-<li class="toctree-l2 current active has-children"><a class="reference internal" href="markowitz.html">Markowitz Portfolio Allocation</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="data-markowitz.html">Data-Driven Portfolio Allocation</a></li>
-<li class="toctree-l3 current active"><a class="current reference internal" href="#">Model-Driven Portfolio Allocation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="reallocation.html">Portfolio Reallocation Strategies</a></li>
-</ul>
-</li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="black-swan-events.html">Surviving Black Swan Events</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="data-markowitz.html">Data-Driven Portfolio Allocation</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Model-Driven Portfolio Allocation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reallocation.html">Portfolio Reallocation Strategies</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="black-swan-events.html">Surviving Black Swan Events</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="var.html">Value at Risk and Conditional Value at Risk</a></li>
 <li class="toctree-l3"><a class="reference internal" href="hedged-portfolio.html">Hedging and Dynamic Hedging Approaches</a></li>
 </ul>
@@ -215,14 +214,14 @@ const thebe_selector_output = ".output, .cell_output"
 </li>
 </ul>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter-4-dir/chapter-4-landing.html">Unit 4: Rational Decision Theory</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter-4-dir/chapter-4-landing.html">Unit 4: Rational Decision Theory</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../chapter-4-dir/expected-utility.html">Maximzing the Expected Utility</a></li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../chapter-4-dir/markov.html">Markov Models</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../chapter-4-dir/markov.html">Markov Models</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="../chapter-4-dir/markov/hmm.html">Hidden Markov Models of Investor Behavior</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../chapter-4-dir/markov/mdp.html">Markov Decision Process Models of Sequential Decision Making</a></li>
 </ul>
 </li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../chapter-4-dir/rl.html">Reinforcement Learning</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../chapter-4-dir/rl.html">Reinforcement Learning</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="../chapter-4-dir/bandits/bandits.html">Bandit problems, exploration versus exploitation and Thompson sampling</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../chapter-4-dir/rl/Q-learning.html">Reinforcement Learning (RL) and the asset management problem</a></li>
 </ul>
@@ -234,7 +233,7 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../appendix/probability-basics.html">Probability and Random Variables</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../appendix/ito.html">Stochastic Processes</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../appendix/julia-basics.html">Julia Basics</a><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-12"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../appendix/julia-basics.html">Julia Basics</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../appendix/julia/julia-installation.html">Julia Installation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../appendix/julia/julia-functions-types.html">Julia Types, Functions and Programs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../appendix/julia/julia-data.html">Working with Data in Julia</a></li>
@@ -414,7 +413,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -430,6 +431,28 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#single-index-models">Single Index Models</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#derivation">Derivation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#estimating-single-index-models-from-data">Estimating Single Index Models from Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#phase-1-estimate-alpha-i-beta-i">Phase 1: Estimate <span class="math notranslate nohighlight">\((\alpha_{i},\beta_{i})\)</span>.</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#phase-2-identification-of-the-residual-model">Phase 2: Identification of the residual model</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#single-index-portfolios">Single Index Portfolios</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio-return-using-single-index-models">Portfolio Return using Single Index Models</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio-variance-using-single-index-models">Portfolio Variance using Single Index Models</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -442,6 +465,196 @@ document.write(`
   <section class="tex2jax_ignore mathjax_ignore" id="model-driven-portfolio-allocation">
 <h1>Model-Driven Portfolio Allocation<a class="headerlink" href="#model-driven-portfolio-allocation" title="Permalink to this heading">#</a></h1>
 <p>Fill me in.</p>
+<aside class="topic">
+<p class="topic-title">Model-Driven Portfolio Allocation Outline</p>
+<p>Fill me in.</p>
+</aside>
+<hr class="docutils" />
+<section id="single-index-models">
+<span id="content-references-single-index-models"></span><h2>Single Index Models<a class="headerlink" href="#single-index-models" title="Permalink to this heading">#</a></h2>
+<p>The application of index models to construct risky portfolios was originally proposed by Treynor and Black <span id="id1">[<a class="reference internal" href="../References.html#id9" title="Jack L Treynor and Fischer Black. How to use security analysis to improve portfolio selection. The Journal of Business, 46(1):66-86, 1973. URL: https://EconPapers.repec.org/RePEc:ucp:jnlbus:v:46:y:1973:i:1:p:66-86.">Treynor and Black, 1973</a>]</span>. Single index models are asset pricing models which measure the risk and the return of a stock relative to a risk-free alternative investment, e.g., <span class="xref myst">government treasury bonds</span>. A single index model describes the return of a firm’s stock in terms of a firm-specific return and the overall market return. One of the simplest (yet still widely used) single index models was developed by Sharpe <span id="id2">[<a class="reference internal" href="../References.html#id19" title="William F. Sharpe. A simplified model for portfolio analysis. Management Science, 9(2):277-293, 1963. URL: https://doi.org/10.1287/mnsc.9.2.277, arXiv:https://doi.org/10.1287/mnsc.9.2.277, doi:10.1287/mnsc.9.2.277.">Sharpe, 1963</a>]</span>.</p>
+<section id="derivation">
+<h3>Derivation<a class="headerlink" href="#derivation" title="Permalink to this heading">#</a></h3>
+<p>The single-index model measures both the risk and the return of a stock, relative to a risk free alternative investment e.g., government treasury bounds. The single index model describes the return of the stock of firm <span class="math notranslate nohighlight">\(i\)</span> in terms of a firm-specific return, and an overall market return:</p>
+<div class="math notranslate nohighlight" id="equation-eq-single-index-model">
+<span class="eqno">(36)<a class="headerlink" href="#equation-eq-single-index-model" title="Permalink to this equation">#</a></span>\[r_{i}\left(t\right) - r_{f} = \alpha_{i}+\beta_{i}\left(r_{m}\left(t\right)-r_{f}\right)+\epsilon_{i}
+\left(t\right)\qquad{t=1,2,\dots,T}\]</div>
+<p>The term <span class="math notranslate nohighlight">\(r_{i}\left(t\right)\)</span> denotes the return of firm <span class="math notranslate nohighlight">\(i\)</span>, during time period <span class="math notranslate nohighlight">\(t\)</span>,
+<span class="math notranslate nohighlight">\(r_{f}\)</span> denotes the risk-free rate i.e., the <a class="reference external" href="https://fred.stlouisfed.org/series/DTB3">interest rate of a riskless investment such as treasury bills</a>, while <span class="math notranslate nohighlight">\(r_{m}\left(t\right)\)</span> denotes the return on a market portfolio e.g., an index such as the <a class="reference external" href="https://en.wikipedia.org/wiki/S%26P_500">S&amp;P500</a> during time period <span class="math notranslate nohighlight">\(t\)</span>.  The term <span class="math notranslate nohighlight">\(\alpha_{i}\)</span> denotes the firm-specific return, while <span class="math notranslate nohighlight">\(\beta_{i}\)</span> denotes the proportion of the the firm’s return associated with the overall market (<a class="reference internal" href="#defn-single-index-model-standard">Definition 20</a>):</p>
+<div class="proof definition admonition" id="defn-single-index-model-standard">
+<p class="admonition-title"><span class="caption-number">Definition 20 </span> (Single index model of Sharpe)</p>
+<section class="definition-content" id="proof-content">
+<p>Let <span class="math notranslate nohighlight">\(R_{i}(t)\equiv\left(r_{i}\left(t\right) - r_{f}\right)\)</span> and <span class="math notranslate nohighlight">\(R_{m}(t)\equiv\left(r_{m}\left(t\right)-r_{f}\right)\)</span> denote the firm-specific and market excess returns (random variables) for period <span class="math notranslate nohighlight">\(t\)</span>. Further, let <span class="math notranslate nohighlight">\(\epsilon_{i}\left(t\right)\)</span> denote a <a class="reference external" href="https://en.wikipedia.org/wiki/Normal_distribution">stationary normally distributed random noise process</a> with mean zero and standard deviation <span class="math notranslate nohighlight">\(\sigma_{i}\)</span>. Then, the single index model of Sharpe is given by <span id="id3">[<a class="reference internal" href="../References.html#id19" title="William F. Sharpe. A simplified model for portfolio analysis. Management Science, 9(2):277-293, 1963. URL: https://doi.org/10.1287/mnsc.9.2.277, arXiv:https://doi.org/10.1287/mnsc.9.2.277, doi:10.1287/mnsc.9.2.277.">Sharpe, 1963</a>]</span>:</p>
+<div class="math notranslate nohighlight" id="equation-eq-single-index-model-standard">
+<span class="eqno">(37)<a class="headerlink" href="#equation-eq-single-index-model-standard" title="Permalink to this equation">#</a></span>\[R_{i}\left(t\right) = \alpha_{i}+\beta_{i}R_{m}\left(t\right)+\epsilon_{i}
+\left(t\right)\qquad{t=1,2,\dots,T}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\alpha_{i}\)</span> and <span class="math notranslate nohighlight">\(\beta_{i}\)</span> are (unknown) model parameters:</p>
+<ul class="simple">
+<li><p>The parameter <span class="math notranslate nohighlight">\(\alpha_{i}\)</span> describes the firm specific return not explained by the market; thus, <span class="math notranslate nohighlight">\(\alpha_{i}\)</span> is the idiosyncratic return of firm <span class="math notranslate nohighlight">\(i\)</span>.</p></li>
+<li><p>The parameter <span class="math notranslate nohighlight">\(\beta_{i}\)</span> measures the relationship between the excess return of firm <span class="math notranslate nohighlight">\(i\)</span> and the excess return of the market; a large <span class="math notranslate nohighlight">\(\beta_{i}\)</span> suggests the market returns (or losses) are <em>amplified</em> for firm <span class="math notranslate nohighlight">\(i\)</span>, while a small <span class="math notranslate nohighlight">\(\beta_{i}\)</span> suggests the market returns (or losses) are <em>damped</em> for firm <span class="math notranslate nohighlight">\(i\)</span>.</p></li>
+<li><p>The parameter <span class="math notranslate nohighlight">\(\beta_{i}\)</span> can also be interpreted as a measure of the relative risk of investing in a firm <span class="math notranslate nohighlight">\(i\)</span> relative to the overall market.</p></li>
+</ul>
+</section>
+</div><p>To understand the various interpretations of <span class="math notranslate nohighlight">\(\beta_{i}\)</span>, we first must understand that both the firm specific <span class="math notranslate nohighlight">\(R_{i}\)</span> and overall market excess returns <span class="math notranslate nohighlight">\(R_{m}\)</span> are random variables. Thus, we can compute the expectation and variance of these variables and look at how these quantities depend upon <span class="math notranslate nohighlight">\(\beta_{i}\)</span>.</p>
+<p>Let’s start by thinking about the reward interpretation of <span class="math notranslate nohighlight">\(\beta_{i}\)</span>:</p>
+<div class="proof observation admonition" id="obs-beta-return-measure">
+<p class="admonition-title"><span class="caption-number">Observation 12 </span> (Reward interpretation of <span class="math notranslate nohighlight">\(\beta_{i}\)</span>)</p>
+<section class="observation-content" id="proof-content">
+<p>Taking the expectation of the firm excess return <span class="math notranslate nohighlight">\(R_{i}\)</span> gives:</p>
+<div class="math notranslate nohighlight" id="equation-eq-expected-r-sim">
+<span class="eqno">(38)<a class="headerlink" href="#equation-eq-expected-r-sim" title="Permalink to this equation">#</a></span>\[\mathbb{E}\left(R_{i}\right) = \alpha_{i}+\beta_{i}\mathbb{E}\left(R_{m}\right)\]</div>
+<p>where <span class="math notranslate nohighlight">\(\mathbb{E}\left(\epsilon_{i}\left(t\right)\right) = 0\)</span>.
+Solving Eqn. <a class="reference internal" href="#equation-eq-expected-r-sim">(38)</a> for <span class="math notranslate nohighlight">\(\beta_{i}\)</span> gives:</p>
+<div class="math notranslate nohighlight" id="equation-eqn-beta-return-ratio">
+<span class="eqno">(39)<a class="headerlink" href="#equation-eqn-beta-return-ratio" title="Permalink to this equation">#</a></span>\[\beta_{i} = \frac{\mathbb{E}\left(R_{i}\right) - \alpha_{i}}{\mathbb{E}\left(R_{m}\right)}\]</div>
+<p>Thus, <span class="math notranslate nohighlight">\(\beta_{i}\)</span> is a corrected ratio of expected (average) returns:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\beta_{i}&gt;1\)</span> expected return of firm <span class="math notranslate nohighlight">\(i\)</span> is <em>greater</em> than the expected market return</p></li>
+<li><p><span class="math notranslate nohighlight">\(\beta_{i}\sim{1}\)</span> firm <span class="math notranslate nohighlight">\(i\)</span> performs <em>similar</em> to the overall market on average</p></li>
+<li><p><span class="math notranslate nohighlight">\(\beta_{i}&lt;1\)</span> expected excess return of firm <span class="math notranslate nohighlight">\(i\)</span> is <em>less</em> than the expected excess market return</p></li>
+</ul>
+</section>
+</div><p>However, <span class="math notranslate nohighlight">\(\beta_{i}\)</span> has another interpretation, namely, the ratio of risks:</p>
+<div class="proof observation admonition" id="obs-beta-risk-measure">
+<p class="admonition-title"><span class="caption-number">Observation 13 </span> (Risk interpretation of <span class="math notranslate nohighlight">\(\beta_{i}\)</span>)</p>
+<section class="observation-content" id="proof-content">
+<p>The <span class="math notranslate nohighlight">\(\beta_{i}\)</span> for asset <span class="math notranslate nohighlight">\(i\)</span> can also be considered a measure of the risk of asset <span class="math notranslate nohighlight">\(i\)</span> relative to the market. For example, we can show that:</p>
+<div class="math notranslate nohighlight" id="equation-eqn-beta-risk-ratio">
+<span class="eqno">(40)<a class="headerlink" href="#equation-eqn-beta-risk-ratio" title="Permalink to this equation">#</a></span>\[\beta_{i} = \frac{\text{cov}(R_{i}, R_{m})}{\text{var}(R_{m})}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\text{cov}(R_{i}, R_{m})\)</span> denotes the <a class="reference external" href="https://en.wikipedia.org/wiki/Covariance">covariance</a> between the excess return of asset <span class="math notranslate nohighlight">\(i\)</span> and the market, and <span class="math notranslate nohighlight">\(\text{var}(R_{m})\)</span> denotes the variance of the market excess return. Thus, in the context of risk, <span class="math notranslate nohighlight">\(\beta_{i}\)</span> has the interpretation:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\beta_{i}&gt;1\)</span> suggests firm <span class="math notranslate nohighlight">\(i\)</span> has <em>greater risk</em> than the overall market</p></li>
+<li><p><span class="math notranslate nohighlight">\(\beta_{i}\sim{1}\)</span> suggests that firm <span class="math notranslate nohighlight">\(i\)</span> has the <em>same risk</em> as the overall market on average</p></li>
+<li><p><span class="math notranslate nohighlight">\(\beta_{i}&lt;1\)</span> suggests firm <span class="math notranslate nohighlight">\(i\)</span> has <em>less risk</em> compared to overall market</p></li>
+</ul>
+</section>
+</div><p>Putting these two regimes together gives fundamental insight into the behavior of markets: <strong>high returns come with high-risk</strong>.</p>
+</section>
+<section id="estimating-single-index-models-from-data">
+<h3>Estimating Single Index Models from Data<a class="headerlink" href="#estimating-single-index-models-from-data" title="Permalink to this heading">#</a></h3>
+<p>Estimating single index models from data reduces to estimating values for the <span class="math notranslate nohighlight">\((\alpha_{i},\beta_{i})\)</span> parameters and developing a residual model <span class="math notranslate nohighlight">\(\epsilon_{i}(t)\)</span>. Let’s decompose this problem into two phases:</p>
+<ul class="simple">
+<li><p>Phase 1: Estimate values for <span class="math notranslate nohighlight">\((\alpha_{i},\beta_{i})\)</span> using one of many possible approaches, and</p></li>
+<li><p>Phase 2: Estimate the <span class="math notranslate nohighlight">\(\epsilon_{i}(t)\)</span> distribution by computing the residual between the data and the model with parameter values from phase 1.</p></li>
+</ul>
+<section id="phase-1-estimate-alpha-i-beta-i">
+<h4>Phase 1: Estimate <span class="math notranslate nohighlight">\((\alpha_{i},\beta_{i})\)</span>.<a class="headerlink" href="#phase-1-estimate-alpha-i-beta-i" title="Permalink to this heading">#</a></h4>
+<p>Imagine that we have historical data for the excess return of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> and the market over some period of time; say we have <span class="math notranslate nohighlight">\(\mathcal{M}\)</span> measurements for the excess returns. Then, the excess return for <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> can be encoded as a <span class="math notranslate nohighlight">\(\mathcal{M}\times{1}\)</span> column vector <span class="math notranslate nohighlight">\(\mathcal{y}\)</span>, while the excess market return can be encoded as an <span class="math notranslate nohighlight">\(\mathcal{M}\times{2}\)</span> matrix <span class="math notranslate nohighlight">\(\mathbf{X}\)</span>, where the first column of <span class="math notranslate nohighlight">\(\mathbf{X}\)</span> is all 1’s while the second column holds the excess market return values. Then, the single index model is the overdetermined (<span class="math notranslate nohighlight">\(\mathcal{M}\gg{2}\)</span>) linear system:</p>
+<div class="math notranslate nohighlight" id="equation-eqn-linear-sys-sim">
+<span class="eqno">(41)<a class="headerlink" href="#equation-eqn-linear-sys-sim" title="Permalink to this equation">#</a></span>\[\mathbf{y} = \mathbf{X}\mathbf{\theta} + \mathbf{\epsilon}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\theta = (\alpha_{i},\beta_{i})^{T}\)</span> is the <span class="math notranslate nohighlight">\(2\times{1}\)</span> column vector of unknown parameters, <span class="math notranslate nohighlight">\(\mathbf{\epsilon}\)</span> represents a vector of unexplained random errors. The task is to estimate the unknown <span class="math notranslate nohighlight">\(\theta\)</span> vector, given <span class="math notranslate nohighlight">\(\mathbf{X}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{y}\)</span>.</p>
+<p>To estimate the unknown parameter vector <span class="math notranslate nohighlight">\(\mathbf{\theta}\)</span> we invert the data matrix <span class="math notranslate nohighlight">\(\mathbf{X}\)</span>. However, the inverse of an overdetermined matrix can not be computed directly. Instead, we solve the <a class="reference external" href="https://en.wikipedia.org/wiki/Ordinary_least_squares">normal equations</a> which transforms the original overdetermined problem into a square system (<a class="reference internal" href="#defn-normal-eqn-ols">Definition 21</a>):</p>
+<div class="proof definition admonition" id="defn-normal-eqn-ols">
+<p class="admonition-title"><span class="caption-number">Definition 21 </span> (Normal solution overdetermined linear regression model)</p>
+<section class="definition-content" id="proof-content">
+<p>There exists dataset <span class="math notranslate nohighlight">\(\mathcal{D} = \left\{\mathbf{x}_{i},y_{i}\right\}_{i=1}^{n}\)</span> where <span class="math notranslate nohighlight">\(\mathbf{x}_{i}\)</span> is a p-dimensional vector of inputs (independent variables) and <span class="math notranslate nohighlight">\(y_{i}\)</span> denotes a scalar response variable (dependent variable), and <span class="math notranslate nohighlight">\(n\gg{p}\)</span>.  Further, suppose we model the dataset <span class="math notranslate nohighlight">\(\mathcal{D}\)</span> using the linear regression model:</p>
+<div class="math notranslate nohighlight">
+\[\mathbf{y} = \mathbf{X}\mathbf{\theta} + \mathbf{\epsilon}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\mathbf{\epsilon}\)</span> represents a vector of unexplained random errors. Then, the value of the unknown parameter vector <span class="math notranslate nohighlight">\(\mathbf{\theta}\)</span> that minimizes the sum of the squares loss function for an overdetermined system is given by:</p>
+<div class="math notranslate nohighlight" id="equation-eqn-loss-function-soln">
+<span class="eqno">(42)<a class="headerlink" href="#equation-eqn-loss-function-soln" title="Permalink to this equation">#</a></span>\[\hat{\mathbf{\theta}} = \left(\mathbf{X}^{T}\mathbf{X}\right)^{-1}\mathbf{X}^{T}\mathbf{y} - \left(\mathbf{X}^{T}\mathbf{X}\right)^{-1}\mathbf{X}^{T}\mathbf{\epsilon}\]</div>
+<p>The matrix <span class="math notranslate nohighlight">\(\mathbf{X}^{T}\mathbf{X}\)</span> is called the normal matrix, while <span class="math notranslate nohighlight">\(\mathbf{X}^{T}\mathbf{y}\)</span> is called the moment matrix. The existence of the normal solution <span class="math notranslate nohighlight">\(\hat{\mathbf{\theta}}\)</span> requires that inverse <span class="math notranslate nohighlight">\(\left(\mathbf{X}^{T}\mathbf{X}\right)^{-1}\)</span> exists.</p>
+</section>
+</div><p><a class="reference internal" href="#example-dmi-single-index-model">Example 8</a> explores the direct matrix inversion approach for computing the unknown parameter vector <span class="math notranslate nohighlight">\(\theta\)</span>:</p>
+<div class="proof example dropdown admonition" id="example-dmi-single-index-model">
+<p class="admonition-title"><span class="caption-number">Example 8 </span> (Direct matrix inversion to compute <span class="math notranslate nohighlight">\(\theta\)</span>)</p>
+<section class="example-content" id="proof-content">
+<p>Estimate the unknown single index model parameters <span class="math notranslate nohighlight">\(\theta = (\alpha,\beta)^{T}\)</span> for <a class="reference external" href="https://finance.yahoo.com/quote/AMD">AMD</a> using the daily log returns for the last 90 days. The <a class="reference external" href="https://ycharts.com/indicators/3_month_t_bill">three-month T-bill interest rate</a> is r = 2.61%. Finally, assume <a class="reference external" href="https://finance.yahoo.com/quote/SPY">SPY</a> represents the market.</p>
+<p><strong>Compute daily risk-free rate</strong>: Because we are using daily price data to compute the excess return, we must convert the risk-free rate, reported in annual units, to daily units. Let <span class="math notranslate nohighlight">\(r_{f}\)</span> denote the risk-free daily rate, then:</p>
+<div class="math notranslate nohighlight">
+\[r_{f} = (1+r)^{(1/365)} - 1\]</div>
+<p>The value for the daily risk-free rate of return was found to be <span class="math notranslate nohighlight">\(r_{f}\)</span> = 7.06e-5.</p>
+<p><strong>Estimate <span class="math notranslate nohighlight">\(\theta\)</span></strong>:
+The daily log-return for <a class="reference external" href="https://finance.yahoo.com/quote/AMD">AMD</a> and <a class="reference external" href="https://finance.yahoo.com/quote/SPY">SPY</a> was computed using <code class="xref prf prf-ref docutils literal notranslate"><span class="pre">defn-log-return</span></code>; six-months of daily open high low close (OHLC) data was downloaded from <a class="reference external" href="https://polygon.io">Polygon.io</a>.</p>
+<p>The last 90-days of data were used to calculate the log return and to formulate the <span class="math notranslate nohighlight">\(Y\)</span> vector and <span class="math notranslate nohighlight">\(X\)</span> matrix. The matrix inverse <span class="math notranslate nohighlight">\(\left(X^{T}X\right)^{-1}\)</span> was computed using the <code class="docutils literal notranslate"><span class="pre">inv</span></code> command from the <code class="docutils literal notranslate"><span class="pre">LinearAlgebra</span></code> package:</p>
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">Xᵀ</span> <span class="o">=</span> <span class="n">transpose</span><span class="p">(</span><span class="n">X</span><span class="p">);</span>
+<span class="n">θ̂</span> <span class="o">=</span> <span class="n">inv</span><span class="p">((</span><span class="n">Xᵀ</span><span class="o">*</span><span class="n">X</span><span class="p">))</span><span class="o">*</span><span class="n">Xᵀ</span><span class="o">*</span><span class="n">Y</span>
+</pre></div>
+</div>
+<p>where θ̂ denotes the estimated model parameters; the estimated firm-specific return was <span class="math notranslate nohighlight">\(\hat{\alpha}\)</span> = -0.000432, while <span class="math notranslate nohighlight">\(\hat{\beta}\)</span> = 1.96.</p>
+<figure class="align-default" id="fig-amd-sim-v-data">
+<a class="reference internal image-reference" href="chapter-3-dir/figs/Fig-AMD-SIM-v-Data.pdf"><img alt="chapter-3-dir/figs/Fig-AMD-SIM-v-Data.pdf" src="chapter-3-dir/figs/Fig-AMD-SIM-v-Data.pdf" style="height: 380px;" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 32 </span><span class="caption-text">Estimated performance of the single index model for <a class="reference external" href="https://finance.yahoo.com/quote/AMD/">AMD</a> computed using direct matrix inversion. Green dots denote prediction data, while gray dots denote training data.</span><a class="headerlink" href="#fig-amd-sim-v-data" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>source: <a class="reference external" href="https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks">live Pluto notebook</a> or <a class="reference external" href="https://htmlview.glitch.me/?https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks/blob/main/pluto-notebooks/html/Example-DirectMatrixInversion-SIM.jl.html">static HTML view</a></p>
+</section>
+</div></section>
+<section id="phase-2-identification-of-the-residual-model">
+<h4>Phase 2: Identification of the residual model<a class="headerlink" href="#phase-2-identification-of-the-residual-model" title="Permalink to this heading">#</a></h4>
+<p>The residual model <span class="math notranslate nohighlight">\(\epsilon(t)\)</span> describes the unmodeled random component of the return of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code>; thus, it explains all the influences on the excess return that are <em>not</em> associated with the firm or the overall market. Assume <span class="math notranslate nohighlight">\(\epsilon_{i}(t)\sim{N(0,\sigma_{\epsilon,i}^2)}\)</span>, i.e., the residual is <a class="reference external" href="https://en.wikipedia.org/wiki/Normal_distribution">normally distributed</a> with a zero mean and a variance of <span class="math notranslate nohighlight">\(\sigma_{\epsilon,i}^2\)</span>. Define the residual (difference) between the model and the data as:</p>
+<div class="math notranslate nohighlight">
+\[\Delta = \mathbf{y} - \hat{\mathbf{y}}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\hat{\mathbf{y}}\)</span> denotes the <em>estimated</em> excess return of firm <span class="math notranslate nohighlight">\(i\)</span> (computed using the single index model), and <span class="math notranslate nohighlight">\(\mathbf{y}\)</span> indicates the <em>actual</em> excess return of firm <span class="math notranslate nohighlight">\(i\)</span> as observed in the market. The values of <span class="math notranslate nohighlight">\(\Delta\)</span> can be thought of as samples from the residual distribution <span class="math notranslate nohighlight">\(\epsilon_{i}(t)\)</span>, thus, we can use <span class="math notranslate nohighlight">\(\Delta\)</span> to estimate <span class="math notranslate nohighlight">\(\sigma_{\epsilon,i}^2\)</span>.</p>
+<p><a class="reference internal" href="#example-normal-residual-model">Example 9</a> explores an approach to estimate the variance of the residuals.</p>
+<div class="proof example dropdown admonition" id="example-normal-residual-model">
+<p class="admonition-title"><span class="caption-number">Example 9 </span> (Identification of the Residual Model for <a class="reference external" href="https://finance.yahoo.com/quote/AMD">AMD</a>)</p>
+<section class="example-content" id="proof-content">
+<p>Let’s use the data and the estimated single index model parameters <span class="math notranslate nohighlight">\(\hat{\theta}\)</span> for <a class="reference external" href="https://finance.yahoo.com/quote/AMD">AMD</a> from <a class="reference internal" href="#example-dmi-single-index-model">Example 8</a>. Given this data, let’s estimate the variance of the unknown residual distribution, <span class="math notranslate nohighlight">\(\sigma_{\epsilon,i}^2\)</span>, using a maximum likelihood approach.</p>
+<p>We implemented the maximum likelihood strategy using routines implemented in the <a class="reference external" href="https://github.com/JuliaStats/Distributions.jl">Distributions.jl</a> package.</p>
+<p>Finish me this weekend.</p>
+</section>
+</div></section>
+</section>
+</section>
+<section id="single-index-portfolios">
+<h2>Single Index Portfolios<a class="headerlink" href="#single-index-portfolios" title="Permalink to this heading">#</a></h2>
+<p>The single index model can be used to construct portfolios of assets. In this section, we will explore the construction of a portfolio of assets using the single index model.</p>
+<section id="portfolio-return-using-single-index-models">
+<h3>Portfolio Return using Single Index Models<a class="headerlink" href="#portfolio-return-using-single-index-models" title="Permalink to this heading">#</a></h3>
+<p>Portfolio return shows the expected return of portfolio <span class="math notranslate nohighlight">\(\mathcal{P}\)</span> in terms of the expected return of each of the assets in the portfolio. Thus, we must estimate the expected returns for each asset when solving the Markowitz allocation problem from data. However, a single index model can limit this work; instead of estimating the expected return for each asset from data, we only need to calculate the expected excess market return <span class="math notranslate nohighlight">\(\mathbb{E}(R_{m})\)</span> and then use the single index model to predict the firm-specific expected excess returns <span class="math notranslate nohighlight">\(\mathbb{E}(R_{i})\)</span>:</p>
+<div class="proof observation admonition" id="obs-single-index-model-p-return">
+<p class="admonition-title"><span class="caption-number">Observation 14 </span> (Single Index Model Portfolio Return)</p>
+<section class="observation-content" id="proof-content">
+<p>The single index model of Sharpe <span id="id4">[<a class="reference internal" href="../References.html#id19" title="William F. Sharpe. A simplified model for portfolio analysis. Management Science, 9(2):277-293, 1963. URL: https://doi.org/10.1287/mnsc.9.2.277, arXiv:https://doi.org/10.1287/mnsc.9.2.277, doi:10.1287/mnsc.9.2.277.">Sharpe, 1963</a>]</span> describes the excess return of asset <span class="math notranslate nohighlight">\(i\)</span> in terms of a firm specific contribution, and a contribution from the overall market. Substituting the expected excess return for asset <span class="math notranslate nohighlight">\(i\)</span> into Eqn. <a class="reference internal" href="data-markowitz.html#equation-eqn-expected-p-rerturn">(34)</a> gives:</p>
+<div class="math notranslate nohighlight" id="equation-eqn-almost-sim-portfolio">
+<span class="eqno">(43)<a class="headerlink" href="#equation-eqn-almost-sim-portfolio" title="Permalink to this equation">#</a></span>\[\mathbb{E}(R_{\mathcal{P}}) = w^{T}\mathbb{E}(R) = \sum_{i\in\mathcal{P}}w_{i}\Bigl[\alpha_{i}+\beta_{i}\mathbb{E}(R_{m})\Bigr]\]</div>
+<p>where the constant <span class="math notranslate nohighlight">\(\alpha_{i}\)</span> is the estimated unexplained firm-specific return and <span class="math notranslate nohighlight">\(\mathbb{E}(R_{m})\)</span> denotes the expected excess return of the market. Carrying through the multiplication in Eqn. <a class="reference internal" href="#equation-eqn-almost-sim-portfolio">(43)</a> gives:</p>
+<div class="math notranslate nohighlight" id="equation-eqn-expected-return-sim-portfolio">
+<span class="eqno">(44)<a class="headerlink" href="#equation-eqn-expected-return-sim-portfolio" title="Permalink to this equation">#</a></span>\[\mathbb{E}(r_{\mathcal{P}}) = w^{T}\mathbb{E}(r) = \alpha_{\mathcal{P}}+\beta_{\mathcal{P}}\mathbb{E}(R_{m})\]</div>
+<p>where the constants <span class="math notranslate nohighlight">\(\alpha_{\mathcal{P}}\)</span> and <span class="math notranslate nohighlight">\(\beta_{\mathcal{P}}\)</span> are given by:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{eqnarray}
+\alpha_{\mathcal{P}} &amp; = &amp; \sum_{i\in\mathcal{P}}w_{i}\alpha_{i}\\
+\beta_{\mathcal{P}} &amp; = &amp; \sum_{i\in\mathcal{P}}w_{i}\beta_{i}
+\end{eqnarray}
+\end{split}\]</div>
+<p>Thus, the overall <span class="math notranslate nohighlight">\(\beta\)</span> for the portfolio is a sum the individual firm-specific <span class="math notranslate nohighlight">\(\beta_{i}\)</span>’s weighted by <span class="math notranslate nohighlight">\(w_{i}\)</span>, the fraction of asset <span class="math notranslate nohighlight">\(i\)</span> in the portfolio. Similarly, the unexplained excess return for the portfolio is the sum of the unexplained return for each firm <span class="math notranslate nohighlight">\(\alpha_{i}\)</span>, weighted by weighted by <span class="math notranslate nohighlight">\(w_{i}\)</span>.</p>
+</section>
+</div></section>
+<section id="portfolio-variance-using-single-index-models">
+<h3>Portfolio Variance using Single Index Models<a class="headerlink" href="#portfolio-variance-using-single-index-models" title="Permalink to this heading">#</a></h3>
+<p>The single index portfolio approach provides a theoretically attractive model for the covariance matrix <span class="math notranslate nohighlight">\(\Sigma\)</span>. In particular, let’s build upon <a class="reference internal" href="data-markowitz.html#defn-portfolio-variance">Definition 19</a>:</p>
+<div class="proof observation admonition" id="obs-single-index-model-covariance">
+<p class="admonition-title"><span class="caption-number">Observation 15 </span> (Single Index Model Portfolio Variance)</p>
+<section class="observation-content" id="proof-content">
+<p>To calculate the portfolio covariance matrix <span class="math notranslate nohighlight">\(\Sigma\)</span>, we must calculate <span class="math notranslate nohighlight">\(\text{cov}(R_{i}, R_{j})\)</span>, the covariance between the excess return of asset <span class="math notranslate nohighlight">\(i\)</span> and <span class="math notranslate nohighlight">\(j\)</span> in portfolio <span class="math notranslate nohighlight">\(\mathcal{P}\)</span>. Toward this, we take advantage of a property of the covariance between random variables <span class="math notranslate nohighlight">\(X\)</span> and <span class="math notranslate nohighlight">\(Y\)</span>:</p>
+<div class="math notranslate nohighlight" id="equation-eqn-prop-cov">
+<span class="eqno">(45)<a class="headerlink" href="#equation-eqn-prop-cov" title="Permalink to this equation">#</a></span>\[\text{cov}(X,Y) = \mathbb{E}(XY) - \mathbb{E}(X)\mathbb{E}(Y)\]</div>
+<p>Let <span class="math notranslate nohighlight">\(X=R_{i}\)</span> and <span class="math notranslate nohighlight">\(Y=R_{j}\)</span> where the excess return of asset <span class="math notranslate nohighlight">\(\star\)</span> is modeled using the single index model:</p>
+<div class="math notranslate nohighlight">
+\[R_{\star} = \alpha_{\star}+\beta_{\star}R_{m} + \epsilon_{\star}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\alpha_{\star}\)</span> denotes the firm-specific return, <span class="math notranslate nohighlight">\(\beta_{\star}\)</span> denotes the proportion of the firm’s return associated with the overall market, and <span class="math notranslate nohighlight">\(\epsilon_{\star}\)</span> is an error term; we have suppressed the time argument in the excess returns and the error.</p>
+<p>Substituting the single index model into Eqn. <a class="reference internal" href="#equation-eqn-prop-cov">(45)</a> and simplifing gives:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\text{cov}(R_{i}, R_{j}) = \begin{cases}
+\beta_{i}^{2}\sigma_{m}^{2}+\sigma_{\epsilon_{i}}^{2} &amp; i = j \\
+\beta_{i}\beta_{j}\sigma_{m}^2 &amp; i \neq j
+\end{cases}
+\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\sigma_{m}^2\)</span> denotes the variance of the excess return of the market portfolio and <span class="math notranslate nohighlight">\(\sigma_{\epsilon_{i}}^{2}\)</span> denotes the variance of the firm-specific error.</p>
+<p>Thus, the covariance matrix <span class="math notranslate nohighlight">\(\Sigma\)</span>, when constructed using the single index model of Sharpe <span id="id5">[<a class="reference internal" href="../References.html#id19" title="William F. Sharpe. A simplified model for portfolio analysis. Management Science, 9(2):277-293, 1963. URL: https://doi.org/10.1287/mnsc.9.2.277, arXiv:https://doi.org/10.1287/mnsc.9.2.277, doi:10.1287/mnsc.9.2.277.">Sharpe, 1963</a>]</span>, has a theoretically attractive structure that reduces to computing the variance of the market, the variance of the error, and the <span class="math notranslate nohighlight">\(\beta_{\star}\)</span> values; <span class="math notranslate nohighlight">\(\beta_{\star}\)</span> are often publicly tabulated (but are also relatively easy to calculate on our own).</p>
+</section>
+</div></section>
+</section>
+<hr class="docutils" />
+<section id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this heading">#</a></h2>
+<p>Fill me in.</p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -502,6 +715,34 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#single-index-models">Single Index Models</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#derivation">Derivation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#estimating-single-index-models-from-data">Estimating Single Index Models from Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#phase-1-estimate-alpha-i-beta-i">Phase 1: Estimate <span class="math notranslate nohighlight">\((\alpha_{i},\beta_{i})\)</span>.</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#phase-2-identification-of-the-residual-model">Phase 2: Identification of the residual model</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#single-index-portfolios">Single Index Portfolios</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio-return-using-single-index-models">Portfolio Return using Single Index Models</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#portfolio-variance-using-single-index-models">Portfolio Variance using Single Index Models</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>

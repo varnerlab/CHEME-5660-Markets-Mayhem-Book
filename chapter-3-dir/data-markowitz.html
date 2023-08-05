@@ -69,12 +69,14 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'chapter-3-dir/data-markowitz';</script>
     <link rel="canonical" href="https://varnerlab.github.io/CHEME-5660-Markets-Mayhem-Book/infrastructure.html/chapter-3-dir/data-markowitz.html" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Model-Driven Portfolio Allocation" href="model-markowitz.html" />
-    <link rel="prev" title="Markowitz Portfolio Allocation" href="markowitz.html" />
+    <link rel="prev" title="Unit 3: Modern Portfolio Theory" href="chapter-3-landing.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -161,7 +163,7 @@ const thebe_selector_output = ".output, .cell_output"
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="../infrastructure.html">
-                    Course Information and Overview
+                    Finance and Markets for Engineers and Scientists
                 </a>
             </li>
         </ul>
@@ -189,7 +191,7 @@ const thebe_selector_output = ".output, .cell_output"
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../chapter-2-dir/options.html">Derivative Securities</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="../chapter-2-dir/options/american-call-and-put-contracts.html">American and European Call and Put Contracts</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../chapter-2-dir/options/composite-contracts.html">Composite Contract Payoff and Profit Diagrams</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../chapter-2-dir/options/composite-contracts.html">Composite Contracts at Expiration</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../chapter-2-dir/options/option-contract-pricing.html">Contract Pricing at Expiration: Extrinsic and Intrinsic Value</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../chapter-2-dir/options/option-contract-dynamics.html">Contract Pricing Before Expiration: Price Dynamics and Sensitivities</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../chapter-2-dir/options/option-rolling.html">Trade mechanics for options positions: The Art of the Roll</a></li>
@@ -200,13 +202,10 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="chapter-3-landing.html">Unit 3: Modern Portfolio Theory</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
-<li class="toctree-l2 current active has-children"><a class="reference internal" href="markowitz.html">Markowitz Portfolio Allocation</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
-<li class="toctree-l3 current active"><a class="current reference internal" href="#">Data-Driven Portfolio Allocation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="model-markowitz.html">Model-Driven Portfolio Allocation</a></li>
-<li class="toctree-l3"><a class="reference internal" href="reallocation.html">Portfolio Reallocation Strategies</a></li>
-</ul>
-</li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="black-swan-events.html">Surviving Black Swan Events</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Data-Driven Portfolio Allocation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="model-markowitz.html">Model-Driven Portfolio Allocation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reallocation.html">Portfolio Reallocation Strategies</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="black-swan-events.html">Surviving Black Swan Events</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="var.html">Value at Risk and Conditional Value at Risk</a></li>
 <li class="toctree-l3"><a class="reference internal" href="hedged-portfolio.html">Hedging and Dynamic Hedging Approaches</a></li>
 </ul>
@@ -215,14 +214,14 @@ const thebe_selector_output = ".output, .cell_output"
 </li>
 </ul>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter-4-dir/chapter-4-landing.html">Unit 4: Rational Decision Theory</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../chapter-4-dir/chapter-4-landing.html">Unit 4: Rational Decision Theory</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../chapter-4-dir/expected-utility.html">Maximzing the Expected Utility</a></li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../chapter-4-dir/markov.html">Markov Models</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../chapter-4-dir/markov.html">Markov Models</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="../chapter-4-dir/markov/hmm.html">Hidden Markov Models of Investor Behavior</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../chapter-4-dir/markov/mdp.html">Markov Decision Process Models of Sequential Decision Making</a></li>
 </ul>
 </li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../chapter-4-dir/rl.html">Reinforcement Learning</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../chapter-4-dir/rl.html">Reinforcement Learning</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="../chapter-4-dir/bandits/bandits.html">Bandit problems, exploration versus exploitation and Thompson sampling</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../chapter-4-dir/rl/Q-learning.html">Reinforcement Learning (RL) and the asset management problem</a></li>
 </ul>
@@ -234,7 +233,7 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../appendix/probability-basics.html">Probability and Random Variables</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../appendix/ito.html">Stochastic Processes</a></li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../appendix/julia-basics.html">Julia Basics</a><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-12"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../appendix/julia-basics.html">Julia Basics</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../appendix/julia/julia-installation.html">Julia Installation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../appendix/julia/julia-functions-types.html">Julia Types, Functions and Programs</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../appendix/julia/julia-data.html">Working with Data in Julia</a></li>
@@ -414,7 +413,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -430,6 +431,15 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#markowitz-portfolio-allocation">Markowitz Portfolio Allocation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -441,7 +451,78 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="data-driven-portfolio-allocation">
 <h1>Data-Driven Portfolio Allocation<a class="headerlink" href="#data-driven-portfolio-allocation" title="Permalink to this heading">#</a></h1>
-<p>Fill me in.</p>
+<p>The central theme of modern portfolio theory is balancing risk and reward. Reward is measured as the <a class="reference external" href="https://www.investopedia.com/terms/r/return.asp">expected return</a> of a portfolio of assets, while, the risk is calculated as the variance of the logarithmic or fraction return of the portfolio.</p>
+<aside class="topic">
+<p class="topic-title">Data Driven Portfolio Allocation Outline</p>
+<p>Stuff goes here.</p>
+</aside>
+<hr class="docutils" />
+<section id="markowitz-portfolio-allocation">
+<span id="content-references-markowitz"></span><h2>Markowitz Portfolio Allocation<a class="headerlink" href="#markowitz-portfolio-allocation" title="Permalink to this heading">#</a></h2>
+<p>According to the Markowitz portfolio allocation theory, investors are rational and risk-averse <span id="id1">[<a class="reference internal" href="../References.html#id21" title="Harry Markowitz. Portfolio selection. The Journal of Finance, 7(1):77–91, 1952. URL: http://www.jstor.org/stable/2975974 (visited on 2022-04-12).">Markowitz, 1952</a>]</span>. Thus, when presented with two portfolios that offer the same expected return, a rational and risk-averse investor will choose the less risky portfolio, if an investor wants higher expected returns, they must accept more risk. However,  the balance between risk and reward varies from one investor to another (what may be an acceptable trade-off for you may not be the same for someone else).</p>
+<div class="proof remark admonition" id="remark-markowitz-in-words">
+<p class="admonition-title"><span class="caption-number">Remark 2 </span> (Markowitz in Words)</p>
+<section class="remark-content" id="proof-content">
+<p>Suppose we have a set of assets <span class="math notranslate nohighlight">\(\mathcal{A}\)</span> composed of risky assets, e.g., equities and equity derivatives, and risk-free assets, e.g., treasury debt securities. The Markowitz portfolio allocation problem estimates the weight <span class="math notranslate nohighlight">\(\omega_{a}\)</span> of asset <span class="math notranslate nohighlight">\(a\)</span> for <span class="math notranslate nohighlight">\(\forall{a}\in\omega_{a}\)</span> that minimizes the risk for a user-specified return.</p>
+</section>
+</div><p>To make these ideas more concrete, let’s develop expressions for the risk and reward of a
+portfolio. Denote the set of assets in a portfolio as <span class="math notranslate nohighlight">\(\mathcal{P}\)</span>; where <span class="math notranslate nohighlight">\(\vert\mathcal{P}\vert\)</span> denotes the number of assets in the portfolio set. Then, the expected return (reward) of the portfolio <span class="math notranslate nohighlight">\(\mathcal{P}\)</span> is defined as (<a class="reference internal" href="#defn-portfolio-return">Definition 18</a>):</p>
+<div class="proof definition admonition" id="defn-portfolio-return">
+<p class="admonition-title"><span class="caption-number">Definition 18 </span> (Expected Portfolio Return)</p>
+<section class="definition-content" id="proof-content">
+<p>Suppose we have a set of assets represented as <span class="math notranslate nohighlight">\(\mathcal{A}\)</span>. We can arrange these assets into a portfolio <span class="math notranslate nohighlight">\(\mathcal{P}\)</span>. Denote the return of asset <span class="math notranslate nohighlight">\(i\)</span> in portfolio <span class="math notranslate nohighlight">\(\mathcal{P}\)</span> on some time basis <span class="math notranslate nohighlight">\(\mathcal{B}\)</span> as <span class="math notranslate nohighlight">\(r_{i}\)</span>.</p>
+<p>Then, the expected return of portfolio <span class="math notranslate nohighlight">\(\mathcal{P}\)</span> denoted by
+<span class="math notranslate nohighlight">\(\mathbb{E}\left(r_{\mathcal{P}}\right)\)</span> is:</p>
+<div class="math notranslate nohighlight" id="equation-eqn-expected-p-rerturn">
+<span class="eqno">(34)<a class="headerlink" href="#equation-eqn-expected-p-rerturn" title="Permalink to this equation">#</a></span>\[\mathbb{E}\left(r_{\mathcal{P}}\right) = \sum_{i\in\mathcal{P}}\omega_{i}\mathbb{E}\left(r_{i}\right)\]</div>
+<p>where <span class="math notranslate nohighlight">\(w_{i}\)</span> denotes the fraction of asset <span class="math notranslate nohighlight">\(i\)</span> in the portfolio <span class="math notranslate nohighlight">\(\mathcal{P}\)</span>, and
+<span class="math notranslate nohighlight">\(\mathbb{E}\left(r_{i}\right)\)</span> denotes the expected return of asset <span class="math notranslate nohighlight">\(i\)</span> on time basis <span class="math notranslate nohighlight">\(\mathcal{B}\)</span>.</p>
+</section>
+</div><p>while the variance (risk) of the portfolio is defined as (<a class="reference internal" href="#defn-portfolio-variance">Definition 19</a>):</p>
+<div class="proof definition admonition" id="defn-portfolio-variance">
+<p class="admonition-title"><span class="caption-number">Definition 19 </span> (Portfolio Variance)</p>
+<section class="definition-content" id="proof-content">
+<p>Denote the return of asset <span class="math notranslate nohighlight">\(i\)</span> in portfolio <span class="math notranslate nohighlight">\(\mathcal{P}\)</span> for some time basis <span class="math notranslate nohighlight">\(\mathcal{B}\)</span>
+as <span class="math notranslate nohighlight">\(r_{i}\)</span>. Then, the variance of a portfolio <span class="math notranslate nohighlight">\(\mathcal{P}\)</span> is given by:</p>
+<div class="math notranslate nohighlight" id="equation-eqn-p-var-general">
+<span class="eqno">(35)<a class="headerlink" href="#equation-eqn-p-var-general" title="Permalink to this equation">#</a></span>\[\sigma_{\mathcal{P}}^2 = 
+\sum_{i\in\mathcal{P}}\sum_{j\in\mathcal{P}}w_{i}w_{j}
+\text{cov}\left(r_{i},r_{j}\right)\]</div>
+<p>where <span class="math notranslate nohighlight">\(w_{\star}\)</span> denotes the fraction of asset <span class="math notranslate nohighlight">\(\star\)</span> in the portfolio <span class="math notranslate nohighlight">\(\mathcal{P}\)</span>, and
+<span class="math notranslate nohighlight">\(\text{cov}\left(r_{i},r_{j}\right)\)</span> denotes the covariance between the return on assets <span class="math notranslate nohighlight">\(i\)</span> and <span class="math notranslate nohighlight">\(j\)</span>.
+The <span class="math notranslate nohighlight">\(\text{cov}\left(r_{i},r_{j}\right)\)</span>, which quantifies the relationship between assets <span class="math notranslate nohighlight">\(i\)</span> and <span class="math notranslate nohighlight">\(j\)</span>, is given by:</p>
+<div class="math notranslate nohighlight">
+\[\text{cov}\left(r_{i},r_{j}\right) = \sigma_{i}\sigma_{j}\rho_{ij}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\sigma_{\star}\)</span> denote the standard deviation of the return of asset <span class="math notranslate nohighlight">\(\star\)</span>, and
+<span class="math notranslate nohighlight">\(\rho_{ij}\)</span> denotes the correlation between assets <span class="math notranslate nohighlight">\(i\)</span> and <span class="math notranslate nohighlight">\(j\)</span>.</p>
+</section>
+</div><p>Now that we know how to compute a portfolio’s risk and expected reward let’s think about what we can control as a financial engineer. Of course, we cannot control the return or volatility of asset <span class="math notranslate nohighlight">\(i\)</span>; the market drives those. However, we can control which assets we include in the portfolio and the relative amount of each of these assets. Thus, how we choose which assets to include and their associated weights give insight into the type of investor we are. If we are a Markowitz investor, we minimize the risk required to obtain a specified reward.</p>
+<div class="proof observation admonition" id="observation-3">
+<p class="admonition-title"><span class="caption-number">Observation 11 </span> (The role of correlation in <span class="math notranslate nohighlight">\(\mathcal{P}\)</span>)</p>
+<section class="observation-content" id="proof-content">
+<p>An exciting feature of the variance of the portfolio return (<a class="reference internal" href="#defn-portfolio-variance">Definition 19</a>) is the dependence on the <a class="reference external" href="https://en.wikipedia.org/wiki/Correlation">correlation</a> denoted by <span class="math notranslate nohighlight">\(\rho_{ij}\)</span> between assets <span class="math notranslate nohighlight">\(i\)</span> and <span class="math notranslate nohighlight">\(j\)</span>. To see why this is exciting, let’s consider a portfolio <span class="math notranslate nohighlight">\(\mathcal{P}\)</span> consisting of two risky assets; <span class="math notranslate nohighlight">\(\vert\mathcal{P}\vert\)</span> = 2. Then, the variance of the portfolio returns <span class="math notranslate nohighlight">\(\sigma_{\mathcal{P}}^{2}\)</span> is given by:</p>
+<div class="math notranslate nohighlight">
+\[\sigma_{\mathcal{P}}^2 = w_{1}^{2}\sigma_{1}^{2}+w_{2}^{2}\sigma_{2}^{2}+2w_{1}w_{2}\sigma_{1}
+\sigma_{2}\rho_{12}\]</div>
+<p>where <span class="math notranslate nohighlight">\(w_{\star}\)</span> is the fraction of asset <span class="math notranslate nohighlight">\(\star\)</span> in the portfolio, and
+<span class="math notranslate nohighlight">\(\sigma_{\star}\)</span> denotes the standard deviation of the return of asset <span class="math notranslate nohighlight">\(\star\)</span>.
+Thus, we can influence the overall portfolio variance by choosing the assets
+based upon their correlation.</p>
+<ul class="simple">
+<li><p><strong>Positive correlation</strong>: For two assets that are positively correlated <span class="math notranslate nohighlight">\(p_{12}&gt;{0}\)</span>,
+the variance of the return of the portfolio <span class="math notranslate nohighlight">\(\sigma_{\mathcal{P}}^{2}\)</span> is <em>greater</em> than to the variance of the assets alone (assuming <span class="math notranslate nohighlight">\(w_{\star}\geq{0}\)</span>).</p></li>
+<li><p><strong>Zero (or small) correlation</strong>: For two assets that are either perfectly uncorrelated <span class="math notranslate nohighlight">\(p_{12} = 0\)</span> (or have small correlation <span class="math notranslate nohighlight">\(p_{12}\ll{1}\)</span>),
+the variance of the return of the portfolio <span class="math notranslate nohighlight">\(\sigma_{\mathcal{P}}^{2}\)</span> is <em>similar to</em> the variance of the assets alone (assuming <span class="math notranslate nohighlight">\(w_{\star}\geq{0}\)</span>).</p></li>
+<li><p><strong>Negative correlation</strong>: For two assets that are negatively correlated <span class="math notranslate nohighlight">\(p_{12}&lt;0\)</span>, the variance of the return of the portfolio <span class="math notranslate nohighlight">\(\sigma_{\mathcal{P}}^{2}\)</span> is <em>less</em> than to the variance of the assets alone (assuming <span class="math notranslate nohighlight">\(w_{\star}\geq{0}\)</span>).</p></li>
+</ul>
+</section>
+</div><p>Further, the correlation does not appear in the expected portfolio return (<a class="reference internal" href="#defn-portfolio-return">Definition 18</a>); thus, by carefully selecting assets with low correlation, the overall risk of a portfolio can be reduced without impacting the return (all else being equal).</p>
+</section>
+<hr class="docutils" />
+<section id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this heading">#</a></h2>
+<p>Fill me in</p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -476,12 +557,12 @@ document.write(`
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="markowitz.html"
+       href="chapter-3-landing.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Markowitz Portfolio Allocation</p>
+        <p class="prev-next-title">Unit 3: Modern Portfolio Theory</p>
       </div>
     </a>
     <a class="right-next"
@@ -502,6 +583,21 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#markowitz-portfolio-allocation">Markowitz Portfolio Allocation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
