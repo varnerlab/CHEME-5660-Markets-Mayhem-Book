@@ -1,2 +1,2 @@
-# Contract Pricing at Expiration: Extrinsic and Intrinsic Value
+# The Extrinsic and Intrinsic Value of an Option Contract
 Fill me in.

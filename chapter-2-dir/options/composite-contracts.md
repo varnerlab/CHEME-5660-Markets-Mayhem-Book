@@ -1,5 +1,5 @@
 (content:references:american-options-composite-contracts)=
-# Composite Contracts at Expiration
+# Composite Contract Profit and Loss at Expiration
 
 In this lecture we analyze the payoff and profit diagrams of composite option contracts, which are composed of combinations of put and call options, at expiration.
 
