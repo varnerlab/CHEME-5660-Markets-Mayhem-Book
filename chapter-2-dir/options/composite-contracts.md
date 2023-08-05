@@ -221,7 +221,7 @@ For a short straddle, we sell (are short) both the `put` and the `call` contract
 height: 420px
 name: fig-short-amd-straddle
 ---
-Profit for a short straddle on `AMD` with `DTE = 31 days` until expiration. The strike price for both legs is $K = 120$ USD/share. The premium for the `put` leg is $\mathcal{P}_{1} = 7.85$ USD/share, and the premium for the `call` leg is $\mathcal{P}_{2} = 6.30$ USD/share. 
+Profit for a short straddle on `AMD` with `DTE = 31 days` until expiration. The strike price for both legs is $K = 120$ USD/share. 
 ```
 
 (content:references:vertical-strangle-long-short)=
@@ -273,7 +273,7 @@ For a long strangle, we purchase (are long) both the `put` and the `call` contra
 height: 420px
 name: fig-long-amd-strangle
 ---
-Profit for a long strangle on `AMD` with `DTE = 31 days` until expiration. The strike price for the `put` leg $K_{1} = 105$ USD/share, while the strike price for the `call` leg $K_{2} = 135$ USD/share. The premium for the `put` leg is $\mathcal{P}_{1} = 1.95$ USD/share, and the premium for the `call` leg is $\mathcal{P}_{2} = 2.20$ USD/share. 
+Profit for a long strangle on `AMD` with `DTE = 31 days` until expiration. The strike price for the `put` leg $K_{1} = 105$ USD/share, while the strike price for the `call` leg $K_{2} = 135$ USD/share. 
 ```
 
 (content:references:vertical-strangle-short)=
