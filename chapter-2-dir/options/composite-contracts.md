@@ -1,9 +1,10 @@
 (content:references:american-options-composite-contracts)=
 # Composite Contracts at Expiration
-Call and put contracts can be combined to develop composite contract structures with interesting payoff and profit properties. Initially let's focus on the behavior of contracts at expiration.
+
+In this lecture we analyze the payoff and profit diagrams of composite option contracts, which are composed of combinations of put and call options, at expiration.
 
 ```{topic} Outline
-In this lecture we analyze the payoff and profit diagrams of composite option contracts at expiration. In particular, we start by introducing the general case of composite contracts, then focus on composite contracts that have a directional bias, and conclude with contracts that are neutral to the direction of the underlying asset.
+We start by introducing the general case of composite contracts, then focus on composite contracts that have a directional bias, and conclude with contracts that are neutral to the direction of the underlying asset.
 
 * [General composite contracts](content:references:general-composite-contracts) are constructed by combining two or more option contracts to generate a new composite contract with some desired payoff and profit properties. For now, we limit our analysis to contracts that have the same underlying asset and the same expiration date. 
 * [Vertical spreads](content:references:vertical-spreads) are composite contracts that have a directional bias. They are constructed by combining a single long and and single short option contract with the same expiration date but different strike prices.
