@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Contract Pricing Before Expiration: Price Dynamics and Sensitivities &#8212; CHEME-5660</title>
+    <title>Option Contract Price Dynamics and Sensitivities &#8212; CHEME-5660</title>
   
   
   
@@ -69,12 +69,14 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'chapter-2-dir/options/option-contract-dynamics';</script>
     <link rel="canonical" href="https://varnerlab.github.io/CHEME-5660-Markets-Mayhem-Book/infrastructure.html/chapter-2-dir/options/option-contract-dynamics.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Trade mechanics for options positions: The Art of the Roll" href="option-rolling.html" />
-    <link rel="prev" title="Contract Pricing at Expiration: Extrinsic and Intrinsic Value" href="option-contract-pricing.html" />
+    <link rel="prev" title="The Extrinsic and Intrinsic Value of an Option Contract" href="option-contract-pricing.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -189,9 +191,9 @@ const thebe_selector_output = ".output, .cell_output"
 </li>
 <li class="toctree-l2 current active has-children"><a class="reference internal" href="../options.html">Derivative Securities</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="american-call-and-put-contracts.html">American and European Call and Put Contracts</a></li>
-<li class="toctree-l3"><a class="reference internal" href="composite-contracts.html">Composite Contract Profit Diagrams</a></li>
-<li class="toctree-l3"><a class="reference internal" href="option-contract-pricing.html">Contract Pricing at Expiration: Extrinsic and Intrinsic Value</a></li>
-<li class="toctree-l3 current active"><a class="current reference internal" href="#">Contract Pricing Before Expiration: Price Dynamics and Sensitivities</a></li>
+<li class="toctree-l3"><a class="reference internal" href="composite-contracts.html">Composite Contract Profit and Loss at Expiration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="option-contract-pricing.html">The Extrinsic and Intrinsic Value of an Option Contract</a></li>
+<li class="toctree-l3 current active"><a class="current reference internal" href="#">Option Contract Price Dynamics and Sensitivities</a></li>
 <li class="toctree-l3"><a class="reference internal" href="option-rolling.html">Trade mechanics for options positions: The Art of the Roll</a></li>
 </ul>
 </li>
@@ -411,7 +413,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -422,11 +426,22 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Contract Pricing Before Expiration: Price Dynamics and Sensitivities</h1>
+    <h1>Option Contract Price Dynamics and Sensitivities</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#european-contract-prices">European Contract Prices</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#american-contract-prices">American Contract Prices</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-greeks">The Greeks</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -436,9 +451,38 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="contract-pricing-before-expiration-price-dynamics-and-sensitivities">
-<h1>Contract Pricing Before Expiration: Price Dynamics and Sensitivities<a class="headerlink" href="#contract-pricing-before-expiration-price-dynamics-and-sensitivities" title="Permalink to this heading">#</a></h1>
-<p>Fill me in.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="option-contract-price-dynamics-and-sensitivities">
+<h1>Option Contract Price Dynamics and Sensitivities<a class="headerlink" href="#option-contract-price-dynamics-and-sensitivities" title="Permalink to this heading">#</a></h1>
+<p>The price of options contracts depends upon many market factors, e.g., the cost of the underlying asset when the option is purchased, the implied volatility of the underlying asset, the time to expiration, and the risk-free rate.</p>
+<aside class="topic">
+<p class="topic-title">Option Contract Price Dynamics</p>
+<p>In this lecture, we explore how market factors affect the price of an option contract. We also introduce the concept of option contract sensitivities, which are used to quantify the impact of these factors on the price of an option contract.</p>
+</aside>
+<hr class="docutils" />
+<section id="european-contract-prices">
+<span id="content-references-european-contract-price"></span><h2>European Contract Prices<a class="headerlink" href="#european-contract-prices" title="Permalink to this heading">#</a></h2>
+<p>Buyers of <a class="reference external" href="https://www.investopedia.com/terms/e/europeanoption.asp">European call and put</a> contracts can only exercise their right at expiration. Thus, the premium for a European call or put contract is equal to the discounted expected payoff of the contract at expiration:</p>
+<div class="math notranslate nohighlight" id="equation-eqn-european-contract-price">
+<span class="eqno">(34)<a class="headerlink" href="#equation-eqn-european-contract-price" title="Permalink to this equation">#</a></span>\[\mathcal{P}_{\star}(K,S(0)) = \mathbb{E}\Bigl(\mathcal{D}^{-1}_{T,0}(\bar{r})\cdot{V_{\star}}(K,S(T))\Bigr)\]</div>
+<p>where <span class="math notranslate nohighlight">\(\mathcal{D}_{T,0}(\bar{r})\)</span> denotes the discount factor between the time when the contract was purchased <code class="docutils literal notranslate"><span class="pre">0</span></code> and contract expiration <code class="docutils literal notranslate"><span class="pre">T</span></code> days in the future. Option contracts use risk-neutral pricing. Thus, the discount rate <span class="math notranslate nohighlight">\(\bar{r}\)</span> is taken as the interest rate on 10-year treasury notes. Finally, <span class="math notranslate nohighlight">\(V_{\star}(K,S(T))\)</span> denotes the payoff per share of contract <span class="math notranslate nohighlight">\(\star\)</span> at expiration <code class="docutils literal notranslate"><span class="pre">T</span></code> days in the future.</p>
+</section>
+<section id="american-contract-prices">
+<span id="content-references-american-contract-price"></span><h2>American Contract Prices<a class="headerlink" href="#american-contract-prices" title="Permalink to this heading">#</a></h2>
+<p>In the case of <a class="reference external" href="https://www.investopedia.com/terms/a/americanoption.asp">American style call and put contracts</a>, the option buyer can exercise their right at any point between when the contract is purchased and the expiration date. Thus, the contract seller may demand a premium that is greater than the European contract because of the possibility of early exercise (inequality case):</p>
+<div class="math notranslate nohighlight" id="equation-eqn-american-contract-price">
+<span class="eqno">(35)<a class="headerlink" href="#equation-eqn-american-contract-price" title="Permalink to this equation">#</a></span>\[\mathcal{P}_{\star}(K,S(0)) \geq \mathbb{E}\Bigl(\mathcal{D}^{-1}_{T,0}(\bar{r})\cdot{V_{\star}}(K,S(T))\Bigr)\]</div>
+<p>where <span class="math notranslate nohighlight">\(\mathcal{D}_{T,0}(\bar{r})\)</span> denotes the discount factor between the time when the contract was purchased <code class="docutils literal notranslate"><span class="pre">0</span></code> and contract expiration <code class="docutils literal notranslate"><span class="pre">T</span></code> days in the future. Option contracts use risk-neutral pricing. Thus, the discount rate <span class="math notranslate nohighlight">\(\bar{r}\)</span> is taken as the interest rate on 10-year treasury notes. Finally, <span class="math notranslate nohighlight">\(V_{\star}(K,S(T))\)</span> denotes the payoff per share of contract <span class="math notranslate nohighlight">\(\star\)</span> at expiration <code class="docutils literal notranslate"><span class="pre">T</span></code> days in the future.</p>
+</section>
+<section id="the-greeks">
+<span id="content-references-greeks-calculations"></span><h2>The Greeks<a class="headerlink" href="#the-greeks" title="Permalink to this heading">#</a></h2>
+<p><a class="reference external" href="https://www.investopedia.com/trading/using-the-greeks-to-understand-options/">The Greeks</a> provide a way to measure an option’s price sensitivity to quantifiable market factors. Thus, they are sensitivity coefficients that measure how the price changes when an underlying market factor changes.</p>
+<p>Suppose the price of an American call option is described by the function <span class="math notranslate nohighlight">\(C(...)\)</span>. The price of the call contract <span class="math notranslate nohighlight">\(C(...)\)</span> is a function of the set of market variables that influence the option contract price, e.g., the share price of the underlying asset <span class="math notranslate nohighlight">\(S\)</span>, the risk-free rate of return <span class="math notranslate nohighlight">\(\mu\)</span>, the price volatility of the underlying asset <span class="math notranslate nohighlight">\(\sigma\)</span>, the duration of the option contract <span class="math notranslate nohighlight">\(T\)</span>, etc.</p>
+</section>
+<hr class="docutils" />
+<section id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this heading">#</a></h2>
+<p>Fill me in</p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -478,7 +522,7 @@ document.write(`
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Contract Pricing at Expiration: Extrinsic and Intrinsic Value</p>
+        <p class="prev-next-title">The Extrinsic and Intrinsic Value of an Option Contract</p>
       </div>
     </a>
     <a class="right-next"
@@ -499,6 +543,23 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#european-contract-prices">European Contract Prices</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#american-contract-prices">American Contract Prices</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-greeks">The Greeks</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>

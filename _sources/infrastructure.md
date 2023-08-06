@@ -1,12 +1,12 @@
 # Finance and Markets for Engineers and Scientists
 
 ## Description 
-Finance plays a crucial role in both technological advancement and the lives of individuals in our society. However, financial forecasting, modeling, and decision-making are rarely taught in traditional engineering or physical science curriculums. Further, an increasing number of engineers and scientists are turning to careers in finance and consulting. Finally, despite advancements in market access, many individuals still need help accessing the wealth-creation opportunities offered by financial systems. To address these gaps, this course introduces engineers and scientists to financial systems, markets, and analytical tools for economic and business operations. Using engineering, statistics, data science, and machine learning, we will model, analyze, and optimize financial systems and decision-making processes. The course material can be applied to both traditional economic and engineering fields.
+In today’s society, finance holds a vital position in both the progress of technology and the lives of individuals. Despite this, traditional engineering or physical science curriculums seldom teach financial forecasting, modeling, and decision-making. Many engineers and scientists pursue careers in finance and consulting, adding to the need for financial knowledge. This course aims to bridge these gaps by introducing engineers and scientists to financial systems, markets, and quantitative finance tools and approaches. We will model, analyze, and optimize financial systems and decision-making processes using engineering, statistics, data science, and machine learning tools. 
 
 ### Times, places and websites
 * __Credits__: 3-credits
 * __Lectures and discussions__: Lecture at TuTh 1:30 PM - 2:20 PM and Discussion at W 1:30 PM - 2:20 PM
-* __Website__: Canvas and GitHub. Examples, labs, and other codes used throughout the course are available on our [GitHub repository](https://github.com/varnerlab/CHEME-5660-Course-Repository-F23).
+* __Website__: Canvas and GitHub. The labs, other codes and data used throughout the course are available on our [GitHub lab repository](https://github.com/varnerlab/CHEME-5660-Labs-F23.git) and in the [VLQuantitativeFinancePackage.jl](https://github.com/varnerlab/VLQuantitativeFinancePackage.jl.git) package.
 * __Schedule__: The lecture, lab and problem set schedule can be viewed at (requires Cornell login): [CHEME 5660 lecture schedule](https://cornell.box.com/s/xz2ir0k7kimtyzz10k98op5ctihqa2fh).
 
 ### Topics

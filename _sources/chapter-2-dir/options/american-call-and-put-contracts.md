@@ -1,10 +1,9 @@
 (content:references:american-european-options-contracts)=
 # American and European Call and Put Contracts
 
-Derivatives are one of the three primary financial instrument categories: derivatives, equity (i.e., shares of stock), and debt (i.e., bonds and mortgages). Derivatives provide payoffs that depend on the value of other assets, such as commodities, bonds, stocks, or market indexes. Thus, the value of a derivative is based mainly on the price movements of an underlying asset, e.g., stocks, commodities, currencies, etc.
+In this lecture, we focus on options, a type of derivative that uses shares of a stock or an exchange-traded fund, as their underlying asset. 
 
 ```{topic} Outline
-In this lecture, we will focus exclusively on options, a type of derivative that use equity, i.e., shares of a stock or an exchange-traded fund, as their underlying asset. Options are structured agreements between a buyer and a seller that give the option buyer the right, but not the obligation, to execute the transaction described in the contract, i.e., to buy (or sell) an underlying asset in some predetermined way in a specified time frame. 
 
 * [Call contracts](content:references:american-european-options-contracts-call) give the option buyer the right (but not the obligation) to buy an underlying asset, e.g., shares of stock at a predetermined price (called the strike price) within a specified time frame. The option buyer pays the option seller a premium for the right to buy the underlying asset.
 
@@ -13,6 +12,10 @@ In this lecture, we will focus exclusively on options, a type of derivative that
 * [Put-Call parity](content:references:american-european-options-contracts-put-call-parity) is a relationship between the prices of a European call option and a European put option with the same strike price and expiration date. The put-call parity relationship is important because it allows us to price one option in terms of the other. 
 
 ```
+
+<!-- Derivatives are one of the three primary financial instrument categories: derivatives, equity (i.e., shares of stock), and debt (i.e., bonds and mortgages). Derivatives provide payoffs that depend on the value of other assets, such as commodities, bonds, stocks, or market indexes. Thus, the value of a derivative is based mainly on the price movements of an underlying asset, e.g., stocks, commodities, currencies, etc. -->
+<!-- 
+Options are structured agreements between a buyer and a seller that give the option buyer the right, but not the obligation, to execute the transaction described in the contract, i.e., to buy (or sell) an underlying asset in some predetermined way in a specified time frame.  -->
 
 ---
 

@@ -75,7 +75,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="canonical" href="https://varnerlab.github.io/CHEME-5660-Markets-Mayhem-Book/infrastructure.html/chapter-2-dir/options/american-call-and-put-contracts.html" />
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Composite Contract Profit Diagrams" href="composite-contracts.html" />
+    <link rel="next" title="Composite Contract Profit and Loss at Expiration" href="composite-contracts.html" />
     <link rel="prev" title="Derivative Securities" href="../options.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -191,9 +191,9 @@ const thebe_selector_output = ".output, .cell_output"
 </li>
 <li class="toctree-l2 current active has-children"><a class="reference internal" href="../options.html">Derivative Securities</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l3 current active"><a class="current reference internal" href="#">American and European Call and Put Contracts</a></li>
-<li class="toctree-l3"><a class="reference internal" href="composite-contracts.html">Composite Contract Profit Diagrams</a></li>
-<li class="toctree-l3"><a class="reference internal" href="option-contract-pricing.html">Contract Pricing at Expiration: Extrinsic and Intrinsic Value</a></li>
-<li class="toctree-l3"><a class="reference internal" href="option-contract-dynamics.html">Contract Pricing Before Expiration: Price Dynamics and Sensitivities</a></li>
+<li class="toctree-l3"><a class="reference internal" href="composite-contracts.html">Composite Contract Profit and Loss at Expiration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="option-contract-pricing.html">The Extrinsic and Intrinsic Value of an Option Contract</a></li>
+<li class="toctree-l3"><a class="reference internal" href="option-contract-dynamics.html">Option Contract Price Dynamics and Sensitivities</a></li>
 <li class="toctree-l3"><a class="reference internal" href="option-rolling.html">Trade mechanics for options positions: The Art of the Roll</a></li>
 </ul>
 </li>
@@ -459,16 +459,18 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="american-and-european-call-and-put-contracts">
 <span id="content-references-american-european-options-contracts"></span><h1>American and European Call and Put Contracts<a class="headerlink" href="#american-and-european-call-and-put-contracts" title="Permalink to this heading">#</a></h1>
-<p>Derivatives are one of the three primary financial instrument categories: derivatives, equity (i.e., shares of stock), and debt (i.e., bonds and mortgages). Derivatives provide payoffs that depend on the value of other assets, such as commodities, bonds, stocks, or market indexes. Thus, the value of a derivative is based mainly on the price movements of an underlying asset, e.g., stocks, commodities, currencies, etc.</p>
+<p>In this lecture, we focus on options, a type of derivative that uses shares of a stock or an exchange-traded fund, as their underlying asset.</p>
 <aside class="topic">
 <p class="topic-title">Outline</p>
-<p>In this lecture, we will focus exclusively on options, a type of derivative that use equity, i.e., shares of a stock or an exchange-traded fund, as their underlying asset. Options are structured agreements between a buyer and a seller that give the option buyer the right, but not the obligation, to execute the transaction described in the contract, i.e., to buy (or sell) an underlying asset in some predetermined way in a specified time frame.</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="#content-references-american-european-options-contracts-call"><span class="std std-ref">Call contracts</span></a> give the option buyer the right (but not the obligation) to buy an underlying asset, e.g., shares of stock at a predetermined price (called the strike price) within a specified time frame. The option buyer pays the option seller a premium for the right to buy the underlying asset.</p></li>
 <li><p><a class="reference internal" href="#content-references-american-european-options-contracts-put"><span class="std std-ref">Put contracts</span></a> give the option buyer the right (but not the obligation) to sell an underlying asset, e.g., shares of stock at a predetermined price (called the strike price) within a specified time frame. The option buyer pays the option seller a premium for the right to sell the underlying asset.</p></li>
 <li><p><a class="reference internal" href="#content-references-american-european-options-contracts-put-call-parity"><span class="std std-ref">Put-Call parity</span></a> is a relationship between the prices of a European call option and a European put option with the same strike price and expiration date. The put-call parity relationship is important because it allows us to price one option in terms of the other.</p></li>
 </ul>
 </aside>
+<!-- Derivatives are one of the three primary financial instrument categories: derivatives, equity (i.e., shares of stock), and debt (i.e., bonds and mortgages). Derivatives provide payoffs that depend on the value of other assets, such as commodities, bonds, stocks, or market indexes. Thus, the value of a derivative is based mainly on the price movements of an underlying asset, e.g., stocks, commodities, currencies, etc. -->
+<!-- 
+Options are structured agreements between a buyer and a seller that give the option buyer the right, but not the obligation, to execute the transaction described in the contract, i.e., to buy (or sell) an underlying asset in some predetermined way in a specified time frame.  -->
 <hr class="docutils" />
 <section id="call-contracts">
 <span id="content-references-american-european-options-contracts-call"></span><h2>Call contracts<a class="headerlink" href="#call-contracts" title="Permalink to this heading">#</a></h2>
@@ -583,7 +585,7 @@ document.write(`
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Composite Contract Profit Diagrams</p>
+        <p class="prev-next-title">Composite Contract Profit and Loss at Expiration</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
