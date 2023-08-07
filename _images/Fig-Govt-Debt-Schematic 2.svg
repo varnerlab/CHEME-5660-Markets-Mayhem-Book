@@ -1,0 +1,442 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1075px" height="496px" viewBox="0 0 1075 496" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Fig-Govt-Debt-Schematic</title>
+    <defs>
+        <path d="M70,0 C108.66,0 140,31.3401 140,70 C140,108.6599 108.66,140 70,140 C31.3401,140 0,108.6599 0,70 C0,31.3401 31.3401,0 70,0 Z" id="path-1"></path>
+        <path d="M20,0 C31.0457,0 40,8.9543 40,20 C40,31.0457 31.0457,40 20,40 C8.9543,40 0,31.0457 0,20 C0,8.9543 8.9543,0 20,0 Z" id="path-3"></path>
+        <path d="M70,0 C108.6599,0 140,31.3401 140,70 C140,108.6599 108.6599,140 70,140 C31.3401,140 0,108.6599 0,70 C0,31.3401 31.3401,0 70,0 Z" id="path-5"></path>
+        <path d="M20,0 C31.0457,0 40,8.9543 40,20 C40,31.0457 31.0457,40 20,40 C8.9543,40 0,31.0457 0,20 C0,8.9543 8.9543,0 20,0 Z" id="path-7"></path>
+        <path d="M70,0 C108.6599,0 140,31.3401 140,70 C140,108.6599 108.6599,140 70,140 C31.3401,140 0,108.6599 0,70 C0,31.3401 31.3401,0 70,0 Z" id="path-9"></path>
+        <path d="M20,0 C31.0457,0 40,8.9543 40,20 C40,31.0457 31.0457,40 20,40 C8.9543,40 0,31.0457 0,20 C0,8.9543 8.9543,0 20,0 Z" id="path-11"></path>
+        <polygon id="path-13" points="0 0 1075 0 1075 496 0 496"></polygon>
+        <polygon id="path-15" points="0 0 151 0 151 24.71875 0 24.71875"></polygon>
+        <polygon id="path-17" points="0 0 400 0 400 16 0 16"></polygon>
+        <polygon id="path-19" points="0 0 360 0 360 16 0 16"></polygon>
+        <polygon id="path-21" points="200 0 400 61.5 400 99.5 0 99.5 0 61.5"></polygon>
+        <polygon id="path-23" points="0 0 49 0 49 97 0 97"></polygon>
+        <polygon id="path-25" points="0 0 49 0 49 97 0 97"></polygon>
+        <polygon id="path-27" points="0 0 49 0 49 97 0 97"></polygon>
+        <polygon id="path-29" points="0 0 49 0 49 97 0 97"></polygon>
+        <polygon id="path-31" points="62 0 76 22 0 22 14 0"></polygon>
+        <polygon id="path-33" points="62 0 76 22 0 22 14 0"></polygon>
+        <polygon id="path-35" points="62 0 76 22 0 22 14 0"></polygon>
+        <polygon id="path-37" points="62 0 76 22 0 22 14 0"></polygon>
+        <polygon id="path-39" points="76 0 62 22 14 22 0 0"></polygon>
+        <polygon id="path-41" points="76 0 62 22 14 22 0 0"></polygon>
+        <polygon id="path-43" points="76 0 62 22 14 22 0 0"></polygon>
+        <polygon id="path-45" points="76 0 62 22 14 22 0 0"></polygon>
+        <polygon id="path-47" points="0 0 5 0 5 70 0 70"></polygon>
+        <polygon id="path-49" points="0 0 5 0 5 70 0 70"></polygon>
+        <polygon id="path-51" points="0 0 5 0 5 70 0 70"></polygon>
+        <polygon id="path-53" points="0 0 5 0 5 70 0 70"></polygon>
+        <polygon id="path-55" points="0 0 5 0 5 70 0 70"></polygon>
+        <polygon id="path-57" points="0 0 5 0 5 70 0 70"></polygon>
+        <polygon id="path-59" points="0 0 5 0 5 70 0 70"></polygon>
+        <polygon id="path-61" points="0 0 5 0 5 70 0 70"></polygon>
+        <polygon id="path-63" points="0 0 5 0 5 70 0 70"></polygon>
+        <polygon id="path-65" points="0 0 5 0 5 70 0 70"></polygon>
+        <polygon id="path-67" points="0 0 5 0 5 70 0 70"></polygon>
+        <polygon id="path-69" points="0 0 5 0 5 70 0 70"></polygon>
+        <polygon id="path-71" points="0 0 5 0 5 70 0 70"></polygon>
+    </defs>
+    <g id="Fig-Govt-Debt-Schematic" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group-3" transform="translate(908, 221)">
+            <mask id="mask-2" fill="white">
+                <use xlink:href="#path-1"></use>
+            </mask>
+            <g id="Clip-2"></g>
+            <path d="M70,140 C108.6599,140 140,108.6599 140,70 C140,31.34007 108.6599,0 70,0 C31.34007,0 0,31.34007 0,70 C0,108.6599 31.34007,140 70,140 Z" id="Stroke-1" stroke="#EF4035" stroke-width="4" mask="url(#mask-2)"></path>
+        </g>
+        <g id="Group-7" transform="translate(958, 240)">
+            <mask id="mask-4" fill="white">
+                <use xlink:href="#path-3"></use>
+            </mask>
+            <g id="Clip-5"></g>
+            <polygon id="Fill-4" fill="#EF4035" mask="url(#mask-4)" points="-2 -1 41 -1 41 41 -2 41"></polygon>
+            <path d="M20,40 C31.04569,40 40,31.04569 40,20 C40,8.954305 31.04569,0 20,0 C8.954305,0 0,8.954305 0,20 C0,31.04569 8.954305,40 20,40 Z" id="Stroke-6" stroke="#EF4035" stroke-width="2" mask="url(#mask-4)"></path>
+        </g>
+        <g id="Group-18" transform="translate(951.6369, 279.5)" stroke="#EF4035" stroke-linecap="square" stroke-width="2">
+            <line x1="25.8631" y1="0" x2="25.3631" y2="37.5" id="Stroke-8"></line>
+            <line x1="25.86306" y1="37" x2="1.13686838e-13" y2="62.04201" id="Stroke-10"></line>
+            <line x1="52.36309" y1="61.5" x2="25.7067" y2="37.3042" id="Stroke-12"></line>
+            <line x1="26.86314" y1="23" x2="43.9255" y2="9.11203" id="Stroke-14"></line>
+            <line x1="23.86306" y1="23" x2="6.8007" y2="9.11203" id="Stroke-16"></line>
+        </g>
+        <g id="Group-21" transform="translate(751, 275)">
+            <mask id="mask-6" fill="white">
+                <use xlink:href="#path-5"></use>
+            </mask>
+            <g id="Clip-20"></g>
+            <path d="M70,140 C108.6599,140 140,108.6599 140,70 C140,31.34007 108.6599,0 70,0 C31.34007,0 0,31.34007 0,70 C0,108.6599 31.34007,140 70,140 Z" id="Stroke-19" stroke="#EF4035" stroke-width="4" mask="url(#mask-6)"></path>
+        </g>
+        <g id="Group-25" transform="translate(801, 294)">
+            <mask id="mask-8" fill="white">
+                <use xlink:href="#path-7"></use>
+            </mask>
+            <g id="Clip-23"></g>
+            <polygon id="Fill-22" fill="#EF4035" mask="url(#mask-8)" points="-2 -1 41 -1 41 41 -2 41"></polygon>
+            <path d="M20,40 C31.04569,40 40,31.04569 40,20 C40,8.954305 31.04569,0 20,0 C8.954305,0 0,8.954305 0,20 C0,31.04569 8.954305,40 20,40 Z" id="Stroke-24" stroke="#EF4035" stroke-width="2" mask="url(#mask-8)"></path>
+        </g>
+        <g id="Group-36" transform="translate(794.6369, 333.5)" stroke="#EF4035" stroke-linecap="square" stroke-width="2">
+            <line x1="25.8631" y1="0" x2="25.3631" y2="37.5" id="Stroke-26"></line>
+            <line x1="25.86306" y1="37" x2="1.13686838e-13" y2="62.04201" id="Stroke-28"></line>
+            <line x1="52.36309" y1="61.5" x2="25.7067" y2="37.3042" id="Stroke-30"></line>
+            <line x1="26.86314" y1="23" x2="43.9255" y2="9.11203" id="Stroke-32"></line>
+            <line x1="23.86306" y1="23" x2="6.8007" y2="9.11203" id="Stroke-34"></line>
+        </g>
+        <g id="Group-39" transform="translate(785, 116)">
+            <mask id="mask-10" fill="white">
+                <use xlink:href="#path-9"></use>
+            </mask>
+            <g id="Clip-38"></g>
+            <path d="M70,140 C108.6599,140 140,108.6599 140,70 C140,31.34007 108.6599,0 70,0 C31.34007,0 0,31.34007 0,70 C0,108.6599 31.34007,140 70,140 Z" id="Stroke-37" stroke="#EF4035" stroke-width="4" mask="url(#mask-10)"></path>
+        </g>
+        <g id="Group-43" transform="translate(835, 135)">
+            <mask id="mask-12" fill="white">
+                <use xlink:href="#path-11"></use>
+            </mask>
+            <g id="Clip-41"></g>
+            <polygon id="Fill-40" fill="#EF4035" mask="url(#mask-12)" points="-2 -1 41 -1 41 41 -2 41"></polygon>
+            <path d="M20,40 C31.04569,40 40,31.04569 40,20 C40,8.954305 31.04569,0 20,0 C8.954305,0 0,8.954305 0,20 C0,31.04569 8.954305,40 20,40 Z" id="Stroke-42" stroke="#EF4035" stroke-width="2" mask="url(#mask-12)"></path>
+        </g>
+        <g id="Group-60">
+            <line x1="854.5" y1="174.5" x2="854" y2="212" id="Stroke-44" stroke="#EF4035" stroke-width="2" stroke-linecap="square"></line>
+            <line x1="854.49996" y1="211.5" x2="828.6369" y2="236.54201" id="Stroke-46" stroke="#EF4035" stroke-width="2" stroke-linecap="square"></line>
+            <line x1="880.99999" y1="236" x2="854.3436" y2="211.8042" id="Stroke-48" stroke="#EF4035" stroke-width="2" stroke-linecap="square"></line>
+            <line x1="855.50004" y1="197.5" x2="872.5624" y2="183.61203" id="Stroke-50" stroke="#EF4035" stroke-width="2" stroke-linecap="square"></line>
+            <line x1="852.49996" y1="197.5" x2="835.4376" y2="183.61203" id="Stroke-52" stroke="#EF4035" stroke-width="2" stroke-linecap="square"></line>
+            <line x1="458" y1="233" x2="732" y2="233" id="Stroke-54" stroke="#EF4035" stroke-width="4" stroke-linecap="square"></line>
+            <mask id="mask-14" fill="white">
+                <use xlink:href="#path-13"></use>
+            </mask>
+            <g id="Clip-57"></g>
+            <path d="M442.3846,232.6154 L463.6154,220.6154 C459.6154,225.8462 457.6154,229.8462 457.6154,232.6154 C457.6154,235.3846 459.6154,239.3846 463.6154,244.6154 L442.3846,232.6154 Z" id="Fill-56" fill="#EF4035" mask="url(#mask-14)"></path>
+            <text id="Buyers" mask="url(#mask-14)" font-family="ArialMT, Arial" font-size="48" font-weight="normal" fill="#EF4035">
+                <tspan x="816" y="44.375">B</tspan>
+                <tspan x="848.015625" y="44.375" letter-spacing="0.0096">u</tspan>
+                <tspan x="874.720537" y="44.375">y</tspan>
+                <tspan x="898.720537" y="44.375" letter-spacing="0.0096">e</tspan>
+                <tspan x="925.42545" y="44.375">rs</tspan>
+            </text>
+            <text id="Seller" mask="url(#mask-14)" font-family="ArialMT, Arial" font-size="48" font-weight="normal" fill="#0068AC">
+                <tspan x="150" y="44.375">S</tspan>
+                <tspan x="182.015625" y="44.375" letter-spacing="0.0096">elle</tspan>
+                <tspan x="256.772775" y="44.375">r</tspan>
+            </text>
+            <line x1="778.5" y1="90.5" x2="1003.5" y2="90.5" id="Stroke-58" stroke="#EF4035" stroke-width="2" stroke-linecap="square" mask="url(#mask-14)"></line>
+            <line x1="99.5" y1="90.5" x2="324.5" y2="90.5" id="Stroke-59" stroke="#0068AC" stroke-width="2" stroke-linecap="square" mask="url(#mask-14)"></line>
+            <text id="Purchase-debt-security-" mask="url(#mask-14)" font-family="ArialMT, Arial" font-size="28" font-weight="normal" fill="#EF4035">
+                <tspan x="455.09375" y="164.71875">P</tspan>
+                <tspan x="473.769531" y="164.71875" letter-spacing="0.0056">u</tspan>
+                <tspan x="489.347397" y="164.71875">rc</tspan>
+                <tspan x="512.671616" y="164.71875" letter-spacing="0.0056">ha</tspan>
+                <tspan x="543.827347" y="164.71875">s</tspan>
+                <tspan x="557.827347" y="164.71875" letter-spacing="0.0056">e</tspan>
+                <tspan x="573.405213" y="164.71875" letter-spacing="-0.0056"> </tspan>
+                <tspan x="581.178909" y="164.71875" letter-spacing="0.0056">deb</tspan>
+                <tspan x="627.912506" y="164.71875" letter-spacing="-0.0056">t </tspan>
+                <tspan x="643.4599" y="164.71875">s</tspan>
+                <tspan x="657.4599" y="164.71875" letter-spacing="0.0056">e</tspan>
+                <tspan x="673.037766" y="164.71875">c</tspan>
+                <tspan x="687.037766" y="164.71875" letter-spacing="0.0056">u</tspan>
+                <tspan x="702.615631" y="164.71875">r</tspan>
+                <tspan x="711.93985" y="164.71875" letter-spacing="0.0056">i</tspan>
+                <tspan x="718.166153" y="164.71875" letter-spacing="-0.0056">t</tspan>
+                <tspan x="725.93985" y="164.71875">y </tspan>
+            </text>
+            <text id="(sold-@auction)" mask="url(#mask-14)" font-family="ArialMT, Arial" font-size="28" font-weight="normal" fill="#EF4035">
+                <tspan x="499.24707" y="195.71875">(s</tspan>
+                <tspan x="522.571289" y="195.71875" letter-spacing="0.0056">old</tspan>
+                <tspan x="559.953323" y="195.71875" letter-spacing="-0.0056"> </tspan>
+                <tspan x="567.72702" y="195.71875" letter-spacing="0.0028">@</tspan>
+                <tspan x="596.153648" y="195.71875" letter-spacing="0.0056">au</tspan>
+                <tspan x="627.309379" y="195.71875">c</tspan>
+                <tspan x="641.309379" y="195.71875" letter-spacing="-0.0056">t</tspan>
+                <tspan x="649.083076" y="195.71875" letter-spacing="0.0056">ion</tspan>
+                <tspan x="686.465111" y="195.71875">)</tspan>
+            </text>
+            <text id="Public,-Banks,-Brokers,-etc" mask="url(#mask-14)" font-family="ArialMT, Arial" font-size="28" font-weight="normal" fill="#EF4035">
+                <tspan x="720.71094" y="469.71875">P</tspan>
+                <tspan x="739.386721" y="469.71875" letter-spacing="0.0056">ubli</tspan>
+                <tspan x="782.995059" y="469.71875">c</tspan>
+                <tspan x="796.995059" y="469.71875" letter-spacing="-0.0056">, </tspan>
+                <tspan x="812.542453" y="469.71875">B</tspan>
+                <tspan x="831.218234" y="469.71875" letter-spacing="0.0056">an</tspan>
+                <tspan x="862.373965" y="469.71875">ks</tspan>
+                <tspan x="890.373965" y="469.71875" letter-spacing="-0.0056">, </tspan>
+                <tspan x="905.921359" y="469.71875">Br</tspan>
+                <tspan x="933.921359" y="469.71875" letter-spacing="0.0056">o</tspan>
+                <tspan x="949.499224" y="469.71875">k</tspan>
+                <tspan x="963.499224" y="469.71875" letter-spacing="0.0056">e</tspan>
+                <tspan x="979.07709" y="469.71875">rs</tspan>
+                <tspan x="1002.40131" y="469.71875" letter-spacing="-0.0056">, </tspan>
+                <tspan x="1017.9487" y="469.71875" letter-spacing="0.0056">e</tspan>
+                <tspan x="1033.52657" y="469.71875" letter-spacing="-0.0056">t</tspan>
+                <tspan x="1041.30027" y="469.71875">c</tspan>
+            </text>
+        </g>
+        <g id="Group-64" transform="translate(497.4072, 291)">
+            <g id="Group-62">
+                <mask id="mask-16" fill="white">
+                    <use xlink:href="#path-15"></use>
+                </mask>
+                <g id="Clip-61"></g>
+                <text id="Repayment-" mask="url(#mask-16)" font-family="ArialMT, Arial" font-size="28" font-weight="normal" letter-spacing="0.0056" fill="#0068AC">
+                    <tspan x="0" y="18.71875">Repa</tspan>
+                    <tspan x="66.9599" y="18.71875">ym</tspan>
+                    <tspan x="104.284119" y="18.71875">en</tspan>
+                    <tspan x="135.43985" y="18.71875" letter-spacing="-0.0056">t</tspan>
+                    <tspan x="143.213547" y="18.71875"> </tspan>
+                </text>
+            </g>
+            <text id="plan(s)" font-family="ArialMT, Arial" font-size="28" font-weight="normal" letter-spacing="0.0056" fill="#0068AC">
+                <tspan x="28.7998" y="49.71875">plan</tspan>
+                <tspan x="81.7597" y="49.71875">(s)</tspan>
+            </text>
+        </g>
+        <path d="M681.4874,360.0263 L683.2305,361.0068 L703.2305,372.2568 L706.3295,374 L703.2305,375.7432 L683.2305,386.9932 L681.4874,387.9737 L679.5263,384.4874 L681.2695,383.5068 L694.614,376 L689,376 L689,372 L694.616,372.001 L681.2695,364.4932 L679.5263,363.5126 L681.4874,360.0263 Z M685,372 L685,376 L673,376 L673,372 L685,372 Z M669,372 L669,376 L657,376 L657,372 L669,372 Z M653,372 L653,376 L641,376 L641,372 L653,372 Z M637,372 L637,376 L625,376 L625,372 L637,372 Z M621,372 L621,376 L609,376 L609,372 L621,372 Z M605,372 L605,376 L593,376 L593,372 L605,372 Z M589,372 L589,376 L577,376 L577,372 L589,372 Z M573,372 L573,376 L561,376 L561,372 L573,372 Z M557,372 L557,376 L545,376 L545,372 L557,372 Z M541,372 L541,376 L529,376 L529,372 L541,372 Z M525,372 L525,376 L513,376 L513,372 L525,372 Z M509,372 L509,376 L497,376 L497,372 L509,372 Z M493,372 L493,376 L481,376 L481,372 L493,372 Z M477,372 L477,376 L465,376 L465,372 L477,372 Z M461,372 L461,376 L449,376 L449,372 L461,372 Z M445,372 L445,376 L440,376 L440,372 L445,372 Z" id="Fill-65" fill="#0068AC"></path>
+        <g id="Group-70" transform="translate(12, 408)">
+            <mask id="mask-18" fill="white">
+                <use xlink:href="#path-17"></use>
+            </mask>
+            <g id="Clip-68"></g>
+            <polygon id="Fill-67" fill="#0068AC" mask="url(#mask-18)" points="-1 -1 401 -1 401 17 -1 17"></polygon>
+            <polygon id="Stroke-69" stroke="#0068AC" stroke-width="2" mask="url(#mask-18)" points="0 0 400 0 400 16 0 16"></polygon>
+        </g>
+        <g id="Group-74" transform="translate(32, 387)">
+            <mask id="mask-20" fill="white">
+                <use xlink:href="#path-19"></use>
+            </mask>
+            <g id="Clip-72"></g>
+            <polygon id="Fill-71" fill="#0068AC" mask="url(#mask-20)" points="-1 -1 361 -1 361 17 -1 17"></polygon>
+            <polygon id="Stroke-73" stroke="#0068AC" stroke-width="2" mask="url(#mask-20)" points="0 0 360 0 360 16 0 16"></polygon>
+        </g>
+        <g id="Group-78" transform="translate(12, 126.5)">
+            <mask id="mask-22" fill="white">
+                <use xlink:href="#path-21"></use>
+            </mask>
+            <g id="Clip-76"></g>
+            <polygon id="Fill-75" fill="#0068AC" mask="url(#mask-22)" points="-1 -1.5 401 -1.5 401 100.5 -1 100.5"></polygon>
+            <polygon id="Stroke-77" stroke="#0068AC" stroke-width="2" mask="url(#mask-22)" points="0 61.5 200 0 400 61.5 400 99.5 0 99.5"></polygon>
+        </g>
+        <g id="Group-82" transform="translate(58, 258)">
+            <mask id="mask-24" fill="white">
+                <use xlink:href="#path-23"></use>
+            </mask>
+            <g id="Clip-80"></g>
+            <polygon id="Fill-79" fill="#0068AC" mask="url(#mask-24)" points="-1 -1 50 -1 50 98 -1 98"></polygon>
+            <polygon id="Stroke-81" stroke="#0068AC" stroke-width="2" mask="url(#mask-24)" points="0 0 49 0 49 97 0 97"></polygon>
+        </g>
+        <g id="Group-86" transform="translate(140, 258)">
+            <mask id="mask-26" fill="white">
+                <use xlink:href="#path-25"></use>
+            </mask>
+            <g id="Clip-84"></g>
+            <polygon id="Fill-83" fill="#0068AC" mask="url(#mask-26)" points="-1 -1 50 -1 50 98 -1 98"></polygon>
+            <polygon id="Stroke-85" stroke="#0068AC" stroke-width="2" mask="url(#mask-26)" points="0 0 49 0 49 97 0 97"></polygon>
+        </g>
+        <g id="Group-90" transform="translate(232, 258)">
+            <mask id="mask-28" fill="white">
+                <use xlink:href="#path-27"></use>
+            </mask>
+            <g id="Clip-88"></g>
+            <polygon id="Fill-87" fill="#0068AC" mask="url(#mask-28)" points="-1 -1 50 -1 50 98 -1 98"></polygon>
+            <polygon id="Stroke-89" stroke="#0068AC" stroke-width="2" mask="url(#mask-28)" points="0 0 49 0 49 97 0 97"></polygon>
+        </g>
+        <g id="Group-94" transform="translate(320, 258)">
+            <mask id="mask-30" fill="white">
+                <use xlink:href="#path-29"></use>
+            </mask>
+            <g id="Clip-92"></g>
+            <polygon id="Fill-91" fill="#0068AC" mask="url(#mask-30)" points="-1 -1 50 -1 50 98 -1 98"></polygon>
+            <polygon id="Stroke-93" stroke="#0068AC" stroke-width="2" mask="url(#mask-30)" points="0 0 49 0 49 97 0 97"></polygon>
+        </g>
+        <g id="Group-98" transform="translate(44, 360)">
+            <mask id="mask-32" fill="white">
+                <use xlink:href="#path-31"></use>
+            </mask>
+            <g id="Clip-96"></g>
+            <polygon id="Fill-95" fill="#0068AC" mask="url(#mask-32)" points="-1 -1 77 -1 77 23 -1 23"></polygon>
+            <polygon id="Stroke-97" stroke="#0068AC" stroke-width="2" mask="url(#mask-32)" points="14 0 62 0 76 22 0 22"></polygon>
+        </g>
+        <g id="Group-102" transform="translate(126, 360)">
+            <mask id="mask-34" fill="white">
+                <use xlink:href="#path-33"></use>
+            </mask>
+            <g id="Clip-100"></g>
+            <polygon id="Fill-99" fill="#0068AC" mask="url(#mask-34)" points="-1 -1 77 -1 77 23 -1 23"></polygon>
+            <polygon id="Stroke-101" stroke="#0068AC" stroke-width="2" mask="url(#mask-34)" points="14 0 62 0 76 22 0 22"></polygon>
+        </g>
+        <g id="Group-106" transform="translate(218, 360)">
+            <mask id="mask-36" fill="white">
+                <use xlink:href="#path-35"></use>
+            </mask>
+            <g id="Clip-104"></g>
+            <polygon id="Fill-103" fill="#0068AC" mask="url(#mask-36)" points="-1 -1 77 -1 77 23 -1 23"></polygon>
+            <polygon id="Stroke-105" stroke="#0068AC" stroke-width="2" mask="url(#mask-36)" points="14 0 62 0 76 22 0 22"></polygon>
+        </g>
+        <g id="Group-110" transform="translate(306, 360)">
+            <mask id="mask-38" fill="white">
+                <use xlink:href="#path-37"></use>
+            </mask>
+            <g id="Clip-108"></g>
+            <polygon id="Fill-107" fill="#0068AC" mask="url(#mask-38)" points="-1 -1 77 -1 77 23 -1 23"></polygon>
+            <polygon id="Stroke-109" stroke="#0068AC" stroke-width="2" mask="url(#mask-38)" points="14 0 62 0 76 22 0 22"></polygon>
+        </g>
+        <g id="Group-114" transform="translate(44, 231)">
+            <mask id="mask-40" fill="white">
+                <use xlink:href="#path-39"></use>
+            </mask>
+            <g id="Clip-112"></g>
+            <polygon id="Fill-111" fill="#0068AC" mask="url(#mask-40)" points="77 23 -1 23 -1 -1 77 -1"></polygon>
+            <polygon id="Stroke-113" stroke="#0068AC" stroke-width="2" mask="url(#mask-40)" points="62 22 14 22 0 0 76 0"></polygon>
+        </g>
+        <g id="Group-118" transform="translate(126, 231)">
+            <mask id="mask-42" fill="white">
+                <use xlink:href="#path-41"></use>
+            </mask>
+            <g id="Clip-116"></g>
+            <polygon id="Fill-115" fill="#0068AC" mask="url(#mask-42)" points="77 23 -1 23 -1 -1 77 -1"></polygon>
+            <polygon id="Stroke-117" stroke="#0068AC" stroke-width="2" mask="url(#mask-42)" points="62 22 14 22 0 0 76 0"></polygon>
+        </g>
+        <g id="Group-122" transform="translate(218, 231)">
+            <mask id="mask-44" fill="white">
+                <use xlink:href="#path-43"></use>
+            </mask>
+            <g id="Clip-120"></g>
+            <polygon id="Fill-119" fill="#0068AC" mask="url(#mask-44)" points="77 23 -1 23 -1 -1 77 -1"></polygon>
+            <polygon id="Stroke-121" stroke="#0068AC" stroke-width="2" mask="url(#mask-44)" points="62 22 14 22 0 0 76 0"></polygon>
+        </g>
+        <g id="Group-126" transform="translate(306, 231)">
+            <mask id="mask-46" fill="white">
+                <use xlink:href="#path-45"></use>
+            </mask>
+            <g id="Clip-124"></g>
+            <polygon id="Fill-123" fill="#0068AC" mask="url(#mask-46)" points="77 23 -1 23 -1 -1 77 -1"></polygon>
+            <polygon id="Stroke-125" stroke="#0068AC" stroke-width="2" mask="url(#mask-46)" points="62 22 14 22 0 0 76 0"></polygon>
+        </g>
+        <g id="Group-130" transform="translate(69, 274)">
+            <mask id="mask-48" fill="white">
+                <use xlink:href="#path-47"></use>
+            </mask>
+            <g id="Clip-128"></g>
+            <polygon id="Fill-127" fill="#FFFFFF" mask="url(#mask-48)" points="-1 -1 6 -1 6 71 -1 71"></polygon>
+            <polygon id="Stroke-129" stroke="#979797" stroke-width="2" mask="url(#mask-48)" points="0 0 5 0 5 70 0 70"></polygon>
+        </g>
+        <g id="Group-134" transform="translate(69, 274)">
+            <mask id="mask-50" fill="white">
+                <use xlink:href="#path-49"></use>
+            </mask>
+            <g id="Clip-132"></g>
+            <polygon id="Fill-131" fill="#FFFFFF" mask="url(#mask-50)" points="-1 -1 6 -1 6 71 -1 71"></polygon>
+            <polygon id="Stroke-133" stroke="#979797" stroke-width="2" mask="url(#mask-50)" points="0 0 5 0 5 70 0 70"></polygon>
+        </g>
+        <g id="Group-138" transform="translate(80, 274)">
+            <mask id="mask-52" fill="white">
+                <use xlink:href="#path-51"></use>
+            </mask>
+            <g id="Clip-136"></g>
+            <polygon id="Fill-135" fill="#FFFFFF" mask="url(#mask-52)" points="-1 -1 6 -1 6 71 -1 71"></polygon>
+            <polygon id="Stroke-137" stroke="#979797" stroke-width="2" mask="url(#mask-52)" points="0 0 5 0 5 70 0 70"></polygon>
+        </g>
+        <g id="Group-142" transform="translate(90, 274)">
+            <mask id="mask-54" fill="white">
+                <use xlink:href="#path-53"></use>
+            </mask>
+            <g id="Clip-140"></g>
+            <polygon id="Fill-139" fill="#FFFFFF" mask="url(#mask-54)" points="-1 -1 6 -1 6 71 -1 71"></polygon>
+            <polygon id="Stroke-141" stroke="#979797" stroke-width="2" mask="url(#mask-54)" points="0 0 5 0 5 70 0 70"></polygon>
+        </g>
+        <g id="Group-146" transform="translate(152, 274)">
+            <mask id="mask-56" fill="white">
+                <use xlink:href="#path-55"></use>
+            </mask>
+            <g id="Clip-144"></g>
+            <polygon id="Fill-143" fill="#FFFFFF" mask="url(#mask-56)" points="-1 -1 6 -1 6 71 -1 71"></polygon>
+            <polygon id="Stroke-145" stroke="#979797" stroke-width="2" mask="url(#mask-56)" points="0 0 5 0 5 70 0 70"></polygon>
+        </g>
+        <g id="Group-150" transform="translate(163, 274)">
+            <mask id="mask-58" fill="white">
+                <use xlink:href="#path-57"></use>
+            </mask>
+            <g id="Clip-148"></g>
+            <polygon id="Fill-147" fill="#FFFFFF" mask="url(#mask-58)" points="-1 -1 6 -1 6 71 -1 71"></polygon>
+            <polygon id="Stroke-149" stroke="#979797" stroke-width="2" mask="url(#mask-58)" points="0 0 5 0 5 70 0 70"></polygon>
+        </g>
+        <g id="Group-154" transform="translate(173, 274)">
+            <mask id="mask-60" fill="white">
+                <use xlink:href="#path-59"></use>
+            </mask>
+            <g id="Clip-152"></g>
+            <polygon id="Fill-151" fill="#FFFFFF" mask="url(#mask-60)" points="-1 -1 6 -1 6 71 -1 71"></polygon>
+            <polygon id="Stroke-153" stroke="#979797" stroke-width="2" mask="url(#mask-60)" points="0 0 5 0 5 70 0 70"></polygon>
+        </g>
+        <g id="Group-158" transform="translate(244, 274)">
+            <mask id="mask-62" fill="white">
+                <use xlink:href="#path-61"></use>
+            </mask>
+            <g id="Clip-156"></g>
+            <polygon id="Fill-155" fill="#FFFFFF" mask="url(#mask-62)" points="-1 -1 6 -1 6 71 -1 71"></polygon>
+            <polygon id="Stroke-157" stroke="#979797" stroke-width="2" mask="url(#mask-62)" points="0 0 5 0 5 70 0 70"></polygon>
+        </g>
+        <g id="Group-162" transform="translate(255, 274)">
+            <mask id="mask-64" fill="white">
+                <use xlink:href="#path-63"></use>
+            </mask>
+            <g id="Clip-160"></g>
+            <polygon id="Fill-159" fill="#FFFFFF" mask="url(#mask-64)" points="-1 -1 6 -1 6 71 -1 71"></polygon>
+            <polygon id="Stroke-161" stroke="#979797" stroke-width="2" mask="url(#mask-64)" points="0 0 5 0 5 70 0 70"></polygon>
+        </g>
+        <g id="Group-166" transform="translate(265, 274)">
+            <mask id="mask-66" fill="white">
+                <use xlink:href="#path-65"></use>
+            </mask>
+            <g id="Clip-164"></g>
+            <polygon id="Fill-163" fill="#FFFFFF" mask="url(#mask-66)" points="-1 -1 6 -1 6 71 -1 71"></polygon>
+            <polygon id="Stroke-165" stroke="#979797" stroke-width="2" mask="url(#mask-66)" points="0 0 5 0 5 70 0 70"></polygon>
+        </g>
+        <g id="Group-170" transform="translate(332, 274)">
+            <mask id="mask-68" fill="white">
+                <use xlink:href="#path-67"></use>
+            </mask>
+            <g id="Clip-168"></g>
+            <polygon id="Fill-167" fill="#FFFFFF" mask="url(#mask-68)" points="-1 -1 6 -1 6 71 -1 71"></polygon>
+            <polygon id="Stroke-169" stroke="#979797" stroke-width="2" mask="url(#mask-68)" points="0 0 5 0 5 70 0 70"></polygon>
+        </g>
+        <g id="Group-174" transform="translate(343, 274)">
+            <mask id="mask-70" fill="white">
+                <use xlink:href="#path-69"></use>
+            </mask>
+            <g id="Clip-172"></g>
+            <polygon id="Fill-171" fill="#FFFFFF" mask="url(#mask-70)" points="-1 -1 6 -1 6 71 -1 71"></polygon>
+            <polygon id="Stroke-173" stroke="#979797" stroke-width="2" mask="url(#mask-70)" points="0 0 5 0 5 70 0 70"></polygon>
+        </g>
+        <g id="Group-178" transform="translate(353, 274)">
+            <mask id="mask-72" fill="white">
+                <use xlink:href="#path-71"></use>
+            </mask>
+            <g id="Clip-176"></g>
+            <polygon id="Fill-175" fill="#FFFFFF" mask="url(#mask-72)" points="-1 -1 6 -1 6 71 -1 71"></polygon>
+            <polygon id="Stroke-177" stroke="#979797" stroke-width="2" mask="url(#mask-72)" points="0 0 5 0 5 70 0 70"></polygon>
+        </g>
+        <text id="United-States-Treasury-" font-family="ArialMT, Arial" font-size="28" font-weight="normal" letter-spacing="0.0056" fill="#0068AC">
+            <tspan x="69.600586" y="469.71875">Uni</tspan>
+            <tspan x="111.631058" y="469.71875" letter-spacing="-0.0056">t</tspan>
+            <tspan x="119.404755" y="469.71875">ed</tspan>
+            <tspan x="150.560486" y="469.71875" letter-spacing="-0.0056"> </tspan>
+            <tspan x="158.334183" y="469.71875">S</tspan>
+            <tspan x="177.009964" y="469.71875" letter-spacing="-0.0056">t</tspan>
+            <tspan x="184.783661" y="469.71875">a</tspan>
+            <tspan x="200.361527" y="469.71875" letter-spacing="-0.0056">t</tspan>
+            <tspan x="208.135223" y="469.71875">e</tspan>
+            <tspan x="223.713089" y="469.71875">s</tspan>
+            <tspan x="237.713089" y="469.71875" letter-spacing="-0.5096"> </tspan>
+            <tspan x="244.476927" y="469.71875" letter-spacing="-1.0444">T</tspan>
+            <tspan x="259.49698" y="469.71875">r</tspan>
+            <tspan x="268.821198" y="469.71875">ea</tspan>
+            <tspan x="299.97693" y="469.71875">s</tspan>
+            <tspan x="313.97693" y="469.71875">u</tspan>
+            <tspan x="329.554795" y="469.71875">ry </tspan>
+        </text>
+    </g>
+</svg>

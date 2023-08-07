@@ -1,0 +1,1050 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Brownian Motion Models of Equity Pricing &#8212; CHEME-5660</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-PG1Y6R28LY"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-PG1Y6R28LY');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chapter-2-dir/stocks/obm-gbm-eq-price';</script>
+    <link rel="canonical" href="https://varnerlab.github.io/CHEME-5660-Markets-Mayhem-Book/infrastructure.html/chapter-2-dir/stocks/obm-gbm-eq-price.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Advanced Stochastic Models of Equity Pricing" href="advanced-eq-price.html" />
+    <link rel="prev" title="Lattice Models of Equity Pricing" href="lattice-eq-price.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../../infrastructure.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/cornell_seal_simple_black-164.svg" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../../_static/cornell_seal_simple_black-164.svg" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../infrastructure.html">
+                    Finance and Markets for Engineers and Scientists
+                </a>
+            </li>
+        </ul>
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../chapter-1-dir/chapter-1-landing.html">Unit 1: Financial Basics</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../chapter-1-dir/assets.html">Valuation of Abstract Assets</a></li>
+</ul>
+</li>
+</ul>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../chapter-2-landing.html">Unit 2: Wealth Creation Tools</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2 has-children"><a class="reference internal" href="../bonds.html">U.S. Treasury Securities</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../bonds/T-bills.html">U.S. Treasury Bills, Notes and Bonds</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../bonds/T-bill-note-bond-pricing.html">U.S. Treasury Security Pricing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../bonds/STRIPS.html">STRIPS Bonds and the Term Structure of Interest Rates</a></li>
+</ul>
+</li>
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="../stocks.html">Equity Securities</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="stylized-facts.html">Markets and Stylized Facts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="lattice-eq-price.html">Lattice Models of Equity Pricing</a></li>
+<li class="toctree-l3 current active"><a class="current reference internal" href="#">Brownian Motion Models of Equity Pricing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="advanced-eq-price.html">Advanced Stochastic Models of Equity Pricing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="multivariate-eq-price.html">Multivariate Brownian Motion Models of Equity Prices</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../options.html">Derivative Securities</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../options/american-call-and-put-contracts.html">American and European Call and Put Contracts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../options/composite-contracts.html">Composite Contract Profit Diagrams</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../options/option-contract-pricing.html">Contract Pricing at Expiration: Extrinsic and Intrinsic Value</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../options/option-contract-dynamics.html">Contract Pricing Before Expiration: Price Dynamics and Sensitivities</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../options/option-rolling.html">Trade mechanics for options positions: The Art of the Roll</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../chapter-3-dir/chapter-3-landing.html">Unit 3: Modern Portfolio Theory</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../chapter-3-dir/data-markowitz.html">Data-Driven Portfolio Allocation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../chapter-3-dir/model-markowitz.html">Model-Driven Portfolio Allocation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../chapter-3-dir/reallocation.html">Portfolio Reallocation Strategies</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../chapter-3-dir/black-swan-events.html">Surviving Black Swan Events</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../chapter-3-dir/var.html">Value at Risk and Conditional Value at Risk</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../chapter-3-dir/hedged-portfolio.html">Hedging and Dynamic Hedging Approaches</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../chapter-4-dir/chapter-4-landing.html">Unit 4: Rational Decision Theory</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../chapter-4-dir/expected-utility.html">Maximzing the Expected Utility</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../chapter-4-dir/markov.html">Markov Models</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../chapter-4-dir/markov/hmm.html">Hidden Markov Models of Investor Behavior</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../chapter-4-dir/markov/mdp.html">Markov Decision Process Models of Sequential Decision Making</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../chapter-4-dir/rl.html">Reinforcement Learning</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../chapter-4-dir/bandits/bandits.html">Bandit problems, exploration versus exploitation and Thompson sampling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../chapter-4-dir/rl/Q-learning.html">Reinforcement Learning (RL) and the asset management problem</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../appendix/probability-basics.html">Probability and Random Variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../appendix/ito.html">Stochastic Processes</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../appendix/julia-basics.html">Julia Basics</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../appendix/julia/julia-installation.html">Julia Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../appendix/julia/julia-functions-types.html">Julia Types, Functions and Programs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../appendix/julia/julia-data.html">Working with Data in Julia</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">References</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../References.html">References</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Book/issues/new?title=Issue%20on%20page%20%2Fchapter-2-dir/stocks/obm-gbm-eq-price.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/chapter-2-dir/stocks/obm-gbm-eq-price.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Brownian Motion Models of Equity Pricing</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction-to-brownian-motion-models">Introduction to Brownian motion models</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ordinary-brownian-motion-models">Ordinary Brownian motion models</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analytical-solution">Analytical solution</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#monte-carlo-simulation">Monte Carlo simulation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#discretization">Discretization</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#geometric-brownian-motion-models">Geometric Brownian motion models</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Analytical solution</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#estimating-the-mu-parameter">Estimating the <span class="math notranslate nohighlight">\(\mu\)</span> parameter</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#solving-the-normal-equations">Solving the normal equations</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#implementation">Implementation</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#estimating-the-sigma-parameter">Estimating the <span class="math notranslate nohighlight">\(\sigma\)</span> parameter</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Implementation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#testing-geometric-brownian-motion">Testing geometric Brownian motion</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stylized-facts">Stylized facts</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#autocorrelation-of-logarithmic-returns">Autocorrelation of logarithmic returns</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#volatility-clustering-of-logarithmic-returns">Volatility clustering of logarithmic returns</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#distribution-of-logarithmic-returns">Distribution of logarithmic returns</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#share-price-prediction">Share price prediction</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="brownian-motion-models-of-equity-pricing">
+<h1>Brownian Motion Models of Equity Pricing<a class="headerlink" href="#brownian-motion-models-of-equity-pricing" title="Permalink to this heading">#</a></h1>
+<aside class="topic">
+<p class="topic-title">Outline</p>
+<p>Today’s lecture will introduce the first continuous-time tool of equity pricing - Brownian motion models. Our focus for today will be on ordinary Brownian motion, the simplest model, and geometric Brownian motion, arguably the most commonly used model.</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#content-brownian-models-introduction"><span class="std std-ref">Brownian motion models</span></a> are continuous-time models used to describe the evolution of an asset price, i.e., share price. We’ll discuss the properties of Brownian motion models and how to use them to price assets.</p></li>
+<li><p><a class="reference internal" href="#content-brownian-models-ordinary"><span class="std std-ref">Ordinary Brownian motion models</span></a> are the simplest Brownian motion models for share prices. We’ll discuss how to use them to price assets and the basic of monte carlo price simulations.</p></li>
+<li><p><a class="reference internal" href="#content-brownian-models-geometric"><span class="std std-ref">Geometric Brownian motion models</span></a> are arguably the most commonly used Brownian motion model for the share price. We’ll discuss how to use them to price assets and how to estimate model parameters from historical data.</p></li>
+<li><p><a class="reference internal" href="#content-gbm-models-testing"><span class="std std-ref">Testing the geometric Brownian motion model</span></a> is an important step in the model building process. We’ll discuss how to test the geometric Brownian motion model using real-world parameters and historic data.</p></li>
+</ul>
+</aside>
+<section id="introduction-to-brownian-motion-models">
+<span id="content-brownian-models-introduction"></span><h2>Introduction to Brownian motion models<a class="headerlink" href="#introduction-to-brownian-motion-models" title="Permalink to this heading">#</a></h2>
+<p>One of the most important models in quantitative finance is Brownian motion. It was named after the <a class="reference external" href="https://en.wikipedia.org/wiki/Robert_Brown_(botanist,_born_1773)">Scottish botanist Robert Brown</a>. Essentially, it’s a continuous-time random walk that represents the price of a financial asset, which evolves over time in a random way. The two main characteristics of Brownian motion are independence and stationarity.</p>
+<ul class="simple">
+<li><p>Independence means that the future behavior of a process is not influenced by its past, i.e., a process has no memory.</p></li>
+<li><p>Stationarity means that the statistical properties of a process remain constant over time.</p></li>
+</ul>
+<p>Brownian models are incredibly useful in many areas of quantitative finance, such as option pricing, risk management, and portfolio optimization.</p>
+</section>
+<section id="ordinary-brownian-motion-models">
+<span id="content-brownian-models-ordinary"></span><h2>Ordinary Brownian motion models<a class="headerlink" href="#ordinary-brownian-motion-models" title="Permalink to this heading">#</a></h2>
+<p>Ordinary Brownian Motion (OBM) is a continuous-time stochastic process in which the random variable <span class="math notranslate nohighlight">\(S(t)\)</span>, e.g., the share price at time <span class="math notranslate nohighlight">\(t\)</span> of a firm with ticker <code class="docutils literal notranslate"><span class="pre">XYZ</span></code>, is described by a deterministic drift term corrupted by a <a class="reference external" href="https://en.wikipedia.org/wiki/Wiener_process">Wiener noise process</a>:</p>
+<div class="math notranslate nohighlight" id="equation-eq-sde-bm">
+<span class="eqno">(19)<a class="headerlink" href="#equation-eq-sde-bm" title="Permalink to this equation">#</a></span>\[dS = {\mu}dt + \sigma{dW}\]</div>
+<p>The constant <span class="math notranslate nohighlight">\(\mu\)</span> denotes a drift parameter, <span class="math notranslate nohighlight">\(\sigma\)</span> indicates a volatility parameter and <span class="math notranslate nohighlight">\(dW\)</span> represents the output of a <a class="reference external" href="https://en.wikipedia.org/wiki/Wiener_process">Wiener process</a>.  However, while Louis Bachelier used a similar model to describe stock prices in his pioneering thesis work in 1900 <span id="id1">[<a class="reference internal" href="../../References.html#id20" title="M. Davis and A Etheridge. Louis Bachelier's Theory of speculation: the origins of modern finance. Princeton University Press, Princeton, N.J., 2006. ISBN 9780691117522 (hbk. : alk. paper).">Davis and Etheridge, 2006</a>]</span>, ordinary Brownian motion is not commonly used as a model for stock prices or other risky assets. The primary reason is that the share price can take on negative values, which is unrealistic.</p>
+<p>Despite the negativity issue, ordinary Brownian motion models are useful for understanding the properties of more realistic models, such as <a class="reference internal" href="#content-brownian-models-geometric"><span class="std std-ref">geometric Brownian motion models which we consider next</span></a>, understanding the properties of stochastic processes in general, and developing numerical methods for solving stochastic differential equations.</p>
+<section id="analytical-solution">
+<h3>Analytical solution<a class="headerlink" href="#analytical-solution" title="Permalink to this heading">#</a></h3>
+<p>Using <a class="reference external" href="https://en.wikipedia.org/wiki/It%C3%B4%27s_lemma">Ito’s lemma</a>, we can formulate an analytical solution to the OBM equation which describes the evolution of the share price <span class="math notranslate nohighlight">\(S(t)\)</span> over time <span class="math notranslate nohighlight">\(t\)</span>:</p>
+<div class="math notranslate nohighlight" id="equation-eq-sde-bm-solution">
+<span class="eqno">(20)<a class="headerlink" href="#equation-eq-sde-bm-solution" title="Permalink to this equation">#</a></span>\[S(t) = S_{\circ} + \mu\left(t-t_{\circ}\right)+\left(\sigma\sqrt{t - t_{\circ}}\right)\cdot{Z_{t}(0,1)}\]</div>
+<p>where <span class="math notranslate nohighlight">\(S_{\circ}\)</span> denotes the share price at the initial time <span class="math notranslate nohighlight">\(t_{\circ}\)</span>, and <span class="math notranslate nohighlight">\(Z_{t}(0,1)\)</span> denotes a <a class="reference external" href="https://en.wikipedia.org/wiki/Normal_distribution#Standard_normal_distribution">standard normal random variable</a> at time <span class="math notranslate nohighlight">\(t\)</span>. The analytical solution allows us to directly compute the expected value and variance of the share price at time <span class="math notranslate nohighlight">\(t\)</span>. The expected share price is given by:</p>
+<div class="math notranslate nohighlight">
+\[\mathbb{E}\left(S_{t}\right) = S_{o} + \mu\cdot\Delta{t}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\Delta{t} = t-t_{o}\)</span>. On the other hand, the variance of the share price <span class="math notranslate nohighlight">\(\text{Var}(S_{t})\)</span> at time <span class="math notranslate nohighlight">\(t\)</span> is given by:</p>
+<div class="math notranslate nohighlight">
+\[\text{Var}\left(S_{t}\right) = \sigma^{2}{\Delta{t}}\]</div>
+<p>The derivation of the analytical solution, the expectation and the variance of the share price are <a class="reference internal" href="../../appendix/ito.html"><span class="doc std std-doc">provided in the Appendix</span></a>.</p>
+</section>
+<section id="monte-carlo-simulation">
+<h3>Monte Carlo simulation<a class="headerlink" href="#monte-carlo-simulation" title="Permalink to this heading">#</a></h3>
+<p>Monte Carlo simulation is a powerful tool for simulating stochastic systems, e.g., share prices, where analytical expressions for the solution, expectation, and variance are unavailable. Monte Carlo simulation is based on generating a large number of random sample paths, e.g., possible trajectories of the share price <span class="math notranslate nohighlight">\(S(t)\)</span>, and then computing the expected value and variance of the share price from the population of sample paths (<a class="reference internal" href="#fig-obm-samples"><span class="std std-numref">Fig. 21</span></a>)</p>
+<figure class="align-default" id="fig-obm-samples">
+<a class="reference internal image-reference" href="../../_images/Fig-Samples-OBM.svg"><img alt="../../_images/Fig-Samples-OBM.svg" height="420px" src="../../_images/Fig-Samples-OBM.svg" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 21 </span><span class="caption-text">Simulation of Brownian motion for share price <span class="math notranslate nohighlight">\(S(t)\)</span> with N = 100 and 1000 sample paths (blue lines). The analytical expected value is shown as a black dashed line, and the analytical variance is shown as shaded regions for <code class="docutils literal notranslate"><span class="pre">z</span> <span class="pre">=</span> <span class="pre">1.0,</span> <span class="pre">1.96,</span> <span class="pre">2.576</span></code>. Sample path expectation and variance are shown as black lines. Parameters: <span class="math notranslate nohighlight">\(S_{\circ} = 100\)</span>, <span class="math notranslate nohighlight">\(\mu = 2.0\)</span>, <span class="math notranslate nohighlight">\(\sigma = 20\)</span>, and <code class="docutils literal notranslate"><span class="pre">T</span> <span class="pre">=</span> <span class="pre">42</span></code> days.</span><a class="headerlink" href="#fig-obm-samples" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>As the number of sample path increases, the estimated expected value and variance converge to the analytical values (<a class="reference internal" href="#fig-obm-samples"><span class="std std-numref">Fig. 21</span></a>, left versus right panels). However, this opens up the question of how many sample paths are required to obtain a good estimate of the expected value and variance, i.e., what is a good stopping criterion?</p>
+<p>Bicher et al., recently reviewed the stopping criteria for Monte Carlo simulation <span id="id2">[]</span>.</p>
+<!-- the literature on the convergence of Monte Carlo simulation for stochastic differential equations {cite:p}`Bichsel:2013vz`. They found that the convergence rate of Monte Carlo simulation for stochastic differential equations is $O(N^{-1/2})$, where $N$ is the number of sample paths. This means that the variance of the Monte Carlo estimate of the expected value and variance decreases as $N^{-1/2}$, i.e., the variance decreases as the square root of the number of sample paths. -->
+</section>
+<section id="discretization">
+<h3>Discretization<a class="headerlink" href="#discretization" title="Permalink to this heading">#</a></h3>
+<p>However, if we don’t have an analytical solution for the share price (which for advanced models is typically the case), how can we simulate it? The answer is to use a discretization technique such the <a class="reference external" href="https://en.wikipedia.org/wiki/Euler%E2%80%93Maruyama_method">Euler-Maruyama (EM) method</a>, which is a numerical method for approximating the solution of stochastic differential equations. For the general scalar stochastic differential equation with a Wiener noise process:</p>
+<div class="math notranslate nohighlight">
+\[dX = a(X,t)dt + b(X,t)dW\]</div>
+<p>The EM method gives the discrete approximate solution at time-step <span class="math notranslate nohighlight">\(k\rightarrow{k+1}\)</span>:</p>
+<div class="math notranslate nohighlight" id="equation-eq-em-method-general-case">
+<span class="eqno">(21)<a class="headerlink" href="#equation-eq-em-method-general-case" title="Permalink to this equation">#</a></span>\[X_{k+1} = X_{k} + a(X_{k}, t_{k})h + \left(b(X_{k},t_{k})\sqrt{h}\right)\cdot{Z_{k}}\left(0,1\right)\]</div>
+<p>where the step size <span class="math notranslate nohighlight">\(h=t_{k+1} - t_{k}\)</span> and <span class="math notranslate nohighlight">\(Z_{k}(0,1)\)</span> denotes a standard normal random variable at time-step <span class="math notranslate nohighlight">\(k\)</span>.  While the EM method is straightforward to implement, it has a poor overall accuracy with error on order <span class="math notranslate nohighlight">\(\sqrt{h}\)</span>. Thus, small step sizes are required to get accurate solutions.</p>
+<!-- As a result, we will focus on the geometric Brownian motion model, which is a more realistic model of share price evolution.
+
+
+there is a significant issue with this type of stochastic model for share prices. The problem lies in the potential for negative share prices, which is unrealistic.
+
+Finally, let's compute the expectation and variance of the share price simulation. We could estimate these values from the population of sample paths. However, for the Geometric Brownian Motion (GBM) analytical expressions are available for both the expected value and the variance of the share price. 
+
+Despite the negative share price issue, Eqn. {eq}`eq-SDE-BM` is the simplest Brownian model of equity share price.  -->
+</section>
+</section>
+<section id="geometric-brownian-motion-models">
+<span id="content-brownian-models-geometric"></span><h2>Geometric Brownian motion models<a class="headerlink" href="#geometric-brownian-motion-models" title="Permalink to this heading">#</a></h2>
+<p>A more popular model for asset prices is the geometric Brownian motion (GBM) model. The GBM model is a stochastic differential equation that describes the evolution of the share price <span class="math notranslate nohighlight">\(S(t)\)</span> as random walk with drift and volatility:</p>
+<div class="math notranslate nohighlight" id="equation-eq-sde-gbm">
+<span class="eqno">(22)<a class="headerlink" href="#equation-eq-sde-gbm" title="Permalink to this equation">#</a></span>\[\frac{dS\left(t\right)}{S(t)} = \mu{dt}+\sigma{dW(t)}\]</div>
+<p>Here, <span class="math notranslate nohighlight">\(S(t)\)</span> denotes the share price, the constant <span class="math notranslate nohighlight">\(\mu\)</span> denotes a drift parameter, <span class="math notranslate nohighlight">\(\sigma&gt;0\)</span> indicates a volatility parameter and <span class="math notranslate nohighlight">\(dW\)</span> represents the output of a <a class="reference external" href="https://en.wikipedia.org/wiki/Wiener_process">Wiener noise process</a>.</p>
+<p>Geometric Brownian motion is primarily used as a financial model due to the work of Samuelson in the 1950s and 1960s <span id="id3">[<a class="reference internal" href="../../References.html#id18" title="Robert C. Merton. Paul samuelson and financial economics. The American Economist, 50(2):9–31, 2006. URL: http://www.jstor.org/stable/40657651 (visited on 2022-05-16).">Merton, 2006</a>]</span>. However, today GBM is more commonly associated with the Black–Scholes options pricing model, which we will describe later <span id="id4">[<a class="reference internal" href="../../References.html#id17" title="Fischer Black and Myron Scholes. The pricing of options and corporate liabilities. Journal of Political Economy, 81(3):637–654, 1973. URL: http://www.jstor.org/stable/1831029 (visited on 2022-05-16).">Black and Scholes, 1973</a>]</span>.</p>
+<section id="id5">
+<h3>Analytical solution<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h3>
+<p>We can calculate the share price value <span class="math notranslate nohighlight">\(S(t)\)</span> as a function of time without the need for an approximate solution by developing an analytical solution to Eqn. <a class="reference internal" href="#equation-eq-sde-gbm">(22)</a>. The analytical solution to the geometric Brownian motion stochastic differential equation with constant drift <span class="math notranslate nohighlight">\(\mu\)</span> and volatility <span class="math notranslate nohighlight">\(\sigma&gt;0\)</span> is given by:</p>
+<div class="math notranslate nohighlight" id="equation-eq-sde-gbm-analytical-solution">
+<span class="eqno">(23)<a class="headerlink" href="#equation-eq-sde-gbm-analytical-solution" title="Permalink to this equation">#</a></span>\[S(t) = S_{\circ}\cdot\exp\Biggl[\left(\mu-\frac{\sigma^{2}}{2}\right)\left(t - t_{\circ}\right) + (\sigma\sqrt{t-t_{\circ}})\cdot{Z(0,1)}\Biggr]\]</div>
+<p>where <span class="math notranslate nohighlight">\(S_{\circ}\)</span> is the initial share price of the asset at <span class="math notranslate nohighlight">\(t_{\circ}\)</span>, the initial time, and <span class="math notranslate nohighlight">\(Z(0,1)\)</span> is a standard normal random variable. Finally, we can use the analytical solution in Eqn. <a class="reference internal" href="#equation-eq-sde-gbm-analytical-solution">(23)</a> to develop analytical expressions for the expectation and variance of the share price. The expected share price is given by:</p>
+<div class="math notranslate nohighlight" id="equation-eq-sde-gbm-expected-value">
+<span class="eqno">(24)<a class="headerlink" href="#equation-eq-sde-gbm-expected-value" title="Permalink to this equation">#</a></span>\[\mathbb{E}\left(S_{t}\right) = S_{o}\cdot\exp\left(\mu\cdot\Delta{t}\right)\]</div>
+<p>where <span class="math notranslate nohighlight">\(\Delta{t} = t-t_{o}\)</span> and <span class="math notranslate nohighlight">\(S_{o}\)</span> denotes the share price at <span class="math notranslate nohighlight">\(t=t_{o}\)</span>. On the other hand, the variance of the share price <span class="math notranslate nohighlight">\(\text{Var}(S_{t})\)</span> at time <span class="math notranslate nohighlight">\(t\)</span> is given by:</p>
+<div class="math notranslate nohighlight" id="equation-eq-sde-gbm-variance">
+<span class="eqno">(25)<a class="headerlink" href="#equation-eq-sde-gbm-variance" title="Permalink to this equation">#</a></span>\[\text{Var}\left(S_{t}\right) = S_{\circ}^{2}e^{2\mu\cdot\Delta{t}}\left[e^{\sigma^{2}{\Delta{t}}} - 1\right]\]</div>
+<p>The derivation of the analytical solution, the expectation and the variance of the share price are <a class="reference internal" href="../../appendix/ito.html"><span class="doc std std-doc">provided in the Appendix</span></a>.</p>
+</section>
+<section id="estimating-the-mu-parameter">
+<h3>Estimating the <span class="math notranslate nohighlight">\(\mu\)</span> parameter<a class="headerlink" href="#estimating-the-mu-parameter" title="Permalink to this heading">#</a></h3>
+<p>Suppose there was no stochastic noise in the system, i.e., the volatility parameter <span class="math notranslate nohighlight">\(\sigma=0\)</span> in Eqn. <a class="reference internal" href="#equation-eq-sde-gbm-analytical-solution">(23)</a>. In this case, the GBM solution becomes deterministic:</p>
+<div class="math notranslate nohighlight" id="equation-eq-sde-gbm-deterministic-solution">
+<span class="eqno">(26)<a class="headerlink" href="#equation-eq-sde-gbm-deterministic-solution" title="Permalink to this equation">#</a></span>\[S(t) = S_{\circ}\cdot\exp\bigl(\mu\cdot\Delta{t}\bigr)\]</div>
+<p>where <span class="math notranslate nohighlight">\(\Delta{t} = t-t_{o}\)</span> and <span class="math notranslate nohighlight">\(S_{o}\)</span> denotes the share price at <span class="math notranslate nohighlight">\(t=t_{o}\)</span>. Rearranging the <code class="docutils literal notranslate"><span class="pre">ln</span></code> of the deterministic solution gives the linear expression:</p>
+<div class="math notranslate nohighlight" id="equation-eqn-sde-gbm-deterministic-solution-ln">
+<span class="eqno">(27)<a class="headerlink" href="#equation-eqn-sde-gbm-deterministic-solution-ln" title="Permalink to this equation">#</a></span>\[\ln{S(t)} = \ln{S_{\circ}} + \mu\left(t-t_{\circ}\right)+\epsilon(t)\]</div>
+<p>where <span class="math notranslate nohighlight">\(\epsilon(t)\)</span> is an error term, i.e., the component of the share price that is not explained by this linear deterministic model. We construct a <a class="reference external" href="https://en.wikipedia.org/wiki/Least_squares">least-squares estimate</a> of <span class="math notranslate nohighlight">\(\hat{\mu}\)</span> by solving the <span class="xref myst">normal equations</span>, and then estimating the parameters of the error term <span class="math notranslate nohighlight">\(\epsilon(t)\)</span> by calculating the <a class="reference external" href="https://en.wikipedia.org/wiki/Errors_and_residuals_in_statistics">residuals</a>.</p>
+<section id="solving-the-normal-equations">
+<h4>Solving the normal equations<a class="headerlink" href="#solving-the-normal-equations" title="Permalink to this heading">#</a></h4>
+<p>Let <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> denote a <span class="math notranslate nohighlight">\(\mathcal{S}\times{2}\)</span> matrix, where each row corresponds to a time value. The first column of <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> is all 1’s while the second column holds the <span class="math notranslate nohighlight">\((t_{k}-t_{\circ})\)</span> values. Further, let <span class="math notranslate nohighlight">\(\mathbf{Y}\)</span> denote the <code class="docutils literal notranslate"><span class="pre">ln</span></code> of the price values of <code class="docutils literal notranslate"><span class="pre">firm_id</span></code> (in the same order as the <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> matrix). Then, the y-intercept and slope (drift parameter) can be estimated by solving the <code class="docutils literal notranslate"><span class="pre">overdetermined</span></code> system of equations:</p>
+<div class="math notranslate nohighlight">
+\[\mathbf{A}\mathbf{\theta} + \mathbf{\epsilon} = \mathbf{Y}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\mathbf{\theta}\)</span> denotes the vector of unknown parameters. This system can be solved as:</p>
+<div class="math notranslate nohighlight">
+\[\mathbf{\theta} = (\mathbf{A}^{T}\mathbf{A})^{-1}\mathbf{A}^{T}\mathbf{Y} - (\mathbf{A}^{T}\mathbf{A})^{-1}\mathbf{A}^{T}\mathbf{\epsilon}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\mathbf{A}^{T}\)</span> denotes the transpose of the matrix <span class="math notranslate nohighlight">\(\mathbf{A}\)</span>, and <span class="math notranslate nohighlight">\((\mathbf{A}^{T}\mathbf{A})^{-1}\)</span> denotes the inverse of the square matrix product <span class="math notranslate nohighlight">\(\mathbf{A}^{T}\mathbf{A}\)</span>. Finally, we can estimate the error term <span class="math notranslate nohighlight">\(\mathbf{\epsilon}\)</span> by calculating the residuals:</p>
+<div class="math notranslate nohighlight">
+\[\mathbf{\epsilon} = \mathbf{Y} - \mathbf{A}\mathbf{\theta}\]</div>
+<p>and fitting a normal distribution to the resisduals to compute the uncertainty in the estimate of the mean of the drift parameter <span class="math notranslate nohighlight">\(\hat{\mu}\)</span>.</p>
+</section>
+<section id="implementation">
+<h4>Implementation<a class="headerlink" href="#implementation" title="Permalink to this heading">#</a></h4>
+<p>Let’s say we have a historical training dataset that shows the <a class="reference external" href="https://en.wikipedia.org/wiki/Volume-weighted_average_price#:~:text=In%20finance%2C%20volume%2Dweighted%20average,transactions%20during%20a%20trading%20session.">volume-weighted average price over time</a>. We store this data for all the firms of interest in the <code class="docutils literal notranslate"><span class="pre">dataset</span></code> variable. We can estimate the drift parameter <span class="math notranslate nohighlight">\(\mu\)</span> for a specific stock within the <code class="docutils literal notranslate"><span class="pre">dataset</span></code>, identified by <code class="docutils literal notranslate"><span class="pre">firm_id</span></code>,  using the following method:</p>
+<div class="literal-block-wrapper docutils container" id="id7">
+<div class="code-block-caption"><span class="caption-number">Listing 7 </span><span class="caption-text">Mean drift parameter estimate in a geometric Brownian motion model.</span><a class="headerlink" href="#id7" title="Permalink to this code">#</a></div>
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="c"># load typical required packages -</span>
+<span class="linenos"> 2</span><span class="k">using</span> <span class="n">DataFrames</span><span class="p">,</span> <span class="n">CSV</span><span class="p">,</span> <span class="n">LinearAlgebra</span><span class="p">,</span> <span class="n">Statistics</span><span class="p">,</span> <span class="n">Distributions</span>
+<span class="linenos"> 3</span>
+<span class="linenos"> 4</span><span class="c"># get the firm specific data from the dataset -</span>
+<span class="linenos"> 5</span><span class="n">firm_data</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">[</span><span class="n">firm_id</span><span class="p">];</span>
+<span class="linenos"> 6</span><span class="n">number_of_trading_days</span> <span class="o">=</span> <span class="n">nrow</span><span class="p">(</span><span class="n">firm_data</span><span class="p">);</span>
+<span class="linenos"> 7</span>
+<span class="linenos"> 8</span><span class="c"># define the range of the time values (use all for now) -</span>
+<span class="linenos"> 9</span><span class="n">all_range</span> <span class="o">=</span> <span class="n">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">stop</span><span class="o">=</span><span class="n">number_of_trading_days</span><span class="p">,</span><span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">|&gt;</span> <span class="n">collect</span>
+<span class="linenos">10</span><span class="n">T_all</span> <span class="o">=</span> <span class="n">all_range</span><span class="o">*</span><span class="n">Δt</span> <span class="o">.-</span> <span class="n">Δt</span>
+<span class="linenos">11</span>
+<span class="linenos">12</span><span class="c"># Setup the normal equations -</span>
+<span class="linenos">13</span><span class="n">A</span> <span class="o">=</span> <span class="p">[</span><span class="n">ones</span><span class="p">(</span><span class="n">number_of_trading_days</span><span class="p">)</span> <span class="n">T_all</span><span class="p">];</span>
+<span class="linenos">14</span><span class="n">Y</span> <span class="o">=</span> <span class="n">log</span><span class="o">.</span><span class="p">(</span><span class="n">firm_data</span><span class="p">[</span><span class="o">!</span><span class="p">,</span><span class="ss">:volume_weighted_average_price</span><span class="p">]);</span>
+<span class="linenos">15</span>
+<span class="linenos">16</span><span class="c"># Solve the normal equations -</span>
+<span class="linenos">17</span><span class="n">θ</span> <span class="o">=</span> <span class="n">inv</span><span class="p">(</span><span class="n">transpose</span><span class="p">(</span><span class="n">A</span><span class="p">)</span><span class="o">*</span><span class="n">A</span><span class="p">)</span><span class="o">*</span><span class="n">transpose</span><span class="p">(</span><span class="n">A</span><span class="p">)</span><span class="o">*</span><span class="n">Y</span><span class="p">;</span>
+<span class="linenos">18</span>
+<span class="linenos">19</span><span class="c"># get estimated μ and b (intercept) values -</span>
+<span class="linenos">20</span><span class="n">b̂</span> <span class="o">=</span> <span class="n">exp</span><span class="p">(</span><span class="n">θ</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span>
+<span class="linenos">21</span><span class="n">μ̂</span> <span class="o">=</span> <span class="n">θ</span><span class="p">[</span><span class="mi">2</span><span class="p">];</span>
+<span class="linenos">22</span>
+<span class="linenos">23</span><span class="c"># compute the residuals -</span>
+<span class="linenos">24</span><span class="n">residuals</span> <span class="o">=</span> <span class="n">Y</span> <span class="o">-</span> <span class="n">A</span><span class="o">*</span><span class="n">θ</span><span class="p">;</span>
+<span class="linenos">25</span>
+<span class="linenos">26</span><span class="c"># fit a normal distribution to the residuals -</span>
+<span class="linenos">27</span><span class="n">ϵ</span> <span class="o">=</span> <span class="n">mle_fit</span><span class="p">(</span><span class="n">Normal</span><span class="p">,</span> <span class="n">residuals</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<p>We implemented this method to estimate the drift parameter <span class="math notranslate nohighlight">\(\mu\)</span> and the error model <span class="math notranslate nohighlight">\(\epsilon(t)\)</span> for two example tickers, namely <code class="docutils literal notranslate"><span class="pre">WFC</span></code> and <code class="docutils literal notranslate"><span class="pre">AMD</span></code> using daily training data (<a class="reference internal" href="#fig-drift-simulation-wfc-amd"><span class="std std-numref">Fig. 22</span></a>).</p>
+<figure class="align-default" id="fig-drift-simulation-wfc-amd">
+<a class="reference internal image-reference" href="../../_images/Fig-drift-simulation-WFC-AMD.svg"><img alt="../../_images/Fig-drift-simulation-WFC-AMD.svg" height="480px" src="../../_images/Fig-drift-simulation-WFC-AMD.svg" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 22 </span><span class="caption-text">The <code class="docutils literal notranslate"><span class="pre">ln</span></code> of share price of <code class="docutils literal notranslate"><span class="pre">AMD</span></code> (left) and <code class="docutils literal notranslate"><span class="pre">WFC</span></code> (right) versus time using a deterministic geometric Brownian motion model. The dashed line denotes the mean simulation, the shaded regions show the 99.9% confidence interval of the mean (inner shaded region) and individual simulations (outer shaded region). Daily training data between <code class="docutils literal notranslate"><span class="pre">2018-11-28</span></code> to <code class="docutils literal notranslate"><span class="pre">2022-11-28</span></code> was downloaded using the <code class="docutils literal notranslate"><span class="pre">aggregate</span></code> endpoint of <a class="reference external" href="https://polygon.io/docs/stocks/get_v2_aggs_ticker__stocksticker__range__multiplier___timespan___from___to">Polygon.io</a>.</span><a class="headerlink" href="#fig-drift-simulation-wfc-amd" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+<section id="estimating-the-sigma-parameter">
+<h3>Estimating the <span class="math notranslate nohighlight">\(\sigma\)</span> parameter<a class="headerlink" href="#estimating-the-sigma-parameter" title="Permalink to this heading">#</a></h3>
+<p>There are multiple methods to calculate the volatility parameter <span class="math notranslate nohighlight">\(\sigma\)</span>. Generally, these approaches can be classified into two categories - historical volatility estimates based on the distribution of the return data and future volatility estimates based on the <a class="reference external" href="https://en.wikipedia.org/wiki/Implied_volatility">Implied Volatility (IV)</a> of <a class="reference external" href="https://en.wikipedia.org/wiki/Option_(finance)">put and call options contracts</a>. For now, let’s focus on computing the volatility <span class="math notranslate nohighlight">\(\sigma\)</span> from historical data and talk about options later.</p>
+<p>The historic volatility is estimated by analyzing the distribution of returns using much the same approach we took when looking at the stylized facts. To do this, let’s assume a share price model of the form:</p>
+<div class="math notranslate nohighlight">
+\[
+S_{j} = S_{j-1}\cdot\exp\left(\mu_{j,j-1}\cdot\Delta{t}\right)
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(S_{j-1}\)</span> and <span class="math notranslate nohighlight">\(S_{j}\)</span> denote the share price at time <span class="math notranslate nohighlight">\(j-1\)</span> and <span class="math notranslate nohighlight">\(j\)</span>, <span class="math notranslate nohighlight">\(\mu_{j,j-1}\)</span> denotes the <em>growth rate</em> (units: 1/time) and <span class="math notranslate nohighlight">\(\Delta{t}\)</span> (units: time) denotes the time step for time period <span class="math notranslate nohighlight">\((j-1)\rightarrow{j}\)</span>. Solving for the growth rate parameter <span class="math notranslate nohighlight">\(\mu_{j,j-1}\)</span> gives the expression:</p>
+<div class="math notranslate nohighlight" id="equation-eqn-growth-rate-sigma-estimate">
+<span class="eqno">(28)<a class="headerlink" href="#equation-eqn-growth-rate-sigma-estimate" title="Permalink to this equation">#</a></span>\[\mu_{j,j-1} = \left(\frac{1}{\Delta{t}}\right)\cdot\ln\left(\frac{S_{j}}{S_{j-1}}\right)\]</div>
+<p>The time frame between two historical prices <span class="math notranslate nohighlight">\(S_{j-1}\)</span> and <span class="math notranslate nohighlight">\(S_{j}\)</span>, varies depending on the frequency of the data (daily, weekly, monthly, etc.). For instance, if the data is daily, then the time difference <span class="math notranslate nohighlight">\(\Delta{t} =  1/252\)</span>, which is the fraction of a trading year that occurs in a single day. Similarly, if the data is weekly, then <span class="math notranslate nohighlight">\(\Delta{t} = 1/52\)</span>, and if it is monthly, then <span class="math notranslate nohighlight">\(\Delta{t} = 1/12\)</span>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The product of the growth rate and the timestep equals the logaritmic return defined in <a class="reference internal" href="stylized-facts.html#defn-log-return-1">Definition 9</a> over the time period <span class="math notranslate nohighlight">\(\Delta{t}\)</span>:</p>
+<div class="math notranslate nohighlight" id="equation-eqn-log-return-growt-rate">
+<span class="eqno">(29)<a class="headerlink" href="#equation-eqn-log-return-growt-rate" title="Permalink to this equation">#</a></span>\[\mu_{j,j-1}\cdot\Delta{t} = \ln\left(\frac{S_{j}}{S_{j-1}}\right) = \bar{r}^{(i)}_{j,j-1}\]</div>
+<p>Thus, we can use the growth rate parameter <span class="math notranslate nohighlight">\(\mu_{j,j-1}\)</span> to estimate the log return <span class="math notranslate nohighlight">\(\bar{r}^{(i)}_{j,j-1}\)</span> for firm <span class="math notranslate nohighlight">\(i\)</span> over the time period <span class="math notranslate nohighlight">\((j-1)\rightarrow{j}\)</span>.</p>
+</div>
+<section id="id6">
+<h4>Implementation<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h4>
+<p>To compute the historical volatility parameter, <span class="math notranslate nohighlight">\(\hat{\sigma}\)</span>, we calculated the variance of the returns of the historical training data set. In particular, we fit the historical return data to a <a class="reference external" href="https://juliastats.org/Distributions.jl/stable/univariate/#Distributions.Normal">Normal distribution</a> using <a class="reference external" href="https://juliastats.org/Distributions.jl/stable/fit/#Distributions.fit_mle-Tuple%7BAny,%20Any,%20Any%7D">maximum likelihood estimation</a> we then estimated the historical annualized volatility as <span class="math notranslate nohighlight">\(\sqrt{252}\cdot\hat{\sigma}\)</span>, where <span class="math notranslate nohighlight">\(\hat{\sigma}\)</span> is the standard deviation of the return distribution. Example values for a few typical firms in the S&amp;P 500 index are shown in <a class="reference internal" href="#obs-gbm-model-parameter-estimates">Observation 9</a>.</p>
+<div class="proof observation admonition" id="obs-gbm-model-parameter-estimates">
+<p class="admonition-title"><span class="caption-number">Observation 9 </span> (Real-world estimates of the drift and volatility parameters)</p>
+<section class="observation-content" id="proof-content">
+<p>Estimated annualized drift and volatility parameters for five sample firms in the S&amp;P 500 index. The <span class="math notranslate nohighlight">\(\hat{\mu}\)</span> and <span class="math notranslate nohighlight">\(\hat{\sigma}\)</span> columns denote the estimated drift and volatility parameters, respectively.</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>id</p></th>
+<th class="head"><p>ticker</p></th>
+<th class="head"><p>name</p></th>
+<th class="head"><p>sector</p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(\hat{\mu}\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(\hat{\sigma}\)</span></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>11</p></td>
+<td><p>AMD</p></td>
+<td><p>Advanced Micro Devices</p></td>
+<td><p>Information Technology</p></td>
+<td><p>0.4605</p></td>
+<td><p>0.4688</p></td>
+</tr>
+<tr class="row-odd"><td><p>241</p></td>
+<td><p>IBM</p></td>
+<td><p>IBM</p></td>
+<td><p>Information Technology</p></td>
+<td><p>-0.01817</p></td>
+<td><p>0.2414</p></td>
+</tr>
+<tr class="row-even"><td><p>487</p></td>
+<td><p>WFC</p></td>
+<td><p>Wells Fargo</p></td>
+<td><p>Financials</p></td>
+<td><p>-0.05003</p></td>
+<td><p>0.322</p></td>
+</tr>
+<tr class="row-odd"><td><p>221</p></td>
+<td><p>GS</p></td>
+<td><p>Goldman Sachs</p></td>
+<td><p>Financials</p></td>
+<td><p>0.1274</p></td>
+<td><p>0.2841</p></td>
+</tr>
+<tr class="row-even"><td><p>437</p></td>
+<td><p>TSLA</p></td>
+<td><p>Tesla</p></td>
+<td><p>Consumer Discretionary</p></td>
+<td><p>0.7519</p></td>
+<td><p>0.57</p></td>
+</tr>
+</tbody>
+</table>
+<p>Daily logarithmic return values from <code class="docutils literal notranslate"><span class="pre">2018-11-28</span></code> to <code class="docutils literal notranslate"><span class="pre">2022-11-28</span></code> were computed from data downloaded using the <code class="docutils literal notranslate"><span class="pre">aggregate</span></code> endpoint of <a class="reference external" href="https://polygon.io/docs/stocks/get_v2_aggs_ticker__stocksticker__range__multiplier___timespan___from___to">Polygon.io</a>. The <code class="docutils literal notranslate"><span class="pre">fit_mle(...)</span></code> function from the <a class="reference external" href="https://juliastats.org/Distributions.jl/stable/">Distributions.jl package</a> was used to fit the data to a Normal distribution.</p>
+</section>
+</div><p>Now that we have estimates of the drift and volatility parameters, we can simulate the share price of a firm using the geometric Brownian motion model and the <a class="reference internal" href="#contest-geometric-brownian-motion-sample-function"><span class="std std-ref"><code class="docutils literal notranslate"><span class="pre">sample(...)</span></code> function defined below</span></a>:</p>
+<div class="literal-block-wrapper docutils container" id="id8">
+<span id="contest-geometric-brownian-motion-sample-function"></span><div class="code-block-caption"><span class="caption-number">Listing 8 </span><span class="caption-text">Simulating the share price of a firm using the geometric Brownian motion model.</span><a class="headerlink" href="#id8" title="Permalink to this code">#</a></div>
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="s">&quot;&quot;&quot;</span>
+<span class="linenos"> 2</span><span class="s">    MyGeometricBrownianMotionEquityModel &lt;: AbstractAssetModel</span>
+<span class="linenos"> 3</span>
+<span class="linenos"> 4</span><span class="s">Mutable composite type holding the drift and volatility parameters </span>
+<span class="linenos"> 5</span><span class="s">for a geometric Brownian motion model.</span>
+<span class="linenos"> 6</span><span class="s">&quot;&quot;&quot;</span>
+<span class="linenos"> 7</span><span class="k">mutable struct</span> <span class="kt">MyGeometricBrownianMotionEquityModel</span> <span class="o">&lt;:</span> <span class="kt">AbstractAssetModel</span>
+<span class="linenos"> 8</span>
+<span class="linenos"> 9</span>    <span class="c"># data -</span>
+<span class="linenos">10</span>    <span class="n">μ</span><span class="o">::</span><span class="kt">Float64</span><span class="p">;</span>     <span class="c"># drift parameter</span>
+<span class="linenos">11</span>    <span class="n">σ</span><span class="o">::</span><span class="kt">Float64</span><span class="p">;</span>     <span class="c"># volatility parameter</span>
+<span class="linenos">12</span>
+<span class="linenos">13</span>    <span class="c"># constructor -</span>
+<span class="linenos">14</span>    <span class="n">MyGeometricBrownianMotionEquityModel</span><span class="p">()</span> <span class="o">=</span> <span class="n">new</span><span class="p">()</span>
+<span class="linenos">15</span><span class="k">end</span>
+<span class="linenos">16</span>
+<span class="linenos">17</span>
+<span class="linenos">18</span><span class="s">&quot;&quot;&quot; </span>
+<span class="linenos">19</span><span class="s">    sample(model::MyGeometricBrownianMotionEquityModel, data::NamedTuple) -&gt; Array{Float64,2}</span>
+<span class="linenos">20</span><span class="s">&quot;&quot;&quot;</span>
+<span class="linenos">21</span><span class="k">function</span> <span class="n">sample</span><span class="p">(</span><span class="n">model</span><span class="o">::</span><span class="kt">MyGeometricBrownianMotionEquityModel</span><span class="p">,</span> <span class="n">data</span><span class="o">::</span><span class="kt">NamedTuple</span><span class="p">;</span> 
+<span class="linenos">22</span>    <span class="n">number_of_paths</span><span class="o">::</span><span class="kt">Int64</span> <span class="o">=</span> <span class="mi">100</span><span class="p">)</span><span class="o">::</span><span class="kt">Array</span><span class="p">{</span><span class="kt">Float64</span><span class="p">,</span><span class="mi">2</span><span class="p">}</span>
+<span class="linenos">23</span>
+<span class="linenos">24</span>    <span class="c"># get information from data tuple </span>
+<span class="linenos">25</span>    <span class="n">T₁</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="ss">:T₁</span><span class="p">];</span> <span class="c"># start time</span>
+<span class="linenos">26</span>    <span class="n">T₂</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="ss">:T₂</span><span class="p">];</span> <span class="c"># stop time</span>
+<span class="linenos">27</span>    <span class="n">Δt</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="ss">:Δt</span><span class="p">];</span> <span class="c"># time step</span>
+<span class="linenos">28</span>    <span class="n">Sₒ</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="ss">:Sₒ</span><span class="p">];</span> <span class="c"># initial price</span>
+<span class="linenos">29</span>
+<span class="linenos">30</span>    <span class="c"># get information from model -</span>
+<span class="linenos">31</span>    <span class="n">μ</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">μ</span><span class="p">;</span> <span class="c"># drift parameter</span>
+<span class="linenos">32</span>    <span class="n">σ</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">σ</span><span class="p">;</span> <span class="c"># volatility parameter</span>
+<span class="linenos">33</span>
+<span class="linenos">34</span>	<span class="c"># initialize -</span>
+<span class="linenos">35</span>	<span class="n">time_array</span> <span class="o">=</span> <span class="n">range</span><span class="p">(</span><span class="n">T₁</span><span class="p">,</span> <span class="n">stop</span><span class="o">=</span><span class="n">T₂</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="n">Δt</span><span class="p">)</span> <span class="o">|&gt;</span> <span class="n">collect</span>
+<span class="linenos">36</span>    <span class="n">number_of_time_steps</span> <span class="o">=</span> <span class="n">length</span><span class="p">(</span><span class="n">time_array</span><span class="p">)</span>
+<span class="linenos">37</span>    <span class="n">X</span> <span class="o">=</span> <span class="n">zeros</span><span class="p">(</span><span class="n">number_of_time_steps</span><span class="p">,</span> <span class="n">number_of_paths</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="c"># extra column for time -</span>
+<span class="linenos">38</span>
+<span class="linenos">39</span>    <span class="c"># put the time in the first col -</span>
+<span class="linenos">40</span>    <span class="k">for</span> <span class="n">t</span> <span class="o">∈</span> <span class="mi">1</span><span class="o">:</span><span class="n">number_of_time_steps</span>
+<span class="linenos">41</span>        <span class="n">X</span><span class="p">[</span><span class="n">t</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">time_array</span><span class="p">[</span><span class="n">t</span><span class="p">]</span>
+<span class="linenos">42</span>    <span class="k">end</span>
+<span class="linenos">43</span>
+<span class="linenos">44</span>	<span class="c"># replace first-row w/Sₒ (we always start at Sₒ) -</span>
+<span class="linenos">45</span>	<span class="k">for</span> <span class="n">p</span> <span class="o">∈</span> <span class="mi">1</span><span class="o">:</span><span class="n">number_of_paths</span>
+<span class="linenos">46</span>		<span class="n">X</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="n">p</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">Sₒ</span>
+<span class="linenos">47</span>	<span class="k">end</span>
+<span class="linenos">48</span>
+<span class="linenos">49</span>	<span class="c"># build a noise array of Z(0,1)</span>
+<span class="linenos">50</span>	<span class="n">d</span> <span class="o">=</span> <span class="n">Normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="linenos">51</span>	<span class="n">ZM</span> <span class="o">=</span> <span class="n">rand</span><span class="p">(</span><span class="n">d</span><span class="p">,</span><span class="n">number_of_time_steps</span><span class="p">,</span> <span class="n">number_of_paths</span><span class="p">);</span>
+<span class="linenos">52</span>
+<span class="linenos">53</span>	<span class="c"># main simulation loop -</span>
+<span class="linenos">54</span>	<span class="k">for</span> <span class="n">p</span> <span class="o">∈</span> <span class="mi">1</span><span class="o">:</span><span class="n">number_of_paths</span>
+<span class="linenos">55</span>		<span class="k">for</span> <span class="n">t</span> <span class="o">∈</span> <span class="mi">1</span><span class="o">:</span><span class="n">number_of_time_steps</span><span class="o">-</span><span class="mi">1</span>
+<span class="linenos">56</span>			<span class="n">X</span><span class="p">[</span><span class="n">t</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="n">p</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="n">t</span><span class="p">,</span><span class="n">p</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">exp</span><span class="p">((</span><span class="n">μ</span> <span class="o">-</span> <span class="n">σ</span><span class="o">^</span><span class="mi">2</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="n">Δt</span> <span class="o">+</span> <span class="n">σ</span><span class="o">*</span><span class="p">(</span><span class="n">sqrt</span><span class="p">(</span><span class="n">Δt</span><span class="p">))</span><span class="o">*</span><span class="n">ZM</span><span class="p">[</span><span class="n">t</span><span class="p">,</span><span class="n">p</span><span class="p">])</span>
+<span class="linenos">57</span>		<span class="k">end</span>
+<span class="linenos">58</span>	<span class="k">end</span>
+<span class="linenos">59</span>
+<span class="linenos">60</span>	<span class="c"># return -</span>
+<span class="linenos">61</span>	<span class="k">return</span> <span class="n">X</span>
+<span class="linenos">62</span><span class="k">end</span>
+</pre></div>
+</div>
+</div>
+<p>Let’s simulate, <a class="reference internal" href="#contest-geometric-brownian-motion-sample-function"><span class="std std-ref">using the <code class="docutils literal notranslate"><span class="pre">sample(...)</span></code> function</span></a>, the volume-weighted averaged share price of two example firms <code class="docutils literal notranslate"><span class="pre">IBM</span></code> and <code class="docutils literal notranslate"><span class="pre">GS</span></code> for a random <code class="docutils literal notranslate"><span class="pre">T</span> <span class="pre">=</span> <span class="pre">66</span></code> day time interval (<a class="reference internal" href="#fig-gbm-simulation-ibm-gs"><span class="std std-numref">Fig. 23</span></a>).</p>
+<figure class="align-default" id="fig-gbm-simulation-ibm-gs">
+<a class="reference internal image-reference" href="../../_images/Fig-GBM-IBM-GS-T66.svg"><img alt="../../_images/Fig-GBM-IBM-GS-T66.svg" height="480px" src="../../_images/Fig-GBM-IBM-GS-T66.svg" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 23 </span><span class="caption-text">Geometric Brownian motion simulation of the daily volume weighted average price (vwap) of <code class="docutils literal notranslate"><span class="pre">IBM</span></code> (left) and <code class="docutils literal notranslate"><span class="pre">GS</span></code> (right) for a random <code class="docutils literal notranslate"><span class="pre">T</span> <span class="pre">=</span> <span class="pre">66</span></code> day period (in-sample). The solid lines denote the analytical confidence intervals, while the shaded regions denote the 68%, 95% and 99% confidence estimates of the vwap recovered by sampling (N = 100). Daily training data between <code class="docutils literal notranslate"><span class="pre">2018-11-28</span></code> to <code class="docutils literal notranslate"><span class="pre">2022-11-28</span></code> was downloaded using the <code class="docutils literal notranslate"><span class="pre">aggregate</span></code> endpoint of <a class="reference external" href="https://polygon.io/docs/stocks/get_v2_aggs_ticker__stocksticker__range__multiplier___timespan___from___to">Polygon.io</a>.</span><a class="headerlink" href="#fig-gbm-simulation-ibm-gs" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>The geometric Brownian motion model captured the general trend of the share price for both firms, but it failed to capture the large spikes in the share price. This is because the geometric Brownian motion model assumes that the growth rate (drift term) and volatility are constant over time, which is may not be true for real-world share prices.</p>
+<p>Thus, while these two example firms and time periods were consistent with the observed price, choosing a different firm or time interval may result in a very different simulation. This leaves us with two questions to answer: first, can a geomertric Brownian motion model accurately predict stylized facts, i.e., the statistical properties, of return data and second, how likely is it that the geometric Brownian motion model will accurately predict the share price of a firm?</p>
+</section>
+</section>
+</section>
+<section id="testing-geometric-brownian-motion">
+<span id="content-gbm-models-testing"></span><h2>Testing geometric Brownian motion<a class="headerlink" href="#testing-geometric-brownian-motion" title="Permalink to this heading">#</a></h2>
+<section id="stylized-facts">
+<span id="content-gbm-models-testing-stylized-facts"></span><h3>Stylized facts<a class="headerlink" href="#stylized-facts" title="Permalink to this heading">#</a></h3>
+<p>The stylized facts of return data are the statistical properties of the data. These properties include the distribution of logarithmic returns, the autocorrelation of logarithmic returns, and the volatility clustering of the logarithmic returns.</p>
+<section id="autocorrelation-of-logarithmic-returns">
+<h4>Autocorrelation of logarithmic returns<a class="headerlink" href="#autocorrelation-of-logarithmic-returns" title="Permalink to this heading">#</a></h4>
+<p>Fill me in.</p>
+</section>
+<section id="volatility-clustering-of-logarithmic-returns">
+<h4>Volatility clustering of logarithmic returns<a class="headerlink" href="#volatility-clustering-of-logarithmic-returns" title="Permalink to this heading">#</a></h4>
+<p>Fill me in.</p>
+</section>
+<section id="distribution-of-logarithmic-returns">
+<h4>Distribution of logarithmic returns<a class="headerlink" href="#distribution-of-logarithmic-returns" title="Permalink to this heading">#</a></h4>
+<p>The logarithmic return under the assumption that the share price follows a geometric Brownian motion model is given by:</p>
+<div class="math notranslate nohighlight" id="equation-eqn-log-return-gbm-return">
+<span class="eqno">(30)<a class="headerlink" href="#equation-eqn-log-return-gbm-return" title="Permalink to this equation">#</a></span>\[\bar{r}_{j,j-1} = \left(\mu - \frac{\sigma^{2}}{2}\right)h + \left(\sigma\cdot\sqrt{h}\right)\cdot{Z}_{j,j-1}(0.1)\]</div>
+<p>where <span class="math notranslate nohighlight">\(h\)</span> is the time step, <span class="math notranslate nohighlight">\(\mu\)</span> is the drift parameter, <span class="math notranslate nohighlight">\(\sigma\)</span> is the volatility parameter, and <span class="math notranslate nohighlight">\({Z}_{j,j-1}(0,1)\)</span> is a random variable drawn from a standard normal distribution (mean zero and variance one) for the time period <span class="math notranslate nohighlight">\((j-1)\rightarrow{j}\)</span>. From the definition of the standard normal distribution and Eqn. <a class="reference internal" href="#equation-eqn-log-return-gbm-return">(30)</a> , we can see that the logarithmic return <span class="math notranslate nohighlight">\(\bar{r}_{j,j-1}\)</span> for a process described by geometric Brownian motion is normally distributed:</p>
+<div class="math notranslate nohighlight" id="equation-eqn-log-return-gbm-distribution">
+<span class="eqno">(31)<a class="headerlink" href="#equation-eqn-log-return-gbm-distribution" title="Permalink to this equation">#</a></span>\[\bar{r}_{j,j-1} \sim \mathcal{N}\left(\left(\mu - \frac{\sigma^{2}}{2}\right)h, ~\sigma^{2}h\right)\]</div>
+<p>with mean <span class="math notranslate nohighlight">\(\left(\mu - \frac{\sigma^{2}}{2}\right)h\)</span> and variance <span class="math notranslate nohighlight">\(\sigma^{2}h\)</span>.</p>
+<p>Thus, a geometric Brownian motion model predicts the distribution returns only in cases where the logarithmic returns are normally distributed, which is not always true as we have seen <a class="reference internal" href="stylized-facts.html#content-references-returns-stylized-facts"><span class="std std-ref">in our previous discussion of stylized facts</span></a>. Let’s visualize a few observed return distributions compared with the distributiuon predicted by Eqn. <a class="reference internal" href="#equation-eqn-log-return-gbm-distribution">(31)</a>.</p>
+</section>
+</section>
+<section id="share-price-prediction">
+<span id="content-gbm-models-testing-price-prediction"></span><h3>Share price prediction<a class="headerlink" href="#share-price-prediction" title="Permalink to this heading">#</a></h3>
+<p>A limitation of geometric Brownian motion would seem to be the assumption of constant drift and volatility parameters. However, we have not quantified the <code class="docutils literal notranslate"><span class="pre">goodness</span></code> of the model. In other words, how likely is it that the geometric Brownian motion model will accurately predict the future share price of a firm?</p>
+<p>Let’s determine the likelihood of making accurate predictions using a geometric Brownian motion model. To do this, we’ll randomly divide the future time into continuous segments of <code class="docutils literal notranslate"><span class="pre">T</span></code> days, denoted as <span class="math notranslate nohighlight">\(\mathcal{I}_{k}\in\mathcal{I}\)</span>. At the beginning of each segment <span class="math notranslate nohighlight">\(\mathcal{I}_{k}\)</span>, we’ll initialize a geometric Brownian motion model and compare the actual price of a firm (<span class="math notranslate nohighlight">\(S_{j}\)</span>) at time <span class="math notranslate nohighlight">\(j\)</span> with the simulated price during each time segment.</p>
+<ul class="simple">
+<li><p>If the simulated price falls between the lower bound <span class="math notranslate nohighlight">\(L_{j}\)</span> and upper bound <span class="math notranslate nohighlight">\(U_{j}\)</span> for all <span class="math notranslate nohighlight">\(j\in\mathcal{I}_{k}\)</span>, we consider the simulation to be a <code class="docutils literal notranslate"><span class="pre">success</span></code>. The lower and upper bounds can be specified, but we’ll set them to <span class="math notranslate nohighlight">\(\mu\pm{z}\cdot\sigma\)</span>, where <span class="math notranslate nohighlight">\(\mu\)</span> is the expected value, <span class="math notranslate nohighlight">\(\sigma\)</span> is the standard deviation of the simulation, and <span class="math notranslate nohighlight">\(z\)</span> is the number of standard deviations from the mean (e.g., the z-score).</p></li>
+<li><p>However, if the actual price violates the upper or lower bound at any point, the simulation is deemed a <code class="docutils literal notranslate"><span class="pre">failure</span></code>.</p></li>
+</ul>
+<p>We’ll repeat this process <span class="math notranslate nohighlight">\(\forall{\mathcal{I}_{k}}\in\mathcal{I}\)</span> and calculate the fraction of <code class="docutils literal notranslate"><span class="pre">successful</span></code> simulations. This percentage is the likelihood of making bounded predictions using the geometric Brownian motion model (<a class="reference internal" href="#obs-gbm-prediction-likelihood">Observation 10</a>):</p>
+<div class="proof observation admonition" id="obs-gbm-prediction-likelihood">
+<p class="admonition-title"><span class="caption-number">Observation 10 </span> (Geometric Brownian motion prediction likelhood)</p>
+<section class="observation-content" id="proof-content">
+<p>Fraction of <code class="docutils literal notranslate"><span class="pre">successful</span></code> simulations for five exaample firms using geometric Brownian motion to predict the share price of a firm over a random <code class="docutils literal notranslate"><span class="pre">T</span> <span class="pre">=</span> <span class="pre">21</span></code> day time periods (in sample). The fraction was calculated using <code class="docutils literal notranslate"><span class="pre">N</span> <span class="pre">=</span> <span class="pre">500</span></code> trials.</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>id</p></th>
+<th class="head"><p>ticker</p></th>
+<th class="head"><p>name</p></th>
+<th class="head text-center"><p><span class="math notranslate nohighlight">\(\pm\)</span> 1.0<span class="math notranslate nohighlight">\(\cdot\sigma\)</span></p></th>
+<th class="head text-center"><p><span class="math notranslate nohighlight">\(\pm\)</span> 1.96<span class="math notranslate nohighlight">\(\cdot\sigma\)</span></p></th>
+<th class="head text-center"><p><span class="math notranslate nohighlight">\(\pm\)</span> 2.576<span class="math notranslate nohighlight">\(\cdot\sigma\)</span></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>11</p></td>
+<td><p>AMD</p></td>
+<td><p>Advanced Micro Devices</p></td>
+<td class="text-center"><p>0.168</p></td>
+<td class="text-center"><p>0.688</p></td>
+<td class="text-center"><p>0.862</p></td>
+</tr>
+<tr class="row-odd"><td><p>241</p></td>
+<td><p>IBM</p></td>
+<td><p>IBM</p></td>
+<td class="text-center"><p>0.282</p></td>
+<td class="text-center"><p>0.732</p></td>
+<td class="text-center"><p>0.882</p></td>
+</tr>
+<tr class="row-even"><td><p>487</p></td>
+<td><p>WFC</p></td>
+<td><p>Wells Fargo</p></td>
+<td class="text-center"><p>0.358</p></td>
+<td class="text-center"><p>0.78</p></td>
+<td class="text-center"><p>0.886</p></td>
+</tr>
+<tr class="row-odd"><td><p>221</p></td>
+<td><p>GS</p></td>
+<td><p>Goldman Sachs</p></td>
+<td class="text-center"><p>0.174</p></td>
+<td class="text-center"><p>0.782</p></td>
+<td class="text-center"><p>0.904</p></td>
+</tr>
+<tr class="row-even"><td><p>437</p></td>
+<td><p>TSLA</p></td>
+<td><p>Tesla</p></td>
+<td class="text-center"><p>0.224</p></td>
+<td class="text-center"><p>0.676</p></td>
+<td class="text-center"><p>0.87</p></td>
+</tr>
+</tbody>
+</table>
+<p>As the z-score increases, the likelihood of making bounded predictions using the geometric Brownian motion model increases. However, the likelihood of making bounded predictions is lower than the theoretical values of 68%, 95% and 99% for all firms.</p>
+</section>
+</div></section>
+</section>
+<hr class="docutils" />
+<section id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this heading">#</a></h2>
+<p>Today we introduced the first continuous-time tool of equity pricing - Brownian motion models. We focused on ordinary Brownian motion model, which is the simplest model, and geometric Brownian motion model, arguably the most commonly used model.</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#content-brownian-models-introduction"><span class="std std-ref">Brownian motion models</span></a> are continuous-time models used to describe the evolution of an asset price, i.e., share price. We’ll discuss the properties of Brownian motion models and how to use them to price assets.</p></li>
+<li><p><a class="reference internal" href="#content-brownian-models-ordinary"><span class="std std-ref">Ordinary Brownian motion models</span></a> are the simplest Brownian motion models for share prices. We’ll discuss how to use them to price assets and the basic of monte carlo price simulations.</p></li>
+<li><p><a class="reference internal" href="#content-brownian-models-geometric"><span class="std std-ref">Geometric Brownian motion models</span></a> are arguably the most commonly used Brownian motion model for the share price. We’ll discuss how to use them to price assets and how to estimate model parameters from historical data.</p></li>
+<li><p><a class="reference internal" href="#content-gbm-models-testing"><span class="std std-ref">Testing the geometric Brownian motion model</span></a> is an important step in the model building process. We’ll discuss how to test the geometric Brownian motion model using real-world parameters and historic data.</p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./chapter-2-dir/stocks"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="lattice-eq-price.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Lattice Models of Equity Pricing</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="advanced-eq-price.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Advanced Stochastic Models of Equity Pricing</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction-to-brownian-motion-models">Introduction to Brownian motion models</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ordinary-brownian-motion-models">Ordinary Brownian motion models</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analytical-solution">Analytical solution</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#monte-carlo-simulation">Monte Carlo simulation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#discretization">Discretization</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#geometric-brownian-motion-models">Geometric Brownian motion models</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Analytical solution</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#estimating-the-mu-parameter">Estimating the <span class="math notranslate nohighlight">\(\mu\)</span> parameter</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#solving-the-normal-equations">Solving the normal equations</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#implementation">Implementation</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#estimating-the-sigma-parameter">Estimating the <span class="math notranslate nohighlight">\(\sigma\)</span> parameter</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Implementation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#testing-geometric-brownian-motion">Testing geometric Brownian motion</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stylized-facts">Stylized facts</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#autocorrelation-of-logarithmic-returns">Autocorrelation of logarithmic returns</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#volatility-clustering-of-logarithmic-returns">Volatility clustering of logarithmic returns</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#distribution-of-logarithmic-returns">Distribution of logarithmic returns</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#share-price-prediction">Share price prediction</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Varner and Woltornist
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
