@@ -1,7 +1,6 @@
 (content:references:term-structure-of-interest-rates)=
 # STRIPS Bonds and the Term Structure of Interest Rates
 
----
 ```{topic} Learning Objectives
 * We'll introduce the [bootstrapping method to estimate the term structure of interest rates](content:references:STRIPS-TSoIR).
 The bootstrapping method is a technique for constructing a zero-coupon yield curve from the prices of zero-coupon bonds with different maturities created by stripping a single coupon bond.
