@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>U.S. Treasury Security Pricing &#8212; CHEME-5660</title>
+    <title>U.S. Treasury Security Pricing Dynamics and Risks &#8212; CHEME-5660</title>
   
   
   
@@ -177,7 +177,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="../chapter-2-landing.html">Unit 2: Wealth Creation Tools</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2 current active has-children"><a class="reference internal" href="../bonds.html">U.S. Treasury Securities</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="T-bills.html">U.S. Treasury Bills, Notes and Bonds</a></li>
-<li class="toctree-l3 current active"><a class="current reference internal" href="#">U.S. Treasury Security Pricing</a></li>
+<li class="toctree-l3 current active"><a class="current reference internal" href="#">U.S. Treasury Security Pricing Dynamics and Risks</a></li>
 <li class="toctree-l3"><a class="reference internal" href="STRIPS.html">STRIPS Bonds and the Term Structure of Interest Rates</a></li>
 </ul>
 </li>
@@ -426,7 +426,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>U.S. Treasury Security Pricing</h1>
+    <h1>U.S. Treasury Security Pricing Dynamics and Risks</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -436,8 +436,9 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interest-rate-sensitivity-of-zero-coupon-treasury-securities">Interest Rate Sensitivity of Zero-coupon Treasury Securities</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#malkiels-bond-pricing-guidelines">Malkiel’s bond-pricing guidelines</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#credit-risk-of-treasury-securities">Credit Risk of Treasury Securities</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
 </ul>
             </nav>
@@ -450,16 +451,21 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="u-s-treasury-security-pricing">
-<span id="content-references-bond-pricing-relationships"></span><h1>U.S. Treasury Security Pricing<a class="headerlink" href="#u-s-treasury-security-pricing" title="Permalink to this heading">#</a></h1>
-<hr class="docutils" />
+  <section class="tex2jax_ignore mathjax_ignore" id="u-s-treasury-security-pricing-dynamics-and-risks">
+<span id="content-references-bond-pricing-relationships"></span><h1>U.S. Treasury Security Pricing Dynamics and Risks<a class="headerlink" href="#u-s-treasury-security-pricing-dynamics-and-risks" title="Permalink to this heading">#</a></h1>
+<p>U.S. Treasury debt is often taken to be a risk-free asset. However, the price of a bill, note, or bond can change over its term because of changes in interest rates. Moreover, the issuer of a bond could default on their repayment obligation. Thus, there is interest rate and credit risk associated with these instruments.</p>
 <aside class="topic">
-<p class="topic-title">Learning Objectives</p>
-<p>Fill me in.</p>
+<p class="topic-title">Outline</p>
+<p>In this lecture, we discuss the pricing dynamics and risks of U.S. Treasury securities. We will first discuss the interest rate risk of zero-coupon treasury securities and coupon-bearing treasury securities. Then, we will discuss the credit risk of treasury securities.</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#content-references-zc-pricing-relationships-interest-rate-risk"><span class="std std-ref">Interest rate risk for zero-coupon treasury securities</span></a> is the risk that the price of zero-coupon treasury security will change due to changes in the market interest rate.</p></li>
+<li><p><a class="reference internal" href="#content-references-cb-pricing-relationships-interest-rate-risk"><span class="std std-ref">Interest rate risk for coupon-bearing treasury securities</span></a> is the risk that the price of coupon-bearing treasury security will change due to changes in the market interest rate. In particular, we will discuss Malkiel’s bond-pricing guidelines, which govern the relationship between the price of coupon-bearing treasury security and the market interest rate under different market conditions and the security duration.</p></li>
+<li><p><a class="reference internal" href="#content-references-credit-risk-treasury-securities"><span class="std std-ref">Credit risk for treasury securities</span></a> is the risk that the U.S. government will default on its debt obligations. We will discuss the credit risk of treasury securities and how it is reflected in the price of these securities.</p></li>
+</ul>
 </aside>
 <hr class="docutils" />
-<section id="introduction">
-<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
+<section id="interest-rate-sensitivity-of-zero-coupon-treasury-securities">
+<span id="content-references-zc-pricing-relationships-interest-rate-risk"></span><h2>Interest Rate Sensitivity of Zero-coupon Treasury Securities<a class="headerlink" href="#interest-rate-sensitivity-of-zero-coupon-treasury-securities" title="Permalink to this heading">#</a></h2>
 <p>The price of a treasury bill <span class="math notranslate nohighlight">\(V_{B}\)</span> is computed with respect to a market interest rate <span class="math notranslate nohighlight">\(\bar{r}\)</span> on the day the bill is purchased. Further, the fair price of a treasury bill has a net present value equal to zero. However, interest rates <span class="math notranslate nohighlight">\(\bar{r}\)</span> vary with time and economic conditions (<a class="reference internal" href="#fig-bill-daily-interest-rate"><span class="std std-numref">Fig. 10</span></a>):</p>
 <figure class="align-default" id="fig-bill-daily-interest-rate">
 <a class="reference internal image-reference" href="../../_images/Fig-4-week-Daily-2022.pdf"><img alt="../../_images/Fig-4-week-Daily-2022.pdf" src="../../_images/Fig-4-week-Daily-2022.pdf" style="height: 420px;" /></a>
@@ -491,7 +497,7 @@ document.write(`
 </section>
 </div></section>
 <section id="malkiels-bond-pricing-guidelines">
-<h2>Malkiel’s bond-pricing guidelines<a class="headerlink" href="#malkiels-bond-pricing-guidelines" title="Permalink to this heading">#</a></h2>
+<span id="content-references-cb-pricing-relationships-interest-rate-risk"></span><h2>Malkiel’s bond-pricing guidelines<a class="headerlink" href="#malkiels-bond-pricing-guidelines" title="Permalink to this heading">#</a></h2>
 <p>Bond investors have two actions open to them: hold the bond until maturity (and collect the coupon payments along the way), or resell the bond (and potentially benefit from a change in the bond price). The latter is possible because after the bonds are issued, bondholders may buy or resell bonds in secondary bond markets. In these markets, bond prices fluctuate inversely with the market interest rate <span class="math notranslate nohighlight">\(\bar{r}\)</span>. Thus, interest rate fluctuations are the main source of risk to the bondholder if they are not holding the bound to maturity.</p>
 <figure class="align-default" id="fig-bond-price-sensitivity">
 <a class="reference internal image-reference" href="../../_images/Fig-Sensitivity-Bond-Price-Interest-Rate.svg"><img alt="../../_images/Fig-Sensitivity-Bond-Price-Interest-Rate.svg" height="420px" src="../../_images/Fig-Sensitivity-Bond-Price-Interest-Rate.svg" /></a>
@@ -508,6 +514,10 @@ an increase in a bond’s interest rate <span class="math notranslate nohighligh
 <li><p>Interest rate risk is inversely related to a bond’s coupon rate. Prices of low coupon-rate bonds are more sensitive to changes in interest rates than prices of high-rate coupon bonds. For example, compare Case II and III in (<a class="reference internal" href="#fig-bond-price-sensitivity"><span class="std std-numref">Fig. 12</span></a>); case III (the low coupon-rate bond) is significanly more sensitive to decreases in interest rate compared with case II (the high coupon-rate bond). A similar, albeit less pronounced, trend is visible for increased
 interest rate.</p></li>
 </ol>
+</section>
+<section id="credit-risk-of-treasury-securities">
+<span id="content-references-credit-risk-treasury-securities"></span><h2>Credit Risk of Treasury Securities<a class="headerlink" href="#credit-risk-of-treasury-securities" title="Permalink to this heading">#</a></h2>
+<p>Fill me in.</p>
 </section>
 <hr class="docutils" />
 <section id="summary">
@@ -583,8 +593,9 @@ interest rate.</p></li>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interest-rate-sensitivity-of-zero-coupon-treasury-securities">Interest Rate Sensitivity of Zero-coupon Treasury Securities</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#malkiels-bond-pricing-guidelines">Malkiel’s bond-pricing guidelines</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#credit-risk-of-treasury-securities">Credit Risk of Treasury Securities</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
 </ul>
   </nav></div>

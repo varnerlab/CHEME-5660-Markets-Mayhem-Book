@@ -1,3 +1,4 @@
+(content:brownian-models-equity-share-price-simple)=
 # Brownian Motion Models of Equity Pricing
 
 ```{topic} Outline

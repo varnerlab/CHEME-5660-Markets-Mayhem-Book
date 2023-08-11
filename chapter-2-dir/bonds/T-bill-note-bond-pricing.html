@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>U.S. Treasury Security Pricing &#8212; CHEME-5660</title>
+    <title>Treasury Security Pricing Dynamics and Risks &#8212; CHEME-5660</title>
   
   
   
@@ -76,7 +76,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="STRIPS Bonds and the Term Structure of Interest Rates" href="STRIPS.html" />
-    <link rel="prev" title="U.S. Treasury Bills, Notes and Bonds" href="T-bills.html" />
+    <link rel="prev" title="Treasury Bills, Notes and Bonds" href="T-bills.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -176,8 +176,8 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="../chapter-2-landing.html">Unit 2: Wealth Creation Tools</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2 current active has-children"><a class="reference internal" href="../bonds.html">U.S. Treasury Securities</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="T-bills.html">U.S. Treasury Bills, Notes and Bonds</a></li>
-<li class="toctree-l3 current active"><a class="current reference internal" href="#">U.S. Treasury Security Pricing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="T-bills.html">Treasury Bills, Notes and Bonds</a></li>
+<li class="toctree-l3 current active"><a class="current reference internal" href="#">Treasury Security Pricing Dynamics and Risks</a></li>
 <li class="toctree-l3"><a class="reference internal" href="STRIPS.html">STRIPS Bonds and the Term Structure of Interest Rates</a></li>
 </ul>
 </li>
@@ -426,7 +426,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>U.S. Treasury Security Pricing</h1>
+    <h1>Treasury Security Pricing Dynamics and Risks</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -436,8 +436,9 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zero-coupon-interest-rate-risk">Zero-coupon Interest Rate Risk</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#malkiels-bond-pricing-guidelines">Malkiel’s bond-pricing guidelines</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#credit-risk-of-treasury-securities">Credit Risk of Treasury Securities</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
 </ul>
             </nav>
@@ -450,48 +451,75 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="u-s-treasury-security-pricing">
-<span id="content-references-bond-pricing-relationships"></span><h1>U.S. Treasury Security Pricing<a class="headerlink" href="#u-s-treasury-security-pricing" title="Permalink to this heading">#</a></h1>
-<hr class="docutils" />
+  <section class="tex2jax_ignore mathjax_ignore" id="treasury-security-pricing-dynamics-and-risks">
+<span id="content-references-bond-pricing-relationships"></span><h1>Treasury Security Pricing Dynamics and Risks<a class="headerlink" href="#treasury-security-pricing-dynamics-and-risks" title="Permalink to this heading">#</a></h1>
+<p>U.S. Treasury debt is often taken to be a risk-free asset. However, the price of a bill, note, or bond can change over its term because of changes in interest rates. Moreover, the issuer of a bond could default on their repayment obligation. Thus, there is interest rate and credit risk associated with these instruments.</p>
 <aside class="topic">
-<p class="topic-title">Learning Objectives</p>
-<p>Fill me in.</p>
+<p class="topic-title">Outline</p>
+<p>In this lecture, we discuss the pricing dynamics and risks of U.S. Treasury securities. We will first discuss the interest rate risk of zero-coupon treasury securities and coupon-bearing treasury securities. Then, we will discuss the credit risk of treasury securities.</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#content-references-zc-pricing-relationships-interest-rate-risk"><span class="std std-ref">Interest rate risk for zero-coupon treasury securities</span></a> is the risk that the price of zero-coupon treasury security will change due to changes in the market interest rate.</p></li>
+<li><p><a class="reference internal" href="#content-references-cb-pricing-relationships-interest-rate-risk"><span class="std std-ref">Interest rate risk for coupon-bearing treasury securities</span></a> is the risk that the price of coupon-bearing treasury security will change due to changes in the market interest rate. In particular, we will discuss Malkiel’s bond-pricing guidelines, which govern the relationship between the price of coupon-bearing treasury security and the market interest rate under different market conditions and the security duration.</p></li>
+<li><p><a class="reference internal" href="#content-references-credit-risk-treasury-securities"><span class="std std-ref">Credit risk for treasury securities</span></a> is the risk that the U.S. government will default on its debt obligations. We will discuss the credit risk of treasury securities and how it is reflected in the price of these securities.</p></li>
+</ul>
 </aside>
 <hr class="docutils" />
-<section id="introduction">
-<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
-<p>The price of a treasury bill <span class="math notranslate nohighlight">\(V_{B}\)</span> is computed with respect to a market interest rate <span class="math notranslate nohighlight">\(\bar{r}\)</span> on the day the bill is purchased. Further, the fair price of a treasury bill has a net present value equal to zero. However, interest rates <span class="math notranslate nohighlight">\(\bar{r}\)</span> vary with time and economic conditions (<a class="reference internal" href="#fig-bill-daily-interest-rate"><span class="std std-numref">Fig. 10</span></a>):</p>
+<section id="zero-coupon-interest-rate-risk">
+<span id="content-references-zc-pricing-relationships-interest-rate-risk"></span><h2>Zero-coupon Interest Rate Risk<a class="headerlink" href="#zero-coupon-interest-rate-risk" title="Permalink to this heading">#</a></h2>
+<p>The price of a zero-coupon treasury bill <span class="math notranslate nohighlight">\(V_{B}\)</span> with a duration of <code class="docutils literal notranslate"><span class="pre">T</span></code> years is computed with respect to an effective market interest rate <span class="math notranslate nohighlight">\(\bar{r}\)</span> on the day the bill is purchased. However, interest rates <span class="math notranslate nohighlight">\(\bar{r}\)</span> vary with time and economic conditions (<a class="reference internal" href="#fig-bill-daily-interest-rate"><span class="std std-numref">Fig. 10</span></a>):</p>
 <figure class="align-default" id="fig-bill-daily-interest-rate">
-<a class="reference internal image-reference" href="../../_images/Fig-4-week-Daily-2022.pdf"><img alt="../../_images/Fig-4-week-Daily-2022.pdf" src="../../_images/Fig-4-week-Daily-2022.pdf" style="height: 420px;" /></a>
+<a class="reference internal image-reference" href="../../_images/Fig-4-week-Daily-2022.svg"><img alt="../../_images/Fig-4-week-Daily-2022.svg" height="420px" src="../../_images/Fig-4-week-Daily-2022.svg" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 10 </span><span class="caption-text">Daily interest rate quotations for 2022 download from <a class="reference external" href="https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_bill_rates&amp;field_tdr_date_value_month=202305">Treasury.gov</a>. These rates are secondary market quotations on 4-week treasury bills, assuming a 360-day year,  computed at approximately 3:30 PM each business day by the <a class="reference external" href="https://www.newyorkfed.org">Federal Reserve Bank of New York</a>.</span><a class="headerlink" href="#fig-bill-daily-interest-rate" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<p>Thus, the market price of a treasury bill for the same par value and duration can change over its term because of changes in interest rates (<a class="reference internal" href="#example-zero-coupon-t-bill">Example 7</a>):</p>
+<p>Thus, the market price of a treasury bill for the same par value and duration can change over its term because of changes in interest rates (<a class="reference internal" href="#example-zero-coupon-t-bill">Example 8</a>):</p>
 <div class="proof example dropdown admonition" id="example-zero-coupon-t-bill">
-<p class="admonition-title"><span class="caption-number">Example 7 </span> (Pricing of a Treasury Bill)</p>
+<p class="admonition-title"><span class="caption-number">Example 8 </span> (Pricing of a zero-coupon treasury bill)</p>
 <section class="example-content" id="proof-content">
-<p>Compute the fair price for a zero-coupon treasury bill with a par value of $1,000 and T = 26-week and T = 52-week duration as a function of annualized market interest rate <span class="math notranslate nohighlight">\(\bar{r}\)</span>.</p>
-<p>The fair price for a zero-coupon treasury bill, denoted by <span class="math notranslate nohighlight">\(V_{B}\)</span>, is the future face (par) value <span class="math notranslate nohighlight">\(V_{P}\)</span> of the bill discounted at <span class="math notranslate nohighlight">\(\bar{r}\)</span> to the time of the purchase (current dollars):</p>
+<p>Compute the fair price for a zero-coupon treasury bill with a par value of $1,000, and a T = 26- and 52-week duration <em>assuming</em> the effective market interest rate <span class="math notranslate nohighlight">\(\bar{r}\)</span> is given by the 2022 values shown on <a class="reference internal" href="#fig-bill-daily-interest-rate"><span class="std std-numref">Fig. 10</span></a>.</p>
+<p><strong>Solution</strong>:
+The fair price for a zero-coupon treasury bill <span class="math notranslate nohighlight">\(V_{B}\)</span> is the future face (par) value <span class="math notranslate nohighlight">\(V_{P}\)</span> of the bill discounted at <span class="math notranslate nohighlight">\(\bar{r}\)</span> to the time of the purchase (current dollars):</p>
 <div class="math notranslate nohighlight">
-\[V_{B} = \mathcal{D}^{-1}_{T,0}\cdot{V_{P}}\]</div>
-<p>Solving this expression as a function of <span class="math notranslate nohighlight">\(\bar{r}\)</span> for different values of the T-bill term <span class="math notranslate nohighlight">\(T\)</span> gives the results shown in <a class="reference internal" href="#fig-zcbill-price"><span class="std std-numref">Fig. 11</span></a>:</p>
+\[V_{B} = \mathcal{D}^{-1}_{T,0}(\bar{r})\cdot{V_{P}}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\mathcal{D}_{T,0}\)</span> is the discount factor for a zero-coupon treasury bill with a duration of <code class="docutils literal notranslate"><span class="pre">T</span></code> years. We can compute the price using the following <a class="reference external" href="https://julialang.org/">Julia</a> code (which assumes continuous compounding):</p>
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># Assumptions:</span>
+<span class="c"># 1. The interest rate data is stored in the array r̄ (as a percentage). </span>
+<span class="c"># 2. We have number_of_days days of interest rate data (from first to last day of the year).</span>
+
+<span class="c"># Define the compounding model -</span>
+<span class="n">𝒟</span><span class="p">(</span><span class="n">r̄</span><span class="p">,</span><span class="n">T</span><span class="p">)</span> <span class="o">=</span> <span class="n">exp</span><span class="p">(</span><span class="n">r̄</span><span class="o">*</span><span class="n">T</span><span class="p">);</span>
+
+<span class="c"># initialize variables</span>
+<span class="n">T₁</span> <span class="o">=</span> <span class="p">(</span><span class="mi">26</span><span class="o">/</span><span class="mi">52</span><span class="p">);</span>   <span class="c"># T = 0.5 yr or 26 weeks</span>
+<span class="n">T₂</span> <span class="o">=</span> <span class="p">(</span><span class="mi">52</span><span class="o">/</span><span class="mi">52</span><span class="p">);</span>   <span class="c"># T = 1 yr or 52 weeks</span>
+<span class="n">Vₚ</span> <span class="o">=</span> <span class="mf">1000.0</span><span class="p">;</span>    <span class="c"># par value of the treasury bill</span>
+
+<span class="c"># main loop</span>
+<span class="n">price_array</span> <span class="o">=</span> <span class="kt">Array</span><span class="p">{</span><span class="kt">Float64</span><span class="p">,</span><span class="mi">2</span><span class="p">}(</span><span class="nb">undef</span><span class="p">,</span> <span class="n">length</span><span class="p">(</span><span class="n">r̄</span><span class="p">),</span> <span class="mi">2</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="mi">1</span><span class="o">:</span><span class="n">number_of_days</span>
+    <span class="n">rvalue</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">100</span><span class="p">)</span><span class="o">*</span><span class="n">r̄</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+    <span class="n">price_array</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="n">𝒟</span><span class="p">(</span><span class="n">rvalue</span><span class="p">,</span><span class="n">T₁</span><span class="p">))</span><span class="o">*</span><span class="n">Vₚ</span><span class="p">;</span>
+    <span class="n">price_array</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="n">𝒟</span><span class="p">(</span><span class="n">rvalue</span><span class="p">,</span><span class="n">T₂</span><span class="p">))</span><span class="o">*</span><span class="n">Vₚ</span><span class="p">;</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+<p>Computing the price <span class="math notranslate nohighlight">\(V_{B}\)</span> as a function of <span class="math notranslate nohighlight">\(\bar{r}\)</span> gives (<a class="reference internal" href="#fig-zcbill-price"><span class="std std-numref">Fig. 11</span></a>):</p>
 <figure class="align-default" id="fig-zcbill-price">
-<a class="reference internal image-reference" href="chapter-2-dir/bonds/figs/Fig-Price-Zero-Coupon-Bill.pdf"><img alt="chapter-2-dir/bonds/figs/Fig-Price-Zero-Coupon-Bill.pdf" src="chapter-2-dir/bonds/figs/Fig-Price-Zero-Coupon-Bill.pdf" style="height: 400px;" /></a>
+<a class="reference internal image-reference" href="../../_images/Fig-Price-Zero-Coupon-Bill.svg"><img alt="../../_images/Fig-Price-Zero-Coupon-Bill.svg" height="400px" src="../../_images/Fig-Price-Zero-Coupon-Bill.svg" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 11 </span><span class="caption-text">Price of a zero coupon treasury bill for a term of 0.5 (dark blue) and one year (light blue) as a function of the market interest rate. Face value <span class="math notranslate nohighlight">\(V_{P}\)</span> = 1000 USD.</span><a class="headerlink" href="#fig-zcbill-price" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 11 </span><span class="caption-text">Price of a zero coupon treasury bills for terms of T = 26 weeks (light blue) and T = 52 weeks (dark blue) as a function of the historical market interest rate for 2022. The face value <span class="math notranslate nohighlight">\(V_{P}\)</span> = 1000 USD for each T-bill.</span><a class="headerlink" href="#fig-zcbill-price" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
-<p>The treasury bill pricing calculations have some interesting properties:</p>
+</section>
+</div><p>The example treasury bill pricing calculations shown in <a class="reference internal" href="#example-zero-coupon-t-bill">Example 8</a> have some interesting properties:</p>
 <ul class="simple">
 <li><p>There is an <em>inverse</em> relationship between the current price of a zero-coupon bill and the market interest rate <span class="math notranslate nohighlight">\(\bar{r}\)</span>; this must be true as the par value (which is in future dollars) is fixed. Thus, higher market interest rates imply lower initial T-bill prices.</p></li>
-<li><p>The relationship between <span class="math notranslate nohighlight">\(V_{B}\)</span> and <span class="math notranslate nohighlight">\(\bar{r}\)</span> is <em>not</em> linear (dashed versus solid lines); even though it may appear to be the case from the parameters used in the example, the relationship between price and interest rate is convex</p></li>
-<li><p>Finally, the longer duration treasury bills are more sensitive to interest rate changes; the T = 1-year slope is larger than the T = 0.5-year case.</p></li>
+<li><p>The longer duration treasury bills are more sensitive to interest rate changes that shorter duration bills, i.e., the T = 52 week T-bill price is more sensitive to changes in <span class="math notranslate nohighlight">\(\bar{r}\)</span> than the T = 26 week T-bill price. This is because the longer duration T-bill has a longer time to maturity, and thus, more time for the market interest rate to change.</p></li>
 </ul>
 </section>
-</div></section>
 <section id="malkiels-bond-pricing-guidelines">
-<h2>Malkiel’s bond-pricing guidelines<a class="headerlink" href="#malkiels-bond-pricing-guidelines" title="Permalink to this heading">#</a></h2>
+<span id="content-references-cb-pricing-relationships-interest-rate-risk"></span><h2>Malkiel’s bond-pricing guidelines<a class="headerlink" href="#malkiels-bond-pricing-guidelines" title="Permalink to this heading">#</a></h2>
 <p>Bond investors have two actions open to them: hold the bond until maturity (and collect the coupon payments along the way), or resell the bond (and potentially benefit from a change in the bond price). The latter is possible because after the bonds are issued, bondholders may buy or resell bonds in secondary bond markets. In these markets, bond prices fluctuate inversely with the market interest rate <span class="math notranslate nohighlight">\(\bar{r}\)</span>. Thus, interest rate fluctuations are the main source of risk to the bondholder if they are not holding the bound to maturity.</p>
 <figure class="align-default" id="fig-bond-price-sensitivity">
 <a class="reference internal image-reference" href="../../_images/Fig-Sensitivity-Bond-Price-Interest-Rate.svg"><img alt="../../_images/Fig-Sensitivity-Bond-Price-Interest-Rate.svg" height="420px" src="../../_images/Fig-Sensitivity-Bond-Price-Interest-Rate.svg" /></a>
@@ -508,6 +536,10 @@ an increase in a bond’s interest rate <span class="math notranslate nohighligh
 <li><p>Interest rate risk is inversely related to a bond’s coupon rate. Prices of low coupon-rate bonds are more sensitive to changes in interest rates than prices of high-rate coupon bonds. For example, compare Case II and III in (<a class="reference internal" href="#fig-bond-price-sensitivity"><span class="std std-numref">Fig. 12</span></a>); case III (the low coupon-rate bond) is significanly more sensitive to decreases in interest rate compared with case II (the high coupon-rate bond). A similar, albeit less pronounced, trend is visible for increased
 interest rate.</p></li>
 </ol>
+</section>
+<section id="credit-risk-of-treasury-securities">
+<span id="content-references-credit-risk-treasury-securities"></span><h2>Credit Risk of Treasury Securities<a class="headerlink" href="#credit-risk-of-treasury-securities" title="Permalink to this heading">#</a></h2>
+<p>Fill me in.</p>
 </section>
 <hr class="docutils" />
 <section id="summary">
@@ -553,7 +585,7 @@ interest rate.</p></li>
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">U.S. Treasury Bills, Notes and Bonds</p>
+        <p class="prev-next-title">Treasury Bills, Notes and Bonds</p>
       </div>
     </a>
     <a class="right-next"
@@ -583,8 +615,9 @@ interest rate.</p></li>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zero-coupon-interest-rate-risk">Zero-coupon Interest Rate Risk</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#malkiels-bond-pricing-guidelines">Malkiel’s bond-pricing guidelines</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#credit-risk-of-treasury-securities">Credit Risk of Treasury Securities</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
 </ul>
   </nav></div>

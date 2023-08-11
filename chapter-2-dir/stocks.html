@@ -175,7 +175,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="chapter-2-landing.html">Unit 2: Wealth Creation Tools</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2 has-children"><a class="reference internal" href="bonds.html">U.S. Treasury Securities</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="bonds/T-bills.html">U.S. Treasury Bills, Notes and Bonds</a></li>
-<li class="toctree-l3"><a class="reference internal" href="bonds/T-bill-note-bond-pricing.html">U.S. Treasury Security Pricing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="bonds/T-bill-note-bond-pricing.html">U.S. Treasury Security Pricing Dynamics and Risks</a></li>
 <li class="toctree-l3"><a class="reference internal" href="bonds/STRIPS.html">STRIPS Bonds and the Term Structure of Interest Rates</a></li>
 </ul>
 </li>
@@ -438,10 +438,16 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="equity-securities">
 <h1>Equity Securities<a class="headerlink" href="#equity-securities" title="Permalink to this heading">#</a></h1>
-<p>Equity securities are financial assets that represent ownership in a company. They trade on stock exchanges and can provide long-term gains and dividend income, but also carry risks due to market price fluctuations. Equity securities are often used as a component of an investor’s portfolio because they offer the potential for higher returns compared to other types of investments such as bonds or cash.</p>
+<p>Equity securities are assets that represent ownership in a company and trade on stock exchanges. They can provide capital gains and dividend income, but also carry risks due to market fluctuations.</p>
 <aside class="topic">
 <p class="topic-title">Outline</p>
-<p>Fill me in here.</p>
+<p>This section will focus on modeling and analyzing equity prices, such as stocks or exchange-traded funds. We will first examine the main characteristics of equity markets and the statistical properties of equity prices. Then, we will introduce various tools and techniques for modeling and analyzing equity prices.</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="stocks/stylized-facts.html#content-references-markets-exchanges-stylized-facts"><span class="std std-ref">Markets and Stylized Facts</span></a> are the foundation of the analysis of equity securities. We discuss the main characteristics of equity markets and the stylized facts, e.g., statistical features of price data that are important for modeling and analysis of the share prices.</p></li>
+<li><p><a class="reference internal" href="stocks/lattice-eq-price.html#content-references-lattice-models-equity-price"><span class="std std-ref">Lattice models of equity share price</span></a> are a class of models that are based on the assumption that the price of an equity security can only take a finite number of values. We discuss the main characteristics of lattice models and how they can be used to model equity prices.</p></li>
+<li><p><a class="reference internal" href="stocks/obm-gbm-eq-price.html#content-brownian-models-equity-share-price-simple"><span class="std std-ref">Brownian motion models of equity share price</span></a> are a class of models based on the assumption that the price of an equity security can be described by a continuous random process. We discuss the main characteristics of Brownian motion models, for single stocks and collections of stocks, and how they can be used to model equity prices.</p></li>
+<li><p><a class="reference internal" href="stocks/advanced-eq-price.html#content-references-stochastic-volatility-models-of-price"><span class="std std-ref">Stochastic volatility models of share price</span></a> assume the volatility, or other parameters in Brownian models of an equity security price, can be described by a continuous random process. We will discuss the main characteristics of stochastic volatility models and how they can be used to compute equity prices.</p></li>
+</ul>
 </aside>
 <div class="toctree-wrapper compound">
 </div>

@@ -9,7 +9,7 @@ Fill me in.
 
 (content:references:single-index-models)=
 ## Single Index Models
-The application of index models to construct risky portfolios was originally proposed by Treynor and Black {cite}`FB1973`. Single index models are asset pricing models which measure the risk and the return of a stock relative to a risk-free alternative investment, e.g., [government treasury bonds](./bonds.md). A single index model describes the return of a firm’s stock in terms of a firm-specific return and the overall market return. One of the simplest (yet still widely used) single index models was developed by Sharpe {cite}`SHARPE1963`.
+The application of index models to construct risky portfolios was originally proposed by Treynor and Black {cite}`FB1973`. Single index models are asset pricing models which measure the risk and the return of a stock relative to a risk-free alternative investment, e.g., U.S. Treasury debt. A single index model describes the return of a firm’s stock in terms of a firm-specific return and the overall market return. One of the simplest (yet still widely used) single index models was developed by Sharpe {cite}`SHARPE1963`.
 
 ### Derivation
 The single-index model measures both the risk and the return of a stock, relative to a risk free alternative investment e.g., government treasury bounds. The single index model describes the return of the stock of firm $i$ in terms of a firm-specific return, and an overall market return:
@@ -145,7 +145,7 @@ $$r_{f} = (1+r)^{(1/365)} - 1$$
 The value for the daily risk-free rate of return was found to be $r_{f}$ = 7.06e-5.
 
 __Estimate $\theta$__:
-The daily log-return for [AMD](https://finance.yahoo.com/quote/AMD) and [SPY](https://finance.yahoo.com/quote/SPY) was computed using {prf:ref}`defn-log-return`; six-months of daily open high low close (OHLC) data was downloaded from [Polygon.io](https://polygon.io). 
+The daily log-return for [AMD](https://finance.yahoo.com/quote/AMD) and [SPY](https://finance.yahoo.com/quote/SPY) was computed using {prf:ref}`defn-log-return-1`; six-months of daily open high low close (OHLC) data was downloaded from [Polygon.io](https://polygon.io). 
 
 The last 90-days of data were used to calculate the log return and to formulate the $Y$ vector and $X$ matrix. The matrix inverse $\left(X^{T}X\right)^{-1}$ was computed using the `inv` command from the `LinearAlgebra` package:
 

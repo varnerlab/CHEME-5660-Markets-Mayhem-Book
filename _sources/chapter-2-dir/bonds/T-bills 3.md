@@ -1,16 +1,12 @@
 (content:references:treasury-bonds)=
 # U.S. Treasury Bills, Notes and Bonds
 
----
-
-```{topic} Learning Objectives
+```{topic} Outline
 After introducing the structure and properties of U.S. Treasury securities, in this lecture we'll discuss the following topics:
 
 * [Simple and Compound Interest](content:references:interest-models) are two methods of calculating interest. Simple interest is calculated on the principal amount of a loan only. Compound interest is calculated on the principal amount and also on the accumulated interest of previous periods, and can thus be regarded as `interest on interest.`
 
-
 * [U.S. Treasury Bills](content:references:US-T-Bills) are short-term debt securities with a maturity of less than one year. On the other hand,[Treasury Notes and Bonds](content:references:US-T-Notes-Bonds) are long-term debt securities with a maturity of two to thirty years. Bills, Notes and Bonds are structured contracts between the U.S. government and bondholders that specify the repayment terms of the loan, e.g., the duration of the loan and the payment schedule.
-
 
 * [The Yield to Maturity (YTM)](content:references:US-YTM-Defn) is a measure of the _return of a bond investment_. Yield to maturity is the discount rate that equates the present value of a bond's cashflows to its price.  The YTM is the internal rate of return (IRR) of an investment in a bond if the investor holds the bond until maturity and if all payments are made as scheduled.
 ```

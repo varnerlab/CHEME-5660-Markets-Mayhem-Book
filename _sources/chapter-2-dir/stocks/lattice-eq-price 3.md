@@ -1,3 +1,4 @@
+(content:references:lattice-models-equity-price)=
 # Lattice Models of Equity Pricing
 
 ```{topic} Outline

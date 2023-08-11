@@ -1,13 +1,21 @@
 (content:references:bond-pricing-relationships)=
-# U.S. Treasury Security Pricing
+# U.S. Treasury Security Pricing Dynamics and Risks
+U.S. Treasury debt is often taken to be a risk-free asset. However, the price of a bill, note, or bond can change over its term because of changes in interest rates. Moreover, the issuer of a bond could default on their repayment obligation. Thus, there is interest rate and credit risk associated with these instruments. 
 
----
-```{topic} Learning Objectives
-Fill me in.
+```{topic} Outline
+In this lecture, we discuss the pricing dynamics and risks of U.S. Treasury securities. We will first discuss the interest rate risk of zero-coupon treasury securities and coupon-bearing treasury securities. Then, we will discuss the credit risk of treasury securities.
+
+* [Interest rate risk for zero-coupon treasury securities](content:references:zc-pricing-relationships-interest-rate-risk) is the risk that the price of zero-coupon treasury security will change due to changes in the market interest rate. 
+
+* [Interest rate risk for coupon-bearing treasury securities](content:references:cb-pricing-relationships-interest-rate-risk) is the risk that the price of coupon-bearing treasury security will change due to changes in the market interest rate. In particular, we will discuss Malkiel’s bond-pricing guidelines, which govern the relationship between the price of coupon-bearing treasury security and the market interest rate under different market conditions and the security duration.
+
+* [Credit risk for treasury securities](content:references:credit-risk-treasury-securities) is the risk that the U.S. government will default on its debt obligations. We will discuss the credit risk of treasury securities and how it is reflected in the price of these securities.
 ```
+
 ---
 
-## Introduction
+(content:references:zc-pricing-relationships-interest-rate-risk)=
+## Interest Rate Sensitivity of Zero-coupon Treasury Securities
 The price of a treasury bill $V_{B}$ is computed with respect to a market interest rate $\bar{r}$ on the day the bill is purchased. Further, the fair price of a treasury bill has a net present value equal to zero. However, interest rates $\bar{r}$ vary with time and economic conditions ({numref}`fig-bill-daily-interest-rate`):
 
 
@@ -50,6 +58,7 @@ The treasury bill pricing calculations have some interesting properties:
 * Finally, the longer duration treasury bills are more sensitive to interest rate changes; the T = 1-year slope is larger than the T = 0.5-year case.
 ````
 
+(content:references:cb-pricing-relationships-interest-rate-risk)=
 ## Malkiel’s bond-pricing guidelines
 Bond investors have two actions open to them: hold the bond until maturity (and collect the coupon payments along the way), or resell the bond (and potentially benefit from a change in the bond price). The latter is possible because after the bonds are issued, bondholders may buy or resell bonds in secondary bond markets. In these markets, bond prices fluctuate inversely with the market interest rate $\bar{r}$. Thus, interest rate fluctuations are the main source of risk to the bondholder if they are not holding the bound to maturity.
 
@@ -70,6 +79,10 @@ an increase in a bond’s interest rate $\bar{r}$ results in a _smaller price ch
 1. Prices of long-term bonds are more sensitive to interest rate changes than short-term bonds. For example, consider Case I and Case II in ({numref}`fig-bond-price-sensitivity`); Case I (short-term bond) is _less sensitive_ to the same magnitude change in $\bar{r}$ compared with Case II (long-term bond).
 1. Interest rate risk is inversely related to a bond’s coupon rate. Prices of low coupon-rate bonds are more sensitive to changes in interest rates than prices of high-rate coupon bonds. For example, compare Case II and III in ({numref}`fig-bond-price-sensitivity`); case III (the low coupon-rate bond) is significanly more sensitive to decreases in interest rate compared with case II (the high coupon-rate bond). A similar, albeit less pronounced, trend is visible for increased
 interest rate.
+
+(content:references:credit-risk-treasury-securities)=
+## Credit Risk of Treasury Securities
+Fill me in.
 
 ---
 
