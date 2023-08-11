@@ -133,14 +133,14 @@ The price an investor is willing to pay for a claim to the future coupon payment
 ````{prf:definition} Fixed Coupon Rate Bond Pricing
 :label: defn-fixed-r-bond-pricing
 
-For a note or bond with a term of T-years and $\lambda$ coupon payments per year, there will be $N = \lambda{T}$ coupon payments. The _fair price_ is the present value of the future coupon payments $C$ and the discounted face value $V_{P}$:
+A note or bond has a term of `T-years` and $\lambda$ coupon payments per year. The _fair price_ of the note or bond is the present value of the sum of the future coupon payments $C$ and the discounted face value $V_{P}$:
 
 ```{math}
 :label: eqn-fixed-r-bond-price-w-coupon
-V_{B}(N,\bar{r}) = \mathcal{D}^{-1}_{N,0}(\bar{r})\cdot{V_{P}}+C\cdot\sum_{j=1}^{N}\mathcal{D}_{j,0}^{-1}(\bar{r})
+V_{B}(T,\bar{r}) = \mathcal{D}^{-1}_{N,0}(\bar{r})\cdot{V_{P}}+C\cdot\sum_{j=1}^{\lambda{T}}\mathcal{D}_{j,0}^{-1}(\bar{r})
 ```
 
-The term $\mathcal{D}_{i,0}(\bar{r})$ denotes the discount factor for the period $0\rightarrow{N}$, which can be either a discrete or continuous compounding model. The coupon payment $C=\left(\bar{c}/\lambda\right)\cdot{V_{P}}$, and the interest rate $i=\bar{r}/\lambda$ are set at auction. 
+The term $\mathcal{D}_{i,0}(\bar{r})$ denotes the discount factor for the period $0\rightarrow{i}$, which can be either a discrete or continuous compounding model. The coupon payment is given by $C=\left(\bar{c}/\lambda\right)\cdot{V_{P}}$, and the interest rate $\bar{r}$ are set at auction. 
 ````
 
 Let’s use historical auction data from 1975-1979 and the [VLQuantitativeFinancePackage.jl](https://github.com/varnerlab/VLQuantitativeFinancePackage.jl.git) package to compute the historical 30-year treasury bond prices ({prf:ref}`example-treaury-bond-price`).
@@ -217,24 +217,106 @@ The implementation of {prf:ref}`example-treaury-bond-price` in the [VLQuantitati
 
 (content:references:US-YTM-Defn)=
 ## Yield to Maturity (YTM)
-The Yield to Maturity (YTM) of a treasury note or bond is the [internal rate of return (IRR)](https://en.wikipedia.org/wiki/Internal_rate_of_return) associated with buying and holding the security until its maturity date ({prf:ref}`defn-yield-to-maturity`): 
+The Yield to Maturity (YTM) of a treasury note or bond is the [internal rate of return (IRR)](https://en.wikipedia.org/wiki/Internal_rate_of_return) associated with buying and holding the security until its maturity date ({prf:ref}`defn-yield-to-maturity`):
 
 ````{prf:definition} Yield to Maturity 
 :label: defn-yield-to-maturity
 
-For a note or bond with a term of T-years and $\lambda$ coupon payments per year, there will be $N = \lambda{T}$ payments. The yield to maturity (YTM) is defined as the effective market interest rate that makes the present value of a bond’s payments equal to its price $V_{B}$:
+The yield to maturity (YTM) is defined as the effective market interest rate that makes the present value of a bond’s coupon payments and discounted par value equal to its price $V_{B}$:
 
 ```{math}
-V_{B} - \frac{V_{P}}{\left(1+i\right)^{N}}-\sum_{j=1}^{N}\frac{C}{\left(1+i\right)^{j}} = 0
+V_{B}(T^{\prime},y) - \mathcal{D}^{-1}_{T,0}(y)\cdot{V_{P}} - C\cdot\sum_{j=1}^{\lambda{T}^{\prime}}\mathcal{D}_{j,0}^{-1}(y) = 0
 ```
 
-where $C=\left(\bar{c}/\lambda\right)\cdot{V_{P}}$ denotes the value of the coupon payment, and $i=\bar{r}/\lambda$ denotes the market interest rate (spot rate), which can fluctuate over time.
+The term $\mathcal{D}_{i,0}(y)$ denotes the discount factor for the period $0\rightarrow{i}$, which can be either a discrete or continuous compounding model, $T^{\prime}$ denotes duration remaining on the note or bond, the coupon payment value is given by $C=\left(\bar{c}/\lambda\right)\cdot{V_{P}}$, and $y$ denotes the yield to maturity of the note or bond.
 ````
 
-The yield to maturity and the effective market interest rate are equal when the note or bond is initally auctioned in the primary market. However, Treasury securities can be resold on the [secondary treasury market](https://www.investopedia.com/articles/bonds/08/treasuries-fed.asp#:~:text=For%20many%20people%2C%20TreasuryDirect%20is,convenience%20and%20liquidity%20than%20TreasuryDirect), even after some coupon payments have been paid out. In such cases, the yield to maturity is not equal to the initial market interest rate at auction. 
+The YTM and the effective market interest rate are the same when the note or bond is initially auctioned in the primary market. However, treasury securities are marketable securities, i.e., they can be resold on a [secondary treasury market](https://www.investopedia.com/articles/bonds/08/treasuries-fed.asp#:~:text=For%20many%20people%2C%20TreasuryDirect%20is,convenience%20and%20liquidity%20than%20TreasuryDirect), even after some coupon payments have been paid out. In such cases, the YTM does not equal the initial market interest rate at auction.
 
-### Example
-* Let's do an example illustrating the Yield to Maturity (YTM) calculation ({prf:ref}`defn-yield-to-maturity`). Sources: [Live Pluto notebook](https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks) or [a static HTML view](https://htmlview.glitch.me/?https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Example-Notebooks/blob/main/pluto-notebooks/html/Example-YieldToMaturity-TreasuryBond.jl.html).
+Let's do a yield to maturity calculation for a 5-year treasury note ({prf:ref}`example-ytm-5-year-t-note`):
+
+````{prf:example} Yield to Maturity for 5-Year T-Note
+:class: dropdown
+:label: example-ytm-5-year-t-note
+
+You purchased a 5-year treasury note with a face value of $V_{P}$ = 100 USD at auction for $V_{B}$ = 96.82 USD. The note has an annual coupon rate of 6%, with semi-annual coupon payments. 
+
+1. Compute the effective annual interest rate $\bar{r}$ at the time of the auction.
+1. After holding the note for $T^{\prime}$ years, you sell it on the secondary market for the purchase price. Compute the yield to maturity at the time of the sale on the secondary market.
+
+__Solution__: The yeild to maturity and the annual effective interest rate $\bar{r}$ are equal at the time of auction. Thus, we can compute the effective annual interest rate $\bar{r}$ using {prf:ref}`defn-yield-to-maturity`.
+
+```julia
+# load external packages
+using VLQuantitativeFinancePackage
+
+# 1. Calculate the YTM for the 5y note at auction
+Vₚ, Vᵦ, T, c, λ = 100.0, 96.82, 5.0, 0.06, 2
+compounding = DiscreteCompoundingModel();
+
+# build the debt model, we don't know the rate, but we know the price -
+model = build(MyUSTreasuryCouponSecurityModel, (
+    par = Vₚ, T = T, λ = λ, coupon = c
+));
+model.price = Vᵦ
+
+# compute the rate by doing a YTM calculation -
+estimated_rate = YTM(model, compounding) |> x->round(x,digits=4);
+```
+
+This calculation gives an effective annual interest rate of `r̄  = 6.76%`. Now, let's compute the yield to maturity at the time of the sale on the secondary market. Let the number of years the note is held before it is sold on the secondary market be `ΔT = 0.0,1.0,2.0,3.0, and 4.0 years`.
+
+__Strategy__:
+
+1. First we set up a holding time array `ΔT`, set the note parameters and then initialize some storage for the  yield to maturity values. 
+1. Next, we process each element in the `ΔT` array using a `for` loop. For each pass through the loop:
+    * We compute the remaining time on the note (store this value in the $\hat{T}$ variable), set the price, and then compute the yield to maturity by calling the `YTM(...)` function
+1. Finally, we store the yield to maturity value in the `YTM_value_array` array.
+
+
+```julia
+# load external packages
+using VLQuantitativeFinancePackage
+
+# 2. Calculate the YTM for the 5y note at auction
+Vₚ, Vᵦ, T, c, λ = 100.0, 96.82, 5.0, 0.06, 2;
+ΔT = [0.0,1.0,2.0,3.0,4.0];
+YTM_value_array = Array{Float64,1}(undef, length(ΔT));
+counter = 0;
+for T′ ∈ ΔT 
+    
+    # update the counter -
+    global counter += 1
+    
+    # how much time is left on the security?
+    T̂ = T - T′
+    
+    # build a bond model, we don't know the rate, but we know the price. 
+    ytm_model = build(MyUSTreasuryCouponSecurityModel, (
+        par = Vₚ, T = T̂, λ = λ, coupon = c
+    ));
+    ytm_model.price = Vᵦ
+    
+    # We compute the yeild and store in the YTM_value_array
+    YTM_value_array[counter] = YTM(ytm_model, compounding)
+end
+```
+
+__Results__: The table below shows the yield to maturity at the time of sale of the note on the secondary market. 
+
+| ΔT (y) | R (y)   | Vₚ (USD)   | Vᵦ (USD)   | c    | YTM (%)   |
+|-----|-----|-------|-------|------|--------|
+| 0.0 | 5.0 | 100.0 | 96.82 | 0.06 | 6.7601 |
+| 1.0 | 4.0 | 100.0 | 96.82 | 0.06 | 6.9238 |
+| 2.0 | 3.0 | 100.0 | 96.82 | 0.06 | 7.1974 |
+| 3.0 | 2.0 | 100.0 | 96.82 | 0.06 | 7.7469 |
+| 4.0 | 1.0 | 100.0 | 96.82 | 0.06 | 9.4061 |
+
+* When the time to maturity decreases and the price remains fixed, the yield to maturity for a treasury note increases. 
+* This is logical since the note always pays its face value at maturity. Therefore, if the new owner acquires the note at the same price as the initial buyer, they will receive the face value (as well as the remaining coupon payments) over a shorter period.
+
+````
+
 
 ---
 
