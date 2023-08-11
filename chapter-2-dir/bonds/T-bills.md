@@ -2,7 +2,7 @@
 # Treasury Bills, Notes and Bonds
 
 ```{topic} Outline
-After introducing the structure and properties of U.S. Treasury securities, in this lecture we'll discuss the following topics:
+In this lecture we'll discuss the following topics:
 
 * [Simple and Compound Interest](content:references:interest-models) are two methods of calculating interest. Simple interest is calculated on the principal amount of a loan only. Compound interest is calculated on the principal amount and also on the accumulated interest of previous periods, and can thus be regarded as `interest on interest.`
 
@@ -60,25 +60,31 @@ name: fig-simple-compound-interest
 Simple versus compound interest for n-periods for an interest rate of $r = 0.05$ per-period. Compound interest outperforms simple interest as the number of periods becomes large.
 ```
 
-We'll exclusively deal with compound interest in this course, as this is the mechanism used in the real world for different types of investments. Finally, interest rates are typically quoted as annualized values and can be compounded at different rates, e.g., annually, quarterly, etc. Putting these ideas together gives a useful definition of compound interest ({prf:ref}`defn-compound-interest`):
 
-````{prf:definition} Continuous compounding
+Finally, interest rates are typically quoted as annualized values and can be compounded at different rates, e.g., annually, quarterly, etc, and compound interest can be computed on a discrete or continuous basis ({prf:ref}`defn-compound-interest`):
+
+````{prf:definition} Discrete and continuous compounding
 :label: defn-compound-interest
 
-Let there be n-compounding periods per year and an annualized interest rate of r-percent.  Then an initial investment $A(0)$ will be worth:
+Let there be `n-compounding periods per year` and an annualized interest rate of `r-percent`.  Then an initial investment $A(0)$ will be worth:
 
 ```{math}
 :label: eqn-compound-interest-model-discrete
 A(m) = A(0)\cdot\left(1+r/n\right)^{mn}
 ```
 
-after $m$-years. As the number of compounding periods $n\rightarrow\infty$, the investment $A(m)$ approaches the continuous compounding limit:
+after `m-years` where the interest rate `r` is a decimal. As the number of compounding periods $n\rightarrow\infty$, the investment $A(m)$ approaches the continuous compounding limit:
 
 ```{math}
 :label: eqn-compound-interest-model-cont
 \lim_{n\rightarrow\infty}A(m) = A(0)\cdot\exp\left(rm\right)
 ```
 ````
+
+```{admonition} Simple versus Compound Interest
+We'll exclusively deal with compound interest throughtout this course, as this is the mechanism used in the real world for different types of investments. Further, we'll _almost always_ assume that interest is compounded continuously, i.e., the number of compounding periods $n\rightarrow\infty$.
+```
+
 
 (content:references:US-T-Bills)=
 ## U.S. Treasury Bills
@@ -104,7 +110,7 @@ A zero-coupon Treasury bill with a face (par) value of $V_{P}$ (future) has a `T
 V_{B}(\bar{r}) = \mathcal{D}^{-1}_{T,0}(\bar{r})\cdot{V_{P}}
 ```
 
-The quantity $\mathcal{D}_{T,0}(\bar{r})$ denotes the discount factor governing the period between the auction at `t = 0` and the term of the bill in `t = T years`. 
+The quantity $\mathcal{D}_{T,0}(\bar{r})$ denotes a discount factor governing the period between the auction at `t = 0` and the term of the bill in `t = T years`. The discount factor can be described using either discrete or continuous compounding.
 ````
 
 (content:references:US-T-Notes-Bonds)=
@@ -124,10 +130,10 @@ Similar to T-notes, [United States Treasury Bonds](https://treasurydirect.gov/ma
 ### Pricing
 The price an investor is willing to pay for a claim to the future coupon payments of a Treasury note or bond depends on the future value that will be received versus the discounted face value of the bond ({prf:ref}`defn-fixed-r-bond-pricing`):
 
-````{prf:definition} Fixed Coupon Rate Bond Pricing
+````{prf:definition} Coupon Bond Pricing
 :label: defn-fixed-r-bond-pricing
 
-A note or bond has a term of `T-years` and $\lambda$ coupon payments per year. The _fair price_ of the note or bond is the present value of the sum of the future coupon payments $C$ and the discounted face value $V_{P}$:
+A note or bond has a term of `T-years` and $\lambda$ coupon payments per year. The _fair price_ of a note or bond is the sum of the future coupon payments $C$ and the face (par) value $V_{P}$ discounted back to today at an effective market interest rate $\bar{r}$:
 
 ```{math}
 :label: eqn-fixed-r-bond-price-w-coupon
@@ -203,7 +209,7 @@ __Results__: The calculated $\hat{V}_{B}$ and actual $V_{B}$ prices for 30-year 
 |  5/2/79 |  9.125 |  9.23 | 98.938 | 98.938 | 0.0 |
 | 11/1/79 | 10.375 | 10.44 | 99.407 | 99.407 | 0.0 |
 
-The implementation of {prf:ref}`example-treaury-bond-price` in the [VLQuantitativeFinancePackage.jl](https://github.com/varnerlab/VLQuantitativeFinancePackage.jl.git) package gives results consistent with the historical data.
+The implementation of coupon bond pricing in the [VLQuantitativeFinancePackage.jl](https://github.com/varnerlab/VLQuantitativeFinancePackage.jl.git) package gives results consistent with the historical data.
 
 ````
 
@@ -315,8 +321,12 @@ __Results__: The table below shows the yield to maturity at the time of sale of 
 ---
 
 ## Summary
-In this lecture we introduced Treasury, Bills, Notes, and Bonds, and we discussed the relationship between the coupon rate, the interest rate, and the price of the security. We also introduced the Yield to Maturity (YTM) and the relationship between the YTM and the market interest rate.
+In this lecture we introduced Treasury, Bills, Notes, and Bonds, and we discussed the relationship between the coupon rate, the interest rate, and the price of the security. We also introduced the Yield to Maturity (YTM) and the relationship between the YTM and the market interest rate. 
 
-* [U.S. Treasury Bills](content:references:US-T-Bills) are short-term debt securities with a maturity of less than one year. [Treasury Notes and Bonds](content:references:US-T-Notes-Bonds) are long-term debt securities with a maturity of two to thirty years.
+In particular, we explored the following concepts:
+
+* [Simple and Compound Interest](content:references:interest-models) are two methods of calculating interest. Simple interest is calculated on the principal amount of a loan only. Compound interest is calculated on the principal amount and also on the accumulated interest of previous periods, and can thus be regarded as `interest on interest.`
+
+* [U.S. Treasury Bills](content:references:US-T-Bills) are short-term debt securities with a maturity of less than one year. On the other hand, [Treasury Notes and Bonds](content:references:US-T-Notes-Bonds) are long-term debt securities with a maturity of two to thirty years.
 
 * [The Yield to Maturity (YTM)](content:references:US-YTM-Defn) is a measure of the _return_ of a bond investment. Yield to maturity is the discount rate that equates the present value of a bond's cashflows to its price.
