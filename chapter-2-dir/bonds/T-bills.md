@@ -36,36 +36,31 @@ The bondholder and the U.S. Treasury have a marketable agreement, which can be r
 ## Simple and Compound Interest
 The distinction between simple and compound interest is crucial in the world of finance and investing. These concepts significantly impact investment growth and borrowing costs, making them fundamental aspects to consider when making financial decisions. 
 
-Simple interest is paid only on the initial principle. For example, if amount $A(0)$ is invested in an account at $t=0$ which pays a simple interest rate of $r$ per period, then after $n$ periods the amount $A(n)$ is given by:
+Simple interest is paid only on the initial principle. For example, if amount $A(0)$ is invested in an account at $t=0$ which pays a simple interest rate of $r$ per period, then after $n$ periods the account would hold the amount $A(n)$:
 
 ```{math}
 :label: eqn-simple-interest
 A(n) = A(0)\cdot\left(1+rn\right)
 ```
 
-Compound interest considers both the principal and the interest accumulated over time. For example, if amount $A(0)$ is invested in an account at $t=0$ which pays a compound interest rate $r$ per period, then after $n$ periods the amount $A(n)$ is given by:
+The interest earned is not reinvested, and thus the interest earned is constant over time.  However, compound interest considers both the principal and the interest accumulated over time, i.e., you earn `interest on interest`. For example, if amount $A(0)$ is invested at $t=0$ into an account that pays a compound interest rate $r$ per period, then after $n$ periods the account would hold the amount $A(n)$:
 
 ```{math}
 :label: eqn-compound-interest
 A(n) = A(0)\cdot\left(1+r\right)^n
 ```
 
-````{prf:example} Simple versus compound interest
-:label: example-simple-vs-compound-interest
-:class: dropdown
+As the number of periods become large, compound interest always outperforms simple interest ({numref}`fig-simple-compound-interest`). 
 
-Compute the balance of an investment account $A(n)$ that pays $r = 0.05$ per period after $n$ periods using a simple and compound interest rate model for an initial investment of $A(0) = 100.0$ USD.
-
-```{figure} ./figs/Fig-Simple-Compound-Interest.pdf
+```{figure} ./figs/Fig-Simple-Compound-Balance.svg
 ---
-height: 360px
+height: 420px
 name: fig-simple-compound-interest
 ---
 Simple versus compound interest for n-periods for an interest rate of $r = 0.05$ per-period. Compound interest outperforms simple interest as the number of periods becomes large.
 ```
-````
 
-Interest rates are typically quoted on an annual basis, and can be compounded at different rates, e.g., annually, quarterly, etc. Putting these ideas together gives a useful definition of compound interest ({prf:ref}`defn-compound-interest`):
+We'll exclusively deal with compound interest in this course, as this is the mechanism used in the real world for different types of investments. Finally, interest rates are typically quoted as annualized values and can be compounded at different rates, e.g., annually, quarterly, etc. Putting these ideas together gives a useful definition of compound interest ({prf:ref}`defn-compound-interest`):
 
 ````{prf:definition} Continuous compounding
 :label: defn-compound-interest
@@ -77,14 +72,13 @@ Let there be n-compounding periods per year and an annualized interest rate of r
 A(m) = A(0)\cdot\left(1+r/n\right)^{mn}
 ```
 
-after $m$-years. As the number of compounding periods $n\rightarrow\infty$, the investment $A(m)$ approaches the continuous compounding case:
+after $m$-years. As the number of compounding periods $n\rightarrow\infty$, the investment $A(m)$ approaches the continuous compounding limit:
 
 ```{math}
 :label: eqn-compound-interest-model-cont
 \lim_{n\rightarrow\infty}A(m) = A(0)\cdot\exp\left(rm\right)
 ```
 ````
-
 
 (content:references:US-T-Bills)=
 ## U.S. Treasury Bills
