@@ -4,7 +4,7 @@ Equity securities are assets that represent ownership in a company and trade on 
 ```{topic} Outline
 This section will focus on modeling and analyzing equity prices, such as stocks or exchange-traded funds. We will first examine the main characteristics of equity markets and the statistical properties of equity prices. Then, we will introduce various tools and techniques for modeling and analyzing equity prices.
 
-* [Markets and Stylized Facts](content:references:markets-exchanges-stylized-facts) are the foundation of the analysis of equity securities. We discuss the main characteristics of equity markets and the stylized facts, e.g., statistical features of price data that are important for modeling and analysis of the share prices.
+* [Equities, Markets, and Stylized Facts](content:references:markets-exchanges-stylized-facts) are the foundation of wealth creation for individuals and professional investors. We discuss the main characteristics of equity markets and the stylized facts, e.g., statistical features of price data that are important for modeling and analysis of the share prices.
 
 * [Lattice models of equity share price](content:references:lattice-models-equity-price) are a class of models that are based on the assumption that the price of an equity security can only take a finite number of values. We discuss the main characteristics of lattice models and how they can be used to model equity prices.
 

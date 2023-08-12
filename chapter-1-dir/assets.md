@@ -1,7 +1,5 @@
 # Valuation of Abstract Assets
 
----
-
 <!-- The development of processes or products does not occur inside a mythical universe that is free 
 from market forces. Instead, processes and products must be, at a minimum, financially neutral to be viable. Processes and products that are not financially viable, while perhaps being technically innovative or otherwise advantageous, will not survive in the marketplace without external support e.g., local, state or federal government subsities.  -->
 
@@ -24,7 +22,7 @@ In this lecture, we introduce three basic financial concepts: abstract assets, s
 An _abstract asset_ is a sequence of current and future cash flows 
 demarcated in some currency, for example, Euros, Dollars, Yuan, or cryptocurrencies such as Bitcoin ({numref}`cash-flow-abstract-asset-fig`).
 
-```{figure} ./figs/Fig-Asset-CashFlowDiagram.pdf
+```{figure} ./figs/Fig-Asset-CashFlowDiagram.svg
 ---
 height: 240px
 name: cash-flow-abstract-asset-fig
@@ -53,7 +51,7 @@ There is a fundamental flaw to the summation valuation intuition, the time value
 The value of money is _not_ conserved over time. One dollar today is not worth the same as one dollar tomorrow. The change in the value of money over time is called the _time value of money_.  
 ```
 
-The time value of money is an [empirical observation that has been seen over hundreds of years](https://en.wikipedia.org/wiki/Time_value_of_money#History). But why is this the case? The short answer: money given to us today has a greater [Utility](https://en.wikipedia.org/wiki/Utility) than the same amount tomorrow; because we have an extra day to invest that money ({prf:ref}`obs-time-value-of-money`): 
+The time value of money is an [empirical observation that has been seen over hundreds of years](https://en.wikipedia.org/wiki/Time_value_of_money#History). But why is this the case? The short answer: [money given to us today has a greater Utility](https://en.wikipedia.org/wiki/Utility) than the same amount tomorrow, because we have an extra day to invest that money ({prf:ref}`obs-time-value-of-money`): 
 
 ````{prf:observation} Why does that value of money chnage over time?
 :label: obs-time-value-of-money
@@ -79,11 +77,11 @@ as being in different currencies (e.g., dollars versus euros) that must be excha
 
 #### Discrete Discounting
 Suppose we wanted to convert the value of a cash flow from one time period in the future 
-into today's dollars (or vice-versa, we want to compute the value of a future cash flow to a current value). To do this, we use a one-period discrete conversion ({prf:ref}`defn-one-perod-discrete-conversion`):
+into today's dollars (discount to today). To do this, we use a one-period discrete conversion ({prf:ref}`defn-one-perod-discrete-conversion`):
 
 ````{prf:definition} One Period Discrete Conversion
 :label: defn-one-perod-discrete-conversion
-For any one-period ($t\rightarrow{t+1}$),  the present value of cash flow, denoted as $\dot{c}_{t}$, and the future value of cash-flow, denoted by $\dot{c}_{t+1}$, there exists a one time-step discrete conversion:
+For any one-period $t\rightarrow{t+1}$,  the present value of cash flow, denoted as $\dot{c}_{t}$, and the future value of cash-flow, denoted by $\dot{c}_{t+1}$, there exists a one time-step discrete conversion:
 
 ```{math}
 :label: eq-cash-flow-1-period
@@ -98,38 +96,41 @@ Let's do an example to illustrate one-period conversions ({prf:ref}`example-one-
 :label: example-one-period-discrete-conversion
 :class: dropdown
 
-Prof. Varner offers to buy you a coffee tommorrow (one time period in the future) for $\dot{c}_{2} = \$ 3.35$. How much is the future coffee worth today if $r_{21}=10\%$? Let's put some numbers into Eqn. {eq}`eq-cash-flow-1-period` to answer this question.  Rearraninging Eqn. {eq}`eq-cash-flow-1-period` for $\dot{c}_{1}$ gives:
+Someone offers to buy you a coffee tommorrow (one time period in the future) for $\dot{c}_{1}$ = 3.35 USD. What is the  current value denoted as $\dot{c}_{0}$ of the coffee if the discount rate is $r_{1,0}=10\%$? 
+
+__Solution:__
+Let's put some numbers into Eqn. {eq}`eq-cash-flow-1-period` to answer this question.  Rearraninging Eqn. {eq}`eq-cash-flow-1-period` for the current value of the coffee $\dot{c}_{0}$ gives:
 
 ```{math}
-\dot{c}_{1} = \frac{\dot{c}_{2}}{1+r_{21}}
+\dot{c}_{0} = \frac{\dot{c}_{1}}{1+r_{1,0}}
 ```
 
-Subsutituing $r_{21}=10\%$ and $\dot{c}_{2}=\$ 3.35$ says the current value of your future coffee is: $\dot{c}_{1} = \$ 3.05$.
+Subsutituing $r_{1,0}=10\%$ and $\dot{c}_{1}$ = 3.35 USD says the _current value_ of your future coffee is: $\dot{c}_{0}$ = 3.05 USD.
 ````
 
 Suppose, instead of a single discrete period, we have an asset that is active over multiple periods, e.g., a multi-period project or some other transaction that occurs over many time periods. In this case, we develop a multi-year conversion that is easily constructed by sequentially applying many one-period calculations. To see this idea, let's start with period zero to period one:
 
 ```{math}
-\dot{c}_{1} = \left(1+r_{10}\right)\cdot\dot{c}_{0}
+\dot{c}_{1} = \left(1+r_{1,0}\right)\cdot\dot{c}_{0}
 ```
 Then, period one to period two is given by:
 
 ```{math}
-\dot{c}_{2} = \left(1+r_{21}\right)\cdot\dot{c}_{1}
+\dot{c}_{2} = \left(1+r_{2,1}\right)\cdot\dot{c}_{1}
 ```
 
 but we can substiture $\dot{c}_{1}$ into the expression above to give:
 
 ```{math}
-\dot{c}_{2} = \Bigl[\left(1+r_{21}\right)\left(1+r_{10}\right)\Bigr]\cdot\dot{c}_{0}
+\dot{c}_{2} = \Bigl[\left(1+r_{2,1}\right)\left(1+r_{1,0}\right)\Bigr]\cdot\dot{c}_{0}
 ```
 
-If we do this computation between 2 and 3, and then 3 to 4, etc, we develop a relationship between the current value of cash flow $\dot{c}_{0}$ and the future $\dot{c}_{t}$ cash flow values ({prf:ref}`defn-multi-perod-discrete-conversion`):
+If we do this computation between 2 and 3, and then 3 to 4, etc, we develop a relationship between the current value of cash flow $\dot{c}_{0}$ and the future value of cash flows $\dot{c}_{t}$ ({prf:ref}`defn-multi-perod-discrete-conversion`):
 
 ````{prf:definition} Multiple period discrete conversion
 :label: defn-multi-perod-discrete-conversion
 
-Let $\dot{c}_{0}$ denote the cash-flow in period 0 (current value), and $\dot{c}_{t}$ the cash-flow in period $t>0$ (future value). Further, let $r_{j+1,j}$ denote the rate of return between discrete time period $j$ and $j+1$. Then: 
+Let $\dot{c}_{0}$ denote the cash-flow in period 0 (current value), and $\dot{c}_{t}$ the cash-flow in period $t>0$ (future value). Further, let $r_{j+1,j}$ denote discount rate between discrete time period $j$ and $j+1$. Then: 
 
 ```{math}
 :label: eq-cash-flow-multiple-period
@@ -137,13 +138,13 @@ Let $\dot{c}_{0}$ denote the cash-flow in period 0 (current value), and $\dot{c}
 ```
 ````
 
-The product term (the $\prod\star$ in the brackets) in Eqn. {eq}`eq-cash-flow-multiple-period` is called the _multi-period discount factor_ and given the symbol $\mathcal{D}$. Thus, Eqn. {eq}`eq-cash-flow-multiple-period` can be written in a more compact form as:
+The product term (the $\prod\star$ in the brackets) in Eqn. {eq}`eq-cash-flow-multiple-period` is called the _multi-period discount factor_ and given the symbol $\mathcal{D}$. Equation {eq}`eq-cash-flow-multiple-period` can be written in a more compact form as:
 
 ```{math}
 \dot{c}_{t} = \mathcal{D}_{t,0}\cdot\dot{c}_{0}\qquad{t=1,2,\dots,T}
 ```
 
-In the particular case where discount rate $r_{\star}$ are equal in each period (let's call this value $\bar{r}$), the _multi-period discount factor_ becomes:
+In the particular case where discount rates $r_{j+1,j}$ are equal in each period (let's call this value $\bar{r}$), the _multi-period discount factor_ becomes:
 
 ```{math}
 :label: eqn-discrete-discount-factor-constant-r
@@ -269,36 +270,28 @@ ylabel!("Future value (USD)", fontsize=18)
 
 
 (content:references:npv-defn)=
-## Net Present Value (NPV)
-Now that we have tools to account for the time value of money, we can return to the question of how to value an asset. 
-
-```{figure} ./figs/Fig-FinanicalNode-Schematic.pdf
----
-height: 220px
-name: cash-financial-node-flow-fig
----
-Node cash-flow balance diagram. During time $t=k$, money flows enter (revenues) and exit (expenses) the time node.   
-```
-
-The most intuitive approach is to compute the net cash flow at every node. Imagine at node $t=k$ we have $\mathcal{S}^{t=k}$ cash streams, denoted as $\dot{c}_{s}$, entering (or exiting) the asset node ({numref}`cash-financial-node-flow-fig`). Then, the net cash flow at node $t=k$ is given by:
+## Net present value
+Now that we can calculate the time value of money, let’s revisit valuing abstract assets. The simplest method to value an abstract asset is to compute the net cash flow for each time node of the asset. At node $t=k$, we have $\mathcal{S}_{k}$ cash streams entering or leaving the asset time node, denoted as $\dot{c}_{s}$. The net cash flow at node $t=k$ is:
 
 ```{math}
-\bar{c}_{k} = \sum_{s\in\mathcal{S}^{t=k}}\nu_{s}\dot{c}_{s}
+\bar{c}_{k} = \sum_{s\in\mathcal{S}_{k}}\nu_{s}\dot{c}_{s}
 ```
 
-where $\nu_{s}$ is a direction parameter; $\nu_{s}=+1$ if stream $s$ enters node $t=k$, $\nu_{s}=-1$ if stream $s$ exists node $t=k$. Finally, we sum all the current and future cash flows, converted to some shared basis, e.g., current dollars. This sum is called the [Net Present Value (NPV)](https://en.wikipedia.org/wiki/Net_present_value); NPV is a widespread method for asset valuation. In addition, NPV is also a widely used tool for financial decision-making ({prf:ref}`net-present-value-defn`):     
+where $\nu_{s}$ is a direction parameter; $\nu_{s}=+1$ if stream $s$ enters node $t=k$, $\nu_{s}=-1$ if stream $s$ exists node $t=k$. We could then sum all the current and future cash flows and convert them to some shared basis for comparison, e.g., current dollars. This sum is called the [Net Present Value (NPV)](https://en.wikipedia.org/wiki/Net_present_value). The net present value is a widespread method for asset valuation and financial decision-making ({prf:ref}`net-present-value-defn`):     
 
 ````{prf:definition} Net Present Value
 :label: net-present-value-defn
 
 
-The net present value (NPV) is the sum of current and future cash flows, corrected to current dollars ($t=0$):
+The net present value (NPV) is the sum of current and future cash flows, discounted to current dollars at `t = 0`:
 
 ```{math}
-\text{NPV}(T) = \sum_{t=0}^{T}{\mathcal{D}_{t,0}^{-1}}\cdot\bar{c}_{t}
+\text{NPV}(T,r) = \sum_{i=0}^{T}{\mathcal{D}_{i,0}^{-1}}(r)\cdot\bar{c}_{t}
 ```
 
-where $\bar{c}_{t}$ denotes the _net cash flow_ in period $t$, $T$ denotes the number of periods, and $\mathcal{D}_{t,0}$ represents the multistep discount factor between the current period (now), and future period $t$. The discount factor $\mathcal{D}_{t,0}$ can be modeled as either a discrete or a continuous discount factor.
+**Terms**
+* The quantity $\bar{c}_{t}$ denotes the _net cash flow_ in time period `t`, the number of periods is `T`, and $\mathcal{D}_{i,0}(r)$ represents the multistep discount factor, with discount rate(s) `r`, between the current period and a future period `t = i`. 
+* The discount factor $\mathcal{D}_{i,0}(r)$ can be modeled as either a discrete or a continuous discount factor.
 
 ````
 

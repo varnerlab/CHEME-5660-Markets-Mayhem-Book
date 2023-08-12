@@ -14,7 +14,7 @@ Today’s lecture will introduce the first continuous-time tool of equity pricin
 ```
 
 (content:brownian-models-introduction)=
-## Introduction to Brownian motion models
+## Introduction
 One of the most important models in quantitative finance is Brownian motion. It was named after the [Scottish botanist Robert Brown](https://en.wikipedia.org/wiki/Robert_Brown_(botanist,_born_1773)). Essentially, it’s a continuous-time random walk that represents the price of a financial asset, which evolves over time in a random way. The two main characteristics of Brownian motion are independence and stationarity. 
 
 * Independence means that the future behavior of a process is not influenced by its past, i.e., a process has no memory.
@@ -67,7 +67,7 @@ Simulation of Brownian motion for share price $S(t)$ with N = 100 and 1000 sampl
 
 As the number of sample path increases, the estimated expected value and variance converge to the analytical values ({numref}`fig-obm-samples`, left versus right panels). However, this opens up the question of how many sample paths are required to obtain a good estimate of the expected value and variance, i.e., what is a good stopping criterion? 
 
-Bicher et al., recently reviewed the stopping criteria for Monte Carlo simulation {cite}`Bicher2022ReviewOM`.
+<!-- Bicher et al., recently reviewed the stopping criteria for Monte Carlo simulation {cite}`Bicher2022ReviewOM`. -->
 
 
 <!-- the literature on the convergence of Monte Carlo simulation for stochastic differential equations {cite:p}`Bichsel:2013vz`. They found that the convergence rate of Monte Carlo simulation for stochastic differential equations is $O(N^{-1/2})$, where $N$ is the number of sample paths. This means that the variance of the Monte Carlo estimate of the expected value and variance decreases as $N^{-1/2}$, i.e., the variance decreases as the square root of the number of sample paths. -->
@@ -99,16 +99,14 @@ Despite the negative share price issue, Eqn. {eq}`eq-SDE-BM` is the simplest Bro
 
 (content:brownian-models-geometric)=
 ## Geometric Brownian motion models
-A more popular model for asset prices is the geometric Brownian motion (GBM) model. The GBM model is a stochastic differential equation that describes the evolution of the share price $S(t)$ as random walk with drift and volatility:
+A more popular model for asset prices is the geometric Brownian motion (GBM) model. The GBM model is a stochastic differential equation that describes the evolution of the share price $S(t)$ as a random walk with drift and volatility that are proportional to the share price {cite}`Merton2006`:
 
 ```{math}
 :label: eq-SDE-GBM
-\frac{dS\left(t\right)}{S(t)} = \mu{dt}+\sigma{dW(t)}
+\frac{dS\left(t\right)}{S(t)} = \mu\,{dt}+\sigma\,{dW(t)}
 ```
 
-Here, $S(t)$ denotes the share price, the constant $\mu$ denotes a drift parameter, $\sigma>0$ indicates a volatility parameter and $dW$ represents the output of a [Wiener noise process](https://en.wikipedia.org/wiki/Wiener_process). 
-
-Geometric Brownian motion is primarily used as a financial model due to the work of Samuelson in the 1950s and 1960s {cite}`Merton2006`. However, today GBM is more commonly associated with the Black–Scholes options pricing model, which we will describe later {cite}`BlackScholes1973`.
+Here, $S(t)$ denotes the share price, the constant $\mu$ denotes a drift parameter, $\sigma>0$ indicates a volatility parameter and $dW$ represents the output of a [Wiener noise process](https://en.wikipedia.org/wiki/Wiener_process). Geometric Brownian motion is primarily used as a financial model due to the work of Samuelson in the 1950s and 1960s {cite}`Merton2006`. However, today GBM is more commonly associated with the Black–Scholes options pricing model, which we will describe later {cite}`BlackScholes1973`.
 
 ### Analytical solution
 We can calculate the share price value $S(t)$ as a function of time without the need for an approximate solution by developing an analytical solution to Eqn. {eq}`eq-SDE-GBM`. The analytical solution to the geometric Brownian motion stochastic differential equation with constant drift $\mu$ and volatility $\sigma>0$ is given by:
@@ -212,7 +210,7 @@ name: fig-drift-simulation-WFC-AMD
 The `ln` of share price of `AMD` (left) and `WFC` (right) versus time using a deterministic geometric Brownian motion model. The dashed line denotes the mean simulation, the shaded regions show the 99.9% confidence interval of the mean (inner shaded region) and individual simulations (outer shaded region). Daily training data between `2018-11-28` to `2022-11-28` was downloaded using the `aggregate` endpoint of [Polygon.io](https://polygon.io/docs/stocks/get_v2_aggs_ticker__stocksticker__range__multiplier___timespan___from___to).
 ```
 
-### Estimating the $\sigma$ parameter
+### Estimating the volatility parameter
 There are multiple methods to calculate the volatility parameter $\sigma$. Generally, these approaches can be classified into two categories - historical volatility estimates based on the distribution of the return data and future volatility estimates based on the [Implied Volatility (IV)](https://en.wikipedia.org/wiki/Implied_volatility) of [put and call options contracts](https://en.wikipedia.org/wiki/Option_(finance)). For now, let's focus on computing the volatility $\sigma$ from historical data and talk about options later.
 
 The historic volatility is estimated by analyzing the distribution of returns using much the same approach we took when looking at the stylized facts. To do this, let's assume a share price model of the form:

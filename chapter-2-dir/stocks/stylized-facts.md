@@ -11,7 +11,7 @@ kernelspec:
 ---
 
 (content:references:markets-exchanges-stylized-facts)=
-# Markets and Stylized Facts
+# Equities, Markets, and Stylized Facts
 
 ```{topic} Outline
 In this lecture, we'll introduce equity securities, discuss the different types of orders that can be used to buy or sell equity securities, introduce some components of market microstructure such as the order book and order matching, and finally explore the statistical properties of equity prices.
@@ -25,6 +25,33 @@ In this lecture, we'll introduce equity securities, discuss the different types 
 ```
 
 ---
+
+## Introduction
+Equity securities, or just `equity` or `stock`, represent ownership in a company and entitle shareholders to assets and earnings. They are bought and sold on stock exchanges.
+
+**Key Characteristics of Equity Securities:**
+
+1. **Ownership Stake:** When an investor buys equity securities, they acquire a proportional ownership stake in the company based on the number of shares relative to the total outstanding shares.
+
+2. **Dividends:** Shareholders may receive dividends, which are a portion of profits distributed periodically by the board of directors based on company performance.
+
+3. **Capital Appreciation:** Equity securities offer the potential for capital appreciation, allowing shareholders to profit by selling their shares at a higher price than they initially paid.
+
+4. **Voting Rights:** Shareholders of equity securities may vote on company decisions including board member elections and major corporate actions.
+
+5. **Risk and Returns:** Investing in equity securities involves risk. If the company's performance deteriorates, the value of its shares can decrease, leading to potential financial losses for shareholders. On the other hand, successful companies can provide substantial returns to shareholders.
+
+6. **Market Traded:** Equity securities are traded on stock exchanges, making them relatively _liquid_ compared to other investments. Investors can buy and sell these securities during trading hours (and sometimes after hours), enabling them to enter or exit their positions quickly.
+
+**Types of Equity Securities:**
+
+1. **Common Stock:** This is the most prevalent type of equity security. Common stockholders have voting rights and may receive dividends, although dividends are not guaranteed.
+
+2. **Preferred Stock:** Preferred stockholders have a higher claim on company assets and dividends than common stockholders. They often receive dividends before common stockholders and may have certain privileges but usually have limited or no voting rights.
+
+3. **Convertible Securities:** These are securities, often bonds or preferred stock, that can be converted into common stock at a predetermined price and within a specified timeframe.
+
+Equity securities are essential for corporate financing and investment. They allow companies to raise capital from the public, while investors can participate in growth and profitability. However, It is important for investors to understand the risks and potential rewards of equity securities before investing.
 
 (content:references:markets-exchanges)=
 ## Markets
