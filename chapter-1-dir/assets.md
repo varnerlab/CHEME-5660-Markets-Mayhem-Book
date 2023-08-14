@@ -75,7 +75,7 @@ __Why?__
 A useful mental model for the time value of money is to think of money from different time periods 
 as being in different currencies (e.g., dollars versus euros) that must be exchanged. Thus, to compare money or cash flows from different time periods we formulate the equivalent of an exchange rate.
 
-#### Discrete Discounting
+#### Discrete discounting
 Suppose we wanted to convert the value of a cash flow from one time period in the future 
 into today's dollars (discount to today). To do this, we use a one-period discrete conversion ({prf:ref}`defn-one-perod-discrete-conversion`):
 
@@ -283,7 +283,7 @@ where $\nu_{s}$ is a direction parameter; $\nu_{s}=+1$ if stream $s$ enters node
 :label: net-present-value-defn
 
 
-The net present value (NPV) is the sum of current and future cash flows, discounted to current dollars at `t = 0`:
+The net present value (NPV) is the sum of current and discounted future cash flows, discounted to current current dollars at `t = 0`:
 
 ```{math}
 \text{NPV}(T,r) = \sum_{i=0}^{T}{\mathcal{D}_{i,0}^{-1}}(r)\cdot\bar{c}_{t}
@@ -296,56 +296,123 @@ The net present value (NPV) is the sum of current and future cash flows, discoun
 ````
 
 (content:references:npv-decision-tool)=
-### NPV as a Decision Tool
-When calculating net present value, the discount rate $r_{t+1,t}$ represents the minimum rate of return that a decision-maker would accept for a project or investment compared with a hypothetical alternative investment. To compare a potential asset or project with an alternative investment, we can establish the following criteria:
+### Decisions
+The [net present value is often used as a decision tool](https://www.investopedia.com/terms/n/npv-rule.asp) to compare the value of an abstract asset or project with an alternative investment. When calculating net present value in the context of a decision, the discount rate $r_{t+1,t}$ represents the minimum rate of return that a decision-maker would accept for a project or investment compared to a hypothetical risk-free alternative investment, e.g., [a zero-coupon bond](https://www.finra.org/investors/insights/zero-coupon-bonds) with the same time-to-maturity as the project. 
 
-* $\textbf{NPV}<0$: A negative NPV indicates the proposed project will generate less income than the alternative investment, e.g., a zero-coupon bond at the same discount rate and time-to-maturity as the project.
+To compare a potential abstract asset or project with a risk-free alternative investment, we can establish the following decision criteria:
 
-* $\textbf{NPV}=0$: A zero NPV indicates the proposed project will generate the same income as the alternative investment, e.g., a zero-coupon bond at the same discount rate and time-to-maturity as the project.
+* `NPV < 0`: A negative NPV indicates the proposed asset or project _will generate a loss_ over the time horizon of the project, and the decision-maker should choose the alternative investment, e.g., a zero-coupon bond with the same time-to-maturity as the project.
 
-* $\textbf{NPV}>0$: A positive NPV indicates the proposed project will generate more income than a hypothetical alternative investment, e.g., a zero-coupon bond at the same discount rate and time-to-maturity as the project.
+* `NPV = 0`: A zero NPV indicates the proposed project _will breakeven_ over the time horizon of the project, and the decision-maker is indifferent about the project.
 
-The NPV decision rule above relies on computing the sum of discounted future cash flows. However, in these calculations, what discount rate should we use? This question is difficult; the correct discount rate varies between applications and industries.  The special discount rate where the net present value is zero is called the Internal Rate of Return (IRR) ({prf:ref}`defn-internal-rate-of-return`):
+* `NPV > 0`: A positive NPV indicates the proposed project _will generate a positive return_ over the time horizon of the project, and the decision-maker should consider choosing the proposed project.
+
+The NPV decision rule relies on computing the sum of discounted future cash flows. However, in these calculations, what discount rate should we use? This question is difficult; the correct discount rate varies between applications and industries, and is subjective to the decision-maker.
+
+Let's consider an example to illustrate the NPV decision rule concerning the installation of an upgraded lighting system in a building ({prf:ref}`npv-decision-rule-example-MIT`):
+
+````{prf:example} Should we upgrade our lighting system?
+:label: npv-decision-rule-example-MIT
+:class: dropdown
+
+Johnson Controls offers to install a new computer-controlled lighting system that will reduce electric bills by 90,000 USD in each of the next three years. The system costs 230,000 USD and takes 1-year to install. The building owner has a `r̄ = 4%` discount rate per year (constant for the lifetime of the project). Should the owner install the system?
+
+__Solution:__ Let's assume a discrete discount factor model and compute the net present value of the project. 
+
+* If the net present value is positive, the owner should install the system: 
+* If the net present value is negative, the owner should not install the system.  
+
+The [Julia](https://julialang.org) code to compute the net present value of the project is shown below:
+
+```julia
+cashflows = [-230,90,90,90];
+number_of_periods = length(cashflows);
+discounted_cashflows = Array{Float64,1}(undef, number_of_periods);
+r̄ = 0.04; # 4% discount rate
+
+# compute the discounted cash flows -
+for i ∈ 0:(number_of_periods - 1)
+    discounted_cashflows[i+1] = cashflows[i+1]/((1+r̄)^i);
+end
+NPV = sum(discounted_cashflows);
+```
+
+The net present value of the project is `NPV = 19.75k` at a discount rate of `r̄ = 4%`. Since the net present value is positive, the owner should consider installing the upgraded lighting system. 
+
+__source__: The Johnson Controls example was modified from [MIT 15.401](https://ocw.mit.edu/courses/sloan-school-of-management/15-401-finance-theory-i-fall-2008/).
+````
+
+#### Internal Rate of Return
+At a minimum, a decision-maker should choose be indifferent to a project or investment, i.e., the project or investment should at least have a value of `NPV = 0`. The special discount rate $r^{\star}$ where the net present value is zero is called the Internal Rate of Return (IRR) ({prf:ref}`defn-internal-rate-of-return`):
 
 <!-- * If the net present value of an investment or project is positive, the project earns more than a zero-coupon bond with a yield equal to the discount rate used to discount future cash flows. 
 * If the net present value of a project is negative, the project earns less than a zero-coupon bond with a yield equal to the discount rate used to discount future cash flows. 
 * If the net present value of a project or investment is precisely $0, the project earns the same as a zero-coupon bond with a yield equal to the discount rate used to discount future cash flows. -->
 
-
-
 ````{prf:definition} Internal Rate of Return
 :label: defn-internal-rate-of-return
 
-Assume the discount rate is constant between time periods. Then, the internal rate of rerturn (IRR) is the discount rate that makes the net present value equal to zero:
+Assume the discount rate $\bar{r}$ is constant between time periods. Then, the internal rate of rerturn (IRR) is the effective constant discount rate $r^{\star}$ that makes the net present value equal to zero:
 
 ```{math}
-\sum_{t=0}^{T}{\mathcal{D}_{t,0}^{-1}}\cdot\bar{c}_{t} = 0
+\sum_{t=0}^{T}{\mathcal{D}_{t,0}^{-1}}(r^{\star})\cdot\bar{c}_{t} = 0
 ```
 
-The discount factor $\mathcal{D}_{t,0}$ can be modeled as either a discrete or a continuous discount factor. Discount rates greater than the IRR favor the alternative investment.
+The discount factor $\mathcal{D}_{t,0}(r)$ can be modeled as either a discrete or a continuous discount factor.
 ````
 
-Thus, IRR can thought of as a decision boundary of sorts; the IRR is the discount rate where the project manager or investor is indifferent to the project. Let's do a net present value example where we compute the IRR ({prf:ref}`example-net-present-value-discrete`):
+Thus, the IRR can be thought of as a decision boundary of sorts; the IRR is the discount rate where the project manager or investor is indifferent to the project or investment. Let's review the lighting example, and compute the internal rate of return for the project
+({prf:ref}`example-internal-rate-of-return`):
 
-````{prf:example} Install an upgraded lighting system?
-:label: example-net-present-value-discrete
+````{prf:example} Internal rate of return for the lighting project
+:label: example-internal-rate-of-return
 :class: dropdown
 
-Johnson Controls offers to install a new computer-controlled lighting system that will reduce electric bills by 90,000 USD in each of the next three years. Is this a good investment if the system costs 230,000 USD fully installed? Assume the discount rate is constant over the project’s lifetime but unknown. Thus, $\bar{r}$ is a parameter in the problem.
+Johnson Controls offers to install a new computer-controlled lighting system that will reduce electric bills by 90,000 USD in each of the next three years. The system costs 230,000 USD and takes 1-year to install. For this project, compute the internal rate of return $r^{\star}$ and determine if the owner should install the system.
 
-```{figure} ./figs/Fig-JControls-NPV.pdf
----
-height: 380px
-name: example-jcontrols-npv-fig
----
-Net Present Value (NPV) as a function of the discount rate $\bar{r}$ for the proposed Johnson Controls lighting upgrade. The alternative investment is a perfectly priced zero-coupon bond with the same $\bar{r}$ and time-to-maturity as the lighting project. 
+__Solution__: For this problem we estimate the internal rate of return $r^{\star}$ by minimzing the squared net present value. The Julia code to compute the internal rate of return, which uses the [Optim.jl](https://github.com/JuliaNLSolvers/Optim.jl) package is given by:
+
+```julia
+# load external packages -
+using Optim
+
+# define the loss function (we are minimizing the squared NPV)
+function loss(r̄::Float64, cashflows::Array{Float64,1})
+    
+    # initialize -
+    number_of_periods = length(cashflows);
+    discounted_cashflows = Array{Float64,1}(undef, number_of_periods);
+    
+    # main -
+    for i ∈ 0:(number_of_periods - 1)
+        discounted_cashflows[i+1] = cashflows[i+1]/((1+r̄)^i);
+    end
+
+    # compute the NPV -
+    NPV = sum(discounted_cashflows);
+
+    # return -
+    return (NPV)^2
+end
+
+# solve using the optimize method from Optim.jl -
+cashflows = [-230.0,90.0,90.0,90.0];
+objective(x) = loss(x, cashflows);
+soln = optimize(objective, 0.0, 0.20)
+r̄ = soln.minimizer;
 ```
 
-The computer-controlled lighting system installed by Johnson Controls yielded a positive net present value (NPV) for discount rates below 8.5%. However, if the discount rate surpasses this threshold, an alternative investment would be preferable.
-
-__source__: The Johnson Controls example was modified from [MIT 15.401](https://ocw.mit.edu/courses/sloan-school-of-management/15-401-finance-theory-i-fall-2008/).
-
+The internal rate of return for the lighting project equals `IRR = 0.082`. Since the internal rate of return is greater than the discount rate $r$ = 0.04, the owner should install the system.
 ````
+
+(content:references:npv-alternative-investment)=
+#### Alternative investment?
+Many people wonder about an hypothetical alternative investment when considering net present value. If a project has a positive net present value, is there another project that could give a better return?
+
+Any attractive project (`NPV > 0`) should generate an income equal to a risk-free alternative investment with the same time-to-maturity. For instance, a [zero-coupon bond](https://www.finra.org/investors/insights/zero-coupon-bonds) or a [certificate of deposit (CD)](https://www.investopedia.com/terms/c/certificateofdeposit.asp). Later, we will discuss [U.S. Treasury bills, notes, and bonds](content:references:us-treasury-debt-securities). For now, consider a zero-coupon treasury bond as a risk-free investment guaranteed to earn a fixed interest rate.
+
+Thus, as an alternative to a project with upfront costs and future cash flows, we invest the upfront costs in a zero-coupon bond with the same time-to-maturity as the project. The net present value of a project must be greater than the net present value of a zero-coupon bond; otherwise, the project would not be attractive because we are risking capital and not earning a premium for the additional risk. 
+
 
 ---
 

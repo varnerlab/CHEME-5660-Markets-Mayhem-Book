@@ -1,3 +1,4 @@
+(content:references:us-treasury-debt-securities)=
 # U.S. Treasury Securities
 [United States Marketable Treasury Securities](https://www.investor.gov/introduction-investing/investing-basics/glossary/treasury-securities), are issued by the U.S. Department of the Treasury to fund its operations and meet financial obligations. These securities are regarded as some of the safest investment options globally, backed by the full faith and credit of the U.S. government. 
 
