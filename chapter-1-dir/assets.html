@@ -182,7 +182,7 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../chapter-2-dir/stocks.html">Equity Securities</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="../chapter-2-dir/stocks/stylized-facts.html">Markets and Stylized Facts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../chapter-2-dir/stocks/stylized-facts.html">Equities, Markets, and Stylized Facts</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../chapter-2-dir/stocks/lattice-eq-price.html">Lattice Models of Equity Pricing</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../chapter-2-dir/stocks/obm-gbm-eq-price.html">Brownian Motion Models of Equity Pricing</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../chapter-2-dir/stocks/advanced-eq-price.html">Advanced Stochastic Models of Equity Pricing</a></li>
@@ -438,14 +438,18 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#abstract-assets">Abstract Assets</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exchange-rate-model">Exchange rate model</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#discrete-discounting">Discrete Discounting</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#discrete-discounting">Discrete discounting</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#continuous-discounting">Continuous discounting</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#net-present-value-npv">Net Present Value (NPV)</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#npv-as-a-decision-tool">NPV as a Decision Tool</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#net-present-value">Net present value</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#decisions">Decisions</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#internal-rate-of-return">Internal Rate of Return</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#alternative-investment">Alternative investment?</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
@@ -463,7 +467,6 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="valuation-of-abstract-assets">
 <h1>Valuation of Abstract Assets<a class="headerlink" href="#valuation-of-abstract-assets" title="Permalink to this heading">#</a></h1>
-<hr class="docutils" />
 <!-- The development of processes or products does not occur inside a mythical universe that is free 
 from market forces. Instead, processes and products must be, at a minimum, financially neutral to be viable. Processes and products that are not financially viable, while perhaps being technically innovative or otherwise advantageous, will not survive in the marketplace without external support e.g., local, state or federal government subsities.  -->
 <aside class="topic">
@@ -471,7 +474,7 @@ from market forces. Instead, processes and products must be, at a minimum, finan
 <p>In this lecture, we introduce three basic financial concepts: abstract assets, simple and compound interest, and the net present value.</p>
 <ul class="simple">
 <li><p><a class="reference internal" href="#content-references-abstract-asset-defn"><span class="std std-ref">Abstract Assets</span></a> generate value and cash flows for the holder. Cash flows, on the other hand, are the inflows and outflows of money from a business or investment, and are a key factor in determining the value of abstract assets. Finally, interest is the cost of borrowing money, and understanding how interest rates impact cash flows and the value of abstract assets is essential for financial decision making.</p></li>
-<li><p><a class="reference internal" href="#content-references-npv-defn"><span class="std std-ref">Net Present Value (NPV)</span></a> is a financial concept used to determine the current value of future cash flows. It takes into account the time value of money, recognizing that a dollar today is worth more than a dollar in the future due to the potential for investment and earning interest. NPV is a useful tool for evaluating investment opportunities and determining whether they are financially viable.</p></li>
+<li><p><a class="reference internal" href="#content-references-npv-defn"><span class="std std-ref">Net present value</span></a> is a financial concept used to determine the current value of future cash flows. It takes into account the time value of money, recognizing that a dollar today is worth more than a dollar in the future due to the potential for investment and earning interest. NPV is a useful tool for evaluating investment opportunities and determining whether they are financially viable.</p></li>
 </ul>
 </aside>
 <hr class="docutils" />
@@ -480,7 +483,7 @@ from market forces. Instead, processes and products must be, at a minimum, finan
 <p>An <em>abstract asset</em> is a sequence of current and future cash flows
 demarcated in some currency, for example, Euros, Dollars, Yuan, or cryptocurrencies such as Bitcoin (<a class="reference internal" href="#cash-flow-abstract-asset-fig"><span class="std std-numref">Fig. 1</span></a>).</p>
 <figure class="align-default" id="cash-flow-abstract-asset-fig">
-<a class="reference internal image-reference" href="../_images/Fig-Asset-CashFlowDiagram.pdf"><img alt="../_images/Fig-Asset-CashFlowDiagram.pdf" src="../_images/Fig-Asset-CashFlowDiagram.pdf" style="height: 240px;" /></a>
+<a class="reference internal image-reference" href="../_images/Fig-Asset-CashFlowDiagram.svg"><img alt="../_images/Fig-Asset-CashFlowDiagram.svg" height="240px" src="../_images/Fig-Asset-CashFlowDiagram.svg" /></a>
 <figcaption>
 <p><span class="caption-number">Fig. 1 </span><span class="caption-text">Abstract asset diagram. During each time period <span class="math notranslate nohighlight">\(t=0,2,\dots,T\)</span> an asset has cash flow(s) <span class="math notranslate nohighlight">\(\dot{c}_{t}\)</span>. The value of the asset is some function <span class="math notranslate nohighlight">\(\mathcal{V}\)</span> of these cash flows; the function <span class="math notranslate nohighlight">\(\mathcal{V}\)</span> is the called the valuation operator.</span><a class="headerlink" href="#cash-flow-abstract-asset-fig" title="Permalink to this image">#</a></p>
 </figcaption>
@@ -499,7 +502,7 @@ The most common (and intuitive) valuation operator <span class="math notranslate
 <section class="remark-content" id="proof-content">
 <p>The value of money is <em>not</em> conserved over time. One dollar today is not worth the same as one dollar tomorrow. The change in the value of money over time is called the <em>time value of money</em>.</p>
 </section>
-</div><p>The time value of money is an <a class="reference external" href="https://en.wikipedia.org/wiki/Time_value_of_money#History">empirical observation that has been seen over hundreds of years</a>. But why is this the case? The short answer: money given to us today has a greater <a class="reference external" href="https://en.wikipedia.org/wiki/Utility">Utility</a> than the same amount tomorrow; because we have an extra day to invest that money (<a class="reference internal" href="#obs-time-value-of-money">Observation 1</a>):</p>
+</div><p>The time value of money is an <a class="reference external" href="https://en.wikipedia.org/wiki/Time_value_of_money#History">empirical observation that has been seen over hundreds of years</a>. But why is this the case? The short answer: <a class="reference external" href="https://en.wikipedia.org/wiki/Utility">money given to us today has a greater Utility</a> than the same amount tomorrow, because we have an extra day to invest that money (<a class="reference internal" href="#obs-time-value-of-money">Observation 1</a>):</p>
 <div class="proof observation admonition" id="obs-time-value-of-money">
 <p class="admonition-title"><span class="caption-number">Observation 1 </span> (Why does that value of money chnage over time?)</p>
 <section class="observation-content" id="proof-content">
@@ -516,13 +519,13 @@ The most common (and intuitive) valuation operator <span class="math notranslate
 </div><p>A useful mental model for the time value of money is to think of money from different time periods
 as being in different currencies (e.g., dollars versus euros) that must be exchanged. Thus, to compare money or cash flows from different time periods we formulate the equivalent of an exchange rate.</p>
 <section id="discrete-discounting">
-<h4>Discrete Discounting<a class="headerlink" href="#discrete-discounting" title="Permalink to this heading">#</a></h4>
+<h4>Discrete discounting<a class="headerlink" href="#discrete-discounting" title="Permalink to this heading">#</a></h4>
 <p>Suppose we wanted to convert the value of a cash flow from one time period in the future
-into today’s dollars (or vice-versa, we want to compute the value of a future cash flow to a current value). To do this, we use a one-period discrete conversion (<a class="reference internal" href="#defn-one-perod-discrete-conversion">Definition 1</a>):</p>
+into today’s dollars (discount to today). To do this, we use a one-period discrete conversion (<a class="reference internal" href="#defn-one-perod-discrete-conversion">Definition 1</a>):</p>
 <div class="proof definition admonition" id="defn-one-perod-discrete-conversion">
 <p class="admonition-title"><span class="caption-number">Definition 1 </span> (One Period Discrete Conversion)</p>
 <section class="definition-content" id="proof-content">
-<p>For any one-period (<span class="math notranslate nohighlight">\(t\rightarrow{t+1}\)</span>),  the present value of cash flow, denoted as <span class="math notranslate nohighlight">\(\dot{c}_{t}\)</span>, and the future value of cash-flow, denoted by <span class="math notranslate nohighlight">\(\dot{c}_{t+1}\)</span>, there exists a one time-step discrete conversion:</p>
+<p>For any one-period <span class="math notranslate nohighlight">\(t\rightarrow{t+1}\)</span>,  the present value of cash flow, denoted as <span class="math notranslate nohighlight">\(\dot{c}_{t}\)</span>, and the future value of cash-flow, denoted by <span class="math notranslate nohighlight">\(\dot{c}_{t+1}\)</span>, there exists a one time-step discrete conversion:</p>
 <div class="math notranslate nohighlight" id="equation-eq-cash-flow-1-period">
 <span class="eqno">(2)<a class="headerlink" href="#equation-eq-cash-flow-1-period" title="Permalink to this equation">#</a></span>\[\dot{c}_{t+1} = \left(1+r_{t+1,t}\right)\cdot{\dot{c}_{t}}\]</div>
 <p>where <span class="math notranslate nohighlight">\(r_{t+1,t}&gt;{0}\)</span> is the <em>discount rate</em> between periods <span class="math notranslate nohighlight">\(t\)</span> and <span class="math notranslate nohighlight">\(t+1\)</span>. The term <span class="math notranslate nohighlight">\((1+r_{t+1,t})\)</span>, which denotes the hypothetical exchange rate between time period <span class="math notranslate nohighlight">\(t\rightarrow{t+1}\)</span>, is called the <em>discrete discount factor</em>. The <em>discrete discount factor</em> is always greater than one, thus <span class="math notranslate nohighlight">\(\dot{c}_{t+1}&gt;\dot{c}_{t}\)</span> for any <span class="math notranslate nohighlight">\(t\)</span>.</p>
@@ -531,32 +534,34 @@ into today’s dollars (or vice-versa, we want to compute the value of a future 
 <div class="proof example dropdown admonition" id="example-one-period-discrete-conversion">
 <p class="admonition-title"><span class="caption-number">Example 1 </span> (One period conversion)</p>
 <section class="example-content" id="proof-content">
-<p>Prof. Varner offers to buy you a coffee tommorrow (one time period in the future) for <span class="math notranslate nohighlight">\(\dot{c}_{2} = \$ 3.35\)</span>. How much is the future coffee worth today if <span class="math notranslate nohighlight">\(r_{21}=10\%\)</span>? Let’s put some numbers into Eqn. <a class="reference internal" href="#equation-eq-cash-flow-1-period">(2)</a> to answer this question.  Rearraninging Eqn. <a class="reference internal" href="#equation-eq-cash-flow-1-period">(2)</a> for <span class="math notranslate nohighlight">\(\dot{c}_{1}\)</span> gives:</p>
+<p>Someone offers to buy you a coffee tommorrow (one time period in the future) for <span class="math notranslate nohighlight">\(\dot{c}_{1}\)</span> = 3.35 USD. What is the  current value denoted as <span class="math notranslate nohighlight">\(\dot{c}_{0}\)</span> of the coffee if the discount rate is <span class="math notranslate nohighlight">\(r_{1,0}=10\%\)</span>?</p>
+<p><strong>Solution:</strong>
+Let’s put some numbers into Eqn. <a class="reference internal" href="#equation-eq-cash-flow-1-period">(2)</a> to answer this question.  Rearraninging Eqn. <a class="reference internal" href="#equation-eq-cash-flow-1-period">(2)</a> for the current value of the coffee <span class="math notranslate nohighlight">\(\dot{c}_{0}\)</span> gives:</p>
 <div class="math notranslate nohighlight">
-\[\dot{c}_{1} = \frac{\dot{c}_{2}}{1+r_{21}}\]</div>
-<p>Subsutituing <span class="math notranslate nohighlight">\(r_{21}=10\%\)</span> and <span class="math notranslate nohighlight">\(\dot{c}_{2}=\$ 3.35\)</span> says the current value of your future coffee is: <span class="math notranslate nohighlight">\(\dot{c}_{1} = \$ 3.05\)</span>.</p>
+\[\dot{c}_{0} = \frac{\dot{c}_{1}}{1+r_{1,0}}\]</div>
+<p>Subsutituing <span class="math notranslate nohighlight">\(r_{1,0}=10\%\)</span> and <span class="math notranslate nohighlight">\(\dot{c}_{1}\)</span> = 3.35 USD says the <em>current value</em> of your future coffee is: <span class="math notranslate nohighlight">\(\dot{c}_{0}\)</span> = 3.05 USD.</p>
 </section>
 </div><p>Suppose, instead of a single discrete period, we have an asset that is active over multiple periods, e.g., a multi-period project or some other transaction that occurs over many time periods. In this case, we develop a multi-year conversion that is easily constructed by sequentially applying many one-period calculations. To see this idea, let’s start with period zero to period one:</p>
 <div class="math notranslate nohighlight">
-\[\dot{c}_{1} = \left(1+r_{10}\right)\cdot\dot{c}_{0}\]</div>
+\[\dot{c}_{1} = \left(1+r_{1,0}\right)\cdot\dot{c}_{0}\]</div>
 <p>Then, period one to period two is given by:</p>
 <div class="math notranslate nohighlight">
-\[\dot{c}_{2} = \left(1+r_{21}\right)\cdot\dot{c}_{1}\]</div>
+\[\dot{c}_{2} = \left(1+r_{2,1}\right)\cdot\dot{c}_{1}\]</div>
 <p>but we can substiture <span class="math notranslate nohighlight">\(\dot{c}_{1}\)</span> into the expression above to give:</p>
 <div class="math notranslate nohighlight">
-\[\dot{c}_{2} = \Bigl[\left(1+r_{21}\right)\left(1+r_{10}\right)\Bigr]\cdot\dot{c}_{0}\]</div>
-<p>If we do this computation between 2 and 3, and then 3 to 4, etc, we develop a relationship between the current value of cash flow <span class="math notranslate nohighlight">\(\dot{c}_{0}\)</span> and the future <span class="math notranslate nohighlight">\(\dot{c}_{t}\)</span> cash flow values (<a class="reference internal" href="#defn-multi-perod-discrete-conversion">Definition 2</a>):</p>
+\[\dot{c}_{2} = \Bigl[\left(1+r_{2,1}\right)\left(1+r_{1,0}\right)\Bigr]\cdot\dot{c}_{0}\]</div>
+<p>If we do this computation between 2 and 3, and then 3 to 4, etc, we develop a relationship between the current value of cash flow <span class="math notranslate nohighlight">\(\dot{c}_{0}\)</span> and the future value of cash flows <span class="math notranslate nohighlight">\(\dot{c}_{t}\)</span> (<a class="reference internal" href="#defn-multi-perod-discrete-conversion">Definition 2</a>):</p>
 <div class="proof definition admonition" id="defn-multi-perod-discrete-conversion">
 <p class="admonition-title"><span class="caption-number">Definition 2 </span> (Multiple period discrete conversion)</p>
 <section class="definition-content" id="proof-content">
-<p>Let <span class="math notranslate nohighlight">\(\dot{c}_{0}\)</span> denote the cash-flow in period 0 (current value), and <span class="math notranslate nohighlight">\(\dot{c}_{t}\)</span> the cash-flow in period <span class="math notranslate nohighlight">\(t&gt;0\)</span> (future value). Further, let <span class="math notranslate nohighlight">\(r_{j+1,j}\)</span> denote the rate of return between discrete time period <span class="math notranslate nohighlight">\(j\)</span> and <span class="math notranslate nohighlight">\(j+1\)</span>. Then:</p>
+<p>Let <span class="math notranslate nohighlight">\(\dot{c}_{0}\)</span> denote the cash-flow in period 0 (current value), and <span class="math notranslate nohighlight">\(\dot{c}_{t}\)</span> the cash-flow in period <span class="math notranslate nohighlight">\(t&gt;0\)</span> (future value). Further, let <span class="math notranslate nohighlight">\(r_{j+1,j}\)</span> denote discount rate between discrete time period <span class="math notranslate nohighlight">\(j\)</span> and <span class="math notranslate nohighlight">\(j+1\)</span>. Then:</p>
 <div class="math notranslate nohighlight" id="equation-eq-cash-flow-multiple-period">
 <span class="eqno">(3)<a class="headerlink" href="#equation-eq-cash-flow-multiple-period" title="Permalink to this equation">#</a></span>\[\dot{c}_{t} = \left[\prod_{j=0}^{t-1}\left(1+r_{j+1,j}\right)\right]\cdot\dot{c}_{0}\qquad{t=1,2,\dots,T}\]</div>
 </section>
-</div><p>The product term (the <span class="math notranslate nohighlight">\(\prod\star\)</span> in the brackets) in Eqn. <a class="reference internal" href="#equation-eq-cash-flow-multiple-period">(3)</a> is called the <em>multi-period discount factor</em> and given the symbol <span class="math notranslate nohighlight">\(\mathcal{D}\)</span>. Thus, Eqn. <a class="reference internal" href="#equation-eq-cash-flow-multiple-period">(3)</a> can be written in a more compact form as:</p>
+</div><p>The product term (the <span class="math notranslate nohighlight">\(\prod\star\)</span> in the brackets) in Eqn. <a class="reference internal" href="#equation-eq-cash-flow-multiple-period">(3)</a> is called the <em>multi-period discount factor</em> and given the symbol <span class="math notranslate nohighlight">\(\mathcal{D}\)</span>. Equation <a class="reference internal" href="#equation-eq-cash-flow-multiple-period">(3)</a> can be written in a more compact form as:</p>
 <div class="math notranslate nohighlight">
 \[\dot{c}_{t} = \mathcal{D}_{t,0}\cdot\dot{c}_{0}\qquad{t=1,2,\dots,T}\]</div>
-<p>In the particular case where discount rate <span class="math notranslate nohighlight">\(r_{\star}\)</span> are equal in each period (let’s call this value <span class="math notranslate nohighlight">\(\bar{r}\)</span>), the <em>multi-period discount factor</em> becomes:</p>
+<p>In the particular case where discount rates <span class="math notranslate nohighlight">\(r_{j+1,j}\)</span> are equal in each period (let’s call this value <span class="math notranslate nohighlight">\(\bar{r}\)</span>), the <em>multi-period discount factor</em> becomes:</p>
 <div class="math notranslate nohighlight" id="equation-eqn-discrete-discount-factor-constant-r">
 <span class="eqno">(4)<a class="headerlink" href="#equation-eqn-discrete-discount-factor-constant-r" title="Permalink to this equation">#</a></span>\[\mathcal{D}_{t,0} = (1+\bar{r})^{t}\qquad{t=1,2,\dots,T}\]</div>
 <p>Let’s do an example of multi-period discounting (<a class="reference internal" href="#ex-future-value-discrete">Example 2</a>):</p>
@@ -654,62 +659,84 @@ into today’s dollars (or vice-versa, we want to compute the value of a future 
 </div></section>
 </section>
 </section>
-<section id="net-present-value-npv">
-<span id="content-references-npv-defn"></span><h2>Net Present Value (NPV)<a class="headerlink" href="#net-present-value-npv" title="Permalink to this heading">#</a></h2>
-<p>Now that we have tools to account for the time value of money, we can return to the question of how to value an asset.</p>
-<figure class="align-default" id="cash-financial-node-flow-fig">
-<a class="reference internal image-reference" href="../_images/Fig-FinanicalNode-Schematic.pdf"><img alt="../_images/Fig-FinanicalNode-Schematic.pdf" src="../_images/Fig-FinanicalNode-Schematic.pdf" style="height: 220px;" /></a>
-<figcaption>
-<p><span class="caption-number">Fig. 4 </span><span class="caption-text">Node cash-flow balance diagram. During time <span class="math notranslate nohighlight">\(t=k\)</span>, money flows enter (revenues) and exit (expenses) the time node.</span><a class="headerlink" href="#cash-financial-node-flow-fig" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
-<p>The most intuitive approach is to compute the net cash flow at every node. Imagine at node <span class="math notranslate nohighlight">\(t=k\)</span> we have <span class="math notranslate nohighlight">\(\mathcal{S}^{t=k}\)</span> cash streams, denoted as <span class="math notranslate nohighlight">\(\dot{c}_{s}\)</span>, entering (or exiting) the asset node (<a class="reference internal" href="#cash-financial-node-flow-fig"><span class="std std-numref">Fig. 4</span></a>). Then, the net cash flow at node <span class="math notranslate nohighlight">\(t=k\)</span> is given by:</p>
+<section id="net-present-value">
+<span id="content-references-npv-defn"></span><h2>Net present value<a class="headerlink" href="#net-present-value" title="Permalink to this heading">#</a></h2>
+<p>Now that we can calculate the time value of money, let’s revisit valuing abstract assets. The simplest method to value an abstract asset is to compute the net cash flow for each time node of the asset. At node <span class="math notranslate nohighlight">\(t=k\)</span>, we have <span class="math notranslate nohighlight">\(\mathcal{S}_{k}\)</span> cash streams entering or leaving the asset time node, denoted as <span class="math notranslate nohighlight">\(\dot{c}_{s}\)</span>. The net cash flow at node <span class="math notranslate nohighlight">\(t=k\)</span> is:</p>
 <div class="math notranslate nohighlight">
-\[\bar{c}_{k} = \sum_{s\in\mathcal{S}^{t=k}}\nu_{s}\dot{c}_{s}\]</div>
-<p>where <span class="math notranslate nohighlight">\(\nu_{s}\)</span> is a direction parameter; <span class="math notranslate nohighlight">\(\nu_{s}=+1\)</span> if stream <span class="math notranslate nohighlight">\(s\)</span> enters node <span class="math notranslate nohighlight">\(t=k\)</span>, <span class="math notranslate nohighlight">\(\nu_{s}=-1\)</span> if stream <span class="math notranslate nohighlight">\(s\)</span> exists node <span class="math notranslate nohighlight">\(t=k\)</span>. Finally, we sum all the current and future cash flows, converted to some shared basis, e.g., current dollars. This sum is called the <a class="reference external" href="https://en.wikipedia.org/wiki/Net_present_value">Net Present Value (NPV)</a>; NPV is a widespread method for asset valuation. In addition, NPV is also a widely used tool for financial decision-making (<a class="reference internal" href="#net-present-value-defn">Definition 3</a>):</p>
+\[\bar{c}_{k} = \sum_{s\in\mathcal{S}_{k}}\nu_{s}\dot{c}_{s}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\nu_{s}\)</span> is a direction parameter; <span class="math notranslate nohighlight">\(\nu_{s}=+1\)</span> if stream <span class="math notranslate nohighlight">\(s\)</span> enters node <span class="math notranslate nohighlight">\(t=k\)</span>, <span class="math notranslate nohighlight">\(\nu_{s}=-1\)</span> if stream <span class="math notranslate nohighlight">\(s\)</span> exists node <span class="math notranslate nohighlight">\(t=k\)</span>. We could then sum all the current and future cash flows and convert them to some shared basis for comparison, e.g., current dollars. This sum is called the <a class="reference external" href="https://en.wikipedia.org/wiki/Net_present_value">Net Present Value (NPV)</a>. The net present value is a widespread method for asset valuation and financial decision-making (<a class="reference internal" href="#net-present-value-defn">Definition 3</a>):</p>
 <div class="proof definition admonition" id="net-present-value-defn">
 <p class="admonition-title"><span class="caption-number">Definition 3 </span> (Net Present Value)</p>
 <section class="definition-content" id="proof-content">
-<p>The net present value (NPV) is the sum of current and future cash flows, corrected to current dollars (<span class="math notranslate nohighlight">\(t=0\)</span>):</p>
+<p>The net present value (NPV) is the sum of current and discounted future cash flows, discounted to current current dollars at <code class="docutils literal notranslate"><span class="pre">t</span> <span class="pre">=</span> <span class="pre">0</span></code>:</p>
 <div class="math notranslate nohighlight">
-\[\text{NPV}(T) = \sum_{t=0}^{T}{\mathcal{D}_{t,0}^{-1}}\cdot\bar{c}_{t}\]</div>
-<p>where <span class="math notranslate nohighlight">\(\bar{c}_{t}\)</span> denotes the <em>net cash flow</em> in period <span class="math notranslate nohighlight">\(t\)</span>, <span class="math notranslate nohighlight">\(T\)</span> denotes the number of periods, and <span class="math notranslate nohighlight">\(\mathcal{D}_{t,0}\)</span> represents the multistep discount factor between the current period (now), and future period <span class="math notranslate nohighlight">\(t\)</span>. The discount factor <span class="math notranslate nohighlight">\(\mathcal{D}_{t,0}\)</span> can be modeled as either a discrete or a continuous discount factor.</p>
-</section>
-</div><section id="npv-as-a-decision-tool">
-<span id="content-references-npv-decision-tool"></span><h3>NPV as a Decision Tool<a class="headerlink" href="#npv-as-a-decision-tool" title="Permalink to this heading">#</a></h3>
-<p>When calculating net present value, the discount rate <span class="math notranslate nohighlight">\(r_{t+1,t}\)</span> represents the minimum rate of return that a decision-maker would accept for a project or investment compared with a hypothetical alternative investment. To compare a potential asset or project with an alternative investment, we can establish the following criteria:</p>
+\[\text{NPV}(T,r) = \sum_{i=0}^{T}{\mathcal{D}_{i,0}^{-1}}(r)\cdot\bar{c}_{t}\]</div>
+<p><strong>Terms</strong></p>
 <ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(\textbf{NPV}&lt;0\)</span>: A negative NPV indicates the proposed project will generate less income than the alternative investment, e.g., a zero-coupon bond at the same discount rate and time-to-maturity as the project.</p></li>
-<li><p><span class="math notranslate nohighlight">\(\textbf{NPV}=0\)</span>: A zero NPV indicates the proposed project will generate the same income as the alternative investment, e.g., a zero-coupon bond at the same discount rate and time-to-maturity as the project.</p></li>
-<li><p><span class="math notranslate nohighlight">\(\textbf{NPV}&gt;0\)</span>: A positive NPV indicates the proposed project will generate more income than a hypothetical alternative investment, e.g., a zero-coupon bond at the same discount rate and time-to-maturity as the project.</p></li>
+<li><p>The quantity <span class="math notranslate nohighlight">\(\bar{c}_{t}\)</span> denotes the <em>net cash flow</em> in time period <code class="docutils literal notranslate"><span class="pre">t</span></code>, the number of periods is <code class="docutils literal notranslate"><span class="pre">T</span></code>, and <span class="math notranslate nohighlight">\(\mathcal{D}_{i,0}(r)\)</span> represents the multistep discount factor, with discount rate(s) <code class="docutils literal notranslate"><span class="pre">r</span></code>, between the current period and a future period <code class="docutils literal notranslate"><span class="pre">t</span> <span class="pre">=</span> <span class="pre">i</span></code>.</p></li>
+<li><p>The discount factor <span class="math notranslate nohighlight">\(\mathcal{D}_{i,0}(r)\)</span> can be modeled as either a discrete or a continuous discount factor.</p></li>
 </ul>
-<p>The NPV decision rule above relies on computing the sum of discounted future cash flows. However, in these calculations, what discount rate should we use? This question is difficult; the correct discount rate varies between applications and industries.  The special discount rate where the net present value is zero is called the Internal Rate of Return (IRR) (<a class="reference internal" href="#defn-internal-rate-of-return">Definition 4</a>):</p>
+</section>
+</div><section id="decisions">
+<span id="content-references-npv-decision-tool"></span><h3>Decisions<a class="headerlink" href="#decisions" title="Permalink to this heading">#</a></h3>
+<p>The <a class="reference external" href="https://www.investopedia.com/terms/n/npv-rule.asp">net present value is often used as a decision tool</a> to compare the value of an abstract asset or project with an alternative investment. When calculating net present value in the context of a decision, the discount rate <span class="math notranslate nohighlight">\(r_{t+1,t}\)</span> represents the minimum rate of return that a decision-maker would accept for a project or investment compared to a hypothetical risk-free alternative investment, e.g., <a class="reference external" href="https://www.finra.org/investors/insights/zero-coupon-bonds">a zero-coupon bond</a> with the same time-to-maturity as the project.</p>
+<p>To compare a potential abstract asset or project with a risk-free alternative investment, we can establish the following decision criteria:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">NPV</span> <span class="pre">&lt;</span> <span class="pre">0</span></code>: A negative NPV indicates the proposed asset or project <em>will generate a loss</em> over the time horizon of the project, and the decision-maker should choose the alternative investment, e.g., a zero-coupon bond with the same time-to-maturity as the project.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">NPV</span> <span class="pre">=</span> <span class="pre">0</span></code>: A zero NPV indicates the proposed project <em>will breakeven</em> over the time horizon of the project, and the decision-maker is indifferent about the project.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">NPV</span> <span class="pre">&gt;</span> <span class="pre">0</span></code>: A positive NPV indicates the proposed project <em>will generate a positive return</em> over the time horizon of the project, and the decision-maker should consider choosing the proposed project.</p></li>
+</ul>
+<p>The NPV decision rule relies on computing the sum of discounted future cash flows. However, in these calculations, what discount rate should we use? This question is difficult; the correct discount rate varies between applications and industries, and is subjective to the decision-maker.</p>
+<p>Let’s consider an example to illustrate the NPV decision rule concerning the installation of an upgraded lighting system in a building (<a class="reference internal" href="#npv-decision-rule-example-MIT">Example 4</a>):</p>
+<div class="proof example dropdown admonition" id="npv-decision-rule-example-MIT">
+<p class="admonition-title"><span class="caption-number">Example 4 </span> (Should we upgrade our lighting system?)</p>
+<section class="example-content" id="proof-content">
+<p>Johnson Controls offers to install a new computer-controlled lighting system that will reduce electric bills by 90,000 USD in each of the next three years. The system costs 230,000 USD and takes 1-year to install. The building owner has a <code class="docutils literal notranslate"><span class="pre">r̄</span> <span class="pre">=</span> <span class="pre">4%</span></code> discount rate per year (constant for the lifetime of the project). Should the owner install the system?</p>
+<p><strong>Solution:</strong> Let’s assume a discrete discount factor model and compute the net present value of the project. If the net present value is positive, the owner should install the system. If the net present value is negative, the owner should not install the system.  <a class="reference external" href="https://julialang.org">Julia</a> code to compute the net present value of the project is shown below:</p>
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">cashflows</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">230</span><span class="p">,</span><span class="mi">90</span><span class="p">,</span><span class="mi">90</span><span class="p">,</span><span class="mi">90</span><span class="p">];</span>
+<span class="n">number_of_periods</span> <span class="o">=</span> <span class="n">length</span><span class="p">(</span><span class="n">cashflows</span><span class="p">);</span>
+<span class="n">discounted_cashflows</span> <span class="o">=</span> <span class="kt">Array</span><span class="p">{</span><span class="kt">Float64</span><span class="p">,</span><span class="mi">1</span><span class="p">}(</span><span class="nb">undef</span><span class="p">,</span> <span class="n">number_of_periods</span><span class="p">);</span>
+<span class="n">r̄</span> <span class="o">=</span> <span class="mf">0.04</span><span class="p">;</span> <span class="c"># 4% discount rate</span>
+
+<span class="c"># compute the discounted cash flows -</span>
+<span class="k">for</span> <span class="n">i</span> <span class="o">∈</span> <span class="mi">0</span><span class="o">:</span><span class="p">(</span><span class="n">number_of_periods</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">discounted_cashflows</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">cashflows</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span><span class="o">/</span><span class="p">((</span><span class="mi">1</span><span class="o">+</span><span class="n">r̄</span><span class="p">)</span><span class="o">^</span><span class="n">i</span><span class="p">);</span>
+<span class="k">end</span>
+<span class="n">NPV</span> <span class="o">=</span> <span class="n">sum</span><span class="p">(</span><span class="n">discounted_cashflows</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>The net present value of the project is <code class="docutils literal notranslate"><span class="pre">NPV</span> <span class="pre">=</span> <span class="pre">19.75k</span></code>. Since the net present value is positive, the owner should install the system.</p>
+<p><strong>source</strong>: The Johnson Controls example was modified from <a class="reference external" href="https://ocw.mit.edu/courses/sloan-school-of-management/15-401-finance-theory-i-fall-2008/">MIT 15.401</a>.</p>
+</section>
+</div><section id="internal-rate-of-return">
+<h4>Internal Rate of Return<a class="headerlink" href="#internal-rate-of-return" title="Permalink to this heading">#</a></h4>
+<p>At a minimum, a decision-maker should choose be indifferent to a project or investment, i.e., the project or investment should at least have a value of <code class="docutils literal notranslate"><span class="pre">NPV</span> <span class="pre">=</span> <span class="pre">0</span></code>. The special discount rate <span class="math notranslate nohighlight">\(r^{\star}\)</span> where the net present value is zero is called the Internal Rate of Return (IRR) (<a class="reference internal" href="#defn-internal-rate-of-return">Definition 4</a>):</p>
 <!-- * If the net present value of an investment or project is positive, the project earns more than a zero-coupon bond with a yield equal to the discount rate used to discount future cash flows. 
 * If the net present value of a project is negative, the project earns less than a zero-coupon bond with a yield equal to the discount rate used to discount future cash flows. 
 * If the net present value of a project or investment is precisely $0, the project earns the same as a zero-coupon bond with a yield equal to the discount rate used to discount future cash flows. -->
 <div class="proof definition admonition" id="defn-internal-rate-of-return">
 <p class="admonition-title"><span class="caption-number">Definition 4 </span> (Internal Rate of Return)</p>
 <section class="definition-content" id="proof-content">
-<p>Assume the discount rate is constant between time periods. Then, the internal rate of rerturn (IRR) is the discount rate that makes the net present value equal to zero:</p>
+<p>Assume the discount rate <span class="math notranslate nohighlight">\(\bar{r}\)</span> is constant between time periods. Then, the internal rate of rerturn (IRR) is the effective constant discount rate <span class="math notranslate nohighlight">\(r^{\star}\)</span> that makes the net present value equal to zero:</p>
 <div class="math notranslate nohighlight">
-\[\sum_{t=0}^{T}{\mathcal{D}_{t,0}^{-1}}\cdot\bar{c}_{t} = 0\]</div>
-<p>The discount factor <span class="math notranslate nohighlight">\(\mathcal{D}_{t,0}\)</span> can be modeled as either a discrete or a continuous discount factor. Discount rates greater than the IRR favor the alternative investment.</p>
+\[\sum_{t=0}^{T}{\mathcal{D}_{t,0}^{-1}}(r^{\star})\cdot\bar{c}_{t} = 0\]</div>
+<p>The discount factor <span class="math notranslate nohighlight">\(\mathcal{D}_{t,0}(r)\)</span> can be modeled as either a discrete or a continuous discount factor.</p>
 </section>
-</div><p>Thus, IRR can thought of as a decision boundary of sorts; the IRR is the discount rate where the project manager or investor is indifferent to the project. Let’s do a net present value example where we compute the IRR (<a class="reference internal" href="#example-net-present-value-discrete">Example 4</a>):</p>
-<div class="proof example dropdown admonition" id="example-net-present-value-discrete">
-<p class="admonition-title"><span class="caption-number">Example 4 </span> (Install an upgraded lighting system?)</p>
+</div><p>Thus, the IRR can be thought of as a decision boundary of sorts; the IRR is the discount rate where the project manager or investor is indifferent to the project or investment. Let’s review the lighting example, and compute the internal rate of return for the project
+(<a class="reference internal" href="#example-internal-rate-of-return">Example 5</a>):</p>
+<div class="proof example dropdown admonition" id="example-internal-rate-of-return">
+<p class="admonition-title"><span class="caption-number">Example 5 </span> (Internal rate of return for the lighting project)</p>
 <section class="example-content" id="proof-content">
-<p>Johnson Controls offers to install a new computer-controlled lighting system that will reduce electric bills by 90,000 USD in each of the next three years. Is this a good investment if the system costs 230,000 USD fully installed? Assume the discount rate is constant over the project’s lifetime but unknown. Thus, <span class="math notranslate nohighlight">\(\bar{r}\)</span> is a parameter in the problem.</p>
-<figure class="align-default" id="example-jcontrols-npv-fig">
-<a class="reference internal image-reference" href="../_images/Fig-JControls-NPV.pdf"><img alt="../_images/Fig-JControls-NPV.pdf" src="../_images/Fig-JControls-NPV.pdf" style="height: 380px;" /></a>
-<figcaption>
-<p><span class="caption-number">Fig. 5 </span><span class="caption-text">Net Present Value (NPV) as a function of the discount rate <span class="math notranslate nohighlight">\(\bar{r}\)</span> for the proposed Johnson Controls lighting upgrade. The alternative investment is a perfectly priced zero-coupon bond with the same <span class="math notranslate nohighlight">\(\bar{r}\)</span> and time-to-maturity as the lighting project.</span><a class="headerlink" href="#example-jcontrols-npv-fig" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
-<p>The computer-controlled lighting system installed by Johnson Controls yielded a positive net present value (NPV) for discount rates below 8.5%. However, if the discount rate surpasses this threshold, an alternative investment would be preferable.</p>
-<p><strong>source</strong>: The Johnson Controls example was modified from <a class="reference external" href="https://ocw.mit.edu/courses/sloan-school-of-management/15-401-finance-theory-i-fall-2008/">MIT 15.401</a>.</p>
+<p>Fill me in</p>
 </section>
 </div></section>
+<section id="alternative-investment">
+<span id="content-references-npv-alternative-investment"></span><h4>Alternative investment?<a class="headerlink" href="#alternative-investment" title="Permalink to this heading">#</a></h4>
+<p>Many people wonder about an hypothetical alternative investment when considering net present value. If a project has a positive net present value, is there another project that could give a better return?</p>
+<p>Any attractive project (<code class="docutils literal notranslate"><span class="pre">NPV</span> <span class="pre">&gt;</span> <span class="pre">0</span></code>) should generate an income equal to a risk-free alternative investment with the same time-to-maturity. For instance, a <a class="reference external" href="https://www.finra.org/investors/insights/zero-coupon-bonds">zero-coupon bond</a> or a <a class="reference external" href="https://www.investopedia.com/terms/c/certificateofdeposit.asp">certificate of deposit (CD)</a>. Later, we will discuss <a class="reference internal" href="../chapter-2-dir/bonds.html#content-references-us-treasury-debt-securities"><span class="std std-ref">U.S. Treasury bills, notes, and bonds</span></a>. For now, consider a zero-coupon treasury bond as a risk-free investment guaranteed to earn a fixed interest rate.</p>
+<p>Thus, as an alternative to a project with upfront costs and future cash flows, we invest the upfront costs in a zero-coupon bond with the same time-to-maturity as the project. The net present value of a project must be greater than the net present value of a zero-coupon bond; otherwise, the project would not be attractive because we are risking capital and not earning a premium for the additional risk.</p>
+</section>
+</section>
 </section>
 <hr class="docutils" />
 <section id="summary">
@@ -718,7 +745,7 @@ into today’s dollars (or vice-versa, we want to compute the value of a future 
 <ul class="simple">
 <li><p><a class="reference internal" href="../chapter-2-dir/bonds/T-bills.html#content-references-interest-models"><span class="std std-ref">Simple and Compound Interest</span></a>: Simple interest refers to the interest calculated solely on the initial principal amount, while compound interest takes into account both the principal and the accumulated interest.</p></li>
 <li><p><a class="reference internal" href="#content-references-abstract-asset-defn"><span class="std std-ref">Abstract Assets</span></a> generate value and cash flows for the holder. Cash flows, on the other hand, are the inflows and outflows of money from a business or investment, and are a key factor in determining the value of abstract assets. Finally, interest is the cost of borrowing money, and understanding how interest rates impact cash flows and the value of abstract assets is essential for financial decision making.</p></li>
-<li><p><a class="reference internal" href="#content-references-npv-defn"><span class="std std-ref">Net Present Value (NPV)</span></a> is a financial concept used to determine the current value of future cash flows. It takes into account the time value of money, recognizing that a dollar today is worth more than a dollar in the future due to the potential for investment and earning interest. NPV is a useful tool for evaluating investment opportunities and determining whether they are financially viable.</p></li>
+<li><p><a class="reference internal" href="#content-references-npv-defn"><span class="std std-ref">Net present value</span></a> is a financial concept used to determine the current value of future cash flows. It takes into account the time value of money, recognizing that a dollar today is worth more than a dollar in the future due to the potential for investment and earning interest. NPV is a useful tool for evaluating investment opportunities and determining whether they are financially viable.</p></li>
 </ul>
 </section>
 <section id="additional-resources">
@@ -799,14 +826,18 @@ into today’s dollars (or vice-versa, we want to compute the value of a future 
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#abstract-assets">Abstract Assets</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exchange-rate-model">Exchange rate model</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#discrete-discounting">Discrete Discounting</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#discrete-discounting">Discrete discounting</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#continuous-discounting">Continuous discounting</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#net-present-value-npv">Net Present Value (NPV)</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#npv-as-a-decision-tool">NPV as a Decision Tool</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#net-present-value">Net present value</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#decisions">Decisions</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#internal-rate-of-return">Internal Rate of Return</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#alternative-investment">Alternative investment?</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>

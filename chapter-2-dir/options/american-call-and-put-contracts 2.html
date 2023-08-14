@@ -1,0 +1,673 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>American and European Call and Put Contracts &#8212; CHEME-5660</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-PG1Y6R28LY"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-PG1Y6R28LY');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chapter-2-dir/options/american-call-and-put-contracts';</script>
+    <link rel="canonical" href="https://varnerlab.github.io/CHEME-5660-Markets-Mayhem-Book/infrastructure.html/chapter-2-dir/options/american-call-and-put-contracts.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Composite Contract Profit and Loss at Expiration" href="composite-contracts.html" />
+    <link rel="prev" title="Derivative Securities" href="../options.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../../infrastructure.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/cornell_seal_simple_black-164.svg" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../../_static/cornell_seal_simple_black-164.svg" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../infrastructure.html">
+                    Finance and Markets for Engineers and Scientists
+                </a>
+            </li>
+        </ul>
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../chapter-1-dir/chapter-1-landing.html">Unit 1: Financial Basics</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../chapter-1-dir/assets.html">Valuation of Abstract Assets</a></li>
+</ul>
+</li>
+</ul>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../chapter-2-landing.html">Unit 2: Wealth Creation Tools</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2 has-children"><a class="reference internal" href="../bonds.html">U.S. Treasury Securities</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../bonds/T-bills.html">Treasury Bills, Notes and Bonds</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../bonds/T-bill-note-bond-pricing.html">Treasury Security Pricing Dynamics and Risks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../bonds/STRIPS.html">STRIPS Bonds and the Term Structure of Interest Rates</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../stocks.html">Equity Securities</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../stocks/stylized-facts.html">Markets and Stylized Facts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../stocks/lattice-eq-price.html">Lattice Models of Equity Pricing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../stocks/obm-gbm-eq-price.html">Brownian Motion Models of Equity Pricing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../stocks/advanced-eq-price.html">Advanced Stochastic Models of Equity Pricing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../stocks/multivariate-eq-price.html">Multivariate Brownian Motion Models of Equity Prices</a></li>
+</ul>
+</li>
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="../options.html">Derivative Securities</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l3 current active"><a class="current reference internal" href="#">American and European Call and Put Contracts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="composite-contracts.html">Composite Contract Profit and Loss at Expiration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="option-contract-pricing.html">The Extrinsic and Intrinsic Value of an Option Contract</a></li>
+<li class="toctree-l3"><a class="reference internal" href="option-contract-dynamics.html">Option Contract Price Dynamics and Sensitivities</a></li>
+<li class="toctree-l3"><a class="reference internal" href="option-rolling.html">Trade mechanics for options positions: The Art of the Roll</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../chapter-3-dir/chapter-3-landing.html">Unit 3: Modern Portfolio Theory</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../chapter-3-dir/data-markowitz.html">Data-Driven Portfolio Allocation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../chapter-3-dir/model-markowitz.html">Model-Driven Portfolio Allocation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../chapter-3-dir/reallocation.html">Portfolio Reallocation Strategies</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../chapter-3-dir/black-swan-events.html">Surviving Black Swan Events</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../chapter-3-dir/var.html">Value at Risk and Conditional Value at Risk</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../chapter-3-dir/hedged-portfolio.html">Hedging and Dynamic Hedging Approaches</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../chapter-4-dir/chapter-4-landing.html">Unit 4: Rational Decision Theory</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../chapter-4-dir/expected-utility.html">Maximzing the Expected Utility</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../chapter-4-dir/markov.html">Markov Models</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../chapter-4-dir/markov/hmm.html">Hidden Markov Models of Investor Behavior</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../chapter-4-dir/markov/mdp.html">Markov Decision Process Models of Sequential Decision Making</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../chapter-4-dir/rl.html">Reinforcement Learning</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../chapter-4-dir/bandits/bandits.html">Bandit problems, exploration versus exploitation and Thompson sampling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../chapter-4-dir/rl/Q-learning.html">Reinforcement Learning (RL) and the asset management problem</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../appendix/probability-basics.html">Probability and Random Variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../appendix/ito.html">Stochastic Processes</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../appendix/julia-basics.html">Julia Basics</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../appendix/julia/julia-installation.html">Julia Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../appendix/julia/julia-functions-types.html">Julia Types, Functions and Programs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../appendix/julia/julia-data.html">Working with Data in Julia</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">References</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../References.html">References</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Book/issues/new?title=Issue%20on%20page%20%2Fchapter-2-dir/options/american-call-and-put-contracts.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/chapter-2-dir/options/american-call-and-put-contracts.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>American and European Call and Put Contracts</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#call-contracts">Call contracts</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#payoff-profit-premium-and-breakeven">Payoff, Profit, Premium and Breakeven</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#put-contracts">Put contracts</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Payoff, Profit, Premium and Breakeven</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#put-call-parity">Put-Call Parity</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="american-and-european-call-and-put-contracts">
+<span id="content-references-american-european-options-contracts"></span><h1>American and European Call and Put Contracts<a class="headerlink" href="#american-and-european-call-and-put-contracts" title="Permalink to this heading">#</a></h1>
+<p>In this lecture, we focus on options, a type of derivative that uses shares of a stock or an exchange-traded fund, as their underlying asset.</p>
+<aside class="topic">
+<p class="topic-title">Outline</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#content-references-american-european-options-contracts-call"><span class="std std-ref">Call contracts</span></a> give the option buyer the right (but not the obligation) to buy an underlying asset, e.g., shares of stock at a predetermined price (called the strike price) within a specified time frame. The option buyer pays the option seller a premium for the right to buy the underlying asset.</p></li>
+<li><p><a class="reference internal" href="#content-references-american-european-options-contracts-put"><span class="std std-ref">Put contracts</span></a> give the option buyer the right (but not the obligation) to sell an underlying asset, e.g., shares of stock at a predetermined price (called the strike price) within a specified time frame. The option buyer pays the option seller a premium for the right to sell the underlying asset.</p></li>
+<li><p><a class="reference internal" href="#content-references-american-european-options-contracts-put-call-parity"><span class="std std-ref">Put-Call parity</span></a> is a relationship between the prices of a European call option and a European put option with the same strike price and expiration date. The put-call parity relationship is important because it allows us to price one option in terms of the other.</p></li>
+</ul>
+</aside>
+<!-- Derivatives are one of the three primary financial instrument categories: derivatives, equity (i.e., shares of stock), and debt (i.e., bonds and mortgages). Derivatives provide payoffs that depend on the value of other assets, such as commodities, bonds, stocks, or market indexes. Thus, the value of a derivative is based mainly on the price movements of an underlying asset, e.g., stocks, commodities, currencies, etc. -->
+<!-- 
+Options are structured agreements between a buyer and a seller that give the option buyer the right, but not the obligation, to execute the transaction described in the contract, i.e., to buy (or sell) an underlying asset in some predetermined way in a specified time frame.  -->
+<hr class="docutils" />
+<section id="call-contracts">
+<span id="content-references-american-european-options-contracts-call"></span><h2>Call contracts<a class="headerlink" href="#call-contracts" title="Permalink to this heading">#</a></h2>
+<p>A <code class="docutils literal notranslate"><span class="pre">call</span></code> option is a financial contract that gives the holder the right, but not the obligation, to sell a specified asset, such as stocks, commodities, or currencies, at a predetermined price within a specified time period. Let’s consider stock as the underlying asset. A single standard <code class="docutils literal notranslate"><span class="pre">call</span></code> contract controls <code class="docutils literal notranslate"><span class="pre">100</span></code> shares of stock.</p>
+<p>In the case of <a class="reference external" href="https://www.investopedia.com/terms/a/americanoption.asp">American</a> style <a class="reference external" href="https://www.investopedia.com/terms/c/calloption.asp">call contracts</a>, the option buyer can exercise their right at any point between when the contract is purchased and the expiration date. On the other hand, buyers of <a class="reference external" href="https://www.investopedia.com/terms/e/europeanoption.asp">European</a> style contracts can only exercise their right on the expiration date.</p>
+<p>The business case for buying (or selling) a <code class="docutils literal notranslate"><span class="pre">call</span></code> contract:</p>
+<ul class="simple">
+<li><p><strong>Buyer (long)</strong>: From the buyer’s perspective, call contracts allow an investor to benefit from the price movement of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> to the upside <em>without</em> purchasing <code class="docutils literal notranslate"><span class="pre">XYZ</span></code>. Further, call options (again from the buyer’s perspective) have <em>limited downside risk</em>, i.e., the maximum amount that the holder of the call option can lose is the premium paid for the option. Finally, call options are a mechanism to purchase shares of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> at the strike price of <span class="math notranslate nohighlight">\(K\)</span> instead of the market price of <span class="math notranslate nohighlight">\(S\)</span>.</p></li>
+<li><p><strong>Seller (short)</strong>: From the seller’s perspective, the main objective of selling a call contract is to collect the premium <span class="math notranslate nohighlight">\(\mathcal{P}\)</span>. Call contracts also allow the seller to benefit from the price movement of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> to the downside <em>without</em> purchasing <code class="docutils literal notranslate"><span class="pre">XYZ</span></code>. However, for a seller, call options have <em>unlimted upside</em> risk; thus, call options are often only sold by investors who already own the required number of shares of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> (known as a <a class="reference external" href="https://www.investopedia.com/terms/c/coveredcall.asp">covered call position</a>). Finally, call options offer the seller the opportunity to sell shares of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> at the strike price of <span class="math notranslate nohighlight">\(K\)</span> instead of the market price of <span class="math notranslate nohighlight">\(S\)</span>.</p></li>
+</ul>
+<section id="payoff-profit-premium-and-breakeven">
+<h3>Payoff, Profit, Premium and Breakeven<a class="headerlink" href="#payoff-profit-premium-and-breakeven" title="Permalink to this heading">#</a></h3>
+<p>The payoff per share of a <code class="docutils literal notranslate"><span class="pre">call</span></code> contract at expiration <code class="docutils literal notranslate"><span class="pre">T</span></code> days in the future <span class="math notranslate nohighlight">\(V_{c}(K,S(T))\)</span> is defined as:</p>
+<div class="math notranslate nohighlight">
+\[V_{c}(K,S(T)) = \max\left(S(T) - K,~0\right)\]</div>
+<p>where <span class="math notranslate nohighlight">\(K\)</span> denotes the strike price and <span class="math notranslate nohighlight">\(S(T)\)</span> represents the share price of the underlying asset <code class="docutils literal notranslate"><span class="pre">T</span></code> days in the future (at expiration). The right (but not the obligation) to buy shares at the strike <code class="docutils literal notranslate"><span class="pre">K</span></code> is not free. The contract <code class="docutils literal notranslate"><span class="pre">seller</span></code> charges the contract <code class="docutils literal notranslate"><span class="pre">buyer</span></code> a premium for each <code class="docutils literal notranslate"><span class="pre">call</span></code> contract <span class="math notranslate nohighlight">\(\mathcal{P}_{c}(\dots)\)</span>. From the perspective of the <code class="docutils literal notranslate"><span class="pre">buyer</span></code>, the profit per share for the <code class="docutils literal notranslate"><span class="pre">call</span></code> contract <span class="math notranslate nohighlight">\(P_{c}\)</span> is the payoff of the contract minus the cost of the contract:</p>
+<div class="math notranslate nohighlight">
+\[P_{c}(K,S(T)) = V_{c}(K,S(T)) -  \mathcal{P}_{c}(K,S(0))\]</div>
+<p>Thus, from the buyer’s perspective, the share price must fall <em>above the strike price</em> to make up the amount paid for the contract. This is called the breakeven price <span class="math notranslate nohighlight">\(\mathcal{B}_{c}(K, S(T))\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\mathcal{B}_{c}(K,S(0)) = K + \mathcal{P}_{c}(K,S(0))\]</div>
+<p>Finally, the premium (cost) for each <code class="docutils literal notranslate"><span class="pre">call</span></code> contract <span class="math notranslate nohighlight">\(\mathcal{P}_{c}(\dots)\)</span> is defined by the expression:</p>
+<div class="math notranslate nohighlight">
+\[\mathcal{P}_{c}(K,S(0))\geq\mathbb{E}\Bigl(\mathcal{D}^{-1}_{T,0}(\bar{r})\cdot{V_{c}}(K,S(T)\Bigr)\]</div>
+<p>where <span class="math notranslate nohighlight">\(\mathcal{D}_{T,0}(\bar{r})\)</span> denotes the discount rate between the time when the contract was purchased <code class="docutils literal notranslate"><span class="pre">0</span></code> and contract expiration <code class="docutils literal notranslate"><span class="pre">T</span></code> days in the future. Option contracts use risk-neutral pricing; thus, the discount rate <span class="math notranslate nohighlight">\(\bar{r}\)</span> is typically taken as the interest rate on 10-year treasury notes.</p>
+</section>
+</section>
+<section id="put-contracts">
+<span id="content-references-american-european-options-contracts-put"></span><h2>Put contracts<a class="headerlink" href="#put-contracts" title="Permalink to this heading">#</a></h2>
+<p>A <code class="docutils literal notranslate"><span class="pre">put</span></code> option is a financial contract that gives the holder the right, but not the obligation, to sell a specified asset, such as stocks, commodities, or currencies, at a predetermined price within a specified time period. Let’s consider stock as the underlying asset. A single standard <code class="docutils literal notranslate"><span class="pre">put</span></code> contract controls <code class="docutils literal notranslate"><span class="pre">100</span></code> shares of stock.</p>
+<p>In the case of <a class="reference external" href="https://www.investopedia.com/terms/a/americanoption.asp">American</a> style <a class="reference external" href="https://www.investopedia.com/terms/p/putoption.asp">put contracts</a>, the option buyer can exercise their right at any point between when the contract is purchased and the expiration date. On the other hand, buyers of <a class="reference external" href="https://www.investopedia.com/terms/e/europeanoption.asp">European</a> style contracts can only exercise their right on the expiration date.</p>
+<p>The business case for buying (or selling) <code class="docutils literal notranslate"><span class="pre">put</span></code> contracts:</p>
+<ul class="simple">
+<li><p><strong>Buyer (long)</strong>: From the buyer’s perspective, <code class="docutils literal notranslate"><span class="pre">put</span></code> contracts allow an investor to benefit from the price movement of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> to the downside <em>without</em> purchasing <code class="docutils literal notranslate"><span class="pre">XYZ</span></code>. Further, <code class="docutils literal notranslate"><span class="pre">put</span></code> options (again from the buyer’s perspective) have <em>limited downside risk</em>, i.e., the maximum amount that the holder of the <code class="docutils literal notranslate"><span class="pre">put</span></code> option can lose is the premium paid for the option. Finally, <code class="docutils literal notranslate"><span class="pre">put</span></code> contracts are a mechanism to sell shares of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> at the strike price of <span class="math notranslate nohighlight">\(K\)</span> instead of the market price of <span class="math notranslate nohighlight">\(S\)</span>.</p></li>
+<li><p><strong>Seller (short)</strong>: From the seller’s perspective, the motivation for selling a <code class="docutils literal notranslate"><span class="pre">put</span></code> contract is to collect the premium <span class="math notranslate nohighlight">\(\mathcal{P}\)</span>. Put contracts also allow the seller to benefit from the price movement of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> to the upside <em>without</em> purchasing <code class="docutils literal notranslate"><span class="pre">XYZ</span></code>. However, for a seller, <code class="docutils literal notranslate"><span class="pre">put</span></code> options have <em>unlimted downside</em> risk; thus, <code class="docutils literal notranslate"><span class="pre">put</span></code> options are often only sold by investors who have set aside the required capital to purchase the required number of shares of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> (known as a <a class="reference external" href="https://www.fidelity.com/learning-center/investment-products/options/know-about-cash-covered-puts">cash secured put position</a>). Finally, <code class="docutils literal notranslate"><span class="pre">put</span></code> options offer the seller the opportunity to buy shares of <code class="docutils literal notranslate"><span class="pre">XYZ</span></code> at the strike price of <span class="math notranslate nohighlight">\(K-\mathcal{P}\)</span> instead of the market price of <span class="math notranslate nohighlight">\(S\)</span>.</p></li>
+</ul>
+<section id="id1">
+<h3>Payoff, Profit, Premium and Breakeven<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
+<p>The payoff per share of a <code class="docutils literal notranslate"><span class="pre">put</span></code> contract at expiration <code class="docutils literal notranslate"><span class="pre">T</span></code> days in the future <span class="math notranslate nohighlight">\(V_{p}(K,S(T))\)</span> is defined as:</p>
+<div class="math notranslate nohighlight">
+\[V_{p}(K,S(T)) = \max\left(K - S(T),~0\right)\]</div>
+<p>where <span class="math notranslate nohighlight">\(K\)</span> denotes the strike price and <span class="math notranslate nohighlight">\(S(T)\)</span> represents the share price of the underlying asset <code class="docutils literal notranslate"><span class="pre">T</span></code> days in the future (at expiration). The right (but not the obligation) to sell shares at the strike <code class="docutils literal notranslate"><span class="pre">K</span></code> is not free. The contract <code class="docutils literal notranslate"><span class="pre">seller</span></code> charges the contract <code class="docutils literal notranslate"><span class="pre">buyer</span></code> a premium for each <code class="docutils literal notranslate"><span class="pre">put</span></code> contract <span class="math notranslate nohighlight">\(\mathcal{P}_{p}(\dots)\)</span>. From the perspective of the <code class="docutils literal notranslate"><span class="pre">buyer</span></code>, the profit per share for the <code class="docutils literal notranslate"><span class="pre">put</span></code> contract <span class="math notranslate nohighlight">\(P_{p}\)</span> is the payoff of the contract minus the cost of the contract:</p>
+<div class="math notranslate nohighlight">
+\[P_{p}(K,S(T)) = {V}_{p}(K,S(T)) -  \mathcal{P}_{p}(K,S(0))\]</div>
+<p>Thus, from the buyer’s perspective, the share price must fall <em>below the strike price</em> to make up the amount paid for the contract. This is called the breakeven price <span class="math notranslate nohighlight">\(\mathcal{B}_{p}(K, S(T))\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\mathcal{B}_{p}(K,S(0)) = K - \mathcal{P}_{p}(K,S(0))\]</div>
+<p>Finally, the premium (cost) for each <code class="docutils literal notranslate"><span class="pre">put</span></code> contract <span class="math notranslate nohighlight">\(\mathcal{P}_{p}(\dots)\)</span> is defined by the expression:</p>
+<div class="math notranslate nohighlight">
+\[\mathcal{P}_{p}(K,S(0))\geq\mathbb{E}\Bigl(\mathcal{D}^{-1}_{T,0}(\bar{r})\cdot{V_{p}}(K,S(T))\Bigr)\]</div>
+<p>where <span class="math notranslate nohighlight">\(\mathcal{D}_{T,0}(\bar{r})\)</span> denotes the discount rate between the time when the contract was purchased <code class="docutils literal notranslate"><span class="pre">0</span></code> and contract expiration <code class="docutils literal notranslate"><span class="pre">T</span></code> days in the future. Option contracts use risk-neutral pricing; thus, the discount rate <span class="math notranslate nohighlight">\(\bar{r}\)</span> is typically taken as the interest rate on 10-year treasury notes.</p>
+</section>
+</section>
+<section id="put-call-parity">
+<span id="content-references-american-european-options-contracts-put-call-parity"></span><h2>Put-Call Parity<a class="headerlink" href="#put-call-parity" title="Permalink to this heading">#</a></h2>
+<p>Fill me in.</p>
+</section>
+<hr class="docutils" />
+<section id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this heading">#</a></h2>
+<p>In this lecture, we will focused exclusively on options, a type of derivative that use equity, i.e., shares of a stock or an exchange-traded fund, as their underlying asset.</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#content-references-american-european-options-contracts-call"><span class="std std-ref">Call contracts</span></a> give the option buyer the right (but not the obligation) to buy an underlying asset, e.g., shares of stock at a predetermined price (called the strike price) within a specified time frame. The option buyer pays the option seller a premium for the right to buy the underlying asset.</p></li>
+<li><p><a class="reference internal" href="#content-references-american-european-options-contracts-put"><span class="std std-ref">Put contracts</span></a> give the option buyer the right (but not the obligation) to sell an underlying asset, e.g., shares of stock at a predetermined price (called the strike price) within a specified time frame. The option buyer pays the option seller a premium for the right to sell the underlying asset.</p></li>
+<li><p><a class="reference internal" href="#content-references-american-european-options-contracts-put-call-parity"><span class="std std-ref">Put-Call parity</span></a> is a relationship between the prices of a European call option and a European put option with the same strike price and expiration date. The put-call parity relationship is important because it allows us to price one option in terms of the other.</p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./chapter-2-dir/options"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../options.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Derivative Securities</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="composite-contracts.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Composite Contract Profit and Loss at Expiration</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#call-contracts">Call contracts</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#payoff-profit-premium-and-breakeven">Payoff, Profit, Premium and Breakeven</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#put-contracts">Put contracts</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Payoff, Profit, Premium and Breakeven</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#put-call-parity">Put-Call Parity</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Varner and Woltornist
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

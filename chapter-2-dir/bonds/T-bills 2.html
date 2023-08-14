@@ -1,0 +1,952 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Treasury Bills, Notes and Bonds &#8212; CHEME-5660</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-PG1Y6R28LY"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-PG1Y6R28LY');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chapter-2-dir/bonds/T-bills';</script>
+    <link rel="canonical" href="https://varnerlab.github.io/CHEME-5660-Markets-Mayhem-Book/infrastructure.html/chapter-2-dir/bonds/T-bills.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Treasury Security Pricing Dynamics and Risks" href="T-bill-note-bond-pricing.html" />
+    <link rel="prev" title="U.S. Treasury Securities" href="../bonds.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../../infrastructure.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/cornell_seal_simple_black-164.svg" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../../_static/cornell_seal_simple_black-164.svg" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../infrastructure.html">
+                    Finance and Markets for Engineers and Scientists
+                </a>
+            </li>
+        </ul>
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../chapter-1-dir/chapter-1-landing.html">Unit 1: Financial Basics</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../chapter-1-dir/assets.html">Valuation of Abstract Assets</a></li>
+</ul>
+</li>
+</ul>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../chapter-2-landing.html">Unit 2: Wealth Creation Tools</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="../bonds.html">U.S. Treasury Securities</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l3 current active"><a class="current reference internal" href="#">Treasury Bills, Notes and Bonds</a></li>
+<li class="toctree-l3"><a class="reference internal" href="T-bill-note-bond-pricing.html">Treasury Security Pricing Dynamics and Risks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="STRIPS.html">STRIPS Bonds and the Term Structure of Interest Rates</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../stocks.html">Equity Securities</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../stocks/stylized-facts.html">Equities, Markets, and Stylized Facts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../stocks/lattice-eq-price.html">Lattice Models of Equity Pricing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../stocks/obm-gbm-eq-price.html">Brownian Motion Models of Equity Pricing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../stocks/advanced-eq-price.html">Advanced Stochastic Models of Equity Pricing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../stocks/multivariate-eq-price.html">Multivariate Brownian Motion Models of Equity Prices</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../options.html">Derivative Securities</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../options/american-call-and-put-contracts.html">American and European Call and Put Contracts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../options/composite-contracts.html">Composite Contract Profit and Loss at Expiration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../options/option-contract-pricing.html">The Extrinsic and Intrinsic Value of an Option Contract</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../options/option-contract-dynamics.html">Option Contract Price Dynamics and Sensitivities</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../options/option-rolling.html">Trade mechanics for options positions: The Art of the Roll</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../chapter-3-dir/chapter-3-landing.html">Unit 3: Modern Portfolio Theory</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../chapter-3-dir/data-markowitz.html">Data-Driven Portfolio Allocation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../chapter-3-dir/model-markowitz.html">Model-Driven Portfolio Allocation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../chapter-3-dir/reallocation.html">Portfolio Reallocation Strategies</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../chapter-3-dir/black-swan-events.html">Surviving Black Swan Events</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../chapter-3-dir/var.html">Value at Risk and Conditional Value at Risk</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../chapter-3-dir/hedged-portfolio.html">Hedging and Dynamic Hedging Approaches</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../chapter-4-dir/chapter-4-landing.html">Unit 4: Rational Decision Theory</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../chapter-4-dir/expected-utility.html">Maximzing the Expected Utility</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../chapter-4-dir/markov.html">Markov Models</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../chapter-4-dir/markov/hmm.html">Hidden Markov Models of Investor Behavior</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../chapter-4-dir/markov/mdp.html">Markov Decision Process Models of Sequential Decision Making</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../chapter-4-dir/rl.html">Reinforcement Learning</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../chapter-4-dir/bandits/bandits.html">Bandit problems, exploration versus exploitation and Thompson sampling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../chapter-4-dir/rl/Q-learning.html">Reinforcement Learning (RL) and the asset management problem</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../appendix/probability-basics.html">Probability and Random Variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../appendix/ito.html">Stochastic Processes</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../appendix/julia-basics.html">Julia Basics</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../appendix/julia/julia-installation.html">Julia Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../appendix/julia/julia-functions-types.html">Julia Types, Functions and Programs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../appendix/julia/julia-data.html">Working with Data in Julia</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">References</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../References.html">References</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Book/issues/new?title=Issue%20on%20page%20%2Fchapter-2-dir/bonds/T-bills.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/chapter-2-dir/bonds/T-bills.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Treasury Bills, Notes and Bonds</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simple-and-compound-interest">Simple and Compound Interest</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#u-s-treasury-bills">U.S. Treasury Bills</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#u-s-treasury-notes-and-bonds">U.S. Treasury Notes and Bonds</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pricing">Pricing</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#yield-to-maturity-ytm">Yield to Maturity (YTM)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="treasury-bills-notes-and-bonds">
+<span id="content-references-treasury-bonds"></span><h1>Treasury Bills, Notes and Bonds<a class="headerlink" href="#treasury-bills-notes-and-bonds" title="Permalink to this heading">#</a></h1>
+<aside class="topic">
+<p class="topic-title">Outline</p>
+<p>In this lecture we’ll discuss the following topics:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#content-references-interest-models"><span class="std std-ref">Simple and Compound Interest</span></a> are two methods of calculating interest. Simple interest is calculated on the principal amount of a loan only. Compound interest is calculated on the principal amount and also on the accumulated interest of previous periods, and can thus be regarded as <code class="docutils literal notranslate"><span class="pre">interest</span> <span class="pre">on</span> <span class="pre">interest.</span></code></p></li>
+<li><p><a class="reference internal" href="#content-references-us-t-bills"><span class="std std-ref">U.S. Treasury Bills</span></a> are short-term debt securities with a maturity of less than one year. On the other hand,<a class="reference internal" href="#content-references-us-t-notes-bonds"><span class="std std-ref">Treasury Notes and Bonds</span></a> are long-term debt securities with a maturity of two to thirty years. Bills, Notes and Bonds are structured contracts between the U.S. government and bondholders that specify the repayment terms of the loan, e.g., the duration of the loan and the payment schedule.</p></li>
+<li><p><a class="reference internal" href="#content-references-us-ytm-defn"><span class="std std-ref">The Yield to Maturity (YTM)</span></a> is a measure of the <em>return of a bond investment</em>. Yield to maturity is the discount rate that equates the present value of a bond’s cashflows to its price.  The YTM is the internal rate of return (IRR) of an investment in a bond if the investor holds the bond until maturity and if all payments are made as scheduled.</p></li>
+</ul>
+</aside>
+<hr class="docutils" />
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
+<p>United States Treasury debt securities are structured loan agreements between a borrower, i.e., the U.S. government, and a lender (you) that allows the government to fund its operations and obligations (<a class="reference internal" href="#fig-bill-notes-bonds-schematic"><span class="std std-numref">Fig. 5</span></a>).</p>
+<figure class="align-default" id="fig-bill-notes-bonds-schematic">
+<a class="reference internal image-reference" href="../../_images/Fig-Govt-Debt-Schematic.svg"><img alt="../../_images/Fig-Govt-Debt-Schematic.svg" height="340px" src="../../_images/Fig-Govt-Debt-Schematic.svg" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 5 </span><span class="caption-text">Schematic of United States Treasury debt instrument. The treasury borrows money from bondholders by selling treasury bills, notes, and bonds. Each debt instrument has a particular repayment plan, e.g., a specified duration and payment schedule.</span><a class="headerlink" href="#fig-bill-notes-bonds-schematic" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>The bondholder and the U.S. Treasury have a marketable agreement, which can be resold. This agreement mandates the Treasury to make payments to the bondholder on specific dates throughout the instrument’s lifetime. Although there are various types of U.S. government debt securities, they all share a few common characteristics:</p>
+<ul class="simple">
+<li><p>U.S. Treasury debt securities have a predetermined term length, indicating that the duratio The YTM is the internal rate of return (IRR) of an investment in a bond if the investor holds the bond until maturity and if all payments are made as scheduled.n of the contract between the borrower and lender is fixed.</p></li>
+<li><p>U.S. Treasury debt securities have a par value, representing the instrument’s face value, a price (which may differ from the par value), and an interest rate paid to the lender.</p></li>
+<li><p>Some U.S. Treasury debt securities have interest payments commonly called coupons. These payments give the lender fixed cashflows on a predetermined schedule throughout the debt instrument’s term.</p></li>
+<li><p>Income from interest on U.S. Treasury debt securities is free of state and local income taxes but subject to federal income taxes.</p></li>
+<li><p>You can purchase U.S. Treasury debt directly from the <a class="reference external" href="https://www.treasurydirect.gov/indiv/products/prod_tbonds_glance.htm">United States Treasury via TreasuryDirect</a> or through a bank or broker to lend money to the U.S. government.</p></li>
+</ul>
+</section>
+<section id="simple-and-compound-interest">
+<span id="content-references-interest-models"></span><h2>Simple and Compound Interest<a class="headerlink" href="#simple-and-compound-interest" title="Permalink to this heading">#</a></h2>
+<p>The distinction between simple and compound interest is crucial in the world of finance and investing. These concepts significantly impact investment growth and borrowing costs, making them fundamental aspects to consider when making financial decisions.</p>
+<p>Simple interest is paid only on the initial principle. For example, if amount <span class="math notranslate nohighlight">\(A(0)\)</span> is invested in an account at <span class="math notranslate nohighlight">\(t=0\)</span> which pays a simple interest rate of <span class="math notranslate nohighlight">\(r\)</span> per period, then after <span class="math notranslate nohighlight">\(n\)</span> periods the account would hold the amount <span class="math notranslate nohighlight">\(A(n)\)</span>:</p>
+<div class="math notranslate nohighlight" id="equation-eqn-simple-interest">
+<span class="eqno">(6)<a class="headerlink" href="#equation-eqn-simple-interest" title="Permalink to this equation">#</a></span>\[A(n) = A(0)\cdot\left(1+rn\right)\]</div>
+<p>The interest earned is not reinvested, and thus the interest earned is constant over time.  However, compound interest considers both the principal and the interest accumulated over time, i.e., you earn <code class="docutils literal notranslate"><span class="pre">interest</span> <span class="pre">on</span> <span class="pre">interest</span></code>. For example, if amount <span class="math notranslate nohighlight">\(A(0)\)</span> is invested at <span class="math notranslate nohighlight">\(t=0\)</span> into an account that pays a compound interest rate <span class="math notranslate nohighlight">\(r\)</span> per period, then after <span class="math notranslate nohighlight">\(n\)</span> periods the account would hold the amount <span class="math notranslate nohighlight">\(A(n)\)</span>:</p>
+<div class="math notranslate nohighlight" id="equation-eqn-compound-interest">
+<span class="eqno">(7)<a class="headerlink" href="#equation-eqn-compound-interest" title="Permalink to this equation">#</a></span>\[A(n) = A(0)\cdot\left(1+r\right)^n\]</div>
+<p>As the number of periods become large, compound interest always outperforms simple interest (<a class="reference internal" href="#fig-simple-compound-interest"><span class="std std-numref">Fig. 6</span></a>).</p>
+<figure class="align-default" id="fig-simple-compound-interest">
+<a class="reference internal image-reference" href="../../_images/Fig-Simple-Compound-Balance.svg"><img alt="../../_images/Fig-Simple-Compound-Balance.svg" height="420px" src="../../_images/Fig-Simple-Compound-Balance.svg" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 6 </span><span class="caption-text">Simple versus compound interest for n-periods for an interest rate of <span class="math notranslate nohighlight">\(r = 0.05\)</span> per-period. Compound interest outperforms simple interest as the number of periods becomes large.</span><a class="headerlink" href="#fig-simple-compound-interest" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Finally, interest rates are typically quoted as annualized values and can be compounded at different rates, e.g., annually, quarterly, etc, and compound interest can be computed on a discrete or continuous basis (<a class="reference internal" href="#defn-compound-interest">Definition 5</a>):</p>
+<div class="proof definition admonition" id="defn-compound-interest">
+<p class="admonition-title"><span class="caption-number">Definition 5 </span> (Discrete and continuous compounding)</p>
+<section class="definition-content" id="proof-content">
+<p>Let there be <code class="docutils literal notranslate"><span class="pre">n-compounding</span> <span class="pre">periods</span> <span class="pre">per</span> <span class="pre">year</span></code> and an annualized interest rate of <code class="docutils literal notranslate"><span class="pre">r-percent</span></code>.  Then an initial investment <span class="math notranslate nohighlight">\(A(0)\)</span> will be worth:</p>
+<div class="math notranslate nohighlight" id="equation-eqn-compound-interest-model-discrete">
+<span class="eqno">(8)<a class="headerlink" href="#equation-eqn-compound-interest-model-discrete" title="Permalink to this equation">#</a></span>\[A(m) = A(0)\cdot\left(1+r/n\right)^{mn}\]</div>
+<p>after <code class="docutils literal notranslate"><span class="pre">m-years</span></code> where the interest rate <code class="docutils literal notranslate"><span class="pre">r</span></code> is a decimal. As the number of compounding periods <span class="math notranslate nohighlight">\(n\rightarrow\infty\)</span>, the investment <span class="math notranslate nohighlight">\(A(m)\)</span> approaches the continuous compounding limit:</p>
+<div class="math notranslate nohighlight" id="equation-eqn-compound-interest-model-cont">
+<span class="eqno">(9)<a class="headerlink" href="#equation-eqn-compound-interest-model-cont" title="Permalink to this equation">#</a></span>\[\lim_{n\rightarrow\infty}A(m) = A(0)\cdot\exp\left(rm\right)\]</div>
+</section>
+</div><div class="admonition-simple-versus-compound-interest admonition">
+<p class="admonition-title">Simple versus Compound Interest</p>
+<p>We’ll exclusively deal with compound interest throughtout this course, as this is the mechanism used in the real world for different types of investments. Further, we’ll <em>almost always</em> assume that interest is compounded continuously, i.e., the number of compounding periods <span class="math notranslate nohighlight">\(n\rightarrow\infty\)</span>.</p>
+</div>
+</section>
+<section id="u-s-treasury-bills">
+<span id="content-references-us-t-bills"></span><h2>U.S. Treasury Bills<a class="headerlink" href="#u-s-treasury-bills" title="Permalink to this heading">#</a></h2>
+<p><a class="reference external" href="https://treasurydirect.gov/marketable-securities/treasury-bills/">United States Treasury Bills</a>, or T-bills are Treasury debt instruments with short-term maturity periods <code class="docutils literal notranslate"><span class="pre">T</span> <span class="pre">=</span> <span class="pre">4,</span> <span class="pre">8,</span> <span class="pre">13,</span> <span class="pre">26,</span> <span class="pre">and</span> <span class="pre">52</span> <span class="pre">weeks</span></code> and zero coupon payments (<a class="reference internal" href="#fig-bill-payout-schematic"><span class="std std-numref">Fig. 7</span></a>):</p>
+<figure class="align-default" id="fig-bill-payout-schematic">
+<a class="reference internal image-reference" href="../../_images/Fig-Zero-Coupon-Schematic.svg"><img alt="../../_images/Fig-Zero-Coupon-Schematic.svg" height="320px" src="../../_images/Fig-Zero-Coupon-Schematic.svg" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 7 </span><span class="caption-text">Schematic of a zero-coupon United States Treasury bill. The bill holder purchases the bill for <span class="math notranslate nohighlight">\(V_{B}\)</span> (current). At the term of the bill, the Treasury pays the bondholder the face (par) value of the bill <span class="math notranslate nohighlight">\(V_{P}\)</span> (future).</span><a class="headerlink" href="#fig-bill-payout-schematic" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>T-bills, which are <a class="reference external" href="https://www.treasurydirect.gov/auctions/upcoming/">auctioned off regularly</a>, are zero-coupon fixed-income investments, i.e., they have no coupon payments during their term. Instead, T-bills are priced at a discount to thier face (par) value (<a class="reference internal" href="#defn-zero-coupon-bond-pricing">Definition 6</a>):</p>
+<div class="proof definition admonition" id="defn-zero-coupon-bond-pricing">
+<p class="admonition-title"><span class="caption-number">Definition 6 </span> (Zero Coupon T-bill pricing)</p>
+<section class="definition-content" id="proof-content">
+<p>A zero-coupon Treasury bill with a face (par) value of <span class="math notranslate nohighlight">\(V_{P}\)</span> (future) has a <code class="docutils literal notranslate"><span class="pre">T-year</span></code> term and an <em>annualized</em> effective market rate of interest of <span class="math notranslate nohighlight">\(\bar{r}\)</span>. The <em>fair price</em>, denoted by <span class="math notranslate nohighlight">\(V_{B}\)</span>, is the face (par) value discounted to back to today at an effective market interest rate <span class="math notranslate nohighlight">\(\bar{r}\)</span>:</p>
+<div class="math notranslate nohighlight" id="equation-eqn-zero-coupon-bill-bond">
+<span class="eqno">(10)<a class="headerlink" href="#equation-eqn-zero-coupon-bill-bond" title="Permalink to this equation">#</a></span>\[V_{B}(\bar{r}) = \mathcal{D}^{-1}_{T,0}(\bar{r})\cdot{V_{P}}\]</div>
+<p>The quantity <span class="math notranslate nohighlight">\(\mathcal{D}_{T,0}(\bar{r})\)</span> denotes a discount factor governing the period between the auction at <code class="docutils literal notranslate"><span class="pre">t</span> <span class="pre">=</span> <span class="pre">0</span></code> and the term of the bill in <code class="docutils literal notranslate"><span class="pre">t</span> <span class="pre">=</span> <span class="pre">T</span> <span class="pre">years</span></code>. The discount factor can be described using either discrete or continuous compounding.</p>
+</section>
+</div></section>
+<section id="u-s-treasury-notes-and-bonds">
+<span id="content-references-us-t-notes-bonds"></span><h2>U.S. Treasury Notes and Bonds<a class="headerlink" href="#u-s-treasury-notes-and-bonds" title="Permalink to this heading">#</a></h2>
+<p><a class="reference external" href="https://treasurydirect.gov/marketable-securities/treasury-notes/">T-notes, or United States Treasury Notes</a>, are debt instruments that provide a stable interest rate every six months until maturity. These notes are offered in terms of <code class="docutils literal notranslate"><span class="pre">T</span> <span class="pre">=</span> <span class="pre">2,</span> <span class="pre">3,</span> <span class="pre">5,</span> <span class="pre">7,</span> <span class="pre">and</span> <span class="pre">10</span> <span class="pre">years</span></code> and can be bought for more or less than their face (par) value. Upon maturity, the lender receives the entire par value. T-notes are considered coupon debt instruments, which means that the lender receives periodic interest payments based on a coupon rate during the T-note’s lifespan (<a class="reference internal" href="#fig-bond-payout-schematic"><span class="std std-numref">Fig. 8</span></a>):</p>
+<figure class="align-default" id="fig-bond-payout-schematic">
+<a class="reference internal image-reference" href="../../_images/Fig-Bond-Asset-Timeline-Schematic.svg"><img alt="../../_images/Fig-Bond-Asset-Timeline-Schematic.svg" height="320px" src="../../_images/Fig-Bond-Asset-Timeline-Schematic.svg" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 8 </span><span class="caption-text">Schematic of the lifetime of a Treasury Bond with semiannual coupon payments. The bond is purchased now and the bondholder receives semi-annual coupon payments until the maturity of the bond T-years into the future. At maturity, the bondholder receives a final coupon payment plus the face value of the bond.</span><a class="headerlink" href="#fig-bond-payout-schematic" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Similar to T-notes, <a class="reference external" href="https://treasurydirect.gov/marketable-securities/treasury-bonds/">United States Treasury Bonds</a> are a type of debt instrument that provides a fixed interest rate every six months. These bonds are considered long-term, with terms of either 20 or 30 years. Upon maturity of the bond, the holder receives its face value. Bonds can be held until maturity or sold before maturity.</p>
+<section id="pricing">
+<h3>Pricing<a class="headerlink" href="#pricing" title="Permalink to this heading">#</a></h3>
+<p>The price an investor is willing to pay for a claim to the future coupon payments of a Treasury note or bond depends on the future value that will be received versus the discounted face value of the bond (<a class="reference internal" href="#defn-fixed-r-bond-pricing">Definition 7</a>):</p>
+<div class="proof definition admonition" id="defn-fixed-r-bond-pricing">
+<p class="admonition-title"><span class="caption-number">Definition 7 </span> (Coupon Bond Pricing)</p>
+<section class="definition-content" id="proof-content">
+<p>A note or bond has a term of <code class="docutils literal notranslate"><span class="pre">T-years</span></code> and <span class="math notranslate nohighlight">\(\lambda\)</span> coupon payments per year. The <em>fair price</em> of a note or bond is the sum of the future coupon payments <span class="math notranslate nohighlight">\(C\)</span> and the face (par) value <span class="math notranslate nohighlight">\(V_{P}\)</span> discounted back to today at an effective market interest rate <span class="math notranslate nohighlight">\(\bar{r}\)</span>:</p>
+<div class="math notranslate nohighlight" id="equation-eqn-fixed-r-bond-price-w-coupon">
+<span class="eqno">(11)<a class="headerlink" href="#equation-eqn-fixed-r-bond-price-w-coupon" title="Permalink to this equation">#</a></span>\[V_{B}(T,\bar{r}) = \mathcal{D}^{-1}_{N,0}(\bar{r})\cdot{V_{P}}+C\cdot\sum_{j=1}^{\lambda{T}}\mathcal{D}_{j,0}^{-1}(\bar{r})\]</div>
+<p>The term <span class="math notranslate nohighlight">\(\mathcal{D}_{i,0}(\bar{r})\)</span> denotes the discount factor for the period <span class="math notranslate nohighlight">\(0\rightarrow{i}\)</span>, which can be either a discrete or continuous compounding model. The coupon payment is given by <span class="math notranslate nohighlight">\(C=\left(\bar{c}/\lambda\right)\cdot{V_{P}}\)</span>, and the interest rate <span class="math notranslate nohighlight">\(\bar{r}\)</span> are set at auction.</p>
+</section>
+</div><p>Let’s use historical auction data from 1975-1979 and the <a class="reference external" href="https://github.com/varnerlab/VLQuantitativeFinancePackage.jl.git">VLQuantitativeFinancePackage.jl</a> package to compute the historical 30-year treasury bond prices (<a class="reference internal" href="#example-treaury-bond-price">Example 5</a>).</p>
+<div class="proof example dropdown admonition" id="example-treaury-bond-price">
+<p class="admonition-title"><span class="caption-number">Example 5 </span> (Pricing 30-year treasury bonds)</p>
+<section class="example-content" id="proof-content">
+<p>Compute 30-year treasury bond prices from historical auctions held between 1977 and 1979, assuming discrete compounding.</p>
+<p><strong>Historical data</strong>: The dataset for this example was reproduced from the <a class="reference external" href="https://treasurydirect.gov/auctions/announcements-data-results/announcement-results-press-releases/previous-announcements-and-results/treasury-notes-bonds-historical-information/">Treasury Notes &amp; Bonds Historical Information page on Treasury.gov</a>. The data consists of 30-year treasury bond information (coupon rate, market interest rate, and price) for bonds issued between 1977 and 1979.</p>
+<p><strong>Strategy</strong></p>
+<ol class="arabic simple">
+<li><p>First, let’s load the historical data set using a <code class="docutils literal notranslate"><span class="pre">loaddatafile</span></code> function, which returns the bond data as a <a class="reference external" href="https://dataframes.juliadata.org/stable/">DataFrame</a> with the key fields:</p>
+<ul class="simple">
+<li><p>The <code class="docutils literal notranslate"><span class="pre">:CouponRate</span></code> field holds the data for the coupon interest rate (annualized rate as a percentage)</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">:AverageYield</span></code> field holds the market rate of interest for the treasury bond (annualized rate as a percentage)</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">:AveragePrice</span></code> field holds the price data for the 30-year treasury bond</p></li>
+</ul>
+</li>
+<li><p>Next, we’ll compute the treasury bond price for each bond in the data set by iterating through the data set using a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop using the shortcut syntax for creating bond, and compounding models.</p></li>
+<li><p>Last, we’ll store the actual and computed prices in a table and calculate the percentage error of the estimate.</p></li>
+</ol>
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># Assumptions:</span>
+<span class="c"># 1. The path_to_data_file is specified</span>
+<span class="c"># 2. The short-cut syntax for bond and compounding models is specfied elsewhere</span>
+<span class="c"># 3. The loaddatafile function is defined elsewhere</span>
+
+<span class="c"># load external packages</span>
+<span class="k">using</span> <span class="n">VLQuantitativeFinancePackage</span>
+
+<span class="c"># load the data set, create a compounding model, and set bond parameters</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">loaddatafile</span><span class="p">(</span><span class="n">path_to_data_file</span><span class="p">);</span>
+<span class="n">discrete_compounding</span> <span class="o">=</span> <span class="n">DiscreteCompoundingModel</span><span class="p">();</span>
+<span class="n">T</span><span class="p">,</span><span class="n">λ</span><span class="p">,</span><span class="n">Vₚ</span> <span class="o">=</span> <span class="mf">30.0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mf">100.0</span> <span class="c"># years, payments per year, par value</span>
+<span class="n">number_of_records</span> <span class="o">=</span> <span class="n">nrow</span><span class="p">(</span><span class="n">dataset</span><span class="p">);</span>
+
+<span class="c"># create an array of bond models, one for each record in the data set</span>
+<span class="n">bonds</span> <span class="o">=</span> <span class="kt">Array</span><span class="p">{</span><span class="kt">MyUSTreasuryCouponSecurityModel</span><span class="p">,</span><span class="mi">1</span><span class="p">}(</span><span class="nb">undef</span><span class="p">,</span><span class="n">number_of_records</span><span class="p">);</span>
+<span class="k">for</span> <span class="n">i</span> <span class="o">∈</span> <span class="mi">1</span><span class="o">:</span><span class="n">number_of_records</span>
+    
+    <span class="c"># get the data from the data frame for this record </span>
+    <span class="n">c</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="ss">:CouponRate</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">100</span><span class="p">);</span> <span class="c"># convert from percentage to decimal</span>
+    <span class="n">r̄</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="ss">:AverageYield</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">100</span><span class="p">);</span> <span class="c"># convert from percentage to decimal</span>
+    
+    <span class="c"># build the model, and compute the price using the short-cut syntax</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">build</span><span class="p">(</span><span class="n">MyUSTreasuryCouponSecurityModel</span><span class="p">,</span> <span class="p">(</span>
+            <span class="n">par</span> <span class="o">=</span> <span class="n">Vₚ</span><span class="p">,</span> <span class="n">T</span> <span class="o">=</span> <span class="n">T</span><span class="p">,</span> <span class="n">rate</span> <span class="o">=</span> <span class="n">r̄</span><span class="p">,</span> <span class="n">coupon</span> <span class="o">=</span> <span class="n">c</span><span class="p">,</span> <span class="n">λ</span> <span class="o">=</span> <span class="n">λ</span>
+        <span class="p">))</span> <span class="o">|&gt;</span> <span class="n">discrete_compounding</span><span class="p">;</span>
+    
+    <span class="c"># store the updated model (with computed price)</span>
+    <span class="n">bonds</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">model</span><span class="p">;</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+<p><strong>Results</strong>: The calculated <span class="math notranslate nohighlight">\(\hat{V}_{B}\)</span> and actual <span class="math notranslate nohighlight">\(V_{B}\)</span> prices for 30-year treasury bond are shown in the table below. The prices are reported as the percentage of the par value. The actual and computed prices are very close, with the maximum percentage error <span class="math notranslate nohighlight">\(\epsilon\ll{0.01}\)</span>%.</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p>date</p></th>
+<th class="head text-center"><p>c</p></th>
+<th class="head text-center"><p>r̄</p></th>
+<th class="head text-center"><p>Vᵦ</p></th>
+<th class="head text-center"><p>V̂ᵦ</p></th>
+<th class="head text-center"><p>ϵ</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p>5/8/75</p></td>
+<td class="text-center"><p>8.25</p></td>
+<td class="text-center"><p>8.3</p></td>
+<td class="text-center"><p>99.45</p></td>
+<td class="text-center"><p>99.45</p></td>
+<td class="text-center"><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>2/4/77</p></td>
+<td class="text-center"><p>7.625</p></td>
+<td class="text-center"><p>7.63</p></td>
+<td class="text-center"><p>99.941</p></td>
+<td class="text-center"><p>99.941</p></td>
+<td class="text-center"><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>11/2/77</p></td>
+<td class="text-center"><p>7.875</p></td>
+<td class="text-center"><p>7.94</p></td>
+<td class="text-center"><p>99.261</p></td>
+<td class="text-center"><p>99.261</p></td>
+<td class="text-center"><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>8/3/78</p></td>
+<td class="text-center"><p>8.375</p></td>
+<td class="text-center"><p>8.43</p></td>
+<td class="text-center"><p>99.402</p></td>
+<td class="text-center"><p>99.402</p></td>
+<td class="text-center"><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>11/3/78</p></td>
+<td class="text-center"><p>8.75</p></td>
+<td class="text-center"><p>8.86</p></td>
+<td class="text-center"><p>98.851</p></td>
+<td class="text-center"><p>98.851</p></td>
+<td class="text-center"><p>0.0</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>5/2/79</p></td>
+<td class="text-center"><p>9.125</p></td>
+<td class="text-center"><p>9.23</p></td>
+<td class="text-center"><p>98.938</p></td>
+<td class="text-center"><p>98.938</p></td>
+<td class="text-center"><p>0.0</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>11/1/79</p></td>
+<td class="text-center"><p>10.375</p></td>
+<td class="text-center"><p>10.44</p></td>
+<td class="text-center"><p>99.407</p></td>
+<td class="text-center"><p>99.407</p></td>
+<td class="text-center"><p>0.0</p></td>
+</tr>
+</tbody>
+</table>
+<p>The implementation of coupon bond pricing in the <a class="reference external" href="https://github.com/varnerlab/VLQuantitativeFinancePackage.jl.git">VLQuantitativeFinancePackage.jl</a> package gives results consistent with the historical data.</p>
+</section>
+</div></section>
+</section>
+<section id="yield-to-maturity-ytm">
+<span id="content-references-us-ytm-defn"></span><h2>Yield to Maturity (YTM)<a class="headerlink" href="#yield-to-maturity-ytm" title="Permalink to this heading">#</a></h2>
+<p>The Yield to Maturity (YTM) of a treasury note or bond is the <a class="reference external" href="https://en.wikipedia.org/wiki/Internal_rate_of_return">internal rate of return (IRR)</a> associated with buying and holding the security until its maturity date (<a class="reference internal" href="#defn-yield-to-maturity">Definition 8</a>):</p>
+<div class="proof definition admonition" id="defn-yield-to-maturity">
+<p class="admonition-title"><span class="caption-number">Definition 8 </span> (Yield to Maturity )</p>
+<section class="definition-content" id="proof-content">
+<p>The yield to maturity (YTM) is defined as the effective market interest rate that makes the present value of a bond’s coupon payments and discounted par value equal to its price <span class="math notranslate nohighlight">\(V_{B}\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[V_{B}(T^{\prime},y) - \mathcal{D}^{-1}_{T,0}(y)\cdot{V_{P}} - C\cdot\sum_{j=1}^{\lambda{T}^{\prime}}\mathcal{D}_{j,0}^{-1}(y) = 0\]</div>
+<p>The term <span class="math notranslate nohighlight">\(\mathcal{D}_{i,0}(y)\)</span> denotes the discount factor for the period <span class="math notranslate nohighlight">\(0\rightarrow{i}\)</span>, which can be either a discrete or continuous compounding model, <span class="math notranslate nohighlight">\(T^{\prime}\)</span> denotes duration remaining on the note or bond, the coupon payment value is given by <span class="math notranslate nohighlight">\(C=\left(\bar{c}/\lambda\right)\cdot{V_{P}}\)</span>, and <span class="math notranslate nohighlight">\(y\)</span> denotes the yield to maturity of the note or bond.</p>
+</section>
+</div><p>The YTM and the effective market interest rate are the same when the note or bond is initially auctioned in the primary market. However, treasury securities are marketable securities, i.e., they can be resold on a <a class="reference external" href="https://www.investopedia.com/articles/bonds/08/treasuries-fed.asp#:~:text=For%20many%20people%2C%20TreasuryDirect%20is,convenience%20and%20liquidity%20than%20TreasuryDirect">secondary treasury market</a>, even after some coupon payments have been paid out. In such cases, the YTM does not equal the initial market interest rate at auction.</p>
+<p>Let’s do a yield to maturity calculation for a 5-year treasury note (<a class="reference internal" href="#example-ytm-5-year-t-note">Example 6</a>):</p>
+<div class="proof example dropdown admonition" id="example-ytm-5-year-t-note">
+<p class="admonition-title"><span class="caption-number">Example 6 </span> (Yield to Maturity for 5-Year T-Note)</p>
+<section class="example-content" id="proof-content">
+<p>You purchased a 5-year treasury note with a face value of <span class="math notranslate nohighlight">\(V_{P}\)</span> = 100 USD at auction for <span class="math notranslate nohighlight">\(V_{B}\)</span> = 96.82 USD. The note has an annual coupon rate of 6%, with semi-annual coupon payments.</p>
+<ol class="arabic simple">
+<li><p>Compute the effective annual interest rate <span class="math notranslate nohighlight">\(\bar{r}\)</span> at the time of the auction.</p></li>
+<li><p>After holding the note for <span class="math notranslate nohighlight">\(T^{\prime}\)</span> years, you sell it on the secondary market for the purchase price. Compute the yield to maturity at the time of the sale on the secondary market.</p></li>
+</ol>
+<p><strong>Solution</strong>: The yeild to maturity and the annual effective interest rate <span class="math notranslate nohighlight">\(\bar{r}\)</span> are equal at the time of auction. Thus, we can compute the effective annual interest rate <span class="math notranslate nohighlight">\(\bar{r}\)</span> using <a class="reference internal" href="#defn-yield-to-maturity">Definition 8</a>.</p>
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># load external packages</span>
+<span class="k">using</span> <span class="n">VLQuantitativeFinancePackage</span>
+
+<span class="c"># 1. Calculate the YTM for the 5y note at auction</span>
+<span class="n">Vₚ</span><span class="p">,</span> <span class="n">Vᵦ</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">λ</span> <span class="o">=</span> <span class="mf">100.0</span><span class="p">,</span> <span class="mf">96.82</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">,</span> <span class="mf">0.06</span><span class="p">,</span> <span class="mi">2</span>
+<span class="n">compounding</span> <span class="o">=</span> <span class="n">DiscreteCompoundingModel</span><span class="p">();</span>
+
+<span class="c"># build the debt model, we don&#39;t know the rate, but we know the price -</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">build</span><span class="p">(</span><span class="n">MyUSTreasuryCouponSecurityModel</span><span class="p">,</span> <span class="p">(</span>
+    <span class="n">par</span> <span class="o">=</span> <span class="n">Vₚ</span><span class="p">,</span> <span class="n">T</span> <span class="o">=</span> <span class="n">T</span><span class="p">,</span> <span class="n">λ</span> <span class="o">=</span> <span class="n">λ</span><span class="p">,</span> <span class="n">coupon</span> <span class="o">=</span> <span class="n">c</span>
+<span class="p">));</span>
+<span class="n">model</span><span class="o">.</span><span class="n">price</span> <span class="o">=</span> <span class="n">Vᵦ</span>
+
+<span class="c"># compute the rate by doing a YTM calculation -</span>
+<span class="n">estimated_rate</span> <span class="o">=</span> <span class="n">YTM</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">compounding</span><span class="p">)</span> <span class="o">|&gt;</span> <span class="n">x</span><span class="o">-&gt;</span><span class="n">round</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">digits</span><span class="o">=</span><span class="mi">4</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>This calculation gives an effective annual interest rate of <code class="docutils literal notranslate"><span class="pre">r̄</span>&#160; <span class="pre">=</span> <span class="pre">6.76%</span></code>. Now, let’s compute the yield to maturity at the time of the sale on the secondary market. Let the number of years the note is held before it is sold on the secondary market be <code class="docutils literal notranslate"><span class="pre">ΔT</span> <span class="pre">=</span> <span class="pre">0.0,1.0,2.0,3.0,</span> <span class="pre">and</span> <span class="pre">4.0</span> <span class="pre">years</span></code>.</p>
+<p><strong>Strategy</strong>:</p>
+<ol class="arabic simple">
+<li><p>First we set up a holding time array <code class="docutils literal notranslate"><span class="pre">ΔT</span></code>, set the note parameters and then initialize some storage for the  yield to maturity values.</p></li>
+<li><p>Next, we process each element in the <code class="docutils literal notranslate"><span class="pre">ΔT</span></code> array using a <code class="docutils literal notranslate"><span class="pre">for</span></code> loop. For each pass through the loop:</p>
+<ul class="simple">
+<li><p>We compute the remaining time on the note (store this value in the <span class="math notranslate nohighlight">\(\hat{T}\)</span> variable), set the price, and then compute the yield to maturity by calling the <code class="docutils literal notranslate"><span class="pre">YTM(...)</span></code> function</p></li>
+</ul>
+</li>
+<li><p>Finally, we store the yield to maturity value in the <code class="docutils literal notranslate"><span class="pre">YTM_value_array</span></code> array.</p></li>
+</ol>
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># load external packages</span>
+<span class="k">using</span> <span class="n">VLQuantitativeFinancePackage</span>
+
+<span class="c"># 2. Calculate the YTM for the 5y note at auction</span>
+<span class="n">Vₚ</span><span class="p">,</span> <span class="n">Vᵦ</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">λ</span> <span class="o">=</span> <span class="mf">100.0</span><span class="p">,</span> <span class="mf">96.82</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">,</span> <span class="mf">0.06</span><span class="p">,</span> <span class="mi">2</span><span class="p">;</span>
+<span class="n">ΔT</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">1.0</span><span class="p">,</span><span class="mf">2.0</span><span class="p">,</span><span class="mf">3.0</span><span class="p">,</span><span class="mf">4.0</span><span class="p">];</span>
+<span class="n">YTM_value_array</span> <span class="o">=</span> <span class="kt">Array</span><span class="p">{</span><span class="kt">Float64</span><span class="p">,</span><span class="mi">1</span><span class="p">}(</span><span class="nb">undef</span><span class="p">,</span> <span class="n">length</span><span class="p">(</span><span class="n">ΔT</span><span class="p">));</span>
+<span class="n">counter</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+<span class="k">for</span> <span class="n">T′</span> <span class="o">∈</span> <span class="n">ΔT</span> 
+    
+    <span class="c"># update the counter -</span>
+    <span class="k">global</span> <span class="n">counter</span> <span class="o">+=</span> <span class="mi">1</span>
+    
+    <span class="c"># how much time is left on the security?</span>
+    <span class="n">T̂</span> <span class="o">=</span> <span class="n">T</span> <span class="o">-</span> <span class="n">T′</span>
+    
+    <span class="c"># build a bond model, we don&#39;t know the rate, but we know the price. </span>
+    <span class="n">ytm_model</span> <span class="o">=</span> <span class="n">build</span><span class="p">(</span><span class="n">MyUSTreasuryCouponSecurityModel</span><span class="p">,</span> <span class="p">(</span>
+        <span class="n">par</span> <span class="o">=</span> <span class="n">Vₚ</span><span class="p">,</span> <span class="n">T</span> <span class="o">=</span> <span class="n">T̂</span><span class="p">,</span> <span class="n">λ</span> <span class="o">=</span> <span class="n">λ</span><span class="p">,</span> <span class="n">coupon</span> <span class="o">=</span> <span class="n">c</span>
+    <span class="p">));</span>
+    <span class="n">ytm_model</span><span class="o">.</span><span class="n">price</span> <span class="o">=</span> <span class="n">Vᵦ</span>
+    
+    <span class="c"># We compute the yeild and store in the YTM_value_array</span>
+    <span class="n">YTM_value_array</span><span class="p">[</span><span class="n">counter</span><span class="p">]</span> <span class="o">=</span> <span class="n">YTM</span><span class="p">(</span><span class="n">ytm_model</span><span class="p">,</span> <span class="n">compounding</span><span class="p">)</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+<p><strong>Results</strong>: The table below shows the yield to maturity at the time of sale of the note on the secondary market.</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>ΔT (y)</p></th>
+<th class="head"><p>R (y)</p></th>
+<th class="head"><p>Vₚ (USD)</p></th>
+<th class="head"><p>Vᵦ (USD)</p></th>
+<th class="head"><p>c</p></th>
+<th class="head"><p>YTM (%)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0.0</p></td>
+<td><p>5.0</p></td>
+<td><p>100.0</p></td>
+<td><p>96.82</p></td>
+<td><p>0.06</p></td>
+<td><p>6.7601</p></td>
+</tr>
+<tr class="row-odd"><td><p>1.0</p></td>
+<td><p>4.0</p></td>
+<td><p>100.0</p></td>
+<td><p>96.82</p></td>
+<td><p>0.06</p></td>
+<td><p>6.9238</p></td>
+</tr>
+<tr class="row-even"><td><p>2.0</p></td>
+<td><p>3.0</p></td>
+<td><p>100.0</p></td>
+<td><p>96.82</p></td>
+<td><p>0.06</p></td>
+<td><p>7.1974</p></td>
+</tr>
+<tr class="row-odd"><td><p>3.0</p></td>
+<td><p>2.0</p></td>
+<td><p>100.0</p></td>
+<td><p>96.82</p></td>
+<td><p>0.06</p></td>
+<td><p>7.7469</p></td>
+</tr>
+<tr class="row-even"><td><p>4.0</p></td>
+<td><p>1.0</p></td>
+<td><p>100.0</p></td>
+<td><p>96.82</p></td>
+<td><p>0.06</p></td>
+<td><p>9.4061</p></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li><p>When the time to maturity decreases and the price remains fixed, the yield to maturity for a treasury note increases.</p></li>
+<li><p>This is logical since the note always pays its face value at maturity. Therefore, if the new owner acquires the note at the same price as the initial buyer, they will receive the face value (as well as the remaining coupon payments) over a shorter period.</p></li>
+</ul>
+</section>
+</div></section>
+<hr class="docutils" />
+<section id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this heading">#</a></h2>
+<p>In this lecture we introduced Treasury, Bills, Notes, and Bonds, and we discussed the relationship between the coupon rate, the interest rate, and the price of the security. We also introduced the Yield to Maturity (YTM) and the relationship between the YTM and the market interest rate.</p>
+<p>In particular, we explored the following concepts:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#content-references-interest-models"><span class="std std-ref">Simple and Compound Interest</span></a> are two methods of calculating interest. Simple interest is calculated on the principal amount of a loan only. Compound interest is calculated on the principal amount and also on the accumulated interest of previous periods, and can thus be regarded as <code class="docutils literal notranslate"><span class="pre">interest</span> <span class="pre">on</span> <span class="pre">interest.</span></code></p></li>
+<li><p><a class="reference internal" href="#content-references-us-t-bills"><span class="std std-ref">U.S. Treasury Bills</span></a> are short-term debt securities with a maturity of less than one year. On the other hand, <a class="reference internal" href="#content-references-us-t-notes-bonds"><span class="std std-ref">Treasury Notes and Bonds</span></a> are long-term debt securities with a maturity of two to thirty years.</p></li>
+<li><p><a class="reference internal" href="#content-references-us-ytm-defn"><span class="std std-ref">The Yield to Maturity (YTM)</span></a> is a measure of the <em>return</em> of a bond investment. Yield to maturity is the discount rate that equates the present value of a bond’s cashflows to its price.</p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./chapter-2-dir/bonds"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../bonds.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">U.S. Treasury Securities</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="T-bill-note-bond-pricing.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Treasury Security Pricing Dynamics and Risks</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simple-and-compound-interest">Simple and Compound Interest</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#u-s-treasury-bills">U.S. Treasury Bills</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#u-s-treasury-notes-and-bonds">U.S. Treasury Notes and Bonds</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pricing">Pricing</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#yield-to-maturity-ytm">Yield to Maturity (YTM)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Varner and Woltornist
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
