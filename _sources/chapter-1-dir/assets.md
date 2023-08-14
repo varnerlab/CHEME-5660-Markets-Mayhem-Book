@@ -17,8 +17,7 @@ In this lecture, we introduce three basic financial concepts: abstract assets, s
 
 
 (content:references:abstract-asset-defn)=
-## Abstract Assets
-
+## Introduction
 An _abstract asset_ is a sequence of current and future cash flows 
 demarcated in some currency, for example, Euros, Dollars, Yuan, or cryptocurrencies such as Bitcoin ({numref}`cash-flow-abstract-asset-fig`).
 
@@ -317,7 +316,12 @@ Let's consider an example to illustrate the NPV decision rule concerning the ins
 
 Johnson Controls offers to install a new computer-controlled lighting system that will reduce electric bills by 90,000 USD in each of the next three years. The system costs 230,000 USD and takes 1-year to install. The building owner has a `r̄ = 4%` discount rate per year (constant for the lifetime of the project). Should the owner install the system?
 
-__Solution:__ Let's assume a discrete discount factor model and compute the net present value of the project. If the net present value is positive, the owner should install the system. If the net present value is negative, the owner should not install the system.  [Julia](https://julialang.org) code to compute the net present value of the project is shown below:
+__Solution:__ Let's assume a discrete discount factor model and compute the net present value of the project. 
+
+* If the net present value is positive, the owner should install the system: 
+* If the net present value is negative, the owner should not install the system.  
+
+The [Julia](https://julialang.org) code to compute the net present value of the project is shown below:
 
 ```julia
 cashflows = [-230,90,90,90];
@@ -332,13 +336,13 @@ end
 NPV = sum(discounted_cashflows);
 ```
 
-The net present value of the project is `NPV = 19.75k`. Since the net present value is positive, the owner should install the system. 
+The net present value of the project is `NPV = 19.75k` at a discount rate of `r̄ = 0.04`. Since the net present value is positive, we should consider installing the upgraded lighting system in the building.
 
 __source__: The Johnson Controls example was modified from [MIT 15.401](https://ocw.mit.edu/courses/sloan-school-of-management/15-401-finance-theory-i-fall-2008/).
 ````
 
 #### Internal Rate of Return
-At a minimum, a decision-maker should choose be indifferent to a project or investment, i.e., the project or investment should at least have a value of `NPV = 0`. The special discount rate $r^{\star}$ where the net present value is zero is called the Internal Rate of Return (IRR) ({prf:ref}`defn-internal-rate-of-return`):
+At a minimum, a decision-maker should be indifferent to a project or investment, i.e., the project or investment should at have (at least) a value of `NPV = 0`. The discount rate $r^{\star}$ where the net present value for a project or investment is equal to zero is called the Internal Rate of Return (IRR) ({prf:ref}`defn-internal-rate-of-return`):
 
 <!-- * If the net present value of an investment or project is positive, the project earns more than a zero-coupon bond with a yield equal to the discount rate used to discount future cash flows. 
 * If the net present value of a project is negative, the project earns less than a zero-coupon bond with a yield equal to the discount rate used to discount future cash flows. 
@@ -347,31 +351,72 @@ At a minimum, a decision-maker should choose be indifferent to a project or inve
 ````{prf:definition} Internal Rate of Return
 :label: defn-internal-rate-of-return
 
-Assume the discount rate $\bar{r}$ is constant between time periods. Then, the internal rate of rerturn (IRR) is the effective constant discount rate $r^{\star}$ that makes the net present value equal to zero:
+The internal rate of rerturn `IRR` is the effective (constant) discount rate $r^{\star}$ that makes the net present value of a project or investment equal to zero:
 
 ```{math}
 \sum_{t=0}^{T}{\mathcal{D}_{t,0}^{-1}}(r^{\star})\cdot\bar{c}_{t} = 0
 ```
 
-The discount factor $\mathcal{D}_{t,0}(r)$ can be modeled as either a discrete or a continuous discount factor.
+where the discount factor $\mathcal{D}_{t,0}(r)$ can be modeled as either a discrete or a continuous discount factor. 
+
+**Caveats**: 
+* The `IRR` assumes that discount rate is constant over the course of the project or investment. Thus, the `IRR` is a single number that summarizes the discount rate over the lifetime of the project or investment. 
 ````
 
-Thus, the IRR can be thought of as a decision boundary of sorts; the IRR is the discount rate where the project manager or investor is indifferent to the project or investment. Let's review the lighting example, and compute the internal rate of return for the project
+Like the `NPV`, the IRR can be thought of as a decision boundary of sorts; the IRR is the discount rate where the project manager or investor is indifferent to the project or investment. Thus, we can formulate the following decision criteria:
+
+* If the project discount rate is greater than the IRR, the project or investment is not attractive (`NPV < 0`), and the decision-maker should consider alternative investments or projects, e.g., a zero-coupon bond with the same time-to-maturity as the project.
+* If the project discount rate is less than the IRR, the project or investment is attractive (`NPV > 0`), and the decision-maker should consider the project or investment.
+
+Let's revisit the lighting example, and compute the internal rate of return for the proposed project
 ({prf:ref}`example-internal-rate-of-return`):
 
 ````{prf:example} Internal rate of return for the lighting project
 :label: example-internal-rate-of-return
 :class: dropdown
-Fill me in
+
+Johnson Controls offers to install a new computer-controlled lighting system that will reduce electric bills by 90,000 USD in each of the next three years. The system costs 230,000 USD and takes 1-year to install. Compute the internal rate of return $r^{\star}$ for this project and determine if we should install the upgraded system.
+
+__Solution__: For this problem we estimate the internal rate of return $r^{\star}$ by minimzing the squared net present value. The [Julia](https://julialang.org) code to compute the `IRR`, which uses the [Optim.jl](https://github.com/JuliaNLSolvers/Optim.jl) package, is given by:
+
+```julia
+# load external packages -
+using Optim
+
+# define the loss function (we are minimizing the squared NPV)
+function loss(r̄::Float64, cashflows::Array{Float64,1})
+    
+    # initialize -
+    number_of_periods = length(cashflows);
+    discounted_cashflows = Array{Float64,1}(undef, number_of_periods);
+    
+    # main -
+    for i ∈ 0:(number_of_periods - 1)
+        discounted_cashflows[i+1] = cashflows[i+1]/((1+r̄)^i);
+    end
+
+    # compute the NPV -
+    NPV = sum(discounted_cashflows);
+
+    # return -
+    return (NPV)^2
+end
+
+# solve using the optimize method from Optim.jl -
+cashflows = [-230.0,90.0,90.0,90.0];
+objective(x) = loss(x, cashflows);
+soln = optimize(objective, 0.0, 0.20)
+r̄ = soln.minimizer;
+```
+
+The internal rate of return for the lighting project equals `IRR = 0.082`. Since the internal rate of return is _greater than_ the discount rate `r̄ = 0.04`, the building owner should install the upgraded lighting system.
 ````
 
 (content:references:npv-alternative-investment)=
-#### Alternative investment?
-Many people wonder about an hypothetical alternative investment when considering net present value. If a project has a positive net present value, is there another project that could give a better return?
+#### Alternative investments?
+When considering net present value, people often wonder about hypothetical alternative investments. If a project has a negative net present value, it is not attractive. However, if a project has a zero or positive net present value, the decision can be subtle because another project or investment could exist that offers a better return. Answering this question is impossible, but we can imagine a _minimum hypothetical investment_, which is a risk-free investment with the same time-to-maturity as the project.
 
-Any attractive project (`NPV > 0`) should generate an income equal to a risk-free alternative investment with the same time-to-maturity. For instance, a [zero-coupon bond](https://www.finra.org/investors/insights/zero-coupon-bonds) or a [certificate of deposit (CD)](https://www.investopedia.com/terms/c/certificateofdeposit.asp). Later, we will discuss [U.S. Treasury bills, notes, and bonds](content:references:us-treasury-debt-securities). For now, consider a zero-coupon treasury bond as a risk-free investment guaranteed to earn a fixed interest rate.
-
-Thus, as an alternative to a project with upfront costs and future cash flows, we invest the upfront costs in a zero-coupon bond with the same time-to-maturity as the project. The net present value of a project must be greater than the net present value of a zero-coupon bond; otherwise, the project would not be attractive because we are risking capital and not earning a premium for the additional risk. 
+For any project with a positive net present value, the income generated should be equal to or greater than that of a risk-free investment with the same time-to-maturity, such as a [zero-coupon bond](https://www.finra.org/investors/insights/zero-coupon-bonds) or a [certificate of deposit (CD)](https://www.investopedia.com/terms/c/certificateofdeposit.asp). Later on, we will discuss [U.S. Treasury bills, notes, and bonds](content:references:us-treasury-debt-securities). For now, consider a [zero-coupon treasury bond](https://www.finra.org/investors/insights/zero-coupon-bonds) as a guaranteed risk-free investment with a fixed interest rate. Therefore, instead of investing in a project with upfront costs and future cash flows, we could invest the upfront costs in a [zero-coupon bond](https://www.finra.org/investors/insights/zero-coupon-bonds) with the same time-to-maturity as the project. If the net present value of a project is less than that of a [zero-coupon bond](https://www.finra.org/investors/insights/zero-coupon-bonds), the project is not attractive as we would be risking capital without earning a premium for the additional risk. 
 
 
 ---
