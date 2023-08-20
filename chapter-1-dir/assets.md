@@ -135,9 +135,11 @@ Let $\dot{c}_{0}$ denote the cash-flow in period 0 (current value), and $\dot{c}
 :label: eq-cash-flow-multiple-period
 \dot{c}_{t} = \left[\prod_{j=0}^{t-1}\left(1+r_{j+1,j}\right)\right]\cdot\dot{c}_{0}\qquad{t=1,2,\dots,T}
 ```
+
+The product term is called the _multi-period discount factor_ and given the symbol $\mathcal{D}$.
 ````
 
-The product term (the $\prod\star$ in the brackets) in Eqn. {eq}`eq-cash-flow-multiple-period` is called the _multi-period discount factor_ and given the symbol $\mathcal{D}$. Equation {eq}`eq-cash-flow-multiple-period` can be written in a more compact form as:
+Equation {eq}`eq-cash-flow-multiple-period` can be written in a more compact form as:
 
 ```{math}
 \dot{c}_{t} = \mathcal{D}_{t,0}\cdot\dot{c}_{0}\qquad{t=1,2,\dots,T}
@@ -282,7 +284,7 @@ where $\nu_{s}$ is a direction parameter; $\nu_{s}=+1$ if stream $s$ enters node
 :label: net-present-value-defn
 
 
-The net present value (NPV) is the sum of current and discounted future cash flows, discounted to current current dollars at `t = 0`:
+The net present value (NPV) is the sum of current and future cash flows, discounted to current current dollars at `t = 0`:
 
 ```{math}
 \text{NPV}(T,r) = \sum_{i=0}^{T}{\mathcal{D}_{i,0}^{-1}}(r)\cdot\bar{c}_{t}
