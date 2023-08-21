@@ -4,8 +4,6 @@
 ```{topic} Outline
 In this lecture we'll discuss the following topics:
 
-* [Simple and Compound Interest](content:references:interest-models) are two methods of calculating interest. Simple interest is calculated on the principal amount of a loan only. Compound interest is calculated on the principal amount and also on the accumulated interest of previous periods, and can thus be regarded as `interest on interest.`
-
 * [U.S. Treasury Bills](content:references:US-T-Bills) are short-term debt securities with a maturity of less than one year. On the other hand,[Treasury Notes and Bonds](content:references:US-T-Notes-Bonds) are long-term debt securities with a maturity of two to thirty years. Bills, Notes and Bonds are structured contracts between the U.S. government and bondholders that specify the repayment terms of the loan, e.g., the duration of the loan and the payment schedule.
 
 * [The Yield to Maturity (YTM)](content:references:US-YTM-Defn) is a measure of the _return of a bond investment_. Yield to maturity is the discount rate that equates the present value of a bond's cashflows to its price.  The YTM is the internal rate of return (IRR) of an investment in a bond if the investor holds the bond until maturity and if all payments are made as scheduled.
@@ -31,59 +29,6 @@ The bondholder and the U.S. Treasury have a marketable agreement, which can be r
 * Some U.S. Treasury debt securities have interest payments commonly called coupons. These payments give the lender fixed cashflows on a predetermined schedule throughout the debt instrument's term.
 * Income from interest on U.S. Treasury debt securities is free of state and local income taxes but subject to federal income taxes.
 * You can purchase U.S. Treasury debt directly from the [United States Treasury via TreasuryDirect](https://www.treasurydirect.gov/indiv/products/prod_tbonds_glance.htm) or through a bank or broker to lend money to the U.S. government.
-
-(content:references:interest-models)=
-## Simple and Compound Interest
-The distinction between simple and compound interest is crucial in the world of finance and investing. These concepts significantly impact investment growth and borrowing costs, making them fundamental aspects to consider when making financial decisions. 
-
-Simple interest is paid only on the initial principle. For example, if amount $A(0)$ is invested in an account at $t=0$ which pays a simple interest rate of $r$ per period, then after $n$ periods the account would hold the amount $A(n)$:
-
-```{math}
-:label: eqn-simple-interest
-A(n) = A(0)\cdot\left(1+rn\right)
-```
-
-The interest earned is not reinvested, and thus the interest earned is constant over time.  However, compound interest considers both the principal and the interest accumulated over time, i.e., you earn `interest on interest`. For example, if amount $A(0)$ is invested at $t=0$ into an account that pays a compound interest rate $r$ per period, then after $n$ periods the account would hold the amount $A(n)$:
-
-```{math}
-:label: eqn-compound-interest
-A(n) = A(0)\cdot\left(1+r\right)^n
-```
-
-As the number of periods become large, compound interest always outperforms simple interest ({numref}`fig-simple-compound-interest`). 
-
-```{figure} ./figs/Fig-Simple-Compound-Balance.svg
----
-height: 420px
-name: fig-simple-compound-interest
----
-Simple versus compound interest for n-periods for an interest rate of $r = 0.05$ per-period. Compound interest outperforms simple interest as the number of periods becomes large.
-```
-
-
-Finally, interest rates are typically quoted as annualized values and can be compounded at different rates, e.g., annually, quarterly, etc, and compound interest can be computed on a discrete or continuous basis ({prf:ref}`defn-compound-interest`):
-
-````{prf:definition} Discrete and continuous compounding
-:label: defn-compound-interest
-
-Let there be `n-compounding periods per year` and an annualized interest rate of `r-percent`.  Then an initial investment $A(0)$ will be worth:
-
-```{math}
-:label: eqn-compound-interest-model-discrete
-A(m) = A(0)\cdot\left(1+r/n\right)^{mn}
-```
-
-after `m-years` where the interest rate `r` is a decimal. As the number of compounding periods $n\rightarrow\infty$, the investment $A(m)$ approaches the continuous compounding limit:
-
-```{math}
-:label: eqn-compound-interest-model-cont
-\lim_{n\rightarrow\infty}A(m) = A(0)\cdot\exp\left(rm\right)
-```
-````
-
-```{admonition} Simple versus Compound Interest
-We'll exclusively deal with compound interest throughtout this course, as this is the mechanism used in the real world for different types of investments. Further, we'll _almost always_ assume that interest is compounded continuously, i.e., the number of compounding periods $n\rightarrow\infty$.
-```
 
 
 (content:references:US-T-Bills)=
@@ -324,8 +269,6 @@ __Results__: The table below shows the yield to maturity at the time of sale of 
 In this lecture we introduced Treasury, Bills, Notes, and Bonds, and we discussed the relationship between the coupon rate, the interest rate, and the price of the security. We also introduced the Yield to Maturity (YTM) and the relationship between the YTM and the market interest rate. 
 
 In particular, we explored the following concepts:
-
-* [Simple and Compound Interest](content:references:interest-models) are two methods of calculating interest. Simple interest is calculated on the principal amount of a loan only. Compound interest is calculated on the principal amount and also on the accumulated interest of previous periods, and can thus be regarded as `interest on interest.`
 
 * [U.S. Treasury Bills](content:references:US-T-Bills) are short-term debt securities with a maturity of less than one year. On the other hand, [Treasury Notes and Bonds](content:references:US-T-Notes-Bonds) are long-term debt securities with a maturity of two to thirty years.
 

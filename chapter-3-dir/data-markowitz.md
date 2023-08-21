@@ -70,6 +70,8 @@ $\rho_{ij}$ denotes the correlation between assets $i$ and $j$.
 Now that we know how to compute a portfolio’s risk and expected reward let’s think about what we can control as a financial engineer. Of course, we cannot control the return or volatility of asset $i$; the market drives those. However, we can control which assets we include in the portfolio and the relative amount of each of these assets. Thus, how we choose which assets to include and their associated weights give insight into the type of investor we are. If we are a Markowitz investor, we minimize the risk required to obtain a specified reward. 
 
 ````{prf:observation} The role of correlation in $\mathcal{P}$
+:label: obs-correlation-in-p
+
 An exciting feature of the variance of the portfolio return ({prf:ref}`defn-portfolio-variance`) is the dependence on the [correlation](https://en.wikipedia.org/wiki/Correlation) denoted by $\rho_{ij}$ between assets $i$ and $j$. To see why this is exciting, let's consider a portfolio $\mathcal{P}$ consisting of two risky assets; $\vert\mathcal{P}\vert$ = 2. Then, the variance of the portfolio returns $\sigma_{\mathcal{P}}^{2}$ is given by:
 
 ```{math}
