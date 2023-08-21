@@ -437,7 +437,6 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simple-and-compound-interest">Simple and Compound Interest</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#u-s-treasury-bills">U.S. Treasury Bills</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#u-s-treasury-notes-and-bonds">U.S. Treasury Notes and Bonds</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pricing">Pricing</a></li>
@@ -462,7 +461,6 @@ document.write(`
 <p class="topic-title">Outline</p>
 <p>In this lecture we’ll discuss the following topics:</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#content-references-interest-models"><span class="std std-ref">Simple and Compound Interest</span></a> are two methods of calculating interest. Simple interest is calculated on the principal amount of a loan only. Compound interest is calculated on the principal amount and also on the accumulated interest of previous periods, and can thus be regarded as <code class="docutils literal notranslate"><span class="pre">interest</span> <span class="pre">on</span> <span class="pre">interest.</span></code></p></li>
 <li><p><a class="reference internal" href="#content-references-us-t-bills"><span class="std std-ref">U.S. Treasury Bills</span></a> are short-term debt securities with a maturity of less than one year. On the other hand,<a class="reference internal" href="#content-references-us-t-notes-bonds"><span class="std std-ref">Treasury Notes and Bonds</span></a> are long-term debt securities with a maturity of two to thirty years. Bills, Notes and Bonds are structured contracts between the U.S. government and bondholders that specify the repayment terms of the loan, e.g., the duration of the loan and the payment schedule.</p></li>
 <li><p><a class="reference internal" href="#content-references-us-ytm-defn"><span class="std std-ref">The Yield to Maturity (YTM)</span></a> is a measure of the <em>return of a bond investment</em>. Yield to maturity is the discount rate that equates the present value of a bond’s cashflows to its price.  The YTM is the internal rate of return (IRR) of an investment in a bond if the investor holds the bond until maturity and if all payments are made as scheduled.</p></li>
 </ul>
@@ -470,11 +468,11 @@ document.write(`
 <hr class="docutils" />
 <section id="introduction">
 <h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
-<p>United States Treasury debt securities are structured loan agreements between a borrower, i.e., the U.S. government, and a lender (you) that allows the government to fund its operations and obligations (<a class="reference internal" href="#fig-bill-notes-bonds-schematic"><span class="std std-numref">Fig. 4</span></a>).</p>
+<p>United States Treasury debt securities are structured loan agreements between a borrower, i.e., the U.S. government, and a lender (you) that allows the government to fund its operations and obligations (<a class="reference internal" href="#fig-bill-notes-bonds-schematic"><span class="std std-numref">Fig. 5</span></a>).</p>
 <figure class="align-default" id="fig-bill-notes-bonds-schematic">
 <a class="reference internal image-reference" href="../../_images/Fig-Govt-Debt-Schematic.svg"><img alt="../../_images/Fig-Govt-Debt-Schematic.svg" height="340px" src="../../_images/Fig-Govt-Debt-Schematic.svg" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 4 </span><span class="caption-text">Schematic of United States Treasury debt instrument. The treasury borrows money from bondholders by selling treasury bills, notes, and bonds. Each debt instrument has a particular repayment plan, e.g., a specified duration and payment schedule.</span><a class="headerlink" href="#fig-bill-notes-bonds-schematic" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 5 </span><span class="caption-text">Schematic of United States Treasury debt instrument. The treasury borrows money from bondholders by selling treasury bills, notes, and bonds. Each debt instrument has a particular repayment plan, e.g., a specified duration and payment schedule.</span><a class="headerlink" href="#fig-bill-notes-bonds-schematic" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>The bondholder and the U.S. Treasury have a marketable agreement, which can be resold. This agreement mandates the Treasury to make payments to the bondholder on specific dates throughout the instrument’s lifetime. Although there are various types of U.S. government debt securities, they all share a few common characteristics:</p>
@@ -485,38 +483,6 @@ document.write(`
 <li><p>Income from interest on U.S. Treasury debt securities is free of state and local income taxes but subject to federal income taxes.</p></li>
 <li><p>You can purchase U.S. Treasury debt directly from the <a class="reference external" href="https://www.treasurydirect.gov/indiv/products/prod_tbonds_glance.htm">United States Treasury via TreasuryDirect</a> or through a bank or broker to lend money to the U.S. government.</p></li>
 </ul>
-</section>
-<section id="simple-and-compound-interest">
-<span id="content-references-interest-models"></span><h2>Simple and Compound Interest<a class="headerlink" href="#simple-and-compound-interest" title="Permalink to this heading">#</a></h2>
-<p>The distinction between simple and compound interest is crucial in the world of finance and investing. These concepts significantly impact investment growth and borrowing costs, making them fundamental aspects to consider when making financial decisions.</p>
-<p>Simple interest is paid only on the initial principle. For example, if amount <span class="math notranslate nohighlight">\(A(0)\)</span> is invested in an account at <span class="math notranslate nohighlight">\(t=0\)</span> which pays a simple interest rate of <span class="math notranslate nohighlight">\(r\)</span> per period, then after <span class="math notranslate nohighlight">\(n\)</span> periods the account would hold the amount <span class="math notranslate nohighlight">\(A(n)\)</span>:</p>
-<div class="math notranslate nohighlight" id="equation-eqn-simple-interest">
-<span class="eqno">(6)<a class="headerlink" href="#equation-eqn-simple-interest" title="Permalink to this equation">#</a></span>\[A(n) = A(0)\cdot\left(1+rn\right)\]</div>
-<p>The interest earned is not reinvested, and thus the interest earned is constant over time.  However, compound interest considers both the principal and the interest accumulated over time, i.e., you earn <code class="docutils literal notranslate"><span class="pre">interest</span> <span class="pre">on</span> <span class="pre">interest</span></code>. For example, if amount <span class="math notranslate nohighlight">\(A(0)\)</span> is invested at <span class="math notranslate nohighlight">\(t=0\)</span> into an account that pays a compound interest rate <span class="math notranslate nohighlight">\(r\)</span> per period, then after <span class="math notranslate nohighlight">\(n\)</span> periods the account would hold the amount <span class="math notranslate nohighlight">\(A(n)\)</span>:</p>
-<div class="math notranslate nohighlight" id="equation-eqn-compound-interest">
-<span class="eqno">(7)<a class="headerlink" href="#equation-eqn-compound-interest" title="Permalink to this equation">#</a></span>\[A(n) = A(0)\cdot\left(1+r\right)^n\]</div>
-<p>As the number of periods become large, compound interest always outperforms simple interest (<a class="reference internal" href="#fig-simple-compound-interest"><span class="std std-numref">Fig. 5</span></a>).</p>
-<figure class="align-default" id="fig-simple-compound-interest">
-<a class="reference internal image-reference" href="../../_images/Fig-Simple-Compound-Balance.svg"><img alt="../../_images/Fig-Simple-Compound-Balance.svg" height="420px" src="../../_images/Fig-Simple-Compound-Balance.svg" /></a>
-<figcaption>
-<p><span class="caption-number">Fig. 5 </span><span class="caption-text">Simple versus compound interest for n-periods for an interest rate of <span class="math notranslate nohighlight">\(r = 0.05\)</span> per-period. Compound interest outperforms simple interest as the number of periods becomes large.</span><a class="headerlink" href="#fig-simple-compound-interest" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
-<p>Finally, interest rates are typically quoted as annualized values and can be compounded at different rates, e.g., annually, quarterly, etc, and compound interest can be computed on a discrete or continuous basis (<a class="reference internal" href="#defn-compound-interest">Definition 5</a>):</p>
-<div class="proof definition admonition" id="defn-compound-interest">
-<p class="admonition-title"><span class="caption-number">Definition 5 </span> (Discrete and continuous compounding)</p>
-<section class="definition-content" id="proof-content">
-<p>Let there be <code class="docutils literal notranslate"><span class="pre">n-compounding</span> <span class="pre">periods</span> <span class="pre">per</span> <span class="pre">year</span></code> and an annualized interest rate of <code class="docutils literal notranslate"><span class="pre">r-percent</span></code>.  Then an initial investment <span class="math notranslate nohighlight">\(A(0)\)</span> will be worth:</p>
-<div class="math notranslate nohighlight" id="equation-eqn-compound-interest-model-discrete">
-<span class="eqno">(8)<a class="headerlink" href="#equation-eqn-compound-interest-model-discrete" title="Permalink to this equation">#</a></span>\[A(m) = A(0)\cdot\left(1+r/n\right)^{mn}\]</div>
-<p>after <code class="docutils literal notranslate"><span class="pre">m-years</span></code> where the interest rate <code class="docutils literal notranslate"><span class="pre">r</span></code> is a decimal. As the number of compounding periods <span class="math notranslate nohighlight">\(n\rightarrow\infty\)</span>, the investment <span class="math notranslate nohighlight">\(A(m)\)</span> approaches the continuous compounding limit:</p>
-<div class="math notranslate nohighlight" id="equation-eqn-compound-interest-model-cont">
-<span class="eqno">(9)<a class="headerlink" href="#equation-eqn-compound-interest-model-cont" title="Permalink to this equation">#</a></span>\[\lim_{n\rightarrow\infty}A(m) = A(0)\cdot\exp\left(rm\right)\]</div>
-</section>
-</div><div class="admonition-simple-versus-compound-interest admonition">
-<p class="admonition-title">Simple versus Compound Interest</p>
-<p>We’ll exclusively deal with compound interest throughtout this course, as this is the mechanism used in the real world for different types of investments. Further, we’ll <em>almost always</em> assume that interest is compounded continuously, i.e., the number of compounding periods <span class="math notranslate nohighlight">\(n\rightarrow\infty\)</span>.</p>
-</div>
 </section>
 <section id="u-s-treasury-bills">
 <span id="content-references-us-t-bills"></span><h2>U.S. Treasury Bills<a class="headerlink" href="#u-s-treasury-bills" title="Permalink to this heading">#</a></h2>
@@ -533,7 +499,7 @@ document.write(`
 <section class="definition-content" id="proof-content">
 <p>A zero-coupon Treasury bill with a face (par) value of <span class="math notranslate nohighlight">\(V_{P}\)</span> (future) has a <code class="docutils literal notranslate"><span class="pre">T-year</span></code> term and an <em>annualized</em> effective market rate of interest of <span class="math notranslate nohighlight">\(\bar{r}\)</span>. The <em>fair price</em>, denoted by <span class="math notranslate nohighlight">\(V_{B}\)</span>, is the face (par) value discounted to back to today at an effective market interest rate <span class="math notranslate nohighlight">\(\bar{r}\)</span>:</p>
 <div class="math notranslate nohighlight" id="equation-eqn-zero-coupon-bill-bond">
-<span class="eqno">(10)<a class="headerlink" href="#equation-eqn-zero-coupon-bill-bond" title="Permalink to this equation">#</a></span>\[V_{B}(\bar{r}) = \mathcal{D}^{-1}_{T,0}(\bar{r})\cdot{V_{P}}\]</div>
+<span class="eqno">(9)<a class="headerlink" href="#equation-eqn-zero-coupon-bill-bond" title="Permalink to this equation">#</a></span>\[V_{B}(\bar{r}) = \mathcal{D}^{-1}_{T,0}(\bar{r})\cdot{V_{P}}\]</div>
 <p>The quantity <span class="math notranslate nohighlight">\(\mathcal{D}_{T,0}(\bar{r})\)</span> denotes a discount factor governing the period between the auction at <code class="docutils literal notranslate"><span class="pre">t</span> <span class="pre">=</span> <span class="pre">0</span></code> and the term of the bill in <code class="docutils literal notranslate"><span class="pre">t</span> <span class="pre">=</span> <span class="pre">T</span> <span class="pre">years</span></code>. The discount factor can be described using either discrete or continuous compounding.</p>
 </section>
 </div></section>
@@ -555,7 +521,7 @@ document.write(`
 <section class="definition-content" id="proof-content">
 <p>A note or bond has a term of <code class="docutils literal notranslate"><span class="pre">T-years</span></code> and <span class="math notranslate nohighlight">\(\lambda\)</span> coupon payments per year. The <em>fair price</em> of a note or bond is the sum of the future coupon payments <span class="math notranslate nohighlight">\(C\)</span> and the face (par) value <span class="math notranslate nohighlight">\(V_{P}\)</span> discounted back to today at an effective market interest rate <span class="math notranslate nohighlight">\(\bar{r}\)</span>:</p>
 <div class="math notranslate nohighlight" id="equation-eqn-fixed-r-bond-price-w-coupon">
-<span class="eqno">(11)<a class="headerlink" href="#equation-eqn-fixed-r-bond-price-w-coupon" title="Permalink to this equation">#</a></span>\[V_{B}(T,\bar{r}) = \mathcal{D}^{-1}_{N,0}(\bar{r})\cdot{V_{P}}+C\cdot\sum_{j=1}^{\lambda{T}}\mathcal{D}_{j,0}^{-1}(\bar{r})\]</div>
+<span class="eqno">(10)<a class="headerlink" href="#equation-eqn-fixed-r-bond-price-w-coupon" title="Permalink to this equation">#</a></span>\[V_{B}(T,\bar{r}) = \mathcal{D}^{-1}_{N,0}(\bar{r})\cdot{V_{P}}+C\cdot\sum_{j=1}^{\lambda{T}}\mathcal{D}_{j,0}^{-1}(\bar{r})\]</div>
 <p>The term <span class="math notranslate nohighlight">\(\mathcal{D}_{i,0}(\bar{r})\)</span> denotes the discount factor for the period <span class="math notranslate nohighlight">\(0\rightarrow{i}\)</span>, which can be either a discrete or continuous compounding model. The coupon payment is given by <span class="math notranslate nohighlight">\(C=\left(\bar{c}/\lambda\right)\cdot{V_{P}}\)</span>, and the interest rate <span class="math notranslate nohighlight">\(\bar{r}\)</span> are set at auction.</p>
 </section>
 </div><p>Let’s use historical auction data from 1975-1979 and the <a class="reference external" href="https://github.com/varnerlab/VLQuantitativeFinancePackage.jl.git">VLQuantitativeFinancePackage.jl</a> package to compute the historical 30-year treasury bond prices (<a class="reference internal" href="#example-treaury-bond-price">Example 6</a>).</p>
@@ -813,7 +779,6 @@ document.write(`
 <p>In this lecture we introduced Treasury, Bills, Notes, and Bonds, and we discussed the relationship between the coupon rate, the interest rate, and the price of the security. We also introduced the Yield to Maturity (YTM) and the relationship between the YTM and the market interest rate.</p>
 <p>In particular, we explored the following concepts:</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#content-references-interest-models"><span class="std std-ref">Simple and Compound Interest</span></a> are two methods of calculating interest. Simple interest is calculated on the principal amount of a loan only. Compound interest is calculated on the principal amount and also on the accumulated interest of previous periods, and can thus be regarded as <code class="docutils literal notranslate"><span class="pre">interest</span> <span class="pre">on</span> <span class="pre">interest.</span></code></p></li>
 <li><p><a class="reference internal" href="#content-references-us-t-bills"><span class="std std-ref">U.S. Treasury Bills</span></a> are short-term debt securities with a maturity of less than one year. On the other hand, <a class="reference internal" href="#content-references-us-t-notes-bonds"><span class="std std-ref">Treasury Notes and Bonds</span></a> are long-term debt securities with a maturity of two to thirty years.</p></li>
 <li><p><a class="reference internal" href="#content-references-us-ytm-defn"><span class="std std-ref">The Yield to Maturity (YTM)</span></a> is a measure of the <em>return</em> of a bond investment. Yield to maturity is the discount rate that equates the present value of a bond’s cashflows to its price.</p></li>
 </ul>
@@ -888,7 +853,6 @@ document.write(`
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simple-and-compound-interest">Simple and Compound Interest</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#u-s-treasury-bills">U.S. Treasury Bills</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#u-s-treasury-notes-and-bonds">U.S. Treasury Notes and Bonds</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pricing">Pricing</a></li>

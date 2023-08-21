@@ -474,7 +474,7 @@ portfolio. Denote the set of assets in a portfolio as <span class="math notransl
 <p>Then, the expected return of portfolio <span class="math notranslate nohighlight">\(\mathcal{P}\)</span> denoted by
 <span class="math notranslate nohighlight">\(\mathbb{E}\left(r_{\mathcal{P}}\right)\)</span> is:</p>
 <div class="math notranslate nohighlight" id="equation-eqn-expected-p-rerturn">
-<span class="eqno">(36)<a class="headerlink" href="#equation-eqn-expected-p-rerturn" title="Permalink to this equation">#</a></span>\[\mathbb{E}\left(r_{\mathcal{P}}\right) = \sum_{i\in\mathcal{P}}\omega_{i}\mathbb{E}\left(r_{i}\right)\]</div>
+<span class="eqno">(35)<a class="headerlink" href="#equation-eqn-expected-p-rerturn" title="Permalink to this equation">#</a></span>\[\mathbb{E}\left(r_{\mathcal{P}}\right) = \sum_{i\in\mathcal{P}}\omega_{i}\mathbb{E}\left(r_{i}\right)\]</div>
 <p>where <span class="math notranslate nohighlight">\(w_{i}\)</span> denotes the fraction of asset <span class="math notranslate nohighlight">\(i\)</span> in the portfolio <span class="math notranslate nohighlight">\(\mathcal{P}\)</span>, and
 <span class="math notranslate nohighlight">\(\mathbb{E}\left(r_{i}\right)\)</span> denotes the expected return of asset <span class="math notranslate nohighlight">\(i\)</span> on time basis <span class="math notranslate nohighlight">\(\mathcal{B}\)</span>.</p>
 </section>
@@ -485,7 +485,7 @@ portfolio. Denote the set of assets in a portfolio as <span class="math notransl
 <p>Denote the return of asset <span class="math notranslate nohighlight">\(i\)</span> in portfolio <span class="math notranslate nohighlight">\(\mathcal{P}\)</span> for some time basis <span class="math notranslate nohighlight">\(\mathcal{B}\)</span>
 as <span class="math notranslate nohighlight">\(r_{i}\)</span>. Then, the variance of a portfolio <span class="math notranslate nohighlight">\(\mathcal{P}\)</span> is given by:</p>
 <div class="math notranslate nohighlight" id="equation-eqn-p-var-general">
-<span class="eqno">(37)<a class="headerlink" href="#equation-eqn-p-var-general" title="Permalink to this equation">#</a></span>\[\sigma_{\mathcal{P}}^2 = 
+<span class="eqno">(36)<a class="headerlink" href="#equation-eqn-p-var-general" title="Permalink to this equation">#</a></span>\[\sigma_{\mathcal{P}}^2 = 
 \sum_{i\in\mathcal{P}}\sum_{j\in\mathcal{P}}w_{i}w_{j}
 \text{cov}\left(r_{i},r_{j}\right)\]</div>
 <p>where <span class="math notranslate nohighlight">\(w_{\star}\)</span> denotes the fraction of asset <span class="math notranslate nohighlight">\(\star\)</span> in the portfolio <span class="math notranslate nohighlight">\(\mathcal{P}\)</span>, and
@@ -497,8 +497,8 @@ The <span class="math notranslate nohighlight">\(\text{cov}\left(r_{i},r_{j}\rig
 <span class="math notranslate nohighlight">\(\rho_{ij}\)</span> denotes the correlation between assets <span class="math notranslate nohighlight">\(i\)</span> and <span class="math notranslate nohighlight">\(j\)</span>.</p>
 </section>
 </div><p>Now that we know how to compute a portfolio’s risk and expected reward let’s think about what we can control as a financial engineer. Of course, we cannot control the return or volatility of asset <span class="math notranslate nohighlight">\(i\)</span>; the market drives those. However, we can control which assets we include in the portfolio and the relative amount of each of these assets. Thus, how we choose which assets to include and their associated weights give insight into the type of investor we are. If we are a Markowitz investor, we minimize the risk required to obtain a specified reward.</p>
-<div class="proof observation admonition" id="observation-3">
-<p class="admonition-title"><span class="caption-number">Observation 11 </span> (The role of correlation in <span class="math notranslate nohighlight">\(\mathcal{P}\)</span>)</p>
+<div class="proof observation admonition" id="obs-correlation-in-p">
+<p class="admonition-title"><span class="caption-number">Observation 10 </span> (The role of correlation in <span class="math notranslate nohighlight">\(\mathcal{P}\)</span>)</p>
 <section class="observation-content" id="proof-content">
 <p>An exciting feature of the variance of the portfolio return (<a class="reference internal" href="#defn-portfolio-variance">Definition 19</a>) is the dependence on the <a class="reference external" href="https://en.wikipedia.org/wiki/Correlation">correlation</a> denoted by <span class="math notranslate nohighlight">\(\rho_{ij}\)</span> between assets <span class="math notranslate nohighlight">\(i\)</span> and <span class="math notranslate nohighlight">\(j\)</span>. To see why this is exciting, let’s consider a portfolio <span class="math notranslate nohighlight">\(\mathcal{P}\)</span> consisting of two risky assets; <span class="math notranslate nohighlight">\(\vert\mathcal{P}\vert\)</span> = 2. Then, the variance of the portfolio returns <span class="math notranslate nohighlight">\(\sigma_{\mathcal{P}}^{2}\)</span> is given by:</p>
 <div class="math notranslate nohighlight">
