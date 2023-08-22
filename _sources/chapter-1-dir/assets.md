@@ -56,6 +56,59 @@ where $i>0$ is the _risk-free_ interest rate. Thus, if given a choice between $P
 
 * This scenario assumes a risk-free investment that always pays an interest rate $i>0$, but [a truly risk-free investment is only a theoretical concept](https://www.investopedia.com/terms/r/risk-freerate.asp). However, risk-free investments, and the risk-free rates of return `i` are often _approximated_ by US Treasury debt securities.
 
+(content:references:interest-models)=
+### Interest models
+Interest represents the cost of borrowing money or the return on lending money. Simple and compound interest are two types of interest that significantly impact investment growth and borrowing costs, making them critical factors to consider when making financial decisions.
+
+Simple interest is paid only on the initial principle. For example, if amount $A(0)$ is invested in an interest-bearing savings account at `t=0` with a simple interest rate of $r$ per period, then the account will hold $A(n)$ after $n$ periods:
+
+```{math}
+:label: eqn-simple-interest
+A(n) = A(0)\cdot\left(1+rn\right)
+```
+
+The interest earned is not reinvested, and thus the interest earned is constant over time.  However, compound interest considers both the principal and the interest accumulated over time, i.e., you earn `interest on your interest`. For example, if amount $A(0)$ is invested into an interest-bearing savings account that pays a compound interest rate $r$ per period, then after $n$ periods the account would hold $A(n)$:
+
+```{math}
+:label: eqn-compound-interest
+A(n) = A(0)\cdot\left(1+r\right)^n
+```
+
+As the number of periods become large, compound interest always outperforms simple interest ({numref}`fig-simple-compound-interest`). 
+
+```{figure} ./figs/Fig-Simple-Compound-Balance.svg
+---
+height: 420px
+name: fig-simple-compound-interest
+---
+Simple versus compound interest for n-periods for an interest rate of $r = 0.05$ per-period. Compound interest outperforms simple interest as the number of periods becomes large.
+```
+
+
+Finally, interest rates are typically quoted as annualized values and can be compounded at different rates, e.g., annually, quarterly, monthly, etc, and compound interest can be computed on a discrete or continuous basis ({prf:ref}`defn-compound-interest`):
+
+````{prf:definition} Discrete and continuous compounding
+:label: defn-compound-interest
+
+Let there be n-compounding periods per year and an annualized interest rate of `r`-percent.  Then an initial investment $A(0)$ will be worth:
+
+```{math}
+:label: eqn-compound-interest-model-discrete
+A(m) = A(0)\cdot\left(1+r/n\right)^{mn}
+```
+
+after `m`-years where the interest rate `r` is a decimal. As the number of compounding periods $n\rightarrow\infty$, the investment $A(m)$ approaches the _continuous compounding limit_:
+
+```{math}
+:label: eqn-compound-interest-model-cont
+\lim_{n\rightarrow\infty}A(m) = A(0)\cdot\exp\left(rm\right)
+```
+````
+
+```{admonition} Simple versus Compound Interest
+We'll exclusively deal with compound interest throughtout this course, as this is the mechanism used in the real world for different types of investments. Further, we'll _almost always_ assume that interest is compounded continuously, i.e., the number of compounding periods $n\rightarrow\infty$.
+```
+
 ### Discrete discounting
 Now that we have established money’s present value is higher than its future value, we need a way to compare money from different time periods. A useful model for the time value of money is to think of money from different time periods as being in different currencies that must be exchanged. To compare money or cash flows from different time periods, we use the equivalent of an exchange rate, which we call the _discount factor_.
 
@@ -254,59 +307,6 @@ xlabel!("Period index (AU)", fontsize=18)
 ylabel!("Future value (USD)", fontsize=18)
 ```
 ````
-
-(content:references:interest-models)=
-## Simple and Compound Interest
-Interest represents the cost of borrowing money or the return on lending money. Simple and compound interest are two types of interest that significantly impact investment growth and borrowing costs, making them critical factors to consider when making financial decisions.
-
-Simple interest is paid only on the initial principle. For example, if amount $A(0)$ is invested in an interest-bearing savings account at `t=0` with a simple interest rate of $r$ per period, then the account will hold $A(n)$ after $n$ periods:
-
-```{math}
-:label: eqn-simple-interest
-A(n) = A(0)\cdot\left(1+rn\right)
-```
-
-The interest earned is not reinvested, and thus the interest earned is constant over time.  However, compound interest considers both the principal and the interest accumulated over time, i.e., you earn `interest on your interest`. For example, if amount $A(0)$ is invested into an interest-bearing savings account that pays a compound interest rate $r$ per period, then after $n$ periods the account would hold $A(n)$:
-
-```{math}
-:label: eqn-compound-interest
-A(n) = A(0)\cdot\left(1+r\right)^n
-```
-
-As the number of periods become large, compound interest always outperforms simple interest ({numref}`fig-simple-compound-interest`). 
-
-```{figure} ./figs/Fig-Simple-Compound-Balance.svg
----
-height: 420px
-name: fig-simple-compound-interest
----
-Simple versus compound interest for n-periods for an interest rate of $r = 0.05$ per-period. Compound interest outperforms simple interest as the number of periods becomes large.
-```
-
-
-Finally, interest rates are typically quoted as annualized values and can be compounded at different rates, e.g., annually, quarterly, monthly, etc, and compound interest can be computed on a discrete or continuous basis ({prf:ref}`defn-compound-interest`):
-
-````{prf:definition} Discrete and continuous compounding
-:label: defn-compound-interest
-
-Let there be `n-compounding periods per year` and an annualized interest rate of `r-percent`.  Then an initial investment $A(0)$ will be worth:
-
-```{math}
-:label: eqn-compound-interest-model-discrete
-A(m) = A(0)\cdot\left(1+r/n\right)^{mn}
-```
-
-after `m-years` where the interest rate `r` is a decimal. As the number of compounding periods $n\rightarrow\infty$, the investment $A(m)$ approaches the continuous compounding limit:
-
-```{math}
-:label: eqn-compound-interest-model-cont
-\lim_{n\rightarrow\infty}A(m) = A(0)\cdot\exp\left(rm\right)
-```
-````
-
-```{admonition} Simple versus Compound Interest
-We'll exclusively deal with compound interest throughtout this course, as this is the mechanism used in the real world for different types of investments. Further, we'll _almost always_ assume that interest is compounded continuously, i.e., the number of compounding periods $n\rightarrow\infty$.
-```
 
 (content:references:npv-defn)=
 ## Net present value

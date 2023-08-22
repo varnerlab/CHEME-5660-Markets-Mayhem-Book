@@ -438,11 +438,11 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#time-value-of-money">Time Value of Money</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interest-models">Interest models</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#discrete-discounting">Discrete discounting</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#continuous-discounting">Continuous discounting</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simple-and-compound-interest">Simple and Compound Interest</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#net-present-value">Net present value</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#decisions">Decisions</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#internal-rate-of-return">Internal Rate of Return</a><ul class="nav section-nav flex-column">
@@ -506,17 +506,49 @@ from market forces. Instead, processes and products must be, at a minimum, finan
 <li><p>By taking <span class="math notranslate nohighlight">\(P_{0}\)</span> dollars today, you could invest those dollars risk-free and get <span class="math notranslate nohighlight">\(P_{1} = (1+i)\cdot{P_{0}}\)</span> back, where <span class="math notranslate nohighlight">\(P_{1}&gt;P_{0}\)</span>. Thus, the only case where it makes sense to take the future money is negative interest <span class="math notranslate nohighlight">\(i\leq{0}\)</span> which is forbidden by the condition <span class="math notranslate nohighlight">\(i&gt;0\)</span>.</p></li>
 <li><p>This scenario assumes a risk-free investment that always pays an interest rate <span class="math notranslate nohighlight">\(i&gt;0\)</span>, but <a class="reference external" href="https://www.investopedia.com/terms/r/risk-freerate.asp">a truly risk-free investment is only a theoretical concept</a>. However, risk-free investments, and the risk-free rates of return <code class="docutils literal notranslate"><span class="pre">i</span></code> are often <em>approximated</em> by US Treasury debt securities.</p></li>
 </ul>
+<section id="interest-models">
+<span id="content-references-interest-models"></span><h3>Interest models<a class="headerlink" href="#interest-models" title="Permalink to this heading">#</a></h3>
+<p>Interest represents the cost of borrowing money or the return on lending money. Simple and compound interest are two types of interest that significantly impact investment growth and borrowing costs, making them critical factors to consider when making financial decisions.</p>
+<p>Simple interest is paid only on the initial principle. For example, if amount <span class="math notranslate nohighlight">\(A(0)\)</span> is invested in an interest-bearing savings account at <code class="docutils literal notranslate"><span class="pre">t=0</span></code> with a simple interest rate of <span class="math notranslate nohighlight">\(r\)</span> per period, then the account will hold <span class="math notranslate nohighlight">\(A(n)\)</span> after <span class="math notranslate nohighlight">\(n\)</span> periods:</p>
+<div class="math notranslate nohighlight" id="equation-eqn-simple-interest">
+<span class="eqno">(1)<a class="headerlink" href="#equation-eqn-simple-interest" title="Permalink to this equation">#</a></span>\[A(n) = A(0)\cdot\left(1+rn\right)\]</div>
+<p>The interest earned is not reinvested, and thus the interest earned is constant over time.  However, compound interest considers both the principal and the interest accumulated over time, i.e., you earn <code class="docutils literal notranslate"><span class="pre">interest</span> <span class="pre">on</span> <span class="pre">your</span> <span class="pre">interest</span></code>. For example, if amount <span class="math notranslate nohighlight">\(A(0)\)</span> is invested into an interest-bearing savings account that pays a compound interest rate <span class="math notranslate nohighlight">\(r\)</span> per period, then after <span class="math notranslate nohighlight">\(n\)</span> periods the account would hold <span class="math notranslate nohighlight">\(A(n)\)</span>:</p>
+<div class="math notranslate nohighlight" id="equation-eqn-compound-interest">
+<span class="eqno">(2)<a class="headerlink" href="#equation-eqn-compound-interest" title="Permalink to this equation">#</a></span>\[A(n) = A(0)\cdot\left(1+r\right)^n\]</div>
+<p>As the number of periods become large, compound interest always outperforms simple interest (<a class="reference internal" href="#fig-simple-compound-interest"><span class="std std-numref">Fig. 2</span></a>).</p>
+<figure class="align-default" id="fig-simple-compound-interest">
+<a class="reference internal image-reference" href="../_images/Fig-Simple-Compound-Balance.svg"><img alt="../_images/Fig-Simple-Compound-Balance.svg" height="420px" src="../_images/Fig-Simple-Compound-Balance.svg" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 2 </span><span class="caption-text">Simple versus compound interest for n-periods for an interest rate of <span class="math notranslate nohighlight">\(r = 0.05\)</span> per-period. Compound interest outperforms simple interest as the number of periods becomes large.</span><a class="headerlink" href="#fig-simple-compound-interest" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Finally, interest rates are typically quoted as annualized values and can be compounded at different rates, e.g., annually, quarterly, monthly, etc, and compound interest can be computed on a discrete or continuous basis (<a class="reference internal" href="#defn-compound-interest">Definition 1</a>):</p>
+<div class="proof definition admonition" id="defn-compound-interest">
+<p class="admonition-title"><span class="caption-number">Definition 1 </span> (Discrete and continuous compounding)</p>
+<section class="definition-content" id="proof-content">
+<p>Let there be n-compounding periods per year and an annualized interest rate of <code class="docutils literal notranslate"><span class="pre">r</span></code>-percent.  Then an initial investment <span class="math notranslate nohighlight">\(A(0)\)</span> will be worth:</p>
+<div class="math notranslate nohighlight" id="equation-eqn-compound-interest-model-discrete">
+<span class="eqno">(3)<a class="headerlink" href="#equation-eqn-compound-interest-model-discrete" title="Permalink to this equation">#</a></span>\[A(m) = A(0)\cdot\left(1+r/n\right)^{mn}\]</div>
+<p>after <code class="docutils literal notranslate"><span class="pre">m</span></code>-years where the interest rate <code class="docutils literal notranslate"><span class="pre">r</span></code> is a decimal. As the number of compounding periods <span class="math notranslate nohighlight">\(n\rightarrow\infty\)</span>, the investment <span class="math notranslate nohighlight">\(A(m)\)</span> approaches the <em>continuous compounding limit</em>:</p>
+<div class="math notranslate nohighlight" id="equation-eqn-compound-interest-model-cont">
+<span class="eqno">(4)<a class="headerlink" href="#equation-eqn-compound-interest-model-cont" title="Permalink to this equation">#</a></span>\[\lim_{n\rightarrow\infty}A(m) = A(0)\cdot\exp\left(rm\right)\]</div>
+</section>
+</div><div class="admonition-simple-versus-compound-interest admonition">
+<p class="admonition-title">Simple versus Compound Interest</p>
+<p>We’ll exclusively deal with compound interest throughtout this course, as this is the mechanism used in the real world for different types of investments. Further, we’ll <em>almost always</em> assume that interest is compounded continuously, i.e., the number of compounding periods <span class="math notranslate nohighlight">\(n\rightarrow\infty\)</span>.</p>
+</div>
+</section>
 <section id="discrete-discounting">
 <h3>Discrete discounting<a class="headerlink" href="#discrete-discounting" title="Permalink to this heading">#</a></h3>
 <p>Now that we have established money’s present value is higher than its future value, we need a way to compare money from different time periods. A useful model for the time value of money is to think of money from different time periods as being in different currencies that must be exchanged. To compare money or cash flows from different time periods, we use the equivalent of an exchange rate, which we call the <em>discount factor</em>.</p>
 <p>Suppose we wanted to convert the value of a cashflow from one time period in the future
-into today’s dollars, i.e., we discount the future value of cashflow to its present value. To do this, we use a one-period discrete (finite) conversion (<a class="reference internal" href="#defn-one-perod-discrete-conversion">Definition 1</a>):</p>
+into today’s dollars, i.e., we discount the future value of cashflow to its present value. To do this, we use a one-period discrete (finite) conversion (<a class="reference internal" href="#defn-one-perod-discrete-conversion">Definition 2</a>):</p>
 <div class="proof definition admonition" id="defn-one-perod-discrete-conversion">
-<p class="admonition-title"><span class="caption-number">Definition 1 </span> (One Period Discrete Conversion)</p>
+<p class="admonition-title"><span class="caption-number">Definition 2 </span> (One Period Discrete Conversion)</p>
 <section class="definition-content" id="proof-content">
 <p>For any one-step finite period <span class="math notranslate nohighlight">\(t\rightarrow{t+1}\)</span>, the present value of cashflow denoted as <span class="math notranslate nohighlight">\(\dot{c}_{t}\)</span> and the future value of cash-flow denoted by <span class="math notranslate nohighlight">\(\dot{c}_{t+1}\)</span> are related by the expression:</p>
 <div class="math notranslate nohighlight" id="equation-eq-cash-flow-1-period">
-<span class="eqno">(1)<a class="headerlink" href="#equation-eq-cash-flow-1-period" title="Permalink to this equation">#</a></span>\[\dot{c}_{t+1} = \left(1+r_{t+1,t}\right)\cdot{\dot{c}_{t}}\]</div>
+<span class="eqno">(5)<a class="headerlink" href="#equation-eq-cash-flow-1-period" title="Permalink to this equation">#</a></span>\[\dot{c}_{t+1} = \left(1+r_{t+1,t}\right)\cdot{\dot{c}_{t}}\]</div>
 <p>where <span class="math notranslate nohighlight">\(r_{t+1,t}&gt;{0}\)</span> is the <em>discount rate</em> for period <span class="math notranslate nohighlight">\(t\rightarrow{t+1}\)</span>.</p>
 <ul class="simple">
 <li><p>The term <span class="math notranslate nohighlight">\((1+r_{t+1,t})\)</span>, which denotes the hypothetical exchange rate between the present <span class="math notranslate nohighlight">\(\dot{c}_{t}\)</span> and future <span class="math notranslate nohighlight">\(\dot{c}_{t+1}\)</span> cashflows for the period <span class="math notranslate nohighlight">\(t\rightarrow{t+1}\)</span>, is called the <em>discrete discount factor</em>.</p></li>
@@ -529,7 +561,7 @@ into today’s dollars, i.e., we discount the future value of cashflow to its pr
 <section class="example-content" id="proof-content">
 <p>Someone offers to buy you a coffee tomorrow (one time period in the future) for <span class="math notranslate nohighlight">\(\dot{c}_{1}\)</span> = 3.35 USD. What is the current value <span class="math notranslate nohighlight">\(\dot{c}_{0}\)</span> of the coffee if the discount rate is <span class="math notranslate nohighlight">\(r_{1,0}=10\%\)</span>?</p>
 <p><strong>Solution:</strong>
-Rearranging Eqn. <a class="reference internal" href="#equation-eq-cash-flow-1-period">(1)</a> for the current value of the coffee <span class="math notranslate nohighlight">\(\dot{c}_{0}\)</span> gives:</p>
+Rearranging Eqn. <a class="reference internal" href="#equation-eq-cash-flow-1-period">(5)</a> for the current value of the coffee <span class="math notranslate nohighlight">\(\dot{c}_{0}\)</span> gives:</p>
 <div class="math notranslate nohighlight">
 \[\dot{c}_{0} = \frac{\dot{c}_{1}}{1+r_{1,0}}\]</div>
 <p>Subsutituing <span class="math notranslate nohighlight">\(r_{1,0}=10\%\)</span> and <span class="math notranslate nohighlight">\(\dot{c}_{1}\)</span> = 3.35 USD says the <em>current value</em> of your future coffee is: <span class="math notranslate nohighlight">\(\dot{c}_{0}\)</span> = 3.05 USD.</p>
@@ -543,27 +575,27 @@ Rearranging Eqn. <a class="reference internal" href="#equation-eq-cash-flow-1-pe
 <p>but we can substiture <span class="math notranslate nohighlight">\(\dot{c}_{1}\)</span> into the expression above to give:</p>
 <div class="math notranslate nohighlight">
 \[\dot{c}_{2} = \Bigl[\left(1+r_{2,1}\right)\left(1+r_{1,0}\right)\Bigr]\cdot\dot{c}_{0}\]</div>
-<p>Doing this computation between 2 and 3, and then 3 to 4, etc, we develop a relationship between the current value of cash flow <span class="math notranslate nohighlight">\(\dot{c}_{0}\)</span> and the future value of cash flows <span class="math notranslate nohighlight">\(\dot{c}_{t}\)</span> over multiple periods (<a class="reference internal" href="#defn-multi-perod-discrete-conversion">Definition 2</a>):</p>
+<p>Doing this computation between 2 and 3, and then 3 to 4, etc, we develop a relationship between the current value of cash flow <span class="math notranslate nohighlight">\(\dot{c}_{0}\)</span> and the future value of cash flows <span class="math notranslate nohighlight">\(\dot{c}_{t}\)</span> over multiple periods (<a class="reference internal" href="#defn-multi-perod-discrete-conversion">Definition 3</a>):</p>
 <div class="proof definition admonition" id="defn-multi-perod-discrete-conversion">
-<p class="admonition-title"><span class="caption-number">Definition 2 </span> (Multiple period discrete conversion)</p>
+<p class="admonition-title"><span class="caption-number">Definition 3 </span> (Multiple period discrete conversion)</p>
 <section class="definition-content" id="proof-content">
 <p>Let <span class="math notranslate nohighlight">\(\dot{c}_0\)</span> be the present cashflow, and <span class="math notranslate nohighlight">\(\dot{c}_t\)</span> be the future cashflow in period <span class="math notranslate nohighlight">\(t\)</span>. Let <span class="math notranslate nohighlight">\(r_{j+1,j}\)</span> represent the discount rate between discrete time periods <span class="math notranslate nohighlight">\(j\)</span> and <span class="math notranslate nohighlight">\(j+1\)</span>. Then:</p>
 <div class="math notranslate nohighlight" id="equation-eq-cash-flow-multiple-period">
-<span class="eqno">(2)<a class="headerlink" href="#equation-eq-cash-flow-multiple-period" title="Permalink to this equation">#</a></span>\[\dot{c}_{t} = \left[\prod_{j=0}^{t-1}\left(1+r_{j+1,j}\right)\right]\cdot\dot{c}_{0}\qquad{t=1,2,\dots,T}\]</div>
+<span class="eqno">(6)<a class="headerlink" href="#equation-eq-cash-flow-multiple-period" title="Permalink to this equation">#</a></span>\[\dot{c}_{t} = \left[\prod_{j=0}^{t-1}\left(1+r_{j+1,j}\right)\right]\cdot\dot{c}_{0}\qquad{t=1,2,\dots,T}\]</div>
 <p>The product term is the <em>multi-period discount factor</em> which we defined as the function <span class="math notranslate nohighlight">\(\mathcal{D}_{t,0}(r,t)\)</span>.</p>
 </section>
-</div><p>Equation <a class="reference internal" href="#equation-eq-cash-flow-multiple-period">(2)</a> can be written in a more compact form as:</p>
+</div><p>Equation <a class="reference internal" href="#equation-eq-cash-flow-multiple-period">(6)</a> can be written in a more compact form as:</p>
 <div class="math notranslate nohighlight">
 \[\dot{c}_{t} = \mathcal{D}_{t,0}\cdot\dot{c}_{0}\qquad{t=1,2,\dots,T}\]</div>
 <p>In the particular case where discount rates <span class="math notranslate nohighlight">\(r_{j+1,j}\)</span> are equal in each period (let’s call this value <span class="math notranslate nohighlight">\(\bar{r}\)</span>), the <em>multi-period discount factor</em> becomes:</p>
 <div class="math notranslate nohighlight" id="equation-eqn-discrete-discount-factor-constant-r">
-<span class="eqno">(3)<a class="headerlink" href="#equation-eqn-discrete-discount-factor-constant-r" title="Permalink to this equation">#</a></span>\[\mathcal{D}_{t,0} = (1+\bar{r})^{t}\qquad{t=1,2,\dots,T}\]</div>
+<span class="eqno">(7)<a class="headerlink" href="#equation-eqn-discrete-discount-factor-constant-r" title="Permalink to this equation">#</a></span>\[\mathcal{D}_{t,0} = (1+\bar{r})^{t}\qquad{t=1,2,\dots,T}\]</div>
 <p>Let’s do an example of multi-period discounting (<a class="reference internal" href="#ex-future-value-discrete">Example 2</a>):</p>
 <div class="proof example dropdown admonition" id="ex-future-value-discrete">
 <p class="admonition-title"><span class="caption-number">Example 2 </span> (Multiple period discount)</p>
 <section class="example-content" id="proof-content">
 <p>Compute the present value of $1 collected <span class="math notranslate nohighlight">\(T\)</span> time units into the future for a constant discount rate of 2%, 4%, 6%, 8%, and 10% per time period.</p>
-<p><strong>Solution</strong>: The value of money today is the present value, whereas the value of money <code class="docutils literal notranslate"><span class="pre">T</span></code> time periods is the future value. The quantity <span class="math notranslate nohighlight">\(\dot{c}_{0}\)</span> is the present value, while <span class="math notranslate nohighlight">\(\dot{c}_{i},i=1,2,\dots,T\)</span> denotes future value. To compute the present value of $1 collected <code class="docutils literal notranslate"><span class="pre">T</span></code> time units in the future, we solve Eqn. <a class="reference internal" href="#equation-eq-cash-flow-multiple-period">(2)</a> for <span class="math notranslate nohighlight">\(\dot{c}_{0}\)</span> in terms of the future value <span class="math notranslate nohighlight">\(\dot{c}_{i},i=1,\dots,T\)</span> and the discount factor <span class="math notranslate nohighlight">\(\mathcal{D}\)</span>:</p>
+<p><strong>Solution</strong>: The value of money today is the present value, whereas the value of money <code class="docutils literal notranslate"><span class="pre">T</span></code> time periods is the future value. The quantity <span class="math notranslate nohighlight">\(\dot{c}_{0}\)</span> is the present value, while <span class="math notranslate nohighlight">\(\dot{c}_{i},i=1,2,\dots,T\)</span> denotes future value. To compute the present value of $1 collected <code class="docutils literal notranslate"><span class="pre">T</span></code> time units in the future, we solve Eqn. <a class="reference internal" href="#equation-eq-cash-flow-multiple-period">(6)</a> for <span class="math notranslate nohighlight">\(\dot{c}_{0}\)</span> in terms of the future value <span class="math notranslate nohighlight">\(\dot{c}_{i},i=1,\dots,T\)</span> and the discount factor <span class="math notranslate nohighlight">\(\mathcal{D}\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[\dot{c}_{0} = \mathcal{D}_{i,0}^{-1}\cdot\dot{c}_{i}\qquad{i=0,1,\dots,T}\]</div>
 <p>where <span class="math notranslate nohighlight">\(\mathcal{D}_{i,0}^{-1}\)</span> is given by:</p>
@@ -575,7 +607,7 @@ Rearranging Eqn. <a class="reference internal" href="#equation-eq-cash-flow-1-pe
 <figure class="align-default" id="fig-presentvalue-futurepayment">
 <a class="reference internal image-reference" href="../_images/Fig-PresentValue-FuturePayment.pdf"><img alt="../_images/Fig-PresentValue-FuturePayment.pdf" src="../_images/Fig-PresentValue-FuturePayment.pdf" style="height: 380px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 2 </span><span class="caption-text">Present value (PV) of $1 USD collected T periods in the future as a function the discount rate <span class="math notranslate nohighlight">\(r\)</span>.</span><a class="headerlink" href="#fig-presentvalue-futurepayment" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 3 </span><span class="caption-text">Present value (PV) of $1 USD collected T periods in the future as a function the discount rate <span class="math notranslate nohighlight">\(r\)</span>.</span><a class="headerlink" href="#fig-presentvalue-futurepayment" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 </section>
@@ -584,16 +616,16 @@ Rearranging Eqn. <a class="reference internal" href="#equation-eq-cash-flow-1-pe
 <h3>Continuous discounting<a class="headerlink" href="#continuous-discounting" title="Permalink to this heading">#</a></h3>
 <p>Previously we used a discrete finite time difference, e.g., days, weeks, or even years, to compute the discount factor. However, suppose the time difference for each period was infinitesimally small, i.e., the time difference was continuous. In this case, we have continuous discounting, where the discount factor <span class="math notranslate nohighlight">\(\mathcal{D}(r,t) = \exp\left(r\cdot{t}\right)\)</span> gives a future value expression of the form:</p>
 <div class="math notranslate nohighlight" id="equation-eq-cont-exchange-tvm">
-<span class="eqno">(4)<a class="headerlink" href="#equation-eq-cont-exchange-tvm" title="Permalink to this equation">#</a></span>\[\dot{c}_{t}= \exp\left(r\cdot{t}\right)\cdot\dot{c}_{0}\]</div>
+<span class="eqno">(8)<a class="headerlink" href="#equation-eq-cont-exchange-tvm" title="Permalink to this equation">#</a></span>\[\dot{c}_{t}= \exp\left(r\cdot{t}\right)\cdot\dot{c}_{0}\]</div>
 <p>where <span class="math notranslate nohighlight">\(r&gt;0\)</span> denotes the <em>instantaneous</em> discount rate, and <code class="docutils literal notranslate"><span class="pre">t</span></code> denotes the time. Let’s do a continuous discount factor example (<a class="reference internal" href="#ex-future-value-continuous">Example 3</a>):</p>
 <div class="proof example dropdown admonition" id="ex-future-value-continuous">
 <p class="admonition-title"><span class="caption-number">Example 3 </span> (What is $1 collected today worth T years from now? )</p>
 <section class="example-content" id="proof-content">
-<p>Suppose we are given $1 dollar today. What is the future value of $1 T periods from now for an instantaneous discount rate of <span class="math notranslate nohighlight">\(r\)</span> = 2%, 4%, 6%, 8% and 10%  and continuous discounting? Plugging these values in <a class="reference internal" href="#equation-eq-cont-exchange-tvm">(4)</a> gives:</p>
+<p>Suppose we are given $1 dollar today. What is the future value of $1 T periods from now for an instantaneous discount rate of <span class="math notranslate nohighlight">\(r\)</span> = 2%, 4%, 6%, 8% and 10%  and continuous discounting? Plugging these values in <a class="reference internal" href="#equation-eq-cont-exchange-tvm">(8)</a> gives:</p>
 <figure class="align-default" id="fig-futurevalue-1-dollar">
 <a class="reference internal image-reference" href="../_images/Fig-FutureValue-1-dollar.pdf"><img alt="../_images/Fig-FutureValue-1-dollar.pdf" src="../_images/Fig-FutureValue-1-dollar.pdf" style="height: 380px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 3 </span><span class="caption-text">Future value (FV) of 1 USD (today) T-periods in the future using a continuous discounting model.</span><a class="headerlink" href="#fig-futurevalue-1-dollar" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 4 </span><span class="caption-text">Future value (FV) of 1 USD (today) T-periods in the future using a continuous discounting model.</span><a class="headerlink" href="#fig-futurevalue-1-dollar" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p><a class="reference external" href="https://julialang.org">Julia script</a> to compute the future value as a function of the discount rate <span class="math notranslate nohighlight">\(r\)</span>, and plot the data:</p>
@@ -650,38 +682,6 @@ Rearranging Eqn. <a class="reference internal" href="#equation-eq-cash-flow-1-pe
 </div>
 </section>
 </div></section>
-</section>
-<section id="simple-and-compound-interest">
-<span id="content-references-interest-models"></span><h2>Simple and Compound Interest<a class="headerlink" href="#simple-and-compound-interest" title="Permalink to this heading">#</a></h2>
-<p>Interest represents the cost of borrowing money or the return on lending money. Simple and compound interest are two types of interest that significantly impact investment growth and borrowing costs, making them critical factors to consider when making financial decisions.</p>
-<p>Simple interest is paid only on the initial principle. For example, if amount <span class="math notranslate nohighlight">\(A(0)\)</span> is invested in an interest-bearing savings account at <code class="docutils literal notranslate"><span class="pre">t=0</span></code> with a simple interest rate of <span class="math notranslate nohighlight">\(r\)</span> per period, then the account will hold <span class="math notranslate nohighlight">\(A(n)\)</span> after <span class="math notranslate nohighlight">\(n\)</span> periods:</p>
-<div class="math notranslate nohighlight" id="equation-eqn-simple-interest">
-<span class="eqno">(5)<a class="headerlink" href="#equation-eqn-simple-interest" title="Permalink to this equation">#</a></span>\[A(n) = A(0)\cdot\left(1+rn\right)\]</div>
-<p>The interest earned is not reinvested, and thus the interest earned is constant over time.  However, compound interest considers both the principal and the interest accumulated over time, i.e., you earn <code class="docutils literal notranslate"><span class="pre">interest</span> <span class="pre">on</span> <span class="pre">your</span> <span class="pre">interest</span></code>. For example, if amount <span class="math notranslate nohighlight">\(A(0)\)</span> is invested into an interest-bearing savings account that pays a compound interest rate <span class="math notranslate nohighlight">\(r\)</span> per period, then after <span class="math notranslate nohighlight">\(n\)</span> periods the account would hold <span class="math notranslate nohighlight">\(A(n)\)</span>:</p>
-<div class="math notranslate nohighlight" id="equation-eqn-compound-interest">
-<span class="eqno">(6)<a class="headerlink" href="#equation-eqn-compound-interest" title="Permalink to this equation">#</a></span>\[A(n) = A(0)\cdot\left(1+r\right)^n\]</div>
-<p>As the number of periods become large, compound interest always outperforms simple interest (<a class="reference internal" href="#fig-simple-compound-interest"><span class="std std-numref">Fig. 4</span></a>).</p>
-<figure class="align-default" id="fig-simple-compound-interest">
-<a class="reference internal image-reference" href="../_images/Fig-Simple-Compound-Balance.svg"><img alt="../_images/Fig-Simple-Compound-Balance.svg" height="420px" src="../_images/Fig-Simple-Compound-Balance.svg" /></a>
-<figcaption>
-<p><span class="caption-number">Fig. 4 </span><span class="caption-text">Simple versus compound interest for n-periods for an interest rate of <span class="math notranslate nohighlight">\(r = 0.05\)</span> per-period. Compound interest outperforms simple interest as the number of periods becomes large.</span><a class="headerlink" href="#fig-simple-compound-interest" title="Permalink to this image">#</a></p>
-</figcaption>
-</figure>
-<p>Finally, interest rates are typically quoted as annualized values and can be compounded at different rates, e.g., annually, quarterly, monthly, etc, and compound interest can be computed on a discrete or continuous basis (<a class="reference internal" href="#defn-compound-interest">Definition 3</a>):</p>
-<div class="proof definition admonition" id="defn-compound-interest">
-<p class="admonition-title"><span class="caption-number">Definition 3 </span> (Discrete and continuous compounding)</p>
-<section class="definition-content" id="proof-content">
-<p>Let there be <code class="docutils literal notranslate"><span class="pre">n-compounding</span> <span class="pre">periods</span> <span class="pre">per</span> <span class="pre">year</span></code> and an annualized interest rate of <code class="docutils literal notranslate"><span class="pre">r-percent</span></code>.  Then an initial investment <span class="math notranslate nohighlight">\(A(0)\)</span> will be worth:</p>
-<div class="math notranslate nohighlight" id="equation-eqn-compound-interest-model-discrete">
-<span class="eqno">(7)<a class="headerlink" href="#equation-eqn-compound-interest-model-discrete" title="Permalink to this equation">#</a></span>\[A(m) = A(0)\cdot\left(1+r/n\right)^{mn}\]</div>
-<p>after <code class="docutils literal notranslate"><span class="pre">m-years</span></code> where the interest rate <code class="docutils literal notranslate"><span class="pre">r</span></code> is a decimal. As the number of compounding periods <span class="math notranslate nohighlight">\(n\rightarrow\infty\)</span>, the investment <span class="math notranslate nohighlight">\(A(m)\)</span> approaches the continuous compounding limit:</p>
-<div class="math notranslate nohighlight" id="equation-eqn-compound-interest-model-cont">
-<span class="eqno">(8)<a class="headerlink" href="#equation-eqn-compound-interest-model-cont" title="Permalink to this equation">#</a></span>\[\lim_{n\rightarrow\infty}A(m) = A(0)\cdot\exp\left(rm\right)\]</div>
-</section>
-</div><div class="admonition-simple-versus-compound-interest admonition">
-<p class="admonition-title">Simple versus Compound Interest</p>
-<p>We’ll exclusively deal with compound interest throughtout this course, as this is the mechanism used in the real world for different types of investments. Further, we’ll <em>almost always</em> assume that interest is compounded continuously, i.e., the number of compounding periods <span class="math notranslate nohighlight">\(n\rightarrow\infty\)</span>.</p>
-</div>
 </section>
 <section id="net-present-value">
 <span id="content-references-npv-defn"></span><h2>Net present value<a class="headerlink" href="#net-present-value" title="Permalink to this heading">#</a></h2>
@@ -819,7 +819,7 @@ Rearranging Eqn. <a class="reference internal" href="#equation-eq-cash-flow-1-pe
 <h2>Summary<a class="headerlink" href="#summary" title="Permalink to this heading">#</a></h2>
 <p>In this lecture, we introduced:</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#content-references-interest-models"><span class="std std-ref">Simple and Compound Interest</span></a>: Simple interest refers to the interest calculated solely on the initial principal amount, while compound interest takes into account both the principal and the accumulated interest.</p></li>
+<li><p><a class="reference internal" href="#content-references-interest-models"><span class="std std-ref">Interest models</span></a>: Simple interest refers to the interest calculated solely on the initial principal amount, while compound interest takes into account both the principal and the accumulated interest.</p></li>
 <li><p><a class="reference internal" href="#content-references-abstract-asset-defn"><span class="std std-ref">Introduction</span></a> generate value and cash flows for the holder. Cash flows, on the other hand, are the inflows and outflows of money from a business or investment, and are a key factor in determining the value of abstract assets. Finally, interest is the cost of borrowing money, and understanding how interest rates impact cash flows and the value of abstract assets is essential for financial decision making.</p></li>
 <li><p><a class="reference internal" href="#content-references-npv-defn"><span class="std std-ref">Net present value</span></a> is a financial concept used to determine the current value of future cash flows. It takes into account the time value of money, recognizing that a dollar today is worth more than a dollar in the future due to the potential for investment and earning interest. NPV is a useful tool for evaluating investment opportunities and determining whether they are financially viable.</p></li>
 </ul>
@@ -902,11 +902,11 @@ Rearranging Eqn. <a class="reference internal" href="#equation-eq-cash-flow-1-pe
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#time-value-of-money">Time Value of Money</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interest-models">Interest models</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#discrete-discounting">Discrete discounting</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#continuous-discounting">Continuous discounting</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simple-and-compound-interest">Simple and Compound Interest</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#net-present-value">Net present value</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#decisions">Decisions</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#internal-rate-of-return">Internal Rate of Return</a><ul class="nav section-nav flex-column">
