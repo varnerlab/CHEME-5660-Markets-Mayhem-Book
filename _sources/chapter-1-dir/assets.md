@@ -9,9 +9,7 @@ This lecture introduces some basic financial concepts: abstract assets, the time
 
 * [The abstract asset model](content:references:abstract-asset-defn) is a mental model for thinking about the value of assets. An abstract asset is a sequence of current and future discounted cash flows demarcated in some currency, for example, Euros, Dollars, Yuan, or cryptocurrencies such as Bitcoin. On the other hand, cash flows are the inflows and outflows of money from a business or investment and are a key factor in determining the value of abstract assets. 
 
-* [The time value of money](content:references:time-value-of-money) is a fundamental concept in finance. It recognizes that money today is worth more than the same amount in the future due to the potential to earn returns or interest over time. Understanding the time value of money is crucial for making financial decisions as it helps evaluate the impact of time on the value of investments, loans, and cash flows.
-
-* [Simple and compound Interest](content:references:interest-models) are two methods of calculating interest on loans. Simple interest is calculated on the principal amount of a loan only. Compound interest is calculated on the principal amount and also on the accumulated interest of previous periods and can thus be regarded as `interest on interest.`
+* [The time value of money](content:references:time-value-of-money) is a fundamental concept in finance. It recognizes that money today is worth more than the same amount in the future due to the potential to earn returns or interest over time. Toward this, we also introduced [simple and compound interest models](content:references:interest-models) which are two methods of calculating interest on loans. Simple interest is calculated on the principal only. Compound interest is calculated on the principal amount and also on the accumulated interest of previous periods and can thus be regarded as `interest on interest.`
 
 * [The net present value](content:references:npv-defn) and [the internal rate of return](content:references:irr-defn) are financial concepts used to determine the current value of future cash flows. They consider the time value of money, recognizing that a dollar today is worth more than a dollar in the future due to the potential for investment. 
 
@@ -403,7 +401,7 @@ $$
 where $\mathcal{D}_{t,0}(r^{\star})$ is the discount factor between the current period and a future period $t$ using the discount rate $r^{\star}$, and `T` denotes the number of periods (lifetime of the project or investment).
 
 * The discount factor $\mathcal{D}_{i,0}(r)$ can be modeled using either a discrete or a continuous compounding model.
-* The `IRR` assumes that discount rate is constant over the lifetime of the project or investment. Thus, the `IRR` is a single number that summarizes the discount rate over the lifetime of the project or investment.
+* The `IRR` assumes that discount rate is constant over the lifetime of the project or investment. 
 ````
 
 Like the `NPV`, the `IRR` can be thought of as a decision boundary of sorts; the `IRR` is the discount rate where the project manager or investor is _indifferent_ to the project or investment. Thus, we can formulate the following decision criteria:
@@ -467,11 +465,11 @@ For any project with a positive net present value, the income generated should b
 ## Summary
 In this lecture, we introduced:
 
-* {ref}`content:references:interest-models`: Simple interest refers to the interest calculated solely on the initial principal amount, while compound interest takes into account both the principal and the accumulated interest. 
+* [The abstract asset model](content:references:abstract-asset-defn) is a mental model for thinking about the value of assets. An abstract asset is a sequence of current and future discounted cash flows demarcated in some currency, for example, Euros, Dollars, Yuan, or cryptocurrencies such as Bitcoin. On the other hand, cash flows are the inflows and outflows of money from a business or investment and are a key factor in determining the value of abstract assets. 
 
-* {ref}`content:references:abstract-asset-defn` generate value and cash flows for the holder. Cash flows, on the other hand, are the inflows and outflows of money from a business or investment, and are a key factor in determining the value of abstract assets. Finally, interest is the cost of borrowing money, and understanding how interest rates impact cash flows and the value of abstract assets is essential for financial decision making.
+* [The time value of money](content:references:time-value-of-money) is a fundamental concept in finance. It recognizes that money today is worth more than the same amount in the future due to the potential to earn returns or interest over time. Toward this, we also introduced [simple and compound interest models](content:references:interest-models) which are two methods of calculating interest on loans. Simple interest is calculated on the principal only. Compound interest is calculated on the principal amount and also on the accumulated interest of previous periods and can thus be regarded as `interest on interest.`
 
-* {ref}`content:references:npv-defn` is a financial concept used to determine the current value of future cash flows. It takes into account the time value of money, recognizing that a dollar today is worth more than a dollar in the future due to the potential for investment and earning interest. NPV is a useful tool for evaluating investment opportunities and determining whether they are financially viable.
+* [The net present value](content:references:npv-defn) and [the internal rate of return](content:references:irr-defn) are financial concepts used to determine the current value of future cash flows. They consider the time value of money, recognizing that a dollar today is worth more than a dollar in the future due to the potential for investment. 
 
 ## Additional Resources
 * [IEOR E4706: Foundations of Financial Engineering, Columbia University](https://martin-haugh.github.io/teaching/foundations-fe/)
