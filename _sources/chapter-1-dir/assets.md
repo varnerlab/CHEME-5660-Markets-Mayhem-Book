@@ -167,7 +167,7 @@ but we can substiture $\dot{c}_{1}$ into the expression above to give:
 
 Doing this computation between 2 and 3, and then 3 to 4, etc, we develop a relationship between the current value of cash flow $\dot{c}_{0}$ and the future value of cash flows $\dot{c}_{t}$ over multiple periods ({prf:ref}`defn-multi-perod-discrete-conversion`):
 
-````{prf:definition} Multiple period discrete conversion
+````{prf:definition} Multiple period discrete discounting
 :label: defn-multi-perod-discrete-conversion
 
 Let $\dot{c}_0$ be the present cashflow, and $\dot{c}_t$ be the future cashflow in period $t$. Let $r_{j+1,j}$ represent the discount rate between discrete time periods $j$ and $j+1$. Then: 
@@ -177,7 +177,7 @@ Let $\dot{c}_0$ be the present cashflow, and $\dot{c}_t$ be the future cashflow 
 \dot{c}_{t} = \left[\prod_{j=0}^{t-1}\left(1+r_{j+1,j}\right)\right]\cdot\dot{c}_{0}\qquad{t=1,2,\dots,T}
 ```
 
-The product term is the _multi-period discount factor_ which we defined as the function $\mathcal{D}_{t,0}(r,t)$.
+The product term is the _multi-period discount factor_ which we defined as the function $\mathcal{D}_{t,0}(r)$.
 ````
 
 Equation {eq}`eq-cash-flow-multiple-period` can be written in a more compact form as:
@@ -338,17 +338,15 @@ where the quantity $\bar{c}_{t}$ denotes the net cash flow in time period `t`, t
 
 (content:references:npv-decision-tool)=
 ### Decisions
-The [net present value is often used as a decision tool](https://www.investopedia.com/terms/n/npv-rule.asp) to rank a particular project or investment against alternative investments. In this context, the discount rate $r_{t+1,t}$ represents the minimum rate of return that a decision-maker would accept for a project or investment compared to a hypothetical risk-free alternative investment, e.g., [a zero-coupon bond](https://www.finra.org/investors/insights/zero-coupon-bonds) with the same time-to-maturity as the project. 
+The [net present value is often used as a decision tool](https://www.investopedia.com/terms/n/npv-rule.asp) to rank a particular project or investment against alternative investments. In this context, the discount rate $r_{t+1,t}$ represents the minimum rate of return that a decision-maker would accept for a project or investment. To evaluate a project or investment, we use the following decision criteria:
 
-To evaluate a project or investment, we use the following decision criteria:
-
-* `NPV < 0`: A negative NPV indicates the proposed asset or project _will generate a loss_ over the time horizon of the project at the given discount rate. The decision-maker should counsider alternative investments.
+* `NPV < 0`: A negative NPV indicates the proposed asset or project _will generate a loss_ over the time horizon of the project at the given discount rate. The decision-maker should consider alternative investments.
 
 * `NPV = 0`: A zero NPV indicates the proposed project _will breakeven_ over the time horizon of the project at the given discount rate. The decision-maker is _indifferent_ to the project.
 
 * `NPV > 0`: A positive NPV indicates the proposed project _will generate a positive return_ over the time horizon of the project at the given discount rate. The decision-maker should consider choosing the proposed project.
 
-The `NPV` decision rules relies on computing the sum of discounted future cash flows. However, in these calculations, what discount rate should we use? This question is difficult; the correct discount rate varies between applications and industries, and is subjective to the decision-maker.
+The `NPV` decision rule relies on computing the sum of discounted future cash flows. However, in these calculations, what discount rate should we use? This question is difficult; the correct discount rate varies between applications and industries and is subjective to the decision-maker.
 
 Let's consider an example to illustrate the `NPV` decision rule concerning the installation of an upgraded lighting system in a building ({prf:ref}`npv-decision-rule-example-MIT`):
 
