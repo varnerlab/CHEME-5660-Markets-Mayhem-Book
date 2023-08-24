@@ -104,7 +104,7 @@ after `m`-years where the interest rate `r` is a decimal. As the number of compo
 ````
 
 ```{admonition} Simple versus Compound Interest
-We'll exclusively deal with compound interest throughtout this course, as this is the mechanism used in the real world for different types of investments. Further, we'll _almost always_ assume that interest is compounded continuously, i.e., the number of compounding periods $n\rightarrow\infty$.
+We'll exclusively deal with compound interest throughout this course, as this is the mechanism used in the real world for different types of investments. 
 ```
 
 ### Discrete discounting
