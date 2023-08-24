@@ -9,9 +9,7 @@ This lecture introduces some basic financial concepts: abstract assets, the time
 
 * [The abstract asset model](content:references:abstract-asset-defn) is a mental model for thinking about the value of assets. An abstract asset is a sequence of current and future discounted cash flows demarcated in some currency, for example, Euros, Dollars, Yuan, or cryptocurrencies such as Bitcoin. On the other hand, cash flows are the inflows and outflows of money from a business or investment and are a key factor in determining the value of abstract assets. 
 
-* [The time value of money](content:references:time-value-of-money) is a fundamental concept in finance. It recognizes that money today is worth more than the same amount in the future due to the potential to earn returns or interest over time. Understanding the time value of money is crucial for making financial decisions as it helps evaluate the impact of time on the value of investments, loans, and cash flows.
-
-* [Simple and compound Interest](content:references:interest-models) are two methods of calculating interest on loans. Simple interest is calculated on the principal amount of a loan only. Compound interest is calculated on the principal amount and also on the accumulated interest of previous periods and can thus be regarded as `interest on interest.`
+* [The time value of money](content:references:time-value-of-money) is a fundamental concept in finance. It recognizes that money today is worth more than the same amount in the future due to the potential to earn returns or interest over time. Toward this, we also introduced [simple and compound interest models](content:references:interest-models) which are two methods of calculating interest on loans. Simple interest is calculated on the principal only. Compound interest is calculated on the principal amount and also on the accumulated interest of previous periods and can thus be regarded as `interest on interest.`
 
 * [The net present value](content:references:npv-defn) and [the internal rate of return](content:references:irr-defn) are financial concepts used to determine the current value of future cash flows. They consider the time value of money, recognizing that a dollar today is worth more than a dollar in the future due to the potential for investment. 
 
@@ -106,7 +104,7 @@ after `m`-years where the interest rate `r` is a decimal. As the number of compo
 ````
 
 ```{admonition} Simple versus Compound Interest
-We'll exclusively deal with compound interest throughtout this course, as this is the mechanism used in the real world for different types of investments. Further, we'll _almost always_ assume that interest is compounded continuously, i.e., the number of compounding periods $n\rightarrow\infty$.
+We'll exclusively deal with compound interest throughout this course, as this is the mechanism used in the real world for different types of investments. 
 ```
 
 ### Discrete discounting
@@ -167,7 +165,7 @@ but we can substiture $\dot{c}_{1}$ into the expression above to give:
 
 Doing this computation between 2 and 3, and then 3 to 4, etc, we develop a relationship between the current value of cash flow $\dot{c}_{0}$ and the future value of cash flows $\dot{c}_{t}$ over multiple periods ({prf:ref}`defn-multi-perod-discrete-conversion`):
 
-````{prf:definition} Multiple period discrete conversion
+````{prf:definition} Multiple period discrete discounting
 :label: defn-multi-perod-discrete-conversion
 
 Let $\dot{c}_0$ be the present cashflow, and $\dot{c}_t$ be the future cashflow in period $t$. Let $r_{j+1,j}$ represent the discount rate between discrete time periods $j$ and $j+1$. Then: 
@@ -177,7 +175,7 @@ Let $\dot{c}_0$ be the present cashflow, and $\dot{c}_t$ be the future cashflow 
 \dot{c}_{t} = \left[\prod_{j=0}^{t-1}\left(1+r_{j+1,j}\right)\right]\cdot\dot{c}_{0}\qquad{t=1,2,\dots,T}
 ```
 
-The product term is the _multi-period discount factor_ which we defined as the function $\mathcal{D}_{t,0}(r,t)$.
+The product term is the _multi-period discount factor_ which we defined as the function $\mathcal{D}_{t,0}(r)$.
 ````
 
 Equation {eq}`eq-cash-flow-multiple-period` can be written in a more compact form as:
@@ -338,17 +336,15 @@ where the quantity $\bar{c}_{t}$ denotes the net cash flow in time period `t`, t
 
 (content:references:npv-decision-tool)=
 ### Decisions
-The [net present value is often used as a decision tool](https://www.investopedia.com/terms/n/npv-rule.asp) to rank a particular project or investment against alternative investments. In this context, the discount rate $r_{t+1,t}$ represents the minimum rate of return that a decision-maker would accept for a project or investment compared to a hypothetical risk-free alternative investment, e.g., [a zero-coupon bond](https://www.finra.org/investors/insights/zero-coupon-bonds) with the same time-to-maturity as the project. 
+The [net present value is often used as a decision tool](https://www.investopedia.com/terms/n/npv-rule.asp) to rank a particular project or investment against alternative investments. In this context, the discount rate $r_{t+1,t}$ represents the minimum rate of return that a decision-maker would accept for a project or investment. To evaluate a project or investment, we use the following decision criteria:
 
-To evaluate a project or investment, we use the following decision criteria:
-
-* `NPV < 0`: A negative NPV indicates the proposed asset or project _will generate a loss_ over the time horizon of the project at the given discount rate. The decision-maker should counsider alternative investments.
+* `NPV < 0`: A negative NPV indicates the proposed asset or project _will generate a loss_ over the time horizon of the project at the given discount rate. The decision-maker should consider alternative investments.
 
 * `NPV = 0`: A zero NPV indicates the proposed project _will breakeven_ over the time horizon of the project at the given discount rate. The decision-maker is _indifferent_ to the project.
 
 * `NPV > 0`: A positive NPV indicates the proposed project _will generate a positive return_ over the time horizon of the project at the given discount rate. The decision-maker should consider choosing the proposed project.
 
-The `NPV` decision rules relies on computing the sum of discounted future cash flows. However, in these calculations, what discount rate should we use? This question is difficult; the correct discount rate varies between applications and industries, and is subjective to the decision-maker.
+The `NPV` decision rule relies on computing the sum of discounted future cash flows. However, in these calculations, what discount rate should we use? This question is difficult; the correct discount rate varies between applications and industries and is subjective to the decision-maker.
 
 Let's consider an example to illustrate the `NPV` decision rule concerning the installation of an upgraded lighting system in a building ({prf:ref}`npv-decision-rule-example-MIT`):
 
@@ -405,7 +401,7 @@ $$
 where $\mathcal{D}_{t,0}(r^{\star})$ is the discount factor between the current period and a future period $t$ using the discount rate $r^{\star}$, and `T` denotes the number of periods (lifetime of the project or investment).
 
 * The discount factor $\mathcal{D}_{i,0}(r)$ can be modeled using either a discrete or a continuous compounding model.
-* The `IRR` assumes that discount rate is constant over the lifetime of the project or investment. Thus, the `IRR` is a single number that summarizes the discount rate over the lifetime of the project or investment.
+* The `IRR` assumes that discount rate is constant over the lifetime of the project or investment. 
 ````
 
 Like the `NPV`, the `IRR` can be thought of as a decision boundary of sorts; the `IRR` is the discount rate where the project manager or investor is _indifferent_ to the project or investment. Thus, we can formulate the following decision criteria:
@@ -469,11 +465,11 @@ For any project with a positive net present value, the income generated should b
 ## Summary
 In this lecture, we introduced:
 
-* {ref}`content:references:interest-models`: Simple interest refers to the interest calculated solely on the initial principal amount, while compound interest takes into account both the principal and the accumulated interest. 
+* [The abstract asset model](content:references:abstract-asset-defn) is a mental model for thinking about the value of assets. An abstract asset is a sequence of current and future discounted cash flows demarcated in some currency, for example, Euros, Dollars, Yuan, or cryptocurrencies such as Bitcoin. On the other hand, cash flows are the inflows and outflows of money from a business or investment and are a key factor in determining the value of abstract assets. 
 
-* {ref}`content:references:abstract-asset-defn` generate value and cash flows for the holder. Cash flows, on the other hand, are the inflows and outflows of money from a business or investment, and are a key factor in determining the value of abstract assets. Finally, interest is the cost of borrowing money, and understanding how interest rates impact cash flows and the value of abstract assets is essential for financial decision making.
+* [The time value of money](content:references:time-value-of-money) is a fundamental concept in finance. It recognizes that money today is worth more than the same amount in the future due to the potential to earn returns or interest over time. Toward this, we also introduced [simple and compound interest models](content:references:interest-models) which are two methods of calculating interest on loans. Simple interest is calculated on the principal only. Compound interest is calculated on the principal amount and also on the accumulated interest of previous periods and can thus be regarded as `interest on interest.`
 
-* {ref}`content:references:npv-defn` is a financial concept used to determine the current value of future cash flows. It takes into account the time value of money, recognizing that a dollar today is worth more than a dollar in the future due to the potential for investment and earning interest. NPV is a useful tool for evaluating investment opportunities and determining whether they are financially viable.
+* [The net present value](content:references:npv-defn) and [the internal rate of return](content:references:irr-defn) are financial concepts used to determine the current value of future cash flows. They consider the time value of money, recognizing that a dollar today is worth more than a dollar in the future due to the potential for investment. 
 
 ## Additional Resources
 * [IEOR E4706: Foundations of Financial Engineering, Columbia University](https://martin-haugh.github.io/teaching/foundations-fe/)
