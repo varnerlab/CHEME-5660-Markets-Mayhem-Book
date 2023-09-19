@@ -548,29 +548,29 @@ document.write(`
 <span class="c"># 3. The loaddatafile function is defined elsewhere</span>
 
 <span class="c"># load external packages</span>
-<span class="k">using</span> <span class="n">VLQuantitativeFinancePackage</span>
+<span class="k">using</span><span class="w"> </span><span class="n">VLQuantitativeFinancePackage</span>
 
 <span class="c"># load the data set, create a compounding model, and set bond parameters</span>
-<span class="n">dataset</span> <span class="o">=</span> <span class="n">loaddatafile</span><span class="p">(</span><span class="n">path_to_data_file</span><span class="p">);</span>
-<span class="n">discrete_compounding</span> <span class="o">=</span> <span class="n">DiscreteCompoundingModel</span><span class="p">();</span>
-<span class="n">T</span><span class="p">,</span><span class="n">λ</span><span class="p">,</span><span class="n">Vₚ</span> <span class="o">=</span> <span class="mf">30.0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mf">100.0</span> <span class="c"># years, payments per year, par value</span>
-<span class="n">number_of_records</span> <span class="o">=</span> <span class="n">nrow</span><span class="p">(</span><span class="n">dataset</span><span class="p">);</span>
+<span class="n">dataset</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">loaddatafile</span><span class="p">(</span><span class="n">path_to_data_file</span><span class="p">);</span>
+<span class="n">discrete_compounding</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DiscreteCompoundingModel</span><span class="p">();</span>
+<span class="n">T</span><span class="p">,</span><span class="n">λ</span><span class="p">,</span><span class="n">Vₚ</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">30.0</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mf">100.0</span><span class="w"> </span><span class="c"># years, payments per year, par value</span>
+<span class="n">number_of_records</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nrow</span><span class="p">(</span><span class="n">dataset</span><span class="p">);</span>
 
 <span class="c"># create an array of bond models, one for each record in the data set</span>
-<span class="n">bonds</span> <span class="o">=</span> <span class="kt">Array</span><span class="p">{</span><span class="kt">MyUSTreasuryCouponSecurityModel</span><span class="p">,</span><span class="mi">1</span><span class="p">}(</span><span class="nb">undef</span><span class="p">,</span><span class="n">number_of_records</span><span class="p">);</span>
-<span class="k">for</span> <span class="n">i</span> <span class="o">∈</span> <span class="mi">1</span><span class="o">:</span><span class="n">number_of_records</span>
-    
-    <span class="c"># get the data from the data frame for this record </span>
-    <span class="n">c</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="ss">:CouponRate</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">100</span><span class="p">);</span> <span class="c"># convert from percentage to decimal</span>
-    <span class="n">r̄</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="ss">:AverageYield</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">100</span><span class="p">);</span> <span class="c"># convert from percentage to decimal</span>
-    
-    <span class="c"># build the model, and compute the price using the short-cut syntax</span>
-    <span class="n">model</span> <span class="o">=</span> <span class="n">build</span><span class="p">(</span><span class="n">MyUSTreasuryCouponSecurityModel</span><span class="p">,</span> <span class="p">(</span>
-            <span class="n">par</span> <span class="o">=</span> <span class="n">Vₚ</span><span class="p">,</span> <span class="n">T</span> <span class="o">=</span> <span class="n">T</span><span class="p">,</span> <span class="n">rate</span> <span class="o">=</span> <span class="n">r̄</span><span class="p">,</span> <span class="n">coupon</span> <span class="o">=</span> <span class="n">c</span><span class="p">,</span> <span class="n">λ</span> <span class="o">=</span> <span class="n">λ</span>
-        <span class="p">))</span> <span class="o">|&gt;</span> <span class="n">discrete_compounding</span><span class="p">;</span>
-    
-    <span class="c"># store the updated model (with computed price)</span>
-    <span class="n">bonds</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">model</span><span class="p">;</span>
+<span class="n">bonds</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">Array</span><span class="p">{</span><span class="kt">MyUSTreasuryCouponSecurityModel</span><span class="p">,</span><span class="mi">1</span><span class="p">}(</span><span class="nb">undef</span><span class="p">,</span><span class="n">number_of_records</span><span class="p">);</span>
+<span class="k">for</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">∈</span><span class="w"> </span><span class="mi">1</span><span class="o">:</span><span class="n">number_of_records</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="c"># get the data from the data frame for this record </span>
+<span class="w">    </span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dataset</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="ss">:CouponRate</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">100</span><span class="p">);</span><span class="w"> </span><span class="c"># convert from percentage to decimal</span>
+<span class="w">    </span><span class="n">r̄</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">dataset</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="ss">:AverageYield</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">100</span><span class="p">);</span><span class="w"> </span><span class="c"># convert from percentage to decimal</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="c"># build the model, and compute the price using the short-cut syntax</span>
+<span class="w">    </span><span class="n">model</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">build</span><span class="p">(</span><span class="n">MyUSTreasuryCouponSecurityModel</span><span class="p">,</span><span class="w"> </span><span class="p">(</span>
+<span class="w">            </span><span class="n">par</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Vₚ</span><span class="p">,</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">T</span><span class="p">,</span><span class="w"> </span><span class="n">rate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">r̄</span><span class="p">,</span><span class="w"> </span><span class="n">coupon</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">c</span><span class="p">,</span><span class="w"> </span><span class="n">λ</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">λ</span>
+<span class="w">        </span><span class="p">))</span><span class="w"> </span><span class="o">|&gt;</span><span class="w"> </span><span class="n">discrete_compounding</span><span class="p">;</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="c"># store the updated model (with computed price)</span>
+<span class="w">    </span><span class="n">bonds</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">model</span><span class="p">;</span>
 <span class="k">end</span>
 </pre></div>
 </div>
@@ -664,20 +664,20 @@ document.write(`
 </ol>
 <p><strong>Solution</strong>: The yeild to maturity and the annual effective interest rate <span class="math notranslate nohighlight">\(\bar{r}\)</span> are equal at the time of auction. Thus, we can compute the effective annual interest rate <span class="math notranslate nohighlight">\(\bar{r}\)</span> using <a class="reference internal" href="#defn-yield-to-maturity">Definition 8</a>.</p>
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># load external packages</span>
-<span class="k">using</span> <span class="n">VLQuantitativeFinancePackage</span>
+<span class="k">using</span><span class="w"> </span><span class="n">VLQuantitativeFinancePackage</span>
 
 <span class="c"># 1. Calculate the YTM for the 5y note at auction</span>
-<span class="n">Vₚ</span><span class="p">,</span> <span class="n">Vᵦ</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">λ</span> <span class="o">=</span> <span class="mf">100.0</span><span class="p">,</span> <span class="mf">96.82</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">,</span> <span class="mf">0.06</span><span class="p">,</span> <span class="mi">2</span>
-<span class="n">compounding</span> <span class="o">=</span> <span class="n">DiscreteCompoundingModel</span><span class="p">();</span>
+<span class="n">Vₚ</span><span class="p">,</span><span class="w"> </span><span class="n">Vᵦ</span><span class="p">,</span><span class="w"> </span><span class="n">T</span><span class="p">,</span><span class="w"> </span><span class="n">c</span><span class="p">,</span><span class="w"> </span><span class="n">λ</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">100.0</span><span class="p">,</span><span class="w"> </span><span class="mf">96.82</span><span class="p">,</span><span class="w"> </span><span class="mf">5.0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.06</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span>
+<span class="n">compounding</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DiscreteCompoundingModel</span><span class="p">();</span>
 
 <span class="c"># build the debt model, we don&#39;t know the rate, but we know the price -</span>
-<span class="n">model</span> <span class="o">=</span> <span class="n">build</span><span class="p">(</span><span class="n">MyUSTreasuryCouponSecurityModel</span><span class="p">,</span> <span class="p">(</span>
-    <span class="n">par</span> <span class="o">=</span> <span class="n">Vₚ</span><span class="p">,</span> <span class="n">T</span> <span class="o">=</span> <span class="n">T</span><span class="p">,</span> <span class="n">λ</span> <span class="o">=</span> <span class="n">λ</span><span class="p">,</span> <span class="n">coupon</span> <span class="o">=</span> <span class="n">c</span>
+<span class="n">model</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">build</span><span class="p">(</span><span class="n">MyUSTreasuryCouponSecurityModel</span><span class="p">,</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="n">par</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Vₚ</span><span class="p">,</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">T</span><span class="p">,</span><span class="w"> </span><span class="n">λ</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">λ</span><span class="p">,</span><span class="w"> </span><span class="n">coupon</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">c</span>
 <span class="p">));</span>
-<span class="n">model</span><span class="o">.</span><span class="n">price</span> <span class="o">=</span> <span class="n">Vᵦ</span>
+<span class="n">model</span><span class="o">.</span><span class="n">price</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Vᵦ</span>
 
 <span class="c"># compute the rate by doing a YTM calculation -</span>
-<span class="n">estimated_rate</span> <span class="o">=</span> <span class="n">YTM</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">compounding</span><span class="p">)</span> <span class="o">|&gt;</span> <span class="n">x</span><span class="o">-&gt;</span><span class="n">round</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">digits</span><span class="o">=</span><span class="mi">4</span><span class="p">);</span>
+<span class="n">estimated_rate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">YTM</span><span class="p">(</span><span class="n">model</span><span class="p">,</span><span class="w"> </span><span class="n">compounding</span><span class="p">)</span><span class="w"> </span><span class="o">|&gt;</span><span class="w"> </span><span class="n">x</span><span class="o">-&gt;</span><span class="n">round</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">digits</span><span class="o">=</span><span class="mi">4</span><span class="p">);</span>
 </pre></div>
 </div>
 <p>This calculation gives an effective annual interest rate of <code class="docutils literal notranslate"><span class="pre">r̄</span>&#160; <span class="pre">=</span> <span class="pre">6.76%</span></code>. Now, let’s compute the yield to maturity at the time of the sale on the secondary market. Let the number of years the note is held before it is sold on the secondary market be <code class="docutils literal notranslate"><span class="pre">ΔT</span> <span class="pre">=</span> <span class="pre">0.0,1.0,2.0,3.0,</span> <span class="pre">and</span> <span class="pre">4.0</span> <span class="pre">years</span></code>.</p>
@@ -692,29 +692,29 @@ document.write(`
 <li><p>Finally, we store the yield to maturity value in the <code class="docutils literal notranslate"><span class="pre">YTM_value_array</span></code> array.</p></li>
 </ol>
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># load external packages</span>
-<span class="k">using</span> <span class="n">VLQuantitativeFinancePackage</span>
+<span class="k">using</span><span class="w"> </span><span class="n">VLQuantitativeFinancePackage</span>
 
 <span class="c"># 2. Calculate the YTM for the 5y note at auction</span>
-<span class="n">Vₚ</span><span class="p">,</span> <span class="n">Vᵦ</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">λ</span> <span class="o">=</span> <span class="mf">100.0</span><span class="p">,</span> <span class="mf">96.82</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">,</span> <span class="mf">0.06</span><span class="p">,</span> <span class="mi">2</span><span class="p">;</span>
-<span class="n">ΔT</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">1.0</span><span class="p">,</span><span class="mf">2.0</span><span class="p">,</span><span class="mf">3.0</span><span class="p">,</span><span class="mf">4.0</span><span class="p">];</span>
-<span class="n">YTM_value_array</span> <span class="o">=</span> <span class="kt">Array</span><span class="p">{</span><span class="kt">Float64</span><span class="p">,</span><span class="mi">1</span><span class="p">}(</span><span class="nb">undef</span><span class="p">,</span> <span class="n">length</span><span class="p">(</span><span class="n">ΔT</span><span class="p">));</span>
-<span class="n">counter</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
-<span class="k">for</span> <span class="n">T′</span> <span class="o">∈</span> <span class="n">ΔT</span> 
-    
-    <span class="c"># update the counter -</span>
-    <span class="k">global</span> <span class="n">counter</span> <span class="o">+=</span> <span class="mi">1</span>
-    
-    <span class="c"># how much time is left on the security?</span>
-    <span class="n">T̂</span> <span class="o">=</span> <span class="n">T</span> <span class="o">-</span> <span class="n">T′</span>
-    
-    <span class="c"># build a bond model, we don&#39;t know the rate, but we know the price. </span>
-    <span class="n">ytm_model</span> <span class="o">=</span> <span class="n">build</span><span class="p">(</span><span class="n">MyUSTreasuryCouponSecurityModel</span><span class="p">,</span> <span class="p">(</span>
-        <span class="n">par</span> <span class="o">=</span> <span class="n">Vₚ</span><span class="p">,</span> <span class="n">T</span> <span class="o">=</span> <span class="n">T̂</span><span class="p">,</span> <span class="n">λ</span> <span class="o">=</span> <span class="n">λ</span><span class="p">,</span> <span class="n">coupon</span> <span class="o">=</span> <span class="n">c</span>
-    <span class="p">));</span>
-    <span class="n">ytm_model</span><span class="o">.</span><span class="n">price</span> <span class="o">=</span> <span class="n">Vᵦ</span>
-    
-    <span class="c"># We compute the yeild and store in the YTM_value_array</span>
-    <span class="n">YTM_value_array</span><span class="p">[</span><span class="n">counter</span><span class="p">]</span> <span class="o">=</span> <span class="n">YTM</span><span class="p">(</span><span class="n">ytm_model</span><span class="p">,</span> <span class="n">compounding</span><span class="p">)</span>
+<span class="n">Vₚ</span><span class="p">,</span><span class="w"> </span><span class="n">Vᵦ</span><span class="p">,</span><span class="w"> </span><span class="n">T</span><span class="p">,</span><span class="w"> </span><span class="n">c</span><span class="p">,</span><span class="w"> </span><span class="n">λ</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">100.0</span><span class="p">,</span><span class="w"> </span><span class="mf">96.82</span><span class="p">,</span><span class="w"> </span><span class="mf">5.0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.06</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span>
+<span class="n">ΔT</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">1.0</span><span class="p">,</span><span class="mf">2.0</span><span class="p">,</span><span class="mf">3.0</span><span class="p">,</span><span class="mf">4.0</span><span class="p">];</span>
+<span class="n">YTM_value_array</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">Array</span><span class="p">{</span><span class="kt">Float64</span><span class="p">,</span><span class="mi">1</span><span class="p">}(</span><span class="nb">undef</span><span class="p">,</span><span class="w"> </span><span class="n">length</span><span class="p">(</span><span class="n">ΔT</span><span class="p">));</span>
+<span class="n">counter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="k">for</span><span class="w"> </span><span class="n">T′</span><span class="w"> </span><span class="o">∈</span><span class="w"> </span><span class="n">ΔT</span><span class="w"> </span>
+<span class="w">    </span>
+<span class="w">    </span><span class="c"># update the counter -</span>
+<span class="w">    </span><span class="k">global</span><span class="w"> </span><span class="n">counter</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">1</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="c"># how much time is left on the security?</span>
+<span class="w">    </span><span class="n">T̂</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">T′</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="c"># build a bond model, we don&#39;t know the rate, but we know the price. </span>
+<span class="w">    </span><span class="n">ytm_model</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">build</span><span class="p">(</span><span class="n">MyUSTreasuryCouponSecurityModel</span><span class="p">,</span><span class="w"> </span><span class="p">(</span>
+<span class="w">        </span><span class="n">par</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Vₚ</span><span class="p">,</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">T̂</span><span class="p">,</span><span class="w"> </span><span class="n">λ</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">λ</span><span class="p">,</span><span class="w"> </span><span class="n">coupon</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">c</span>
+<span class="w">    </span><span class="p">));</span>
+<span class="w">    </span><span class="n">ytm_model</span><span class="o">.</span><span class="n">price</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Vᵦ</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="c"># We compute the yeild and store in the YTM_value_array</span>
+<span class="w">    </span><span class="n">YTM_value_array</span><span class="p">[</span><span class="n">counter</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">YTM</span><span class="p">(</span><span class="n">ytm_model</span><span class="p">,</span><span class="w"> </span><span class="n">compounding</span><span class="p">)</span>
 <span class="k">end</span>
 </pre></div>
 </div>

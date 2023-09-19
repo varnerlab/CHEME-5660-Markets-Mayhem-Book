@@ -629,54 +629,54 @@ Rearranging Eqn. <a class="reference internal" href="#equation-eq-cash-flow-1-pe
 </figure>
 <p><a class="reference external" href="https://julialang.org">Julia script</a> to compute the future value as a function of the discount rate <span class="math notranslate nohighlight">\(r\)</span>, and plot the data:</p>
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># load packages (assume these are installed)</span>
-<span class="k">using</span> <span class="n">Plots</span>
-<span class="k">using</span> <span class="n">Colors</span>
+<span class="k">using</span><span class="w"> </span><span class="n">Plots</span>
+<span class="k">using</span><span class="w"> </span><span class="n">Colors</span>
 
 <span class="c"># setup color dictionary -</span>
 <span class="c"># Colors taken from: https://personal.sron.nl/~pault/</span>
-<span class="n">colors</span> <span class="o">=</span> <span class="kt">Dict</span><span class="p">{</span><span class="kt">Int64</span><span class="p">,</span><span class="kt">RGB</span><span class="p">}()</span>
-<span class="n">colors</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="sa">colorant</span><span class="s">&quot;#0077BB&quot;</span> 
-<span class="n">colors</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="sa">colorant</span><span class="s">&quot;#33BBEE&quot;</span>
-<span class="n">colors</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="sa">colorant</span><span class="s">&quot;#009988&quot;</span>
-<span class="n">colors</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="o">=</span> <span class="sa">colorant</span><span class="s">&quot;#EE7733&quot;</span>
-<span class="n">colors</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="o">=</span> <span class="sa">colorant</span><span class="s">&quot;#CC3311&quot;</span>
-<span class="n">colors</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span> <span class="o">=</span> <span class="sa">colorant</span><span class="s">&quot;#EE3377&quot;</span> 
-<span class="n">colors</span><span class="p">[</span><span class="mi">7</span><span class="p">]</span> <span class="o">=</span> <span class="sa">colorant</span><span class="s">&quot;#BBBBBB&quot;</span>
+<span class="n">colors</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">Dict</span><span class="p">{</span><span class="kt">Int64</span><span class="p">,</span><span class="kt">RGB</span><span class="p">}()</span>
+<span class="n">colors</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sa">colorant</span><span class="s">&quot;#0077BB&quot;</span><span class="w"> </span>
+<span class="n">colors</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sa">colorant</span><span class="s">&quot;#33BBEE&quot;</span>
+<span class="n">colors</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sa">colorant</span><span class="s">&quot;#009988&quot;</span>
+<span class="n">colors</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sa">colorant</span><span class="s">&quot;#EE7733&quot;</span>
+<span class="n">colors</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sa">colorant</span><span class="s">&quot;#CC3311&quot;</span>
+<span class="n">colors</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sa">colorant</span><span class="s">&quot;#EE3377&quot;</span><span class="w"> </span>
+<span class="n">colors</span><span class="p">[</span><span class="mi">7</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sa">colorant</span><span class="s">&quot;#BBBBBB&quot;</span>
 
 <span class="c"># initialize -</span>
-<span class="n">Cₜ</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">;</span>
-<span class="n">R</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.02</span><span class="p">,</span> <span class="mf">0.04</span><span class="p">,</span> <span class="mf">0.06</span><span class="p">,</span> <span class="mf">0.08</span><span class="p">,</span> <span class="mf">0.10</span><span class="p">];</span>
-<span class="n">number_of_periods</span> <span class="o">=</span> <span class="mi">25</span><span class="p">;</span>
-<span class="n">number_of_rates</span> <span class="o">=</span> <span class="n">length</span><span class="p">(</span><span class="n">R</span><span class="p">)</span>
-<span class="n">Cₒ</span> <span class="o">=</span> <span class="kt">Array</span><span class="p">{</span><span class="kt">Float64</span><span class="p">,</span><span class="mi">2</span><span class="p">}(</span><span class="nb">undef</span><span class="p">,</span> <span class="n">number_of_periods</span><span class="p">,</span> <span class="n">number_of_rates</span> <span class="o">+</span> <span class="mi">1</span><span class="p">);</span>
+<span class="n">Cₜ</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1.0</span><span class="p">;</span>
+<span class="n">R</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mf">0.02</span><span class="p">,</span><span class="w"> </span><span class="mf">0.04</span><span class="p">,</span><span class="w"> </span><span class="mf">0.06</span><span class="p">,</span><span class="w"> </span><span class="mf">0.08</span><span class="p">,</span><span class="w"> </span><span class="mf">0.10</span><span class="p">];</span>
+<span class="n">number_of_periods</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">25</span><span class="p">;</span>
+<span class="n">number_of_rates</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">length</span><span class="p">(</span><span class="n">R</span><span class="p">)</span>
+<span class="n">Cₒ</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">Array</span><span class="p">{</span><span class="kt">Float64</span><span class="p">,</span><span class="mi">2</span><span class="p">}(</span><span class="nb">undef</span><span class="p">,</span><span class="w"> </span><span class="n">number_of_periods</span><span class="p">,</span><span class="w"> </span><span class="n">number_of_rates</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
 
 <span class="c"># main loop - compute the present values</span>
-<span class="k">for</span> <span class="n">j</span> <span class="o">∈</span> <span class="mi">1</span><span class="o">:</span><span class="n">number_of_rates</span>
-        
-    <span class="c"># pick a rate -</span>
-    <span class="n">r</span> <span class="o">=</span> <span class="n">R</span><span class="p">[</span><span class="n">j</span><span class="p">];</span>
+<span class="k">for</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="o">∈</span><span class="w"> </span><span class="mi">1</span><span class="o">:</span><span class="n">number_of_rates</span>
+<span class="w">        </span>
+<span class="w">    </span><span class="c"># pick a rate -</span>
+<span class="w">    </span><span class="n">r</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">R</span><span class="p">[</span><span class="n">j</span><span class="p">];</span>
 
-    <span class="c"># iterare of period -</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="o">∈</span> <span class="mi">1</span><span class="o">:</span><span class="n">number_of_periods</span>
-        
-        <span class="c"># compute the discount -</span>
-        <span class="n">D</span> <span class="o">=</span> <span class="n">exp</span><span class="p">(</span><span class="n">r</span><span class="o">*</span><span class="n">i</span><span class="p">)</span>
+<span class="w">    </span><span class="c"># iterare of period -</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">∈</span><span class="w"> </span><span class="mi">1</span><span class="o">:</span><span class="n">number_of_periods</span>
+<span class="w">        </span>
+<span class="w">        </span><span class="c"># compute the discount -</span>
+<span class="w">        </span><span class="n">D</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">exp</span><span class="p">(</span><span class="n">r</span><span class="o">*</span><span class="n">i</span><span class="p">)</span>
 
-        <span class="c"># compute the future values</span>
-        <span class="n">Cₒ</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">i</span><span class="o">-</span><span class="mi">1</span>       <span class="c"># period is in the first col</span>
-        <span class="n">Cₒ</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">D</span><span class="p">)</span><span class="o">*</span><span class="n">Cₜ</span>   <span class="c"># future value is for each r in the col 2,... </span>
-    <span class="k">end</span>
+<span class="w">        </span><span class="c"># compute the future values</span>
+<span class="w">        </span><span class="n">Cₒ</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="w">       </span><span class="c"># period is in the first col</span>
+<span class="w">        </span><span class="n">Cₒ</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">D</span><span class="p">)</span><span class="o">*</span><span class="n">Cₜ</span><span class="w">   </span><span class="c"># future value is for each r in the col 2,... </span>
+<span class="w">    </span><span class="k">end</span>
 <span class="k">end</span>
 
 <span class="c"># plot -</span>
-<span class="k">for</span> <span class="n">i</span> <span class="o">∈</span> <span class="mi">1</span><span class="o">:</span><span class="n">number_of_rates</span>
-    <span class="n">plot!</span><span class="p">(</span><span class="n">Cₒ</span><span class="p">[</span><span class="o">:</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span><span class="n">Cₒ</span><span class="p">[</span><span class="o">:</span><span class="p">,</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">],</span> <span class="n">c</span> <span class="o">=</span> <span class="n">colors</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s">&quot;r = </span><span class="si">$</span><span class="p">(</span><span class="n">R</span><span class="p">[</span><span class="n">i</span><span class="p">])</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">xlim</span><span class="o">=</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span><span class="n">number_of_periods</span><span class="p">),</span> <span class="n">ylim</span><span class="o">=</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">14.0</span><span class="p">),</span>
-        <span class="n">bg</span><span class="o">=</span><span class="s">&quot;floralwhite&quot;</span><span class="p">,</span> <span class="n">background_color_outside</span><span class="o">=</span><span class="s">&quot;white&quot;</span><span class="p">,</span> <span class="n">framestyle</span> <span class="o">=</span> <span class="ss">:box</span><span class="p">,</span> 
-        <span class="n">fg_legend</span> <span class="o">=</span> <span class="ss">:transparent</span><span class="p">)</span>
+<span class="k">for</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">∈</span><span class="w"> </span><span class="mi">1</span><span class="o">:</span><span class="n">number_of_rates</span>
+<span class="w">    </span><span class="n">plot!</span><span class="p">(</span><span class="n">Cₒ</span><span class="p">[</span><span class="o">:</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span><span class="n">Cₒ</span><span class="p">[</span><span class="o">:</span><span class="p">,</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">],</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">colors</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="w"> </span><span class="n">label</span><span class="o">=</span><span class="s">&quot;r = </span><span class="si">$</span><span class="p">(</span><span class="n">R</span><span class="p">[</span><span class="n">i</span><span class="p">])</span><span class="s">&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="n">xlim</span><span class="o">=</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span><span class="n">number_of_periods</span><span class="p">),</span><span class="w"> </span><span class="n">ylim</span><span class="o">=</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">14.0</span><span class="p">),</span>
+<span class="w">        </span><span class="n">bg</span><span class="o">=</span><span class="s">&quot;floralwhite&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">background_color_outside</span><span class="o">=</span><span class="s">&quot;white&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">framestyle</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">:box</span><span class="p">,</span><span class="w"> </span>
+<span class="w">        </span><span class="n">fg_legend</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">:transparent</span><span class="p">)</span>
 <span class="k">end</span>
 <span class="n">current</span><span class="p">();</span>
-<span class="n">xlabel!</span><span class="p">(</span><span class="s">&quot;Period index (AU)&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
-<span class="n">ylabel!</span><span class="p">(</span><span class="s">&quot;Future value (USD)&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
+<span class="n">xlabel!</span><span class="p">(</span><span class="s">&quot;Period index (AU)&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
+<span class="n">ylabel!</span><span class="p">(</span><span class="s">&quot;Future value (USD)&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
@@ -724,16 +724,16 @@ Rearranging Eqn. <a class="reference internal" href="#equation-eq-cash-flow-1-pe
 <li><p>If the net present value is negative, the owner should not install the system.</p></li>
 </ul>
 <p>The <a class="reference external" href="https://julialang.org">Julia</a> code to compute the net present value of the project is shown below:</p>
-<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">cashflows</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">230</span><span class="p">,</span><span class="mi">90</span><span class="p">,</span><span class="mi">90</span><span class="p">,</span><span class="mi">90</span><span class="p">];</span>
-<span class="n">number_of_periods</span> <span class="o">=</span> <span class="n">length</span><span class="p">(</span><span class="n">cashflows</span><span class="p">);</span>
-<span class="n">discounted_cashflows</span> <span class="o">=</span> <span class="kt">Array</span><span class="p">{</span><span class="kt">Float64</span><span class="p">,</span><span class="mi">1</span><span class="p">}(</span><span class="nb">undef</span><span class="p">,</span> <span class="n">number_of_periods</span><span class="p">);</span>
-<span class="n">r̄</span> <span class="o">=</span> <span class="mf">0.04</span><span class="p">;</span> <span class="c"># 4% discount rate</span>
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">cashflows</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="o">-</span><span class="mi">230</span><span class="p">,</span><span class="mi">90</span><span class="p">,</span><span class="mi">90</span><span class="p">,</span><span class="mi">90</span><span class="p">];</span>
+<span class="n">number_of_periods</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">length</span><span class="p">(</span><span class="n">cashflows</span><span class="p">);</span>
+<span class="n">discounted_cashflows</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">Array</span><span class="p">{</span><span class="kt">Float64</span><span class="p">,</span><span class="mi">1</span><span class="p">}(</span><span class="nb">undef</span><span class="p">,</span><span class="w"> </span><span class="n">number_of_periods</span><span class="p">);</span>
+<span class="n">r̄</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.04</span><span class="p">;</span><span class="w"> </span><span class="c"># 4% discount rate</span>
 
 <span class="c"># compute the discounted cash flows -</span>
-<span class="k">for</span> <span class="n">i</span> <span class="o">∈</span> <span class="mi">0</span><span class="o">:</span><span class="p">(</span><span class="n">number_of_periods</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
-    <span class="n">discounted_cashflows</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">cashflows</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span><span class="o">/</span><span class="p">((</span><span class="mi">1</span><span class="o">+</span><span class="n">r̄</span><span class="p">)</span><span class="o">^</span><span class="n">i</span><span class="p">);</span>
+<span class="k">for</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">∈</span><span class="w"> </span><span class="mi">0</span><span class="o">:</span><span class="p">(</span><span class="n">number_of_periods</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span>
+<span class="w">    </span><span class="n">discounted_cashflows</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cashflows</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span><span class="o">/</span><span class="p">((</span><span class="mi">1</span><span class="o">+</span><span class="n">r̄</span><span class="p">)</span><span class="o">^</span><span class="n">i</span><span class="p">);</span>
 <span class="k">end</span>
-<span class="n">NPV</span> <span class="o">=</span> <span class="n">sum</span><span class="p">(</span><span class="n">discounted_cashflows</span><span class="p">);</span>
+<span class="n">NPV</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sum</span><span class="p">(</span><span class="n">discounted_cashflows</span><span class="p">);</span>
 </pre></div>
 </div>
 <p>The net present value of the project is <code class="docutils literal notranslate"><span class="pre">NPV</span> <span class="pre">=</span> <span class="pre">19.75k</span></code> at a discount rate of <code class="docutils literal notranslate"><span class="pre">r̄</span> <span class="pre">=</span> <span class="pre">0.04</span></code>. Since the net present value is positive, we should consider installing the upgraded lighting system in the building.</p>
@@ -775,32 +775,32 @@ Rearranging Eqn. <a class="reference internal" href="#equation-eq-cash-flow-1-pe
 <p>Johnson Controls offers to install a new computer-controlled lighting system that will reduce electric bills by 90,000 USD in each of the next three years. The system costs 230,000 USD and takes 1-year to install. Compute the internal rate of return <span class="math notranslate nohighlight">\(r^{\star}\)</span> for this project and determine if we should install the upgraded system.</p>
 <p><strong>Solution</strong>: For this problem we estimate the internal rate of return <span class="math notranslate nohighlight">\(r^{\star}\)</span> by minimzing the squared net present value. The <a class="reference external" href="https://julialang.org">Julia</a> code to compute the <code class="docutils literal notranslate"><span class="pre">IRR</span></code>, which uses the <a class="reference external" href="https://github.com/JuliaNLSolvers/Optim.jl">Optim.jl</a> package, is given by:</p>
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># load external packages -</span>
-<span class="k">using</span> <span class="n">Optim</span>
+<span class="k">using</span><span class="w"> </span><span class="n">Optim</span>
 
 <span class="c"># define the loss function (we are minimizing the squared NPV)</span>
-<span class="k">function</span> <span class="n">loss</span><span class="p">(</span><span class="n">r̄</span><span class="o">::</span><span class="kt">Float64</span><span class="p">,</span> <span class="n">cashflows</span><span class="o">::</span><span class="kt">Array</span><span class="p">{</span><span class="kt">Float64</span><span class="p">,</span><span class="mi">1</span><span class="p">})</span>
-    
-    <span class="c"># initialize -</span>
-    <span class="n">number_of_periods</span> <span class="o">=</span> <span class="n">length</span><span class="p">(</span><span class="n">cashflows</span><span class="p">);</span>
-    <span class="n">discounted_cashflows</span> <span class="o">=</span> <span class="kt">Array</span><span class="p">{</span><span class="kt">Float64</span><span class="p">,</span><span class="mi">1</span><span class="p">}(</span><span class="nb">undef</span><span class="p">,</span> <span class="n">number_of_periods</span><span class="p">);</span>
-    
-    <span class="c"># main -</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="o">∈</span> <span class="mi">0</span><span class="o">:</span><span class="p">(</span><span class="n">number_of_periods</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
-        <span class="n">discounted_cashflows</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">cashflows</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span><span class="o">/</span><span class="p">((</span><span class="mi">1</span><span class="o">+</span><span class="n">r̄</span><span class="p">)</span><span class="o">^</span><span class="n">i</span><span class="p">);</span>
-    <span class="k">end</span>
+<span class="k">function</span><span class="w"> </span><span class="n">loss</span><span class="p">(</span><span class="n">r̄</span><span class="o">::</span><span class="kt">Float64</span><span class="p">,</span><span class="w"> </span><span class="n">cashflows</span><span class="o">::</span><span class="kt">Array</span><span class="p">{</span><span class="kt">Float64</span><span class="p">,</span><span class="mi">1</span><span class="p">})</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="c"># initialize -</span>
+<span class="w">    </span><span class="n">number_of_periods</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">length</span><span class="p">(</span><span class="n">cashflows</span><span class="p">);</span>
+<span class="w">    </span><span class="n">discounted_cashflows</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">Array</span><span class="p">{</span><span class="kt">Float64</span><span class="p">,</span><span class="mi">1</span><span class="p">}(</span><span class="nb">undef</span><span class="p">,</span><span class="w"> </span><span class="n">number_of_periods</span><span class="p">);</span>
+<span class="w">    </span>
+<span class="w">    </span><span class="c"># main -</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">∈</span><span class="w"> </span><span class="mi">0</span><span class="o">:</span><span class="p">(</span><span class="n">number_of_periods</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span>
+<span class="w">        </span><span class="n">discounted_cashflows</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cashflows</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span><span class="o">/</span><span class="p">((</span><span class="mi">1</span><span class="o">+</span><span class="n">r̄</span><span class="p">)</span><span class="o">^</span><span class="n">i</span><span class="p">);</span>
+<span class="w">    </span><span class="k">end</span>
 
-    <span class="c"># compute the NPV -</span>
-    <span class="n">NPV</span> <span class="o">=</span> <span class="n">sum</span><span class="p">(</span><span class="n">discounted_cashflows</span><span class="p">);</span>
+<span class="w">    </span><span class="c"># compute the NPV -</span>
+<span class="w">    </span><span class="n">NPV</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sum</span><span class="p">(</span><span class="n">discounted_cashflows</span><span class="p">);</span>
 
-    <span class="c"># return -</span>
-    <span class="k">return</span> <span class="p">(</span><span class="n">NPV</span><span class="p">)</span><span class="o">^</span><span class="mi">2</span>
+<span class="w">    </span><span class="c"># return -</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">(</span><span class="n">NPV</span><span class="p">)</span><span class="o">^</span><span class="mi">2</span>
 <span class="k">end</span>
 
 <span class="c"># solve using the optimize method from Optim.jl -</span>
-<span class="n">cashflows</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mf">230.0</span><span class="p">,</span><span class="mf">90.0</span><span class="p">,</span><span class="mf">90.0</span><span class="p">,</span><span class="mf">90.0</span><span class="p">];</span>
-<span class="n">objective</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">=</span> <span class="n">loss</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">cashflows</span><span class="p">);</span>
-<span class="n">soln</span> <span class="o">=</span> <span class="n">optimize</span><span class="p">(</span><span class="n">objective</span><span class="p">,</span> <span class="mf">0.0</span><span class="p">,</span> <span class="mf">0.20</span><span class="p">)</span>
-<span class="n">r̄</span> <span class="o">=</span> <span class="n">soln</span><span class="o">.</span><span class="n">minimizer</span><span class="p">;</span>
+<span class="n">cashflows</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="o">-</span><span class="mf">230.0</span><span class="p">,</span><span class="mf">90.0</span><span class="p">,</span><span class="mf">90.0</span><span class="p">,</span><span class="mf">90.0</span><span class="p">];</span>
+<span class="n">objective</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">loss</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">cashflows</span><span class="p">);</span>
+<span class="n">soln</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">optimize</span><span class="p">(</span><span class="n">objective</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.20</span><span class="p">)</span>
+<span class="n">r̄</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">soln</span><span class="o">.</span><span class="n">minimizer</span><span class="p">;</span>
 </pre></div>
 </div>
 <p>The internal rate of return for the lighting project equals <code class="docutils literal notranslate"><span class="pre">IRR</span> <span class="pre">=</span> <span class="pre">0.082</span></code>. Since the internal rate of return is <em>greater than</em> the discount rate <code class="docutils literal notranslate"><span class="pre">r̄</span> <span class="pre">=</span> <span class="pre">0.04</span></code>, the building owner should install the upgraded lighting system.</p>

@@ -5,8 +5,11 @@ In today’s society, finance holds a vital position in both the progress of tec
 
 ### Times, places and websites
 * __Credits__: 3-credits
-* __Lectures and discussions__: Lecture at TuTh 1:30 PM - 2:20 PM and Discussion at W 1:30 PM - 2:20 PM
-* __Website__: Canvas and GitHub. The labs, other codes and data used throughout the course are available on our [GitHub lab repository](https://github.com/varnerlab/CHEME-5660-Labs-F23.git) and in the [VLQuantitativeFinancePackage.jl](https://github.com/varnerlab/VLQuantitativeFinancePackage.jl.git) package.
+* __Lectures and discussions__: Lecture at TuTh 1:25 PM - 2:15 PM and Discussion at W 1:25 PM - 2:15 PM
+* __Website__: Canvas and GitHub. 
+    - The labs are available on our [GitHub lab repository](https://github.com/varnerlab/CHEME-5660-Labs-F23.git) 
+    - The lecture examples are available on our [GitHub example repository](https://github.com/varnerlab/CHEME-5660-Examples-F23.git)
+    - Lectures, labs and problem sets will use the the [VLQuantitativeFinancePackage.jl](https://github.com/varnerlab/VLQuantitativeFinancePackage.jl.git) package.
 * __Schedule__: The lecture, lab and problem set schedule can be viewed (requires Cornell login): [here](https://cornell.box.com/s/xz2ir0k7kimtyzz10k98op5ctihqa2fh).
 
 ### Outcomes

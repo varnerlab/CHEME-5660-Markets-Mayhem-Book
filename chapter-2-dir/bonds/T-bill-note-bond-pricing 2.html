@@ -1,0 +1,675 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Treasury Security Pricing Dynamics and Risks &#8212; CHEME-5660</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-PG1Y6R28LY"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-PG1Y6R28LY');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'chapter-2-dir/bonds/T-bill-note-bond-pricing';</script>
+    <link rel="canonical" href="https://varnerlab.github.io/CHEME-5660-Markets-Mayhem-Book/infrastructure.html/chapter-2-dir/bonds/T-bill-note-bond-pricing.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="STRIPS Bonds and the Term Structure of Interest Rates" href="STRIPS.html" />
+    <link rel="prev" title="Treasury Bills, Notes and Bonds" href="T-bills.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../../infrastructure.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/cornell_seal_simple_black-164.svg" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../../_static/cornell_seal_simple_black-164.svg" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../infrastructure.html">
+                    Finance and Markets for Engineers and Scientists
+                </a>
+            </li>
+        </ul>
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../chapter-1-dir/chapter-1-landing.html">Unit 1: Financial Basics</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../chapter-1-dir/assets.html">Valuation of Abstract Assets</a></li>
+</ul>
+</li>
+</ul>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../chapter-2-landing.html">Unit 2: Wealth Creation Tools</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="../bonds.html">U.S. Treasury Securities</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="T-bills.html">Treasury Bills, Notes and Bonds</a></li>
+<li class="toctree-l3 current active"><a class="current reference internal" href="#">Treasury Security Pricing Dynamics and Risks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="STRIPS.html">STRIPS Bonds and the Term Structure of Interest Rates</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../stocks.html">Equity Securities</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../stocks/stylized-facts.html">Equities, Markets, and Stylized Facts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../stocks/lattice-eq-price.html">Lattice Models of Equity Pricing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../stocks/obm-gbm-eq-price.html">Brownian Motion Models of Equity Pricing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../stocks/advanced-eq-price.html">Advanced Stochastic Models of Equity Pricing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../stocks/multivariate-eq-price.html">Multivariate Brownian Motion Models of Equity Prices</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../options.html">Derivative Securities</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../options/american-call-and-put-contracts.html">American and European Call and Put Contracts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../options/composite-contracts.html">Composite Contract Profit and Loss at Expiration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../options/option-contract-pricing.html">The Extrinsic and Intrinsic Value of an Option Contract</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../options/option-contract-dynamics.html">Option Contract Price Dynamics and Sensitivities</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../options/option-rolling.html">Trade mechanics for options positions: The Art of the Roll</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../chapter-3-dir/chapter-3-landing.html">Unit 3: Modern Portfolio Theory</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../chapter-3-dir/data-markowitz.html">Data-Driven Portfolio Allocation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../chapter-3-dir/model-markowitz.html">Model-Driven Portfolio Allocation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../chapter-3-dir/reallocation.html">Portfolio Reallocation Strategies</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../chapter-3-dir/black-swan-events.html">Surviving Black Swan Events</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../chapter-3-dir/var.html">Value at Risk and Conditional Value at Risk</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../chapter-3-dir/hedged-portfolio.html">Hedging and Dynamic Hedging Approaches</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../chapter-4-dir/chapter-4-landing.html">Unit 4: Rational Decision Theory</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../chapter-4-dir/expected-utility.html">Maximzing the Expected Utility</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../chapter-4-dir/markov.html">Markov Models</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../chapter-4-dir/markov/hmm.html">Hidden Markov Models of Investor Behavior</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../chapter-4-dir/markov/mdp.html">Markov Decision Process Models of Sequential Decision Making</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../chapter-4-dir/rl.html">Reinforcement Learning</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../chapter-4-dir/bandits/bandits.html">Bandit problems, exploration versus exploitation and Thompson sampling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../chapter-4-dir/rl/Q-learning.html">Reinforcement Learning (RL) and the asset management problem</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Appendices</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../appendix/probability-basics.html">Probability and Random Variables</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../appendix/ito.html">Stochastic Processes</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../appendix/julia-basics.html">Julia Basics</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../appendix/julia/julia-installation.html">Julia Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../appendix/julia/julia-functions-types.html">Julia Types, Functions and Programs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../appendix/julia/julia-data.html">Working with Data in Julia</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">References</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../../References.html">References</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Book" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/varnerlab/CHEME-5660-Markets-Mayhem-Book/issues/new?title=Issue%20on%20page%20%2Fchapter-2-dir/bonds/T-bill-note-bond-pricing.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/chapter-2-dir/bonds/T-bill-note-bond-pricing.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Treasury Security Pricing Dynamics and Risks</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zero-coupon-interest-rate-risk">Zero-coupon Interest Rate Risk</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#malkiels-bond-pricing-guidelines">Malkiel’s bond-pricing guidelines</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#credit-risk-of-treasury-securities">Credit Risk of Treasury Securities</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="treasury-security-pricing-dynamics-and-risks">
+<span id="content-references-bond-pricing-relationships"></span><h1>Treasury Security Pricing Dynamics and Risks<a class="headerlink" href="#treasury-security-pricing-dynamics-and-risks" title="Permalink to this heading">#</a></h1>
+<p>U.S. Treasury debt is often taken to be a risk-free asset. However, the price of a bill, note, or bond can change over its term because of changes in interest rates. Moreover, the issuer of a bond could default on their repayment obligation. Thus, there is interest rate and credit risk associated with these instruments.</p>
+<aside class="topic">
+<p class="topic-title">Outline</p>
+<p>In this lecture, we discuss the pricing dynamics and risks of U.S. Treasury securities. We will first discuss the interest rate risk of zero-coupon treasury securities and coupon-bearing treasury securities. Then, we will discuss the credit risk of treasury securities.</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#content-references-zc-pricing-relationships-interest-rate-risk"><span class="std std-ref">Interest rate risk for zero-coupon treasury securities</span></a> is the risk that the price of zero-coupon treasury security will change due to changes in the market interest rate.</p></li>
+<li><p><a class="reference internal" href="#content-references-cb-pricing-relationships-interest-rate-risk"><span class="std std-ref">Interest rate risk for coupon-bearing treasury securities</span></a> is the risk that the price of coupon-bearing treasury security will change due to changes in the market interest rate. In particular, we will discuss Malkiel’s bond-pricing guidelines, which govern the relationship between the price of coupon-bearing treasury security and the market interest rate under different market conditions and the security duration.</p></li>
+<li><p><a class="reference internal" href="#content-references-credit-risk-treasury-securities"><span class="std std-ref">Credit risk for treasury securities</span></a> is the risk that the U.S. government will default on its debt obligations. We will discuss the credit risk of treasury securities and how it is reflected in the price of these securities.</p></li>
+</ul>
+</aside>
+<hr class="docutils" />
+<section id="zero-coupon-interest-rate-risk">
+<span id="content-references-zc-pricing-relationships-interest-rate-risk"></span><h2>Zero-coupon Interest Rate Risk<a class="headerlink" href="#zero-coupon-interest-rate-risk" title="Permalink to this heading">#</a></h2>
+<p>The price of a zero-coupon treasury bill <span class="math notranslate nohighlight">\(V_{B}\)</span> with a duration of <code class="docutils literal notranslate"><span class="pre">T</span></code> years is computed with respect to an effective market interest rate <span class="math notranslate nohighlight">\(\bar{r}\)</span> on the day the bill is purchased. However, interest rates <span class="math notranslate nohighlight">\(\bar{r}\)</span> vary with time and economic conditions (<a class="reference internal" href="#fig-bill-daily-interest-rate"><span class="std std-numref">Fig. 8</span></a>):</p>
+<figure class="align-default" id="fig-bill-daily-interest-rate">
+<a class="reference internal image-reference" href="../../_images/Fig-4-week-Daily-2022.svg"><img alt="../../_images/Fig-4-week-Daily-2022.svg" height="420px" src="../../_images/Fig-4-week-Daily-2022.svg" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 8 </span><span class="caption-text">Daily interest rate quotations for 2022 download from <a class="reference external" href="https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_bill_rates&amp;field_tdr_date_value_month=202305">Treasury.gov</a>. These rates are secondary market quotations on 4-week treasury bills, assuming a 360-day year,  computed at approximately 3:30 PM each business day by the <a class="reference external" href="https://www.newyorkfed.org">Federal Reserve Bank of New York</a>.</span><a class="headerlink" href="#fig-bill-daily-interest-rate" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>Thus, the market price of a treasury bill for the same par value and duration can change over its term because of changes in interest rates (<a class="reference internal" href="#example-zero-coupon-t-bill">Example 8</a>):</p>
+<div class="proof example dropdown admonition" id="example-zero-coupon-t-bill">
+<p class="admonition-title"><span class="caption-number">Example 8 </span> (Pricing of a zero-coupon treasury bill)</p>
+<section class="example-content" id="proof-content">
+<p>Compute the fair price for a zero-coupon treasury bill with a par value of $1,000, and a T = 26- and 52-week duration <em>assuming</em> the effective market interest rate <span class="math notranslate nohighlight">\(\bar{r}\)</span> is given by the 2022 values shown on <a class="reference internal" href="#fig-bill-daily-interest-rate"><span class="std std-numref">Fig. 8</span></a>.</p>
+<p><strong>Solution</strong>:
+The fair price for a zero-coupon treasury bill <span class="math notranslate nohighlight">\(V_{B}\)</span> is the future face (par) value <span class="math notranslate nohighlight">\(V_{P}\)</span> of the bill discounted at <span class="math notranslate nohighlight">\(\bar{r}\)</span> to the time of the purchase (current dollars):</p>
+<div class="math notranslate nohighlight">
+\[V_{B} = \mathcal{D}^{-1}_{T,0}(\bar{r})\cdot{V_{P}}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\mathcal{D}_{T,0}\)</span> is the discount factor for a zero-coupon treasury bill with a duration of <code class="docutils literal notranslate"><span class="pre">T</span></code> years. We can compute the price using the following <a class="reference external" href="https://julialang.org/">Julia</a> code (which assumes continuous compounding):</p>
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># Assumptions:</span>
+<span class="c"># 1. The interest rate data is stored in the array r̄ (as a percentage). </span>
+<span class="c"># 2. We have number_of_days days of interest rate data (from first to last day of the year).</span>
+
+<span class="c"># Define the compounding model -</span>
+<span class="n">𝒟</span><span class="p">(</span><span class="n">r̄</span><span class="p">,</span><span class="n">T</span><span class="p">)</span> <span class="o">=</span> <span class="n">exp</span><span class="p">(</span><span class="n">r̄</span><span class="o">*</span><span class="n">T</span><span class="p">);</span>
+
+<span class="c"># initialize variables</span>
+<span class="n">T₁</span> <span class="o">=</span> <span class="p">(</span><span class="mi">26</span><span class="o">/</span><span class="mi">52</span><span class="p">);</span>   <span class="c"># T = 0.5 yr or 26 weeks</span>
+<span class="n">T₂</span> <span class="o">=</span> <span class="p">(</span><span class="mi">52</span><span class="o">/</span><span class="mi">52</span><span class="p">);</span>   <span class="c"># T = 1 yr or 52 weeks</span>
+<span class="n">Vₚ</span> <span class="o">=</span> <span class="mf">1000.0</span><span class="p">;</span>    <span class="c"># par value of the treasury bill</span>
+
+<span class="c"># main loop</span>
+<span class="n">price_array</span> <span class="o">=</span> <span class="kt">Array</span><span class="p">{</span><span class="kt">Float64</span><span class="p">,</span><span class="mi">2</span><span class="p">}(</span><span class="nb">undef</span><span class="p">,</span> <span class="n">length</span><span class="p">(</span><span class="n">r̄</span><span class="p">),</span> <span class="mi">2</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="mi">1</span><span class="o">:</span><span class="n">number_of_days</span>
+    <span class="n">rvalue</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">100</span><span class="p">)</span><span class="o">*</span><span class="n">r̄</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+    <span class="n">price_array</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="n">𝒟</span><span class="p">(</span><span class="n">rvalue</span><span class="p">,</span><span class="n">T₁</span><span class="p">))</span><span class="o">*</span><span class="n">Vₚ</span><span class="p">;</span>
+    <span class="n">price_array</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="n">𝒟</span><span class="p">(</span><span class="n">rvalue</span><span class="p">,</span><span class="n">T₂</span><span class="p">))</span><span class="o">*</span><span class="n">Vₚ</span><span class="p">;</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+<p>Computing the price <span class="math notranslate nohighlight">\(V_{B}\)</span> as a function of <span class="math notranslate nohighlight">\(\bar{r}\)</span> gives (<a class="reference internal" href="#fig-zcbill-price"><span class="std std-numref">Fig. 9</span></a>):</p>
+<figure class="align-default" id="fig-zcbill-price">
+<a class="reference internal image-reference" href="../../_images/Fig-Price-Zero-Coupon-Bill.svg"><img alt="../../_images/Fig-Price-Zero-Coupon-Bill.svg" height="400px" src="../../_images/Fig-Price-Zero-Coupon-Bill.svg" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 9 </span><span class="caption-text">Price of a zero coupon treasury bills for terms of T = 26 weeks (light blue) and T = 52 weeks (dark blue) as a function of the historical market interest rate for 2022. The face value <span class="math notranslate nohighlight">\(V_{P}\)</span> = 1000 USD for each T-bill.</span><a class="headerlink" href="#fig-zcbill-price" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+</div><p>The example treasury bill pricing calculations shown in <a class="reference internal" href="#example-zero-coupon-t-bill">Example 8</a> have some interesting properties:</p>
+<ul class="simple">
+<li><p>There is an <em>inverse</em> relationship between the current price of a zero-coupon bill and the market interest rate <span class="math notranslate nohighlight">\(\bar{r}\)</span>; this must be true as the par value (which is in future dollars) is fixed. Thus, higher market interest rates imply lower initial T-bill prices.</p></li>
+<li><p>The longer duration treasury bills are more sensitive to interest rate changes that shorter duration bills, i.e., the T = 52 week T-bill price is more sensitive to changes in <span class="math notranslate nohighlight">\(\bar{r}\)</span> than the T = 26 week T-bill price. This is because the longer duration T-bill has a longer time to maturity, and thus, more time for the market interest rate to change.</p></li>
+</ul>
+</section>
+<section id="malkiels-bond-pricing-guidelines">
+<span id="content-references-cb-pricing-relationships-interest-rate-risk"></span><h2>Malkiel’s bond-pricing guidelines<a class="headerlink" href="#malkiels-bond-pricing-guidelines" title="Permalink to this heading">#</a></h2>
+<p>Bond investors have two actions open to them: hold the bond until maturity (and collect the coupon payments along the way), or resell the bond (and potentially benefit from a change in the bond price). The latter is possible because after the bonds are issued, bondholders may buy or resell bonds in secondary bond markets. In these markets, bond prices fluctuate inversely with the market interest rate <span class="math notranslate nohighlight">\(\bar{r}\)</span>. Thus, interest rate fluctuations are the main source of risk to the bondholder if they are not holding the bound to maturity.</p>
+<figure class="align-default" id="fig-bond-price-sensitivity">
+<a class="reference internal image-reference" href="../../_images/Fig-Sensitivity-Bond-Price-Interest-Rate.svg"><img alt="../../_images/Fig-Sensitivity-Bond-Price-Interest-Rate.svg" height="420px" src="../../_images/Fig-Sensitivity-Bond-Price-Interest-Rate.svg" /></a>
+<figcaption>
+<p><span class="caption-number">Fig. 10 </span><span class="caption-text">Sensitivity of bond price to changes in the market interest rate.</span><a class="headerlink" href="#fig-bond-price-sensitivity" title="Permalink to this image">#</a></p>
+</figcaption>
+</figure>
+<p>The relationship between the price of a bond, and the yeild (i.e., the market interest rate <span class="math notranslate nohighlight">\(\bar{r}\)</span>) was previously studied by Malkiel <span id="id1">[<a class="reference internal" href="../../References.html#id10" title="Burton G. Malkiel. Expectations, Bond Prices, and the Term Structure of Interest Rates*. The Quarterly Journal of Economics, 76(2):197-218, 05 1962. URL: https://doi.org/10.2307/1880816, arXiv:https://academic.oup.com/qje/article-pdf/76/2/197/5374920/76-2-197.pdf, doi:10.2307/1880816.">Malkiel, 1962</a>]</span>. The so-called Malkiel’s bond-pricing rules are demonstrated by the simulations shown in (<a class="reference internal" href="#fig-bond-price-sensitivity"><span class="std std-numref">Fig. 10</span></a>):</p>
+<ol class="arabic simple">
+<li><p>The price of a U.S. Treasury Bond <em>increases</em> as the market interest rate <span class="math notranslate nohighlight">\(\bar{r}\)</span> <em>decreases</em>; thus, there is an <em>inverse</em> relationship between the bond yield to maturity (i.e., the market rate <span class="math notranslate nohighlight">\(\bar{r}\)</span>) and the price of the bond <span class="math notranslate nohighlight">\(V_{B}\)</span>.</p></li>
+<li><p>Changes in price as a function of changes in the interest rate are not symmetric;
+an increase in a bond’s interest rate <span class="math notranslate nohighlight">\(\bar{r}\)</span> results in a <em>smaller price change</em> than a decrease in <span class="math notranslate nohighlight">\(\bar{r}\)</span> of equal magnitude. For example, consider Case II in (<a class="reference internal" href="#fig-bond-price-sensitivity"><span class="std std-numref">Fig. 10</span></a>); a 50% decrease in <span class="math notranslate nohighlight">\(\bar{r}\)</span> increases the price of this bond by approximately 75%, while a 50% increase in <span class="math notranslate nohighlight">\(\bar{r}\)</span> decreases the bond price approximately 30%.</p></li>
+<li><p>Prices of long-term bonds are more sensitive to interest rate changes than short-term bonds. For example, consider Case I and Case II in (<a class="reference internal" href="#fig-bond-price-sensitivity"><span class="std std-numref">Fig. 10</span></a>); Case I (short-term bond) is <em>less sensitive</em> to the same magnitude change in <span class="math notranslate nohighlight">\(\bar{r}\)</span> compared with Case II (long-term bond).</p></li>
+<li><p>Interest rate risk is inversely related to a bond’s coupon rate. Prices of low coupon-rate bonds are more sensitive to changes in interest rates than prices of high-rate coupon bonds. For example, compare Case II and III in (<a class="reference internal" href="#fig-bond-price-sensitivity"><span class="std std-numref">Fig. 10</span></a>); case III (the low coupon-rate bond) is significanly more sensitive to decreases in interest rate compared with case II (the high coupon-rate bond). A similar, albeit less pronounced, trend is visible for increased
+interest rate.</p></li>
+</ol>
+</section>
+<section id="credit-risk-of-treasury-securities">
+<span id="content-references-credit-risk-treasury-securities"></span><h2>Credit Risk of Treasury Securities<a class="headerlink" href="#credit-risk-of-treasury-securities" title="Permalink to this heading">#</a></h2>
+<p>Fill me in.</p>
+</section>
+<hr class="docutils" />
+<section id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this heading">#</a></h2>
+<p>Fill me in.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./chapter-2-dir/bonds"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="T-bills.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Treasury Bills, Notes and Bonds</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="STRIPS.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">STRIPS Bonds and the Term Structure of Interest Rates</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zero-coupon-interest-rate-risk">Zero-coupon Interest Rate Risk</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#malkiels-bond-pricing-guidelines">Malkiel’s bond-pricing guidelines</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#credit-risk-of-treasury-securities">Credit Risk of Treasury Securities</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Varner and Woltornist
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

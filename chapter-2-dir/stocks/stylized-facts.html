@@ -540,28 +540,28 @@ on asset <span class="math notranslate nohighlight">\(i\)</span> over time horiz
 <span class="linenos"> 6</span>
 <span class="linenos"> 7</span><span class="s">See: https://dataframes.juliadata.org/stable/man/getting_started/</span>
 <span class="linenos"> 8</span><span class="s">&quot;&quot;&quot;</span>
-<span class="linenos"> 9</span><span class="k">function</span> <span class="n">logR</span><span class="p">(</span><span class="n">data</span><span class="o">::</span><span class="kt">DataFrame</span><span class="p">;</span> <span class="n">r</span><span class="o">::</span><span class="kt">Float64</span> <span class="o">=</span> <span class="mf">0.045</span><span class="p">,</span> <span class="n">key</span><span class="o">::</span><span class="kt">Symbol</span><span class="o">=</span><span class="ss">:close</span><span class="p">)</span><span class="o">::</span><span class="kt">Array</span><span class="p">{</span><span class="kt">Float64</span><span class="p">,</span><span class="mi">1</span><span class="p">}</span>
+<span class="linenos"> 9</span><span class="k">function</span><span class="w"> </span><span class="n">logR</span><span class="p">(</span><span class="n">data</span><span class="o">::</span><span class="kt">DataFrame</span><span class="p">;</span><span class="w"> </span><span class="n">r</span><span class="o">::</span><span class="kt">Float64</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.045</span><span class="p">,</span><span class="w"> </span><span class="n">key</span><span class="o">::</span><span class="kt">Symbol</span><span class="o">=</span><span class="ss">:close</span><span class="p">)</span><span class="o">::</span><span class="kt">Array</span><span class="p">{</span><span class="kt">Float64</span><span class="p">,</span><span class="mi">1</span><span class="p">}</span>
 <span class="linenos">10</span>
-<span class="linenos">11</span>    <span class="c"># convert risk free rate to daily rate -</span>
-<span class="linenos">12</span>    <span class="n">r̄</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">r</span><span class="p">)</span><span class="o">^</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">365</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span> <span class="c"># convert the annual risk free rate to daily value</span>
+<span class="linenos">11</span><span class="w">    </span><span class="c"># convert risk free rate to daily rate -</span>
+<span class="linenos">12</span><span class="w">    </span><span class="n">r̄</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">r</span><span class="p">)</span><span class="o">^</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">365</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="c"># convert the annual risk free rate to daily value</span>
 <span class="linenos">13</span>
-<span class="linenos">14</span>    <span class="c"># initialize -</span>
-<span class="linenos">15</span>    <span class="n">number_trading_days</span> <span class="o">=</span> <span class="n">nrow</span><span class="p">(</span><span class="n">data</span><span class="p">);</span>
-<span class="linenos">16</span>    <span class="n">log_excess_return_array</span> <span class="o">=</span> <span class="kt">Array</span><span class="p">{</span><span class="kt">Float64</span><span class="p">,</span><span class="mi">1</span><span class="p">}(</span><span class="nb">undef</span><span class="p">,</span> <span class="n">number_trading_days</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
-<span class="linenos">17</span>    
-<span class="linenos">18</span>    <span class="c"># main loop - compute the excess returns, store them in an array</span>
-<span class="linenos">19</span>    <span class="k">for</span> <span class="n">i</span> <span class="o">∈</span> <span class="mi">2</span><span class="o">:</span><span class="n">number_trading_days</span>
-<span class="linenos">20</span>        
-<span class="linenos">21</span>        <span class="c"># grab yesterday&#39;s and today&#39;s close price</span>
-<span class="linenos">22</span>        <span class="n">P₁</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">key</span><span class="p">];</span> <span class="c"># yesterday</span>
-<span class="linenos">23</span>        <span class="n">P₂</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">key</span><span class="p">];</span>   <span class="c"># today</span>
+<span class="linenos">14</span><span class="w">    </span><span class="c"># initialize -</span>
+<span class="linenos">15</span><span class="w">    </span><span class="n">number_trading_days</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nrow</span><span class="p">(</span><span class="n">data</span><span class="p">);</span>
+<span class="linenos">16</span><span class="w">    </span><span class="n">log_excess_return_array</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">Array</span><span class="p">{</span><span class="kt">Float64</span><span class="p">,</span><span class="mi">1</span><span class="p">}(</span><span class="nb">undef</span><span class="p">,</span><span class="w"> </span><span class="n">number_trading_days</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span>
+<span class="linenos">17</span><span class="w">    </span>
+<span class="linenos">18</span><span class="w">    </span><span class="c"># main loop - compute the excess returns, store them in an array</span>
+<span class="linenos">19</span><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">∈</span><span class="w"> </span><span class="mi">2</span><span class="o">:</span><span class="n">number_trading_days</span>
+<span class="linenos">20</span><span class="w">        </span>
+<span class="linenos">21</span><span class="w">        </span><span class="c"># grab yesterday&#39;s and today&#39;s close price</span>
+<span class="linenos">22</span><span class="w">        </span><span class="n">P₁</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">key</span><span class="p">];</span><span class="w"> </span><span class="c"># yesterday</span>
+<span class="linenos">23</span><span class="w">        </span><span class="n">P₂</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">key</span><span class="p">];</span><span class="w">   </span><span class="c"># today</span>
 <span class="linenos">24</span>
-<span class="linenos">25</span>        <span class="c"># compute the excess return -</span>
-<span class="linenos">26</span>        <span class="n">log_excess_return_array</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">log</span><span class="p">(</span><span class="n">P₂</span><span class="o">/</span><span class="n">P₁</span><span class="p">)</span> <span class="o">-</span> <span class="n">r̄</span>
-<span class="linenos">27</span>    <span class="k">end</span>
+<span class="linenos">25</span><span class="w">        </span><span class="c"># compute the excess return -</span>
+<span class="linenos">26</span><span class="w">        </span><span class="n">log_excess_return_array</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">log</span><span class="p">(</span><span class="n">P₂</span><span class="o">/</span><span class="n">P₁</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">r̄</span>
+<span class="linenos">27</span><span class="w">    </span><span class="k">end</span>
 <span class="linenos">28</span>
-<span class="linenos">29</span>    <span class="c"># return -</span>
-<span class="linenos">30</span>    <span class="k">return</span> <span class="n">log_excess_return_array</span><span class="p">;</span>
+<span class="linenos">29</span><span class="w">    </span><span class="c"># return -</span>
+<span class="linenos">30</span><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">log_excess_return_array</span><span class="p">;</span>
 <span class="linenos">31</span><span class="k">end</span>
 </pre></div>
 </div>
@@ -600,20 +600,20 @@ on asset <span class="math notranslate nohighlight">\(i\)</span> over time horiz
 <div class="literal-block-wrapper docutils container" id="id4">
 <div class="code-block-caption"><span class="caption-number">Listing 2 </span><span class="caption-text">Script for computing the autocorrelation series</span><a class="headerlink" href="#id4" title="Permalink to this code">#</a></div>
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="c"># Load the required packages -</span>
-<span class="linenos"> 2</span><span class="k">using</span> <span class="n">Statistics</span>
-<span class="linenos"> 3</span><span class="k">using</span> <span class="n">CSV</span>
-<span class="linenos"> 4</span><span class="k">using</span> <span class="n">DataFrames</span>
+<span class="linenos"> 2</span><span class="k">using</span><span class="w"> </span><span class="n">Statistics</span>
+<span class="linenos"> 3</span><span class="k">using</span><span class="w"> </span><span class="n">CSV</span>
+<span class="linenos"> 4</span><span class="k">using</span><span class="w"> </span><span class="n">DataFrames</span>
 <span class="linenos"> 5</span>
 <span class="linenos"> 6</span><span class="c"># load the data -</span>
-<span class="linenos"> 7</span><span class="n">data</span> <span class="o">=</span> <span class="n">CSV</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">path</span><span class="o">-</span><span class="n">to</span><span class="o">-</span><span class="n">csv</span><span class="o">-</span><span class="n">file</span><span class="p">,</span> <span class="n">DataFrame</span><span class="p">);</span>
+<span class="linenos"> 7</span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CSV</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">path</span><span class="o">-</span><span class="n">to</span><span class="o">-</span><span class="n">csv</span><span class="o">-</span><span class="n">file</span><span class="p">,</span><span class="w"> </span><span class="n">DataFrame</span><span class="p">);</span>
 <span class="linenos"> 8</span>
 <span class="linenos"> 9</span><span class="c"># compute the return time series -</span>
-<span class="linenos">10</span><span class="n">R</span> <span class="o">=</span> <span class="n">logR</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">key</span> <span class="o">=</span> <span class="ss">:close</span><span class="p">);</span>
+<span class="linenos">10</span><span class="n">R</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">logR</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="n">key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">:close</span><span class="p">);</span>
 <span class="linenos">11</span>
 <span class="linenos">12</span><span class="c"># compute the autocorrelation -</span>
-<span class="linenos">13</span><span class="n">L</span> <span class="o">=</span> <span class="n">length</span><span class="p">(</span><span class="n">R</span><span class="p">);</span>
-<span class="linenos">14</span><span class="n">τ</span>  <span class="o">=</span> <span class="n">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">stop</span><span class="o">=</span><span class="p">(</span><span class="n">L</span><span class="o">-</span><span class="mi">1</span><span class="p">));</span>
-<span class="linenos">15</span><span class="n">AC</span> <span class="o">=</span> <span class="n">autocor</span><span class="p">(</span><span class="n">R</span><span class="p">,</span> <span class="n">τ</span><span class="p">);</span> <span class="c"># function provided by the Statistics package</span>
+<span class="linenos">13</span><span class="n">L</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">length</span><span class="p">(</span><span class="n">R</span><span class="p">);</span>
+<span class="linenos">14</span><span class="n">τ</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">stop</span><span class="o">=</span><span class="p">(</span><span class="n">L</span><span class="o">-</span><span class="mi">1</span><span class="p">));</span>
+<span class="linenos">15</span><span class="n">AC</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">autocor</span><span class="p">(</span><span class="n">R</span><span class="p">,</span><span class="w"> </span><span class="n">τ</span><span class="p">);</span><span class="w"> </span><span class="c"># function provided by the Statistics package</span>
 </pre></div>
 </div>
 </div>
@@ -643,20 +643,20 @@ on asset <span class="math notranslate nohighlight">\(i\)</span> over time horiz
 <div class="literal-block-wrapper docutils container" id="id5">
 <div class="code-block-caption"><span class="caption-number">Listing 3 </span><span class="caption-text">Script for computing the absolute autocorrelation series</span><a class="headerlink" href="#id5" title="Permalink to this code">#</a></div>
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="c"># Load the required packages -</span>
-<span class="linenos"> 2</span><span class="k">using</span> <span class="n">Statistics</span>
-<span class="linenos"> 3</span><span class="k">using</span> <span class="n">CSV</span>
-<span class="linenos"> 4</span><span class="k">using</span> <span class="n">DataFrames</span>
+<span class="linenos"> 2</span><span class="k">using</span><span class="w"> </span><span class="n">Statistics</span>
+<span class="linenos"> 3</span><span class="k">using</span><span class="w"> </span><span class="n">CSV</span>
+<span class="linenos"> 4</span><span class="k">using</span><span class="w"> </span><span class="n">DataFrames</span>
 <span class="linenos"> 5</span>
 <span class="linenos"> 6</span><span class="c"># load the data -</span>
-<span class="linenos"> 7</span><span class="n">data</span> <span class="o">=</span> <span class="n">CSV</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">path</span><span class="o">-</span><span class="n">to</span><span class="o">-</span><span class="n">csv</span><span class="o">-</span><span class="n">file</span><span class="p">,</span> <span class="n">DataFrame</span><span class="p">);</span>
+<span class="linenos"> 7</span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">CSV</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">path</span><span class="o">-</span><span class="n">to</span><span class="o">-</span><span class="n">csv</span><span class="o">-</span><span class="n">file</span><span class="p">,</span><span class="w"> </span><span class="n">DataFrame</span><span class="p">);</span>
 <span class="linenos"> 8</span>
 <span class="linenos"> 9</span><span class="c"># compute the return time series</span>
-<span class="linenos">10</span><span class="n">R</span> <span class="o">=</span> <span class="n">logR</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">key</span> <span class="o">=</span> <span class="ss">:close</span><span class="p">);</span>
+<span class="linenos">10</span><span class="n">R</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">logR</span><span class="p">(</span><span class="n">data</span><span class="p">,</span><span class="w"> </span><span class="n">key</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="ss">:close</span><span class="p">);</span>
 <span class="linenos">11</span>
 <span class="linenos">12</span><span class="c"># compute the autocorrelation -</span>
-<span class="linenos">13</span><span class="n">L</span> <span class="o">=</span> <span class="n">length</span><span class="p">(</span><span class="n">R</span><span class="p">);</span>
-<span class="linenos">14</span><span class="n">τ</span>  <span class="o">=</span> <span class="n">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">stop</span><span class="o">=</span><span class="p">(</span><span class="n">L</span><span class="o">-</span><span class="mi">1</span><span class="p">));</span>
-<span class="linenos">15</span><span class="n">AC</span> <span class="o">=</span> <span class="n">autocor</span><span class="p">(</span><span class="n">abs</span><span class="o">.</span><span class="p">(</span><span class="n">R</span><span class="p">),</span> <span class="n">τ</span><span class="p">);</span> <span class="c"># function provided by the Statistics package</span>
+<span class="linenos">13</span><span class="n">L</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">length</span><span class="p">(</span><span class="n">R</span><span class="p">);</span>
+<span class="linenos">14</span><span class="n">τ</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="n">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="n">stop</span><span class="o">=</span><span class="p">(</span><span class="n">L</span><span class="o">-</span><span class="mi">1</span><span class="p">));</span>
+<span class="linenos">15</span><span class="n">AC</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">autocor</span><span class="p">(</span><span class="n">abs</span><span class="o">.</span><span class="p">(</span><span class="n">R</span><span class="p">),</span><span class="w"> </span><span class="n">τ</span><span class="p">);</span><span class="w"> </span><span class="c"># function provided by the Statistics package</span>
 </pre></div>
 </div>
 </div>
