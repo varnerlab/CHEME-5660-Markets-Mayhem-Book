@@ -502,10 +502,11 @@ document.write(`
 <section id="orders-order-books-and-order-matching">
 <span id="content-orders-order-book-matching"></span><h2>Orders, Order Books and Order Matching<a class="headerlink" href="#orders-order-books-and-order-matching" title="Permalink to this heading">#</a></h2>
 <p>At the center of an electronic exchange are <a class="reference external" href="https://en.wikipedia.org/wiki/Order_(exchange)">orders</a> and <a class="reference external" href="https://en.wikipedia.org/wiki/Order_book">order books</a>. An <a class="reference external" href="https://en.wikipedia.org/wiki/Order_book">order book</a> holds a list of <a class="reference external" href="https://en.wikipedia.org/wiki/Order_(exchange)">orders</a> for a particular security or financial instrument listed on the exchange; thus, it is a tick-by-tick record of the interest buyers and sellers have for a particular security or financial instrument on the exchange.</p>
-<p>Many types of <a class="reference external" href="https://en.wikipedia.org/wiki/Order_(exchange)">orders</a> can be initiated by traders. However, let’s consider only four basic classes of orders, a market order, a limit order, a stop order and a cancel order.</p>
+<p>Traders can initiate many types of orders. However, let’s consider only four basic classes of orders: a market order, a limit order, a cancel order, and a stop order.</p>
 <ul class="simple">
-<li><p><strong>Market order</strong>: A market order is a buy or sell order executed immediately, regardless of the current market prices. As long as willing sellers and buyers are present in the exchange, market orders are always executed (filled). Market orders are used when the certainty of execution is more important than the execution price. Thus, a market order is the simplest of the order types as it forgoes control over the execution price. A market order is filled at the best price available at execution. In fast-moving markets, the price paid or received may differ significantly from the price quoted when the order was entered. Further, a market order may be split across multiple participants on the other side of the transaction, resulting in different prices for some of the instruments involved in the trade.</p></li>
-<li><p><strong>Limit order</strong>: A limit order is an order to buy a financial instrument at no more than a specific price or sell a security at no less than a particular price. This gives the trader control over the price at which the trade is executed. However, unlike a market order which is guaranteed to be executed (filled), a limit order may never be executed if the price conditions are not met. Thus, limit orders are used when the trader wishes to control price rather than the certainty of being filled.</p></li>
+<li><p><strong>Market order</strong>: When you place a market order, your buy or sell order is executed immediately, regardless of the current market prices. Your order will always be filled if willing sellers and buyers are on the exchange. Market orders are best used when you need the certainty of execution, and the execution price is less important. They are the simplest type of order because you don’t have control over the execution price. Instead, your order will be filled at the best price available at execution. Remember that in fast-moving markets, the price you pay or receive may differ significantly from the price quoted when you place the order. Additionally, your order may be split across multiple participants on the other side of the transaction, resulting in different prices for some of the instruments involved in the trade.</p></li>
+<li><p><strong>Limit order</strong>: When trading in financial instruments, a limit order lets you set a maximum purchase or minimum selling price. This allows you to control the price at which the trade is executed. However, unlike a market order, which is guaranteed to be executed, a limit order will only be executed if the price conditions are met. As a result, limit orders are used when you prioritize controlling the price over the certainty of being filled.</p></li>
+<li><p><strong>Cancel order</strong>: If an investor wishes to remove a current order from the exchange, they can cancel it anytime. This is known as a cancel order. It is important to note that if a limit order has not been executed by the end of the trading day or a specific timeframe, it is automatically canceled.</p></li>
 <li><p><strong>Stop order</strong>: A stop order is an order to buy or sell a financial instrument once the price of that instrument reaches a specified price, the stop price:</p>
 <ul>
 <li><p>A <a class="reference external" href="https://en.wikipedia.org/wiki/Order_(exchange)#Buy-stop_order">buy-stop order</a> is entered at a stop price above the current market price. Traders use buy-stop orders to limit a loss or protect a profit on a stock they have sold short.</p></li>
@@ -513,8 +514,6 @@ document.write(`
 <li><p>A <a class="reference external" href="https://en.wikipedia.org/wiki/Order_(exchange)#Stop-limit_order">stop-limit order</a> is an order to buy or sell a stock that combines features of a stop order and a limit order. Once the stop price is reached, a stop-limit order becomes a limit order executed at a specified price (or better). As with all limit orders, a stop-limit order doesn’t get filled if the security’s price never reaches the specified limit price.</p></li>
 </ul>
 </li>
-<li><p><strong>Cancel order</strong>: A cancel order allows an investor to remove a current order from the exchange. If an order
-has not already executed, it can be cancelled at any time. Moreover, if a limit order has not executed by the end of the trading day (or some specified time period) it is automatically cancelled.</p></li>
 </ul>
 </section>
 <section id="returns-and-stylized-facts">
@@ -523,11 +522,22 @@ has not already executed, it can be cancelled at any time. Moreover, if a limit 
 <div class="proof definition admonition" id="defn-log-return-1">
 <p class="admonition-title"><span class="caption-number">Definition 9 </span> (Logarithmic return)</p>
 <section class="definition-content" id="proof-content">
-<p>Let the price of asset <span class="math notranslate nohighlight">\(i\)</span> at time <span class="math notranslate nohighlight">\(j\)</span> be given by <span class="math notranslate nohighlight">\(P_{ij}&gt;0\)</span>. Then the logarithmic return
-on asset <span class="math notranslate nohighlight">\(i\)</span> over time horizon <span class="math notranslate nohighlight">\(j\rightarrow{k}\)</span> is defined as:</p>
+<p>Let <span class="math notranslate nohighlight">\(S_{i,t-1}\)</span> denote the continuously compounding share price of ticker <span class="math notranslate nohighlight">\(i\)</span> at time <span class="math notranslate nohighlight">\(t-1\)</span>. Then, at time <span class="math notranslate nohighlight">\(t\)</span>, the share price is given by:</p>
 <div class="math notranslate nohighlight">
-\[\bar{r}^{(i)}_{k,j} \equiv \log\left(\frac{P_{ik}}{P_{ij}}\right)\]</div>
-<p>where <span class="math notranslate nohighlight">\(\bar{r}^{(i)}_{k,j}\)</span> denotes the logarithmic return of asset <span class="math notranslate nohighlight">\(i\)</span> over time horizon <span class="math notranslate nohighlight">\(j\rightarrow{k}\)</span>. The <span class="math notranslate nohighlight">\(\log\left(\star\right)\)</span> term denotes the <a class="reference external" href="https://en.wikipedia.org/wiki/Natural_logarithm">natural log</a>.</p>
+\[
+\begin{equation*}
+    S_{i,t} = S_{i,t-1}\cdot\exp\left(\mu^{(i)}_{t,t-1}\cdot{\Delta{t}}\right)
+\end{equation*}
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(\mu^{(i)}_{t,t-1}\)</span> denotes the growth rate (units: inverse years) of ticker <span class="math notranslate nohighlight">\(i\)</span> over time horizon <span class="math notranslate nohighlight">\((t-1)\rightarrow{t}\)</span>,
+and <span class="math notranslate nohighlight">\(\Delta{t}\)</span> is the time interval between <span class="math notranslate nohighlight">\(t-1\)</span> and <span class="math notranslate nohighlight">\(t\)</span> (units: years).
+The logarithmic return on asset <span class="math notranslate nohighlight">\(i\)</span> over time horizon <span class="math notranslate nohighlight">\((t-1)\rightarrow{t}\)</span> is defined as:</p>
+<div class="math notranslate nohighlight">
+\[
+\begin{equation*}
+\bar{r}^{(i)}_{t,t-1} \equiv \ln\left(\frac{S_{i,t}}{S_{i,t-1}}\right) = \mu^{(i)}_{t,t-1}\cdot{\Delta{t}}
+\end{equation*}  
+\]</div>
 </section>
 </div><p>The logarithmic return can be computed using the <code class="docutils literal notranslate"><span class="pre">logR</span></code> function. The equity price data, passed into the function in the <code class="docutils literal notranslate"><span class="pre">data::DataFrame</span></code> argument, is assumed to an <a class="reference external" href="https://en.wikipedia.org/wiki/Open-high-low-close_chart">ascending OHLC dataset</a>. The <code class="docutils literal notranslate"><span class="pre">logR</span></code> function is defined in the following code block:</p>
 <div class="literal-block-wrapper docutils container" id="id3">
@@ -543,7 +553,7 @@ on asset <span class="math notranslate nohighlight">\(i\)</span> over time horiz
 <span class="linenos"> 9</span><span class="k">function</span><span class="w"> </span><span class="n">logR</span><span class="p">(</span><span class="n">data</span><span class="o">::</span><span class="kt">DataFrame</span><span class="p">;</span><span class="w"> </span><span class="n">r</span><span class="o">::</span><span class="kt">Float64</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.045</span><span class="p">,</span><span class="w"> </span><span class="n">key</span><span class="o">::</span><span class="kt">Symbol</span><span class="o">=</span><span class="ss">:close</span><span class="p">)</span><span class="o">::</span><span class="kt">Array</span><span class="p">{</span><span class="kt">Float64</span><span class="p">,</span><span class="mi">1</span><span class="p">}</span>
 <span class="linenos">10</span>
 <span class="linenos">11</span><span class="w">    </span><span class="c"># convert risk free rate to daily rate -</span>
-<span class="linenos">12</span><span class="w">    </span><span class="n">r̄</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">r</span><span class="p">)</span><span class="o">^</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">365</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="c"># convert the annual risk free rate to daily value</span>
+<span class="linenos">12</span><span class="w">    </span><span class="n">r̄</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="n">r</span><span class="p">)</span><span class="o">^</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">365</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="c"># convert the annual risk free rate to daily value, 365 year</span>
 <span class="linenos">13</span>
 <span class="linenos">14</span><span class="w">    </span><span class="c"># initialize -</span>
 <span class="linenos">15</span><span class="w">    </span><span class="n">number_trading_days</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">nrow</span><span class="p">(</span><span class="n">data</span><span class="p">);</span>
@@ -553,11 +563,11 @@ on asset <span class="math notranslate nohighlight">\(i\)</span> over time horiz
 <span class="linenos">19</span><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">∈</span><span class="w"> </span><span class="mi">2</span><span class="o">:</span><span class="n">number_trading_days</span>
 <span class="linenos">20</span><span class="w">        </span>
 <span class="linenos">21</span><span class="w">        </span><span class="c"># grab yesterday&#39;s and today&#39;s close price</span>
-<span class="linenos">22</span><span class="w">        </span><span class="n">P₁</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">key</span><span class="p">];</span><span class="w"> </span><span class="c"># yesterday</span>
-<span class="linenos">23</span><span class="w">        </span><span class="n">P₂</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">key</span><span class="p">];</span><span class="w">   </span><span class="c"># today</span>
+<span class="linenos">22</span><span class="w">        </span><span class="n">S₁</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">key</span><span class="p">];</span><span class="w"> </span><span class="c"># yesterday</span>
+<span class="linenos">23</span><span class="w">        </span><span class="n">S₂</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">key</span><span class="p">];</span><span class="w">   </span><span class="c"># today</span>
 <span class="linenos">24</span>
 <span class="linenos">25</span><span class="w">        </span><span class="c"># compute the excess return -</span>
-<span class="linenos">26</span><span class="w">        </span><span class="n">log_excess_return_array</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">log</span><span class="p">(</span><span class="n">P₂</span><span class="o">/</span><span class="n">P₁</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">r̄</span>
+<span class="linenos">26</span><span class="w">        </span><span class="n">log_excess_return_array</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">log</span><span class="p">(</span><span class="n">S₂</span><span class="o">/</span><span class="n">S₁</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">r̄</span>
 <span class="linenos">27</span><span class="w">    </span><span class="k">end</span>
 <span class="linenos">28</span>
 <span class="linenos">29</span><span class="w">    </span><span class="c"># return -</span>
@@ -570,10 +580,10 @@ on asset <span class="math notranslate nohighlight">\(i\)</span> over time horiz
 <div class="proof definition admonition" id="defn-percentage-return-1">
 <p class="admonition-title"><span class="caption-number">Definition 10 </span> (Fractional return)</p>
 <section class="definition-content" id="proof-content">
-<p>Let the price of asset <span class="math notranslate nohighlight">\(i\)</span> at any time <span class="math notranslate nohighlight">\(j\)</span> be given by <span class="math notranslate nohighlight">\(P_{ij}&gt;0\)</span>. Then the fractional return
+<p>Let the price of asset <span class="math notranslate nohighlight">\(i\)</span> at any time <span class="math notranslate nohighlight">\(j\)</span> be given by <span class="math notranslate nohighlight">\(S_{ij}&gt;0\)</span>. Then the fractional return
 on asset <span class="math notranslate nohighlight">\(i\)</span> over time horizon <span class="math notranslate nohighlight">\(j\rightarrow{k}\)</span> is defined as:</p>
 <div class="math notranslate nohighlight">
-\[r^{(i)}_{k,j} \equiv \frac{P_{ik} - P_{ij}}{P_{ij}}\]</div>
+\[r^{(i)}_{k,j} \equiv \frac{S_{ik} - S_{ij}}{S_{ij}}\]</div>
 <p>where <span class="math notranslate nohighlight">\(r^{(i)}_{k,j}\)</span> denotes the fractional return of asset <span class="math notranslate nohighlight">\(i\)</span> over time horizon <span class="math notranslate nohighlight">\(j\rightarrow{k}\)</span>.</p>
 </section>
 </div><p>However, we will typically use the logarithmic return in this book. The logarithmic return is preferred because it is additive, i.e., the logarithmic return over a time period is the sum of the logarithmic returns over sub-periods. This is not true for the fractional return.</p>

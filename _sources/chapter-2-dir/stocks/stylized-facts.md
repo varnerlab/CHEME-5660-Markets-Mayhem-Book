@@ -63,21 +63,20 @@ Financial instruments, like shares of stock, can be purchased or sold on electro
 ## Orders, Order Books and Order Matching
 At the center of an electronic exchange are [orders](https://en.wikipedia.org/wiki/Order_(exchange)) and [order books](https://en.wikipedia.org/wiki/Order_book). An [order book](https://en.wikipedia.org/wiki/Order_book) holds a list of [orders](https://en.wikipedia.org/wiki/Order_(exchange)) for a particular security or financial instrument listed on the exchange; thus, it is a tick-by-tick record of the interest buyers and sellers have for a particular security or financial instrument on the exchange. 
 
-Many types of [orders](https://en.wikipedia.org/wiki/Order_(exchange)) can be initiated by traders. However, let's consider only four basic classes of orders, a market order, a limit order, a stop order and a cancel order.
+Traders can initiate many types of orders. However, let’s consider only four basic classes of orders: a market order, a limit order, a cancel order, and a stop order.
 
-* __Market order__: A market order is a buy or sell order executed immediately, regardless of the current market prices. As long as willing sellers and buyers are present in the exchange, market orders are always executed (filled). Market orders are used when the certainty of execution is more important than the execution price. Thus, a market order is the simplest of the order types as it forgoes control over the execution price. A market order is filled at the best price available at execution. In fast-moving markets, the price paid or received may differ significantly from the price quoted when the order was entered. Further, a market order may be split across multiple participants on the other side of the transaction, resulting in different prices for some of the instruments involved in the trade.   
+* __Market order__: When you place a market order, your buy or sell order is executed immediately, regardless of the current market prices. Your order will always be filled if willing sellers and buyers are on the exchange. Market orders are best used when you need the certainty of execution, and the execution price is less important. They are the simplest type of order because you don’t have control over the execution price. Instead, your order will be filled at the best price available at execution. Remember that in fast-moving markets, the price you pay or receive may differ significantly from the price quoted when you place the order. Additionally, your order may be split across multiple participants on the other side of the transaction, resulting in different prices for some of the instruments involved in the trade.
 
-* __Limit order__: A limit order is an order to buy a financial instrument at no more than a specific price or sell a security at no less than a particular price. This gives the trader control over the price at which the trade is executed. However, unlike a market order which is guaranteed to be executed (filled), a limit order may never be executed if the price conditions are not met. Thus, limit orders are used when the trader wishes to control price rather than the certainty of being filled.
+* __Limit order__: When trading in financial instruments, a limit order lets you set a maximum purchase or minimum selling price. This allows you to control the price at which the trade is executed. However, unlike a market order, which is guaranteed to be executed, a limit order will only be executed if the price conditions are met. As a result, limit orders are used when you prioritize controlling the price over the certainty of being filled.
+
+* __Cancel order__: If an investor wishes to remove a current order from the exchange, they can cancel it anytime. This is known as a cancel order. It is important to note that if a limit order has not been executed by the end of the trading day or a specific timeframe, it is automatically canceled.
 
 * __Stop order__: A stop order is an order to buy or sell a financial instrument once the price of that instrument reaches a specified price, the stop price:
 
     * A [buy-stop order](https://en.wikipedia.org/wiki/Order_(exchange)#Buy-stop_order) is entered at a stop price above the current market price. Traders use buy-stop orders to limit a loss or protect a profit on a stock they have sold short. 
     * A [sell-stop order](https://en.wikipedia.org/wiki/Order_(exchange)#Sell-stop_order) is entered at a stop price below the current market price. Traders use sell-stop orders to limit a loss or protect a profit on a stock they already own. For either a [buy-stop order](https://en.wikipedia.org/wiki/Order_(exchange)#Buy-stop_order) or a [sell-stop order](https://en.wikipedia.org/wiki/Order_(exchange)#Sell-stop_order), when the stop price is reached, the stop order becomes a market order. Thus, a stop trade will be executed if the stop price is reached, but not necessarily at or near the stop price, particularly in a fast-moving market, or if there is insufficient liquidity available relative to the size of the order. 
     * A [stop-limit order](https://en.wikipedia.org/wiki/Order_(exchange)#Stop-limit_order) is an order to buy or sell a stock that combines features of a stop order and a limit order. Once the stop price is reached, a stop-limit order becomes a limit order executed at a specified price (or better). As with all limit orders, a stop-limit order doesn't get filled if the security's price never reaches the specified limit price.
-
-* __Cancel order__: A cancel order allows an investor to remove a current order from the exchange. If an order
-has not already executed, it can be cancelled at any time. Moreover, if a limit order has not executed by the end of the trading day (or some specified time period) it is automatically cancelled. 
-
+ 
 (content:references:returns-stylized-facts)=
 ## Returns and Stylized Facts 
 Stylized facts are empirical statistical properties of the return time series {cite}`Cont-QuantFinance-2001`. A return refers to the increase or decrease in the price of an asset, e.g., shares of a stock over a specific time period period, e.g., minutes, days, weeks or even years ({prf:ref}`defn-log-return-1`):
@@ -85,14 +84,23 @@ Stylized facts are empirical statistical properties of the return time series {c
 ````{prf:definition} Logarithmic return
 :label: defn-log-return-1
 
-Let the price of asset $i$ at time $j$ be given by $P_{ij}>0$. Then the logarithmic return 
-on asset $i$ over time horizon $j\rightarrow{k}$ is defined as: 
+Let $S_{i,t-1}$ denote the continuously compounding share price of ticker $i$ at time $t-1$. Then, at time $t$, the share price is given by:
 
-```{math}
-\bar{r}^{(i)}_{k,j} \equiv \log\left(\frac{P_{ik}}{P_{ij}}\right)
-```
+$$
+\begin{equation*}
+    S_{i,t} = S_{i,t-1}\cdot\exp\left(\mu^{(i)}_{t,t-1}\cdot{\Delta{t}}\right)
+\end{equation*}
+$$
 
-where $\bar{r}^{(i)}_{k,j}$ denotes the logarithmic return of asset $i$ over time horizon $j\rightarrow{k}$. The $\log\left(\star\right)$ term denotes the [natural log](https://en.wikipedia.org/wiki/Natural_logarithm). 
+where $\mu^{(i)}_{t,t-1}$ denotes the growth rate (units: inverse years) of ticker $i$ over time horizon $(t-1)\rightarrow{t}$, 
+and $\Delta{t}$ is the time interval between $t-1$ and $t$ (units: years). 
+The logarithmic return on asset $i$ over time horizon $(t-1)\rightarrow{t}$ is defined as:
+
+$$
+\begin{equation*}
+\bar{r}^{(i)}_{t,t-1} \equiv \ln\left(\frac{S_{i,t}}{S_{i,t-1}}\right) = \mu^{(i)}_{t,t-1}\cdot{\Delta{t}}
+\end{equation*}  
+$$
 
 ````
 
@@ -115,7 +123,7 @@ See: https://dataframes.juliadata.org/stable/man/getting_started/
 function logR(data::DataFrame; r::Float64 = 0.045, key::Symbol=:close)::Array{Float64,1}
 
     # convert risk free rate to daily rate -
-    r̄ = (1+r)^(1/365) - 1; # convert the annual risk free rate to daily value
+    r̄ = (1+r)^(1/365) - 1; # convert the annual risk free rate to daily value, 365 year
 
     # initialize -
     number_trading_days = nrow(data);
@@ -125,11 +133,11 @@ function logR(data::DataFrame; r::Float64 = 0.045, key::Symbol=:close)::Array{Fl
     for i ∈ 2:number_trading_days
         
         # grab yesterday's and today's close price
-        P₁ = data[i-1, key]; # yesterday
-        P₂ = data[i, key];   # today
+        S₁ = data[i-1, key]; # yesterday
+        S₂ = data[i, key];   # today
 
         # compute the excess return -
-        log_excess_return_array[i-1] = log(P₂/P₁) - r̄
+        log_excess_return_array[i-1] = log(S₂/S₁) - r̄
     end
 
     # return -
@@ -142,11 +150,11 @@ Returns can also be described as the fractional change in price between two time
 ````{prf:definition} Fractional return
 :label: defn-percentage-return-1
 
-Let the price of asset $i$ at any time $j$ be given by $P_{ij}>0$. Then the fractional return 
+Let the price of asset $i$ at any time $j$ be given by $S_{ij}>0$. Then the fractional return 
 on asset $i$ over time horizon $j\rightarrow{k}$ is defined as: 
 
 ```{math}
-r^{(i)}_{k,j} \equiv \frac{P_{ik} - P_{ij}}{P_{ij}}
+r^{(i)}_{k,j} \equiv \frac{S_{ik} - S_{ij}}{S_{ij}}
 ```
 
 where $r^{(i)}_{k,j}$ denotes the fractional return of asset $i$ over time horizon $j\rightarrow{k}$.
